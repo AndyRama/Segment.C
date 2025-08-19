@@ -26,8 +26,8 @@ export const FAQSection = (props: FeaturesPreviewProps) => {
         <Typography className="text-primary font-extrabold uppercase">
           FAQ
         </Typography>
-        <Typography variant="h2" className="text-5xl">
-          Frequently Asked Questions
+        <Typography variant="h2" className="text-2xl md:text-5xl">
+          Questions fréquemment posées
         </Typography>
       </div>
       <div className="flex-1">

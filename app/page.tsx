@@ -97,18 +97,18 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ReviewGrid
+      <ReviewGrid initialReviewsCount={3}
         reviews={[
           {
             image: "https://i.pravatar.cc/300?u=marie1",
-            name: "Marie Dubois",
+            name: "Marc Dubois",
             review:
               "Rui a remplacé toutes nos fenêtres en PVC. Le travail est impeccable, les finitions parfaites et les délais respectés. Je recommande vivement Segment.c pour leur professionnalisme et leur écoute.",
             role: "Propriétaire - Bordeaux",
           },
           {
             image: "https://i.pravatar.cc/300?u=pierre2",
-            name: "Pierre Martin",
+            name: "karin Martin",
             review:
               "Installation d'une porte d'entrée en aluminium. Rui m'a conseillé sur le choix du modèle et l'équipe a fait un travail remarquable. La pose a été réalisée en une journée sans aucun désagrément.",
             role: "Particulier - Lacanau",
@@ -129,7 +129,7 @@ export default function HomePage() {
           },
           {
             image: "https://i.pravatar.cc/300?u=claire5",
-            name: "Claire Moreau",
+            name: "David Moreau",
             review:
               "Rui m'a aidée à choisir des fenêtres adaptées au style de ma maison traditionnelle. Son expertise et ses conseils ont été précieux. L'isolation thermique est maintenant parfaite.",
             role: "Particulière - Pessac",
@@ -149,22 +149,15 @@ export default function HomePage() {
             role: "Propriétaire - Bègles",
           },
           {
-            image: "https://i.pravatar.cc/300?u=david8",
-            name: "David Lambert",
-            review:
-              "Pose de fenêtres en bois sur ma rénovation. Rui maîtrise parfaitement son métier et propose des produits de qualité. Son approche personnalisée fait la différence, je le recommande.",
-            role: "Client - Villenave-d'Ornon",
-          },
-          {
             image: "https://i.pravatar.cc/300?u=nathalie9",
-            name: "Nathalie Bertrand",
+            name: "Nathan Bertrand",
             review:
               "Excellent service de A à Z. Du devis gratuit à la pose finale, tout s'est parfaitement déroulé. Rui est un professionnel passionné qui livre un travail de grande qualité.",
             role: "Particulière - Gradignan",
           },
           {
             image: "https://i.pravatar.cc/300?u=stephane10",
-            name: "Stéphane Girard",
+            name: "Stéphanie Girard",
             review:
               "Remplacement d'urgence d'une porte suite à un cambriolage. Rui a su réagir rapidement et proposer une solution sécurisée. Son réactivité et son professionnalisme m'ont vraiment aidé.",
             role: "Client - Le Bouscat",
