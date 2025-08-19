@@ -55,11 +55,10 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "/", label: "Accueil" },
-    { path: "/#", label: "Segment.C" },
+    { path: "/", label: "Segment.C" },
     { path: "/posts", label: "Actualitées" },
-    { path: "/#", label: "Portes" },
     { path: "/#", label: "Fenêtre" },
+    { path: "/#", label: "Portes" },
   ];
 
   return (
@@ -120,7 +119,7 @@ export function LandingHeader() {
             <SheetTrigger>
               <Menu className="size-8" />
             </SheetTrigger>
-            <SheetContent className="flex flex-col gap-4">
+            <SheetContent className="flex flex-col gap-4 p-4">
               <div className="relative flex flex-col gap-4">
                 <div className="flex flex-row gap-1">
                   <Image

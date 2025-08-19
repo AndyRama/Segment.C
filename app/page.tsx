@@ -1,21 +1,10 @@
-import { EmailFormSection } from "@/features/email/email-form-section";
-import { BentoGridSection } from "@/features/landing/bento-section";
-import { CTASectionCard } from "@/features/landing/cta/cta-card-section";
 import { CTAImageSection } from "@/features/landing/cta/cta-image-section";
-import { CtaSection } from "@/features/landing/cta/cta-section";
 import { FAQSection } from "@/features/landing/faq-section";
-import { FeaturesSection } from "@/features/landing/feature-section";
-import { Hero } from "@/features/landing/hero";
+import HeroAnimation from "@/features/landing/hero-animation";
 import { LandingHeader } from "@/features/landing/landing-header";
-import { PainSection } from "@/features/landing/pain";
 import { ReviewGrid } from "@/features/landing/review/review-grid";
-import { ReviewSingle } from "@/features/landing/review/review-single";
-import { ReviewTriple } from "@/features/landing/review/review-triple";
 import { SectionDivider } from "@/features/landing/section-divider";
-import { StatsSection } from "@/features/landing/stats-section";
 import { Footer } from "@/features/layout/footer";
-import { Pricing } from "@/features/plans/pricing-section";
-import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -24,124 +13,11 @@ export default function HomePage() {
 
       <LandingHeader />
 
-      <Hero />
-
-      <StatsSection />
-
-      <BentoGridSection />
-
-      <PainSection />
+      <HeroAnimation />
 
       <SectionDivider />
-
-      <ReviewTriple
-        reviews={[
-          {
-            image: "https://i.pravatar.cc/300?u=a1",
-            name: "Sophie",
-            review: `Threader **has completely transformed the way I manage my social media** content. The ability to schedule posts and use AI for content suggestions has saved me hours each week.`,
-            role: "Digital Marketer",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=a2",
-            name: "Alex",
-            review: `Using Threader has significantly boosted my online engagement. **The analytics tool helps me understand what works**, allowing me to refine my strategy and grow my follower base.`,
-            role: "Social Media Influencer",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=a3",
-            name: "Jordan",
-            review: `The ease of scheduling and the AI-generated content features are game-changers. **Threader's user-friendly interface** makes it perfect for anyone looking to enhance their online presence.`,
-            role: "Entrepreneur",
-          },
-        ]}
-      />
-
-      <SectionDivider />
-
-      <ReviewSingle
-        image="https://i.pravatar.cc/300?u=5"
-        name="Michel"
-        review={`Threader **has completely transformed** the way I manage my social media content. The ability to schedule posts and use AI for content suggestions **has saved me hours each week.**`}
-        role="Digital Marketer"
-        compagnyImage="https://1000logos.net/wp-content/uploads/2017/03/McDonalds-Logo-2003.png"
-        key={1}
-      />
-
-      <FeaturesSection
-        features={[
-          {
-            badge: "⏰ Schedule",
-            title: "Schedule your post",
-            description: "Schedule your post on the Threader in a few clicks.",
-            component: (
-              <Image
-                src="/images/placeholder1.gif"
-                alt=""
-                width={200}
-                height={100}
-                className="h-auto w-full object-cover"
-                unoptimized
-              />
-            ),
-          },
-          {
-            badge: "📅 Calendar",
-            title: "See what you scheduled",
-            description:
-              "With the calendar view, you can see what you scheduled and when.",
-            component: (
-              <Image
-                src="/images/placeholder1.gif"
-                alt=""
-                width={200}
-                height={100}
-                className="h-auto w-full object-cover"
-              />
-            ),
-          },
-          {
-            badge: "👁️ Preview",
-            title: "Preview your post",
-            description:
-              "Preview your post before scheduling it to see how it will look like.",
-            component: (
-              <Image
-                src="/images/placeholder1.gif"
-                alt=""
-                width={200}
-                height={100}
-                className="h-auto w-full object-cover"
-                unoptimized
-              />
-            ),
-          },
-          {
-            badge: "🔄 Repost",
-            title: "Schedule repost",
-            description:
-              "Automatically repost your post after a certain amount of time.",
-            component: (
-              <Image
-                src="/images/placeholder1.gif"
-                alt=""
-                width={200}
-                height={100}
-                className="h-auto w-full object-cover"
-                unoptimized
-              />
-            ),
-          },
-        ]}
-      />
 
       <CTAImageSection />
-
-      <CTASectionCard />
-
-      <CtaSection />
-
-      <Pricing />
 
       <FAQSection
         faq={[
@@ -259,11 +135,6 @@ export default function HomePage() {
           },
         ]}
       />
-
-      <EmailFormSection />
-
-      <SectionDivider />
-
       <Footer />
     </div>
   );

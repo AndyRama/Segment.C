@@ -1,5 +1,5 @@
 export const SiteConfig = {
-  title: "NOW.TS",
+  title: "Segment.C",
   description: "Collect and showcase powerful video and text testimonials",
   prodUrl: "https://www.segment-c.com",
   appId: "Segment.C",
