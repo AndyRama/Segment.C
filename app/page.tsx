@@ -7,6 +7,7 @@ import { SectionDivider } from "@/features/landing/section-divider";
 import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
 import { ProcessSection } from "@/features/landing/process-section";
+import { VideoSection } from "@/features/landing/video-section";
 import { Footer } from "@/features/layout/footer";
 
 export default function HomePage() {
@@ -29,7 +30,7 @@ export default function HomePage() {
         experience="15 ans d'expérience"
       />
 
-      <CardGrid/>
+      <CardGrid />
 
       <SectionDivider />
 
@@ -37,44 +38,59 @@ export default function HomePage() {
 
       <SectionDivider />
 
+      <VideoSection
+        videoUrl="/videos/demo.mp4"
+        title="Présentation d'un de nos produits"
+        description=""
+        className="mt-20 mb-30"
+      />
+
       <CTAImageSection />
 
       <FAQSection
         faq={[
           {
-            question: "What is Threader?",
+            question: "Quels types de menuiseries proposez-vous ?",
             answer:
-              "Threader is an innovative platform designed to help you write, schedule, and publish content to your account with the assistance of AI, enhancing your business's online presence.",
+              "Segment.c est spécialisé dans la fabrication et l'installation de portes et fenêtres sur mesure. Nous proposons des menuiseries en PVC, aluminium et bois, adaptées à tous les styles architecturaux et budgets.",
           },
           {
-            question: "How does AI Content Generation work?",
+            question: "Proposez-vous un devis gratuit ?",
             answer:
-              "Our AI Content Generation feature leverages the power of artificial intelligence to create unique and engaging content for your Threads, making content creation easier and more efficient.",
+              "Oui, nous nous déplaçons gratuitement à votre domicile pour étudier votre projet, prendre les mesures et vous proposer un devis détaillé sans engagement. Cette prestation est entièrement gratuite.",
           },
           {
-            question: "Can I schedule my threads in advance?",
+            question:
+              "Quels sont les délais de fabrication et d'installation ?",
             answer:
-              "Yes, with Threader, you can schedule your threads for a specific time, allowing you to maintain a consistent online presence without the need to manually post every day.",
+              "Après validation de votre commande, comptez 2 à 4 semaines pour la fabrication de vos menuiseries. L'installation est ensuite réalisée par nos équipes dans un délai de 1 à 3 jours selon la complexité du projet.",
           },
           {
-            question: "What is the Now.TS project?",
+            question: "Vos menuiseries sont-elles garanties ?",
             answer:
-              "Now.TS is a new project announced on our platform that enables users to create professional Next.js applications in days, streamlining the development process.",
+              "Toutes nos menuiseries bénéficient d'une garantie fabricant et nous assurons un service après-vente complet. Nos produits respectent les normes en vigueur et offrent d'excellentes performances thermiques et acoustiques.",
           },
           {
-            question: "How can I get more followers?",
+            question: "Dans quelles zones intervenez-vous ?",
             answer:
-              "To gain more followers, focus on creating content related to Next.js, as our analysis shows it's highly engaging. Utilize our research tools to understand trends and improve your content strategy.",
+              "Nous intervenons principalement en Nouvelle-Aquitaine et dans les départements limitrophes. N'hésitez pas à nous contacter pour vérifier si votre zone géographique est couverte par nos services.",
           },
           {
-            question: "What are the benefits of posting with Threader?",
+            question:
+              "Puis-je bénéficier d'aides financières pour mes travaux ?",
             answer:
-              "Posting with Threader allows you to schedule posts, avoid daily manual postings, track your scheduled content easily, and maintain consistency in your online activity.",
+              "Oui, selon votre situation, vous pouvez bénéficier de différentes aides : MaPrimeRénov', éco-PTZ, TVA réduite, aides locales. Nous vous accompagnons dans vos démarches et vous conseillons sur les dispositifs disponibles.",
           },
           {
-            question: "What pricing plans does Threader offer?",
+            question:
+              "Vos menuiseries sont-elles conformes aux normes thermiques ?",
             answer:
-              "Threader offers two pricing plans: THREADER FREE, perfect for tiny creators, allowing you to schedule 1 post in advance; and THREADER PREMIUM, ideal for content creators, offering unlimited scheduling, post previews, and auto-reposting features.",
+              "Absolument, toutes nos menuiseries respectent la réglementation thermique en vigueur (RT 2012/RE 2020). Nous proposons des produits haute performance énergétique qui contribuent à réduire vos factures de chauffage.",
+          },
+          {
+            question: "Comment se déroule une intervention chez moi ?",
+            answer:
+              "Notre processus comprend 4 étapes : 1) Devis gratuit à domicile, 2) Mesure technique et validation, 3) Fabrication en atelier, 4) Pose professionnelle avec finitions. Nous nous occupons de tout de A à Z.",
           },
         ]}
       />
@@ -84,74 +100,74 @@ export default function HomePage() {
       <ReviewGrid
         reviews={[
           {
-            image: "https://i.pravatar.cc/300?u=b1",
-            name: "Eva",
+            image: "https://i.pravatar.cc/300?u=marie1",
+            name: "Marie Dubois",
             review:
-              "Since I started using Threader, my content creation process has been streamlined. The AI suggestions are spot on, helping me to connect better with my audience. Highly recommend for anyone looking to elevate their content game.",
-            role: "Content Creator",
+              "Rui a remplacé toutes nos fenêtres en PVC. Le travail est impeccable, les finitions parfaites et les délais respectés. Je recommande vivement Segment.c pour leur professionnalisme et leur écoute.",
+            role: "Propriétaire - Bordeaux",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b2",
-            name: "Lucas",
+            image: "https://i.pravatar.cc/300?u=pierre2",
+            name: "Pierre Martin",
             review:
-              "Threader's scheduling feature is a lifesaver. It allows me to plan my content calendar efficiently, ensuring I never miss posting on the optimal days and times. Fantastic tool for social media managers.",
-            role: "Social Media Manager",
+              "Installation d'une porte d'entrée en aluminium. Rui m'a conseillé sur le choix du modèle et l'équipe a fait un travail remarquable. La pose a été réalisée en une journée sans aucun désagrément.",
+            role: "Particulier - Lacanau",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b3",
-            name: "Mia",
+            image: "https://i.pravatar.cc/300?u=sophie3",
+            name: "Sophie Leroy",
             review:
-              "The analytics provided by Threader are invaluable. They've given me insights into what my audience loves, helping me double my engagement rate in just a few months.",
-            role: "Digital Marketer",
+              "Très satisfaite du remplacement de mes volets roulants. Rui est un artisan sérieux qui prend le temps d'expliquer et de bien faire. Le devis était détaillé et transparent, aucune surprise.",
+            role: "Cliente - Mérignac",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b4",
-            name: "Noah",
+            image: "https://i.pravatar.cc/300?u=julien4",
+            name: "Julien Rousseau",
             review:
-              "I was skeptical about AI-generated content, but Threader changed my mind. The content feels personal and has significantly increased my interaction rates.",
-            role: "Blogger",
+              "Rénovation complète des menuiseries de ma maison. Segment.c a su s'adapter à mes contraintes et proposer des solutions techniques adaptées. Un vrai professionnel à l'écoute de ses clients.",
+            role: "Propriétaire - Arcachon",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b5",
-            name: "Isabella",
+            image: "https://i.pravatar.cc/300?u=claire5",
+            name: "Claire Moreau",
             review:
-              "Threader's user interface is incredibly user-friendly. I was able to onboard my team in no time, and we've seen a marked improvement in our social media performance.",
-            role: "Team Leader",
+              "Rui m'a aidée à choisir des fenêtres adaptées au style de ma maison traditionnelle. Son expertise et ses conseils ont été précieux. L'isolation thermique est maintenant parfaite.",
+            role: "Particulière - Pessac",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b6",
-            name: "Oliver",
+            image: "https://i.pravatar.cc/300?u=michel6",
+            name: "Michel Fournier",
             review:
-              "Auto-reposting with Threader is a feature I didn't know I needed. It's great for getting more mileage out of your best content without any extra effort.",
-            role: "Freelancer",
+              "Installation de baies vitrées coulissantes. Le chantier a été mené avec rigueur, propreté irréprochable et respect des horaires. Je recommande sans hésiter cette entreprise.",
+            role: "Client - Talence",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b7",
-            name: "Sophia",
+            image: "https://i.pravatar.cc/300?u=anne7",
+            name: "Anne Durand",
             review:
-              "Joining the Threader community has opened up networking opportunities with fellow content creators. It's more than just a tool; it's a platform for growth.",
-            role: "Influencer",
+              "Segment.c a remplacé ma porte de garage sectionnelle. Rui est un artisan de confiance, ponctuel et méticuleux. Le résultat dépasse mes attentes et l'installation s'est faite sans problème.",
+            role: "Propriétaire - Bègles",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b8",
-            name: "Elijah",
+            image: "https://i.pravatar.cc/300?u=david8",
+            name: "David Lambert",
             review:
-              "The calendar view in Threader helps me visualize my content strategy for the entire month. It's been a game changer for my planning process.",
-            role: "Strategist",
+              "Pose de fenêtres en bois sur ma rénovation. Rui maîtrise parfaitement son métier et propose des produits de qualité. Son approche personnalisée fait la différence, je le recommande.",
+            role: "Client - Villenave-d'Ornon",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b9",
-            name: "Charlotte",
+            image: "https://i.pravatar.cc/300?u=nathalie9",
+            name: "Nathalie Bertrand",
             review:
-              "I appreciate the flexibility in Threader's pricing plans. It's accessible for creators at any stage of their journey, from beginners to established influencers.",
-            role: "Entrepreneur",
+              "Excellent service de A à Z. Du devis gratuit à la pose finale, tout s'est parfaitement déroulé. Rui est un professionnel passionné qui livre un travail de grande qualité.",
+            role: "Particulière - Gradignan",
           },
           {
-            image: "https://i.pravatar.cc/300?u=b10",
-            name: "James",
+            image: "https://i.pravatar.cc/300?u=stephane10",
+            name: "Stéphane Girard",
             review:
-              "The customer support team at Threader is fantastic. They've been quick to respond and helpful with any questions I've had. Great service overall.",
-            role: "Customer",
+              "Remplacement d'urgence d'une porte suite à un cambriolage. Rui a su réagir rapidement et proposer une solution sécurisée. Son réactivité et son professionnalisme m'ont vraiment aidé.",
+            role: "Client - Le Bouscat",
           },
         ]}
       />
