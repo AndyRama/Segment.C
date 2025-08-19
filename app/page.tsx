@@ -13,7 +13,7 @@ import { Footer } from "@/features/layout/footer";
 export default function HomePage() {
   return (
     <div className="bg-background text-foreground relative flex h-fit flex-col">
-      <div className="mt-16"></div>
+      <div className="mt-0 md:mt-16"></div>
 
       <LandingHeader />
 
@@ -45,7 +45,11 @@ export default function HomePage() {
         className="mt-20 mb-30"
       />
 
+      <SectionDivider />
+
       <CTAImageSection />
+
+      <SectionDivider />
 
       <FAQSection
         faq={[

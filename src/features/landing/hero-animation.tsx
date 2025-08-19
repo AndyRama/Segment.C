@@ -222,7 +222,7 @@ const HeroAnimation = () => {
 
       {/* Slide Indicators - Aligned at 40% instead of 50% */}
       <motion.div
-        className="absolute bottom-8 left-[40%] z-20 flex -translate-x-1/2 gap-3 md:left-1/2"
+        className="absolute bottom-8 left-[50%] z-20 flex -translate-x-1/2 gap-3 md:left-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.4 }}

@@ -34,7 +34,7 @@ export const ReviewGrid = ({ reviews, initialReviewsCount = 3 }: ReviewGridProps
       </SectionLayout>
       
       {hasMoreReviews && (
-        <div className="flex justify-center">
+        <div className="flex justify-end mt-[-10]">
           <Button
             variant="outline"
             size="lg"
