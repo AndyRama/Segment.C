@@ -1,12 +1,12 @@
 export const SiteConfig = {
   title: "NOW.TS",
   description: "Collect and showcase powerful video and text testimonials",
-  prodUrl: "https://demo.nowts.app",
-  appId: "nowts",
-  domain: "demo.nowts.app",
+  prodUrl: "https://www.segment-c.com",
+  appId: "Segment.C",
+  domain: "segment-c.com",
   appIcon: "/images/icon.png",
   company: {
-    name: "NowTS",
+    name: "Segment.C",
     address: "", // Remove if not needed
   },
   brand: {
