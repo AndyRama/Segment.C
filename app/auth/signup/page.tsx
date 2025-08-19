@@ -31,9 +31,9 @@ export default async function AuthSignInPage() {
             {SiteConfig.title.substring(0, 1).toUpperCase()}
           </AvatarFallback>
         </Avatar>
-        <CardTitle>Sign up to {SiteConfig.title}</CardTitle>
+        <CardTitle>Inscrivez-vous à {SiteConfig.title}</CardTitle>
         <CardDescription>
-          We just need a few details to get you started.
+          Nous avons juste besoin de quelques détails pour vous aider à démarrer.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -42,9 +42,9 @@ export default async function AuthSignInPage() {
         </Suspense>
 
         <Typography variant="muted" className="mt-4 text-xs">
-          You already have an account?{" "}
+          Vous avez déjà un compte ?{" "}
           <Typography variant="link" as={Link} href="/auth/signin">
-            Sign in
+            Se connecter
           </Typography>
         </Typography>
       </CardContent>

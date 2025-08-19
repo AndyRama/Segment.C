@@ -29,15 +29,15 @@ import { z } from "zod";
 
 const ChangePasswordFormSchema = z
   .object({
-    currentPassword: z.string().min(1, "Current password is required"),
-    newPassword: z.string().min(8, "Password must be at least 8 characters"),
+    currentPassword: z.string().min(1, "Le mot de passe actuel est requis"),
+    newPassword: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
     confirmPassword: z
       .string()
-      .min(8, "Password must be at least 8 characters"),
+      .min(8, "Le mot de passe doit contenir au moins 8 caractères"),
     revokeOtherSessions: z.boolean().default(true),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
-    message: "Passwords do not match",
+    message: "Les mots de passe ne correspondent pas",
     path: ["confirmPassword"],
   });
 
@@ -68,7 +68,7 @@ export default function ChangePasswordPage() {
       toast.error(error.message);
     },
     onSuccess: () => {
-      toast.success("Password changed successfully");
+      toast.success("Mot de passe modifié avec succès");
       router.push("/account");
     },
   });
@@ -80,9 +80,9 @@ export default function ChangePasswordPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Change Password</CardTitle>
+        <CardTitle>Changer le mot de passe</CardTitle>
         <CardDescription>
-          Update your password to keep your account secure.
+          Mettez à jour votre mot de passe pour sécuriser votre compte.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -92,7 +92,7 @@ export default function ChangePasswordPage() {
             name="currentPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Current Password</FormLabel>
+                <FormLabel>Mot de passe actuel</FormLabel>
                 <FormControl>
                   <Input type="password" {...field} />
                 </FormControl>
@@ -105,7 +105,7 @@ export default function ChangePasswordPage() {
             name="newPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>New Password</FormLabel>
+                <FormLabel>Nouveau mot de passe</FormLabel>
                 <FormControl>
                   <Input type="password" {...field} />
                 </FormControl>
@@ -118,7 +118,7 @@ export default function ChangePasswordPage() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm New Password</FormLabel>
+                <FormLabel>Confirmer le nouveau mot de passe</FormLabel>
                 <FormControl>
                   <Input type="password" {...field} />
                 </FormControl>
@@ -132,10 +132,9 @@ export default function ChangePasswordPage() {
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                 <div className="space-y-0.5">
-                  <FormLabel>Sign out from other devices</FormLabel>
+                  <FormLabel>Se déconnecter des autres appareils</FormLabel>
                   <FormDescription>
-                    This will sign you out from all other devices where you're
-                    currently logged in
+                    Cela vous déconnectera de tous les autres appareils sur lesquels vous êtes actuellement connecté.
                   </FormDescription>
                 </div>
                 <FormControl>
@@ -152,7 +151,7 @@ export default function ChangePasswordPage() {
             type="submit"
             className="w-full"
           >
-            Change Password
+            Changer le mot de passe
           </LoadingButton>
         </Form>
       </CardContent>

@@ -66,8 +66,7 @@ export default function ChangeEmailPage() {
       <CardHeader>
         <CardTitle>Change Email</CardTitle>
         <CardDescription>
-          Enter your new email address. We'll send a verification link to
-          confirm the change.
+          Saisissez votre nouvelle adresse e-mail. Nous vous enverrons un lien de vérification pour confirmer la modification.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -77,7 +76,7 @@ export default function ChangeEmailPage() {
             name="newEmail"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>New Email</FormLabel>
+                <FormLabel>Nouveau Email</FormLabel>
                 <FormControl>
                   <Input
                     type="email"

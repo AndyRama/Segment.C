@@ -68,10 +68,10 @@ export default function ForgetPasswordPage() {
             </AvatarFallback>
           </Avatar>
         </div>
-        <CardHeader className="text-center">Forget password</CardHeader>
+        <CardHeader className="text-center">Mot de passe oublié</CardHeader>
 
         <CardDescription className="text-center">
-          Enter your email to reset your password
+          Entrez votre email pour réinitialiser votre mot de passe
         </CardDescription>
       </CardHeader>
 
@@ -95,7 +95,7 @@ export default function ForgetPasswordPage() {
             type="submit"
             className="w-full"
           >
-            Send Reset Link
+            Envoyer le lien de réinitialisation
           </LoadingButton>
         </Form>
       </CardContent>

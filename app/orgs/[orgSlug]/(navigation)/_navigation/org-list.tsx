@@ -27,9 +27,9 @@ export const OrgList = async () => {
     <AccountNavigation>
       <Layout size="lg">
         <LayoutHeader>
-          <LayoutTitle>Your organizations</LayoutTitle>
+          <LayoutTitle>votre organisation</LayoutTitle>
           <LayoutDescription>
-            Choose an organization to continue
+            Choisissez une organisation pour continuer
           </LayoutDescription>
         </LayoutHeader>
         <LayoutContent className="flex flex-col gap-2">

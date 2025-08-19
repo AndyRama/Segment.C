@@ -27,7 +27,7 @@ import { useEffect, useState } from "react";
 import { OrgCommand } from "./org-command";
 import { getOrganizationNavigation } from "./org-navigation.links";
 import { OrgsSelect } from "./orgs-select";
-import { UpgradeCard } from "./upgrade-org-card";
+// import { UpgradeCard } from "./upgrade-org-card";
 
 export function OrgSidebar({
   slug,
@@ -69,7 +69,7 @@ export function OrgSidebar({
         ))}
       </SidebarContent>
       <SidebarFooter className="flex flex-col gap-2">
-        <UpgradeCard />
+        {/* <UpgradeCard /> */}
         <SidebarUserButton />
       </SidebarFooter>
       <SidebarRail />

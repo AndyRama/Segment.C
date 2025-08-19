@@ -19,9 +19,9 @@ export default async function ConfirmDelete(props: PageParams) {
       <LayoutContent>
         <Card>
           <CardHeader>
-            <CardTitle>Confirm Account Deletion</CardTitle>
+            <CardTitle>Confirmer la suppression du compte</CardTitle>
             <CardDescription>
-              Are you sure you want to delete your account?
+              Êtes-vous sûr de vouloir supprimer votre compte ?
             </CardDescription>
           </CardHeader>
 

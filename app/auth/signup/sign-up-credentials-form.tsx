@@ -76,7 +76,7 @@ export const SignUpCredentialsForm = () => {
         name="name"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Name</FormLabel>
+            <FormLabel>Nom</FormLabel>
             <FormControl>
               <Input placeholder="John Doe" {...field} />
             </FormControl>
@@ -102,7 +102,7 @@ export const SignUpCredentialsForm = () => {
         name="password"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Password</FormLabel>
+            <FormLabel>Mot de passe</FormLabel>
             <FormControl>
               <Input type="password" {...field} />
             </FormControl>
@@ -115,7 +115,7 @@ export const SignUpCredentialsForm = () => {
         name="verifyPassword"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Verify Password</FormLabel>
+            <FormLabel>Vérifier le mot de passe</FormLabel>
             <FormControl>
               <Input type="password" {...field} />
             </FormControl>
@@ -125,7 +125,7 @@ export const SignUpCredentialsForm = () => {
       />
 
       <Button type="submit" className="w-full">
-        Sign up
+        S'inscrire
       </Button>
     </Form>
   );

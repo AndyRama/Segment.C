@@ -107,7 +107,7 @@ export const SignInCredentialsAndMagicLinkForm = (props: {
                     className="text-sm underline"
                     tabIndex={2}
                   >
-                    Forgot password ?
+                    Mot de passe oublié ?
                   </Link>
                 </div>
                 <FormControl>
@@ -130,7 +130,7 @@ export const SignInCredentialsAndMagicLinkForm = (props: {
 
       {isUsingCredentials ? (
         <Typography variant="muted" className="text-xs">
-          Forgot password ?{" "}
+          Mot de passe oublié ?{" "}
           <Typography
             variant="link"
             as="button"
@@ -139,7 +139,7 @@ export const SignInCredentialsAndMagicLinkForm = (props: {
               setIsUsingCredentials(false);
             }}
           >
-            Login with magic link
+            Connectez-vous avec le lien magique
           </Typography>
         </Typography>
       ) : (
@@ -152,7 +152,7 @@ export const SignInCredentialsAndMagicLinkForm = (props: {
             setIsUsingCredentials(true);
           }}
         >
-          Use password
+          Utiliser le mot de passe
         </Typography>
       )}
     </Form>

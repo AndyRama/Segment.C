@@ -37,13 +37,13 @@ export const SignInProviders = ({
       </div>
 
       <Typography variant="muted" className="text-xs">
-        You don't have an account?{" "}
+        Vous n'avez pas de compte ?{" "}
         <Typography
           variant="link"
           as={Link}
           href={`/auth/signup?callbackUrl=${callbackUrl}`}
         >
-          Sign up
+          S'inscrire
         </Typography>
       </Typography>
     </div>

@@ -28,12 +28,12 @@ export default async function NewUserPage(props: PageParams) {
       <Header />
       <Layout>
         <LayoutHeader>
-          <LayoutTitle>Successfully login</LayoutTitle>
-          <LayoutDescription>You can now use the app</LayoutDescription>
+          <LayoutTitle>Connectez-vous avec succès</LayoutTitle>
+          <LayoutDescription>Vous pouvez désormais utiliser l'application</LayoutDescription>
         </LayoutHeader>
         <LayoutContent>
           <Link href="/" className={buttonVariants({ size: "lg" })}>
-            Get Started
+            Commencer
           </Link>
         </LayoutContent>
       </Layout>

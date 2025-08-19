@@ -60,7 +60,7 @@ export function OrgCommand(props: {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>Aucun résultat trouvé.</CommandEmpty>
           {links.map((link, index) => (
             <CommandGroup heading={link.title} key={index}>
               {link.links.map((link) => (

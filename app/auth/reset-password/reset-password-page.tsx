@@ -75,10 +75,10 @@ export function ResetPasswordPage({ token }: { token: string }) {
             </AvatarFallback>
           </Avatar>
         </div>
-        <CardHeader className="text-center">Reset Password</CardHeader>
+        <CardHeader className="text-center">Réinitialiser le mot de passe</CardHeader>
 
         <CardDescription className="text-center">
-          Enter your new password below
+          Entrez votre nouveau mot de passe ci-dessous
         </CardDescription>
       </CardHeader>
       <CardContent className="border-t pt-6">
@@ -92,7 +92,7 @@ export function ResetPasswordPage({ token }: { token: string }) {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>New Password</FormLabel>
+                <FormLabel>Nouveau mot de passe</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="••••••••" {...field} />
                 </FormControl>
@@ -105,7 +105,7 @@ export function ResetPasswordPage({ token }: { token: string }) {
             type="submit"
             className="w-full"
           >
-            Reset Password
+            Réinitialiser le mot de passe
           </LoadingButton>
         </Form>
       </CardContent>

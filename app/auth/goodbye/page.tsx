@@ -15,24 +15,23 @@ export default function GoodbyePage() {
       <LayoutContent>
         <Card>
           <CardHeader>
-            <CardTitle>Account Deleted</CardTitle>
+            <CardTitle>Compte Supprimé</CardTitle>
             <CardDescription>
-              Your account has been successfully deleted
+              Votre compte a été supprimé avec succès
             </CardDescription>
           </CardHeader>
-
           <CardContent className="space-y-4">
             <p>
-              We're sorry to see you go. Your account and all associated data
-              have been permanently removed from our system.
+              Nous sommes désolés de vous voir partir. Votre compte et toutes les données associées
+              ont été définitivement supprimés de notre système.
             </p>
             <p>
-              If you change your mind, you're welcome to create a new account
-              anytime.
+              Si vous changez d'avis, vous pouvez créer un nouveau compte
+              à tout moment.
             </p>
             <div className="flex justify-center pt-4">
               <Button asChild>
-                <Link href="/auth/signup">Create New Account</Link>
+                <Link href="/auth/signup">Créer un Nouveau Compte</Link>
               </Button>
             </div>
           </CardContent>

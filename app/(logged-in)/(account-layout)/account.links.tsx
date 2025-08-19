@@ -17,7 +17,7 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       {
         href: "/account/email",
         Icon: Mail,
-        label: "Mail",
+        label: "Email",
       },
       {
         href: "/account/danger",

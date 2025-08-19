@@ -56,8 +56,7 @@ export function ConfirmDeletePage({
   return (
     <>
       <p>
-        This action is permanent and cannot be undone. All your data will be
-        permanently removed from our systems.
+        Cette action est définitive et irréversible. Toutes vos données seront définitivement supprimées de nos systèmes.
       </p>
       <div className="flex gap-4 pt-4">
         <LoadingButton
@@ -65,7 +64,7 @@ export function ConfirmDeletePage({
           variant="destructive"
           onClick={handleConfirmDelete}
         >
-          Yes, Delete My Account
+          Oui, supprimer mon compte
         </LoadingButton>
         <Button variant="outline" onClick={handleCancel}>
           Cancel

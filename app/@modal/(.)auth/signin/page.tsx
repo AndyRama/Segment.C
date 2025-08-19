@@ -23,9 +23,9 @@ export default function SignInDialogPage() {
               {SiteConfig.title.substring(0, 1).toUpperCase()}
             </AvatarFallback>
           </Avatar>
-          <DialogTitle>Sign in to {SiteConfig.title}</DialogTitle>
+          <DialogTitle>Connectez-vous à {SiteConfig.title}</DialogTitle>
           <DialogDescription>
-            Please sign in to your account to continue.
+            Veuillez vous connecter à votre compte pour continuer.
           </DialogDescription>
         </DialogHeader>
         <SignInModal providers={Object.keys(SocialProviders ?? {})} />
