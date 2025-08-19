@@ -6,6 +6,7 @@ import { ReviewGrid } from "@/features/landing/review/review-grid";
 import { SectionDivider } from "@/features/landing/section-divider";
 import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
+import { ProcessSection } from "@/features/landing/process-section";
 import { Footer } from "@/features/layout/footer";
 
 export default function HomePage() {
@@ -17,6 +18,8 @@ export default function HomePage() {
 
       <HeroAnimation />
 
+      <SectionDivider />
+
       <AboutSection
         name="Rui Decarvalho"
         title="Une idée, une envie, Segment C est votre porte ouverte su vos fenêtre"
@@ -27,6 +30,10 @@ export default function HomePage() {
       />
 
       <CardGrid/>
+
+      <SectionDivider />
+
+      <ProcessSection />
 
       <SectionDivider />
 

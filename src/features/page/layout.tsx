@@ -11,9 +11,9 @@ export const Layout = (
     <div
       {...props}
       className={cn(
-        "m-auto mt-4 flex w-full max-w-4xl flex-wrap gap-4 px-4",
+        "m-auto mt-4 flex w-full max-w-8xl flex-wrap gap-4 px-4",
         {
-          "max-w-7xl": props.size === "lg",
+          "max-w-8xl": props.size === "lg",
           "max-w-3xl": props.size === "sm",
         },
         props.className,
