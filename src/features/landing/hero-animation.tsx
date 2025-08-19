@@ -157,11 +157,9 @@ const HeroAnimation = () => {
             >              
               <span className="bold italic text-green-500">Segment.C</span>
               <br />
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">Votre porte  </span>
+              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">Votre porte ouverte</span>
               <br/> 
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">ouverte sur </span> 
-              <br />
-              <span className="text-4xl text-white/90 sm:text-2xl lg:text-5xl xl:text-6xl">vos fenêtre</span>            
+              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">sur vos fenêtres</span>           
             </motion.h1>
 
             {/* CTA Buttons Row */}
