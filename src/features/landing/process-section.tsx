@@ -108,7 +108,11 @@ const ProcessHeader = () => (
 const ProcessSteps = ({ steps }: { steps: StepProps[] }) => (
   <div className="relative">
     {/* Ligne de connexion */}
-    <div className="absolute left-1/2 top-20 hidden h-0.5 w-full max-w-4xl -translate-x-1/2 bg-gradient-to-r from-primary/20 via-primary to-primary/20 lg:block"></div>
+    <div className="absolute top-8 left-0 right-0 hidden lg:block">
+      <div className="relative mx-auto max-w-5xl px-8">
+        <div className="h-0.5 w-full bg-gradient-to-r from-green-500/30 via-green-500 to-green-500/30"></div>
+      </div>
+    </div>
     
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
       {steps.map((step, index) => (
@@ -133,13 +137,13 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
       className="group relative"
     >
       {/* Numéro de l'étape */}
-      <div className="relative z-10 mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-white transition-transform duration-300 group-hover:scale-110">
+      <div className="relative z-10 mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-green-600 text-xl font-bold text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/25">
         {step.number}
       </div>
       
       {/* Contenu de l'étape */}
       <div className="space-y-4 text-center">
-        <div className="mb-3 flex justify-center text-primary">
+        <div className="mb-3 flex justify-center text-green-600">
           {step.icon}
         </div>
         
@@ -148,7 +152,7 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
         </Typography>
         
         <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <Clock size={16} />
+          <Clock size={16} className="text-green-600" />
           <span>{step.duration}</span>
         </div>
         
@@ -158,11 +162,11 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
         
         {/* Détails en hover */}
         <div className="mt-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <div className="space-y-2 rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+          <div className="space-y-2 rounded-lg bg-green-50 p-4 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
             {step.details.map((detail, i) => (
               <div key={i} className="flex items-center gap-2 text-sm">
-                <CheckCircle size={14} className="shrink-0 text-primary" />
-                <span>{detail}</span>
+                <CheckCircle size={14} className="shrink-0 text-green-600" />
+                <span className="text-green-800 dark:text-green-200">{detail}</span>
               </div>
             ))}
           </div>
@@ -173,22 +177,22 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
 };
 
 const ProcessSummary = () => (
-  <div className="mt-8 space-y-6 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 p-8 text-center">
-    <Typography variant="h3" className="text-2xl font-semibold">
+  <div className="mt-16 space-y-6 rounded-2xl bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 text-center border border-green-200 dark:border-green-800">
+    <Typography variant="h3" className="text-2xl font-semibold text-green-800 dark:text-green-200">
       Prêt à démarrer votre projet ?
     </Typography>
     
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <div className="flex items-center gap-2 text-muted-foreground">
-        <Phone size={20} className="text-primary" />
+      <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+        <Phone size={20} className="text-green-600" />
         <span>Appelez-nous pour un devis gratuit</span>
       </div>
-      <div className="flex items-center gap-2 text-muted-foreground">
-        <User size={20} className="text-primary" />
+      <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+        <User size={20} className="text-green-600" />
         <span>Conseils personnalisés</span>
       </div>
-      <div className="flex items-center gap-2 text-muted-foreground">
-        <Home size={20} className="text-primary" />
+      <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+        <Home size={20} className="text-green-600" />
         <span>Déplacement à domicile</span>
       </div>
     </div>
@@ -198,7 +202,7 @@ const ProcessSummary = () => (
         href="/contact"
         className={cn(
           buttonVariants({ size: "lg", variant: "default" }),
-          "text-white border hover:border-green-500 hover:text-green-500"
+          "bg-green-600 hover:bg-green-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
         )}
       >
         Demander un devis gratuit
@@ -208,7 +212,7 @@ const ProcessSummary = () => (
         href="tel:0600000000"
         className={cn(
           buttonVariants({ size: "lg", variant: "outline" }),
-          "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+          "border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
         )}
       >
         06.00.00.00.00
