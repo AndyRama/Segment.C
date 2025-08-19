@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Typography } from "@/components/ui/typography";
+import { Typography } from "@/components/nowts/typography";
 import { buttonVariants } from "@/components/ui/button";
 import { CheckCircle, Award, Users, Clock } from "lucide-react";
 
