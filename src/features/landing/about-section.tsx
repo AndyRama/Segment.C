@@ -53,9 +53,6 @@ const AboutContent = ({
       <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
         <span className="inline-block">
           {title}
-          {/* <span className="relative ml-2 inline-block">
-            <span className="text-primary">👨‍🔧</span>
-          </span> */}
         </span>
       </Typography>
       

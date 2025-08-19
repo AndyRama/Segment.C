@@ -1,22 +1,22 @@
 export const SiteConfig = {
   title: "Segment.C",
-  description: "Collect and showcase powerful video and text testimonials",
+  description: "Porte ouverte sur vos fenêtres",
   prodUrl: "https://www.segment-c.com",
   appId: "Segment.C",
   domain: "segment-c.com",
   appIcon: "/images/icon.png",
   company: {
     name: "Segment.C",
-    address: "", // Remove if not needed
+    address: "390 all de saussets - 3 hameau 33127 -St Jean d'Illac",
   },
   brand: {
-    primary: "#007291", // You can adjust this to your brand color
+    primary: "#4bb484", // You can adjust this to your brand color
   },
   team: {
-    image: "https://melvynx.com/images/me/twitter-en.jpg",
-    website: "https://melvynx.com",
-    twitter: "https://twitter.com/melvyn_me",
-    name: "Melvynx",
+    image: "",
+    website: "https://www.segment-c.com",
+    twitter: "",
+    name: "Rui Decarvalho",
   },
   features: {
     /**

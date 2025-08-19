@@ -23,7 +23,7 @@ export const ReviewGrid = ({ reviews, initialReviewsCount = 3 }: ReviewGridProps
 
   return (
     <div className="space-y-8">
-      <SectionLayout className="m-auto max-w-5xl columns-1 gap-4 md:columns-2 xl:columns-3">
+      <SectionLayout className="m-auto max-w-5xl columns-1 gap-4 md:columns-2 xl:columns-3 py-0">
         {displayedReviews.map((review) => (
           <ReviewItem
             {...review}
@@ -34,7 +34,7 @@ export const ReviewGrid = ({ reviews, initialReviewsCount = 3 }: ReviewGridProps
       </SectionLayout>
       
       {hasMoreReviews && (
-        <div className="flex justify-end mt-[-10]">
+        <div className="flex justify-end max-w-7xl ">
           <Button
             variant="outline"
             size="lg"
