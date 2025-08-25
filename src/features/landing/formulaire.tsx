@@ -50,11 +50,11 @@ export const ContactForm = () => {
   ];
 
   const companySizes = [
-    '1-10 employÃ©s',
-    '11-50 employÃ©s',
-    '51-200 employÃ©s',
-    '201-1000 employÃ©s',
-    '1000+ employÃ©s'
+    '1-10 employés',
+    '11-50 employés',
+    '51-200 employés',
+    '201-1000 employés',
+    '1000+ employés'
   ];
 
   const sectors = [
@@ -118,7 +118,7 @@ export const ContactForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder={userType === 'particulier' ? 'Nom PrÃ©nom' : 'Nom du responsable'}
+                placeholder={userType === 'particulier' ? 'Nom Prénom' : 'Nom du responsable'}
                 className="w-full rounded-lg border border-gray-200 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
                 required
               />
@@ -178,7 +178,7 @@ export const ContactForm = () => {
           </div>
         )}
 
-        {/* TÃ©lÃ©phone et Type/Secteur */}
+        {/* Téléphone et Type/Secteur */}
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">
@@ -200,7 +200,7 @@ export const ContactForm = () => {
           {/* Type de projet (Particulier) ou Secteur (Pro) */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">
-              {userType === 'particulier' ? 'Type de projet *' : 'Secteur d\'activitÃ© *'}
+              {userType === 'particulier' ? 'Type de projet *' : 'Secteur d\'activité *'}
             </label>
             <select
               name={userType === 'particulier' ? 'projectType' : 'sector'}
@@ -247,7 +247,7 @@ export const ContactForm = () => {
               name="description"
               value={formData.description}
               onChange={handleInputChange}
-              placeholder="DÃ©crivez votre projet en dÃ©tail : objectifs, budget approximatif, dÃ©lais souhaitÃ©s..."
+              placeholder="Décrivez votre projet en détail : objectifs, budget approximatif, délais souhaités..."
               rows={4}
               className="w-full resize-none rounded-lg border border-gray-200 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
               required
