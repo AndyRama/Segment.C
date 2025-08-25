@@ -6,8 +6,10 @@ import { ReviewGrid } from "@/features/landing/review/review-grid";
 import { SectionDivider } from "@/features/landing/section-divider";
 import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
+import { GallerySection } from "@/features/landing/gallery-section";
 import { ProcessSection } from "@/features/landing/process-section";
 import { ProcessSection2 } from "@/features/landing/process-section-v2";
+import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { VideoSection } from "@/features/landing/video-section";
 import { Footer } from "@/features/layout/footer";
 
@@ -50,7 +52,9 @@ export default function HomePage() {
 
       <ProcessSection2/>
 
-      <CTAImageSection />
+      <SectionDivider />
+
+      <GallerySection />
 
       <SectionDivider />
 
@@ -171,6 +175,15 @@ export default function HomePage() {
           },
         ]}
       />
+
+      <SectionDivider />
+
+      <CTAImageSection />
+
+      <SectionDivider />
+
+      <ServiceAreaSection/>
+
       <Footer />
     </div>
   );
