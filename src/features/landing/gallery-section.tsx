@@ -125,7 +125,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
         <div className="mt-8 flex justify-center">
           <Button
             onClick={handleShowMore}
-            className="bg-primary text-white hover:bg-primary/90"
+            className="bg-[#4bb484] text-white hover:bg-[#4bb484]/90"
           >
             Voir plus de réalisations
           </Button>
@@ -172,8 +172,8 @@ const GalleryFilters = ({
         className={cn(
           "transition-all duration-200",
           activeFilter === category.key 
-            ? "bg-primary text-white" 
-            : "hover:bg-primary/10"
+            ? "bg-[#4bb484] text-white" 
+            : "hover:bg-[#4bb484]/10"
         )}
       >
         {category.label}
@@ -235,7 +235,7 @@ const ProjectCard = ({
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
           
           {/* Badge catégorie */}
-          <div className="absolute left-3 top-3 rounded-full bg-primary px-2 py-1 text-xs text-white">
+          <div className="absolute left-3 top-3 rounded-full bg-[#4bb484] px-2 py-1 text-xs text-white">
             {project.category}
           </div>
         </div>
@@ -343,7 +343,7 @@ const ProjectModal = ({
             <div className="pt-4">
               <Button 
                 onClick={onClose}
-                className="w-full bg-primary text-white hover:bg-primary/90"
+                className="w-full bg-[#4bb484] text-white hover:bg-[#4bb484]/90"
               >
                 Fermer
               </Button>

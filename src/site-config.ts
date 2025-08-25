@@ -10,7 +10,7 @@ export const SiteConfig = {
     address: "390 all de saussets - 3 hameau 33127 -St Jean d'Illac",
   },
   brand: {
-    primary: "#4bb484", // You can adjust this to your brand color
+    primary: "#4bb484",
   },
   team: {
     image: "",

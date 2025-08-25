@@ -28,11 +28,11 @@ type AreaProps = {
 export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
   const areas: AreaProps[] = [
     { name: "St Jean d'Illac", distance: "0 km", duration: "0 min", projects: 25,featured: true },
+    { name: "Bordeaux", distance: "55 km", duration: "45 min", projects: 18 },
     { name: "Mérignac", distance: "58 km", duration: "48 min", projects: 22 },
     { name: "Pessac", distance: "60 km", duration: "50 min", projects: 24 },
     { name: "Le Bouscat", distance: "62 km", duration: "52 min", projects: 9 },
-    { name: "Talence", distance: "65 km", duration: "55 min", projects: 15 },
-    { name: "Bordeaux", distance: "55 km", duration: "45 min", projects: 18 }
+    { name: "Talence", distance: "65 km", duration: "55 min", projects: 15 }
   ];
 
   return (
@@ -68,11 +68,11 @@ const ServiceAreaMap = () => (
     viewport={{ once: true }}
     className="relative"
   >
-    <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10">
+    <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-[#4bb484]/5 to-[#4bb484]/10">
       {/* Placeholder pour la carte - remplacez par votre vraie carte */}
       <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-blue-50 to-green-50">
         <div className="space-y-4 text-center">
-          <Navigation className="mx-auto size-16 text-primary" />
+          <Navigation className="mx-auto size-16 text-[#4bb484]" />
           <div>
             <Typography variant="h3" className="mb-2 text-xl font-semibold">
               Zone de St Jean d'Illac
@@ -89,7 +89,7 @@ const ServiceAreaMap = () => (
         <div className="absolute inset-x-4 bottom-4">
           <div className="space-y-2 rounded-lg bg-white/90 p-4 backdrop-blur-sm">
             <div className="flex items-center gap-2 text-sm font-medium">
-              <MapPin size={16} className="text-primary" />
+              <MapPin size={16} className="text-[#4bb484]" />
               <span>Basé à St Jean d'Illac, Nouvelle-Aquitaine</span>
             </div>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
@@ -135,28 +135,28 @@ const ServiceAreaList = ({ areas }: { areas: AreaProps[] }) => (
       ))}
     </div>
 
-    <div className="space-y-3 rounded-lg bg-primary/5 p-4">
+    <div className="space-y-3 rounded-lg bg-[#4bb484]/5 p-4">
       <div className="flex items-center gap-2">
-        <CheckCircle className="size-5 text-primary" />
+        <CheckCircle className="size-5 text-[#4bb484]" />
         <Typography variant="h3" className="font-semibold">
           Garanties incluses
         </Typography>
       </div>
       <div className="grid grid-cols-1 gap-2 text-sm text-muted-foreground sm:grid-cols-2">
         <div className="flex items-center gap-2">
-          <CheckCircle size={14} className="text-primary" />
+          <CheckCircle size={14} className="text-[#4bb484]" />
           <span>Déplacement gratuit</span>
         </div>
         <div className="flex items-center gap-2">
-          <CheckCircle size={14} className="text-primary" />
+          <CheckCircle size={14} className="text-[#4bb484]" />
           <span>Devis gratuit</span>
         </div>
         <div className="flex items-center gap-2">
-          <CheckCircle size={14} className="text-primary" />
+          <CheckCircle size={14} className="text-[#4bb484]" />
           <span>Intervention rapide</span>
         </div>
         <div className="flex items-center gap-2">
-          <CheckCircle size={14} className="text-primary" />
+          <CheckCircle size={14} className="text-[#4bb484]" />
           <span>SAV de proximité</span>
         </div>
       </div>
@@ -186,18 +186,18 @@ const AreaCard = ({ area, index }: { area: AreaProps; index: number }) => {
       <div className="flex items-center gap-3">
         <div className={cn(
           "w-2 h-2 rounded-full",
-          area.featured ? "bg-primary" : "bg-gray-300"
+          area.featured ? "bg-[#4bb484]" : "bg-gray-300"
         )} />
         <div>
           <div className="flex items-center gap-2">
             <span className={cn(
               "font-medium",
-              area.featured && "text-primary"
+              area.featured && "text-[#4bb484]"
             )}>
               {area.name}
             </span>
             {area.featured && (
-              <span className="rounded-full bg-primary px-2 py-0.5 text-xs text-white">
+              <span className="rounded-full bg-[#4bb484] px-2 py-0.5 text-xs text-white">
                 Notre base
               </span>
             )}
