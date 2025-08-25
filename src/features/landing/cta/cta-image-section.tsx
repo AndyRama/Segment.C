@@ -20,13 +20,13 @@ export const CTAImageSection = () => {
           variant="h2"
           className="text-center text-5xl font-extrabold"
         >
-          Start getting a lot of followers
+          Prêt à démarrer votre projet ?
         </Typography>
         <Typography className="text-center font-bold">
-          By posting every day with Threader !
+          Lorem ipsum dolor sit amet consectetur
         </Typography>
         <Link href="#pricing" className={buttonVariants({ size: "lg" })}>
-          Get started
+          Commencer
         </Link>
       </SectionLayout>
     </div>
