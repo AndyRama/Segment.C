@@ -185,7 +185,7 @@ const ProcessSummary = () => (
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
       <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
         <Phone size={20} className="text-green-600" />
-        <span>Appelez-nous pour un devis gratuit</span>
+        <span>Appelez-moi pour un devis gratuit</span>
       </div>
       <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
         <User size={20} className="text-green-600" />
