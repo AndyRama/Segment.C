@@ -53,7 +53,7 @@ export const SectionLayout = ({
           {
             "max-w-4xl": size === "sm",
             "max-w-5xl": size === "base",
-            "max-w-6xl": size === "lg",
+            "max-w-7xl": size === "lg",
           },
           className,
         )}
