@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from 'react';
 import { Check, Phone, Mail, User, MessageSquare, Star } from 'lucide-react';
 
@@ -181,7 +182,7 @@ export const ContactForm = () => {
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">
-              TÃ©lÃ©phone
+              Téléphone
             </label>
             <div className="relative">
               <Phone className="absolute left-3 top-3 size-4 text-gray-400" />
@@ -263,19 +264,19 @@ export const ContactForm = () => {
           <ul className="space-y-1.5 text-sm text-green-600">
             <li className="flex items-start gap-2">
               <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
-              <span>Devis dÃ©taillÃ© gratuit sous 24h</span>
+              <span>Devis détaillé gratuit sous 24h</span>
             </li>
             <li className="flex items-start gap-2">
               <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
-              <span>Accompagnement et suivi personnalisÃ©</span>
+              <span>Accompagnement et suivi personnalisé</span>
             </li>
             <li className="flex items-start gap-2">
               <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
-              <span>RÃ©sultats mesurables et plans adaptÃ©s</span>
+              <span>Résultats mesurables et plans adaptés</span>
             </li>
             <li className="flex items-start gap-2">
               <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
-              <span>Garantie de qualitÃ© et respect des dÃ©lais</span>
+              <span>Garantie de qualité et respect des délais</span>
             </li>
           </ul>
         </div>
@@ -302,7 +303,7 @@ export const ContactForm = () => {
 
         {/* Footer text */}
         <p className="text-center text-xs leading-relaxed text-gray-500">
-          En soumettant ce formulaire, vous acceptez d'Ãªtre contactÃ© par notre Ã©quipe pour votre projet.
+          En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe pour votre projet.
         </p>
       </div>
     </div>
