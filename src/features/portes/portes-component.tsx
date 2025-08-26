@@ -265,7 +265,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
         />
       )}
     </section>
-  );2
+  );
 };
 
 const PortesHeader = () => (

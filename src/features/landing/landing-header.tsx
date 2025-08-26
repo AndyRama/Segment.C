@@ -60,6 +60,7 @@ export function LandingHeader() {
     { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
     { path: "/portes", label: "Portes" },
+    { path: "/verandas", label: "Vérandas" },
   ];
 
   return (
