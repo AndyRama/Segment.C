@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroAnimation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,26 +29,6 @@ const HeroAnimation = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [slides.length]);
-
-  // const nextSlide = () => {
-  //   if (!isTransitioning) {
-  //     setIsTransitioning(true);
-  //     setTimeout(() => {
-  //       setCurrentSlide((prev) => (prev + 1) % slides.length);
-  //       setIsTransitioning(false);
-  //     }, 800);
-  //   }
-  // };
-
-  // const prevSlide = () => {
-  //   if (!isTransitioning) {
-  //     setIsTransitioning(true);
-  //     setTimeout(() => {
-  //       setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  //       setIsTransitioning(false);
-  //     }, 800);
-  //   }
-  // };
 
   const goToSlide = (index: React.SetStateAction<number>) => {
     if (!isTransitioning && index !== currentSlide) {
@@ -154,12 +134,12 @@ const HeroAnimation = () => {
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-            >              
+            >
               <span className="bold italic text-green-500">Segment.C</span>
               <br />
               <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">Votre porte ouverte</span>
-              <br/> 
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">sur vos fenêtres</span>           
+              <br />
+              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">sur vos fenêtres</span>
             </motion.h1>
 
             {/* CTA Buttons Row */}
@@ -169,58 +149,35 @@ const HeroAnimation = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <motion.button
-                className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
-                href="/fenetres"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Fenêtres
-              </motion.button>
+              <Link href="/fenetres">
+                <motion.button
+                  className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Fenêtres
+                </motion.button>
+              </Link>
 
-              <motion.button
-                className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
-                href="/portes"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Portes
-              </motion.button>
+              <Link href="/portes">
+                <motion.button
+                  className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Portes
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
       </div>
-
-      {/* Navigation Arrows - Hidden on mobile (sm and below) */}
-      {/* <motion.button
-        onClick={prevSlide}
-        className="group absolute left-8 top-1/2 z-20 hidden -translate-y-1/2 bg-white/10 p-4 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 md:block"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.2 }}
-      >
-        <ChevronLeft className="size-6 text-white transition-transform group-hover:scale-110" />
-      </motion.button>
-
-      <motion.button
-        onClick={nextSlide}
-        className="group absolute right-8 top-1/2 z-20 hidden -translate-y-1/2 bg-white/10 p-4 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 md:block"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.2 }}
-      >
-        <ChevronRight className="size-6 text-white transition-transform group-hover:scale-110" />
-      </motion.button> */}
 
       {/* Slide Indicators - Aligned at 40% instead of 50% */}
       <motion.div
@@ -233,11 +190,10 @@ const HeroAnimation = () => {
           <motion.button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-500 ${
-              index === currentSlide
+            className={`transition-all duration-500 ${index === currentSlide
                 ? "h-2 w-12 bg-green-500"
                 : "size-2 bg-white/50 hover:bg-white/70"
-            }`}
+              }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
           />

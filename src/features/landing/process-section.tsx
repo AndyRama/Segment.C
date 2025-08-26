@@ -96,7 +96,7 @@ export const ProcessSection = ({ className }: ProcessSectionProps) => {
 
 const ProcessHeader = () => (
   <div className="mb-16 space-y-4 text-center">
-    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+    <Typography variant="h2" id="devis" className="text-3xl md:text-4xl xl:text-5xl">
       Mon Processus
     </Typography>
     <Typography variant="large" className="mx-auto max-w-4xl text-muted-foreground">

@@ -144,7 +144,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
 
 const GalleryHeader = () => (
   <div className="mb-12 space-y-4 text-center">
-    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+    <Typography variant="h2" id="réalisations" className="text-3xl md:text-4xl xl:text-5xl">
       Mes Réalisations
     </Typography>
     <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">

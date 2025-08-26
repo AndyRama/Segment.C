@@ -56,8 +56,8 @@ const AboutContent = ({
         </span>
       </Typography>
       
-      <Typography variant="h3" className="text-xl font-medium text-primary md:text-2xl">
-        Je suis {name}
+      <Typography variant="h3" className="text-xl font-medium text-primary md:text-2xl ">
+        Je suis <span className="text-green-500">{name}</span>
       </Typography>
       
       <Typography variant="large" className="leading-relaxed text-muted-foreground">
@@ -109,7 +109,7 @@ const AboutStats = ({ experience }: { experience: string }) => (
 const AboutActions = () => (
   <div className="flex flex-col gap-4 sm:flex-row">
     <Link
-      href="/contact"
+      href="/#devis"
       className={cn(
         buttonVariants({ size: "lg", variant: "default" }),
         "text-white border hover:border-green-500 hover:text-green-500"
@@ -119,7 +119,7 @@ const AboutActions = () => (
     </Link>
     
     <Link
-      href="/realisations"
+      href="/#réalisations"
       className={cn(
         buttonVariants({ size: "lg", variant: "outline" }),
         "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
