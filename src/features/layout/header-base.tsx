@@ -124,13 +124,8 @@ export function HeaderBase({ children }: PropsWithChildren) {
 
           {/* Éléments de navigation */}
           <nav className="flex items-center space-x-1">
-            {/* Desktop auth button */}
-            <div className="hidden lg:contents">
-              <AuthButtonClient />
-            </div>
             
             {children}
-            {/* <ThemeToggle /> */}
 
             {/* Mobile menu */}
             <div className="z-20 flex items-center gap-2 lg:hidden">

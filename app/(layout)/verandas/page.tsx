@@ -1,5 +1,5 @@
-import VerandaSection  from "@/features/veranda/veranda-component";
-import VerandasHero  from "@/features/veranda/hero";
+import VerandaSection  from "@/features/verandas/veranda-component";
+import VerandasHero  from "@/features/verandas/hero";
 // import { SectionDivider } from "@/features/landing/section-divider";
 
 export default function Portes() {
