@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
 import { Menu } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
-import { AuthButtonClient } from "../auth/auth-button-client";
+// import { AuthButtonClient } from "../auth/auth-button-client";
 import { Layout } from "../page/layout";
 
 function useBoundedScroll(threshold: number) {

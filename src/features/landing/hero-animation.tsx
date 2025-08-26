@@ -171,6 +171,7 @@ const HeroAnimation = () => {
             >
               <motion.button
                 className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
+                href="/fenetres"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
@@ -182,6 +183,7 @@ const HeroAnimation = () => {
 
               <motion.button
                 className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
+                href="/portes"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
@@ -222,7 +224,7 @@ const HeroAnimation = () => {
 
       {/* Slide Indicators - Aligned at 40% instead of 50% */}
       <motion.div
-        className="absolute bottom-8 left-[50%] z-20 flex -translate-x-1/2 gap-3 md:left-1/2"
+        className="absolute bottom-8 left-[50%] z-20 flex -translate-x-1/2 gap-3 md:left-1/2 mt-0 md:mt-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.4 }}
@@ -233,7 +235,7 @@ const HeroAnimation = () => {
             onClick={() => goToSlide(index)}
             className={`transition-all duration-500 ${
               index === currentSlide
-                ? "h-2 w-12 bg-white"
+                ? "h-2 w-12 bg-green-500"
                 : "size-2 bg-white/50 hover:bg-white/70"
             }`}
             whileHover={{ scale: 1.2 }}
