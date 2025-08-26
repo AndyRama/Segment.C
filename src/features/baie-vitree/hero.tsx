@@ -34,7 +34,7 @@ export default function BaiesVitreesHero({ className }: BaiesVitreesHeroProps) {
         <div className="relative">
           <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/images/hero-baies-vitrees.jpg"
+              src="/images/fenetre2.jpg"
               alt="Salon moderne avec grande baie vitrée ouvrant sur l'extérieur"
               fill
               className="object-cover"

@@ -34,7 +34,7 @@ export default function FenetresHero({ className }: FenetresHeroProps) {
         <div className="relative">
           <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/images/hero-fenetres.jpg"
+              src="/images/fenetre1.jpg"
               alt="Intérieur moderne avec grandes fenêtres et baies vitrées"
               fill
               className="object-cover"

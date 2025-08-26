@@ -12,7 +12,7 @@ import { ProcessSection2 } from "@/features/landing/process-section-v2";
 import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { VideoSection } from "@/features/landing/video-section";
 import { Partenaire } from "@/features/landing/partenaire";
-import { ContactForm } from "@/features/landing/formulaire";
+// import { ContactForm } from "@/features/landing/formulaire";
 import { Footer } from "@/features/layout/footer";
 
 export default function HomePage() {
@@ -192,9 +192,9 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ContactForm />
+      {/* <ContactForm /> */}
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <Footer />
     </div>
