@@ -6,7 +6,8 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { Menu } from "react-feather";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
+import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 
@@ -46,6 +47,9 @@ function useBoundedScroll(threshold: number) {
   return { scrollYBounded, scrollYBoundedProgress };
 }
 
+const clamp = (number: number, min: number, max: number) =>
+  Math.min(Math.max(number, min), max);
+
 export function LandingHeader() {
   const { scrollYBoundedProgress } = useBoundedScroll(400);
   const scrollYBoundedProgressDelayed = useTransform(
@@ -55,11 +59,18 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "/", label: "Segment.C" },
     { path: "/posts", label: "Actualitées" },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Portes" },
+    { path: "/pergolas", label: "Pergolas" },
+    {
+      path: "/portes",
+      label: "Portes",
+      dropdown: [
+        { path: "/portes/entree", label: "Porte d'entrée" },
+        { path: "/portes/fenetre", label: "Porte fenêtre" }
+      ]
+    },
     { path: "/verandas", label: "Vérandas" },
   ];
 
@@ -74,7 +85,7 @@ export function LandingHeader() {
         <div className="flex items-center gap-1">
           <Image
             src={SiteConfig.appIcon}
-            alt="logo entrerpise Segment.C"
+            alt="logo enterprise Segment.C"
             width={32}
             height={32}
           />
@@ -88,9 +99,13 @@ export function LandingHeader() {
             }}
             className="mt-[-1] flex origin-left items-center text-base font-bold text-green-500 "
           >
-            {SiteConfig.title}
+            <Link href="/" className="text-base font-bold text-green-500">
+              {SiteConfig.title}
+            </Link>
           </motion.p>
         </div>
+
+
         <motion.nav
           style={{
             opacity: useTransform(
@@ -112,65 +127,70 @@ export function LandingHeader() {
           ))}
         </motion.nav>
 
-        <div className="hidden lg:contents">
-          <AuthButtonClient />
-        </div>
+        {/* Éléments de navigation */}
+        <nav className="flex items-center space-x-1">
+          {/* Desktop auth button */}
+          <div className="hidden lg:contents">
+            <AuthButtonClient />
+          </div>
 
-        <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
-          <Sheet>
-            <SheetTrigger>
-              <Menu className="size-8" />
-            </SheetTrigger>
-            <SheetContent className="flex flex-col gap-4 p-4">
-              <div className="relative flex flex-col gap-4">
-                <div className="flex flex-row gap-1">
-                  <Image
-                    src={SiteConfig.appIcon}
-                    alt="logo entrerpise Segment.C"
-                    width={32}
-                    height={32}
-                  />
-                  <motion.p
-                    style={{
-                      scale: useTransform(
-                        scrollYBoundedProgressDelayed,
-                        [0, 1],
-                        [1, 0.9],
-                      ),
-                    }}
-                    className="flex origin-left items-center text-2xl font-bold text-green-500"
-                  >
-                    {SiteConfig.title}
-                  </motion.p>
+          {/* {children} */}
+          {/* <ThemeToggle /> */}
+
+          {/* Mobile menu */}
+          <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
+            <Sheet>
+              <SheetTrigger>
+                <Menu className="size-8" />
+              </SheetTrigger>
+              <SheetContent className="flex flex-col gap-4 p-4">
+                <div className="relative flex flex-col gap-4">
+                  <div className="flex flex-row gap-1">
+                    <Image
+                      src={SiteConfig.appIcon}
+                      alt="logo enterprise Segment.C"
+                      width={32}
+                      height={32}
+                    />
+                    <motion.p
+                      style={{
+                        scale: useTransform(
+                          scrollYBoundedProgressDelayed,
+                          [0, 1],
+                          [1, 0.9],
+                        ),
+                      }}
+                      className="flex origin-left items-center text-2xl font-bold text-green-500"
+                    >
+                      {SiteConfig.title}
+                    </motion.p>
+                  </div>
+                  <hr />
+                  <div className="flex flex-row items-center justify-around">
+                    <AuthButtonClient />
+                    <Typography
+                      variant="h3"
+                      className="text-left text-lg !leading-tight"
+                    >
+                      Menu Principal
+                    </Typography>
+                  </div>
+                  <hr />
+                  {topRoutes.map((route) => (
+                    <Link
+                      href={route.path}
+                      key={route.path}
+                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                    >
+                      {route.label}
+                    </Link>
+                  ))}
                 </div>
-                <hr />
-                <div className="flex flex-row items-center justify-around">
-                  <AuthButtonClient />
-                  <Typography
-                    variant="h3"
-                    className="text-left text-lg !leading-tight"
-                  >
-                    Menu Principal
-                  </Typography>
-                </div>
-                <hr />
-                {topRoutes.map((route) => (
-                  <Link
-                    href={route.path}
-                    key={route.path}
-                    className="relative text-left text-sm font-medium hover:text-[#04ab12]"
-                  >
-                    {route.label}
-                  </Link>
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </nav>
       </div>
     </motion.header>
   );
 }
-
-const clamp = (number: number, min: number, max: number) =>
-  Math.min(Math.max(number, min), max);

@@ -7,9 +7,9 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { Menu } from "react-feather";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
+import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
-// import { AuthButtonClient } from "../auth/auth-button-client";
 import { Layout } from "../page/layout";
 
 function useBoundedScroll(threshold: number) {
@@ -64,7 +64,14 @@ export function HeaderBase({ children }: PropsWithChildren) {
     { path: "/posts", label: "Actualitées" },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Portes" },
+    { 
+      path: "/portes", 
+      label: "Portes",
+      dropdown: [
+        { path: "/portes/entree", label: "Porte d'entrée" },
+        { path: "/portes/fenetre", label: "Porte fenêtre" }
+      ]
+    },
     { path: "/verandas", label: "Vérandas" },
   ];
 
@@ -112,13 +119,31 @@ export function HeaderBase({ children }: PropsWithChildren) {
             className="hidden origin-right items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
           >
             {topRoutes.map((route) => (
-              <Link
-                href={route.path}
-                key={route.path}
-                className="relative flex items-center hover:text-green-500 transition-colors"
-              >
-                {route.label}
-              </Link>
+              route.dropdown ? (
+                <DropdownMenu key={route.path}>
+                  <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
+                    {route.label}
+                    <ChevronDown className="size-4" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-48">
+                    {route.dropdown.map((item) => (
+                      <DropdownMenuItem key={item.path} asChild>
+                        <Link href={item.path} className="w-full cursor-pointer">
+                          {item.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  href={route.path}
+                  key={route.path}
+                  className="relative flex items-center hover:text-green-500 transition-colors"
+                >
+                  {route.label}
+                </Link>
+              )
             ))}
           </motion.nav>
         </div>
@@ -156,7 +181,6 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   </div>
                   <hr />
                   <div className="flex flex-row items-center justify-around">
-                    {/* <AuthButtonClient /> */}
                     <Typography
                       variant="h3"
                       className="text-left text-lg !leading-tight"
@@ -166,13 +190,30 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    <Link
-                      href={route.path}
-                      key={route.path}
-                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
-                    >
-                      {route.label}
-                    </Link>
+                    route.dropdown ? (
+                      <div key={route.path} className="flex flex-col gap-2">
+                        <span className="text-left text-sm font-semibold text-green-500">
+                          {route.label}
+                        </span>
+                        {route.dropdown.map((item) => (
+                          <Link
+                            href={item.path}
+                            key={item.path}
+                            className="relative ml-4 text-left text-sm font-medium transition-colors hover:text-[#04ab12]"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      <Link
+                        href={route.path}
+                        key={route.path}
+                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                      >
+                        {route.label}
+                      </Link>
+                    )
                   ))}
                 </div>
               </SheetContent>
