@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { PropsWithChildren } from "react";
 import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
-import { PropsWithChildren, useEffect } from "react";
+import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
 import { Menu } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
@@ -115,7 +116,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
               <Link
                 href={route.path}
                 key={route.path}
-                className="relative flex items-center hover:text-green-500 transition-colors"
+                className="relative flex items-center transition-colors hover:text-green-500"
               >
                 {route.label}
               </Link>
@@ -128,7 +129,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
             <div className="hidden lg:contents">
               <AuthButtonClient />
             </div>
-            
+
             {children}
             <ThemeToggle />
 
@@ -175,7 +176,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
                       <Link
                         href={route.path}
                         key={route.path}
-                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                        className="relative text-left text-sm font-medium transition-colors hover:text-[#04ab12]"
                       >
                         {route.label}
                       </Link>
