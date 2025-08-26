@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
-import { useEffect } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
 import { Menu } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
+import { Layout } from "../page/layout";
+import { ThemeToggle } from "../theme/theme-toggle";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -46,7 +48,10 @@ function useBoundedScroll(threshold: number) {
   return { scrollYBounded, scrollYBoundedProgress };
 }
 
-export function HeaderBase() {
+const clamp = (number: number, min: number, max: number) =>
+  Math.min(Math.max(number, min), max);
+
+export function HeaderBase({ children }: PropsWithChildren) {
   const { scrollYBoundedProgress } = useBoundedScroll(400);
   const scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
@@ -68,17 +73,17 @@ export function HeaderBase() {
       style={{
         height: useTransform(scrollYBoundedProgressDelayed, [0, 1], [70, 50]),
       }}
-      className="fixed inset-x-0 z-50 flex h-20 w-screen shadow backdrop-blur-md"
+      className="bg-muted/40 sticky top-0 z-50 flex h-14 w-screen items-center gap-4 border-b shadow backdrop-blur-md lg:h-[60px]"
     >
-      <div className="max-w-8xl mx-auto flex w-full items-center justify-between px-8">
-        <div className="flex items-center gap-1">
+      <Layout className="my-2">
+        <div className="flex items-center gap-2">
           <Image
             src={SiteConfig.appIcon}
-            alt="logo entrerpise Segment.C"
+            alt="logo enterprise Segment.C"
             width={32}
             height={32}
           />
-          <motion.p
+          <motion.div
             style={{
               scale: useTransform(
                 scrollYBoundedProgressDelayed,
@@ -86,91 +91,102 @@ export function HeaderBase() {
                 [1, 0.9],
               ),
             }}
-            className="mt-[-1] flex origin-left items-center text-base font-bold text-green-500 "
+            className="flex origin-left items-center"
           >
-            {SiteConfig.title}
-          </motion.p>
-        </div>
-        <motion.nav
-          style={{
-            opacity: useTransform(
-              scrollYBoundedProgressDelayed,
-              [0, 1],
-              [1, 0],
-            ),
-          }}
-          className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
-        >
-          {topRoutes.map((route) => (
-            <Link
-              href={route.path}
-              key={route.path}
-              className="relative flex items-center"
-            >
-              {route.label}
+            <Link href="/" className="text-base font-bold text-green-500">
+              {SiteConfig.title}
             </Link>
-          ))}
-        </motion.nav>
-
-        <div className="hidden lg:contents">
-          <AuthButtonClient />
+          </motion.div>
         </div>
 
-        <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
-          <Sheet>
-            <SheetTrigger>
-              <Menu className="size-8" />
-            </SheetTrigger>
-            <SheetContent className="flex flex-col gap-4 p-4">
-              <div className="relative flex flex-col gap-4">
-                <div className="flex flex-row gap-1">
-                  <Image
-                    src={SiteConfig.appIcon}
-                    alt="logo entrerpise Segment.C"
-                    width={32}
-                    height={32}
-                  />
-                  <motion.p
-                    style={{
-                      scale: useTransform(
-                        scrollYBoundedProgressDelayed,
-                        [0, 1],
-                        [1, 0.9],
-                      ),
-                    }}
-                    className="flex origin-left items-center text-2xl font-bold text-green-500"
-                  >
-                    {SiteConfig.title}
-                  </motion.p>
-                </div>
-                <hr />
-                <div className="flex flex-row items-center justify-around">
-                  <AuthButtonClient />
-                  <Typography
-                    variant="h3"
-                    className="text-left text-lg !leading-tight"
-                  >
-                    Menu Principal
-                  </Typography>
-                </div>
-                <hr />
-                {topRoutes.map((route) => (
-                  <Link
-                    href={route.path}
-                    key={route.path}
-                    className="relative text-left text-sm font-medium hover:text-[#04ab12]"
-                  >
-                    {route.label}
-                  </Link>
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="flex flex-1 items-center justify-end space-x-4">
+          {/* Navigation desktop */}
+          <motion.nav
+            style={{
+              opacity: useTransform(
+                scrollYBoundedProgressDelayed,
+                [0, 1],
+                [1, 0],
+              ),
+            }}
+            className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
+          >
+            {topRoutes.map((route) => (
+              <Link
+                href={route.path}
+                key={route.path}
+                className="relative flex items-center hover:text-green-500 transition-colors"
+              >
+                {route.label}
+              </Link>
+            ))}
+          </motion.nav>
+
+          {/* Éléments de navigation */}
+          <nav className="flex items-center space-x-1">
+            {/* Desktop auth button */}
+            <div className="hidden lg:contents">
+              <AuthButtonClient />
+            </div>
+            
+            {children}
+            <ThemeToggle />
+
+            {/* Mobile menu */}
+            <div className="z-20 flex items-center gap-2 lg:hidden">
+              <Sheet>
+                <SheetTrigger>
+                  <Menu className="size-8" />
+                </SheetTrigger>
+                <SheetContent className="flex flex-col gap-4 p-4">
+                  <div className="relative flex flex-col gap-4">
+                    <div className="flex flex-row gap-1">
+                      <Image
+                        src={SiteConfig.appIcon}
+                        alt="logo enterprise Segment.C"
+                        width={32}
+                        height={32}
+                      />
+                      <motion.p
+                        style={{
+                          scale: useTransform(
+                            scrollYBoundedProgressDelayed,
+                            [0, 1],
+                            [1, 0.9],
+                          ),
+                        }}
+                        className="flex origin-left items-center text-2xl font-bold text-green-500"
+                      >
+                        {SiteConfig.title}
+                      </motion.p>
+                    </div>
+                    <hr />
+                    <div className="flex flex-row items-center justify-around">
+                      <AuthButtonClient />
+                      <Typography
+                        variant="h3"
+                        className="text-left text-lg !leading-tight"
+                      >
+                        Menu Principal
+                      </Typography>
+                    </div>
+                    <hr />
+                    {topRoutes.map((route) => (
+                      <Link
+                        href={route.path}
+                        key={route.path}
+                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                      >
+                        {route.label}
+                      </Link>
+                    ))}
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </nav>
         </div>
-      </div>
+      </Layout>
     </motion.header>
   );
 }
-
-const clamp = (number: number, min: number, max: number) =>
-  Math.min(Math.max(number, min), max);
