@@ -11,7 +11,6 @@ import { Menu } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { Layout } from "../page/layout";
-import { ThemeToggle } from "../theme/theme-toggle";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -116,7 +115,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
               <Link
                 href={route.path}
                 key={route.path}
-                className="relative flex items-center transition-colors hover:text-green-500"
+                className="relative flex items-center hover:text-green-500 transition-colors"
               >
                 {route.label}
               </Link>
@@ -129,9 +128,9 @@ export function HeaderBase({ children }: PropsWithChildren) {
             <div className="hidden lg:contents">
               <AuthButtonClient />
             </div>
-
+            
             {children}
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
 
             {/* Mobile menu */}
             <div className="z-20 flex items-center gap-2 lg:hidden">
@@ -176,7 +175,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
                       <Link
                         href={route.path}
                         key={route.path}
-                        className="relative text-left text-sm font-medium transition-colors hover:text-[#04ab12]"
+                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
                       >
                         {route.label}
                       </Link>
