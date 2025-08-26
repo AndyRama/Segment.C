@@ -320,7 +320,7 @@ const FenetresSection = ({ className }: FenetresSectionProps) => {
 
 const FenetresHeader = () => (
   <div className="mb-12 space-y-4 text-center">
-    <Typography variant="h1" className="text-3xl md:text-4xl xl:text-5xl">
+    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
       Nos Fenêtres & Baies Vitrées
     </Typography>
     <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
@@ -556,7 +556,7 @@ const FenetreModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
