@@ -60,16 +60,15 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
-    { path: "/", label: "Segment.C" },
     { path: "/posts", label: "Actualitées" },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
     { 
-      path: "/portes", 
+      path: "#", 
       label: "Portes",
       dropdown: [
-        { path: "/portes/entree", label: "Porte d'entrée" },
-        { path: "/portes/fenetre", label: "Porte fenêtre" }
+        { path: "/portes", label: "Porte d'entrée" },
+        { path: "/portes", label: "Porte fenêtre" }
       ]
     },
     { path: "/verandas", label: "Vérandas" },
