@@ -57,8 +57,8 @@ export function LandingHeader() {
   const topRoutes = [
     { path: "/", label: "Segment.C" },
     { path: "/posts", label: "Actualitées" },
-    { path: "/#", label: "Fenêtre" },
-    { path: "/#", label: "Portes" },
+    { path: "/fenetres", label: "Fenêtre" },
+    { path: "/portes", label: "Portes" },
   ];
 
   return (
