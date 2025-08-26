@@ -99,7 +99,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
           </motion.div>
         </div>
 
-        <div className="flex flex-1 items-center justify-end space-x-4">
+        <div className="flex flex-1 items-center justify-center space-x-4">
           {/* Navigation desktop */}
           <motion.nav
             style={{
@@ -109,7 +109,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
                 [1, 0],
               ),
             }}
-            className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
+            className="hidden origin-right items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
           >
             {topRoutes.map((route) => (
               <Link
@@ -121,66 +121,64 @@ export function HeaderBase({ children }: PropsWithChildren) {
               </Link>
             ))}
           </motion.nav>
-
-          {/* Éléments de navigation */}
-          <nav className="flex items-center space-x-1">
-            
-            {children}
-
-            {/* Mobile menu */}
-            <div className="z-20 flex items-center gap-2 lg:hidden">
-              <Sheet>
-                <SheetTrigger>
-                  <Menu className="size-8" />
-                </SheetTrigger>
-                <SheetContent className="flex flex-col gap-4 p-4">
-                  <div className="relative flex flex-col gap-4">
-                    <div className="flex flex-row gap-1">
-                      <Image
-                        src={SiteConfig.appIcon}
-                        alt="logo enterprise Segment.C"
-                        width={32}
-                        height={32}
-                      />
-                      <motion.p
-                        style={{
-                          scale: useTransform(
-                            scrollYBoundedProgressDelayed,
-                            [0, 1],
-                            [1, 0.9],
-                          ),
-                        }}
-                        className="flex origin-left items-center text-2xl font-bold text-green-500"
-                      >
-                        {SiteConfig.title}
-                      </motion.p>
-                    </div>
-                    <hr />
-                    <div className="flex flex-row items-center justify-around">
-                      <AuthButtonClient />
-                      <Typography
-                        variant="h3"
-                        className="text-left text-lg !leading-tight"
-                      >
-                        Menu Principal
-                      </Typography>
-                    </div>
-                    <hr />
-                    {topRoutes.map((route) => (
-                      <Link
-                        href={route.path}
-                        key={route.path}
-                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
-                      >
-                        {route.label}
-                      </Link>
-                    ))}
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-          </nav>
         </div>
+
+        {/* Éléments de navigation */}
+        <nav className="flex items-center space-x-1">
+          {children}
+          {/* Mobile menu */}
+          <div className="z-20 flex items-center gap-2 lg:hidden">
+            <Sheet>
+              <SheetTrigger>
+                <Menu className="size-8" />
+              </SheetTrigger>
+              <SheetContent className="flex flex-col gap-4 p-4">
+                <div className="relative flex flex-col gap-4">
+                  <div className="flex flex-row gap-1">
+                    <Image
+                      src={SiteConfig.appIcon}
+                      alt="logo enterprise Segment.C"
+                      width={32}
+                      height={32}
+                    />
+                    <motion.p
+                      style={{
+                        scale: useTransform(
+                          scrollYBoundedProgressDelayed,
+                          [0, 1],
+                          [1, 0.9],
+                        ),
+                      }}
+                      className="flex origin-left items-center text-2xl font-bold text-green-500"
+                    >
+                      {SiteConfig.title}
+                    </motion.p>
+                  </div>
+                  <hr />
+                  <div className="flex flex-row items-center justify-around">
+                    {/* <AuthButtonClient /> */}
+                    <Typography
+                      variant="h3"
+                      className="text-left text-lg !leading-tight"
+                    >
+                      Menu Principal
+                    </Typography>
+                  </div>
+                  <hr />
+                  {topRoutes.map((route) => (
+                    <Link
+                      href={route.path}
+                      key={route.path}
+                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                    >
+                      {route.label}
+                    </Link>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </nav>
       </Layout>
     </motion.header>
   );
