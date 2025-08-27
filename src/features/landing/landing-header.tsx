@@ -117,13 +117,31 @@ export function LandingHeader() {
           className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
         >
           {topRoutes.map((route) => (
-            <Link
-              href={route.path}
-              key={route.path}
-              className="relative flex items-center"
-            >
-              {route.label}
-            </Link>
+            route.dropdown ? (
+              <DropdownMenu key={route.path}>
+                <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
+                  {route.label}
+                  <ChevronDown className="size-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {route.dropdown.map((item) => (
+                    <DropdownMenuItem key={item.path} asChild>
+                      <Link href={item.path} className="w-full cursor-pointer">
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                href={route.path}
+                key={route.path}
+                className="relative flex items-center hover:text-green-500 transition-colors"
+              >
+                {route.label}
+              </Link>
+            )
           ))}
         </motion.nav>
 
@@ -133,9 +151,6 @@ export function LandingHeader() {
           <div className="hidden lg:contents">
             <AuthButtonClient />
           </div>
-
-          {/* {children} */}
-          {/* <ThemeToggle /> */}
 
           {/* Mobile menu */}
           <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
@@ -177,13 +192,30 @@ export function LandingHeader() {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    <Link
-                      href={route.path}
-                      key={route.path}
-                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
-                    >
-                      {route.label}
-                    </Link>
+                    route.dropdown ? (
+                      <div key={route.path} className="flex flex-col gap-2">
+                        <span className="text-left text-sm font-semibold text-green-500">
+                          {route.label}
+                        </span>
+                        {route.dropdown.map((item) => (
+                          <Link
+                            href={item.path}
+                            key={item.path}
+                            className="relative ml-4 text-left text-sm font-medium transition-colors hover:text-[#04ab12]"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      <Link
+                        href={route.path}
+                        key={route.path}
+                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                      >
+                        {route.label}
+                      </Link>
+                    )
                   ))}
                 </div>
               </SheetContent>

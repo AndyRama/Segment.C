@@ -34,7 +34,7 @@ export default function PortesServiceHero({ className }: PortesServiceHeroProps)
         <div className="relative">
           <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/images/hero-porte-service.jpg"
+              src="/images/porte.jpg"
               alt="Porte de service moderne avec végétation"
               fill
               className="object-cover"

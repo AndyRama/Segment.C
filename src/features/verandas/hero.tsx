@@ -43,7 +43,7 @@ export default function VerandasHero({ className }: VerandasHeroProps) {
         <div className="relative">
           <div className="relative h-[400px] overflow-hidden rounded-lg shadow-lg lg:h-[500px]">
             <Image
-              src="/images/hero-verandas.jpg"
+              src="/images/veranda.jpg"
               alt="Véranda moderne lumineuse avec mobilier de jardin"
               fill
               className="object-cover"
