@@ -271,7 +271,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 const PortesHeader = () => (
   <div className="mb-12 space-y-4 text-center">
     <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Nos Portes d'Entrée
+      Notre selection de porte
     </Typography>
     <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
       Découvrez notre gamme complète de portes d'entrée. Sécurité, esthétique et performance énergétique 

@@ -64,7 +64,7 @@ export function LandingHeader() {
     { path: "/fenetres", label: "Fenêtre" },
     { path: "/pergolas", label: "Pergolas" },
     {
-      path: "#",
+      path: "/portes",
       label: "Portes",
       dropdown: [
         { path: "/portes", label: "Porte d'entrée" },

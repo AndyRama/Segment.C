@@ -401,7 +401,7 @@ const VerandasSection = ({ className }: VerandasSectionProps) => {
 const VerandasHeader = () => (
   <div className="mb-12 space-y-4 text-center">
     <Typography variant="h1" className="text-3xl md:text-4xl xl:text-5xl">
-      Nos Vérandas
+      Notre selection de Vérandas
     </Typography>
     <Typography
       variant="large"

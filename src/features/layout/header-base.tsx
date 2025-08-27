@@ -63,8 +63,8 @@ export function HeaderBase({ children }: PropsWithChildren) {
     { path: "/posts", label: "Actualitées" },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
-    { 
-      path: "#", 
+    {
+      path: "/portes",
       label: "Portes",
       dropdown: [
         { path: "/portes", label: "Porte d'entrée" },

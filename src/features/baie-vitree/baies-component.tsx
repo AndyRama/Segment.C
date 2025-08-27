@@ -412,7 +412,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
 const BaiesVitreesHeader = () => (
   <div className="mb-12 space-y-4 text-center">
     <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Nos Baies Vitrées
+      Notre selection de Baies Vitrées
     </Typography>
     <Typography
       variant="large"
