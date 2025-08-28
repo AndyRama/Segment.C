@@ -50,7 +50,7 @@ export const Footer = () => {
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  Nos fenêtres
+                  Nos produits
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -59,7 +59,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/posts"
                   >
-                    Nos fenêtres Aluminium
+                    Nos fenêtres 
                   </Typography>
                   <Typography
                     as={Link}
@@ -67,7 +67,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="#"
                   >
-                    Nos fenêtres PVC
+                    Nos portes
                   </Typography>
                   <Typography
                     as={Link}
@@ -75,51 +75,18 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/account"
                   >
-                    Nos fenêtres en bois
+                    Nos baies vitrées
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/account"
+                  >
+                    Nos veranda
                   </Typography>
                 </div>
-              </div>
-
-              {/* Colonne Portes */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Nos portes d'entrée
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/posts"
-                  >
-                    Nos portes Aluminium
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="#"
-                  >
-                    Nos portes PVC
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/account"
-                  >
-                    Nos portes Acier
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/account"
-                  >
-                    Nos portes Mixte Alu.
-                  </Typography>
-                </div>
-              </div>
+              </div>           
 
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">
@@ -133,7 +100,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/home"
                   >
-                    Home
+                    Segment.C
                   </Typography>
                   <Typography
                     as={Link}
@@ -150,6 +117,14 @@ export const Footer = () => {
                     href="/#"
                   >
                     Compte user
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/#"
+                  >
+                    Blog
                   </Typography>
                 </div>
               </div>
@@ -185,40 +160,7 @@ export const Footer = () => {
                     Conseil
                   </Typography>
                 </div>
-              </div>
-
-              {/* Colonne Resources */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Resources
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/posts"
-                  >
-                    Blog
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="#"
-                  >
-                    Dashboard
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/account"
-                  >
-                    Account
-                  </Typography>
-                </div>
-              </div>
+              </div>             
             </div>
           </div>
         </LayoutContent>

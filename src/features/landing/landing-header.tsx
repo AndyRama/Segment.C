@@ -59,10 +59,7 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "/posts", label: "Actualitées" },
-    { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
-    { path: "/pergolas", label: "Pergolas" },
     {
       path: "/portes",
       label: "Portes",
@@ -71,7 +68,10 @@ export function LandingHeader() {
         { path: "/portes", label: "Porte fenêtre" }
       ]
     },
+    { path: "/baie", label: "Baie vitrée" },
+    { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
+    { path: "/posts", label: "Actualités" },
   ];
 
   return (

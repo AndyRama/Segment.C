@@ -60,8 +60,6 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
-    { path: "/posts", label: "Actualitées" },
-    { path: "/baie", label: "Baie vitrée" },
     { path: "/fenetres", label: "Fenêtre" },
     {
       path: "/portes",
@@ -71,7 +69,10 @@ export function HeaderBase({ children }: PropsWithChildren) {
         { path: "/portes", label: "Porte fenêtre" }
       ]
     },
+    { path: "/baie", label: "Baie vitrée" },
+    { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
+    { path: "/posts", label: "Actualités" },
   ];
 
   return (
