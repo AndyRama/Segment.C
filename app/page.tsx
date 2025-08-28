@@ -52,10 +52,6 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ProcessSection2/>
-
-      <SectionDivider />
-
       <GallerySection />
 
       <SectionDivider />
@@ -188,10 +184,14 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <Partenaire />
+      <ProcessSection2/>
 
       <SectionDivider />
 
+      <Partenaire />
+
+      <SectionDivider />
+      
       {/* <ContactForm /> */}
 
       {/* <SectionDivider /> */}
