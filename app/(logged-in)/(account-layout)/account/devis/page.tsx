@@ -1,4 +1,4 @@
-import { getRequiredUser } from "@/lib/auth/auth-user";
+// import { getRequiredUser } from "@/lib/auth/auth-user";
 import { combineWithParentMetadata } from "@/lib/metadata";
 import { ContactForm } from "@/features/landing/formulaire";
 

@@ -26,7 +26,7 @@ export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
     <Sidebar variant="inset">
       <SidebarHeader>
         {/* <OrgsSelect orgs={userOrgs} /> */}
-        <p className="text-center md:text-left"> 
+        <p className="text-center"> 
           <span className="text-green-500 text-bold text-italic"> Segment.C </span>
            | Dashboard
         </p>
