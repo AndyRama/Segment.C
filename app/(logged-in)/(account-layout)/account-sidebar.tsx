@@ -28,7 +28,8 @@ export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
         {/* <OrgsSelect orgs={userOrgs} /> */}
         <p className="text-center md:text-left"> 
           <span className="text-green-500 text-bold text-italic"> Segment.C </span>
-           | Dashboard</p>
+           | Dashboard
+        </p>
       </SidebarHeader>
       <SidebarContent>
         {links.map((link) => (
