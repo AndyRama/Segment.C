@@ -7,7 +7,7 @@ export const SiteConfig = {
   appIcon: "/images/icon.png",
   company: {
     name: "Segment.C",
-    address: "390 all de saussets - 3 hameau 33127 -St Jean d'Illac",
+    address: "390 all de saussets ,3 hameau 33127 -St Jean d'Illac",
   },
   brand: {
     primary: "#4bb484",
@@ -30,6 +30,6 @@ export const SiteConfig = {
      * If enable, the user will be redirected to `/orgs` when he visits the landing page at `/`
      * The logic is located in middleware.ts
      */
-    enableLandingRedirection: true as boolean,
+    enableLandingRedirection: false as boolean,
   },
 };
