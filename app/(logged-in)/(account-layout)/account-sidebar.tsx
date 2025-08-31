@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -25,7 +26,9 @@ export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
     <Sidebar variant="inset">
       <SidebarHeader>
         {/* <OrgsSelect orgs={userOrgs} /> */}
-        Segment.C | Dashboard
+        <p className="text-center md:text-left"> 
+          <span className="text-green-500 text-bold text-italic"> Segment.C </span>
+           | Dashboard</p>
       </SidebarHeader>
       <SidebarContent>
         {links.map((link) => (
