@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
 
     if (session) {
       const url = new URL(request.url);
-      url.pathname = "/";
+      url.pathname = "/orgs";
       return NextResponse.redirect(url.toString());
     }
   }
