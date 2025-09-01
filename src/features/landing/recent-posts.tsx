@@ -41,7 +41,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
                 {formatDate(date, 'dd MMMM yy')}
               </span>
               <span className="mx-3">•</span>
-              <span className="text-sm text-gray-500">{author}</span>
+              <span className="text-sm text-green-500">{author}</span>
             </span>
           </span>
         </Typography>
@@ -103,12 +103,47 @@ export const RecentPosts = () => {
   return (
     <Layout>
       <div className="mx-auto -mt-32 mb-2 justify-center rounded-r-md md:flex md:px-4">
-        <div
-          className="mx-auto mt-10 grid w-full grid-cols-1 gap-6 text-gray-500 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        >
-          {posts.map((post, index) => (
-            <RecentPostCard key={index} post={post} />
-          ))}
+        {/* Titre de la section */}
+        <div className="mx-auto w-full">
+          <div className="mb-8 mt-10 text-center">
+            <Typography variant="h2" className="text-3xl font-bold text-white md:text-4xl">
+              Articles récents
+            </Typography>
+            <Typography variant="p" className="mt-4 text-gray-300">
+              Découvrez nos derniers conseils et guides sur les pergolas, vérandas et menuiseries
+            </Typography>
+          </div>
+          
+          {/* Grille des articles */}
+          <div className="grid w-full grid-cols-1 gap-6 text-gray-500 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {posts.map((post, index) => (
+              <RecentPostCard key={index} post={post} />
+            ))}
+          </div>
+          
+          {/* Bouton voir tous les articles */}
+          <div className="mt-12 flex justify-end">
+            <Link
+              href="/posts"
+              className="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-white transition-all hover:bg-primary/90 hover:shadow-lg"
+            >
+              Voir tous les articles
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </Layout>
