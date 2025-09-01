@@ -35,13 +35,13 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
       </CardHeader>
       <CardContent className="space-y-2">
         <Typography variant="p" className="!leading-tight">
-          <span className="inline-block text-white">
+          <span className="inline-block text-sm text-gray-500">
             <span className="relative inline-block">
-              <span className="text-white">
+              <span className="text-sm text-gray-500">
                 {formatDate(date, 'dd MMMM yy')}
               </span>
               <span className="mx-3">•</span>
-              <span className="text-white">{author}</span>
+              <span className="text-sm text-gray-500">{author}</span>
             </span>
           </span>
         </Typography>
@@ -50,7 +50,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
         <div className="flex w-[250px] items-center justify-between">
           <Link
             href={`/posts/${post.slug}`}
-            className="rounded-[5px] border border-gray-600 px-4 text-white hover:border-orange-500 xl:px-8"
+            className="rounded-[5px] border border-gray-600 px-4 text-green hover:border-green-500 xl:px-8"
           >
             Lire l&apos;article
           </Link>
@@ -94,7 +94,7 @@ export const RecentPosts = () => {
         title: 'Qu\'est-ce qu\'une pergola bioclimatique ? Tout savoir sur cette innovation',
         description: 'Découvrez la pergola bioclimatique, l\'innovation qui révolutionne les espaces extérieurs. Fonctionnement des lames orientables, avantages, prix, installation et conseils pour choisir le modèle adapté à vos besoins et votre région.',
         date: '2024-11-22',
-        coverUrl: '/images/verandas.jpg',
+        coverUrl: '/images/veranda.jpg',
       },
       slug: '2024-11-22_Pergola-bioclimatique-definition-avantages-fonctionnement',
     },

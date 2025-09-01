@@ -191,6 +191,8 @@ export default function HomePage() {
       <SectionDivider />
 
       <RecentPosts/>
+
+      <SectionDivider />
       
       <Footer />
     </div>
