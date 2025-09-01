@@ -3,7 +3,7 @@
 import React from 'react';
 import { Layout } from '@/features/page/layout';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/nowts/typography';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { formatDate } from '@/lib/format/date';
