@@ -8,7 +8,7 @@ export const CTAImageSection = () => {
     <div
       style={{
         backgroundImage:
-          "url(https://images.unsplash.com/photo-1707680639756-d37ea04572a9?q=80&w=2973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          "url(images/camion.png)",
         backgroundSize: "cover",
       }}
     >
@@ -26,7 +26,7 @@ export const CTAImageSection = () => {
           Lorem ipsum dolor sit amet consectetur
         </Typography>
         <Link href="#pricing" className={buttonVariants({ size: "lg" })}>
-          Commencer
+          Demander un devis
         </Link>
       </SectionLayout>
     </div>
