@@ -182,8 +182,6 @@ export default function HomePage() {
 
       <ServiceAreaSection/>
 
-      <SectionDivider />
-
       <ProcessSection2/>
 
       <Partenaire />

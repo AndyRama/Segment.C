@@ -106,7 +106,7 @@ export const RecentPosts = () => {
         {/* Titre de la section */}
         <div className="mx-auto w-full">
           <div className="mb-8 mt-10 text-center">
-            <Typography variant="h2" className="text-3xl font-bold text-white md:text-4xl">
+            <Typography variant="h2" className="text-3xl font-bold text-green-500 md:text-4xl">
               Articles récents
             </Typography>
             <Typography variant="p" className="mt-4 text-gray-300">
@@ -125,7 +125,7 @@ export const RecentPosts = () => {
           <div className="mt-12 flex justify-end">
             <Link
               href="/posts"
-              className="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-white transition-all hover:bg-primary/90 hover:shadow-lg"
+              className="inline-flex items-center rounded-lg bg-green-500 px-6 py-3 text-white transition-all hover:bg-green-500/90 hover:shadow-lg"
             >
               Voir tous les articles
               <svg
