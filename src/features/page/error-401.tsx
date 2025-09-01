@@ -18,10 +18,10 @@ export function Error401(props: Error401Props) {
     <Card className="w-full">
       <CardHeader className="flex flex-col">
         <Typography variant="code">401</Typography>
-        <CardTitle>{props.title ?? "Unauthorized"}</CardTitle>
+        <CardTitle>{props.title ?? "Non autorisé"}</CardTitle>
         <CardDescription>
-          You don't have permission to access this resource. Please sign in or
-          contact your administrator if you believe this is a mistake.
+          Vous n'avez pas l'autorisation d'accéder à cette ressource. Veuillez vous connecter ou
+          contacter votre administrateur si vous pensez qu'il s'agit d'une erreur.
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex flex-row gap-2">

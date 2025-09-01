@@ -18,6 +18,7 @@ import type { AuthOrganization } from "@/lib/auth/auth-type";
 import { ChevronDown } from "lucide-react";
 // import { OrgsSelect } from "../../orgs/[orgSlug]/(navigation)/_navigation/orgs-select";
 import { getAccountNavigation } from "./account.links";
+import Link from "next/link";
 
 export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
   const links: NavigationGroup[] = getAccountNavigation();
@@ -26,10 +27,12 @@ export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
     <Sidebar variant="inset">
       <SidebarHeader>
         {/* <OrgsSelect orgs={userOrgs} /> */}
-        <p className="text-center"> 
-          <span className="text-green-500 text-bold text-italic"> Segment.C </span>
-           | Dashboard
-        </p>
+        <Link href="/home">
+          <p className="text-center"> 
+            <span className="text-green-500 text-bold text-italic"> Segment.C </span>
+            | Dashboard
+          </p>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         {links.map((link) => (

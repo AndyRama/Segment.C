@@ -13,18 +13,18 @@ export function Page400(props: Page400Props) {
     <main className="flex flex-col items-center gap-8">
       <div className="max-w-lg space-y-3 text-center">
         <Typography variant="code">400</Typography>
-        <Typography variant="h1">{props.title ?? "Bad Request"}</Typography>
+        <Typography variant="h1">{props.title ?? "Requête incorrecte"}</Typography>
         {props.children ?? (
           <Typography>
-            It seems we're experiencing some technical difficulties. Not to
-            worry, our team is working on it. In the meantime, try refreshing
-            the page or visiting us a bit later.
+            Il semble que nous rencontrons quelques difficultés techniques. Pas d'inquiétude,
+            notre équipe y travaille. En attendant, essayez de rafraîchir
+            la page ou de nous rendre visite un peu plus tard.
           </Typography>
         )}
       </div>
       <div className="flex items-center gap-4">
         <Link href="/" className={buttonVariants({ variant: "invert" })}>
-          Go back home
+          Retourner à l'accueil
         </Link>
         <ContactSupportDialog />
       </div>

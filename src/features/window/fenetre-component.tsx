@@ -785,13 +785,6 @@ const FenetreModal = ({
                       <span>St Jean d'Illac, Gironde</span>
                     </div>
                   </div>
-                  <div className="mt-3 pt-3 border-t border-gray-200">
-                    <p className="text-xs text-muted-foreground">
-                      🏠 Visite technique gratuite et sans engagement<br/>
-                      📏 Prise de mesures professionnelle<br/>
-                      🔧 Installation par nos équipes certifiées
-                    </p>
-                  </div>
                 </div>
               </>
             )}

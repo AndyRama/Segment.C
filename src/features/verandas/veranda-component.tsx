@@ -964,18 +964,6 @@ const VerandaModal = ({
                       </Typography>
                     </div>
                   </div>
-                  <div className="mt-3 border-t border-gray-200 pt-3">
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      🏠 Étude de faisabilité gratuite
-                      <br />
-                      📐 Plans et 3D personnalisés
-                      <br />
-                      🔧 Installation par nos équipes spécialisées
-                    </Typography>
-                  </div>
                 </div>
               </>
             )}

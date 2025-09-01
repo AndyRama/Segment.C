@@ -983,20 +983,6 @@ const PergolaModal = ({
                       </Typography>
                     </div>
                   </div>
-                  <div className="mt-3 border-t border-gray-200 pt-3">
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      🏡 Étude de faisabilité gratuite
-                      <br />
-                      📐 Plans et visualisation 3D
-                      <br />
-                      🔧 Installation par nos équipes expertes
-                      <br />
-                      ☂️ Conseil personnalisé selon votre usage
-                    </Typography>
-                  </div>
                 </div>
               </>
             )}

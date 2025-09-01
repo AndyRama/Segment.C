@@ -20,16 +20,16 @@ export function Error400(props: Page400Props) {
     <Card className="w-full">
       <CardHeader className="flex flex-col">
         <Typography variant="code">400</Typography>
-        <CardTitle>{props.title ?? "Bad request"}</CardTitle>
+        <CardTitle>{props.title ?? "Requête incorrecte"}</CardTitle>
         <CardDescription>
-          It seems we're experiencing some technical difficulties. Not to worry,
-          our team is working on it. In the meantime, try refreshing the page or
-          visiting us a bit later.
+          Il semble que nous rencontrons quelques difficultés techniques. Pas d'inquiétude,
+          notre équipe y travaille. En attendant, essayez de rafraîchir la page ou
+          de nous rendre visite un peu plus tard.
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex flex-row gap-2">
         <Link href="/" className={buttonVariants({ variant: "invert" })}>
-          Go back home
+          Retourner à l'accueil
         </Link>
         <ContactSupportDialog />
       </CardFooter>

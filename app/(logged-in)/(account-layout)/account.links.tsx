@@ -34,6 +34,11 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
         Icon: User2,
         label: "Devis",
       },
+      {
+        href: "/account/devis",
+        Icon: User2,
+        label: "Devis Archiver",
+      },
     ],
   },
 ];
