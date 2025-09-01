@@ -7,25 +7,25 @@ export default function SuccessUpgradeEmail() {
   return (
     <EmailLayout>
       <Preview>
-        You have successfully upgraded your account to {SiteConfig.title}
+        Vous avez mis à jour votre compte vers {SiteConfig.title} avec succès
       </Preview>
       <EmailSection>
-        <EmailText>Hello,</EmailText>
+        <EmailText>Bonjour,</EmailText>
         <EmailText>
-          Great news! Your payment was successful, and you now have full access
-          to all our premium features. Get ready to explore everything we have
-          to offer!
+          Excellente nouvelle ! Votre paiement a été effectué avec succès, et vous avez maintenant un accès complet
+          à toutes nos fonctionnalités premium. Préparez-vous à explorer tout ce que nous avons
+          à offrir !
         </EmailText>
         <EmailText>
-          If you have any questions or need assistance as you dive in, feel free
-          to reach out to us. We're here to help you make the most of your
-          experience.
+          Si vous avez des questions ou avez besoin d'assistance pour vous lancer, n'hésitez pas
+          à nous contacter. Nous sommes là pour vous aider à tirer le meilleur parti de votre
+          expérience.
         </EmailText>
-        <EmailText>Happy exploring,</EmailText>
+        <EmailText>Bonne exploration,</EmailText>
       </EmailSection>
       <Text className="text-lg leading-6">
-        Best,
-        <br />- {SiteConfig.team.name} from {SiteConfig.title}
+        Cordialement,
+        <br />- {SiteConfig.team.name} de {SiteConfig.title}
       </Text>
     </EmailLayout>
   );

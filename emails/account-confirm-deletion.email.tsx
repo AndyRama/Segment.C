@@ -7,24 +7,24 @@ export default function AccountConfirmDeletionEmail() {
   return (
     <EmailLayout>
       <Preview>
-        Your account has been deleted. All your data, including any
-        organizations you owned, have been removed from our system.
+        Votre compte a été supprimé. Toutes vos données, y compris les
+        organisations que vous possédiez, ont été supprimées de notre système.
       </Preview>
       <EmailSection>
-        <EmailText>Hi,</EmailText>
+        <EmailText>Bonjour,</EmailText>
         <EmailText>
-          We wanted to let you know that your account has been permanently
-          deleted. All your data, including any organizations you owned, have
-          been removed from our system.
+          Nous souhaitons vous informer que votre compte a été définitivement
+          supprimé. Toutes vos données, y compris les organisations que vous possédiez, ont
+          été supprimées de notre système.
         </EmailText>
         <EmailText>
-          If you have any questions or need further assistance, please do not
-          hesitate to contact our support team.
+          Si vous avez des questions ou avez besoin d'une assistance supplémentaire, n'hésitez pas
+          à contacter notre équipe de support.
         </EmailText>
       </EmailSection>
       <Text className="text-lg leading-6">
-        Best,
-        <br />- {SiteConfig.team.name} from {SiteConfig.title}
+        Cordialement,
+        <br />- {SiteConfig.team.name} de {SiteConfig.title}
       </Text>
     </EmailLayout>
   );

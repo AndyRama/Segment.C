@@ -10,8 +10,8 @@ export default function MarkdownEmail(props: {
   if (!props.disabledSignature) {
     props.markdown += `
 
-Best,\n
-${SiteConfig.team.name} from ${SiteConfig.title}
+Cordialement,\n
+${SiteConfig.team.name} de ${SiteConfig.title}
     `;
   }
 
@@ -23,7 +23,7 @@ ${SiteConfig.team.name} from ${SiteConfig.title}
 
   return (
     <EmailLayout disableTailwind>
-      <Preview>{props.preview ?? "You receive a markdown email."}</Preview>
+      <Preview>{props.preview ?? "Vous recevez un e-mail de réduction."}</Preview>
       <Markdown
         markdownCustomStyles={{
           p: {
