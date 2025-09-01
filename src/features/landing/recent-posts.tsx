@@ -1,0 +1,118 @@
+'use client';
+
+import React from 'react';
+import { Layout } from '@/features/page/layout';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Typography } from '@/components/ui/typography';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import { formatDate } from '@/lib/format/date';
+
+type Post = {
+  attributes: {
+    title: string;
+    description: string;
+    date: string;
+    coverUrl: string;
+  };
+  slug: string;
+};
+
+export const RecentPostCard = ({ post }: { post: Post }) => {
+  const date = new Date(post.attributes.date);
+  const author = 'Segment-C';
+
+  return (
+    <Card className="transition-all hover:shadow-xl">
+      <CardHeader className="h-fit">
+        <AspectRatio ratio={16 / 9} className="overflow-hidden">
+          <img
+            src={post.attributes.coverUrl}
+            alt={post.attributes.title}
+            className="size-full rounded-t object-cover"
+          />
+        </AspectRatio>
+      </CardHeader>
+      <CardContent className="space-y-2">
+        <Typography variant="p" className="!leading-tight">
+          <span className="inline-block text-white">
+            <span className="relative inline-block">
+              <span className="text-white">
+                {formatDate(date, 'dd MMMM yy')}
+              </span>
+              <span className="mx-3">•</span>
+              <span className="text-white">{author}</span>
+            </span>
+          </span>
+        </Typography>
+        <CardTitle>{post.attributes.title}</CardTitle>
+        <CardDescription className="pb-8">{post.attributes.description}</CardDescription>
+        <div className="flex w-[250px] items-center justify-between">
+          <Link
+            href={`/posts/${post.slug}`}
+            className="rounded-[5px] border border-gray-600 px-4 text-white hover:border-orange-500 xl:px-8"
+          >
+            Lire l&apos;article
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export const RecentPosts = () => {
+  const posts: Post[] = [
+    {
+      attributes: {
+        title: 'Comment entretenir votre pergola : guide complet bois et aluminium',
+        description: 'Découvrez tous nos conseils d\'experts pour entretenir votre pergola selon son matériau. Techniques de nettoyage, protection contre les intempéries, fréquence d\'entretien et produits recommandés pour prolonger la durée de vie de votre installation.',
+        date: '2024-12-01',
+        coverUrl: '/images/pergolas.jpg',
+      },
+      slug: '2024-12-01_Comment-entretenir-votre-pergola-guide-complet-bois-aluminium',
+    },
+    {
+      attributes: {
+        title: 'Quel est le meilleur choix pour vos fenêtres ? Comparatif complet',
+        description: 'PVC, aluminium ou bois : quel matériau choisir pour vos fenêtres ? Notre guide détaillé compare les avantages, inconvénients, prix et performances énergétiques de chaque option pour vous aider à faire le bon choix selon votre projet.',
+        date: '2024-11-28',
+        coverUrl: '/images/fenetre1.jpg',
+      },
+      slug: '2024-11-28_Meilleur-choix-fenetres-comparatif-pvc-aluminium-bois',
+    },
+    {
+      attributes: {
+        title: 'Comment améliorer la luminosité d\'une pièce avec des baies vitrées',
+        description: 'Transformez vos espaces sombres en pièces lumineuses grâce aux baies vitrées. Découvrez nos conseils d\'aménagement, les différents types d\'ouvertures, les aspects techniques et réglementaires pour maximiser la lumière naturelle chez vous.',
+        date: '2024-11-25',
+        coverUrl: '/images/fenetre2.jpg',
+      },
+      slug: '2024-11-25_Ameliorer-luminosite-piece-baies-vitrees-conseils',
+    },
+    {
+      attributes: {
+        title: 'Qu\'est-ce qu\'une pergola bioclimatique ? Tout savoir sur cette innovation',
+        description: 'Découvrez la pergola bioclimatique, l\'innovation qui révolutionne les espaces extérieurs. Fonctionnement des lames orientables, avantages, prix, installation et conseils pour choisir le modèle adapté à vos besoins et votre région.',
+        date: '2024-11-22',
+        coverUrl: '/images/verandas.jpg',
+      },
+      slug: '2024-11-22_Pergola-bioclimatique-definition-avantages-fonctionnement',
+    },
+  ];
+
+  return (
+    <Layout>
+      <div className="mx-auto -mt-32 mb-2 justify-center rounded-r-md md:flex md:px-4">
+        <div
+          className="mx-auto mt-10 grid w-full grid-cols-1 gap-6 text-gray-500 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          {posts.map((post, index) => (
+            <RecentPostCard key={index} post={post} />
+          ))}
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default RecentPosts;

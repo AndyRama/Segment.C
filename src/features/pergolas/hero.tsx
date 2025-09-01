@@ -5,11 +5,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 
-type VerandasHeroProps = {
+type PergolasHeroProps = {
   className?: string;
 };
 
-export default function VerandasHero({ className }: VerandasHeroProps) {
+export default function PergolasHero({ className }: PergolasHeroProps) {
   return (
     <section
       className={cn(
@@ -21,21 +21,22 @@ export default function VerandasHero({ className }: VerandasHeroProps) {
         {/* Contenu texte */}
         <div className="space-y-6">
           <Typography variant="h1" className="text-4xl md:text-5xl lg:text-6xl">
-            Nos vérandas
+            Nos Pergolas
           </Typography>
 
           <Typography
             variant="p"
             className="text-muted-foreground leading-relaxed"
           >
-            Créez votre pièce à vivre supplémentaire avec nos vérandas sur
-            mesure. Espace détente, salle à manger d'été ou jardin d'hiver, nos
-            réalisations s'adaptent parfaitement à vos besoins et au style de
-            votre habitation. Segment-C conçoit et installe des vérandas alliant
-            design contemporain et performance thermique, pour que vous puissiez
-            profiter de cet espace unique en toutes saisons. Aluminium, PVC ou
-            bois, toiture vitrée ou isolée, personnalisez votre extension selon
-            vos envies et votre budget.
+            Transformez votre espace extérieur avec nos pergolas sur mesure. 
+            Terrasse ombragée, espace détente ou salle à manger d'été, nos 
+            réalisations s'adaptent parfaitement à votre mode de vie et au 
+            style de votre habitation. Segment-C conçoit et installe des 
+            pergolas alliant design moderne et fonctionnalité, pour que vous 
+            puissiez profiter pleinement de votre jardin et terrasse en toutes 
+            saisons. Bioclimatique, aluminium, bois ou acier, toiture 
+            rétractable ou lames orientables, personnalisez votre espace 
+            extérieur selon vos envies et votre budget.
           </Typography>
         </div>
 
