@@ -111,7 +111,7 @@ export const ProcessSection2 = () => {
         </div>
 
         {/* Section avec image statique */}
-        <div className="mt-12 flex w-full flex-col items-center gap-8 md:flex-row">
+        <div className="mt-12 flex w-full  max-w-6xl flex-col items-center gap-8 md:flex-row">
           <motion.div
             className="md:w-1/2"
             initial={{ opacity: 0, x: -30 }}
