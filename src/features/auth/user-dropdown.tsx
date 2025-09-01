@@ -18,7 +18,7 @@ import {
 import { signOut, useSession } from "@/lib/auth-client";
 import { useMutation } from "@tanstack/react-query";
 import {
-  // LayoutDashboard,
+  LayoutDashboard,
   LogOut,
   Monitor,
   Moon,
@@ -64,12 +64,13 @@ export const UserDropdown = ({ children }: PropsWithChildren) => {
           )}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {/* <DropdownMenuItem asChild>
+        {/* add super admin Logic */}
+        <DropdownMenuItem asChild>
           <Link href="/orgs">
             <LayoutDashboard className="mr-2 size-4" />
             Dashboard
           </Link>
-        </DropdownMenuItem> */}
+        </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link href="/account">
             <Settings className="mr-2 size-4" />
