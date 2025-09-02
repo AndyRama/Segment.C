@@ -60,6 +60,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
+    { path: "/", label: "Segment.C" },
     { path: "/fenetres", label: "Fenêtre" },
     {
       path: "/portes",

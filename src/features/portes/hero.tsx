@@ -16,7 +16,7 @@ export default function PortesServiceHero({ className }: PortesServiceHeroProps)
         {/* Contenu texte */}
         <div className="space-y-6">
           <Typography variant="h1" className="text-4xl md:text-5xl lg:text-6xl">
-            Nos portes d'entrée'
+            Nos portes d'entrée
           </Typography>
           
           <Typography variant="p" className="text-muted-foreground leading-relaxed">
