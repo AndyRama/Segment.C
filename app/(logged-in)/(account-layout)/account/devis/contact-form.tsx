@@ -433,9 +433,6 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         <SelectItem value="services-publics">Services Publics</SelectItem>
                         <SelectItem value="artisanat-local">Artisanat & Commerce Local</SelectItem>
                         <SelectItem value="banque-assurance">Banque & Assurance</SelectItem>
-                        <SelectItem value="transport-automobile">Transport & Automobile</SelectItem>
-                        <SelectItem value="agriculture-cooperative">Agriculture & Coopératives</SelectItem>
-                        <SelectItem value="technologie-startup">Technologie & Startups</SelectItem>
                         <SelectItem value="autre">Autre secteur</SelectItem>
                       </SelectContent>
                     </Select>
