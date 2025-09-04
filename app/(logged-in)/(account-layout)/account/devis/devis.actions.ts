@@ -33,7 +33,7 @@ export async function createDevisAction(data: DevisFormType) {
     });
 
     // Invalider le cache pour rafraîchir les données
-    revalidatePath("/dashboard/devis");
+    revalidatePath("/account/devis");
     
     return {
       success: true,
@@ -86,6 +86,7 @@ export async function getUserDevisAction() {
     return devis;
     
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Erreur lors de la récupération des devis:", error);
     return [];
   }
@@ -118,7 +119,7 @@ export async function deleteDevisAction(devisId: string) {
       },
     });
     
-    revalidatePath("/dashboard/devis");
+    revalidatePath("/account/devis");
     
     return {
       success: true,
