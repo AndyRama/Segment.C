@@ -51,6 +51,14 @@ export const DevisFormSchema = z.object({
         path: ["secteurActivite"],
       });
     }
+    
+    if (!data.typeProjet || data.typeProjet.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Le type de projet est requis",
+        path: ["typeProjet"],
+      });
+    }
   }
   
   // Validation pour particuliers

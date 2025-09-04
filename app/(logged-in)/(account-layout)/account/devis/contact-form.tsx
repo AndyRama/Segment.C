@@ -75,7 +75,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
       form.setValue("secteurActivite", "");
       form.setValue("tailleEntreprise", "");
     } else {
-      form.setValue("typeProjet", "");
+      // Ne pas reset typeProjet car maintenant utilisé aussi par les pros
       form.setValue("typeConstruction", undefined);
       form.setValue("typeBatiment", undefined);
       form.setValue("natureTravaux", undefined);
@@ -325,8 +325,8 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                   )}
                 />
 
-                <div className="bg-green-50 p-3 rounded border border-green-200">
-                  <Typography className="text-sm text-green-700">
+                <div className="bg-blue-50 p-3 rounded border border-blue-200">
+                  <Typography className="text-sm text-blue-700">
                     <strong>Info RGE :</strong> La certification RGE (Reconnu Garant de l'Environnement) 
                     est nécessaire pour bénéficier de certaines aides financières lors de travaux 
                     d'amélioration énergétique.
