@@ -19,14 +19,14 @@ export async function createDevisAction(data: DevisFormType) {
         clientType: validatedData.clientType,
         nomComplet: validatedData.nomComplet,
         email: validatedData.email,
-        telephone: validatedData.telephone || null,
+        telephone: validatedData.telephone ?? null,
         descriptionProjet: validatedData.descriptionProjet,
-        typeProjet: validatedData.typeProjet || null,
-        nomContact: validatedData.nomContact || null,
-        nomEntreprise: validatedData.nomEntreprise || null,
-        fonction: validatedData.fonction || null,
-        secteurActivite: validatedData.secteurActivite || null,
-        tailleEntreprise: validatedData.tailleEntreprise || null,
+        typeProjet: validatedData.typeProjet ?? null,
+        nomContact: validatedData.nomContact ?? null,
+        nomEntreprise: validatedData.nomEntreprise ?? null,
+        fonction: validatedData.fonction ?? null,
+        secteurActivite: validatedData.secteurActivite ?? null,
+        tailleEntreprise: validatedData.tailleEntreprise ?? null,
         userId: user.id, // IMPORTANT : Le devis est automatiquement lié à l'utilisateur connecté
         status: "nouveau",
       },
@@ -42,6 +42,7 @@ export async function createDevisAction(data: DevisFormType) {
     };
     
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Erreur lors de la création du devis:", error);
     
     if (error instanceof Error && error.name === "ZodError") {
@@ -125,6 +126,8 @@ export async function deleteDevisAction(devisId: string) {
     };
     
   } catch (error) {
+    // Console log pour debugging en développement
+    // eslint-disable-next-line no-console
     console.error("Erreur lors de la suppression du devis:", error);
     return {
       success: false,

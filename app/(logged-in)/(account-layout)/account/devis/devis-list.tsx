@@ -50,6 +50,7 @@ const getStatusBadge = (status: string) => {
     refuse: { label: "Refusé", variant: "destructive" as const, color: "bg-red-100 text-red-800" },
   };
   
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.nouveau;
   
   return (
@@ -114,7 +115,7 @@ export const DevisList = ({ devisList }: DevisListProps) => {
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <CardTitle className="text-lg">
-                    {devis.nomEntreprise || devis.nomComplet}
+                    {devis.nomEntreprise ?? devis.nomComplet}
                   </CardTitle>
                   <div className="flex items-center gap-2">
                     {getClientTypeBadge(devis.clientType)}
