@@ -383,6 +383,35 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
 
               <FormField
                 control={form.control}
+                name="typeProjet"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Type de projet *</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Sélectionnez un type de projet" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="fenetre">Fenêtre</SelectItem>
+                        <SelectItem value="porte">Porte d'entrée</SelectItem>
+                        <SelectItem value="baie-vitree">Baie vitrée</SelectItem>
+                        <SelectItem value="volets">Volets</SelectItem>
+                        <SelectItem value="persiennes">Persiennes</SelectItem>
+                        <SelectItem value="pergolas">Pergolas</SelectItem>
+                        <SelectItem value="veranda">Véranda</SelectItem>
+                        <SelectItem value="menuiserie">Menuiserie</SelectItem>
+                        <SelectItem value="autre">Autre</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="fonction"
                 render={({ field }) => (
                   <FormItem>
@@ -433,6 +462,9 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         <SelectItem value="services-publics">Services Publics</SelectItem>
                         <SelectItem value="artisanat-local">Artisanat & Commerce Local</SelectItem>
                         <SelectItem value="banque-assurance">Banque & Assurance</SelectItem>
+                        <SelectItem value="transport-automobile">Transport & Automobile</SelectItem>
+                        <SelectItem value="agriculture-cooperative">Agriculture & Coopératives</SelectItem>
+                        <SelectItem value="technologie-startup">Technologie & Startups</SelectItem>
                         <SelectItem value="autre">Autre secteur</SelectItem>
                       </SelectContent>
                     </Select>
