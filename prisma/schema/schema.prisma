@@ -23,3 +23,38 @@ model Feedback {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Devis {
+  id               String   @id @default(cuid())
+  clientType       String   // "particulier" ou "professionnel"
+  
+  // Champs communs
+  nomComplet       String
+  email            String
+  telephone        String?
+  descriptionProjet String  @db.Text
+  
+  // Champs pour particulier
+  typeProjet       String?
+  
+  // Champs pour professionnel
+  nomContact       String?
+  nomEntreprise    String?
+  fonction         String?
+  secteurActivite  String?
+  tailleEntreprise String?
+  
+  // Métadonnées
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  status           String   @default("nouveau") // "nouveau", "en_cours", "traite", "refuse"
+  
+  // Relations - CRUCIAL : Chaque devis appartient à UN utilisateur
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Index pour optimiser les requêtes par utilisateur
+  @@index([userId])
+  @@index([userId, createdAt])
+  @@map("devis")
+}

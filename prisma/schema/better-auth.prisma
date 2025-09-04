@@ -19,6 +19,7 @@ model User {
   feedbacks   Feedback[]
   members     Member[]
   invitations Invitation[]
+  devis       Devis[]
 
   @@unique([email])
   @@map("user")
