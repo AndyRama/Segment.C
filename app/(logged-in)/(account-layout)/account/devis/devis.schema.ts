@@ -13,6 +13,12 @@ export const DevisFormSchema = z.object({
   // Champs pour particulier
   typeProjet: z.string().optional(), // pour "Type de projet"
   
+  // Nouveaux champs pour projets de construction
+  typeConstruction: z.enum(["je_fais_construire", "je_construis_moi_meme"]).optional(),
+  typeBatiment: z.enum(["maison", "autre"]).optional(),
+  natureTravaux: z.enum(["construction", "renovation"]).optional(),
+  besoinsRGE: z.enum(["oui", "non", "ne_sait_pas"]).optional(),
+  
   // Champs pour professionnel
   nomContact: z.string().optional(), // "Nom du contact"
   nomEntreprise: z.string().optional(),
@@ -25,7 +31,6 @@ export const DevisFormSchema = z.object({
     return data.nomContact && data.nomEntreprise && data.secteurActivite;
   }
   // Validation conditionnelle pour les champs particulier
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (data.clientType === "particulier") {
     return data.typeProjet;
   }

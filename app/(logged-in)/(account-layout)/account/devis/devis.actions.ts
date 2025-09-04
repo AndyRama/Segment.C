@@ -1,9 +1,12 @@
 "use server";
 
 import { getRequiredUser } from "@/lib/auth/auth-user";
-import { prisma } from "@/lib/prisma"; // Adaptez le chemin selon votre structure
+import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { DevisFormSchema, type DevisFormType } from "./devis.schema";
+import { sendEmail } from "./../../../../../src/lib/mail/send-email"; // Adaptez selon votre configuration email
+import NouveauDevisEmail from "./../../../../../emails/nouveau-devis-email"; // Chemin vers votre template
+import { SiteConfig } from "@/site-config";
 
 export async function createDevisAction(data: DevisFormType) {
   try {
@@ -13,7 +16,7 @@ export async function createDevisAction(data: DevisFormType) {
     // Valider les données
     const validatedData = DevisFormSchema.parse(data);
     
-    // Créer le devis en base avec Prisma - LIÉ À L'UTILISATEUR CONNECTÉ
+    // Créer le devis en base avec Prisma
     const devis = await prisma.devis.create({
       data: {
         clientType: validatedData.clientType,
@@ -22,15 +25,44 @@ export async function createDevisAction(data: DevisFormType) {
         telephone: validatedData.telephone ?? null,
         descriptionProjet: validatedData.descriptionProjet,
         typeProjet: validatedData.typeProjet ?? null,
+        // Nouveaux champs construction
+        typeConstruction: validatedData.typeConstruction ?? null,
+        typeBatiment: validatedData.typeBatiment ?? null,
+        natureTravaux: validatedData.natureTravaux ?? null,
+        besoinsRGE: validatedData.besoinsRGE ?? null,
+        // Champs professionnels
         nomContact: validatedData.nomContact ?? null,
         nomEntreprise: validatedData.nomEntreprise ?? null,
         fonction: validatedData.fonction ?? null,
         secteurActivite: validatedData.secteurActivite ?? null,
         tailleEntreprise: validatedData.tailleEntreprise ?? null,
-        userId: user.id, // IMPORTANT : Le devis est automatiquement lié à l'utilisateur connecté
+        userId: user.id,
         status: "nouveau",
       },
     });
+
+    // 📧 ENVOI DE L'EMAIL DE NOTIFICATION
+    try {
+      const dashboardUrl = `${process.env.NEXT_PUBLIC_URL}/admin/devis/${devis.id}`;
+      
+      await sendEmail({
+        to: "andyramaroson@gmail.com",
+        subject: `🔔 Nouveau devis reçu - ${validatedData.nomEntreprise || validatedData.nomComplet}`,
+        html: NouveauDevisEmail({
+          devisId: devis.id,
+          clientType: validatedData.clientType,
+          nomClient: validatedData.nomComplet,
+          nomEntreprise: validatedData.nomEntreprise,
+          email: validatedData.email,
+          typeProjet: validatedData.typeProjet,
+          descriptionProjet: validatedData.descriptionProjet,
+          dashboardUrl: dashboardUrl,
+        }),
+      });
+    } catch (emailError) {
+      // Log l'erreur email mais ne fait pas échouer la création du devis
+      console.error("Erreur envoi email notification:", emailError);
+    }
 
     // Invalider le cache pour rafraîchir les données
     revalidatePath("/account/devis");
@@ -42,7 +74,6 @@ export async function createDevisAction(data: DevisFormType) {
     };
     
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error("Erreur lors de la création du devis:", error);
     
     if (error instanceof Error && error.name === "ZodError") {
@@ -63,10 +94,9 @@ export async function getUserDevisAction() {
   try {
     const user = await getRequiredUser();
     
-    // IMPORTANT : L'utilisateur ne voit QUE ses propres devis
     const devis = await prisma.devis.findMany({
       where: {
-        userId: user.id, // Filtrage strict par userId
+        userId: user.id,
       },
       orderBy: {
         createdAt: "desc",
@@ -80,13 +110,17 @@ export async function getUserDevisAction() {
         status: true,
         createdAt: true,
         descriptionProjet: true,
+        typeProjet: true,
+        typeConstruction: true,
+        typeBatiment: true,
+        natureTravaux: true,
+        besoinsRGE: true,
       },
     });
     
     return devis;
     
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error("Erreur lors de la récupération des devis:", error);
     return [];
   }
@@ -96,11 +130,10 @@ export async function deleteDevisAction(devisId: string) {
   try {
     const user = await getRequiredUser();
     
-    // SÉCURITÉ CRITIQUE : Vérifier que le devis appartient bien à l'utilisateur connecté
     const devis = await prisma.devis.findFirst({
       where: {
         id: devisId,
-        userId: user.id, // Double vérification de propriété
+        userId: user.id,
       },
     });
     
@@ -111,11 +144,10 @@ export async function deleteDevisAction(devisId: string) {
       };
     }
     
-    // Supprimer uniquement SI le devis appartient à l'utilisateur
     await prisma.devis.delete({
       where: {
         id: devisId,
-        userId: user.id, // Sécurité supplémentaire dans la suppression
+        userId: user.id,
       },
     });
     
@@ -127,8 +159,6 @@ export async function deleteDevisAction(devisId: string) {
     };
     
   } catch (error) {
-    // Console log pour debugging en développement
-    // eslint-disable-next-line no-console
     console.error("Erreur lors de la suppression du devis:", error);
     return {
       success: false,

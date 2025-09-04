@@ -36,6 +36,12 @@ model Devis {
   
   // Champs pour particulier
   typeProjet       String?
+
+  // Nouveaux champs pour projets de construction
+  typeConstruction String?  // "je_fais_construire" ou "je_construis_moi_meme"
+  typeBatiment     String?  // "maison" ou "autre"
+  natureTravaux    String?  // "construction" ou "renovation"
+  besoinsRGE       String?  // "oui", "non" ou "ne_sait_pas"
   
   // Champs pour professionnel
   nomContact       String?
