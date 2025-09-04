@@ -31,10 +31,7 @@ export const DevisFormSchema = z.object({
     return data.nomContact && data.nomEntreprise && data.secteurActivite;
   }
   // Validation conditionnelle pour les champs particulier
-  if (data.clientType === "particulier") {
-    return data.typeProjet;
-  }
-  return true;
+  return data.typeProjet;
 }, {
   message: "Tous les champs requis doivent être remplis selon le type de client",
   path: ["root"]

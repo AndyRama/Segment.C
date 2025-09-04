@@ -4,9 +4,8 @@ import { getRequiredUser } from "@/lib/auth/auth-user";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { DevisFormSchema, type DevisFormType } from "./devis.schema";
-import { sendEmail } from "./../../../../../src/lib/mail/send-email"; // Adaptez selon votre configuration email
-import NouveauDevisEmail from "./../../../../../emails/nouveau-devis-email"; // Chemin vers votre template
-import { SiteConfig } from "@/site-config";
+import { sendEmail } from "./../../../../../src/lib/mail/send-email";
+import NouveauDevisEmail from "./../../../../../emails/nouveau-devis-email";
 
 export async function createDevisAction(data: DevisFormType) {
   try {
@@ -47,7 +46,7 @@ export async function createDevisAction(data: DevisFormType) {
       
       await sendEmail({
         to: "andyramaroson@gmail.com",
-        subject: `🔔 Nouveau devis reçu - ${validatedData.nomEntreprise || validatedData.nomComplet}`,
+        subject: `🔔 Nouveau devis reçu - ${validatedData.nomEntreprise ?? validatedData.nomComplet}`,
         html: NouveauDevisEmail({
           devisId: devis.id,
           clientType: validatedData.clientType,
@@ -61,6 +60,7 @@ export async function createDevisAction(data: DevisFormType) {
       });
     } catch (emailError) {
       // Log l'erreur email mais ne fait pas échouer la création du devis
+      // eslint-disable-next-line no-console
       console.error("Erreur envoi email notification:", emailError);
     }
 
@@ -74,6 +74,7 @@ export async function createDevisAction(data: DevisFormType) {
     };
     
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Erreur lors de la création du devis:", error);
     
     if (error instanceof Error && error.name === "ZodError") {
@@ -121,6 +122,7 @@ export async function getUserDevisAction() {
     return devis;
     
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Erreur lors de la récupération des devis:", error);
     return [];
   }
@@ -159,6 +161,7 @@ export async function deleteDevisAction(devisId: string) {
     };
     
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Erreur lors de la suppression du devis:", error);
     return {
       success: false,
