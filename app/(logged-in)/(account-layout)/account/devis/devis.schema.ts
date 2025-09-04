@@ -20,20 +20,40 @@ export const DevisFormSchema = z.object({
   besoinsRGE: z.enum(["oui", "non", "ne_sait_pas"]).optional(),
   
   // Champs pour professionnel
-  nomContact: z.string().optional(), // "Nom du contact"
-  nomEntreprise: z.string().optional(),
-  fonction: z.string().optional(), // "Votre fonction"
-  secteurActivite: z.string().optional(),
+  nomContact: z.string().min(1, "Le nom du contact est requis").optional(),
+  nomEntreprise: z.string().min(1, "Le nom de l'entreprise est requis").optional(),
+  fonction: z.string().optional(),
+  secteurActivite: z.string().min(1, "Le secteur d'activité est requis").optional(),
   tailleEntreprise: z.string().optional(),
 }).refine((data) => {
   // Validation conditionnelle pour les champs professionnels
   if (data.clientType === "professionnel") {
-    return data.nomContact && data.nomEntreprise && data.secteurActivite;
+    const isValid = !!(data.nomContact && data.nomContact.trim().length > 0) &&
+                   !!(data.nomEntreprise && data.nomEntreprise.trim().length > 0) &&
+                   !!(data.secteurActivite && data.secteurActivite.trim().length > 0);
+    
+    if (!isValid) {
+      console.log("Échec validation pro:", {
+        nomContact: data.nomContact,
+        nomEntreprise: data.nomEntreprise,
+        secteurActivite: data.secteurActivite
+      });
+    }
+    return isValid;
   }
+  
   // Validation conditionnelle pour les champs particulier
-  return data.typeProjet;
+  const isValidParticulier = !!(data.typeProjet && data.typeProjet.trim().length > 0);
+  
+  if (!isValidParticulier) {
+    console.log("Échec validation particulier:", {
+      typeProjet: data.typeProjet
+    });
+  }
+  
+  return isValidParticulier;
 }, {
-  message: "Tous les champs requis doivent être remplis selon le type de client",
+  message: "Veuillez remplir tous les champs obligatoires (*)",
   path: ["root"]
 });
 
