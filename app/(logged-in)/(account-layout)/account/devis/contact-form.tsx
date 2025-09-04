@@ -113,11 +113,6 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
     });
   };
 
-  // Vérifier si le type de projet sélectionné est lié à la construction
-  const selectedTypeProjet = form.watch("typeProjet");
-  // Afficher les champs construction pour tous les types de projets de menuiserie
-  const showConstructionFields = selectedTypeProjet && selectedTypeProjet !== "" && selectedTypeProjet !== "autre";
-
   return (
     <Form
       form={form}
@@ -219,13 +214,13 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="fenÃªtre">FenÃªtre</SelectItem>
-                        <SelectItem value="Porte">Porte d'entrÃ©e</SelectItem>
-                        <SelectItem value="Baie-vitrÃ©e">Baie vitrÃ©e</SelectItem>
+                        <SelectItem value="fenetre">Fenêtre</SelectItem>
+                        <SelectItem value="porte">Porte d'entrée</SelectItem>
+                        <SelectItem value="baie-vitree">Baie vitrée</SelectItem>
                         <SelectItem value="volets">Volets</SelectItem>
                         <SelectItem value="persiennes">Persiennes</SelectItem>
                         <SelectItem value="pergolas">Pergolas</SelectItem>
-                        <SelectItem value="verenda">Verenda</SelectItem>
+                        <SelectItem value="veranda">Véranda</SelectItem>
                         <SelectItem value="menuiserie">Menuiserie</SelectItem>
                         <SelectItem value="autre">Autre</SelectItem>
                       </SelectContent>
@@ -236,8 +231,8 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
               />
 
               {/* Champs spécifiques à la construction */}
-              <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 space-y-4">
-                <Typography className="font-semibold text-orange-800">
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200 space-y-4">
+                <Typography className="font-semibold text-green-800">
                   🏗️ Informations spécifiques à votre projet
                 </Typography>
 
@@ -433,9 +428,14 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         <SelectItem value="sante-medical">Santé & Médical</SelectItem>
                         <SelectItem value="industrie-logistique">Industrie & Logistique</SelectItem>
                         <SelectItem value="immobilier-syndic">Immobilier & Syndics</SelectItem>
+                        <SelectItem value="education-formation">Éducation & Formation</SelectItem>
+                        <SelectItem value="sport-loisirs">Sport & Loisirs</SelectItem>
                         <SelectItem value="services-publics">Services Publics</SelectItem>
                         <SelectItem value="artisanat-local">Artisanat & Commerce Local</SelectItem>
                         <SelectItem value="banque-assurance">Banque & Assurance</SelectItem>
+                        <SelectItem value="transport-automobile">Transport & Automobile</SelectItem>
+                        <SelectItem value="agriculture-cooperative">Agriculture & Coopératives</SelectItem>
+                        <SelectItem value="technologie-startup">Technologie & Startups</SelectItem>
                         <SelectItem value="autre">Autre secteur</SelectItem>
                       </SelectContent>
                     </Select>
