@@ -115,7 +115,8 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
 
   // Vérifier si le type de projet sélectionné est lié à la construction
   const selectedTypeProjet = form.watch("typeProjet");
-  const showConstructionFields = selectedTypeProjet === "construction" || selectedTypeProjet === "renovation";
+  // Afficher les champs construction pour tous les types de projets de menuiserie
+  const showConstructionFields = selectedTypeProjet && selectedTypeProjet !== "" && selectedTypeProjet !== "autre";
 
   return (
     <Form
@@ -235,110 +236,108 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
               />
 
               {/* Champs spécifiques à la construction */}
-              {showConstructionFields && (
-                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 space-y-4">
-                  <Typography className="font-semibold text-orange-800">
-                    🏗️ Informations spécifiques à votre projet de construction
+              <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 space-y-4">
+                <Typography className="font-semibold text-orange-800">
+                  🏗️ Informations spécifiques à votre projet
+                </Typography>
+
+                <FormField
+                  control={form.control}
+                  name="typeConstruction"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Mon projet de construction</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Sélectionnez votre situation" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="je_fais_construire">Je fais construire</SelectItem>
+                          <SelectItem value="je_construis_moi_meme">Je construis moi-même</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="typeBatiment"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Mon projet concerne</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Sélectionnez le type de bâtiment" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="maison">Une maison</SelectItem>
+                          <SelectItem value="autre">Autre type de bâtiment</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="natureTravaux"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nature des travaux</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Sélectionnez la nature des travaux" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="construction">En construction</SelectItem>
+                          <SelectItem value="renovation">En rénovation</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="besoinsRGE"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Mon projet a-t-il besoin de certification RGE ?</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Sélectionnez une option" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="oui">Oui</SelectItem>
+                          <SelectItem value="non">Non</SelectItem>
+                          <SelectItem value="ne_sait_pas">Je ne sais pas</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="bg-blue-50 p-3 rounded border border-blue-200">
+                  <Typography className="text-sm text-blue-700">
+                    <strong>Info RGE :</strong> La certification RGE (Reconnu Garant de l'Environnement) 
+                    est nécessaire pour bénéficier de certaines aides financières lors de travaux 
+                    d'amélioration énergétique.
                   </Typography>
-
-                  <FormField
-                    control={form.control}
-                    name="typeConstruction"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Mon projet de construction</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sélectionnez votre situation" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="je_fais_construire">Je fais construire</SelectItem>
-                            <SelectItem value="je_construis_moi_meme">Je construis moi-même</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="typeBatiment"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Mon projet concerne</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sélectionnez le type de bâtiment" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="maison">Une maison</SelectItem>
-                            <SelectItem value="autre">Autre type de bâtiment</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="natureTravaux"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Nature des travaux</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sélectionnez la nature des travaux" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="construction">En construction</SelectItem>
-                            <SelectItem value="renovation">En rénovation</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="besoinsRGE"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Mon projet a-t-il besoin de certification RGE ?</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sélectionnez une option" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="oui">Oui</SelectItem>
-                            <SelectItem value="non">Non</SelectItem>
-                            <SelectItem value="ne_sait_pas">Je ne sais pas</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <div className="bg-blue-50 p-3 rounded border border-blue-200">
-                    <Typography className="text-sm text-blue-700">
-                      <strong>Info RGE :</strong> La certification RGE (Reconnu Garant de l'Environnement) 
-                      est nécessaire pour bénéficier de certaines aides financières lors de travaux 
-                      d'amélioration énergétique.
-                    </Typography>
-                  </div>
                 </div>
-              )}
+              </div>
             </>
           )}
 
@@ -428,13 +427,13 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="immobilier">Immobilier</SelectItem>
-                        <SelectItem value="construction">Construction</SelectItem>
-                        <SelectItem value="artisanat-local">Artisanat</SelectItem>
+                        <SelectItem value="technologie">Technologie</SelectItem>
                         <SelectItem value="sante">Santé</SelectItem>
                         <SelectItem value="finance">Finance</SelectItem>
                         <SelectItem value="education">Éducation</SelectItem>
                         <SelectItem value="retail">Commerce de détail</SelectItem>
+                        <SelectItem value="immobilier">Immobilier</SelectItem>
+                        <SelectItem value="construction">Construction</SelectItem>
                         <SelectItem value="autre">Autre</SelectItem>
                       </SelectContent>
                     </Select>
@@ -494,7 +493,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
               ✅ Garanties incluses :
             </Typography>
             <ul className="text-sm text-green-700 space-y-1">
-              <li>✅ Devis détaillé gratuit sous 24h-48h</li>
+              <li>✅ Devis détaillé gratuit sous 24h</li>
               <li>✅ Accompagnement et suivi personnalisé</li>
               <li>✅ Résultats mesurables et plans adaptés</li>
               <li>✅ Garantie de qualité et respect des délais</li>
