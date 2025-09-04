@@ -219,9 +219,9 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="fenêtre">Fenêtre</SelectItem>
-                        <SelectItem value="Porte">Porte d'entrée</SelectItem>
-                        <SelectItem value="Baie-vitrée">Baie vitrée</SelectItem>
+                        <SelectItem value="fenÃªtre">FenÃªtre</SelectItem>
+                        <SelectItem value="Porte">Porte d'entrÃ©e</SelectItem>
+                        <SelectItem value="Baie-vitrÃ©e">Baie vitrÃ©e</SelectItem>
                         <SelectItem value="volets">Volets</SelectItem>
                         <SelectItem value="persiennes">Persiennes</SelectItem>
                         <SelectItem value="pergolas">Pergolas</SelectItem>
@@ -330,8 +330,8 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                   )}
                 />
 
-                <div className="bg-blue-50 p-3 rounded border border-blue-200">
-                  <Typography className="text-sm text-blue-700">
+                <div className="bg-green-50 p-3 rounded border border-green-200">
+                  <Typography className="text-sm text-green-700">
                     <strong>Info RGE :</strong> La certification RGE (Reconnu Garant de l'Environnement) 
                     est nécessaire pour bénéficier de certaines aides financières lors de travaux 
                     d'amélioration énergétique.
@@ -427,14 +427,16 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="technologie">Technologie</SelectItem>
-                        <SelectItem value="sante">Santé</SelectItem>
-                        <SelectItem value="finance">Finance</SelectItem>
-                        <SelectItem value="education">Éducation</SelectItem>
-                        <SelectItem value="retail">Commerce de détail</SelectItem>
-                        <SelectItem value="immobilier">Immobilier</SelectItem>
-                        <SelectItem value="construction">Construction</SelectItem>
-                        <SelectItem value="autre">Autre</SelectItem>
+                        <SelectItem value="hotellerie-restauration">Hôtellerie & Restauration</SelectItem>
+                        <SelectItem value="commerce-retail">Commerce & Retail</SelectItem>
+                        <SelectItem value="bureaux-tertiaire">Bureaux & Tertiaire</SelectItem>
+                        <SelectItem value="sante-medical">Santé & Médical</SelectItem>
+                        <SelectItem value="industrie-logistique">Industrie & Logistique</SelectItem>
+                        <SelectItem value="immobilier-syndic">Immobilier & Syndics</SelectItem>
+                        <SelectItem value="services-publics">Services Publics</SelectItem>
+                        <SelectItem value="artisanat-local">Artisanat & Commerce Local</SelectItem>
+                        <SelectItem value="banque-assurance">Banque & Assurance</SelectItem>
+                        <SelectItem value="autre">Autre secteur</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

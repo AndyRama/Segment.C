@@ -37,7 +37,7 @@ export default function NouveauDevisEmail({
       </Preview>
       
       <EmailSection>
-        <EmailText>Bonjour,</EmailText>
+        <EmailText>Bonjour Rui,</EmailText>
         
         <EmailText>
           Une nouvelle demande de devis vient d'être enregistrée sur votre plateforme.
@@ -99,13 +99,13 @@ export default function NouveauDevisEmail({
         </EmailText>
 
         <EmailText style={{ fontSize: "14px", color: "#6b7280", marginTop: "16px" }}>
-          ⏰ <strong>Action recommandée :</strong> Répondez dans les 24-48h pour maintenir un excellent taux de satisfaction client.
+          ⏰ <strong>Action recommandée :</strong> Répondez dans les 24 - 48h pour maintenir un excellent taux de satisfaction client.
         </EmailText>
       </EmailSection>
 
       <EmailText>
         Cordialement,
-        <br />- Système de notification {SiteConfig.title}
+        <br />- Système de notification de {SiteConfig.title}
       </EmailText>
     </EmailLayout>
   );
