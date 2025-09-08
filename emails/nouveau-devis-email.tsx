@@ -99,7 +99,7 @@ export default function NouveauDevisEmail({
         </EmailText>
 
         <EmailText style={{ fontSize: "14px", color: "#6b7280", marginTop: "16px" }}>
-          ⏰ <strong>Action recommandée :</strong> Répondez dans les 24 - 48h pour maintenir un excellent taux de satisfaction client.
+          ⏰ <strong>Action recommandée :</strong> Répondez dans les 24h pour maintenir un excellent taux de satisfaction client.
         </EmailText>
       </EmailSection>
 
