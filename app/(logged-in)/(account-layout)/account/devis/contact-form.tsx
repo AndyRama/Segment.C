@@ -133,7 +133,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
             <button
               type="button"
               onClick={() => handleClientTypeChange("particulier")}
-              className={`px-4 py-2 rounded-full transition-colors ${
+              className={`px-4 py-2 rounded-md transition-colors ${
                 clientType === "particulier"
                   ? "bg-green-500 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -145,7 +145,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
             <button
               type="button"
               onClick={() => handleClientTypeChange("professionnel")}
-              className={`px-4 py-2 rounded-full transition-colors ${
+              className={`px-4 py-2 rounded-md transition-colors ${
                 clientType === "professionnel"
                   ? "bg-green-500 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -325,8 +325,8 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                   )}
                 />
 
-                <div className="bg-blue-50 p-3 rounded border border-blue-200">
-                  <Typography className="text-sm text-blue-700">
+                <div className="bg-green-50 p-3 rounded border border-green-200">
+                  <Typography className="text-sm text-green-700">
                     <strong>Info RGE :</strong> La certification RGE (Reconnu Garant de l'Environnement) 
                     est nécessaire pour bénéficier de certaines aides financières lors de travaux 
                     d'amélioration énergétique.
@@ -524,7 +524,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
               ✅ Garanties incluses :
             </Typography>
             <ul className="text-sm text-green-700 space-y-1">
-              <li>✅ Devis détaillé gratuit sous 24h</li>
+              <li>✅ Devis détaillé gratuit sous 24h - 48h</li>
               <li>✅ Accompagnement et suivi personnalisé</li>
               <li>✅ Résultats mesurables et plans adaptés</li>
               <li>✅ Garantie de qualité et respect des délais</li>
