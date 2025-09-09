@@ -28,9 +28,9 @@ export const SignInProviders = ({
 
       <div className="grid grid-cols-1 gap-2 lg:gap-4">
         {/* ℹ️ Add provider you want to support here */}
-        {providers.includes("github") && (
+        {/* {providers.includes("github") && (
           <ProviderButton providerId="github" callbackUrl={callbackUrl} />
-        )}
+        )} */}
         {providers.includes("google") && (
           <ProviderButton providerId="google" callbackUrl={callbackUrl} />
         )}
