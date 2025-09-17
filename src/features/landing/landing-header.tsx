@@ -11,6 +11,7 @@ import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
+import { useSession } from "@/lib/auth-client";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -52,6 +53,7 @@ const clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
 
 export function LandingHeader() {
+  const { data: session } = useSession();
   const { scrollYBoundedProgress } = useBoundedScroll(400);
   const scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
@@ -60,7 +62,6 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    // { path: "/", label: "Segment.C" },
     { path: "/fenetres", label: "Fenêtre" },
     {
       path: "/portes",
@@ -107,7 +108,6 @@ export function LandingHeader() {
           </motion.p>
         </div>
 
-
         <motion.nav
           style={{
             opacity: useTransform(
@@ -150,11 +150,19 @@ export function LandingHeader() {
         {/* Éléments de navigation */}
         <nav className="flex items-center space-x-1">
           {/* Desktop auth button */}
-          <div className="hidden lg:contents">
-            <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
-              Devis
-            </Link>
-            <AuthButtonClient />
+          <div className="hidden lg:contents gap-2">
+            {session ? (
+              <Link href="/account/devis" className={buttonVariants({ size: "sm"})}>
+                Devis
+              </Link>
+            ) : (
+              <>
+                <Link href="/account/devis" className={buttonVariants({ size: "sm"})}>
+                  Devis
+                </Link>
+                <AuthButtonClient className="ml-4" />
+              </>
+            )}
           </div>
 
           {/* Mobile menu */}
@@ -187,10 +195,18 @@ export function LandingHeader() {
                   </div>
                   <hr />
                   <div className="flex flex-row items-center justify-around">
-                    <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
-                      Devis
-                    </Link>
-                    <AuthButtonClient />
+                    {session ? (
+                      <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+                        Devis
+                      </Link>
+                    ) : (
+                      <>
+                        <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+                          Devis
+                        </Link>
+                        <AuthButtonClient />
+                      </>
+                    )}
                     <Typography
                       variant="h3"
                       className="text-left text-lg !leading-tight"
