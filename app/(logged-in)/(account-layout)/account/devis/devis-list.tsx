@@ -20,7 +20,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Trash2, Eye, Calendar, Package } from "lucide-react";
+import { Trash2, Eye, Calendar } from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
 import { deleteDevisAction } from "./devis.actions";
@@ -36,7 +36,7 @@ type Devis = {
   status: string;
   createdAt: Date;
   descriptionProjet: string;
-  typeProjet: string;
+  typeProjet: string | null;
 };
 
 type DevisListProps = {
@@ -69,7 +69,9 @@ const getClientTypeBadge = (clientType: string) => {
   );
 };
 
-const getTypeProjetLabel = (typeProjet: string) => {
+const getTypeProjetLabel = (typeProjet: string | null) => {
+  if (!typeProjet) return "Non spécifié";
+  
   const typeProjetLabels: Record<string, string> = {
     fenetre: "Fenêtre",
     porte: "Porte d'entrée",
@@ -134,13 +136,9 @@ export const DevisList = ({ devisList }: DevisListProps) => {
                   <CardTitle className="text-lg">
                     {devis.nomEntreprise ?? devis.nomComplet}
                   </CardTitle>
-                  <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-2">
                     {getClientTypeBadge(devis.clientType)}
                     {getStatusBadge(devis.status)}
-                    <Badge variant="secondary" className="bg-green-50 text-green-700">
-                      <Package className="h-3 w-3 mr-1" />
-                      {getTypeProjetLabel(devis.typeProjet)}
-                    </Badge>
                   </div>
                 </div>
                 
@@ -170,7 +168,7 @@ export const DevisList = ({ devisList }: DevisListProps) => {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Supprimer la demande de devis</AlertDialogTitle>
                         <AlertDialogDescription>
-                          Êtes-vous sûr de vouloir supprimer cette demande de devis ? <br/>
+                          Êtes-vous sûr de vouloir supprimer cette demande de devis ? 
                           Cette action est irréversible.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
@@ -198,6 +196,15 @@ export const DevisList = ({ devisList }: DevisListProps) => {
                       locale: fr 
                     })}
                   </span>
+                </div>
+                
+                <div>
+                  <Typography className="text-sm font-medium mb-1">
+                    Type de projet :
+                  </Typography>
+                  <Typography className="text-sm text-muted-foreground">
+                    {getTypeProjetLabel(devis.typeProjet)}
+                  </Typography>
                 </div>
                 
                 <div>
