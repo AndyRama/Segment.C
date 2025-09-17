@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   X,
   Star,
@@ -623,28 +623,7 @@ const VerandaModal = ({
   veranda: VerandaProps;
   onClose: () => void;
 }) => {
-  const [showQuoteForm, setShowQuoteForm] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmitQuote = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Votre demande de devis a été envoyée avec succès !");
-    onClose();
-  };
+  const { data: session } = useSession();
 
   const getPerformanceIcon = (feature: string) => {
     if (feature.includes("Toiture") || feature.includes("toiture")) return Sun;
@@ -685,288 +664,197 @@ const VerandaModal = ({
 
           {/* Contenu */}
           <div className="w-full space-y-6 p-6 md:w-1/2">
-            {!showQuoteForm ? (
-              <>
-                {/* En-tête */}
-                <div>
-                  <div className="mb-2 flex items-center gap-2">
-                    <Typography variant="h2">{veranda.name}</Typography>
-                    <div className="flex items-center gap-1">
-                      <Star
-                        size={16}
-                        className="fill-yellow-400 text-yellow-400"
-                      />
-                      <Typography variant="small">{veranda.rating}</Typography>
+            {/* En-tête */}
+            <div>
+              <div className="mb-2 flex items-center gap-2">
+                <Typography variant="h2">{veranda.name}</Typography>
+                <div className="flex items-center gap-1">
+                  <Star
+                    size={16}
+                    className="fill-yellow-400 text-yellow-400"
+                  />
+                  <Typography variant="small">{veranda.rating}</Typography>
+                </div>
+              </div>
+
+              <div className="mb-4 flex flex-wrap gap-2">
+                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 capitalize">
+                  {veranda.material}
+                </span>
+                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800 capitalize">
+                  {veranda.style}
+                </span>
+                <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 capitalize">
+                  Toiture {veranda.toiture}
+                </span>
+              </div>
+
+              <Typography variant="large" className="text-primary">
+                {veranda.priceRange}
+              </Typography>
+            </div>
+
+            {/* Informations techniques */}
+            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Surface
+                </Typography>
+                <Typography variant="small" className="font-semibold">
+                  {veranda.surface}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Matériau
+                </Typography>
+                <Typography
+                  variant="small"
+                  className="font-semibold capitalize"
+                >
+                  {veranda.material}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Style
+                </Typography>
+                <Typography
+                  variant="small"
+                  className="font-semibold capitalize"
+                >
+                  {veranda.style}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Toiture
+                </Typography>
+                <Typography
+                  variant="small"
+                  className="font-semibold capitalize"
+                >
+                  {veranda.toiture}
+                </Typography>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div>
+              <Typography variant="h3" className="mb-2">
+                Description
+              </Typography>
+              <Typography
+                variant="p"
+                className="text-muted-foreground leading-relaxed"
+              >
+                {veranda.description}
+              </Typography>
+            </div>
+
+            {/* Caractéristiques */}
+            <div>
+              <Typography variant="h3" className="mb-3">
+                Caractéristiques
+              </Typography>
+              <div className="grid grid-cols-1 gap-2">
+                {veranda.features.map((feature, index) => {
+                  const IconComponent = getPerformanceIcon(feature);
+                  return (
+                    <div key={index} className="flex items-center gap-2">
+                      <IconComponent size={16} className="text-green-600" />
+                      <Typography variant="small">{feature}</Typography>
                     </div>
-                  </div>
+                  );
+                })}
+              </div>
+            </div>
 
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 capitalize">
-                      {veranda.material}
-                    </span>
-                    <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800 capitalize">
-                      {veranda.style}
-                    </span>
-                    <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 capitalize">
-                      Toiture {veranda.toiture}
-                    </span>
-                  </div>
-
-                  <Typography variant="large" className="text-primary">
-                    {veranda.priceRange}
-                  </Typography>
-                </div>
-
-                {/* Informations techniques */}
-                <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
-                  <div>
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      Surface
-                    </Typography>
-                    <Typography variant="small" className="font-semibold">
-                      {veranda.surface}
-                    </Typography>
-                  </div>
-                  <div>
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      Matériau
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="font-semibold capitalize"
-                    >
-                      {veranda.material}
-                    </Typography>
-                  </div>
-                  <div>
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      Style
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="font-semibold capitalize"
-                    >
-                      {veranda.style}
-                    </Typography>
-                  </div>
-                  <div>
-                    <Typography
-                      variant="small"
-                      className="text-muted-foreground"
-                    >
-                      Toiture
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="font-semibold capitalize"
-                    >
-                      {veranda.toiture}
-                    </Typography>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div>
-                  <Typography variant="h3" className="mb-2">
-                    Description
-                  </Typography>
-                  <Typography
-                    variant="p"
-                    className="text-muted-foreground leading-relaxed"
+            {/* Couleurs disponibles */}
+            <div>
+              <Typography variant="h3" className="mb-3">
+                Couleurs disponibles
+              </Typography>
+              <div className="flex flex-wrap gap-2">
+                {veranda.colors.map((color, index) => (
+                  <span
+                    key={index}
+                    className="rounded-full bg-gray-100 px-3 py-1 text-sm"
                   >
-                    {veranda.description}
+                    {color}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Boutons d'action avec authentification */}
+            <div className="flex gap-3 pt-4">
+              {session ? (
+                <Link 
+                  href="/account/devis" 
+                  className={buttonVariants({ 
+                    size: "default", 
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                  })}
+                >
+                  Demander un devis
+                </Link>
+              ) : (
+                <Link 
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                  className={buttonVariants({ 
+                    size: "default", 
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                  })}
+                >
+                  Se connecter pour un devis
+                </Link>
+              )}
+              <Button 
+                variant="outline"
+                onClick={onClose}
+                className="flex-1"
+              >
+                Fermer
+              </Button>
+            </div>
+
+            {/* Informations de contact */}
+            <div className="mt-6 rounded-lg bg-gray-50 p-4">
+              <Typography variant="small" className="mb-3 font-semibold">
+                Ou contactez-nous directement
+              </Typography>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <Phone size={14} />
+                  <Typography variant="small">05 56 12 34 56</Typography>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail size={14} />
+                  <Typography variant="small">
+                    contact@segment-c.com
                   </Typography>
                 </div>
-
-                {/* Caractéristiques */}
-                <div>
-                  <Typography variant="h3" className="mb-3">
-                    Caractéristiques
-                  </Typography>
-                  <div className="grid grid-cols-1 gap-2">
-                    {veranda.features.map((feature, index) => {
-                      const IconComponent = getPerformanceIcon(feature);
-                      return (
-                        <div key={index} className="flex items-center gap-2">
-                          <IconComponent size={16} className="text-green-600" />
-                          <Typography variant="small">{feature}</Typography>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Couleurs disponibles */}
-                <div>
-                  <Typography variant="h3" className="mb-3">
-                    Couleurs disponibles
-                  </Typography>
-                  <div className="flex flex-wrap gap-2">
-                    {veranda.colors.map((color, index) => (
-                      <span
-                        key={index}
-                        className="rounded-full bg-gray-100 px-3 py-1 text-sm"
-                      >
-                        {color}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Boutons d'action */}
-                <div className="flex gap-3 pt-4">
-                  <Button
-                    onClick={() => setShowQuoteForm(true)}
-                    className="bg-primary hover:bg-primary/90 flex-1 text-white"
-                  >
-                    Demander un devis
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={onClose}
-                    className="flex-1"
-                  >
-                    Fermer
-                  </Button>
-                </div>
-              </>
-            ) : (
-              <>
-                {/* Formulaire de devis */}
-                <div>
-                  <Typography variant="h2" className="mb-2">
-                    Demande de devis
-                  </Typography>
-                  <Typography variant="muted" className="mb-6">
-                    Pour la véranda <strong>{veranda.name}</strong>
+                <div className="flex items-center gap-2">
+                  <MapPin size={14} />
+                  <Typography variant="small">
+                    St Jean d'Illac, Gironde
                   </Typography>
                 </div>
-
-                <form onSubmit={handleSubmitQuote} className="space-y-4">
-                  <div>
-                    <Typography
-                      variant="small"
-                      as="label"
-                      className="mb-1 block"
-                    >
-                      Nom complet *
-                    </Typography>
-                    <Input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Votre nom complet"
-                    />
-                  </div>
-
-                  <div>
-                    <Typography
-                      variant="small"
-                      as="label"
-                      className="mb-1 block"
-                    >
-                      Email *
-                    </Typography>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="votre@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <Typography
-                      variant="small"
-                      as="label"
-                      className="mb-1 block"
-                    >
-                      Téléphone *
-                    </Typography>
-                    <Input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="06 12 34 56 78"
-                    />
-                  </div>
-
-                  <div>
-                    <Typography
-                      variant="small"
-                      as="label"
-                      className="mb-1 block"
-                    >
-                      Message (optionnel)
-                    </Typography>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Décrivez votre projet : surface souhaitée, usage prévu, contraintes du terrain..."
-                      rows={4}
-                    />
-                  </div>
-
-                  <div className="flex gap-3 pt-4">
-                    <Button
-                      type="submit"
-                      className="bg-primary hover:bg-primary/90 flex-1 text-white"
-                    >
-                      Envoyer la demande
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setShowQuoteForm(false)}
-                      className="flex-1"
-                    >
-                      Retour
-                    </Button>
-                  </div>
-                </form>
-
-                {/* Informations de contact */}
-                <div className="mt-6 rounded-lg bg-gray-50 p-4">
-                  <Typography variant="small" className="mb-3 font-semibold">
-                    Ou contactez-nous directement
-                  </Typography>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <Phone size={14} />
-                      <Typography variant="small">05 56 12 34 56</Typography>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Mail size={14} />
-                      <Typography variant="small">
-                        contact@segment-c.com
-                      </Typography>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin size={14} />
-                      <Typography variant="small">
-                        St Jean d'Illac, Gironde
-                      </Typography>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

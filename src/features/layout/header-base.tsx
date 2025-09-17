@@ -12,6 +12,7 @@ import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { Layout } from "../page/layout";
 import { buttonVariants } from "@/components/ui/button";
+import { useSession } from "@/lib/auth-client";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -53,6 +54,7 @@ const clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
 
 export function HeaderBase({ children }: PropsWithChildren) {
+  const { data: session } = useSession();
   const { scrollYBoundedProgress } = useBoundedScroll(400);
   const scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
@@ -61,7 +63,6 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
-    // { path: "/", label: "Segment.C" },
     { path: "/fenetres", label: "Fenêtre" },
     {
       path: "/portes",
@@ -153,11 +154,22 @@ export function HeaderBase({ children }: PropsWithChildren) {
         {/* Éléments de navigation */}
         <nav className="flex items-center space-x-1">
           {/* Desktop: Bouton Devis + children */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-1">
-            <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
-              Devis
-            </Link>
-            {children}
+          <div className="hidden lg:flex lg:items-center lg:space-x-1">      
+             {session ? (
+                <>
+                <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
+                  Mes Devis
+                </Link>
+                {children}
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
+                    Demande de devis
+                  </Link>
+                  {children}
+                </>
+              )}
           </div>
           
           {/* Mobile menu */}
@@ -190,15 +202,27 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   </div>
                   <hr />
                   <div className="flex flex-row items-center justify-around">
-                    <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
-                      Devis
-                    </Link>
-                    {children}
+                    {session ? (
+                      <>
+                        <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                          Mes devis
+                        </Link>
+                        {children}
+                      </>
+                      ) : (
+                        <>
+                          <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                            Demande de devis
+                          </Link>
+                          {children}
+                        </>
+                      )}
+                    
                     <Typography
                       variant="h3"
                       className="text-left text-lg !leading-tight"
                     >
-                      Menu Principal
+                      Menu 
                     </Typography>
                   </div>
                   <hr />

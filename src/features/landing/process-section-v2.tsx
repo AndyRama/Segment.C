@@ -146,7 +146,7 @@ export const ProcessSection2 = () => {
               accompagne à chaque étape, depuis la première visite conseil
               jusqu'à la finalisation de vos travaux.
             </Typography>
-            <Link href="/account/devis">
+            <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

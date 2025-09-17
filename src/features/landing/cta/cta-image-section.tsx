@@ -25,8 +25,8 @@ export const CTAImageSection = () => {
         <Typography className="text-center font-bold">
           Lorem ipsum dolor sit amet consectetur
         </Typography>
-        <Link href="/account/devis" className={buttonVariants({ size: "lg" })}>
-          Demander un devis
+        <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "lg" })}>
+          Demande de devis
         </Link>
       </SectionLayout>
     </div>

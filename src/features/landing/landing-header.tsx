@@ -154,14 +154,14 @@ export function LandingHeader() {
             {session ? (
               <>
               <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
-                Demande de Devis
+                Mes Devis
               </Link>
               <AuthButtonClient/>
               </>
             ) : (
               <>
                 <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
-                  Devis
+                  Demande de devis
                 </Link>
                 <AuthButtonClient/>
               </>
@@ -199,12 +199,15 @@ export function LandingHeader() {
                   <hr />
                   <div className="flex flex-row items-center justify-around">
                     {session ? (
-                      <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+                    <>
+                      <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
                         Devis
                       </Link>
+                      <AuthButtonClient />
+                    </>
                     ) : (
                       <>
-                        <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                        <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
                           Devis
                         </Link>
                         <AuthButtonClient />
