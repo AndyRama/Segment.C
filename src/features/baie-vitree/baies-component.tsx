@@ -365,7 +365,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
 
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters((prev) => ({ ...prev, [filterType]: value }));
-    setVisibleCount(9);
+    setVisibleCount(12);
   };
 
   return (
@@ -659,7 +659,7 @@ const BaieVitreeModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-md bg-white">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -681,7 +681,7 @@ const BaieVitreeModal = ({
           </div>
 
           {/* Contenu */}
-          <div className="w-full space-y-6 p-6 md:w-1/2">
+          <div className="w-full space-y-4 p-4 md:w-1/2">
             {/* En-tête */}
             <div>
               <div className="mb-2 flex items-center gap-2">
@@ -770,7 +770,7 @@ const BaieVitreeModal = ({
 
             {/* Description */}
             <div>
-              <Typography variant="h3" className="mb-2">
+              <Typography variant="h3" className="mb-1">
                 Description
               </Typography>
               <Typography
@@ -826,7 +826,7 @@ const BaieVitreeModal = ({
                     className: "flex-1 bg-primary text-white hover:bg-primary/90" 
                   })}
                 >
-                  Demander un devis
+                  Ajout au panier
                 </Link>
               ) : (
                 <Link 
@@ -871,7 +871,7 @@ const BaieVitreeModal = ({
                   </Typography>
                 </div>
               </div>
-              <div className="mt-3 border-t border-gray-200 pt-3">
+              {/* <div className="mt-3 border-t border-gray-200 pt-3">
                 <Typography
                   variant="small"
                   className="text-muted-foreground"
@@ -882,7 +882,7 @@ const BaieVitreeModal = ({
                   <br />
                   🔧 Installation par nos équipes certifiées
                 </Typography>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
