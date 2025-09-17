@@ -70,7 +70,7 @@ const getClientTypeBadge = (clientType: string) => {
 };
 
 const getTypeProjetLabel = (typeProjet: string) => {
-  const typeProjetLabels: { [key: string]: string } = {
+  const typeProjetLabels: Record<string, string> = {
     fenetre: "Fenêtre",
     porte: "Porte d'entrée",
     "baie-vitree": "Baie vitrée",
