@@ -157,10 +157,10 @@ export function LandingHeader() {
               </Link>
             ) : (
               <>
-                <Link href="/account/devis" className={buttonVariants({ size: "sm"})}>
+                <Link href="/account/devis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
                   Devis
                 </Link>
-                <AuthButtonClient className="ml-4" />
+                <AuthButtonClient/>
               </>
             )}
           </div>
