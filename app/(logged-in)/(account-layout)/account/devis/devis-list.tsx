@@ -20,7 +20,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Trash2, Eye, Calendar } from "lucide-react";
+import { Trash2, Eye, Calendar, Package } from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
 import { deleteDevisAction } from "./devis.actions";
@@ -36,6 +36,7 @@ type Devis = {
   status: string;
   createdAt: Date;
   descriptionProjet: string;
+  typeProjet: string;
 };
 
 type DevisListProps = {
@@ -66,6 +67,22 @@ const getClientTypeBadge = (clientType: string) => {
       {clientType === "particulier" ? "👤 Particulier" : "🏢 Professionnel"}
     </Badge>
   );
+};
+
+const getTypeProjetLabel = (typeProjet: string) => {
+  const typeProjetLabels: { [key: string]: string } = {
+    fenetre: "Fenêtre",
+    porte: "Porte d'entrée",
+    "baie-vitree": "Baie vitrée",
+    volets: "Volets",
+    persiennes: "Persiennes",
+    pergolas: "Pergolas",
+    veranda: "Véranda",
+    menuiserie: "Menuiserie",
+    autre: "Autre"
+  };
+  
+  return typeProjetLabels[typeProjet] || typeProjet;
 };
 
 export const DevisList = ({ devisList }: DevisListProps) => {
@@ -117,9 +134,13 @@ export const DevisList = ({ devisList }: DevisListProps) => {
                   <CardTitle className="text-lg">
                     {devis.nomEntreprise ?? devis.nomComplet}
                   </CardTitle>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     {getClientTypeBadge(devis.clientType)}
                     {getStatusBadge(devis.status)}
+                    <Badge variant="secondary" className="bg-green-50 text-green-700">
+                      <Package className="h-3 w-3 mr-1" />
+                      {getTypeProjetLabel(devis.typeProjet)}
+                    </Badge>
                   </div>
                 </div>
                 
@@ -149,7 +170,7 @@ export const DevisList = ({ devisList }: DevisListProps) => {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Supprimer la demande de devis</AlertDialogTitle>
                         <AlertDialogDescription>
-                          Êtes-vous sûr de vouloir supprimer cette demande de devis ? 
+                          Êtes-vous sûr de vouloir supprimer cette demande de devis ? <br/>
                           Cette action est irréversible.
                         </AlertDialogDescription>
                       </AlertDialogHeader>

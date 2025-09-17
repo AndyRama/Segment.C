@@ -11,6 +11,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { Layout } from "../page/layout";
+import { buttonVariants } from "@/components/ui/button";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -60,7 +61,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
-    { path: "/", label: "Segment.C" },
+    // { path: "/", label: "Segment.C" },
     { path: "/fenetres", label: "Fenêtre" },
     {
       path: "/portes",
@@ -151,7 +152,14 @@ export function HeaderBase({ children }: PropsWithChildren) {
 
         {/* Éléments de navigation */}
         <nav className="flex items-center space-x-1">
-          {children}
+          {/* Desktop: Bouton Devis + children */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-1">
+            <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+              Devis
+            </Link>
+            {children}
+          </div>
+          
           {/* Mobile menu */}
           <div className="z-20 flex items-center gap-2 lg:hidden">
             <Sheet>
@@ -182,6 +190,10 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   </div>
                   <hr />
                   <div className="flex flex-row items-center justify-around">
+                    <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+                      Devis
+                    </Link>
+                    {children}
                     <Typography
                       variant="h3"
                       className="text-left text-lg !leading-tight"

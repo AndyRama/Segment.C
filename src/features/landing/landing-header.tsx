@@ -10,6 +10,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
+import { buttonVariants } from "@/components/ui/button";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -59,7 +60,7 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "/", label: "Segment.C" },
+    // { path: "/", label: "Segment.C" },
     { path: "/fenetres", label: "Fenêtre" },
     {
       path: "/portes",
@@ -150,6 +151,9 @@ export function LandingHeader() {
         <nav className="flex items-center space-x-1">
           {/* Desktop auth button */}
           <div className="hidden lg:contents">
+            <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+              Devis
+            </Link>
             <AuthButtonClient />
           </div>
 
@@ -183,6 +187,9 @@ export function LandingHeader() {
                   </div>
                   <hr />
                   <div className="flex flex-row items-center justify-around">
+                    <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+                      Devis
+                    </Link>
                     <AuthButtonClient />
                     <Typography
                       variant="h3"

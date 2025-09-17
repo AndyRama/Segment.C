@@ -109,7 +109,7 @@ const AboutStats = ({ experience }: { experience: string }) => (
 const AboutActions = () => (
   <div className="flex flex-col gap-4 sm:flex-row">
     <Link
-      href="/#devis"
+      href="/account/devis"
       className={cn(
         buttonVariants({ size: "lg", variant: "default" }),
         "text-white border hover:border-green-500 hover:text-green-500"

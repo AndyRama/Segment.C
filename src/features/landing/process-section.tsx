@@ -199,7 +199,7 @@ const ProcessSummary = () => (
     
     <div className="flex flex-col justify-center gap-4 sm:flex-row">
       <Link
-        href="/contact"
+        href="/account/devis"
         className={cn(
           buttonVariants({ size: "lg", variant: "default" }),
           "bg-green-600 hover:bg-green-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
