@@ -152,12 +152,15 @@ export function LandingHeader() {
           {/* Desktop auth button */}
           <div className="hidden lg:contents gap-2">
             {session ? (
-              <Link href="/account/devis" className={buttonVariants({ size: "sm"})}>
-                Devis
+              <>
+              <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
+                Demande de Devis
               </Link>
+              <AuthButtonClient/>
+              </>
             ) : (
               <>
-                <Link href="/account/devis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
+                <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
                   Devis
                 </Link>
                 <AuthButtonClient/>
@@ -201,7 +204,7 @@ export function LandingHeader() {
                       </Link>
                     ) : (
                       <>
-                        <Link href="/account/devis" className={buttonVariants({ size: "sm" })}>
+                        <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
                           Devis
                         </Link>
                         <AuthButtonClient />
