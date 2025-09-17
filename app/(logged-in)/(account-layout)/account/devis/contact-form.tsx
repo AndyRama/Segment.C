@@ -341,6 +341,19 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
             <>
               <FormField
                 control={form.control}
+                name="nomComplet"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nom complet *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Nom Prénom" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="nomContact"
                 render={({ field }) => (
                   <FormItem>
@@ -352,7 +365,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                   </FormItem>
                 )}
               />
-
+              
               <FormField
                 control={form.control}
                 name="email"
@@ -544,7 +557,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
       </Card>
 
       <Typography className="text-center text-sm text-muted-foreground mt-4">
-        Votre demande sera traitée dans les plus brefs délais par notre équipe.
+        Votre demande sera traitée dans les plus brefs délais.
       </Typography>
     </Form>
   );
