@@ -521,7 +521,7 @@ export const ContactForm = ({ defaultUser }: ContactFormProps) => {
                 <FormLabel>Description du projet *</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Décrivez votre projet en détail : objectifs, budget approximatif, délais souhaités, fonctionnalités attendues..."
+                    placeholder="Décrivez votre projet en détail : objectifs, budget approximatif, délais souhaités, une ou plusieurs fenetre..."
                     className="min-h-[120px] resize-none"
                     {...field}
                   />

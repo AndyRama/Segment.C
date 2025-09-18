@@ -87,6 +87,66 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       beforeImage: "/images/fenetre1.jpg",
       afterImage: "/images/fenetre2.jpg",
       description: "Rénovation complète des menuiseries d'une maison traditionnelle."
+    },
+    {
+      id: 7,
+      title: "Rénovation fenêtres PVC",
+      category: "fenetre",
+      location: "Lacanau",
+      date: "Mars 2024",
+      beforeImage: "/images/fenetre1.jpg",
+      afterImage: "/images/fenetre2.jpg",
+      description: "Remplacement complet de 8 fenêtres en PVC double vitrage avec volets intégrés."
+    },
+    {
+      id: 8,
+      title: "Porte d'entrée sur mesure",
+      category: "porte",
+      location: "Bordeaux",
+      date: "Février 2024",
+      beforeImage: "/images/fenetre2.jpg",
+      afterImage: "/images/fenetre3.jpg",
+      description: "Création et pose d'une porte d'entrée en bois massif avec vitrage sécurisé."
+    },
+    {
+      id: 9,
+      title: "Baie vitrée coulissante",
+      category: "baie",
+      location: "Arcachon",
+      date: "Janvier 2024",
+      beforeImage: "/images/fenetre3.jpg",
+      afterImage: "/images/fenetre4.jpg",
+      description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
+    },
+    {
+      id: 10,
+      title: "Volets battants bois",
+      category: "volet",
+      location: "Cap Ferret",
+      date: "Décembre 2023",
+      beforeImage: "/images/fenetre4.jpg",
+      afterImage: "/images/fenetre5.jpg",
+      description: "Fabrication et pose de volets battants en bois traité classe 4."
+    },
+    {
+      id: 11,
+      title: "Véranda contemporaine",
+      category: "veranda",
+      location: "Lacanau",
+      date: "Novembre 2023",
+      beforeImage: "/images/fenetre5.jpg",
+      afterImage: "/images/fenetre1.jpg",
+      description: "Construction d'une véranda moderne en aluminium et verre."
+    },
+    {
+      id: 12,
+      title: "Menuiseries complètes",
+      category: "menuiserie",
+      location: "Pessac",
+      date: "Octobre 2023",
+      beforeImage: "/images/fenetre1.jpg",
+      afterImage: "/images/fenetre2.jpg",
+      description: "Rénovation complète des menuiseries d'une maison traditionnelle."
     }
   ];
 
