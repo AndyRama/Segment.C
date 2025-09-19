@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { motion, useTransform } from "framer-motion";
+import Link from "next/link";
 
 import {
   Sidebar,
@@ -47,20 +47,9 @@ const BaseSidebar = () => {
             width={32}
             height={32}
           />
-          <motion.div
-            style={{
-              scale: useTransform(
-                scrollYBoundedProgressDelayed,
-                [0, 1],
-                [1, 0.9],
-              ),
-            }}
-            className="flex origin-left items-center"
-          >
-            <Link href="/" className="text-base font-bold text-green-500">
+          <Link href="/" className="text-base font-bold text-green-500">
               {SiteConfig.title}
-            </Link>
-          </motion.div>
+          </Link>
         </div>
       </SidebarHeader>
       <SidebarContent>
