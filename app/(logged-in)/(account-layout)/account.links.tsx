@@ -22,26 +22,6 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     ],
   },
   {
-    title: "Ton profil",
-    links: [
-      {
-        href: "/account",
-        Icon: User2,
-        label: "Profile",
-      },
-      {
-        href: "/account/email",
-        Icon: Mail,
-        label: "Email",
-      },
-      {
-        href: "/account/danger",
-        Icon: AlertCircle,
-        label: "Danger",
-      },
-    ],
-  },
-  {
     title: "Devis",
     links: [
       {
@@ -58,6 +38,26 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
         href: "#",
         Icon: ShoppingCart,
         label: "Achats",
+      },
+    ],
+  },
+  {
+    title: "Ton profil",
+    links: [
+      {
+        href: "/account",
+        Icon: User2,
+        label: "Profile",
+      },
+      {
+        href: "/account/email",
+        Icon: Mail,
+        label: "Email",
+      },
+      {
+        href: "/account/danger",
+        Icon: AlertCircle,
+        label: "Danger",
       },
     ],
   },

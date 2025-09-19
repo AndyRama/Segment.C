@@ -2,12 +2,15 @@ import type { NavigationGroup } from "@/features/navigation/navigation.type";
 import type { AuthRole } from "@/lib/auth/auth-permissions";
 import { isInRoles } from "@/lib/organizations/is-in-roles";
 import {
-  CreditCard,
+  FolderInput,
   Home,
+  User2,
   Settings,
   TriangleAlert,
   User,
-  User2,
+  CreditCard,
+  NotebookPen,
+  DoorOpen,
 } from "lucide-react";
 
 const replaceSlug = (href: string, slug: string): string =>
@@ -63,19 +66,19 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
     links: [
       {
         href: `${ORGANIZATION_PATH}/settings`,
-        Icon: Settings,
+        Icon: DoorOpen,
         label: "Produits",
         roles: ["admin"],
       },
       {
         href: `${ORGANIZATION_PATH}/settings/members`,
-        Icon: User2,
+        Icon: NotebookPen,
         label: "Devis",
         roles: ["admin"],
       },
       {
         href: `${ORGANIZATION_PATH}/settings/billing`,
-        Icon: CreditCard,
+        Icon: FolderInput ,
         label: "Archive",
         roles: ["admin"],
       },
