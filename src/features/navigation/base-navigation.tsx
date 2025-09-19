@@ -1,5 +1,6 @@
-import { Typography } from "@/components/nowts/typography";
-import { LogoSvg } from "@/components/svg/logo-svg";
+import Image from "next/image";
+import { motion, useTransform } from "framer-motion";
+
 import {
   Sidebar,
   SidebarContent,
@@ -40,8 +41,26 @@ const BaseSidebar = () => {
     <Sidebar variant="inset">
       <SidebarHeader>
         <div className="mb-4 flex flex-row items-center gap-2">
-          <LogoSvg size={24} />
-          <Typography>{SiteConfig.title}</Typography>
+          <Image
+            src={SiteConfig.appIcon}
+            alt="logo enterprise Segment.C"
+            width={32}
+            height={32}
+          />
+          <motion.div
+            style={{
+              scale: useTransform(
+                scrollYBoundedProgressDelayed,
+                [0, 1],
+                [1, 0.9],
+              ),
+            }}
+            className="flex origin-left items-center"
+          >
+            <Link href="/" className="text-base font-bold text-green-500">
+              {SiteConfig.title}
+            </Link>
+          </motion.div>
         </div>
       </SidebarHeader>
       <SidebarContent>
