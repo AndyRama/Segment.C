@@ -48,8 +48,8 @@ export default async function RoutePage(props: PageParams) {
         <div className="flex flex-col gap-4 lg:flex-row lg:gap-6">
           <UsersChart />
           {/* <ClientOrg /> */}
+          <DonutChart />
         </div>
-        <DonutChart />
       </LayoutContent>
     </Layout>
   );

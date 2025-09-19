@@ -58,6 +58,30 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
     ],
   },
   {
+    title: "Produits",
+    defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
+    links: [
+      {
+        href: `${ORGANIZATION_PATH}/settings`,
+        Icon: Settings,
+        label: "Produits",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/settings/members`,
+        Icon: User2,
+        label: "Devis",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/settings/billing`,
+        Icon: CreditCard,
+        label: "Archive",
+        roles: ["admin"],
+      },
+    ],
+  },
+  {
     title: "Organization",
     defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
     links: [
@@ -84,30 +108,6 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         Icon: TriangleAlert,
         label: "Danger Zone",
         roles: ["owner"],
-      },
-    ],
-  },
-  {
-    title: "test",
-    defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
-    links: [
-      {
-        href: `${ORGANIZATION_PATH}/settings`,
-        Icon: Settings,
-        label: "Lien 1",
-        roles: ["admin"],
-      },
-      {
-        href: `${ORGANIZATION_PATH}/settings/members`,
-        Icon: User2,
-        label: "Lien 2",
-        roles: ["admin"],
-      },
-      {
-        href: `${ORGANIZATION_PATH}/settings/billing`,
-        Icon: CreditCard,
-        label: "Lien 3",
-        roles: ["admin"],
       },
     ],
   },

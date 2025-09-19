@@ -1,11 +1,26 @@
 import type { NavigationGroup } from "@/features/navigation/navigation.type";
-import { AlertCircle, Mail, User2 } from "lucide-react";
+import { AlertCircle, Mail, User2, Home, ShoppingCart, NotebookPen , DoorOpen   } from "lucide-react";
 
 export const getAccountNavigation = (): NavigationGroup[] => {
   return ACCOUNT_LINKS;
 };
 
 const ACCOUNT_LINKS: NavigationGroup[] = [
+    {
+    title: "Menu",
+    links: [
+      {
+        href: "/home",
+        Icon: Home,
+        label: "Home ",
+      },
+      {
+        href: "#",
+        Icon: DoorOpen ,
+        label: "Produits",
+      },
+    ],
+  },
   {
     title: "Ton profil",
     links: [
@@ -31,13 +46,8 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     links: [
       {
         href: "/account/devis",
-        Icon: User2,
+        Icon: NotebookPen  ,
         label: "Devis",
-      },
-      {
-        href: "#",
-        Icon: User2,
-        label: "Ancien devis",
       },
     ],
   },
@@ -46,7 +56,7 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     links: [
       {
         href: "#",
-        Icon: User2,
+        Icon: ShoppingCart,
         label: "Achats",
       },
     ],
