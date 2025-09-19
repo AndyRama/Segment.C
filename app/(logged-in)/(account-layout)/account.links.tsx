@@ -34,6 +34,21 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
         Icon: User2,
         label: "Devis",
       },
+      {
+        href: "#",
+        Icon: User2,
+        label: "Ancien devis",
+      },
+    ],
+  },
+  {
+    title: "Commandes",
+    links: [
+      {
+        href: "#",
+        Icon: User2,
+        label: "Achats",
+      },
     ],
   },
 ];

@@ -10,7 +10,7 @@ import { hasPermission } from "@/lib/auth/auth-org";
 import { combineWithParentMetadata } from "@/lib/metadata";
 import { serverToast } from "@/lib/server-toast";
 import type { PageParams } from "@/types/next";
-import { ClientOrg } from "./client-org";
+// import { ClientOrg } from "./client-org";
 import { DonutChart } from "./donuts-chart";
 import { UsersChart } from "./users-chart";
 
@@ -47,7 +47,7 @@ export default async function RoutePage(props: PageParams) {
       <LayoutContent className="flex flex-col gap-4 lg:gap-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:gap-6">
           <UsersChart />
-          <ClientOrg />
+          {/* <ClientOrg /> */}
         </div>
         <DonutChart />
       </LayoutContent>

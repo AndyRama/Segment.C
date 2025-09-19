@@ -87,4 +87,28 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
       },
     ],
   },
+  {
+    title: "test",
+    defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
+    links: [
+      {
+        href: `${ORGANIZATION_PATH}/settings`,
+        Icon: Settings,
+        label: "Lien 1",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/settings/members`,
+        Icon: User2,
+        label: "Lien 2",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/settings/billing`,
+        Icon: CreditCard,
+        label: "Lien 3",
+        roles: ["admin"],
+      },
+    ],
+  },
 ] satisfies NavigationGroup[];

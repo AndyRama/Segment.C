@@ -41,7 +41,7 @@ const HeroAnimation = () => {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-black">
+    <div className="relative h-screen w-full overflow-hidden bg-white">
       {/* Double Image Background Container */}
       <div className="absolute inset-0 flex">
         {/* Left Image - Blurred */}
