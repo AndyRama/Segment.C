@@ -46,45 +46,6 @@ const ORGANIZATION_PATH = `/orgs/:organizationSlug`;
 
 export const ORGANIZATION_LINKS: NavigationGroup[] = [
   {
-    title: "Menu",
-    links: [
-      {
-        href: ORGANIZATION_PATH,
-        Icon: Home,
-        label: "Dashboard",
-      },
-      {
-        href: `${ORGANIZATION_PATH}/users`,
-        Icon: User,
-        label: "Users",
-      },
-    ],
-  },
-  {
-    title: "Produits",
-    defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
-    links: [
-      {
-        href: `${ORGANIZATION_PATH}/settings`,
-        Icon: DoorOpen,
-        label: "Produits",
-        roles: ["admin"],
-      },
-      {
-        href: `${ORGANIZATION_PATH}/settings/members`,
-        Icon: NotebookPen,
-        label: "Devis",
-        roles: ["admin"],
-      },
-      {
-        href: `${ORGANIZATION_PATH}/settings/billing`,
-        Icon: FolderInput ,
-        label: "Archive",
-        roles: ["admin"],
-      },
-    ],
-  },
-  {
     title: "Organization",
     defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
     links: [
@@ -111,6 +72,45 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         Icon: TriangleAlert,
         label: "Danger Zone",
         roles: ["owner"],
+      },
+    ],
+  },
+  {
+    title: "Menu",
+    links: [
+      {
+        href: ORGANIZATION_PATH,
+        Icon: Home,
+        label: "Dashboard",
+      },
+      {
+        href: `${ORGANIZATION_PATH}/users`,
+        Icon: User,
+        label: "Users",
+      },
+    ],
+  },
+  {
+    title: "Services",
+    defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
+    links: [
+      {
+        href: `${ORGANIZATION_PATH}/settings`,
+        Icon: DoorOpen,
+        label: "Mes produits",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/settings/members`,
+        Icon: NotebookPen,
+        label: "Demande de devis",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/settings/billing`,
+        Icon: FolderInput ,
+        label: "Archive",
+        roles: ["admin"],
       },
     ],
   },

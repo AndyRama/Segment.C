@@ -6,42 +6,7 @@ export const getAccountNavigation = (): NavigationGroup[] => {
 };
 
 const ACCOUNT_LINKS: NavigationGroup[] = [
-    {
-    title: "Menu",
-    links: [
-      {
-        href: "/home",
-        Icon: Home,
-        label: "Home ",
-      },
-      {
-        href: "#",
-        Icon: DoorOpen ,
-        label: "Produits",
-      },
-    ],
-  },
-  {
-    title: "Devis",
-    links: [
-      {
-        href: "/account/devis",
-        Icon: NotebookPen  ,
-        label: "Devis",
-      },
-    ],
-  },
-  {
-    title: "Commandes",
-    links: [
-      {
-        href: "#",
-        Icon: ShoppingCart,
-        label: "Achats",
-      },
-    ],
-  },
-  {
+   {
     title: "Ton profil",
     links: [
       {
@@ -58,6 +23,31 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
         href: "/account/danger",
         Icon: AlertCircle,
         label: "Danger",
+      },
+    ],
+  },
+  {
+    title: "Menu",
+    links: [
+      {
+        href: "/home",
+        Icon: Home,
+        label: "Home ",
+      },
+      {
+        href: "/account/devis",
+        Icon: NotebookPen  ,
+        label: "Devis",
+      },
+      {
+        href: "#",
+        Icon: DoorOpen ,
+        label: "Produits",
+      },
+      {
+        href: "#",
+        Icon: ShoppingCart,
+        label: "Mes achats",
       },
     ],
   },
