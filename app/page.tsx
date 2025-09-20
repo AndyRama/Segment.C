@@ -34,6 +34,8 @@ export default function HomePage() {
         image="/images/portrait-artisan.jpg"
         experience="15 ans d'expérience"
       />
+  
+      <SectionDivider />
 
       <CardGrid initialVisibleCount={4} />
 

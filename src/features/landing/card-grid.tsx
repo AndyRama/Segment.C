@@ -85,7 +85,7 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
  
   return (
     <Layout>
-      <div className="mx-auto mb-2 mt-32 justify-center rounded-r-md md:flex md:px-4">
+      <div className="mx-auto mb-2 justify-center rounded-r-md md:flex md:px-4">
         <div className="w-full lg:w-10/12">
           <SectionHeader />
          
