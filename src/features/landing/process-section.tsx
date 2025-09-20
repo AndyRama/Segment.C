@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { 
-  Calculator, 
-  Palette, 
-  Hammer, 
-  CheckCircle, 
-  Phone, 
+import {
+  Calculator,
+  Palette,
+  Hammer,
+  CheckCircle,
+  Phone,
   Clock,
   User,
   Home
@@ -114,7 +114,7 @@ const ProcessSteps = ({ steps }: { steps: StepProps[] }) => (
         <div className="h-0.5 w-full bg-gradient-to-r from-green-500/30 via-green-500 to-green-500/30"></div>
       </div>
     </div>
-    
+
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
       {steps.map((step, index) => (
         <ProcessStep key={step.number} step={step} index={index} />
@@ -125,7 +125,7 @@ const ProcessSteps = ({ steps }: { steps: StepProps[] }) => (
 
 const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
   const delay = index * 0.2;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -141,26 +141,26 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
       <div className="relative z-10 mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-green-600 text-xl font-bold text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/25">
         {step.number}
       </div>
-      
+
       {/* Contenu de l'étape */}
       <div className="space-y-4 text-center">
         <div className="mb-3 flex justify-center text-green-600">
           {step.icon}
         </div>
-        
+
         <Typography variant="h3" className="text-xl font-semibold">
           {step.title}
         </Typography>
-        
+
         <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
           <Clock size={16} className="text-green-600" />
           <span>{step.duration}</span>
         </div>
-        
+
         <Typography variant="p" className="leading-relaxed text-muted-foreground">
           {step.description}
         </Typography>
-        
+
         {/* Détails - toujours visibles sur mobile, en hover sur desktop */}
         <div className="mt-4 opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
           <div className="space-y-2 rounded-lg bg-green-50 p-4 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
@@ -179,13 +179,13 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
 
 const ProcessSummary = () => {
   const { data: session } = useSession();
-  
+
   return (
     <div className="mt-16 space-y-6 rounded-2xl bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 text-center border border-green-200 dark:border-green-800">
       <Typography variant="h3" className="text-2xl font-semibold text-green-800 dark:text-green-200">
         Prêt à démarrer votre projet ?
       </Typography>
-      
+
       <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
         <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
           <Phone size={20} className="text-green-600" />
@@ -200,9 +200,9 @@ const ProcessSummary = () => {
           <span>Déplacement à domicile</span>
         </div>
       </div>
-      
-    <div className="flex flex-col justify-center gap-4 sm:flex-row">
-         {/*  {session ? (
+
+      <div className="flex flex-col justify-center gap-4 sm:flex-row">
+        {session ? (
           <Link
             href="/account/devis"
             className={cn(
@@ -222,8 +222,8 @@ const ProcessSummary = () => {
           >
             Demander un devis
           </Link>
-        )} */}
-        
+        )}
+
         <Link
           href="tel:0600000000"
           className={cn(
