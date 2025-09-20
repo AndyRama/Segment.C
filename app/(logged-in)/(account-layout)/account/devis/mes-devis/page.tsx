@@ -17,22 +17,22 @@ export default async function MesDevisPage() {
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="mb-2 text-2xl font-bold">Mes devis</h1>
-          <p className="text-gray-600">
-            Consultez et gérez toutes vos demandes de devis
-          </p>
-        </div>
-
-        <Button asChild>
+      <div className="text-center">
+        <h1 className="mb-2 text-2xl font-bold">Mes devis</h1>
+        <p className="text-gray-600">
+          Consultez et gérez toutes vos demandes de devis
+        </p>
+      </div>
+      
+      <div className="flex justify-end mb-4">
+        <Button asChild variant="outline">
           <Link href="/account/devis" className="flex items-center gap-2">
             <Plus className="h-4 w-4" />
             Nouveau devis
           </Link>
         </Button>
       </div>
-
+      
       <DevisList devisList={userDevis} />
     </div>
   );
