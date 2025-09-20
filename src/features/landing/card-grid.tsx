@@ -73,7 +73,7 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
     { title: "Baie vitrée", image: "/images/fenetre4.jpg", link: "/baie" },
     { title: "Fenêtres", image: "/images/fenetre1.jpg", link: "/fenetres" },
     { title: "Portes-fenêtres", image: "/images/fenetre2.jpg", link: "/portes" },
-    { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/veranda" },
+    { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/verandas" },
     { title: "Pergolas", image: "/images/fenetre3.jpg", link: "/pergolas" },
   ];
  
