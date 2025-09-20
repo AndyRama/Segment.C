@@ -29,7 +29,7 @@ export default async function RouteLayout(props: LayoutParams) {
               await auth.api.signOut({
                 headers: await headers(),
               });
-              redirect("/auth/signin");
+              redirect("/");
             }}
           >
             se déconnecter
