@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { buttonVariants } from "@/components/ui/button";
@@ -106,29 +107,59 @@ const AboutStats = ({ experience }: { experience: string }) => (
   </div>
 );
 
-const AboutActions = () => (
-  <div className="flex flex-col gap-4 sm:flex-row">
-    <Link
-      href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-      className={cn(
-        buttonVariants({ size: "lg", variant: "default" }),
-        "text-white border hover:border-green-500 hover:text-green-500"
+const AboutActions = () => {
+  const { data: session } = useSession();
+  
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row">
+      {session ? (
+        <>
+          <Link
+            href="/account/devis"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "default" }),
+              "text-white border hover:border-green-500 hover:text-green-500"
+            )}
+          >
+            Demander un devis
+          </Link>
+          
+          <Link
+            href="/#réalisations"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "outline" }),
+              "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+            )}
+          >
+            Voir mes réalisations
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link
+            href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "default" }),
+              "text-white border hover:border-green-500 hover:text-green-500"
+            )}
+          >
+            Demander un devis
+          </Link>
+          
+          <Link
+            href="/#réalisations"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "outline" }),
+              "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+            )}
+          >
+            Voir mes réalisations
+          </Link>
+        </>
       )}
-    >
-      Demander un devis
-    </Link>
-    
-    <Link
-      href="/#réalisations"
-      className={cn(
-        buttonVariants({ size: "lg", variant: "outline" }),
-        "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
-      )}
-    >
-      Voir mes réalisations
-    </Link>
-  </div>
-);
+    </div>
+  );
+};
 
 const AboutImage = ({ image, name }: { image: string; name: string }) => (
   <div className="relative">
