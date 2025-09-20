@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "@/lib/auth-client";
@@ -67,7 +68,7 @@ const AboutContent = ({
     </div>
     
     <AboutStats experience={experience} />
-    {/* <AboutActions /> */}
+    <AboutActions />
   </div>
 );
 
