@@ -35,7 +35,7 @@ export default function HomePage() {
         experience="15 ans d'expérience"
       />
 
-      <CardGrid />
+      <CardGrid initialVisibleCount={4} />
 
       <SectionDivider />
 

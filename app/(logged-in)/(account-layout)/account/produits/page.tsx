@@ -12,8 +12,8 @@ export default async function DevisPage() {
 
   return (
     <>
-      <div className="mx-auto flex max-w-4xl flex-col gap-6">
-        <CardGrid />
+      <div className="mx-auto flex max-w-6xl flex-col gap-6">
+        <CardGrid initialVisibleCount={8} />
       </div>
     </>
   );

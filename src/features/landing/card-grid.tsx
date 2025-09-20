@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -62,7 +61,11 @@ const SectionHeader = () => (
   </div>
 );
 
-export const CardGrid = () => {
+type CardGridProps = {
+  initialVisibleCount?: number;
+};
+
+export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
     { title: "Volets et Persiennes", image: "/images/fenetre5.jpg", link: "/blog" },
     { title: "Menuiseries", image: "/images/fenetre2.jpg", link: "/produit-temporaire" },
@@ -73,19 +76,19 @@ export const CardGrid = () => {
     { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/produit-temporaire" },
     { title: "Pergolas", image: "/images/fenetre3.jpg", link: "/produit-temporaire" },
   ];
-  
-  const [visibleCount, setVisibleCount] = useState(4);
-  
+ 
+  const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
+ 
   const handleShowMore = () => {
     setVisibleCount((prev) => Math.min(prev + 4, 8));
   };
-  
+ 
   return (
     <Layout>
       <div className="mx-auto mb-2 mt-32 justify-center rounded-r-md md:flex md:px-4">
         <div className="w-full lg:w-10/12">
           <SectionHeader />
-          
+         
           <div className="mx-auto mt-10 grid w-full grid-cols-1 gap-4 text-gray-500 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
             {allCards.slice(0, visibleCount).map((card, index) => (
               <CardImage
@@ -99,7 +102,7 @@ export const CardGrid = () => {
           </div>
         </div>
       </div>
-      
+     
       {visibleCount < 8 && (
         <div className="mx-auto mt-6 flex w-full justify-end lg:w-10/12">
           <Button
