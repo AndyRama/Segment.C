@@ -201,8 +201,8 @@ const ProcessSummary = () => {
         </div>
       </div>
       
-      <div className="flex flex-col justify-center gap-4 sm:flex-row">
-        {session ? (
+    <div className="flex flex-col justify-center gap-4 sm:flex-row">
+         {/*  {session ? (
           <Link
             href="/account/devis"
             className={cn(
@@ -222,7 +222,7 @@ const ProcessSummary = () => {
           >
             Demander un devis
           </Link>
-        )}
+        )} */}
         
         <Link
           href="tel:0600000000"

@@ -67,7 +67,7 @@ const AboutContent = ({
     </div>
     
     <AboutStats experience={experience} />
-    <AboutActions />
+    {/* <AboutActions /> */}
   </div>
 );
 
