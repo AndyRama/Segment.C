@@ -5,6 +5,9 @@ import { Typography } from "@/components/nowts/typography";
 import { SectionLayout } from "./../landing/section-layout";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useSession } from "@/lib/auth-client";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
@@ -35,6 +38,7 @@ const services = [
 
 export const ProcessSection2 = () => {
   const [activeService, setActiveService] = useState(services[0]);
+   const { data: session } = useSession();
 
   return (
     <SectionLayout
@@ -146,16 +150,30 @@ export const ProcessSection2 = () => {
               accompagne à chaque étape, depuis la première visite conseil
               jusqu'à la finalisation de vos travaux.
             </Typography>
-            <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-6 rounded-lg bg-green-500 px-6 py-3 font-medium text-white 
-                shadow-lg transition-all duration-300 hover:bg-green-600"
-                >
-                Demander un devis gratuit
-              </motion.button>
-            </Link>
+            {session ?(
+              <Link href="/account/devis">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 rounded-lg bg-green-500 px-6 py-3 font-medium text-white 
+                  shadow-lg transition-all duration-300 hover:bg-green-600"
+                  >
+                  Demander un devis
+                </motion.button>
+              </Link>
+            ) : (
+              <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 rounded-lg bg-green-500 px-6 py-3 font-medium text-white 
+                  shadow-lg transition-all duration-300 hover:bg-green-600"
+                  >
+                  Demander un devis gratuit
+                </motion.button>
+              </Link>
+
+            )}
           </motion.div>
         </div>
       </div>
