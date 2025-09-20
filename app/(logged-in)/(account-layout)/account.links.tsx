@@ -37,12 +37,22 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       {
         href: "/account/devis",
         Icon: NotebookPen  ,
-        label: "Devis",
+        label: "Créer un Devis",
       },
       {
-        href: "#",
+        href: "/account/produits",
         Icon: DoorOpen ,
-        label: "Produits",
+        label: "Commander un Produits",
+      },
+    ],
+  },
+    {
+    title: "Services",
+    links: [
+      {
+        href: "/account/devis",
+        Icon: NotebookPen  ,
+        label: "mes devis",
       },
       {
         href: "#",
