@@ -126,7 +126,7 @@ const AboutActions = () => {
           </Link>
           
           <Link
-            href="/#réalisations"
+            href="/home/#réalisations"
             className={cn(
               buttonVariants({ size: "lg", variant: "outline" }),
               "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"

@@ -150,7 +150,7 @@ export const ProcessSection2 = () => {
               accompagne à chaque étape, depuis la première visite conseil
               jusqu'à la finalisation de vos travaux.
             </Typography>
-            {session ?(
+            {session ? (
               <Link href="/account/devis">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
