@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { buttonVariants } from "@/components/ui/button";
@@ -176,47 +177,63 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
   );
 };
 
-const ProcessSummary = () => (
-  <div className="mt-16 space-y-6 rounded-2xl bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 text-center border border-green-200 dark:border-green-800">
-    <Typography variant="h3" className="text-2xl font-semibold text-green-800 dark:text-green-200">
-      Prêt à démarrer votre projet ?
-    </Typography>
-    
-    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
-        <Phone size={20} className="text-green-600" />
-        <span>Appelez-moi pour un devis gratuit</span>
-      </div>
-      <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
-        <User size={20} className="text-green-600" />
-        <span>Conseils personnalisés</span>
-      </div>
-      <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
-        <Home size={20} className="text-green-600" />
-        <span>Déplacement à domicile</span>
-      </div>
-    </div>
-    
-    <div className="flex flex-col justify-center gap-4 sm:flex-row">
-      <Link
-        href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-        className={cn(
-          buttonVariants({ size: "lg", variant: "default" }),
-          "bg-green-600 hover:bg-green-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
-        )}
-      >
-        Demander un devis gratuit
-      </Link>
+const ProcessSummary = () => {
+  const { data: session } = useSession();
+  
+  return (
+    <div className="mt-16 space-y-6 rounded-2xl bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 text-center border border-green-200 dark:border-green-800">
+      <Typography variant="h3" className="text-2xl font-semibold text-green-800 dark:text-green-200">
+        Prêt à démarrer votre projet ?
+      </Typography>
       
-      <Link
-        href="tel:0600000000"
-        className={cn(
-          buttonVariants({ size: "lg", variant: "outline" }),
-          "border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <Phone size={20} className="text-green-600" />
+          <span>Appelez-moi pour un devis gratuit</span>
+        </div>
+        <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <User size={20} className="text-green-600" />
+          <span>Conseils personnalisés</span>
+        </div>
+        <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <Home size={20} className="text-green-600" />
+          <span>Déplacement à domicile</span>
+        </div>
+      </div>
+      
+      <div className="flex flex-col justify-center gap-4 sm:flex-row">
+        {session ? (
+          <Link
+            href="/account/devis"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "default" }),
+              "bg-green-600 hover:bg-green-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+            )}
+          >
+            Demander un devis
+          </Link>
+        ) : (
+          <Link
+            href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "default" }),
+              "bg-green-600 hover:bg-green-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+            )}
+          >
+            Demander un devis
+          </Link>
         )}
-      >
-        06.00.00.00.00
-      </Link>
+        
+        <Link
+          href="tel:0600000000"
+          className={cn(
+            buttonVariants({ size: "lg", variant: "outline" }),
+            "border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+          )}
+        >
+          06.00.00.00.00
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
