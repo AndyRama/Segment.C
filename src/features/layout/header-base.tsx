@@ -157,10 +157,10 @@ export function HeaderBase({ children }: PropsWithChildren) {
           <div className="hidden lg:flex lg:items-center lg:space-x-1">      
              {session ? (
                 <>
-                <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
-                  Mes Devis
-                </Link>
-                {children}
+                  <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
+                    Mes Devis
+                  </Link>
+                  {children}
                 </>
               ) : (
                 <>

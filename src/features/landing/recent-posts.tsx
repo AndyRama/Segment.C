@@ -23,13 +23,13 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
   const author = 'Segment-C';
 
   return (
-    <Card className="transition-all hover:shadow-xl">
-      <CardHeader className="h-fit">
+    <Card className="transition-all hover:shadow-xl overflow-hidden">
+      <CardHeader className="h-fit p-0">
         <AspectRatio ratio={16 / 9} className="overflow-hidden">
           <img
             src={post.attributes.coverUrl}
             alt={post.attributes.title}
-            className="size-full rounded-t object-cover"
+            className="size-full object-cover"
           />
         </AspectRatio>
       </CardHeader>
