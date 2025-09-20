@@ -24,7 +24,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
 
   return (
     <Card className="transition-all hover:shadow-xl overflow-hidden">
-      <CardHeader className="h-fit p-0">
+      <CardHeader className="h-fit p-0 m-0">
         <AspectRatio ratio={16 / 9} className="overflow-hidden">
           <img
             src={post.attributes.coverUrl}
@@ -50,7 +50,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
         <div className="flex w-[250px] items-center justify-between">
           <Link
             href={`/posts/${post.slug}`}
-            className="rounded-[5px] border border-gray-600 px-4 text-green hover:border-green-500 xl:px-8"
+            className="mb-4 rounded-[5px] border border-gray-600 px-4 text-green hover:border-green-500 xl:px-8"
           >
             Lire l&apos;article
           </Link>
