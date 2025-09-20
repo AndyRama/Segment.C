@@ -6,8 +6,6 @@ import { SectionLayout } from "./../landing/section-layout";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const services = [
   {

@@ -1,3 +1,5 @@
+"use client";
+
 import { Typography } from "@/components/nowts/typography";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -6,7 +8,7 @@ import { useSession } from "@/lib/auth-client";
 
 export const CTAImageSection = () => {
   const { data: session } = useSession();
-  
+
   return (
     <div
       style={{
