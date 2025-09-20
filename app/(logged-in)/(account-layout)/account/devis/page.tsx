@@ -1,44 +1,37 @@
 import { getRequiredUser } from "@/lib/auth/auth-user";
 import { combineWithParentMetadata } from "@/lib/metadata";
 import { ContactForm } from "./contact-form";
-import { DevisList } from "./devis-list";
-import { getUserDevisAction } from "./devis.actions";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { FileText } from "lucide-react";
 
 export const generateMetadata = combineWithParentMetadata({
-  title: "Devis",
-  description: "Gérez vos demandes de devis - Créer et suivre vos demandes",
+  title: "Nouveau devis",
+  description: "Créez votre demande de devis personnalisée",
 });
 
 export default async function DevisPage() {
   const user = await getRequiredUser();
-  const userDevis = await getUserDevisAction();
 
   return (
     <div className="flex flex-col gap-6 max-w-4xl mx-auto">
       <div className="text-center">
-        <h1 className="text-2xl font-bold mb-2">Gestion des devis</h1>
+        <h1 className="text-2xl font-bold mb-2">Nouveau devis</h1>
         <p className="text-gray-600">
-          Créez et suivez vos demandes de devis personnalisées
+          Créez votre demande de devis personnalisée
         </p>
       </div>
+
+      <div className="flex justify-end mb-4">
+        <Button asChild variant="outline">
+          <Link href="/account/devis/mes-devis" className="flex items-center gap-2">
+            <FileText className="h-4 w-4" />
+            Voir mes devis
+          </Link>
+        </Button>
+      </div>
       
-      <Tabs defaultValue="create" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="create">Nouveau devis</TabsTrigger>
-          <TabsTrigger value="list">
-            Vos devis ({userDevis.length})
-          </TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="create" className="mt-6">
-          <ContactForm defaultUser={user} />
-        </TabsContent>
-        
-        <TabsContent value="list" className="mt-6">
-          <DevisList devisList={userDevis} />
-        </TabsContent>
-      </Tabs>
+      <ContactForm defaultUser={user} />
     </div>
   );
 }
