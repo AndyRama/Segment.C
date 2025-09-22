@@ -62,7 +62,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
       material: "aluminium",
       ouverture: "coulissante",
       vitrage: "double",
-      image: "/images/baie-horizon-coulissant.jpg",
+      image: "/images/fenetre2.jpg",
       colors: ["Gris anthracite", "Blanc", "Noir mat", "Bronze"],
       features: [
         "Grande ouverture",

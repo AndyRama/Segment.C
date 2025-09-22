@@ -61,7 +61,7 @@ const VerandasSection = ({ className }: VerandasSectionProps) => {
       material: "aluminium",
       style: "contemporaine",
       toiture: "verre",
-      image: "/images/veranda-jardin-hiver.jpg",
+      image: "/images/veranda.jpg",
       colors: ["Blanc", "Gris anthracite", "Bronze"],
       features: [
         "Toiture vitrée",

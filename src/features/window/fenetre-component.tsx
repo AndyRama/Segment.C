@@ -51,7 +51,7 @@ const FenetresSection = ({ className }: FenetresSectionProps) => {
       material: "pvc",
       vitrage: "double",
       ouverture: "battant",
-      image: "/images/fenetre-crystal-plus.jpg",
+      image: "/images/fenetre1.jpg",
       colors: ["Blanc", "Gris anthracite", "Beige"],
       features: ["Double vitrage 4/16/4", "Isolation renforcée", "Anti-effraction", "Étanchéité parfaite"],
       description: "Fenêtre PVC à ouverture battante avec double vitrage haute performance. Excellent rapport qualité-prix pour une isolation optimale.",

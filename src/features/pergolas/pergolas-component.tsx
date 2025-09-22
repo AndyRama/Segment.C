@@ -87,7 +87,7 @@ const PergolasSection = ({ className }: PergolasSectionProps) => {
       material: "bois",
       style: "traditionnelle",
       toiture: "ouverte",
-      image: "/images/pergola-classique-bois.jpg",
+      image: "/images/pergolas.jpg",
       colors: ["Chêne naturel", "Pin autoclavé", "Douglas", "Teck"],
       features: [
         "Bois massif traité",

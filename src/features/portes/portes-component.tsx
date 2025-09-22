@@ -47,7 +47,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       category: "entree",
       material: "acier",
       style: "traditionnelle",
-      image: "/images/porte-ablette.jpg",
+      image: "/images/porte.jpg",
       colors: ["Noir", "Beige", "Gris"],
       features: ["Sécurité renforcée", "Isolation thermique", "Design élégant"],
       description: "Porte d'entrée en acier au style traditionnel, alliant sécurité et esthétique. Parfaite pour les maisons classiques.",
