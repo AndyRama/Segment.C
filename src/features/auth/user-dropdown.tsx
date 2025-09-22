@@ -8,11 +8,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { signOut, useSession } from "@/lib/auth-client";
@@ -20,11 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 import {
   Home,
   LogOut,
-  Monitor,
-  Moon,
   Settings,
-  SunMedium,
-  SunMoon,
 } from "lucide-react";
 
 import { useTheme } from "next-themes";
@@ -77,31 +69,7 @@ export const UserDropdown = ({ children }: PropsWithChildren) => {
             Account Settings
           </Link>
         </DropdownMenuItem>
-        {/* <DropdownMenuSeparator />
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <SunMoon className="mr-2 size-4" />
-            <span>Theme</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent>
-              <DropdownMenuItem onClick={() => theme.setTheme("dark")}>
-                <SunMedium className="mr-2 size-4" />
-                <span>Dark</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => theme.setTheme("light")}>
-                <Moon className="mr-2 size-4" />
-                <span>Light</span>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => theme.setTheme("system")}>
-                <Monitor className="mr-2 size-4" />
-                <span>System</span>
-              </DropdownMenuItem>
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub> */}
-
+       
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup>
