@@ -57,7 +57,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/posts"
+                    href="/fenetre"
                   >
                     Nos fenêtres 
                   </Typography>
@@ -65,7 +65,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="#"
+                    href="/portes"
                   >
                     Nos portes
                   </Typography>
@@ -73,7 +73,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/account"
+                    href="/baie"
                   >
                     Nos baies vitrées
                   </Typography>
@@ -81,9 +81,17 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/account"
+                    href="/verandas"
                   >
                     Nos veranda
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/pergolas"
+                  >
+                    Nos pergolas
                   </Typography>
                 </div>
               </div>           
@@ -106,7 +114,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="#"
                   >
                     Informations
                   </Typography>
@@ -114,7 +122,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="/account"
                   >
                     Compte user
                   </Typography>
@@ -122,7 +130,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="/posts"
                   >
                     Blog
                   </Typography>

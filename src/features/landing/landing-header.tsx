@@ -63,14 +63,7 @@ export function LandingHeader() {
 
   const topRoutes = [
     { path: "/fenetres", label: "Fenêtre" },
-    {
-      path: "/portes",
-      label: "Portes",
-      dropdown: [
-        { path: "/portes", label: "Porte d'entrée" },
-        { path: "/portes", label: "Porte fenêtre" }
-      ]
-    },
+    { path: "/portes", label: "Portes"    },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
@@ -102,7 +95,7 @@ export function LandingHeader() {
             }}
             className="mt-[-1] flex origin-left items-center text-base font-bold text-green-500 "
           >
-            <Link href="/" className="text-base font-bold text-green-500">
+            <Link href="/home" className="text-base font-bold text-green-500">
               {SiteConfig.title}
             </Link>
           </motion.p>
@@ -153,7 +146,7 @@ export function LandingHeader() {
           <div className="hidden lg:contents gap-2">
             {session ? (
               <>
-              <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
+              <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
                 Mes Devis
               </Link>
               <AuthButtonClient/>
@@ -200,7 +193,7 @@ export function LandingHeader() {
                   <div className="flex flex-row items-center justify-around">
                     {session ? (
                     <>
-                      <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                      <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
                         Devis
                       </Link>
                       <AuthButtonClient />

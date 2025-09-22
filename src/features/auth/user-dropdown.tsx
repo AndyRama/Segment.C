@@ -77,7 +77,7 @@ export const UserDropdown = ({ children }: PropsWithChildren) => {
             Account Settings
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        {/* <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <SunMoon className="mr-2 size-4" />
@@ -100,7 +100,7 @@ export const UserDropdown = ({ children }: PropsWithChildren) => {
               </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
-        </DropdownMenuSub>
+        </DropdownMenuSub> */}
 
         <DropdownMenuSeparator />
 
