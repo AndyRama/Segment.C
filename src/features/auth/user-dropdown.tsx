@@ -19,7 +19,7 @@ import {
   Settings,
 } from "lucide-react";
 
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { PropsWithChildren } from "react";
@@ -33,7 +33,7 @@ export const UserDropdown = ({ children }: PropsWithChildren) => {
     },
   });
   const session = useSession();
-  const theme = useTheme();
+  // const theme = useTheme();
 
   if (!session.data?.user) {
     return null;

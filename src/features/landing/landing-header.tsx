@@ -6,8 +6,7 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
-import { Menu, ChevronDown } from "react-feather";
+import { Menu } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
@@ -63,7 +62,7 @@ export function LandingHeader() {
 
   const topRoutes = [
     { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Portes"    },
+    { path: "/portes", label: "Portes" },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
@@ -112,31 +111,13 @@ export function LandingHeader() {
           className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
         >
           {topRoutes.map((route) => (
-            route.dropdown ? (
-              <DropdownMenu key={route.path}>
-                <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
-                  {route.label}
-                  <ChevronDown className="size-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48">
-                  {route.dropdown.map((item) => (
-                    <DropdownMenuItem key={item.path} asChild>
-                      <Link href={item.path} className="w-full cursor-pointer">
-                        {item.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link
-                href={route.path}
-                key={route.path}
-                className="relative flex items-center hover:text-green-500 transition-colors"
-              >
-                {route.label}
-              </Link>
-            )
+            <Link
+              href={route.path}
+              key={route.path}
+              className="relative flex items-center hover:text-green-500 transition-colors"
+            >
+              {route.label}
+            </Link>
           ))}
         </motion.nav>
 
@@ -146,17 +127,17 @@ export function LandingHeader() {
           <div className="hidden lg:contents gap-2">
             {session ? (
               <>
-              <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
-                Mes Devis
-              </Link>
-              <AuthButtonClient/>
+                <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                  Mes Devis
+                </Link>
+                <AuthButtonClient />
               </>
             ) : (
               <>
-                <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
+                <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
                   Demande de devis
                 </Link>
-                <AuthButtonClient/>
+                <AuthButtonClient />
               </>
             )}
           </div>
@@ -192,12 +173,12 @@ export function LandingHeader() {
                   <hr />
                   <div className="flex flex-row items-center justify-around">
                     {session ? (
-                    <>
-                      <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                        Devis
-                      </Link>
-                      <AuthButtonClient />
-                    </>
+                      <>
+                        <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                          Devis
+                        </Link>
+                        <AuthButtonClient />
+                      </>
                     ) : (
                       <>
                         <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
@@ -215,30 +196,13 @@ export function LandingHeader() {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    route.dropdown ? (
-                      <div key={route.path} className="flex flex-col gap-2">
-                        <span className="text-left text-sm font-semibold text-green-500">
-                          {route.label}
-                        </span>
-                        {route.dropdown.map((item) => (
-                          <Link
-                            href={item.path}
-                            key={item.path}
-                            className="relative ml-4 text-left text-sm font-medium transition-colors hover:text-[#04ab12]"
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    ) : (
-                      <Link
-                        href={route.path}
-                        key={route.path}
-                        className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
-                      >
-                        {route.label}
-                      </Link>
-                    )
+                    <Link
+                      href={route.path}
+                      key={route.path}
+                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
+                    >
+                      {route.label}
+                    </Link>
                   ))}
                 </div>
               </SheetContent>
