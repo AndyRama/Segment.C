@@ -10,7 +10,7 @@ import { hasPermission } from "@/lib/auth/auth-org";
 import type { PageParams } from "@/types/next";
 import Link from "next/link";
 import InformationCards from "./information-cards";
-import { SubscribersChart } from "./subscribers-charts";
+// import { SubscribersChart } from "./subscribers-charts";
 
 export default async function RoutePage(
   props: PageParams<{
@@ -38,7 +38,7 @@ export default async function RoutePage(
       </LayoutActions>
       <LayoutContent className="flex flex-col gap-4 lg:gap-8">
         <InformationCards />
-        <SubscribersChart />
+        {/* <SubscribersChart /> */}
       </LayoutContent>
     </Layout>
   );

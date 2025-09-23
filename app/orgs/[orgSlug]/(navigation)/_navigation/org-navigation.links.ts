@@ -55,18 +55,18 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         label: "Settings",
         roles: ["admin"],
       },
-      {
-        href: `${ORGANIZATION_PATH}/settings/members`,
-        Icon: User2,
-        label: "Members",
-        roles: ["admin"],
-      },
-      {
-        href: `${ORGANIZATION_PATH}/settings/billing`,
-        Icon: CreditCard,
-        label: "Billing",
-        roles: ["admin"],
-      },
+      // {
+      //   href: `${ORGANIZATION_PATH}/settings/members`,
+      //   Icon: User2,
+      //   label: "Members",
+      //   roles: ["admin"],
+      // },
+      // {
+      //   href: `${ORGANIZATION_PATH}/settings/billing`,
+      //   Icon: CreditCard,
+      //   label: "Billing",
+      //   roles: ["admin"],
+      // },
       {
         href: `${ORGANIZATION_PATH}/settings/danger`,
         Icon: TriangleAlert,
@@ -92,22 +92,22 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
   },
   {
     title: "Services",
-    defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
+    // defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
     links: [
       {
-        href: `${ORGANIZATION_PATH}/settings`,
+        href: `${ORGANIZATION_PATH}/#`,
         Icon: DoorOpen,
         label: "Mes produits",
         roles: ["admin"],
       },
       {
-        href: `${ORGANIZATION_PATH}/settings/members`,
+        href: `${ORGANIZATION_PATH}/#`,
         Icon: NotebookPen,
         label: "Demande de devis",
         roles: ["admin"],
       },
       {
-        href: `${ORGANIZATION_PATH}/settings/billing`,
+        href: `${ORGANIZATION_PATH}/#`,
         Icon: FolderInput ,
         label: "Archive",
         roles: ["admin"],

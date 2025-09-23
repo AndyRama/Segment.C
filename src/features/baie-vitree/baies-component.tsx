@@ -107,7 +107,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
       material: "aluminium",
       ouverture: "pliante",
       vitrage: "double",
-      image: "/images/baie-3.jpg",
+      image: "/images/baie3.jpg",
       colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
       features: [
         "Ouverture totale",
