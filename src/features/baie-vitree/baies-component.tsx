@@ -85,7 +85,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
       material: "pvc",
       ouverture: "coulissante",
       vitrage: "double",
-      image: "/images/baie-panorama-lift.jpg",
+      image: "/images/baie2.jpg",
       colors: ["Blanc", "Gris clair", "Anthracite"],
       features: [
         "Système lift & slide",
@@ -107,7 +107,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
       material: "aluminium",
       ouverture: "pliante",
       vitrage: "double",
-      image: "/images/baie-accordion-flex.jpg",
+      image: "/images/baie-3.jpg",
       colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
       features: [
         "Ouverture totale",
@@ -819,37 +819,37 @@ const BaieVitreeModal = ({
             {/* Boutons d'action avec authentification */}
             <div className="flex gap-3 pt-4">
               {session ? (
-                <Link 
-                  href="/account/devis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/account/devis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
                   Ajout au panier
                 </Link>
               ) : (
-                <Link 
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
-                  Se connecter pour un devis
+                  Ajout au panier
                 </Link>
               )}
-              <Button 
+              <Button
                 variant="outline"
                 onClick={onClose}
                 className="flex-1"
               >
-                Fermer
+                Associer un devis
               </Button>
             </div>
 
             {/* Informations de contact */}
-            <div className="mt-6 rounded-lg bg-gray-50 p-4">
+            <div className="mt-6 rounded-lg bg-gray-50 p-4 pb-3">
               <Typography variant="small" className="mb-3 font-semibold">
                 Ou contactez-nous directement
               </Typography>
