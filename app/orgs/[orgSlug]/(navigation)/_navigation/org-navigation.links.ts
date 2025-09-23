@@ -4,11 +4,11 @@ import { isInRoles } from "@/lib/organizations/is-in-roles";
 import {
   FolderInput,
   Home,
-  User2,
+  // User2,
   Settings,
   TriangleAlert,
   User,
-  CreditCard,
+  // CreditCard,
   NotebookPen,
   DoorOpen,
 } from "lucide-react";
