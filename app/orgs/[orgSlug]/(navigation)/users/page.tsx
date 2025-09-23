@@ -11,8 +11,8 @@ import { combineWithParentMetadata } from "@/lib/metadata";
 import { serverToast } from "@/lib/server-toast";
 import type { PageParams } from "@/types/next";
 // import { ClientOrg } from "./client-org";
-import { DonutChart } from "./donuts-chart";
-import { UsersChart } from "./users-chart";
+// import { DonutChart } from "./donuts-chart";
+// import { UsersChart } from "./users-chart";
 
 export const generateMetadata = combineWithParentMetadata({
   title: "Users",
@@ -23,7 +23,7 @@ export default async function RoutePage(props: PageParams) {
   return (
     <Layout size="lg">
       <LayoutHeader>
-        <LayoutTitle>Videos</LayoutTitle>
+        <LayoutTitle>Users</LayoutTitle>
       </LayoutHeader>
       <LayoutActions className="flex gap-2">
         {(await hasPermission({ users: ["delete"] })) && (
@@ -46,9 +46,9 @@ export default async function RoutePage(props: PageParams) {
       </LayoutActions>
       <LayoutContent className="flex flex-col gap-4 lg:gap-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:gap-6">
-          <UsersChart />
+          {/* <UsersChart /> */}
           {/* <ClientOrg /> */}
-          <DonutChart />
+          {/* <DonutChart /> */}
         </div>
       </LayoutContent>
     </Layout>
