@@ -5,11 +5,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 
-type FenetresHeroProps = {
+type VoletHeroProps = {
   className?: string;
 }
 
-export default function FenetresHero({ className }: FenetresHeroProps) {
+export default function VoletHero({ className }: VoletHeroProps) {
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-16", className)}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
