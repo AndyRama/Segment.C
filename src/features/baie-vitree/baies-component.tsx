@@ -35,6 +35,7 @@ type BaieVitreeProps = {
   rating: number;
   dimensions: string;
   uw: string;
+  fournisseur: string;
   isPopular?: boolean;
   isNew?: boolean;
 };
@@ -44,9 +45,7 @@ type BaiesVitrreesSectionProps = {
 };
 
 const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
-  const [selectedBaie, setSelectedBaie] = useState<BaieVitreeProps | null>(
-    null,
-  );
+  const [selectedBaie, setSelectedBaie] = useState<BaieVitreeProps | null>(null);
   const [visibleCount, setVisibleCount] = useState(9);
   const [filters, setFilters] = useState({
     material: "all",
@@ -55,274 +54,187 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
   });
 
   const baiesVitrees: BaieVitreeProps[] = [
+    // Coulissantes
     {
       id: 1,
-      name: "HORIZON COULISSANT",
+      name: "COULISSANT ALU PREMIUM",
       category: "baie-vitree",
       material: "aluminium",
       ouverture: "coulissante",
       vitrage: "double",
       image: "/images/fenetre2.jpg",
       colors: ["Gris anthracite", "Blanc", "Noir mat", "Bronze"],
-      features: [
-        "Grande ouverture",
-        "Seuil PMR",
-        "Vitrage sécurisé",
-        "Rails haute qualité",
-      ],
-      description:
-        "Baie vitrée coulissante en aluminium pour une ouverture maximale sur l'extérieur. Design épuré et fonctionnalité optimale.",
+      features: ["Grande ouverture", "Seuil PMR", "Vitrage sécurisé", "Rails haute qualité"],
+      description: "Baie vitrée coulissante en aluminium pour une ouverture maximale sur l'extérieur. Design épuré et fonctionnalité optimale.",
       priceRange: "1200€ - 1800€",
       rating: 4.7,
       dimensions: "200x215 à 400x250 cm",
       uw: "Uw = 1.4 W/m²K",
+      fournisseur: "Sybaie",
       isPopular: true,
     },
     {
       id: 2,
-      name: "PANORAMA LIFT",
+      name: "COULISSANT PVC CONFORT",
       category: "baie-vitree",
       material: "pvc",
       ouverture: "coulissante",
       vitrage: "double",
       image: "/images/baie2.jpg",
       colors: ["Blanc", "Gris clair", "Anthracite"],
-      features: [
-        "Système lift & slide",
-        "Grandes dimensions",
-        "Isolation thermique",
-        "Prix attractif",
-      ],
-      description:
-        "Baie vitrée PVC avec système de levage pour une manipulation aisée même sur de grandes dimensions. Excellent rapport qualité-prix.",
+      features: ["Système lift & slide", "Grandes dimensions", "Isolation thermique", "Prix attractif"],
+      description: "Baie vitrée PVC avec système de levage pour une manipulation aisée même sur de grandes dimensions. Excellent rapport qualité-prix.",
       priceRange: "900€ - 1400€",
       rating: 4.5,
       dimensions: "180x215 à 350x240 cm",
       uw: "Uw = 1.3 W/m²K",
+      fournisseur: "C2R",
     },
     {
       id: 3,
-      name: "ACCORDION FLEX",
+      name: "COULISSANT BOIS AUTHENTIQUE",
       category: "baie-vitree",
-      material: "aluminium",
-      ouverture: "pliante",
+      material: "bois",
+      ouverture: "coulissante",
       vitrage: "double",
-      image: "/images/baie3.jpg",
-      colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
-      features: [
-        "Ouverture totale",
-        "Système pliant",
-        "Design moderne",
-        "Étanchéité parfaite",
-      ],
-      description:
-        "Baie vitrée pliante permettant une ouverture totale de l'espace. Solution innovante pour connecter intérieur et extérieur.",
-      priceRange: "1500€ - 2200€",
-      rating: 4.8,
-      dimensions: "200x215 à 600x250 cm",
-      uw: "Uw = 1.2 W/m²K",
-      isNew: true,
+      image: "/images/baie-bois.jpg",
+      colors: ["Chêne naturel", "Pin lasuré", "Mélèze"],
+      features: ["Bois massif", "Coulissement doux", "Isolation naturelle", "Charme authentique"],
+      description: "Baie vitrée coulissante en bois massif au charme intemporel. Matériau noble pour une intégration harmonieuse.",
+      priceRange: "1600€ - 2400€",
+      rating: 4.6,
+      dimensions: "200x215 à 300x250 cm",
+      uw: "Uw = 1.5 W/m²K",
+      fournisseur: "Proferm",
     },
+    // Coulissantes à Galandage
     {
       id: 4,
-      name: "GALANDAGE INVISIBLE",
+      name: "GALANDAGE INVISIBLE ALU",
       category: "baie-vitree",
       material: "aluminium",
       ouverture: "coulissante-galandage",
       vitrage: "triple",
       image: "/images/baie-galandage-invisible.jpg",
       colors: ["Anthracite", "Noir", "Blanc pur"],
-      features: [
-        "Coulissement dans cloison",
-        "Triple vitrage",
-        "Design minimal",
-        "Gain d'espace",
-      ],
-      description:
-        "Baie vitrée à galandage disparaissant totalement dans la cloison. Solution haut de gamme pour un design épuré et moderne.",
+      features: ["Coulissement dans cloison", "Triple vitrage", "Design minimal", "Gain d'espace"],
+      description: "Baie vitrée à galandage disparaissant totalement dans la cloison. Solution haut de gamme pour un design épuré et moderne.",
       priceRange: "2000€ - 3000€",
       rating: 4.9,
       dimensions: "200x215 à 400x280 cm",
       uw: "Uw = 0.9 W/m²K",
+      fournisseur: "Swao",
+      isNew: true,
     },
+    // Coulissantes Accordéon
     {
       id: 5,
-      name: "INFINITY GLASS",
+      name: "ACCORDÉON FLEX ALU",
       category: "baie-vitree",
       material: "aluminium",
-      ouverture: "fixe",
-      vitrage: "triple",
-      image: "/images/baie-infinity-glass.jpg",
-      colors: ["Noir mat", "Anthracite", "Bronze"],
-      features: [
-        "Vitrage structural",
-        "Vue panoramique",
-        "Isolation maximale",
-        "Design architectural",
-      ],
-      description:
-        "Baie vitrée fixe avec vitrage structural pour une vue panoramique sans interruption. Solution architecturale haut de gamme.",
-      priceRange: "1800€ - 2800€",
-      rating: 4.9,
-      dimensions: "200x215 à 600x350 cm",
-      uw: "Uw = 0.6 W/m²K",
-      isPopular: true,
+      ouverture: "coulissante-accordeon",
+      vitrage: "double",
+      image: "/images/baie3.jpg",
+      colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
+      features: ["Ouverture totale", "Système pliant", "Design moderne", "Étanchéité parfaite"],
+      description: "Baie vitrée accordéon permettant une ouverture totale de l'espace. Solution innovante pour connecter intérieur et extérieur.",
+      priceRange: "1500€ - 2200€",
+      rating: 4.8,
+      dimensions: "200x215 à 600x250 cm",
+      uw: "Uw = 1.2 W/m²K",
+      fournisseur: "Proferm",
+      isNew: true,
     },
+    // Coulissantes en Applique
     {
       id: 6,
-      name: "CRYSTAL TERRACE",
+      name: "COULISSANT APPLIQUE PVC",
       category: "baie-vitree",
       material: "pvc",
-      ouverture: "battante",
+      ouverture: "coulissante-applique",
       vitrage: "double",
-      image: "/images/baie-crystal-terrace.jpg",
-      colors: ["Blanc", "Beige", "Gris"],
-      features: [
-        "Ouverture française",
-        "Seuil abaissé",
-        "Vitrage feuilleté",
-        "Entretien facile",
-      ],
-      description:
-        "Baie vitrée PVC à ouverture battante, idéale pour accéder à une terrasse. Classique et fonctionnelle.",
-      priceRange: "800€ - 1200€",
+      image: "/images/baie-applique.jpg",
+      colors: ["Blanc", "Gris", "Anthracite"],
+      features: ["Pose en applique", "Isolation renforcée", "Facilité d'installation", "Prix compétitif"],
+      description: "Baie vitrée coulissante en pose applique pour rénovation. Installation simplifiée sans gros œuvre.",
+      priceRange: "800€ - 1300€",
       rating: 4.4,
-      dimensions: "120x215 à 240x240 cm",
-      uw: "Uw = 1.1 W/m²K",
+      dimensions: "180x215 à 300x240 cm",
+      uw: "Uw = 1.4 W/m²K",
+      fournisseur: "C2R",
     },
+    // Oscillo-Coulissantes
     {
       id: 7,
-      name: "TIMBER VISION",
+      name: "OSCILLO-COULISSANT ALU",
       category: "baie-vitree",
-      material: "bois",
-      ouverture: "battante",
+      material: "aluminium",
+      ouverture: "oscillo-coulissante",
       vitrage: "double",
-      image: "/images/baie-timber-vision.jpg",
-      colors: ["Chêne naturel", "Pin lasuré", "Mélèze"],
-      features: [
-        "Bois massif",
-        "Isolation naturelle",
-        "Finition artisanale",
-        "Respirant",
-      ],
-      description:
-        "Baie vitrée en bois massif au charme authentique. Matériau noble pour un habitat sain et chaleureux.",
-      priceRange: "1400€ - 2100€",
-      rating: 4.6,
-      dimensions: "120x215 à 200x240 cm",
-      uw: "Uw = 1.2 W/m²K",
+      image: "/images/baie-oscillo.jpg",
+      colors: ["Gris anthracite", "Blanc", "Bronze"],
+      features: ["Double fonction", "Aération sécurisée", "Grande ouverture", "Manipulation aisée"],
+      description: "Baie vitrée combinant ouverture coulissante et oscillo-battante. Polyvalence maximale pour tous les usages.",
+      priceRange: "1400€ - 2000€",
+      rating: 4.7,
+      dimensions: "200x215 à 350x250 cm",
+      uw: "Uw = 1.3 W/m²K",
+      fournisseur: "Swao",
     },
+    // Mixtes
     {
       id: 8,
-      name: "FUSION PRESTIGE",
+      name: "COULISSANT BOIS-ALU PRESTIGE",
       category: "baie-vitree",
       material: "bois-aluminium",
       ouverture: "coulissante",
       vitrage: "triple",
       image: "/images/baie-fusion-prestige.jpg",
       colors: ["Chêne/Anthracite", "Pin/Blanc", "Mélèze/Bronze"],
-      features: [
-        "Double matériau",
-        "Triple vitrage",
-        "Performance maximale",
-        "Entretien minimal",
-      ],
-      description:
-        "Baie vitrée mixte bois-aluminium combinant l'esthétique du bois à l'intérieur et la résistance de l'aluminium à l'extérieur.",
+      features: ["Double matériau", "Triple vitrage", "Performance maximale", "Entretien minimal"],
+      description: "Baie vitrée mixte bois-aluminium combinant l'esthétique du bois à l'intérieur et la résistance de l'aluminium à l'extérieur.",
       priceRange: "2200€ - 3200€",
       rating: 4.8,
       dimensions: "200x215 à 350x250 cm",
       uw: "Uw = 0.8 W/m²K",
+      fournisseur: "Swao",
       isNew: true,
     },
+    // Acier Style Industriel
     {
       id: 9,
-      name: "STEEL LOFT",
+      name: "COULISSANT ACIER LOFT",
       category: "baie-vitree",
       material: "acier",
-      ouverture: "battante",
+      ouverture: "coulissante",
       vitrage: "double",
       image: "/images/baie-steel-loft.jpg",
       colors: ["Noir mat", "Gris anthracite"],
-      features: [
-        "Style industriel",
-        "Cadre fin",
-        "Vitrage maximal",
-        "Robustesse",
-      ],
-      description:
-        "Baie vitrée acier au style industriel avec cadres fins pour un maximum de vitrage. Parfaite pour les lofts et architectures contemporaines.",
+      features: ["Style industriel", "Cadre fin", "Vitrage maximal", "Robustesse"],
+      description: "Baie vitrée acier au style industriel avec cadres fins pour un maximum de vitrage. Parfaite pour les lofts et architectures contemporaines.",
       priceRange: "1600€ - 2400€",
       rating: 4.7,
       dimensions: "150x215 à 250x250 cm",
       uw: "Uw = 1.8 W/m²K",
+      fournisseur: "Proferm",
     },
+    // Grande Dimension
     {
       id: 10,
-      name: "COMPACT SLIDE",
-      category: "baie-vitree",
-      material: "aluminium",
-      ouverture: "coulissante",
-      vitrage: "double",
-      image: "/images/baie-compact-slide.jpg",
-      colors: ["Blanc", "Gris", "Anthracite"],
-      features: [
-        "Format compact",
-        "Ouverture facile",
-        "Prix accessible",
-        "Design épuré",
-      ],
-      description:
-        "Baie vitrée coulissante compacte, parfaite pour les petits espaces. Solution économique sans compromis sur la qualité.",
-      priceRange: "700€ - 1100€",
-      rating: 4.3,
-      dimensions: "120x215 à 180x240 cm",
-      uw: "Uw = 1.5 W/m²K",
-      isPopular: true,
-    },
-    {
-      id: 11,
-      name: "ELEGANCE PIVOT",
-      category: "baie-vitree",
-      material: "aluminium",
-      ouverture: "pivotante",
-      vitrage: "triple",
-      image: "/images/baie-elegance-pivot.jpg",
-      colors: ["Bronze", "Anthracite", "Noir"],
-      features: [
-        "Ouverture pivotante",
-        "Design unique",
-        "Triple vitrage",
-        "Étanchéité renforcée",
-      ],
-      description:
-        "Baie vitrée à ouverture pivotante au design unique. Solution originale pour les architectures contemporaines.",
-      priceRange: "1900€ - 2700€",
-      rating: 4.6,
-      dimensions: "160x215 à 220x250 cm",
-      uw: "Uw = 0.9 W/m²K",
-    },
-    {
-      id: 12,
-      name: "MAXIMA OPENING",
+      name: "MAXIMA COULISSANT XXL",
       category: "baie-vitree",
       material: "aluminium",
       ouverture: "coulissante",
       vitrage: "double",
       image: "/images/baie-maxima-opening.jpg",
       colors: ["Gris clair", "Blanc", "Anthracite"],
-      features: [
-        "Très grandes dimensions",
-        "Système lift & slide",
-        "Vue panoramique",
-        "Isolation optimale",
-      ],
-      description:
-        "Baie vitrée de très grandes dimensions pour une ouverture exceptionnelle sur l'extérieur. Performance et esthétique au rendez-vous.",
+      features: ["Très grandes dimensions", "Système lift & slide", "Vue panoramique", "Isolation optimale"],
+      description: "Baie vitrée de très grandes dimensions pour une ouverture exceptionnelle sur l'extérieur. Performance et esthétique au rendez-vous.",
       priceRange: "2500€ - 4000€",
       rating: 4.8,
       dimensions: "300x215 à 600x280 cm",
       uw: "Uw = 1.1 W/m²K",
+      fournisseur: "Sybaie",
       isNew: true,
     },
   ];
@@ -339,10 +251,10 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
   const ouvertureFilters = [
     { key: "all", label: "Tous types" },
     { key: "coulissante", label: "Coulissante" },
-    { key: "battante", label: "Battante" },
-    { key: "pliante", label: "Pliante" },
-    { key: "fixe", label: "Fixe" },
-    { key: "pivotante", label: "Pivotante" },
+    { key: "coulissante-galandage", label: "Coulissante Galandage" },
+    { key: "coulissante-accordeon", label: "Coulissante Accordéon" },
+    { key: "coulissante-applique", label: "Coulissante Applique" },
+    { key: "oscillo-coulissante", label: "Oscillo-Coulissante" },
   ];
 
   const vitrageFilters = [
@@ -365,7 +277,7 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
 
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters((prev) => ({ ...prev, [filterType]: value }));
-    setVisibleCount(12);
+    setVisibleCount(9);
   };
 
   return (
@@ -412,15 +324,15 @@ const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
 const BaiesVitreesHeader = () => (
   <div className="mb-12 space-y-4 text-center">
     <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Notre selection de Baies Vitrées
+      Notre sélection de Baies Vitrées
     </Typography>
     <Typography
       variant="large"
       className="text-muted-foreground mx-auto max-w-3xl"
     >
-      Ouvrez votre intérieur sur l'extérieur avec nos baies vitrées. Luminosité,
-      vue panoramique et connexion avec la nature pour transformer votre espace
-      de vie.
+      Ouvrez votre intérieur sur l'extérieur avec nos baies vitrées. Coulissantes, 
+      galandage, accordéon ou en applique, profitez d'une luminosité maximale 
+      et d'une vue panoramique sur votre environnement.
     </Typography>
   </div>
 );
@@ -554,7 +466,6 @@ const BaieVitreeCard = ({
       onClick={onClick}
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        {/* Badges */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
           {baieVitree.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
@@ -593,8 +504,8 @@ const BaieVitreeCard = ({
             <span className="rounded-full bg-blue-100 px-2 py-1 text-blue-800 capitalize">
               {baieVitree.material}
             </span>
-            <span className="rounded-full bg-green-100 px-2 py-1 text-green-800 capitalize">
-              {baieVitree.ouverture}
+            <span className="rounded-full bg-green-100 px-2 py-1 text-green-800">
+              {baieVitree.ouverture.replace('coulissante-', '')}
             </span>
             <span className="rounded-full bg-purple-100 px-2 py-1 text-purple-800 capitalize">
               {baieVitree.vitrage} vitrage
@@ -613,7 +524,7 @@ const BaieVitreeCard = ({
               <Thermometer size={12} />
               {baieVitree.uw}
             </span>
-            <span>{baieVitree.dimensions.split(" à ")[0]}</span>
+            <span className="text-blue-600 font-medium">{baieVitree.fournisseur}</span>
           </div>
 
           <div className="flex items-center justify-between pt-2">
@@ -668,7 +579,6 @@ const BaieVitreeModal = ({
         </button>
 
         <div className="flex h-full max-h-[90vh] overflow-y-auto">
-          {/* Image */}
           <div className="hidden md:block md:w-1/2">
             <div className="relative h-full min-h-[500px]">
               <Image
@@ -680,9 +590,7 @@ const BaieVitreeModal = ({
             </div>
           </div>
 
-          {/* Contenu */}
           <div className="w-full space-y-4 p-4 md:w-1/2">
-            {/* En-tête */}
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <Typography variant="h2">{baieVitree.name}</Typography>
@@ -701,8 +609,8 @@ const BaieVitreeModal = ({
                 <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 capitalize">
                   {baieVitree.material}
                 </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800 capitalize">
-                  {baieVitree.ouverture}
+                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800">
+                  {baieVitree.ouverture.replace('coulissante-', '')}
                 </span>
                 <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 capitalize">
                   {baieVitree.vitrage} vitrage
@@ -714,7 +622,6 @@ const BaieVitreeModal = ({
               </Typography>
             </div>
 
-            {/* Informations techniques */}
             <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
               <div>
                 <Typography
@@ -725,6 +632,17 @@ const BaieVitreeModal = ({
                 </Typography>
                 <Typography variant="small" className="font-semibold">
                   {baieVitree.uw}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Fournisseur
+                </Typography>
+                <Typography variant="small" className="font-semibold text-blue-600">
+                  {baieVitree.fournisseur}
                 </Typography>
               </div>
               <div>
@@ -749,26 +667,11 @@ const BaieVitreeModal = ({
                   variant="small"
                   className="font-semibold capitalize"
                 >
-                  {baieVitree.ouverture}
-                </Typography>
-              </div>
-              <div>
-                <Typography
-                  variant="small"
-                  className="text-muted-foreground"
-                >
-                  Vitrage
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="font-semibold capitalize"
-                >
-                  {baieVitree.vitrage} vitrage
+                  {baieVitree.ouverture.replace('coulissante-', '')}
                 </Typography>
               </div>
             </div>
 
-            {/* Description */}
             <div>
               <Typography variant="h3" className="mb-1">
                 Description
@@ -781,7 +684,6 @@ const BaieVitreeModal = ({
               </Typography>
             </div>
 
-            {/* Caractéristiques */}
             <div>
               <Typography variant="h3" className="mb-3">
                 Caractéristiques
@@ -799,7 +701,6 @@ const BaieVitreeModal = ({
               </div>
             </div>
 
-            {/* Couleurs disponibles */}
             <div>
               <Typography variant="h3" className="mb-3">
                 Couleurs disponibles
@@ -816,7 +717,6 @@ const BaieVitreeModal = ({
               </div>
             </div>
 
-            {/* Boutons d'action avec authentification */}
             <div className="flex gap-3 pt-4">
               {session ? (
                 <Link
@@ -826,7 +726,7 @@ const BaieVitreeModal = ({
                     className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
-                  Ajout au panier
+                  Demander un devis
                 </Link>
               ) : (
                 <Link
@@ -836,7 +736,7 @@ const BaieVitreeModal = ({
                     className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
-                  Ajout au panier
+                  Se connecter pour un devis
                 </Link>
               )}
               <Button
@@ -844,11 +744,10 @@ const BaieVitreeModal = ({
                 onClick={onClose}
                 className="flex-1"
               >
-                Associer un devis
+                Fermer
               </Button>
             </div>
 
-            {/* Informations de contact */}
             <div className="mt-6 rounded-lg bg-gray-50 p-4 pb-3">
               <Typography variant="small" className="mb-3 font-semibold">
                 Ou contactez-nous directement
@@ -871,18 +770,6 @@ const BaieVitreeModal = ({
                   </Typography>
                 </div>
               </div>
-              {/* <div className="mt-3 border-t border-gray-200 pt-3">
-                <Typography
-                  variant="small"
-                  className="text-muted-foreground"
-                >
-                  🏠 Visite technique gratuite et sans engagement
-                  <br />
-                  📏 Prise de mesures professionnelle
-                  <br />
-                  🔧 Installation par nos équipes certifiées
-                </Typography>
-              </div> */}
             </div>
           </div>
         </div>

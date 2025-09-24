@@ -8,324 +8,412 @@ import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { X, Star, Shield, Phone, Mail, MapPin } from "lucide-react";
+import {
+  X,
+  Star,
+  Shield,
+  Phone,
+  Mail,
+  MapPin,
+  Sun,
+  Thermometer,
+  Eye,
+} from "lucide-react";
 
-type DoorProps = {
+type BaieVitreeProps = {
   id: number;
   name: string;
   category: string;
   material: string;
-  style: string;
+  ouverture: string;
+  vitrage: string;
   image: string;
   colors: string[];
   features: string[];
   description: string;
   priceRange: string;
   rating: number;
+  dimensions: string;
+  uw: string;
+  fournisseur: string;
   isPopular?: boolean;
   isNew?: boolean;
-}
+};
 
-type PortesSectionProps = {
+type BaiesVitrreesSectionProps = {
   className?: string;
-}
+};
 
-const PortesSection = ({ className }: PortesSectionProps) => {
-  // const { data: session } = useSession();
-  const [selectedDoor, setSelectedDoor] = useState<DoorProps | null>(null);
+const BaiesVitreesSection = ({ className }: BaiesVitrreesSectionProps) => {
+  const [selectedBaie, setSelectedBaie] = useState<BaieVitreeProps | null>(null);
   const [visibleCount, setVisibleCount] = useState(9);
   const [filters, setFilters] = useState({
     material: "all",
-    style: "all",
-    category: "all"
+    ouverture: "all",
+    vitrage: "all",
   });
 
-  const doors: DoorProps[] = [
+  const baiesVitrees: BaieVitreeProps[] = [
+    // Coulissantes
     {
       id: 1,
-      name: "ABLETTE",
-      category: "entree",
-      material: "acier",
-      style: "traditionnelle",
-      image: "/images/porte.jpg",
-      colors: ["Noir", "Beige", "Gris"],
-      features: ["Sécurité renforcée", "Isolation thermique", "Design élégant"],
-      description: "Porte d'entrée en acier au style traditionnel, alliant sécurité et esthétique. Parfaite pour les maisons classiques.",
-      priceRange: "800€ - 1200€",
-      rating: 4.8,
-      isPopular: true
+      name: "COULISSANT ALU PREMIUM",
+      category: "baie-vitree",
+      material: "aluminium",
+      ouverture: "coulissante",
+      vitrage: "double",
+      image: "/images/fenetre2.jpg",
+      colors: ["Gris anthracite", "Blanc", "Noir mat", "Bronze"],
+      features: ["Grande ouverture", "Seuil PMR", "Vitrage sécurisé", "Rails haute qualité"],
+      description: "Baie vitrée coulissante en aluminium pour une ouverture maximale sur l'extérieur. Design épuré et fonctionnalité optimale.",
+      priceRange: "1200€ - 1800€",
+      rating: 4.7,
+      dimensions: "200x215 à 400x250 cm",
+      uw: "Uw = 1.4 W/m²K",
+      fournisseur: "Sybaie",
+      isPopular: true,
     },
     {
       id: 2,
-      name: "AGOUTI",
-      category: "entree",
-      material: "acier",
-      style: "contemporaine",
-      image: "/images/porte-agouti.jpg",
-      colors: ["Bleu marine", "Beige", "Gris anthracite"],
-      features: ["Design moderne", "Haute sécurité", "Isolation optimale"],
-      description: "Porte d'entrée contemporaine en acier, avec des lignes épurées et une excellente performance énergétique.",
+      name: "COULISSANT PVC CONFORT",
+      category: "baie-vitree",
+      material: "pvc",
+      ouverture: "coulissante",
+      vitrage: "double",
+      image: "/images/baie2.jpg",
+      colors: ["Blanc", "Gris clair", "Anthracite"],
+      features: ["Système lift & slide", "Grandes dimensions", "Isolation thermique", "Prix attractif"],
+      description: "Baie vitrée PVC avec système de levage pour une manipulation aisée même sur de grandes dimensions. Excellent rapport qualité-prix.",
       priceRange: "900€ - 1400€",
-      rating: 4.9,
-      isNew: true
+      rating: 4.5,
+      dimensions: "180x215 à 350x240 cm",
+      uw: "Uw = 1.3 W/m²K",
+      fournisseur: "C2R",
     },
     {
       id: 3,
-      name: "ALÉSIA 60",
-      category: "entree",
-      material: "aluminium",
-      style: "contemporaine",
-      image: "/images/porte-alesia.jpg",
-      colors: ["Gris clair", "Beige", "Blanc"],
-      features: ["Ultra légère", "Résistance corrosion", "Design minimaliste"],
-      description: "Porte d'entrée en aluminium au design contemporain, offrant une excellente durabilité et un entretien minimal.",
-      priceRange: "1100€ - 1600€",
-      rating: 4.7
+      name: "COULISSANT BOIS AUTHENTIQUE",
+      category: "baie-vitree",
+      material: "bois",
+      ouverture: "coulissante",
+      vitrage: "double",
+      image: "/images/baie-bois.jpg",
+      colors: ["Chêne naturel", "Pin lasuré", "Mélèze"],
+      features: ["Bois massif", "Coulissement doux", "Isolation naturelle", "Charme authentique"],
+      description: "Baie vitrée coulissante en bois massif au charme intemporel. Matériau noble pour une intégration harmonieuse.",
+      priceRange: "1600€ - 2400€",
+      rating: 4.6,
+      dimensions: "200x215 à 300x250 cm",
+      uw: "Uw = 1.5 W/m²K",
+      fournisseur: "Proferm",
     },
+    // Coulissantes à Galandage
     {
       id: 4,
-      name: "ALIÉNOR 80",
-      category: "entree",
+      name: "GALANDAGE INVISIBLE ALU",
+      category: "baie-vitree",
       material: "aluminium",
-      style: "traditionnelle",
-      image: "/images/porte-alienor.jpg",
-      colors: ["Noir", "Beige"],
-      features: ["Vitrage décoratif", "Isolation renforcée", "Style authentique"],
-      description: "Porte d'entrée aluminium traditionnelle avec vitrage décoratif, parfaite pour les maisons de caractère.",
-      priceRange: "1200€ - 1800€",
-      rating: 4.6
+      ouverture: "coulissante-galandage",
+      vitrage: "triple",
+      image: "/images/baie-galandage-invisible.jpg",
+      colors: ["Anthracite", "Noir", "Blanc pur"],
+      features: ["Coulissement dans cloison", "Triple vitrage", "Design minimal", "Gain d'espace"],
+      description: "Baie vitrée à galandage disparaissant totalement dans la cloison. Solution haut de gamme pour un design épuré et moderne.",
+      priceRange: "2000€ - 3000€",
+      rating: 4.9,
+      dimensions: "200x215 à 400x280 cm",
+      uw: "Uw = 0.9 W/m²K",
+      fournisseur: "Swao",
+      isNew: true,
     },
+    // Coulissantes Accordéon
     {
       id: 5,
-      name: "ANCOLIE",
-      category: "entree",
-      material: "pvc",
-      style: "contemporaine",
-      image: "/images/porte-ancolie.jpg",
-      colors: ["Blanc", "Gris"],
-      features: ["Excellent rapport qualité-prix", "Isolation thermique", "Entretien facile"],
-      description: "Porte d'entrée PVC contemporaine, économique et performante, idéale pour tous types d'habitations.",
-      priceRange: "600€ - 900€",
-      rating: 4.5,
-      isPopular: true
+      name: "ACCORDÉON FLEX ALU",
+      category: "baie-vitree",
+      material: "aluminium",
+      ouverture: "coulissante-accordeon",
+      vitrage: "double",
+      image: "/images/baie3.jpg",
+      colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
+      features: ["Ouverture totale", "Système pliant", "Design moderne", "Étanchéité parfaite"],
+      description: "Baie vitrée accordéon permettant une ouverture totale de l'espace. Solution innovante pour connecter intérieur et extérieur.",
+      priceRange: "1500€ - 2200€",
+      rating: 4.8,
+      dimensions: "200x215 à 600x250 cm",
+      uw: "Uw = 1.2 W/m²K",
+      fournisseur: "Proferm",
+      isNew: true,
     },
+    // Coulissantes en Applique
     {
       id: 6,
-      name: "ANÉMONE",
-      category: "entree",
+      name: "COULISSANT APPLIQUE PVC",
+      category: "baie-vitree",
       material: "pvc",
-      style: "traditionnelle",
-      image: "/images/porte-anemone.jpg",
-      colors: ["Blanc", "Bleu", "Vert", "Gris"],
-      features: ["Vitrage sécurisé", "Design classique", "Prix attractif"],
-      description: "Porte d'entrée PVC traditionnelle avec vitrage, alliant charme classique et performance moderne.",
-      priceRange: "650€ - 1000€",
-      rating: 4.4
+      ouverture: "coulissante-applique",
+      vitrage: "double",
+      image: "/images/baie-applique.jpg",
+      colors: ["Blanc", "Gris", "Anthracite"],
+      features: ["Pose en applique", "Isolation renforcée", "Facilité d'installation", "Prix compétitif"],
+      description: "Baie vitrée coulissante en pose applique pour rénovation. Installation simplifiée sans gros œuvre.",
+      priceRange: "800€ - 1300€",
+      rating: 4.4,
+      dimensions: "180x215 à 300x240 cm",
+      uw: "Uw = 1.4 W/m²K",
+      fournisseur: "C2R",
     },
+    // Oscillo-Coulissantes
     {
       id: 7,
-      name: "BÉRYL",
-      category: "entree",
-      material: "bois",
-      style: "traditionnelle",
-      image: "/images/porte-beryl.jpg",
-      colors: ["Chêne naturel", "Noyer", "Acajou"],
-      features: ["Bois massif", "Isolation naturelle", "Finition artisanale", "Durabilité exceptionnelle"],
-      description: "Porte d'entrée en bois massif au style traditionnel, façonnée artisanalement pour un rendu authentique et chaleureux.",
-      priceRange: "1500€ - 2200€",
-      rating: 4.9,
-      isNew: true
+      name: "OSCILLO-COULISSANT ALU",
+      category: "baie-vitree",
+      material: "aluminium",
+      ouverture: "oscillo-coulissante",
+      vitrage: "double",
+      image: "/images/baie-oscillo.jpg",
+      colors: ["Gris anthracite", "Blanc", "Bronze"],
+      features: ["Double fonction", "Aération sécurisée", "Grande ouverture", "Manipulation aisée"],
+      description: "Baie vitrée combinant ouverture coulissante et oscillo-battante. Polyvalence maximale pour tous les usages.",
+      priceRange: "1400€ - 2000€",
+      rating: 4.7,
+      dimensions: "200x215 à 350x250 cm",
+      uw: "Uw = 1.3 W/m²K",
+      fournisseur: "Swao",
     },
+    // Mixtes
     {
       id: 8,
-      name: "CRISTAL",
-      category: "entree",
-      material: "aluminium",
-      style: "contemporaine",
-      image: "/images/porte-cristal.jpg",
-      colors: ["Blanc pur", "Gris perle", "Noir mat"],
-      features: ["Grand vitrage", "Design épuré", "Sécurité renforcée", "Luminosité maximale"],
-      description: "Porte d'entrée aluminium contemporaine avec grand vitrage, parfaite pour les architectures modernes privilégiant la lumière.",
-      priceRange: "1300€ - 1900€",
-      rating: 4.8
+      name: "COULISSANT BOIS-ALU PRESTIGE",
+      category: "baie-vitree",
+      material: "bois-aluminium",
+      ouverture: "coulissante",
+      vitrage: "triple",
+      image: "/images/baie-fusion-prestige.jpg",
+      colors: ["Chêne/Anthracite", "Pin/Blanc", "Mélèze/Bronze"],
+      features: ["Double matériau", "Triple vitrage", "Performance maximale", "Entretien minimal"],
+      description: "Baie vitrée mixte bois-aluminium combinant l'esthétique du bois à l'intérieur et la résistance de l'aluminium à l'extérieur.",
+      priceRange: "2200€ - 3200€",
+      rating: 4.8,
+      dimensions: "200x215 à 350x250 cm",
+      uw: "Uw = 0.8 W/m²K",
+      fournisseur: "Swao",
+      isNew: true,
     },
+    // Acier Style Industriel
     {
       id: 9,
-      name: "EMERAUDE",
-      category: "entree",
+      name: "COULISSANT ACIER LOFT",
+      category: "baie-vitree",
       material: "acier",
-      style: "contemporaine",
-      image: "/images/porte-emeraude.jpg",
-      colors: ["Vert émeraude", "Bleu océan", "Rouge carmin"],
-      features: ["Couleurs éclatantes", "Anti-corrosion", "Design audacieux", "Haute sécurité"],
-      description: "Porte d'entrée en acier aux couleurs vives et au design contemporain audacieux, pour personnaliser votre entrée avec style.",
-      priceRange: "1000€ - 1500€",
-      rating: 4.6,
-      isPopular: true
+      ouverture: "coulissante",
+      vitrage: "double",
+      image: "/images/baie-steel-loft.jpg",
+      colors: ["Noir mat", "Gris anthracite"],
+      features: ["Style industriel", "Cadre fin", "Vitrage maximal", "Robustesse"],
+      description: "Baie vitrée acier au style industriel avec cadres fins pour un maximum de vitrage. Parfaite pour les lofts et architectures contemporaines.",
+      priceRange: "1600€ - 2400€",
+      rating: 4.7,
+      dimensions: "150x215 à 250x250 cm",
+      uw: "Uw = 1.8 W/m²K",
+      fournisseur: "Proferm",
     },
+    // Grande Dimension
     {
       id: 10,
-      name: "FUSION",
-      category: "entree",
-      material: "mixte",
-      style: "contemporaine",
-      image: "/images/porte-fusion.jpg",
-      colors: ["Bois/Alu naturel", "Bois/Alu anthracite"],
-      features: ["Double matériau", "Design innovant", "Performance optimale", "Entretien minimal"],
-      description: "Porte d'entrée mixte bois-aluminium au design innovant, combinant l'esthétique du bois et la performance de l'aluminium.",
-      priceRange: "1600€ - 2400€",
-      rating: 4.7
-    },
-    {
-      id: 11,
-      name: "HARMONIE",
-      category: "entree",
-      material: "pvc",
-      style: "traditionnelle",
-      image: "/images/porte-harmonie.jpg",
-      colors: ["Blanc classique", "Crème", "Gris taupe"],
-      features: ["Design équilibré", "Panneau décoratif", "Isolation performante", "Prix accessible"],
-      description: "Porte d'entrée PVC traditionnelle avec panneaux décoratifs, offrant un excellent équilibre entre esthétique et budget.",
-      priceRange: "550€ - 850€",
-      rating: 4.4
-    },
-    {
-      id: 12,
-      name: "INFINITY",
-      category: "entree",
+      name: "MAXIMA COULISSANT XXL",
+      category: "baie-vitree",
       material: "aluminium",
-      style: "contemporaine",
-      image: "/images/porte-infinity.jpg",
-      colors: ["Anthracite", "Blanc", "Bronze"],
-      features: ["Lignes infinies", "Poignée intégrée", "Design futuriste", "Haute isolation"],
-      description: "Porte d'entrée aluminium au design futuriste avec poignée intégrée, pour une entrée résolument moderne et élégante.",
-      priceRange: "1400€ - 2000€",
+      ouverture: "coulissante",
+      vitrage: "double",
+      image: "/images/baie-maxima-opening.jpg",
+      colors: ["Gris clair", "Blanc", "Anthracite"],
+      features: ["Très grandes dimensions", "Système lift & slide", "Vue panoramique", "Isolation optimale"],
+      description: "Baie vitrée de très grandes dimensions pour une ouverture exceptionnelle sur l'extérieur. Performance et esthétique au rendez-vous.",
+      priceRange: "2500€ - 4000€",
       rating: 4.8,
-      isNew: true
-    }
+      dimensions: "300x215 à 600x280 cm",
+      uw: "Uw = 1.1 W/m²K",
+      fournisseur: "Sybaie",
+      isNew: true,
+    },
   ];
 
   const materialFilters = [
     { key: "all", label: "Tous matériaux" },
-    { key: "acier", label: "Acier" },
     { key: "aluminium", label: "Aluminium" },
     { key: "pvc", label: "PVC" },
     { key: "bois", label: "Bois" },
-    { key: "mixte", label: "Mixte" }
+    { key: "bois-aluminium", label: "Bois-Aluminium" },
+    { key: "acier", label: "Acier" },
   ];
 
-  const styleFilters = [
-    { key: "all", label: "Tous styles" },
-    { key: "traditionnelle", label: "Traditionnelle" },
-    { key: "contemporaine", label: "Contemporaine" }
+  const ouvertureFilters = [
+    { key: "all", label: "Tous types" },
+    { key: "coulissante", label: "Coulissante" },
+    { key: "coulissante-galandage", label: "Coulissante Galandage" },
+    { key: "coulissante-accordeon", label: "Coulissante Accordéon" },
+    { key: "coulissante-applique", label: "Coulissante Applique" },
+    { key: "oscillo-coulissante", label: "Oscillo-Coulissante" },
   ];
 
-  const filteredDoors = doors.filter(door => {
-    return (filters.material === "all" || door.material === filters.material) &&
-           (filters.style === "all" || door.style === filters.style);
+  const vitrageFilters = [
+    { key: "all", label: "Tous vitrages" },
+    { key: "double", label: "Double vitrage" },
+    { key: "triple", label: "Triple vitrage" },
+  ];
+
+  const filteredBaies = baiesVitrees.filter((baie) => {
+    return (
+      (filters.material === "all" || baie.material === filters.material) &&
+      (filters.ouverture === "all" || baie.ouverture === filters.ouverture) &&
+      (filters.vitrage === "all" || baie.vitrage === filters.vitrage)
+    );
   });
 
   const handleShowMore = () => {
-    setVisibleCount(prev => Math.min(prev + 3, filteredDoors.length));
+    setVisibleCount((prev) => Math.min(prev + 3, filteredBaies.length));
   };
 
   const handleFilterChange = (filterType: string, value: string) => {
-    setFilters(prev => ({ ...prev, [filterType]: value }));
-    setVisibleCount(9); // Reset visible count when filters change
+    setFilters((prev) => ({ ...prev, [filterType]: value }));
+    setVisibleCount(9);
   };
 
   return (
-    <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
-      <PortesHeader />
-      <PortesFilters 
+    <section
+      className={cn(
+        "relative mx-auto w-full max-w-7xl px-4 py-20 lg:px-0",
+        className,
+      )}
+    >
+      <BaiesVitreesHeader />
+      <BaiesVitreesFilters
         materialFilters={materialFilters}
-        styleFilters={styleFilters}
+        ouvertureFilters={ouvertureFilters}
+        vitrageFilters={vitrageFilters}
         activeFilters={filters}
         onFilterChange={handleFilterChange}
       />
-      <PortesGrid 
-        doors={filteredDoors.slice(0, visibleCount)}
-        onDoorClick={setSelectedDoor}
+      <BaiesVitreesGrid
+        baiesVitrees={filteredBaies.slice(0, visibleCount)}
+        onBaieClick={setSelectedBaie}
       />
-      
-      {visibleCount < filteredDoors.length && (
+
+      {visibleCount < filteredBaies.length && (
         <div className="mt-8 flex justify-center">
           <Button
             onClick={handleShowMore}
-            className="bg-primary text-white hover:bg-primary/90"
+            className="bg-primary hover:bg-primary/90 text-white"
           >
-            Voir plus de portes
+            Voir plus de baies vitrées
           </Button>
         </div>
       )}
 
-      {selectedDoor && (
-        <DoorModal 
-          door={selectedDoor}
-          onClose={() => setSelectedDoor(null)}
+      {selectedBaie && (
+        <BaieVitreeModal
+          baieVitree={selectedBaie}
+          onClose={() => setSelectedBaie(null)}
         />
       )}
     </section>
   );
 };
 
-const PortesHeader = () => (
+const BaiesVitreesHeader = () => (
   <div className="mb-12 space-y-4 text-center">
     <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Notre selection de porte
+      Notre sélection de Baies Vitrées
     </Typography>
-    <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
-      Découvrez notre gamme complète de portes d'entrée. Sécurité, esthétique et performance énergétique 
-      pour protéger et embellir votre maison.
+    <Typography
+      variant="large"
+      className="text-muted-foreground mx-auto max-w-3xl"
+    >
+      Ouvrez votre intérieur sur l'extérieur avec nos baies vitrées. Coulissantes, 
+      galandage, accordéon ou en applique, profitez d'une luminosité maximale 
+      et d'une vue panoramique sur votre environnement.
     </Typography>
   </div>
 );
 
-const PortesFilters = ({ 
+const BaiesVitreesFilters = ({
   materialFilters,
-  styleFilters,
-  activeFilters, 
-  onFilterChange 
+  ouvertureFilters,
+  vitrageFilters,
+  activeFilters,
+  onFilterChange,
 }: {
   materialFilters: { key: string; label: string }[];
-  styleFilters: { key: string; label: string }[];
-  activeFilters: { material: string; style: string; category: string };
+  ouvertureFilters: { key: string; label: string }[];
+  vitrageFilters: { key: string; label: string }[];
+  activeFilters: { material: string; ouverture: string; vitrage: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => (
   <div className="mb-8 space-y-4">
     <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Matériaux:</span>
+      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+        Matériaux:
+      </span>
       {materialFilters.map((filter) => (
         <Button
           key={filter.key}
-          variant={activeFilters.material === filter.key ? "default" : "outline"}
+          variant={
+            activeFilters.material === filter.key ? "default" : "outline"
+          }
           size="sm"
           onClick={() => onFilterChange("material", filter.key)}
           className={cn(
             "transition-all duration-200",
-            activeFilters.material === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
+            activeFilters.material === filter.key
+              ? "bg-primary text-white"
+              : "hover:bg-primary/10",
           )}
         >
           {filter.label}
         </Button>
       ))}
     </div>
-    
+
     <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Styles:</span>
-      {styleFilters.map((filter) => (
+      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+        Ouverture:
+      </span>
+      {ouvertureFilters.map((filter) => (
         <Button
           key={filter.key}
-          variant={activeFilters.style === filter.key ? "default" : "outline"}
+          variant={
+            activeFilters.ouverture === filter.key ? "default" : "outline"
+          }
           size="sm"
-          onClick={() => onFilterChange("style", filter.key)}
+          onClick={() => onFilterChange("ouverture", filter.key)}
           className={cn(
             "transition-all duration-200",
-            activeFilters.style === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
+            activeFilters.ouverture === filter.key
+              ? "bg-primary text-white"
+              : "hover:bg-primary/10",
+          )}
+        >
+          {filter.label}
+        </Button>
+      ))}
+    </div>
+
+    <div className="flex flex-wrap justify-center gap-2">
+      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+        Vitrage:
+      </span>
+      {vitrageFilters.map((filter) => (
+        <Button
+          key={filter.key}
+          variant={activeFilters.vitrage === filter.key ? "default" : "outline"}
+          size="sm"
+          onClick={() => onFilterChange("vitrage", filter.key)}
+          className={cn(
+            "transition-all duration-200",
+            activeFilters.vitrage === filter.key
+              ? "bg-primary text-white"
+              : "hover:bg-primary/10",
           )}
         >
           {filter.label}
@@ -335,97 +423,114 @@ const PortesFilters = ({
   </div>
 );
 
-const PortesGrid = ({ 
-  doors, 
-  onDoorClick 
+const BaiesVitreesGrid = ({
+  baiesVitrees,
+  onBaieClick,
 }: {
-  doors: DoorProps[];
-  onDoorClick: (door: DoorProps) => void;
+  baiesVitrees: BaieVitreeProps[];
+  onBaieClick: (baie: BaieVitreeProps) => void;
 }) => (
   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {doors.map((door, index) => (
-      <DoorCard 
-        key={door.id}
-        door={door}
+    {baiesVitrees.map((baie, index) => (
+      <BaieVitreeCard
+        key={baie.id}
+        baieVitree={baie}
         index={index}
-        onClick={() => onDoorClick(door)}
+        onClick={() => onBaieClick(baie)}
       />
     ))}
   </div>
 );
 
-const DoorCard = ({ 
-  door, 
-  index, 
-  onClick 
+const BaieVitreeCard = ({
+  baieVitree,
+  index,
+  onClick,
 }: {
-  door: DoorProps;
+  baieVitree: BaieVitreeProps;
   index: number;
   onClick: () => void;
 }) => {
   const delay = index * 0.1;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{
         opacity: 1,
         y: 0,
-        transition: { delay, duration: 0.6 }
+        transition: { delay, duration: 0.6 },
       }}
       viewport={{ once: true }}
       className="group cursor-pointer"
       onClick={onClick}
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        {/* Badges */}
-        <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
-          {door.isNew && (
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
+          {baieVitree.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
               Nouveau
             </span>
           )}
-          {door.isPopular && (
+          {baieVitree.isPopular && (
             <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
               Populaire
             </span>
           )}
         </div>
-        
+
         <div className="relative h-64">
           <Image
-            src={door.image}
-            alt={door.name}
+            src={baieVitree.image}
+            alt={baieVitree.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
-        
+
         <div className="space-y-3 p-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">{door.name}</h3>
+            <Typography variant="large" className="font-semibold">
+              {baieVitree.name}
+            </Typography>
             <div className="flex items-center gap-1">
               <Star size={14} className="fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">{door.rating}</span>
+              <Typography variant="small">{baieVitree.rating}</Typography>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
-              {door.material}
+            <span className="rounded-full bg-blue-100 px-2 py-1 text-blue-800 capitalize">
+              {baieVitree.material}
             </span>
-            <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
-              {door.style}
+            <span className="rounded-full bg-green-100 px-2 py-1 text-green-800">
+              {baieVitree.ouverture.replace('coulissante-', '')}
+            </span>
+            <span className="rounded-full bg-purple-100 px-2 py-1 text-purple-800 capitalize">
+              {baieVitree.vitrage} vitrage
             </span>
           </div>
-          
-          <p className="line-clamp-2 text-sm text-muted-foreground">
-            {door.description}
-          </p>
-          
+
+          <Typography
+            variant="small"
+            className="text-muted-foreground line-clamp-2"
+          >
+            {baieVitree.description}
+          </Typography>
+
+          <div className="text-muted-foreground flex items-center justify-between text-xs">
+            <span className="flex items-center gap-1">
+              <Thermometer size={12} />
+              {baieVitree.uw}
+            </span>
+            <span className="text-blue-600 font-medium">{baieVitree.fournisseur}</span>
+          </div>
+
           <div className="flex items-center justify-between pt-2">
-            <span className="font-semibold text-primary">{door.priceRange}</span>
+            <Typography variant="small" className="text-primary font-semibold">
+              {baieVitree.priceRange}
+            </Typography>
             <Button size="sm" variant="outline" className="text-xs">
               Voir détails
             </Button>
@@ -436,88 +541,173 @@ const DoorCard = ({
   );
 };
 
-const DoorModal = ({ 
-  door, 
-  onClose 
+const BaieVitreeModal = ({
+  baieVitree,
+  onClose,
 }: {
-  door: DoorProps;
+  baieVitree: BaieVitreeProps;
   onClose: () => void;
 }) => {
   const { data: session } = useSession();
+
+  const getPerformanceIcon = (feature: string) => {
+    if (
+      feature.includes("vitrage") ||
+      feature.includes("Isolation") ||
+      feature.includes("thermique")
+    )
+      return Thermometer;
+    if (
+      feature.includes("Vue") ||
+      feature.includes("panoramique") ||
+      feature.includes("vision")
+    )
+      return Eye;
+    if (feature.includes("Design") || feature.includes("esthétique"))
+      return Sun;
+    return Shield;
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-md bg-white">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+          className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
         >
           <X size={20} />
         </button>
 
         <div className="flex h-full max-h-[90vh] overflow-y-auto">
-          {/* Image */}
           <div className="hidden md:block md:w-1/2">
             <div className="relative h-full min-h-[500px]">
               <Image
-                src={door.image}
-                alt={door.name}
+                src={baieVitree.image}
+                alt={baieVitree.name}
                 fill
                 className="object-cover"
               />
             </div>
           </div>
 
-          {/* Contenu */}
-          <div className="w-full space-y-6 p-6 md:w-1/2">
-            {/* En-tête */}
+          <div className="w-full space-y-4 p-4 md:w-1/2">
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <h2 className="text-2xl font-bold">{door.name}</h2>
+                <Typography variant="h2">{baieVitree.name}</Typography>
                 <div className="flex items-center gap-1">
-                  <Star size={16} className="fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium">{door.rating}</span>
+                  <Star
+                    size={16}
+                    className="fill-yellow-400 text-yellow-400"
+                  />
+                  <Typography variant="small">
+                    {baieVitree.rating}
+                  </Typography>
                 </div>
               </div>
-              
+
               <div className="mb-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
-                  {door.material}
+                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 capitalize">
+                  {baieVitree.material}
                 </span>
-                <span className="rounded-full bg-purple-100 px-3 py-1 text-sm capitalize text-purple-800">
-                  {door.style}
+                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800">
+                  {baieVitree.ouverture.replace('coulissante-', '')}
+                </span>
+                <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 capitalize">
+                  {baieVitree.vitrage} vitrage
                 </span>
               </div>
-              
-              <p className="text-xl font-semibold text-primary">{door.priceRange}</p>
+
+              <Typography variant="large" className="text-primary">
+                {baieVitree.priceRange}
+              </Typography>
             </div>
 
-            {/* Description */}
-            <div>
-              <h3 className="mb-2 font-semibold">Description</h3>
-              <p className="leading-relaxed text-muted-foreground">
-                {door.description}
-              </p>
+            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Performance thermique
+                </Typography>
+                <Typography variant="small" className="font-semibold">
+                  {baieVitree.uw}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Fournisseur
+                </Typography>
+                <Typography variant="small" className="font-semibold text-blue-600">
+                  {baieVitree.fournisseur}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Dimensions
+                </Typography>
+                <Typography variant="small" className="font-semibold">
+                  {baieVitree.dimensions}
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="small"
+                  className="text-muted-foreground"
+                >
+                  Ouverture
+                </Typography>
+                <Typography
+                  variant="small"
+                  className="font-semibold capitalize"
+                >
+                  {baieVitree.ouverture.replace('coulissante-', '')}
+                </Typography>
+              </div>
             </div>
 
-            {/* Caractéristiques */}
             <div>
-              <h3 className="mb-3 font-semibold">Caractéristiques</h3>
+              <Typography variant="h3" className="mb-1">
+                Description
+              </Typography>
+              <Typography
+                variant="p"
+                className="text-muted-foreground leading-relaxed"
+              >
+                {baieVitree.description}
+              </Typography>
+            </div>
+
+            <div>
+              <Typography variant="h3" className="mb-3">
+                Caractéristiques
+              </Typography>
               <div className="grid grid-cols-1 gap-2">
-                {door.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <Shield size={16} className="text-green-600" />
-                    <span className="text-sm">{feature}</span>
-                  </div>
-                ))}
+                {baieVitree.features.map((feature, index) => {
+                  const IconComponent = getPerformanceIcon(feature);
+                  return (
+                    <div key={index} className="flex items-center gap-2">
+                      <IconComponent size={16} className="text-green-600" />
+                      <Typography variant="small">{feature}</Typography>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Couleurs disponibles */}
             <div>
-              <h3 className="mb-3 font-semibold">Couleurs disponibles</h3>
+              <Typography variant="h3" className="mb-3">
+                Couleurs disponibles
+              </Typography>
               <div className="flex flex-wrap gap-2">
-                {door.colors.map((color, index) => (
-                  <span 
+                {baieVitree.colors.map((color, index) => (
+                  <span
                     key={index}
                     className="rounded-full bg-gray-100 px-3 py-1 text-sm"
                   >
@@ -527,30 +717,29 @@ const DoorModal = ({
               </div>
             </div>
 
-            {/* Boutons d'action avec authentification */}
             <div className="flex gap-3 pt-4">
               {session ? (
-                <Link 
-                  href="/account/devis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/account/devis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
                   Demander un devis
                 </Link>
               ) : (
-                <Link 
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
-                  Demander un devis
+                  Se connecter pour un devis
                 </Link>
               )}
-              <Button 
+              <Button
                 variant="outline"
                 onClick={onClose}
                 className="flex-1"
@@ -559,21 +748,26 @@ const DoorModal = ({
               </Button>
             </div>
 
-            {/* Informations de contact */}
-            <div className="mt-6 rounded-lg bg-gray-50 p-4">
-              <h4 className="mb-3 font-semibold">Ou contactez-nous directement</h4>
-              <div className="space-y-2 text-sm">
+            <div className="mt-6 rounded-lg bg-gray-50 p-4 pb-3">
+              <Typography variant="small" className="mb-3 font-semibold">
+                Ou contactez-nous directement
+              </Typography>
+              <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Phone size={14} />
-                  <span>05 56 12 34 56</span>
+                  <Typography variant="small">05 56 12 34 56</Typography>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail size={14} />
-                  <span>contact@segment-c.com</span>
+                  <Typography variant="small">
+                    contact@segment-c.com
+                  </Typography>
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin size={14} />
-                  <span>St Jean d'Illac, Gironde</span>
+                  <Typography variant="small">
+                    St Jean d'Illac, Gironde
+                  </Typography>
                 </div>
               </div>
             </div>
@@ -584,4 +778,4 @@ const DoorModal = ({
   );
 };
 
-export default PortesSection;
+export default BaiesVitreesSection;
