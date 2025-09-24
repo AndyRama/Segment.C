@@ -8,224 +8,231 @@ import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { X, Star, Shield, Phone, Mail, MapPin, Sun, Thermometer, Volume2, Lock } from "lucide-react";
+import { X, Star, Shield, Phone, Mail, MapPin, Zap, Sun, Volume2, Settings } from "lucide-react";
 
-type FenetreProps = {
+type VoletProps = {
   id: number;
   name: string;
   category: string;
   material: string;
-  vitrage: string;
-  ouverture: string;
+  type: string;
+  motorisation: string;
   image: string;
   colors: string[];
   features: string[];
   description: string;
   priceRange: string;
   rating: number;
-  dimensions: string;
-  uw: string;
   fournisseur: string;
   isPopular?: boolean;
   isNew?: boolean;
 }
 
-type FenetresSectionProps = {
+type VoletsSectionProps = {
   className?: string;
 }
 
-const FenetresSection = ({ className }: FenetresSectionProps) => {
-  const [selectedFenetre, setSelectedFenetre] = useState<FenetreProps | null>(null);
+const VoletsSection = ({ className }: VoletsSectionProps) => {
+  const [selectedVolet, setSelectedVolet] = useState<VoletProps | null>(null);
   const [visibleCount, setVisibleCount] = useState(9);
   const [filters, setFilters] = useState({
     material: "all",
-    vitrage: "all",
-    category: "all",
-    ouverture: "all"
+    type: "all",
+    motorisation: "all"
   });
 
-  const fenetres: FenetreProps[] = [
-    // Fenêtres Oscillo-Battantes
+  const volets: VoletProps[] = [
+    // Volets Roulants PVC
     {
       id: 1,
-      name: "OSCILLO-BATTANT PVC PREMIUM",
-      category: "fenetre",
+      name: "ROULANT PVC MANUEL",
+      category: "volet",
       material: "pvc",
-      vitrage: "double",
-      ouverture: "oscillo-battant",
-      image: "/images/fenetre1.jpg",
-      colors: ["Blanc", "Gris anthracite", "Beige", "Chêne doré"],
-      features: ["Double vitrage 4/16/4", "Isolation renforcée", "Sécurité anti-effraction", "Étanchéité parfaite"],
-      description: "Fenêtre PVC à ouverture oscillo-battante avec double vitrage haute performance. Système de ventilation optimisé pour un confort quotidien.",
-      priceRange: "250€ - 400€",
-      rating: 4.7,
-      dimensions: "60x80 à 180x240 cm",
-      uw: "Uw = 1.1 W/m²K",
-      fournisseur: "Sybaie",
-      isPopular: true
-    },
-    {
-      id: 2,
-      name: "OSCILLO-BATTANT ALU DESIGN",
-      category: "fenetre",
-      material: "aluminium",
-      vitrage: "triple",
-      ouverture: "oscillo-battant",
-      image: "/images/fenetre6.jpg",
-      colors: ["Gris anthracite", "Noir mat", "Blanc", "Bronze"],
-      features: ["Triple vitrage", "Rupture pont thermique", "Design contemporain", "Sécurité renforcée"],
-      description: "Fenêtre aluminium oscillo-battante haut de gamme avec triple vitrage. Performance énergétique exceptionnelle et esthétique moderne.",
-      priceRange: "450€ - 700€",
-      rating: 4.9,
-      dimensions: "60x80 à 200x250 cm",
-      uw: "Uw = 0.8 W/m²K",
-      fournisseur: "Swao",
-      isNew: true
-    },
-    {
-      id: 3,
-      name: "OSCILLO-BATTANT BOIS TRADITION",
-      category: "fenetre",
-      material: "bois",
-      vitrage: "double",
-      ouverture: "oscillo-battant",
-      image: "/images/fenetre3.jpg",
-      colors: ["Chêne naturel", "Pin lasuré", "Mélèze", "Châtaignier"],
-      features: ["Bois massif", "Isolation naturelle", "Finition artisanale", "Respirant"],
-      description: "Fenêtre en bois massif oscillo-battante au charme authentique. Matériau noble et écologique pour un habitat sain.",
-      priceRange: "400€ - 650€",
-      rating: 4.6,
-      dimensions: "60x80 à 160x220 cm",
-      uw: "Uw = 1.2 W/m²K",
-      fournisseur: "Proferm"
-    },
-    // Fenêtres à Soufflet
-    {
-      id: 4,
-      name: "SOUFFLET PVC COMPACT",
-      category: "fenetre",
-      material: "pvc",
-      vitrage: "double",
-      ouverture: "soufflet",
-      image: "/images/fenetre-soufflet.jpg",
-      colors: ["Blanc", "Gris", "Beige"],
-      features: ["Ouverture vers l'intérieur", "Encombrement minimal", "Aération permanente", "Prix attractif"],
-      description: "Fenêtre PVC à soufflet idéale pour les petits espaces. Ventilation efficace sans encombrement.",
-      priceRange: "180€ - 300€",
+      type: "roulant",
+      motorisation: "manuel",
+      image: "/images/volet-roulant-pvc.jpg",
+      colors: ["Blanc", "Gris clair", "Beige", "Anthracite"],
+      features: ["Manœuvre manuelle", "Isolation thermique", "Prix accessible", "Installation simple"],
+      description: "Volet roulant PVC à manœuvre manuelle. Solution économique pour l'isolation et la protection solaire de vos fenêtres.",
+      priceRange: "200€ - 350€",
       rating: 4.4,
-      dimensions: "40x60 à 100x120 cm",
-      uw: "Uw = 1.3 W/m²K",
-      fournisseur: "C2R"
-    },
-    // Fenêtres Cintrées
-    {
-      id: 5,
-      name: "CINTRÉE ALU PRESTIGE",
-      category: "fenetre",
-      material: "aluminium",
-      vitrage: "double",
-      ouverture: "battant",
-      image: "/images/fenetre-cintree.jpg",
-      colors: ["Anthracite", "Blanc", "Bronze"],
-      features: ["Forme cintrée", "Design architectural", "Isolation optimisée", "Sur mesure"],
-      description: "Fenêtre aluminium cintrée pour architectures singulières. Design sur mesure pour projets d'exception.",
-      priceRange: "650€ - 1200€",
-      rating: 4.8,
-      dimensions: "Sur mesure",
-      uw: "Uw = 1.1 W/m²K",
-      fournisseur: "Swao",
-      isNew: true
-    },
-    // Châssis Fixes
-    {
-      id: 6,
-      name: "CHÂSSIS FIXE VISION",
-      category: "fenetre",
-      material: "aluminium",
-      vitrage: "triple",
-      ouverture: "fixe",
-      image: "/images/chassis-fixe.jpg",
-      colors: ["Gris anthracite", "Blanc pur", "Noir mat"],
-      features: ["Vitrage maximal", "Isolation exceptionnelle", "Vue panoramique", "Prix optimisé"],
-      description: "Châssis fixe aluminium pour apporter un maximum de lumière. Isolation thermique optimale sans ouverture.",
-      priceRange: "300€ - 550€",
-      rating: 4.6,
-      dimensions: "80x120 à 300x200 cm",
-      uw: "Uw = 0.7 W/m²K",
-      fournisseur: "Sybaie"
-    },
-    // Portes-Fenêtres
-    {
-      id: 7,
-      name: "PORTE-FENÊTRE PVC CONFORT",
-      category: "porte-fenetre",
-      material: "pvc",
-      vitrage: "double",
-      ouverture: "battant",
-      image: "/images/porte-fenetre-pvc.jpg",
-      colors: ["Blanc", "Gris clair", "Anthracite"],
-      features: ["Seuil PMR", "Double vitrage sécurisé", "Poignée ergonomique", "Isolation renforcée"],
-      description: "Porte-fenêtre PVC battante avec seuil PMR. Accès facilité à votre terrasse ou jardin.",
-      priceRange: "400€ - 650€",
-      rating: 4.5,
-      dimensions: "120x215 à 180x215 cm",
-      uw: "Uw = 1.2 W/m²K",
       fournisseur: "C2R",
       isPopular: true
     },
     {
-      id: 8,
-      name: "PORTE-FENÊTRE ALU DESIGN",
-      category: "porte-fenetre",
-      material: "aluminium",
-      vitrage: "double",
-      ouverture: "battant",
-      image: "/images/porte-fenetre-alu.jpg",
-      colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
-      features: ["Design contemporain", "Seuil encastré", "Vitrage feuilleté", "Haute sécurité"],
-      description: "Porte-fenêtre aluminium au design épuré. Intégration parfaite dans l'architecture moderne.",
-      priceRange: "550€ - 850€",
+      id: 2,
+      name: "ROULANT PVC ÉLECTRIQUE",
+      category: "volet",
+      material: "pvc",
+      type: "roulant",
+      motorisation: "electrique",
+      image: "/images/volet-roulant-electrique.jpg",
+      colors: ["Blanc", "Gris", "Anthracite", "Beige"],
+      features: ["Motorisation électrique", "Télécommande", "Arrêt obstacles", "Confort optimal"],
+      description: "Volet roulant PVC motorisé avec télécommande. Confort et sécurité pour un usage quotidien facilité.",
+      priceRange: "400€ - 650€",
       rating: 4.7,
-      dimensions: "120x215 à 200x215 cm",
-      uw: "Uw = 1.0 W/m²K",
-      fournisseur: "Proferm"
+      fournisseur: "C2R",
+      isPopular: true
     },
-    // Fenêtres Mixtes
     {
-      id: 9,
-      name: "MIXTE BOIS-ALU PRESTIGE",
-      category: "fenetre",
-      material: "bois-aluminium",
-      vitrage: "triple",
-      ouverture: "oscillo-battant",
-      image: "/images/fenetre-mixte.jpg",
-      colors: ["Chêne/Anthracite", "Pin/Blanc", "Mélèze/Bronze"],
-      features: ["Double matériau", "Triple vitrage", "Entretien minimal", "Performance maximale"],
-      description: "Fenêtre mixte bois-aluminium combinant esthétique du bois intérieur et résistance de l'aluminium extérieur.",
-      priceRange: "650€ - 1000€",
-      rating: 4.8,
-      dimensions: "60x80 à 200x250 cm",
-      uw: "Uw = 0.7 W/m²K",
-      fournisseur: "Swao",
+      id: 3,
+      name: "ROULANT PVC SOLAIRE",
+      category: "volet",
+      material: "pvc",
+      type: "roulant",
+      motorisation: "solaire",
+      image: "/images/volet-solaire.jpg",
+      colors: ["Blanc", "Gris anthracite"],
+      features: ["Panneau solaire", "Autonome", "Écologique", "Sans câblage"],
+      description: "Volet roulant PVC à motorisation solaire. Solution écologique et autonome, installation sans raccordement électrique.",
+      priceRange: "600€ - 900€",
+      rating: 4.6,
+      fournisseur: "C2R",
       isNew: true
     },
-    // Fenêtres Acier
+    // Volets Roulants Aluminium
+    {
+      id: 4,
+      name: "ROULANT ALU ÉLECTRIQUE",
+      category: "volet",
+      material: "aluminium",
+      type: "roulant",
+      motorisation: "electrique",
+      image: "/images/volet-alu-electrique.jpg",
+      colors: ["Gris anthracite", "Blanc", "Bronze", "Noir mat"],
+      features: ["Lames aluminium", "Motorisation filaire", "Résistance maximale", "Design contemporain"],
+      description: "Volet roulant aluminium motorisé haute résistance. Robustesse et esthétique pour les architectures modernes.",
+      priceRange: "500€ - 800€",
+      rating: 4.8,
+      fournisseur: "C2R"
+    },
+    {
+      id: 5,
+      name: "ROULANT ALU SOLAIRE PREMIUM",
+      category: "volet",
+      material: "aluminium",
+      type: "roulant",
+      motorisation: "solaire",
+      image: "/images/volet-alu-solaire.jpg",
+      colors: ["Anthracite", "Blanc pur", "Bronze", "Gris"],
+      features: ["Technologie solaire", "Lames isolantes", "Télécommande radio", "Haute performance"],
+      description: "Volet roulant aluminium solaire premium. Alliance parfaite entre écologie, performance et design contemporain.",
+      priceRange: "750€ - 1200€",
+      rating: 4.9,
+      fournisseur: "C2R",
+      isNew: true
+    },
+    // Volets Roulants Bois
+    {
+      id: 6,
+      name: "ROULANT BOIS MANUEL",
+      category: "volet",
+      material: "bois",
+      type: "roulant",
+      motorisation: "manuel",
+      image: "/images/volet-bois-manuel.jpg",
+      colors: ["Chêne naturel", "Pin lasuré", "Noyer", "Teck"],
+      features: ["Lames bois", "Charme authentique", "Isolation naturelle", "Manœuvre traditionnelle"],
+      description: "Volet roulant bois à manœuvre manuelle. Authenticité et charme naturel pour les maisons traditionnelles.",
+      priceRange: "450€ - 700€",
+      rating: 4.5,
+      fournisseur: "C2R"
+    },
+    // Volets Battants
+    {
+      id: 7,
+      name: "BATTANTS ALU PERSIENNÉS",
+      category: "volet",
+      material: "aluminium",
+      type: "battant",
+      motorisation: "manuel",
+      image: "/images/volets-battants-alu.jpg",
+      colors: ["Gris anthracite", "Blanc", "Vert", "Bleu"],
+      features: ["Lames persiennées", "Style traditionnel", "Ventilation naturelle", "Robustesse alu"],
+      description: "Volets battants aluminium persiennés. Style traditionnel avec la robustesse et l'esthétique de l'aluminium.",
+      priceRange: "300€ - 550€",
+      rating: 4.6,
+      fournisseur: "C2R"
+    },
+    {
+      id: 8,
+      name: "BATTANTS BOIS TRADITIONNEL",
+      category: "volet",
+      material: "bois",
+      type: "battant",
+      motorisation: "manuel",
+      image: "/images/volets-battants-bois.jpg",
+      colors: ["Vert volet", "Bleu provence", "Rouge basque", "Chêne naturel"],
+      features: ["Bois massif", "Authenticité régionale", "Finition artisanale", "Charme intemporel"],
+      description: "Volets battants bois traditionnel. Charme authentique des régions françaises avec finition artisanale soignée.",
+      priceRange: "250€ - 450€",
+      rating: 4.7,
+      fournisseur: "C2R",
+      isPopular: true
+    },
+    {
+      id: 9,
+      name: "BATTANTS PVC ÉCONOMIQUE",
+      category: "volet",
+      material: "pvc",
+      type: "battant",
+      motorisation: "manuel",
+      image: "/images/volets-battants-pvc.jpg",
+      colors: ["Blanc", "Vert", "Bleu", "Gris"],
+      features: ["PVC résistant", "Prix attractif", "Entretien minimal", "Couleurs durables"],
+      description: "Volets battants PVC économiques. Solution accessible sans compromis sur la qualité et la durabilité.",
+      priceRange: "150€ - 280€",
+      rating: 4.3,
+      fournisseur: "C2R"
+    },
+    // Volets Coulissants
     {
       id: 10,
-      name: "FENÊTRE ACIER INDUSTRIELLE",
-      category: "fenetre",
-      material: "acier",
-      vitrage: "double",
-      ouverture: "battant",
-      image: "/images/fenetre-acier.jpg",
-      colors: ["Noir mat", "Gris anthracite"],
-      features: ["Style industriel", "Cadres fins", "Robustesse maximale", "Vitrage maximal"],
-      description: "Fenêtre acier au style industriel authentique. Cadres fins pour un maximum de vitrage et un look urbain.",
-      priceRange: "500€ - 800€",
+      name: "COULISSANTS ALU DESIGN",
+      category: "volet",
+      material: "aluminium",
+      type: "coulissant",
+      motorisation: "manuel",
+      image: "/images/volets-coulissants.jpg",
+      colors: ["Anthracite", "Blanc", "Bronze"],
+      features: ["Coulissement latéral", "Gain de place", "Design moderne", "Grandes dimensions"],
+      description: "Volets coulissants aluminium au design contemporain. Solution élégante pour les grandes ouvertures et architectures modernes.",
+      priceRange: "600€ - 1000€",
+      rating: 4.8,
+      fournisseur: "C2R",
+      isNew: true
+    },
+    // Volets Composite
+    {
+      id: 11,
+      name: "ROULANT COMPOSITE PREMIUM",
+      category: "volet",
+      material: "composite",
+      type: "roulant",
+      motorisation: "electrique",
+      image: "/images/volet-composite.jpg",
+      colors: ["Gris anthracite", "Blanc", "Brun"],
+      features: ["Matériau composite", "Isolation renforcée", "Résistance UV", "Motorisation silencieuse"],
+      description: "Volet roulant composite motorisé haute performance. Innovation technologique pour isolation et durabilité maximales.",
+      priceRange: "700€ - 1100€",
+      rating: 4.7,
+      fournisseur: "C2R"
+    },
+    {
+      id: 12,
+      name: "BATTANTS COMPOSITE DESIGN",
+      category: "volet",
+      material: "composite",
+      type: "battant",
+      motorisation: "manuel",
+      image: "/images/volets-battants-composite.jpg",
+      colors: ["Gris moderne", "Blanc contemporain", "Anthracite"],
+      features: ["Matériau innovant", "Aspect bois", "Sans entretien", "Résistance climatique"],
+      description: "Volets battants composite aspect bois. Esthétique naturelle sans les contraintes d'entretien du bois traditionnel.",
+      priceRange: "400€ - 650€",
       rating: 4.6,
-      dimensions: "80x120 à 180x220 cm",
-      uw: "Uw = 1.6 W/m²K",
-      fournisseur: "Proferm"
+      fournisseur: "C2R"
     }
   ];
 
@@ -234,39 +241,31 @@ const FenetresSection = ({ className }: FenetresSectionProps) => {
     { key: "pvc", label: "PVC" },
     { key: "aluminium", label: "Aluminium" },
     { key: "bois", label: "Bois" },
-    { key: "bois-aluminium", label: "Bois-Aluminium" },
-    { key: "acier", label: "Acier" }
+    { key: "composite", label: "Composite" }
   ];
 
-  const vitrageFilters = [
-    { key: "all", label: "Tous vitrages" },
-    { key: "double", label: "Double vitrage" },
-    { key: "triple", label: "Triple vitrage" }
-  ];
-
-  const categoryFilters = [
+  const typeFilters = [
     { key: "all", label: "Tous types" },
-    { key: "fenetre", label: "Fenêtres" },
-    { key: "porte-fenetre", label: "Portes-fenêtres" }
+    { key: "roulant", label: "Roulants" },
+    { key: "battant", label: "Battants" },
+    { key: "coulissant", label: "Coulissants" }
   ];
 
-  const ouvertureFilters = [
-    { key: "all", label: "Toutes ouvertures" },
-    { key: "oscillo-battant", label: "Oscillo-battant" },
-    { key: "battant", label: "Battant" },
-    { key: "soufflet", label: "À soufflet" },
-    { key: "fixe", label: "Fixe" }
+  const motorisationFilters = [
+    { key: "all", label: "Toutes motorisations" },
+    { key: "manuel", label: "Manuel" },
+    { key: "electrique", label: "Électrique" },
+    { key: "solaire", label: "Solaire" }
   ];
 
-  const filteredFenetres = fenetres.filter(fenetre => {
-    return (filters.material === "all" || fenetre.material === filters.material) &&
-           (filters.vitrage === "all" || fenetre.vitrage === filters.vitrage) &&
-           (filters.category === "all" || fenetre.category === filters.category) &&
-           (filters.ouverture === "all" || fenetre.ouverture === filters.ouverture);
+  const filteredVolets = volets.filter(volet => {
+    return (filters.material === "all" || volet.material === filters.material) &&
+           (filters.type === "all" || volet.type === filters.type) &&
+           (filters.motorisation === "all" || volet.motorisation === filters.motorisation);
   });
 
   const handleShowMore = () => {
-    setVisibleCount(prev => Math.min(prev + 3, filteredFenetres.length));
+    setVisibleCount(prev => Math.min(prev + 3, filteredVolets.length));
   };
 
   const handleFilterChange = (filterType: string, value: string) => {
@@ -276,89 +275,67 @@ const FenetresSection = ({ className }: FenetresSectionProps) => {
 
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
-      <FenetresHeader />
-      <FenetresFilters 
+      <VoletsHeader />
+      <VoletsFilters 
         materialFilters={materialFilters}
-        vitrageFilters={vitrageFilters}
-        categoryFilters={categoryFilters}
-        ouvertureFilters={ouvertureFilters}
+        typeFilters={typeFilters}
+        motorisationFilters={motorisationFilters}
         activeFilters={filters}
         onFilterChange={handleFilterChange}
       />
-      <FenetresGrid 
-        fenetres={filteredFenetres.slice(0, visibleCount)}
-        onFenetreClick={setSelectedFenetre}
+      <VoletsGrid 
+        volets={filteredVolets.slice(0, visibleCount)}
+        onVoletClick={setSelectedVolet}
       />
       
-      {visibleCount < filteredFenetres.length && (
+      {visibleCount < filteredVolets.length && (
         <div className="mt-8 flex justify-center">
           <Button
             onClick={handleShowMore}
             className="bg-primary text-white hover:bg-primary/90"
           >
-            Voir plus de fenêtres
+            Voir plus de volets
           </Button>
         </div>
       )}
 
-      {selectedFenetre && (
-        <FenetreModal 
-          fenetre={selectedFenetre}
-          onClose={() => setSelectedFenetre(null)}
+      {selectedVolet && (
+        <VoletModal 
+          volet={selectedVolet}
+          onClose={() => setSelectedVolet(null)}
         />
       )}
     </section>
   );
 };
 
-const FenetresHeader = () => (
+const VoletsHeader = () => (
   <div className="mb-12 space-y-4 text-center">
     <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Notre sélection de Fenêtres
+      Notre sélection de Volets
     </Typography>
     <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
-      Découvrez notre gamme complète de fenêtres et portes-fenêtres. Oscillo-battant, battant, 
-      à soufflet ou cintrées, nous proposons tous les types d'ouvertures dans différents matériaux.
+      Protégez et isolez votre habitat avec nos volets sur mesure. Roulants, battants 
+      ou coulissants, manuels, électriques ou solaires, dans tous les matériaux pour 
+      s'adapter à votre architecture et vos besoins.
     </Typography>
   </div>
 );
 
-const FenetresFilters = ({ 
+const VoletsFilters = ({ 
   materialFilters,
-  vitrageFilters,
-  categoryFilters,
-  ouvertureFilters,
+  typeFilters,
+  motorisationFilters,
   activeFilters, 
   onFilterChange 
 }: {
   materialFilters: { key: string; label: string }[];
-  vitrageFilters: { key: string; label: string }[];
-  categoryFilters: { key: string; label: string }[];
-  ouvertureFilters: { key: string; label: string }[];
-  activeFilters: { material: string; vitrage: string; category: string; ouverture: string };
+  typeFilters: { key: string; label: string }[];
+  motorisationFilters: { key: string; label: string }[];
+  activeFilters: { material: string; type: string; motorisation: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => (
   <div className="mb-8 space-y-4">
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Type:</span>
-      {categoryFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.category === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("category", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.category === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
-
     <div className="flex flex-wrap justify-center gap-2">
       <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Matériaux:</span>
       {materialFilters.map((filter) => (
@@ -378,18 +355,18 @@ const FenetresFilters = ({
         </Button>
       ))}
     </div>
-
+    
     <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Ouverture:</span>
-      {ouvertureFilters.map((filter) => (
+      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Types:</span>
+      {typeFilters.map((filter) => (
         <Button
           key={filter.key}
-          variant={activeFilters.ouverture === filter.key ? "default" : "outline"}
+          variant={activeFilters.type === filter.key ? "default" : "outline"}
           size="sm"
-          onClick={() => onFilterChange("ouverture", filter.key)}
+          onClick={() => onFilterChange("type", filter.key)}
           className={cn(
             "transition-all duration-200",
-            activeFilters.ouverture === filter.key 
+            activeFilters.type === filter.key 
               ? "bg-primary text-white" 
               : "hover:bg-primary/10"
           )}
@@ -398,18 +375,18 @@ const FenetresFilters = ({
         </Button>
       ))}
     </div>
-    
+
     <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Vitrage:</span>
-      {vitrageFilters.map((filter) => (
+      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Motorisation:</span>
+      {motorisationFilters.map((filter) => (
         <Button
           key={filter.key}
-          variant={activeFilters.vitrage === filter.key ? "default" : "outline"}
+          variant={activeFilters.motorisation === filter.key ? "default" : "outline"}
           size="sm"
-          onClick={() => onFilterChange("vitrage", filter.key)}
+          onClick={() => onFilterChange("motorisation", filter.key)}
           className={cn(
             "transition-all duration-200",
-            activeFilters.vitrage === filter.key 
+            activeFilters.motorisation === filter.key 
               ? "bg-primary text-white" 
               : "hover:bg-primary/10"
           )}
@@ -421,31 +398,31 @@ const FenetresFilters = ({
   </div>
 );
 
-const FenetresGrid = ({ 
-  fenetres, 
-  onFenetreClick 
+const VoletsGrid = ({ 
+  volets, 
+  onVoletClick 
 }: {
-  fenetres: FenetreProps[];
-  onFenetreClick: (fenetre: FenetreProps) => void;
+  volets: VoletProps[];
+  onVoletClick: (volet: VoletProps) => void;
 }) => (
   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {fenetres.map((fenetre, index) => (
-      <FenetreCard 
-        key={fenetre.id}
-        fenetre={fenetre}
+    {volets.map((volet, index) => (
+      <VoletCard 
+        key={volet.id}
+        volet={volet}
         index={index}
-        onClick={() => onFenetreClick(fenetre)}
+        onClick={() => onVoletClick(volet)}
       />
     ))}
   </div>
 );
 
-const FenetreCard = ({ 
-  fenetre, 
+const VoletCard = ({ 
+  volet, 
   index, 
   onClick 
 }: {
-  fenetre: FenetreProps;
+  volet: VoletProps;
   index: number;
   onClick: () => void;
 }) => {
@@ -465,12 +442,12 @@ const FenetreCard = ({
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
         <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
-          {fenetre.isNew && (
+          {volet.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
               Nouveau
             </span>
           )}
-          {fenetre.isPopular && (
+          {volet.isPopular && (
             <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
               Populaire
             </span>
@@ -479,8 +456,8 @@ const FenetreCard = ({
         
         <div className="relative h-64">
           <Image
-            src={fenetre.image}
-            alt={fenetre.name}
+            src={volet.image}
+            alt={volet.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
@@ -489,39 +466,35 @@ const FenetreCard = ({
         
         <div className="space-y-3 p-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">{fenetre.name}</h3>
+            <h3 className="text-lg font-semibold">{volet.name}</h3>
             <div className="flex items-center gap-1">
               <Star size={14} className="fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">{fenetre.rating}</span>
+              <span className="text-sm font-medium">{volet.rating}</span>
             </div>
           </div>
           
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
-              {fenetre.material}
+              {volet.material}
             </span>
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {fenetre.vitrage} vitrage
+              {volet.type}
             </span>
             <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
-              {fenetre.ouverture}
+              {volet.motorisation}
             </span>
           </div>
           
           <p className="line-clamp-2 text-sm text-muted-foreground">
-            {fenetre.description}
+            {volet.description}
           </p>
           
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Thermometer size={12} />
-              {fenetre.uw}
-            </span>
-            <span className="text-blue-600 font-medium">{fenetre.fournisseur}</span>
+            <span className="text-blue-600 font-medium">{volet.fournisseur}</span>
           </div>
           
           <div className="flex items-center justify-between pt-2">
-            <span className="font-semibold text-primary">{fenetre.priceRange}</span>
+            <span className="font-semibold text-primary">{volet.priceRange}</span>
             <Button size="sm" variant="outline" className="text-xs">
               Voir détails
             </Button>
@@ -532,21 +505,21 @@ const FenetreCard = ({
   );
 };
 
-const FenetreModal = ({ 
-  fenetre, 
+const VoletModal = ({ 
+  volet, 
   onClose 
 }: {
-  fenetre: FenetreProps;
+  volet: VoletProps;
   onClose: () => void;
 }) => {
   const { data: session } = useSession();
 
   const getPerformanceIcon = (feature: string) => {
-    if (feature.includes('vitrage') || feature.includes('Isolation')) return Thermometer;
-    if (feature.includes('sécurisé') || feature.includes('Anti-effraction') || feature.includes('Sécurité')) return Lock;
-    if (feature.includes('Design') || feature.includes('esthétique')) return Sun;
-    if (feature.includes('phonique') || feature.includes('acoustique')) return Volume2;
-    return Shield;
+    if (feature.includes('Motorisation') || feature.includes('Électrique') || feature.includes('Télécommande')) return Zap;
+    if (feature.includes('Solaire') || feature.includes('Écologique')) return Sun;
+    if (feature.includes('Isolation') || feature.includes('thermique')) return Shield;
+    if (feature.includes('Silencieuse') || feature.includes('silencieux')) return Volume2;
+    return Settings;
   };
 
   return (
@@ -563,8 +536,8 @@ const FenetreModal = ({
           <div className="hidden md:block md:w-1/2">
             <div className="relative h-full min-h-[500px]">
               <Image
-                src={fenetre.image}
-                alt={fenetre.name}
+                src={volet.image}
+                alt={volet.name}
                 fill
                 className="object-cover"
               />
@@ -574,63 +547,63 @@ const FenetreModal = ({
           <div className="w-full space-y-6 p-6 md:w-1/2">
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <Typography variant="h2">{fenetre.name}</Typography>
+                <h2 className="text-2xl font-bold">{volet.name}</h2>
                 <div className="flex items-center gap-1">
                   <Star size={16} className="fill-yellow-400 text-yellow-400" />
-                  <Typography variant="small">{fenetre.rating}</Typography>
+                  <span className="text-sm font-medium">{volet.rating}</span>
                 </div>
               </div>
               
               <div className="mb-4 flex flex-wrap gap-2">
                 <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
-                  {fenetre.material}
+                  {volet.material}
                 </span>
                 <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {fenetre.vitrage} vitrage
+                  {volet.type}
                 </span>
                 <span className="rounded-full bg-purple-100 px-3 py-1 text-sm capitalize text-purple-800">
-                  {fenetre.ouverture}
+                  {volet.motorisation}
                 </span>
               </div>
               
-              <Typography variant="large" className="text-primary">{fenetre.priceRange}</Typography>
+              <p className="text-xl font-semibold text-primary">{volet.priceRange}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
               <div>
-                <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                <Typography variant="small" className="font-semibold">{fenetre.uw}</Typography>
-              </div>
-              <div>
                 <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                <Typography variant="small" className="font-semibold text-blue-600">{fenetre.fournisseur}</Typography>
+                <Typography variant="small" className="font-semibold text-blue-600">{volet.fournisseur}</Typography>
               </div>
               <div>
-                <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                <Typography variant="small" className="font-semibold">{fenetre.dimensions}</Typography>
+                <Typography variant="small" className="text-muted-foreground">Matériau</Typography>
+                <Typography variant="small" className="font-semibold capitalize">{volet.material}</Typography>
               </div>
               <div>
-                <Typography variant="small" className="text-muted-foreground">Ouverture</Typography>
-                <Typography variant="small" className="font-semibold capitalize">{fenetre.ouverture}</Typography>
+                <Typography variant="small" className="text-muted-foreground">Type</Typography>
+                <Typography variant="small" className="font-semibold capitalize">{volet.type}</Typography>
+              </div>
+              <div>
+                <Typography variant="small" className="text-muted-foreground">Motorisation</Typography>
+                <Typography variant="small" className="font-semibold capitalize">{volet.motorisation}</Typography>
               </div>
             </div>
 
             <div>
-              <Typography variant="h3" className="mb-2">Description</Typography>
-              <Typography variant="p" className="leading-relaxed text-muted-foreground">
-                {fenetre.description}
-              </Typography>
+              <h3 className="mb-2 font-semibold">Description</h3>
+              <p className="leading-relaxed text-muted-foreground">
+                {volet.description}
+              </p>
             </div>
 
             <div>
-              <Typography variant="h3" className="mb-3">Caractéristiques</Typography>
+              <h3 className="mb-3 font-semibold">Caractéristiques</h3>
               <div className="grid grid-cols-1 gap-2">
-                {fenetre.features.map((feature, index) => {
+                {volet.features.map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
                   return (
                     <div key={index} className="flex items-center gap-2">
                       <IconComponent size={16} className="text-green-600" />
-                      <Typography variant="small">{feature}</Typography>
+                      <span className="text-sm">{feature}</span>
                     </div>
                   );
                 })}
@@ -638,9 +611,9 @@ const FenetreModal = ({
             </div>
 
             <div>
-              <Typography variant="h3" className="mb-3">Couleurs disponibles</Typography>
+              <h3 className="mb-3 font-semibold">Couleurs disponibles</h3>
               <div className="flex flex-wrap gap-2">
-                {fenetre.colors.map((color, index) => (
+                {volet.colors.map((color, index) => (
                   <span 
                     key={index}
                     className="rounded-full bg-gray-100 px-3 py-1 text-sm"
@@ -686,6 +659,14 @@ const FenetreModal = ({
               <h4 className="mb-3 font-semibold">Ou contactez-nous directement</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
+                  <Phone size={14} />
+                  <span>05 56 12 34 56</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail size={14} />
+                  <span>contact@segment-c.com</span>
+                </div>
+                <div className="flex items-center gap-2">
                   <MapPin size={14} />
                   <span>St Jean d'Illac, Gironde</span>
                 </div>
@@ -698,4 +679,4 @@ const FenetreModal = ({
   );
 };
 
-export default FenetresSection;
+export default VoletsSection;
