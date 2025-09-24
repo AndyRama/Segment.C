@@ -67,13 +67,14 @@ type CardGridProps = {
 
 export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
-    { title: "Portes", image: "/images/fenetre3.jpg", link: "/portes" },
     { title: "Baie vitrée", image: "/images/fenetre4.jpg", link: "/baie" },
     { title: "Fenêtres", image: "/images/fenetre1.jpg", link: "/fenetres" },
-    // { title: "Portes-fenêtres", image: "/images/fenetre2.jpg", link: "/portes" },
     { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/verandas" },
+    { title: "Volets", image: "/images/fenetre5.jpg", link: "/volet" },
+    { title: "Portes", image: "/images/fenetre3.jpg", link: "/portes" },
+    { title: "Portails", image: "/images/fenetre2.jpg", link: "/portails" },
     { title: "Pergolas", image: "/images/fenetre3.jpg", link: "/pergolas" },
-    { title: "Volets et Persiennes", image: "/images/fenetre5.jpg", link: "#" },
+    { title: "Portes-garage", image: "/images/fenetre5.jpg", link: "/garage" },
     { title: "Menuiseries", image: "/images/fenetre2.jpg", link: "/#" },
   ];
  
