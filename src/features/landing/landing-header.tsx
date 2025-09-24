@@ -66,6 +66,9 @@ export function LandingHeader() {
     { path: "/baie", label: "Baie vitrée" },
     { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
+    { path: "/garage", label: "Porte de garage" },
+    { path: "/volet", label: "Volet" },
+    { path: "/portails", label: "Portails" },
     { path: "/posts", label: "Actualités" },
   ];
 
