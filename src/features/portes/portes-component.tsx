@@ -66,7 +66,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       style: "classique",
       vitrage: "triple-vitrage",
       epaisseur: "48mm",
-      image: "https://prod-image.cetih.eu/image/portes/ablette/couleur-gris-7016-texture.jpg",
+      image: "images/portes/ablette.jpg",
       colors: ["Gris anthracite", "Blanc", "Bronze", "Noir"],
       features: ["Triple vitrage feuilleté", "Petits bois plombs", "Performance thermique", "Cadre mouluré"],
       description: "Porte acier avec dormant alu, vitrage avec petits bois plombs intégrés dans un cadre mouluré.",
@@ -85,7 +85,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       style: "contemporain",
       vitrage: "triple-vitrage",
       epaisseur: "80mm",
-      image: "https://prod-image.cetih.eu/image/portes/orphie/orphie-80-alu.jpg",
+      image: "images/portes/orphie-80.jpg",
       colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
       features: ["Design exclusif", "Ouvrant rainuré", "Demi-lune vitrée", "Embouts inox"],
       description: "Design exclusif, ouvrant rainuré, demi-lune vitrée avec triple vitrage feuilleté sablé.",
@@ -104,7 +104,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       style: "contemporain",
       vitrage: "double-vitrage",
       epaisseur: "80mm",
-      image: "https://prod-image.cetih.eu/image/portes/blennie/blennie-80-alu.jpg",
+      image: "images/portes/blennie-80.webp",
       colors: ["Gris clair", "Blanc", "Anthracite", "Bronze"],
       features: ["Design exclusif Sy baie", "Lignes épurées", "Grande surface vitrée", "Profilés fins"],
       description: "Design exclusif Sy baie avec lignes épurées pour un maximum de luminosité.",
@@ -122,7 +122,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       style: "contemporain",
       vitrage: "double-vitrage",
       epaisseur: "80mm",
-      image: "https://prod-image.cetih.eu/image/portes/mostelle/mostelle-80-alu.jpg",
+      image: "images/portes//mostelle-80.webp",
       colors: ["Anthracite", "Blanc", "Gris", "Bronze"],
       features: ["Design exclusif", "Style moderne", "Haute performance", "Finition premium"],
       description: "Design exclusif aluminium au style moderne avec finition premium.",
@@ -2343,7 +2343,7 @@ const vitrageFilters = [
 
       <div className="mt-8 text-center">
         <Typography variant="small" className="text-muted-foreground">
-          {filteredPortes.length} portes sur {portes.length} modèles Segment C disponibles
+          {filteredPortes.length - visibleCount} portes sur {portes.length} modèles Segment C disponibles
         </Typography>
       </div>
 
