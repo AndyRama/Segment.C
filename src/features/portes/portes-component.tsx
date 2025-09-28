@@ -49,7 +49,7 @@ type PortesSectionProps = {
 
 const PortesSection = ({ className }: PortesSectionProps) => {
   const [selectedPorte, setSelectedPorte] = useState<PorteProps | null>(null);
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(40);
   const [filters, setFilters] = useState({
     material: "all",
     style: "all",
@@ -2302,12 +2302,12 @@ const vitrageFilters = [
   });
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 12, filteredPortes.length));
+    setVisibleCount((prev) => Math.min(prev + 40, filteredPortes.length));
   };
 
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters((prev) => ({ ...prev, [filterType]: value }));
-    setVisibleCount(12);
+    setVisibleCount(40);
   };
 
   return (
@@ -2675,7 +2675,7 @@ const PorteModal = ({
 
         <div className="flex h-full max-h-[90vh] overflow-y-auto">
           <div className="hidden md:block md:w-1/2">
-            <div className="relative h-full min-h-[500px]">
+            <div className="relative h-full min-h-[500px] px-4">
               <Image
                 src={porte.image}
                 alt={porte.name}
