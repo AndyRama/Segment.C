@@ -2282,16 +2282,16 @@ const PortesSection = ({ className }: PortesSectionProps) => {
     { key: "professionnel", label: "Professionnel" },
   ];
 
-const vitrageFilters = [
-  { key: "all", label: "Tous vitrages" },
-  { key: "vitrage-sable", label: "Vitrage Sablé" },
-  { key: "vitrage-sable-v7", label: "Vitrage Sablé V7" },
-  { key: "vitrage-delta-clair", label: "Vitrage Delta Clair" },
-  { key: "inserts-inox", label: "Inserts Inox" },
-  { key: "pleine", label: "Pleine" },
-  { key: "double-vitrage", label: "Double vitrage" },
-  { key: "triple-vitrage", label: "Triple vitrage" },
-];
+  const vitrageFilters = [
+    { key: "all", label: "Tous vitrages" },
+    { key: "vitrage-sable", label: "Vitrage Sablé" },
+    { key: "vitrage-sable-v7", label: "Vitrage Sablé V7" },
+    { key: "vitrage-delta-clair", label: "Vitrage Delta Clair" },
+    { key: "inserts-inox", label: "Inserts Inox" },
+    { key: "pleine", label: "Pleine" },
+    { key: "double-vitrage", label: "Double vitrage" },
+    { key: "triple-vitrage", label: "Triple vitrage" },
+  ];
 
   const filteredPortes = portes.filter((porte) => {
     return (
@@ -2675,12 +2675,12 @@ const PorteModal = ({
 
         <div className="flex h-full max-h-[90vh] overflow-y-auto">
           <div className="hidden md:block md:w-1/2">
-            <div className="relative h-full min-h-[500px] px-4">
+            <div className="relative h-full min-h-[500px]">
               <Image
                 src={porte.image}
                 alt={porte.name}
                 fill
-                className="object-cover"
+                className=""
               />
             </div>
           </div>
@@ -2846,53 +2846,55 @@ const PorteModal = ({
               </Button>
             </div>
 
-            <div className="mt-6 rounded-lg bg-gray-50 p-4">
-              <Typography variant="small" className="mb-3 font-semibold">
-                Informations Segment C
-              </Typography>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <Home size={14} className="text-blue-600" />
-                  <Typography variant="small">Fabriqué en France</Typography>
+            <div className="flex flex-row gap-6">
+              <div className="flex-1 rounded-lg bg-gray-50 p-4">
+                <Typography variant="small" className="mb-3 font-semibold">
+                  Informations Segment C
+                </Typography>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Home size={14} className="text-blue-600" />
+                    <Typography variant="small">Fabriqué en France</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Shield size={14} className="text-green-600" />
+                    <Typography variant="small">Sur mesure disponible</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Lock size={14} className="text-orange-600" />
+                    <Typography variant="small">Serrure multi-points incluse</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Thermometer size={14} className="text-red-600" />
+                    <Typography variant="small">Conformité RT2012</Typography>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Shield size={14} className="text-green-600" />
-                  <Typography variant="small">Sur mesure disponible</Typography>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Lock size={14} className="text-orange-600" />
-                  <Typography variant="small">Serrure multi-points incluse</Typography>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Thermometer size={14} className="text-red-600" />
-                  <Typography variant="small">Conformité RT2012</Typography>
+              </div>
+              <div className="flex-1 rounded-lg bg-blue-50 p-4">
+                <Typography variant="small" className="mb-3 font-semibold text-blue-800">
+                  Contactez Segment-C pour cette porte
+                </Typography>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Phone size={14} className="text-blue-600" />
+                    <Typography variant="small">05 56 12 34 56</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail size={14} className="text-blue-600" />
+                    <Typography variant="small">
+                      contact@segment-c.com
+                    </Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={14} className="text-blue-600" />
+                    <Typography variant="small">
+                      St Jean d'Illac, Gironde
+                    </Typography>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 rounded-lg bg-blue-50 p-4">
-              <Typography variant="small" className="mb-3 font-semibold text-blue-800">
-                Contactez Segment-C pour cette porte
-              </Typography>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Phone size={14} className="text-blue-600" />
-                  <Typography variant="small">05 56 12 34 56</Typography>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail size={14} className="text-blue-600" />
-                  <Typography variant="small">
-                    contact@segment-c.com
-                  </Typography>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin size={14} className="text-blue-600" />
-                  <Typography variant="small">
-                    St Jean d'Illac, Gironde
-                  </Typography>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
