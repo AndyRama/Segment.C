@@ -1,10 +1,10 @@
 import PortailsSection   from "@/features/portails/portails-component";
-import PortailsHero  from "@/features/portails/hero";
+// import PortailsHero  from "@/features/portails/hero";
 
-export default function Portes() {
+export default function Garage() {
   return (
     <>
-      <PortailsHero  />
+      {/* <PortailsHero  /> */}
       <PortailsSection />
     </>
   );

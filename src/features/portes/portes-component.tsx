@@ -2358,30 +2358,44 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 };
 
 const PortesHeader = () => (
-  <div className="mb-12 space-y-4 text-center">
-    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Collection Portes d'Entrée Segment C
-    </Typography>
-    <Typography
-      variant="large"
-      className="text-muted-foreground mx-auto max-w-3xl"
-    >
-      Découvrez notre sélection de 153 portes d'entrée Segment C.
-      Fabriquées en France, sur mesure, dans 5 matériaux : aluminium, acier, PVC, bois et mixte.
-      Styles contemporains, classiques ou traditionnels pour tous vos projets.
-    </Typography>
-    <div className="flex justify-center items-center gap-4 mt-6">
-      <div className="flex items-center gap-2">
-        <Home size={20} className="text-blue-600" />
-        <Typography variant="small" className="font-medium">Made in France</Typography>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div className="space-y-6">
+      <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+        Collection Portes d'Entrée Segment C
+      </Typography>
+      <Typography
+        variant="large"
+        className="text-muted-foreground mx-auto max-w-3xl"
+      >
+        Découvrez notre sélection de + de 115 portes d'entrée Segment C.
+        Fabriquées en France, sur mesure, dans 5 matériaux : aluminium, acier, PVC, bois et mixte.
+        Styles contemporains, classiques ou traditionnels pour tous vos projets.
+      </Typography>
+      <div className="flex justify-center items-center gap-4 mt-6">
+        <div className="flex items-center gap-2">
+          <Home size={20} className="text-blue-600" />
+          <Typography variant="small" className="font-medium">Made in France</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Shield size={20} className="text-green-600" />
+          <Typography variant="small" className="font-medium">Sur mesure</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Lock size={20} className="text-orange-600" />
+          <Typography variant="small" className="font-medium">Sécurité renforcée</Typography>
+        </div>
       </div>
-      <div className="flex items-center gap-2">
-        <Shield size={20} className="text-green-600" />
-        <Typography variant="small" className="font-medium">Sur mesure</Typography>
-      </div>
-      <div className="flex items-center gap-2">
-        <Lock size={20} className="text-orange-600" />
-        <Typography variant="small" className="font-medium">Sécurité renforcée</Typography>
+    </div>
+    {/* Image */}
+    <div className="relative">
+      <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+        <Image
+          src="/images/porte.jpg"
+          alt="Porte de exemple moderne avec végétation"
+          fill
+          className="object-cover"
+          priority
+        />       
       </div>
     </div>
   </div>
