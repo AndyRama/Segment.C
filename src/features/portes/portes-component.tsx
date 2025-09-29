@@ -2636,7 +2636,7 @@ const PorteCard = ({
       onClick={onClick}
     >
       <div className="relative overflow-hidden bg-white transition-all duration-300">
-        {/* Image container - full width, no rounded corners, no shadow on card */}
+        {/* Image container - full width, no rounded corners */}
         <div className="relative h-64 w-full">
           <Image
             src={porte.image}
