@@ -56,9 +56,10 @@ const PortesSection = ({ className }: PortesSectionProps) => {
     style: "all",
     vitrage: "all",
   });
+
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  const portes: PorteProps[] = [
+   const portes: PorteProps[] = [
     // PORTES ALUMINIUM
     {
       id: "SC001",
@@ -2286,8 +2287,6 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 
   const vitrageFilters = [
     { key: "all", label: "Tous vitrages" },
-    { key: "vitrage-sable", label: "Vitrage Sablé" },
-    { key: "vitrage-sable-v7", label: "Vitrage Sablé V7" },
     { key: "vitrage-delta-clair", label: "Vitrage Delta Clair" },
     { key: "inserts-inox", label: "Inserts Inox" },
     { key: "pleine", label: "Pleine" },
@@ -2333,6 +2332,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
             onFilterChange={handleFilterChange}
           />
         </aside>
+
         {/* Contenu principal */}
         <div className="flex-1">
           {/* Bouton filtres mobile */}
@@ -2377,95 +2377,142 @@ const PortesSection = ({ className }: PortesSectionProps) => {
           onClose={() => setSelectedPorte(null)}
         />
       )}
+
+      <MobileFiltersModal
+        isOpen={showMobileFilters}
+        onClose={() => setShowMobileFilters(false)}
+        materialFilters={materialFilters}
+        styleFilters={styleFilters}
+        vitrageFilters={vitrageFilters}
+        activeFilters={filters}
+        onFilterChange={(filterType, value) => {
+          handleFilterChange(filterType, value);
+          setShowMobileFilters(false);
+        }}
+      />
     </section>
   );
 };
 
-// const PortesFilters = ({
-//   materialFilters,
-//   styleFilters,
-//   vitrageFilters,
-//   activeFilters,
-//   onFilterChange,
-// }: {
-//   materialFilters: { key: string; label: string }[];
-//   styleFilters: { key: string; label: string }[];
-//   vitrageFilters: { key: string; label: string }[];
-//   activeFilters: { material: string; style: string; vitrage: string };
-//   onFilterChange: (filterType: string, value: string) => void;
-// }) => (
-//   <div className="space-y-4">
-//     <div className="flex flex-wrap justify-center gap-2">
-//       <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-//         Matériaux:
-//       </span>
-//       {materialFilters.map((filter) => (
-//         <Button
-//           key={filter.key}
-//           variant={
-//             activeFilters.material === filter.key ? "default" : "outline"
-//           }
-//           size="sm"
-//           onClick={() => onFilterChange("material", filter.key)}
-//           className={cn(
-//             "transition-all duration-200",
-//             activeFilters.material === filter.key
-//               ? "bg-primary text-white"
-//               : "hover:bg-primary/10",
-//           )}
-//         >
-//           {filter.label}
-//         </Button>
-//       ))}
-//     </div>
+const MobileFiltersModal = ({
+  isOpen,
+  onClose,
+  materialFilters,
+  styleFilters,
+  vitrageFilters,
+  activeFilters,
+  onFilterChange,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  materialFilters: { key: string; label: string }[];
+  styleFilters: { key: string; label: string }[];
+  vitrageFilters: { key: string; label: string }[];
+  activeFilters: { material: string; style: string; vitrage: string };
+  onFilterChange: (filterType: string, value: string) => void;
+}) => {
+  if (!isOpen) return null;
 
-//     <div className="flex flex-wrap justify-center gap-2">
-//       <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-//         Style:
-//       </span>
-//       {styleFilters.map((filter) => (
-//         <Button
-//           key={filter.key}
-//           variant={
-//             activeFilters.style === filter.key ? "default" : "outline"
-//           }
-//           size="sm"
-//           onClick={() => onFilterChange("style", filter.key)}
-//           className={cn(
-//             "transition-all duration-200",
-//             activeFilters.style === filter.key
-//               ? "bg-primary text-white"
-//               : "hover:bg-primary/10",
-//           )}
-//         >
-//           {filter.label}
-//         </Button>
-//       ))}
-//     </div>
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 lg:hidden">
+      <div className="w-full max-h-[80vh] overflow-y-auto rounded-t-2xl bg-white">
+        <div className="sticky top-0 bg-white border-b px-4 py-4 flex items-center justify-between">
+          <Typography variant="h3" className="text-lg font-semibold">
+            Filtres
+          </Typography>
+          <button
+            onClick={onClose}
+            className="rounded-full p-2 hover:bg-gray-100 transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-//     <div className="flex flex-wrap justify-center gap-2">
-//       <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-//         Vitrage:
-//       </span>
-//       {vitrageFilters.map((filter) => (
-//         <Button
-//           key={filter.key}
-//           variant={activeFilters.vitrage === filter.key ? "default" : "outline"}
-//           size="sm"
-//           onClick={() => onFilterChange("vitrage", filter.key)}
-//           className={cn(
-//             "transition-all duration-200",
-//             activeFilters.vitrage === filter.key
-//               ? "bg-primary text-white"
-//               : "hover:bg-primary/10",
-//           )}
-//         >
-//           {filter.label}
-//         </Button>
-//       ))}
-//     </div>
-//   </div>
-// );
+        <div className="p-4 space-y-6">
+          <div>
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Matériaux
+            </Typography>
+            <div className="space-y-2">
+              {materialFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("material", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.material === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Style
+            </Typography>
+            <div className="space-y-2">
+              {styleFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("style", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.style === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Vitrage
+            </Typography>
+            <div className="space-y-2">
+              {vitrageFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("vitrage", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.vitrage === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {(activeFilters.material !== 'all' || activeFilters.style !== 'all' || activeFilters.vitrage !== 'all') && (
+            <Button
+              variant="outline"
+              onClick={() => {
+                onFilterChange('material', 'all');
+                onFilterChange('style', 'all');
+                onFilterChange('vitrage', 'all');
+              }}
+              className="w-full"
+            >
+              Réinitialiser les filtres
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const PortesHeader = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -2496,7 +2543,6 @@ const PortesHeader = () => (
         </div>
       </div>
     </div>
-    {/* Image */}
     <div className="relative">
       <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
@@ -2635,126 +2681,6 @@ const PortesGrid = ({
   </div>
 );
 
-// const PorteCard = ({
-//   porte,
-//   index,
-//   onClick,
-// }: {
-//   porte: PorteProps;
-//   index: number;
-//   onClick: () => void;
-// }) => {
-//   const delay = index * 0.05;
-
-//   const getMaterialColor = (material: string) => {
-//     switch (material) {
-//       case "aluminium": return "bg-blue-100 text-blue-800";
-//       case "acier": return "bg-gray-100 text-gray-800";
-//       case "pvc": return "bg-green-100 text-green-800";
-//       case "bois": return "bg-amber-100 text-amber-800";
-//       case "mixte-bois-alu": return "bg-purple-100 text-purple-800";
-//       default: return "bg-gray-100 text-gray-800";
-//     }
-//   };
-
-//   const getStyleColor = (style: string) => {
-//     switch (style) {
-//       case "contemporain": return "bg-indigo-100 text-indigo-800";
-//       case "classique": return "bg-rose-100 text-rose-800";
-//       case "traditionnel": return "bg-orange-100 text-orange-800";
-//       case "professionnel": return "bg-teal-100 text-teal-800";
-//       default: return "bg-gray-100 text-gray-800";
-//     }
-//   };
-
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0, y: 20 }}
-//       whileInView={{
-//         opacity: 1,
-//         y: 0,
-//         transition: { delay, duration: 0.4 },
-//       }}
-//       viewport={{ once: true }}
-//       className="group cursor-pointer"
-//       onClick={onClick}
-//     >
-//       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-//         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
-//           {porte.isNew && (
-//             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
-//               Nouveau
-//             </span>
-//           )}
-//           {porte.isPopular && (
-//             <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
-//               Populaire
-//             </span>
-//           )}
-//         </div>
-
-//         <div className="relative h-48">
-//           <Image
-//             src={porte.image}
-//             alt={porte.name}
-//             fill
-//             className="object-cover transition-transform duration-300 group-hover:scale-105"
-//           />
-//           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
-//         </div>
-
-//         <div className="space-y-3 p-4">
-//           <div className="flex items-center justify-between">
-//             <Typography variant="large" className="font-semibold">
-//               {porte.name}
-//             </Typography>
-//             <div className="flex items-center gap-1">
-//               <Star size={14} className="fill-yellow-400 text-yellow-400" />
-//               <Typography variant="small">{porte.rating}</Typography>
-//             </div>
-//           </div>
-
-//           <div className="flex flex-wrap gap-1 text-xs">
-//             <span className={cn("rounded-full px-2 py-1 capitalize", getMaterialColor(porte.material))}>
-//               {porte.material.replace('-', ' ')}
-//             </span>
-//             <span className={cn("rounded-full px-2 py-1", getStyleColor(porte.style))}>
-//               {porte.style}
-//             </span>
-//             <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-800">
-//               {porte.epaisseur}
-//             </span>
-//           </div>
-
-//           <Typography
-//             variant="small"
-//             className="text-muted-foreground line-clamp-2"
-//           >
-//             {porte.description}
-//           </Typography>
-
-//           <div className="text-muted-foreground flex items-center justify-between text-xs">
-//             <span className="flex items-center gap-1">
-//               <Thermometer size={12} />
-//               {porte.performanceThermique}
-//             </span>
-//             <span className="text-blue-600 font-medium">{porte.fournisseur}</span>
-//           </div>
-
-//           <div className="flex items-center justify-between pt-2">
-//             <Typography variant="small" className="text-primary font-semibold">
-//               {porte.priceRange}
-//             </Typography>
-//             <Button size="sm" variant="outline" className="text-xs">
-//               Voir détails
-//             </Button>
-//           </div>
-//         </div>
-//       </div>
-//     </motion.div>
-//   );
-// };
-
 const PorteCard = ({
   porte,
   index,
@@ -2779,7 +2705,6 @@ const PorteCard = ({
       onClick={onClick}
     >
       <div className="relative overflow-hidden bg-white transition-all duration-300">
-        {/* Image container - full width, no rounded corners */}
         <div className="relative h-64 w-full">
           <Image
             src={porte.image}
@@ -2789,7 +2714,6 @@ const PorteCard = ({
           />
         </div>
 
-        {/* Content - centered below image */}
         <div className="space-y-2 p-4 text-center">
           <Typography variant="large" className="font-semibold uppercase tracking-wide">
             {porte.name}
@@ -2799,7 +2723,6 @@ const PorteCard = ({
             {porte.description}
           </Typography>
 
-          {/* Color dots */}
           <div className="flex justify-center gap-2 pt-2">
             {porte.colors.slice(0, 4).map((color, idx) => (
               <div
@@ -2893,7 +2816,7 @@ const PorteModal = ({
                 src={porte.image}
                 alt={porte.name}
                 fill
-                className=""
+                className="object-cover"
               />
             </div>
           </div>
@@ -3107,7 +3030,6 @@ const PorteModal = ({
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
