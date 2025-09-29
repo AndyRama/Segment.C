@@ -6,11 +6,17 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { Menu } from "react-feather";
+import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -61,12 +67,26 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Portes" },
-    { path: "/baie", label: "Baie vitrée" },
-    { path: "/pergolas", label: "Pergolas" },
-    { path: "/verandas", label: "Vérandas" },
+    { path: "#", label: "Fenêtre" },
+    {
+      path: "/fenetres",
+      label: "Fenêtre",
+      dropdown: [
+        { path: "/fenetres", label: "Porte d'entrée" },
+        { path: "/baie", label: "Baie vitrée" },
+      ]
+    },
+    {
+      path: "/portes",
+      label: "Portes",
+      dropdown: [
+        { path: "/portes/entree", label: "Porte d'entrée" },
+        { path: "/portes/service", label: "Porte de service" },
+      ]
+    },
     { path: "/garage", label: "Porte de garage" },
+    { path: "/verandas", label: "Vérandas" },
+    { path: "/pergolas", label: "Pergolas" },
     { path: "/volet", label: "Volet" },
     { path: "/portails", label: "Portails" },
     { path: "/posts", label: "Actualités" },
@@ -95,7 +115,7 @@ export function LandingHeader() {
                 [1, 0.9],
               ),
             }}
-            className="mt-[-1] flex origin-left items-center text-base font-bold text-green-500 "
+            className="mt-[-1] flex origin-left items-center text-base font-bold text-green-500"
           >
             <Link href="/home" className="text-base font-bold text-green-500">
               {SiteConfig.title}
@@ -114,19 +134,35 @@ export function LandingHeader() {
           className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
         >
           {topRoutes.map((route) => (
-            <Link
-              href={route.path}
-              key={route.path}
-              className="relative flex items-center hover:text-green-500 transition-colors"
-            >
-              {route.label}
-            </Link>
+            route.dropdown ? (
+              <DropdownMenu key={route.path}>
+                <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
+                  {route.label}
+                  <ChevronDown className="size-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {route.dropdown.map((item) => (
+                    <DropdownMenuItem key={item.path} asChild>
+                      <Link href={item.path} className="w-full cursor-pointer">
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                href={route.path}
+                key={route.path}
+                className="relative flex items-center hover:text-green-500 transition-colors"
+              >
+                {route.label}
+              </Link>
+            )
           ))}
         </motion.nav>
 
-        {/* Éléments de navigation */}
         <nav className="flex items-center space-x-1">
-          {/* Desktop auth button */}
           <div className="hidden lg:contents gap-2">
             {session ? (
               <>
@@ -145,7 +181,6 @@ export function LandingHeader() {
             )}
           </div>
 
-          {/* Mobile menu */}
           <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
             <Sheet>
               <SheetTrigger>
@@ -199,13 +234,32 @@ export function LandingHeader() {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    <Link
-                      href={route.path}
-                      key={route.path}
-                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
-                    >
-                      {route.label}
-                    </Link>
+                    route.dropdown ? (
+                      <div key={route.path} className="flex flex-col gap-2">
+                        <span className="text-sm font-semibold text-green-500">
+                          {route.label}
+                        </span>
+                        <div className="pl-4 flex flex-col gap-2">
+                          {route.dropdown.map((item) => (
+                            <Link
+                              href={item.path}
+                              key={item.path}
+                              className="text-sm font-medium hover:text-green-500 transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={route.path}
+                        key={route.path}
+                        className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
+                      >
+                        {route.label}
+                      </Link>
+                    )
                   ))}
                 </div>
               </SheetContent>
