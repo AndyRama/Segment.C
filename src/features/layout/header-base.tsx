@@ -7,11 +7,17 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { Menu } from "react-feather";
+import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { Layout } from "../page/layout";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -63,7 +69,15 @@ export function HeaderBase({ children }: PropsWithChildren) {
 
   const topRoutes = [
     { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Portes" },
+    {
+      path: "/portes",
+      label: "Portes",
+      dropdown: [
+        { path: "/portes/entree", label: "Porte d'entrée" },
+        { path: "/portes/service", label: "Porte de service" },
+        { path: "/portes/garage", label: "Porte de garage" },
+      ]
+    },
     { path: "/baie", label: "Baie vitrée" },
     { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
@@ -102,7 +116,6 @@ export function HeaderBase({ children }: PropsWithChildren) {
         </div>
 
         <div className="flex flex-1 items-center justify-center space-x-4">
-          {/* Navigation desktop */}
           <motion.nav
             style={{
               opacity: useTransform(
@@ -114,39 +127,54 @@ export function HeaderBase({ children }: PropsWithChildren) {
             className="hidden origin-right items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
           >
             {topRoutes.map((route) => (
-              <Link
-                href={route.path}
-                key={route.path}
-                className="relative flex items-center hover:text-green-500 transition-colors"
-              >
-                {route.label}
-              </Link>
+              route.dropdown ? (
+                <DropdownMenu key={route.path}>
+                  <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
+                    {route.label}
+                    <ChevronDown className="size-4" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-48">
+                    {route.dropdown.map((item) => (
+                      <DropdownMenuItem key={item.path} asChild>
+                        <Link href={item.path} className="w-full cursor-pointer">
+                          {item.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  href={route.path}
+                  key={route.path}
+                  className="relative flex items-center hover:text-green-500 transition-colors"
+                >
+                  {route.label}
+                </Link>
+              )
             ))}
           </motion.nav>
         </div>
 
-        {/* Éléments de navigation */}
         <nav className="flex items-center space-x-1">
-          {/* Desktop: Bouton Devis + children */}
           <div className="hidden lg:flex lg:items-center lg:space-x-1">      
-             {session ? (
-                <>
-                  <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
-                    Mes Devis
-                  </Link>
-                  {children}
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
-                    Demande de devis
-                  </Link>
-                  {children}
-                </>
-              )}
+            {session ? (
+              <>
+                <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4"})}>
+                  Mes Devis
+                </Link>
+                {children}
+              </>
+            ) : (
+              <>
+                <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm" , className: "mr-4"})}>
+                  Demande de devis
+                </Link>
+                {children}
+              </>
+            )}
           </div>
           
-          {/* Mobile menu */}
           <div className="z-20 flex items-center gap-2 lg:hidden">
             <Sheet>
               <SheetTrigger>
@@ -178,19 +206,19 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   <div className="flex flex-row items-center justify-around">
                     {session ? (
                       <>
-                        <Link href="/account/devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                        <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
                           Mes devis
                         </Link>
                         {children}
                       </>
-                      ) : (
-                        <>
-                          <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                            Demande de devis
-                          </Link>
-                          {children}
-                        </>
-                      )}
+                    ) : (
+                      <>
+                        <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                          Demande de devis
+                        </Link>
+                        {children}
+                      </>
+                    )}
                     
                     <Typography
                       variant="h3"
@@ -201,13 +229,32 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    <Link
-                      href={route.path}
-                      key={route.path}
-                      className="relative text-left text-sm font-medium hover:text-[#04ab12] transition-colors"
-                    >
-                      {route.label}
-                    </Link>
+                    route.dropdown ? (
+                      <div key={route.path} className="flex flex-col gap-2">
+                        <span className="text-sm font-semibold text-green-500">
+                          {route.label}
+                        </span>
+                        <div className="pl-4 flex flex-col gap-2">
+                          {route.dropdown.map((item) => (
+                            <Link
+                              href={item.path}
+                              key={item.path}
+                              className="text-sm font-medium hover:text-green-500 transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={route.path}
+                        key={route.path}
+                        className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
+                      >
+                        {route.label}
+                      </Link>
+                    )
                   ))}
                 </div>
               </SheetContent>

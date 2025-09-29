@@ -67,13 +67,13 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "#", label: "Fenêtre" },
     {
       path: "/fenetres",
       label: "Fenêtre",
       dropdown: [
-        { path: "/fenetres", label: "Porte d'entrée" },
+        { path: "/fenetres", label: "Fenêtre" },
         { path: "/baie", label: "Baie vitrée" },
+        { path: "/verandas", label: "Vérandas" },
       ]
     },
     {
@@ -82,13 +82,12 @@ export function LandingHeader() {
       dropdown: [
         { path: "/portes/entree", label: "Porte d'entrée" },
         { path: "/portes/service", label: "Porte de service" },
+        { path: "/garage", label: "Porte de garage" },
       ]
     },
-    { path: "/garage", label: "Porte de garage" },
-    { path: "/verandas", label: "Vérandas" },
     { path: "/pergolas", label: "Pergolas" },
-    { path: "/volet", label: "Volet" },
     { path: "/portails", label: "Portails" },
+    { path: "/volet", label: "Volet" },
     { path: "/posts", label: "Actualités" },
   ];
 

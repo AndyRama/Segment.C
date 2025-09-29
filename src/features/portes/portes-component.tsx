@@ -2549,7 +2549,7 @@ const PortesHeader = () => (
           src="/images/porte.jpg"
           alt="Porte de exemple moderne avec végétation"
           fill
-          className="object-contain"
+          className="object-cover"
           priority
         />
       </div>
