@@ -2492,6 +2492,126 @@ const PortesGrid = ({
   </div>
 );
 
+// const PorteCard = ({
+//   porte,
+//   index,
+//   onClick,
+// }: {
+//   porte: PorteProps;
+//   index: number;
+//   onClick: () => void;
+// }) => {
+//   const delay = index * 0.05;
+
+//   const getMaterialColor = (material: string) => {
+//     switch (material) {
+//       case "aluminium": return "bg-blue-100 text-blue-800";
+//       case "acier": return "bg-gray-100 text-gray-800";
+//       case "pvc": return "bg-green-100 text-green-800";
+//       case "bois": return "bg-amber-100 text-amber-800";
+//       case "mixte-bois-alu": return "bg-purple-100 text-purple-800";
+//       default: return "bg-gray-100 text-gray-800";
+//     }
+//   };
+
+//   const getStyleColor = (style: string) => {
+//     switch (style) {
+//       case "contemporain": return "bg-indigo-100 text-indigo-800";
+//       case "classique": return "bg-rose-100 text-rose-800";
+//       case "traditionnel": return "bg-orange-100 text-orange-800";
+//       case "professionnel": return "bg-teal-100 text-teal-800";
+//       default: return "bg-gray-100 text-gray-800";
+//     }
+//   };
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 20 }}
+//       whileInView={{
+//         opacity: 1,
+//         y: 0,
+//         transition: { delay, duration: 0.4 },
+//       }}
+//       viewport={{ once: true }}
+//       className="group cursor-pointer"
+//       onClick={onClick}
+//     >
+//       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
+//         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
+//           {porte.isNew && (
+//             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
+//               Nouveau
+//             </span>
+//           )}
+//           {porte.isPopular && (
+//             <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
+//               Populaire
+//             </span>
+//           )}
+//         </div>
+
+//         <div className="relative h-48">
+//           <Image
+//             src={porte.image}
+//             alt={porte.name}
+//             fill
+//             className="object-cover transition-transform duration-300 group-hover:scale-105"
+//           />
+//           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
+//         </div>
+
+//         <div className="space-y-3 p-4">
+//           <div className="flex items-center justify-between">
+//             <Typography variant="large" className="font-semibold">
+//               {porte.name}
+//             </Typography>
+//             <div className="flex items-center gap-1">
+//               <Star size={14} className="fill-yellow-400 text-yellow-400" />
+//               <Typography variant="small">{porte.rating}</Typography>
+//             </div>
+//           </div>
+
+//           <div className="flex flex-wrap gap-1 text-xs">
+//             <span className={cn("rounded-full px-2 py-1 capitalize", getMaterialColor(porte.material))}>
+//               {porte.material.replace('-', ' ')}
+//             </span>
+//             <span className={cn("rounded-full px-2 py-1", getStyleColor(porte.style))}>
+//               {porte.style}
+//             </span>
+//             <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-800">
+//               {porte.epaisseur}
+//             </span>
+//           </div>
+
+//           <Typography
+//             variant="small"
+//             className="text-muted-foreground line-clamp-2"
+//           >
+//             {porte.description}
+//           </Typography>
+
+//           <div className="text-muted-foreground flex items-center justify-between text-xs">
+//             <span className="flex items-center gap-1">
+//               <Thermometer size={12} />
+//               {porte.performanceThermique}
+//             </span>
+//             <span className="text-blue-600 font-medium">{porte.fournisseur}</span>
+//           </div>
+
+//           <div className="flex items-center justify-between pt-2">
+//             <Typography variant="small" className="text-primary font-semibold">
+//               {porte.priceRange}
+//             </Typography>
+//             <Button size="sm" variant="outline" className="text-xs">
+//               Voir détails
+//             </Button>
+//           </div>
+//         </div>
+//       </div>
+//     </motion.div>
+//   );
+// };
+
 const PorteCard = ({
   porte,
   index,
@@ -2502,27 +2622,6 @@ const PorteCard = ({
   onClick: () => void;
 }) => {
   const delay = index * 0.05;
-
-  const getMaterialColor = (material: string) => {
-    switch (material) {
-      case "aluminium": return "bg-blue-100 text-blue-800";
-      case "acier": return "bg-gray-100 text-gray-800";
-      case "pvc": return "bg-green-100 text-green-800";
-      case "bois": return "bg-amber-100 text-amber-800";
-      case "mixte-bois-alu": return "bg-purple-100 text-purple-800";
-      default: return "bg-gray-100 text-gray-800";
-    }
-  };
-
-  const getStyleColor = (style: string) => {
-    switch (style) {
-      case "contemporain": return "bg-indigo-100 text-indigo-800";
-      case "classique": return "bg-rose-100 text-rose-800";
-      case "traditionnel": return "bg-orange-100 text-orange-800";
-      case "professionnel": return "bg-teal-100 text-teal-800";
-      default: return "bg-gray-100 text-gray-800";
-    }
-  };
 
   return (
     <motion.div
@@ -2536,75 +2635,46 @@ const PorteCard = ({
       className="group cursor-pointer"
       onClick={onClick}
     >
-      <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
-          {porte.isNew && (
-            <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
-              Nouveau
-            </span>
-          )}
-          {porte.isPopular && (
-            <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
-              Populaire
-            </span>
-          )}
-        </div>
-
-        <div className="relative h-48">
+      <div className="relative overflow-hidden bg-white transition-all duration-300">
+        {/* Image container - full width, no rounded corners, no shadow on card */}
+        <div className="relative h-64 w-full">
           <Image
             src={porte.image}
             alt={porte.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
 
-        <div className="space-y-3 p-4">
-          <div className="flex items-center justify-between">
-            <Typography variant="large" className="font-semibold">
-              {porte.name}
-            </Typography>
-            <div className="flex items-center gap-1">
-              <Star size={14} className="fill-yellow-400 text-yellow-400" />
-              <Typography variant="small">{porte.rating}</Typography>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-1 text-xs">
-            <span className={cn("rounded-full px-2 py-1 capitalize", getMaterialColor(porte.material))}>
-              {porte.material.replace('-', ' ')}
-            </span>
-            <span className={cn("rounded-full px-2 py-1", getStyleColor(porte.style))}>
-              {porte.style}
-            </span>
-            <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-800">
-              {porte.epaisseur}
-            </span>
-          </div>
-
-          <Typography
-            variant="small"
-            className="text-muted-foreground line-clamp-2"
-          >
+        {/* Content - centered below image */}
+        <div className="space-y-2 p-4 text-center">
+          <Typography variant="large" className="font-semibold uppercase tracking-wide">
+            {porte.name}
+          </Typography>
+          
+          <Typography variant="small" className="text-muted-foreground">
             {porte.description}
           </Typography>
 
-          <div className="text-muted-foreground flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1">
-              <Thermometer size={12} />
-              {porte.performanceThermique}
-            </span>
-            <span className="text-blue-600 font-medium">{porte.fournisseur}</span>
-          </div>
-
-          <div className="flex items-center justify-between pt-2">
-            <Typography variant="small" className="text-primary font-semibold">
-              {porte.priceRange}
-            </Typography>
-            <Button size="sm" variant="outline" className="text-xs">
-              Voir détails
-            </Button>
+          {/* Color dots */}
+          <div className="flex justify-center gap-2 pt-2">
+            {porte.colors.slice(0, 4).map((color, idx) => (
+              <div
+                key={idx}
+                className="h-4 w-4 rounded-full border border-gray-300"
+                style={{ 
+                  backgroundColor: color.toLowerCase().includes('blanc') ? '#ffffff' :
+                                 color.toLowerCase().includes('anthracite') ? '#2c3539' :
+                                 color.toLowerCase().includes('gris') ? '#808080' :
+                                 color.toLowerCase().includes('noir') ? '#000000' : '#cccccc'
+                }}
+              />
+            ))}
+            {porte.colors.length > 4 && (
+              <Typography variant="small" className="text-muted-foreground">
+                +{porte.colors.length - 4}
+              </Typography>
+            )}
           </div>
         </div>
       </div>
@@ -2847,7 +2917,7 @@ const PorteModal = ({
             </div>
 
             <div className="flex flex-row gap-6">
-              <div className="flex-1 rounded-lg bg-gray-50 p-4">
+              <div className="flex-1 rounded-lg bg-gray-50 p-2">
                 <Typography variant="small" className="mb-3 font-semibold">
                   Informations Segment C
                 </Typography>
@@ -2870,7 +2940,7 @@ const PorteModal = ({
                   </div>
                 </div>
               </div>
-              <div className="flex-1 rounded-lg bg-blue-50 p-4">
+              <div className="flex-1 rounded-lg bg-blue-50 p-2">
                 <Typography variant="small" className="mb-3 font-semibold text-blue-800">
                   Contactez Segment-C pour cette porte
                 </Typography>
