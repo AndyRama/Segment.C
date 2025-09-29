@@ -68,7 +68,15 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
-    { path: "/fenetres", label: "Fenêtre" },
+    {
+      path: "/fenetres",
+      label: "Fenêtre",
+      dropdown: [
+        { path: "/fenetres", label: "Fenêtre" },
+        { path: "/baie", label: "Baie vitrée" },
+        { path: "/verandas", label: "Vérandas" },
+      ]
+    },
     {
       path: "/portes",
       label: "Portes",
@@ -78,9 +86,9 @@ export function HeaderBase({ children }: PropsWithChildren) {
         { path: "/portes/garage", label: "Porte de garage" },
       ]
     },
-    { path: "/baie", label: "Baie vitrée" },
     { path: "/pergolas", label: "Pergolas" },
-    { path: "/verandas", label: "Vérandas" },
+    { path: "/portails", label: "Portails" },
+    { path: "/volet", label: "Volet" },
     { path: "/posts", label: "Actualités" },
   ];
 
