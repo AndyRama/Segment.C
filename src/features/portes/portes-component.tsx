@@ -20,7 +20,6 @@ import {
   Eye,
   Lock,
   Home,
-  Filter,
 } from "lucide-react";
 
 type PorteProps = {
@@ -56,7 +55,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
     style: "all",
     vitrage: "all",
   });
-  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  // const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const portes: PorteProps[] = [
     // PORTES ALUMINIUM
@@ -2320,9 +2319,10 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       )}
     >
       <PortesHeader />
+
       {/* Layout principal avec sidebar et contenu */}
       <div className="flex gap-8 mt-8">
-        {/* Sidebar Filtres Desktop */}
+        {/* Sidebar Filtres Desktop uniquement */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <PortesFiltersSidebar
             materialFilters={materialFilters}
@@ -2335,16 +2335,15 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 
         {/* Contenu principal */}
         <div className="flex-1">
-          {/* Bouton filtres mobile */}
-          <div className="lg:hidden mb-4">
-            <Button
-              onClick={() => setShowMobileFilters(true)}
-              variant="outline"
-              className="w-full"
-            >
-              <Filter size={16} className="mr-2" />
-              Filtres ({Object.values(filters).filter(f => f !== 'all').length})
-            </Button>
+          {/* Filtres horizontaux pour mobile */}
+          <div className="lg:hidden mb-6">
+            <PortesFilters
+              materialFilters={materialFilters}
+              styleFilters={styleFilters}
+              vitrageFilters={vitrageFilters}
+              activeFilters={filters}
+              onFilterChange={handleFilterChange}
+            />
           </div>
 
           <PortesGrid
@@ -2371,18 +2370,6 @@ const PortesSection = ({ className }: PortesSectionProps) => {
         </div>
       </div>
 
-      {/* Modal filtres mobile */}
-      {showMobileFilters && (
-        <PortesFiltersMobile
-          materialFilters={materialFilters}
-          styleFilters={styleFilters}
-          vitrageFilters={vitrageFilters}
-          activeFilters={filters}
-          onFilterChange={handleFilterChange}
-          onClose={() => setShowMobileFilters(false)}
-        />
-      )}
-
       {selectedPorte && (
         <PorteModal
           porte={selectedPorte}
@@ -2392,6 +2379,92 @@ const PortesSection = ({ className }: PortesSectionProps) => {
     </section>
   );
 };
+
+const PortesFilters = ({
+  materialFilters,
+  styleFilters,
+  vitrageFilters,
+  activeFilters,
+  onFilterChange,
+}: {
+  materialFilters: { key: string; label: string }[];
+  styleFilters: { key: string; label: string }[];
+  vitrageFilters: { key: string; label: string }[];
+  activeFilters: { material: string; style: string; vitrage: string };
+  onFilterChange: (filterType: string, value: string) => void;
+}) => (
+  <div className="space-y-4">
+    <div className="flex flex-wrap justify-center gap-2">
+      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+        Matériaux:
+      </span>
+      {materialFilters.map((filter) => (
+        <Button
+          key={filter.key}
+          variant={
+            activeFilters.material === filter.key ? "default" : "outline"
+          }
+          size="sm"
+          onClick={() => onFilterChange("material", filter.key)}
+          className={cn(
+            "transition-all duration-200",
+            activeFilters.material === filter.key
+              ? "bg-primary text-white"
+              : "hover:bg-primary/10",
+          )}
+        >
+          {filter.label}
+        </Button>
+      ))}
+    </div>
+
+    <div className="flex flex-wrap justify-center gap-2">
+      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+        Style:
+      </span>
+      {styleFilters.map((filter) => (
+        <Button
+          key={filter.key}
+          variant={
+            activeFilters.style === filter.key ? "default" : "outline"
+          }
+          size="sm"
+          onClick={() => onFilterChange("style", filter.key)}
+          className={cn(
+            "transition-all duration-200",
+            activeFilters.style === filter.key
+              ? "bg-primary text-white"
+              : "hover:bg-primary/10",
+          )}
+        >
+          {filter.label}
+        </Button>
+      ))}
+    </div>
+
+    <div className="flex flex-wrap justify-center gap-2">
+      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+        Vitrage:
+      </span>
+      {vitrageFilters.map((filter) => (
+        <Button
+          key={filter.key}
+          variant={activeFilters.vitrage === filter.key ? "default" : "outline"}
+          size="sm"
+          onClick={() => onFilterChange("vitrage", filter.key)}
+          className={cn(
+            "transition-all duration-200",
+            activeFilters.vitrage === filter.key
+              ? "bg-primary text-white"
+              : "hover:bg-primary/10",
+          )}
+        >
+          {filter.label}
+        </Button>
+      ))}
+    </div>
+  </div>
+);
 
 const PortesHeader = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -2539,136 +2612,6 @@ const PortesFiltersSidebar = ({
         Réinitialiser les filtres
       </Button>
     )}
-  </div>
-);
-
-const PortesFiltersMobile = ({
-  materialFilters,
-  styleFilters,
-  vitrageFilters,
-  activeFilters,
-  onFilterChange,
-  onClose,
-}: {
-  materialFilters: { key: string; label: string }[];
-  styleFilters: { key: string; label: string }[];
-  vitrageFilters: { key: string; label: string }[];
-  activeFilters: { material: string; style: string; vitrage: string };
-  onFilterChange: (filterType: string, value: string) => void;
-  onClose: () => void;
-}) => (
-  <div className="fixed inset-0 z-50 lg:hidden">
-    <div className="absolute inset-0 bg-black/60" onClick={onClose} />
-    
-    <motion.div
-      initial={{ x: '-100%' }}
-      animate={{ x: 0 }}
-      exit={{ x: '-100%' }}
-      transition={{ type: 'tween', duration: 0.3 }}
-      className="absolute left-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-xl overflow-y-auto"
-    >
-      <div className="sticky top-0 bg-white border-b px-4 py-4 flex items-center justify-between z-10">
-        <Typography variant="h3" className="text-lg font-semibold">
-          Filtres
-        </Typography>
-        <button
-          onClick={onClose}
-          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <X size={20} />
-        </button>
-      </div>
-
-      <div className="p-4 space-y-6">
-        <div>
-          <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-            Matériaux
-          </Typography>
-          <div className="space-y-2">
-            {materialFilters.map((filter) => (
-              <button
-                key={filter.key}
-                onClick={() => onFilterChange("material", filter.key)}
-                className={cn(
-                  "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                  activeFilters.material === filter.key
-                    ? "bg-primary text-white font-medium"
-                    : "hover:bg-gray-100"
-                )}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="border-t pt-4">
-          <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-            Style
-          </Typography>
-          <div className="space-y-2">
-            {styleFilters.map((filter) => (
-              <button
-                key={filter.key}
-                onClick={() => onFilterChange("style", filter.key)}
-                className={cn(
-                  "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                  activeFilters.style === filter.key
-                    ? "bg-primary text-white font-medium"
-                    : "hover:bg-gray-100"
-                )}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="border-t pt-4">
-          <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-            Vitrage
-          </Typography>
-          <div className="space-y-2">
-            {vitrageFilters.map((filter) => (
-              <button
-                key={filter.key}
-                onClick={() => onFilterChange("vitrage", filter.key)}
-                className={cn(
-                  "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                  activeFilters.vitrage === filter.key
-                    ? "bg-primary text-white font-medium"
-                    : "hover:bg-gray-100"
-                )}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="sticky bottom-0 bg-white border-t p-4 space-y-2">
-        {(activeFilters.material !== 'all' || activeFilters.style !== 'all' || activeFilters.vitrage !== 'all') && (
-          <Button
-            variant="outline"
-            onClick={() => {
-              onFilterChange('material', 'all');
-              onFilterChange('style', 'all');
-              onFilterChange('vitrage', 'all');
-            }}
-            className="w-full"
-          >
-            Réinitialiser les filtres
-          </Button>
-        )}
-        <Button
-          onClick={onClose}
-          className="w-full bg-primary text-white"
-        >
-          Voir les résultats
-        </Button>
-      </div>
-    </motion.div>
   </div>
 );
 
