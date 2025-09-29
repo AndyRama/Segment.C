@@ -20,6 +20,7 @@ import {
   Eye,
   Lock,
   Home,
+  Filter,
 } from "lucide-react";
 
 type PorteProps = {
@@ -55,7 +56,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
     style: "all",
     vitrage: "all",
   });
-  // const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const portes: PorteProps[] = [
     // PORTES ALUMINIUM
@@ -2322,7 +2323,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 
       {/* Layout principal avec sidebar et contenu */}
       <div className="flex gap-8 mt-8">
-        {/* Sidebar Filtres Desktop uniquement */}
+        {/* Sidebar Filtres Desktop */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <PortesFiltersSidebar
             materialFilters={materialFilters}
@@ -2332,18 +2333,18 @@ const PortesSection = ({ className }: PortesSectionProps) => {
             onFilterChange={handleFilterChange}
           />
         </aside>
-
         {/* Contenu principal */}
         <div className="flex-1">
-          {/* Filtres horizontaux pour mobile */}
-          <div className="lg:hidden mb-6">
-            <PortesFilters
-              materialFilters={materialFilters}
-              styleFilters={styleFilters}
-              vitrageFilters={vitrageFilters}
-              activeFilters={filters}
-              onFilterChange={handleFilterChange}
-            />
+          {/* Bouton filtres mobile */}
+          <div className="lg:hidden mb-4">
+            <Button
+              onClick={() => setShowMobileFilters(true)}
+              variant="outline"
+              className="w-full"
+            >
+              <Filter size={16} className="mr-2" />
+              Filtres ({Object.values(filters).filter(f => f !== 'all').length})
+            </Button>
           </div>
 
           <PortesGrid
@@ -2364,7 +2365,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 
           <div className="mt-8 text-center">
             <Typography variant="small" className="text-muted-foreground">
-              {filteredPortes.length} portes sur {portes.length} modèles Segment C disponibles
+              {filteredPortes.length} portes sur {portes.length} modèles disponibles
             </Typography>
           </div>
         </div>
@@ -2380,91 +2381,91 @@ const PortesSection = ({ className }: PortesSectionProps) => {
   );
 };
 
-const PortesFilters = ({
-  materialFilters,
-  styleFilters,
-  vitrageFilters,
-  activeFilters,
-  onFilterChange,
-}: {
-  materialFilters: { key: string; label: string }[];
-  styleFilters: { key: string; label: string }[];
-  vitrageFilters: { key: string; label: string }[];
-  activeFilters: { material: string; style: string; vitrage: string };
-  onFilterChange: (filterType: string, value: string) => void;
-}) => (
-  <div className="space-y-4">
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-        Matériaux:
-      </span>
-      {materialFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={
-            activeFilters.material === filter.key ? "default" : "outline"
-          }
-          size="sm"
-          onClick={() => onFilterChange("material", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.material === filter.key
-              ? "bg-primary text-white"
-              : "hover:bg-primary/10",
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
+// const PortesFilters = ({
+//   materialFilters,
+//   styleFilters,
+//   vitrageFilters,
+//   activeFilters,
+//   onFilterChange,
+// }: {
+//   materialFilters: { key: string; label: string }[];
+//   styleFilters: { key: string; label: string }[];
+//   vitrageFilters: { key: string; label: string }[];
+//   activeFilters: { material: string; style: string; vitrage: string };
+//   onFilterChange: (filterType: string, value: string) => void;
+// }) => (
+//   <div className="space-y-4">
+//     <div className="flex flex-wrap justify-center gap-2">
+//       <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+//         Matériaux:
+//       </span>
+//       {materialFilters.map((filter) => (
+//         <Button
+//           key={filter.key}
+//           variant={
+//             activeFilters.material === filter.key ? "default" : "outline"
+//           }
+//           size="sm"
+//           onClick={() => onFilterChange("material", filter.key)}
+//           className={cn(
+//             "transition-all duration-200",
+//             activeFilters.material === filter.key
+//               ? "bg-primary text-white"
+//               : "hover:bg-primary/10",
+//           )}
+//         >
+//           {filter.label}
+//         </Button>
+//       ))}
+//     </div>
 
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-        Style:
-      </span>
-      {styleFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={
-            activeFilters.style === filter.key ? "default" : "outline"
-          }
-          size="sm"
-          onClick={() => onFilterChange("style", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.style === filter.key
-              ? "bg-primary text-white"
-              : "hover:bg-primary/10",
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
+//     <div className="flex flex-wrap justify-center gap-2">
+//       <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+//         Style:
+//       </span>
+//       {styleFilters.map((filter) => (
+//         <Button
+//           key={filter.key}
+//           variant={
+//             activeFilters.style === filter.key ? "default" : "outline"
+//           }
+//           size="sm"
+//           onClick={() => onFilterChange("style", filter.key)}
+//           className={cn(
+//             "transition-all duration-200",
+//             activeFilters.style === filter.key
+//               ? "bg-primary text-white"
+//               : "hover:bg-primary/10",
+//           )}
+//         >
+//           {filter.label}
+//         </Button>
+//       ))}
+//     </div>
 
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-        Vitrage:
-      </span>
-      {vitrageFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.vitrage === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("vitrage", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.vitrage === filter.key
-              ? "bg-primary text-white"
-              : "hover:bg-primary/10",
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
-  </div>
-);
+//     <div className="flex flex-wrap justify-center gap-2">
+//       <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
+//         Vitrage:
+//       </span>
+//       {vitrageFilters.map((filter) => (
+//         <Button
+//           key={filter.key}
+//           variant={activeFilters.vitrage === filter.key ? "default" : "outline"}
+//           size="sm"
+//           onClick={() => onFilterChange("vitrage", filter.key)}
+//           className={cn(
+//             "transition-all duration-200",
+//             activeFilters.vitrage === filter.key
+//               ? "bg-primary text-white"
+//               : "hover:bg-primary/10",
+//           )}
+//         >
+//           {filter.label}
+//         </Button>
+//       ))}
+//     </div>
+//   </div>
+// );
 
 const PortesHeader = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -2504,7 +2505,7 @@ const PortesHeader = () => (
           fill
           className="object-cover"
           priority
-        />       
+        />
       </div>
     </div>
   </div>
@@ -2793,7 +2794,7 @@ const PorteCard = ({
           <Typography variant="large" className="font-semibold uppercase tracking-wide">
             {porte.name}
           </Typography>
-          
+
           <Typography variant="small" className="text-muted-foreground">
             {porte.description}
           </Typography>
@@ -2804,11 +2805,11 @@ const PorteCard = ({
               <div
                 key={idx}
                 className="h-4 w-4 rounded-full border border-gray-300"
-                style={{ 
+                style={{
                   backgroundColor: color.toLowerCase().includes('blanc') ? '#ffffff' :
-                                 color.toLowerCase().includes('anthracite') ? '#2c3539' :
-                                 color.toLowerCase().includes('gris') ? '#808080' :
-                                 color.toLowerCase().includes('noir') ? '#000000' : '#cccccc'
+                    color.toLowerCase().includes('anthracite') ? '#2c3539' :
+                      color.toLowerCase().includes('gris') ? '#808080' :
+                        color.toLowerCase().includes('noir') ? '#000000' : '#cccccc'
                 }}
               />
             ))}
@@ -2877,7 +2878,7 @@ const PorteModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-md bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-md bg-white">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -3054,14 +3055,14 @@ const PorteModal = ({
                 onClick={onClose}
                 className="flex-1"
               >
-                Fermer
+                Ajouter au panier
               </Button>
             </div>
 
             <div className="flex flex-row gap-6">
               <div className="flex-1 rounded-lg bg-gray-50 p-2">
                 <Typography variant="small" className="mb-3 font-semibold">
-                  Informations Segment C
+                  Informations
                 </Typography>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
@@ -3084,7 +3085,7 @@ const PorteModal = ({
               </div>
               <div className="flex-1 rounded-lg bg-blue-50 p-2">
                 <Typography variant="small" className="mb-3 font-semibold text-blue-800">
-                  Contactez Segment-C pour cette porte
+                  Contactez Segment-C pour ce modele.
                 </Typography>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
