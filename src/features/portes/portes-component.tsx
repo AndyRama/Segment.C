@@ -2528,8 +2528,8 @@ const PortesHeader = () => (
         Fabriquées en France, sur mesure, dans 5 matériaux : aluminium, acier, PVC, bois et mixte.
         Styles contemporains, classiques ou traditionnels pour tous vos projets.
       </Typography>
-      <div className="flex justify-center items-center gap-4 mt-6">
-        <div className="flex items-left gap-2">
+      <div className="flex justify-start items-center gap-4 mt-6">
+        <div className="flex items-center gap-2">
           <Home size={20} className="text-blue-600" />
           <Typography variant="small" className="font-medium">Made in France</Typography>
         </div>
@@ -2549,7 +2549,7 @@ const PortesHeader = () => (
           src="/images/porte.jpg"
           alt="Porte de exemple moderne avec végétation"
           fill
-          className="object-cover"
+          className="object-contain"
           priority
         />
       </div>
@@ -2801,7 +2801,7 @@ const PorteModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-md bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-md bg-white">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -2816,7 +2816,7 @@ const PorteModal = ({
                 src={porte.image}
                 alt={porte.name}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
