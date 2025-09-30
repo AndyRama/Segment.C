@@ -65,9 +65,9 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/portes"
+                    href="/baie"
                   >
-                    Nos portes
+                    Nos Baie-vitrées
                   </Typography>
                   <Typography
                     as={Link}
@@ -75,7 +75,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/baie"
                   >
-                    Nos baies vitrées
+                    Nos portes vitrées
                   </Typography>
                   <Typography
                     as={Link}
@@ -85,16 +85,82 @@ export const Footer = () => {
                   >
                     Nos veranda
                   </Typography>
+                </div>
+              </div>           
+
+              {/* Colonne portes */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Nos produits
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Nos portes 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/entrer"
+                  >
+                    Nos portes d'entrée
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/garage"
+                  >
+                    Nos portes de garage
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/serice"
+                  >
+                    Nos portes de service
+                  </Typography>
+                </div>
+              </div>    
+
+              {/* Colonne autre */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Nos produits
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portails"
+                  >
+                    Nos portails 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/volet"
+                  >
+                    Nos volets
+                  </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/pergolas"
                   >
-                    Nos pergolas
+                    Pergolas
                   </Typography>
                 </div>
-              </div>           
+              </div>     
 
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">
@@ -114,14 +180,6 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="#"
-                  >
-                    Informations
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
                     href="/account"
                   >
                     Compte user
@@ -136,39 +194,6 @@ export const Footer = () => {
                   </Typography>
                 </div>
               </div>
-
-              {/* Colonne Services */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Services
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/#"
-                  >
-                    Service Client
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/urgence"
-                  >
-                    Garantie Segment.C
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/urgence"
-                  >
-                    Conseil
-                  </Typography>
-                </div>
-              </div>             
             </div>
           </div>
         </LayoutContent>
