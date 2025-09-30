@@ -77,14 +77,6 @@ export const Footer = () => {
                   >
                     Veranda
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/baie"
-                  >
-                    Portes vitrées
-                  </Typography>
                 </div>
               </div>           
 
@@ -122,9 +114,17 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/serice"
+                    href="/service"
                   >
                     Portes de service
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/vitrage"
+                  >
+                    Portes vitrées
                   </Typography>
                 </div>
               </div>    
@@ -132,7 +132,7 @@ export const Footer = () => {
               {/* Colonne autre */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  Nos produits
+                  Autres produits
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -180,17 +180,9 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/home"
-                  >
-                    Segment.C
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
                     href="/account"
                   >
-                    Compte user
+                    Compte utilisateur
                   </Typography>
                 </div>
               </div>
