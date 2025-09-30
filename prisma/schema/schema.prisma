@@ -64,3 +64,4 @@ model Devis {
   @@index([userId, createdAt])
   @@map("devis")
 }
+
