@@ -74,6 +74,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
       dropdown: [
         { path: "/fenetres", label: "Fenêtre" },
         { path: "/baie", label: "Baie vitrée" },
+        { path: "/portes", label: "Porte fenêtre" },
         { path: "/verandas", label: "Vérandas" },
       ]
     },
@@ -81,9 +82,10 @@ export function HeaderBase({ children }: PropsWithChildren) {
       path: "/portes",
       label: "Portes",
       dropdown: [
-        { path: "/portes/entree", label: "Porte d'entrée" },
-        { path: "/portes/service", label: "Porte de service" },
-        { path: "/portes/garage", label: "Porte de garage" },
+        { path: "/portes", label: "Porte d'entrée" },
+        { path: "/service", label: "Porte de service" },
+        { path: "/vitrage", label: "Porte grand vitrage" },
+        { path: "/garage", label: "Porte de garage" },
       ]
     },
     { path: "/pergolas", label: "Pergolas" },
