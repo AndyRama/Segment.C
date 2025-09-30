@@ -67,7 +67,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/baie"
                   >
-                    Baie-vitrées
+                    Baie-vitrée
                   </Typography>
                   <Typography
                     as={Link}
@@ -118,21 +118,13 @@ export const Footer = () => {
                   >
                     Portes de service
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/vitrage"
-                  >
-                    Portes vitrées
-                  </Typography>
                 </div>
               </div>    
 
               {/* Colonne autre */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  Autres produits
+                  Autres
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography

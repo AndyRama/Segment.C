@@ -8,7 +8,7 @@ import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
 import { GallerySection } from "@/features/landing/gallery-section";
 import { ProcessSection } from "@/features/landing/process-section";
-import { ProcessSection2 } from "@/features/landing/process-section-v2";
+// import { ProcessSection2 } from "@/features/landing/process-section-v2";
 import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { VideoSection } from "@/features/landing/video-section";
 import { Partenaire } from "@/features/landing/partenaire";
@@ -184,7 +184,7 @@ export default function HomePage() {
 
       <ServiceAreaSection/>
 
-      <ProcessSection2/>
+      {/* <ProcessSection2/> */}
 
       <Partenaire />
 
