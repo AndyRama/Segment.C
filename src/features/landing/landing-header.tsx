@@ -80,8 +80,9 @@ export function LandingHeader() {
       path: "/portes",
       label: "Portes",
       dropdown: [
-        { path: "/portes/entrer", label: "Porte d'entrée" },
-        { path: "/portes/service", label: "Porte de service" },
+        { path: "/entrer", label: "Porte d'entrée" },
+        { path: "/service", label: "Porte de service" },
+        { path: "/vitrage", label: "Porte grand vitrage" },
         { path: "/garage", label: "Porte de garage" },
       ]
     },
