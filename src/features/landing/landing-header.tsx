@@ -73,20 +73,21 @@ export function LandingHeader() {
       dropdown: [
         { path: "/fenetres", label: "Fenêtre" },
         { path: "/baie", label: "Baie vitrée" },
-        { path: "/verandas", label: "Vérandas" },
+        { path: "/portes", label: "Porte fenêtre" },
       ]
     },
     {
       path: "/portes",
       label: "Portes",
       dropdown: [
-        { path: "/entrer", label: "Porte d'entrée" },
+        { path: "/portes", label: "Porte d'entrée" },
         { path: "/service", label: "Porte de service" },
         { path: "/vitrage", label: "Porte grand vitrage" },
         { path: "/garage", label: "Porte de garage" },
       ]
     },
     { path: "/pergolas", label: "Pergolas" },
+    { path: "/verandas", label: "Vérandas" },
     { path: "/portails", label: "Portails" },
     { path: "/volet", label: "Volet" },
     { path: "/posts", label: "Actualités" },
