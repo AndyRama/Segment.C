@@ -2496,30 +2496,32 @@ const MobileFiltersModal = ({
 };
 
 const PorteHeader = () => (
-  <div className="mb-12 space-y-4 text-center">
-    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Notre sélection de portes
-    </Typography>
-    <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
-      Découvrez notre sélection de + de 115 portes d'entrée.
-      Fabriquées en France, sur mesure, dans 5 matériaux : aluminium, acier, PVC, bois et mixte.
-      Styles contemporains, classiques ou traditionnels pour tous vos projets.
-    </Typography>
-    <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
-      <div className="flex items-center gap-2">
-        <Home size={20} className="text-blue-600" />
-        <Typography variant="small" className="font-medium">Made in France</Typography>
-      </div>
-      <div className="flex items-center gap-2">
-        <Shield size={20} className="text-green-600" />
-        <Typography variant="small" className="font-medium">Sur mesure</Typography>
-      </div>
-      <div className="flex items-center gap-2">
-        <Lock size={20} className="text-orange-600" />
-        <Typography variant="small" className="font-medium">Sécurité renforcée</Typography>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div className="space-y-6">
+      <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+        Notre sélection de portes
+      </Typography>
+      <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
+        Découvrez notre sélection de + de 115 portes d'entrée.
+        Fabriquées en France, sur mesure, dans 5 matériaux : aluminium, acier, PVC, bois et mixte.
+        Styles contemporains, classiques ou traditionnels pour tous vos projets.
+      </Typography>
+      <div className="flex justify-start items-center gap-4 mt-6">
+        <div className="flex items-center gap-2">
+          <Home size={20} className="text-blue-600" />
+          <Typography variant="small" className="font-medium">Made in France</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Shield size={20} className="text-green-600" />
+          <Typography variant="small" className="font-medium">Sur mesure</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Lock size={20} className="text-orange-600" />
+          <Typography variant="small" className="font-medium">Sécurité renforcée</Typography>
+        </div>
       </div>
     </div>
-    <div className="relative mt-8">
+    <div className="relative">
       <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
           src="/images/porte.jpg"
@@ -2699,7 +2701,7 @@ const PorteCard = ({
             src={porte.image}
             alt={porte.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
@@ -2768,7 +2770,7 @@ const PorteModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -2783,7 +2785,7 @@ const PorteModal = ({
                 src={porte.image}
                 alt={porte.name}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
@@ -2897,55 +2899,6 @@ const PorteModal = ({
               >
                 Ajouter au panier
               </Button>
-            </div>
-
-            <div className="flex flex-row gap-6">
-              <div className="flex-1 rounded-lg bg-gray-50 p-2">
-                <Typography variant="small" className="mb-3 font-semibold">
-                  Informations
-                </Typography>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Home size={14} className="text-blue-600" />
-                    <Typography variant="small">Fabriqué en France</Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Shield size={14} className="text-green-600" />
-                    <Typography variant="small">Sur mesure disponible</Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Lock size={14} className="text-orange-600" />
-                    <Typography variant="small">Serrure multi-points incluse</Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Thermometer size={14} className="text-red-600" />
-                    <Typography variant="small">Conformité RT2012</Typography>
-                  </div>
-                </div>
-              </div>
-              <div className="flex-1 rounded-lg bg-blue-50 p-2">
-                <Typography variant="small" className="mb-3 font-semibold text-blue-800">
-                  Contactez Segment-C pour ce modele.
-                </Typography>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Phone size={14} className="text-blue-600" />
-                    <Typography variant="small">05 56 32 34 56</Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail size={14} className="text-blue-600" />
-                    <Typography variant="small">
-                      contact@segment-c.com
-                    </Typography>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} className="text-blue-600" />
-                    <Typography variant="small">
-                      St Jean d'Illac, Gironde
-                    </Typography>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
