@@ -161,7 +161,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       style: "contemporain",
       vitrage: "double-vitrage",
       epaisseur: "80mm",
-      image: "https://prod-image.cetih.eu/image/portes/fantazy/fantazy-80-alu.jpg",
+      image: "images/portes/maewo2.png",
       colors: ["Anthracite", "Blanc", "Gris", "Noir mat"],
       features: ["Nouveau design 2025", "Innovation", "Style unique", "Performance"],
       description: "Nouveau design 2025 avec innovation et style unique pour votre entrée.",
