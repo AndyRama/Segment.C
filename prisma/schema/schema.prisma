@@ -12,6 +12,76 @@ datasource db {
   directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
+// ============================================
+// ENUMS pour les produits
+// ============================================
+
+enum ProductCategory {
+  PORTE
+  FENETRE
+  PORTE_GARAGE
+  PORTE_ENTRER
+  BAIE_VITREE
+  PORTE_VITRAGE
+  VERANDA
+  PERGOLA
+  PORTAIL
+  VOLET
+}
+
+enum ProductMaterial {
+  PVC
+  ALUMINIUM
+  BOIS
+  ACIER
+  BOIS_ALUMINIUM
+  MIXTE
+}
+
+enum ProductSeller {
+  SYBAIE
+  C2R
+  SWAO
+  PROFERM
+  AUTRE
+}
+
+enum VitragType {
+  SIMPLE
+  DOUBLE
+  TRIPLE
+}
+
+enum OpeningType {
+  BATTANT
+  COULISSANTE
+  OSCILLO_BATTANT
+  PLIANTE
+  FIXE
+  PIVOTANTE
+  PROJECTION
+  COULISSANTE_GALANDAGE
+}
+
+enum RoofType {
+  VERRE
+  TUILE
+  POLYCARBONATE
+  MIXTE
+  BIOCLIMATIQUE
+  OPAQUE
+  TOILE
+  OUVERTE
+  FIXE
+  CANISSE
+  CLAIRE_VOIE
+  MODULAIRE
+}
+
+// ============================================
+// MODELS
+// ============================================
+
 model Feedback {
   id      String  @id @default(nanoid(11))
   review  Int
@@ -36,7 +106,6 @@ model Devis {
   
   // Champs pour particulier
   typeProjet       String?
-
   // Nouveaux champs pour projets de construction
   typeConstruction String?  // "je_fais_construire" ou "je_construis_moi_meme"
   typeBatiment     String?  // "maison" ou "autre"
@@ -59,9 +128,89 @@ model Devis {
   userId           String
   user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   
+  // Relation Many-to-Many avec les produits
+  products         DevisProduct[]
+
   // Index pour optimiser les requêtes par utilisateur
   @@index([userId])
   @@index([userId, createdAt])
   @@map("devis")
 }
 
+model Product {
+  id          String          @id @default(cuid())
+  name        String
+  category    ProductCategory
+  material    ProductMaterial
+  seller      ProductSeller?
+  description String          @db.Text
+
+  // Spécifique aux fenêtres et baies vitrées
+  vitrage     VitragType?
+  ouverture   OpeningType?
+  dimensions  String?
+  uw          String?         // Coefficient thermique
+  
+  // Spécifique aux vérandas et pergolas
+  toiture     RoofType?
+  surface     String?
+  
+  // Informations commerciales
+  priceRange  String
+  rating      Float           @default(4.0)
+  
+  // Médias et couleurs
+  image       String
+  colors      String[]        // Array de couleurs disponibles
+  features    String[]        // Array de caractéristiques (inclut: style, vitrage, épaisseur, dimensions, performance thermique, etc.)
+  
+  // État du produit
+  isPopular   Boolean         @default(false)
+  isNew       Boolean         @default(false)
+  isActive    Boolean         @default(true)
+  
+  // Métadonnées
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  
+  // Relation Many-to-Many avec les devis
+  devis       DevisProduct[]
+  
+  // Index pour optimiser les recherches
+  @@index([category])
+  @@index([material])
+  @@index([seller])
+  @@index([isActive])
+  @@index([isPopular])
+  @@index([isNew])
+  @@index([category, material])
+  @@index([category, seller])
+  @@map("products")
+}
+
+// Table de jointure pour la relation Many-to-Many
+model DevisProduct {
+  id        String   @id @default(cuid())
+  
+  // Relations
+  devisId   String
+  devis     Devis    @relation(fields: [devisId], references: [id], onDelete: Cascade)
+  
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  // Champs supplémentaires pour enrichir la relation
+  quantity  Int      @default(1)           // Quantité du produit commandé
+  notes     String?  @db.Text              // Notes spécifiques pour ce produit dans ce devis
+  
+  // Métadonnées
+  addedAt   DateTime @default(now())
+  
+  // Contrainte d'unicité : un produit ne peut être ajouté qu'une fois par devis
+  @@unique([devisId, productId])
+  
+  // Index pour optimiser les requêtes
+  @@index([devisId])
+  @@index([productId])
+  @@map("devis_products")
+}

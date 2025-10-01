@@ -6,20 +6,76 @@ import { prisma } from "../src/lib/prisma";
 // Set seed for reproducibility
 faker.seed(123);
 
+// Données des portes
+const portesData = [
+  {
+    name: "ABLETTE",
+    category: "PORTE_ENTRER",
+    material: "ACIER",
+    seller: "SYBAIE",
+    description: "Porte acier avec dormant alu, vitrage avec petits bois plombs intégrés dans un cadre mouluré.",
+    priceRange: "1800€",
+    rating: 4.7,
+    image: "/images/portes/ablette.jpg",
+    colors: ["Gris anthracite", "Blanc", "Bronze", "Noir"],
+    features: ["Triple vitrage feuilleté", "Petits bois plombs", "Performance thermique", "Cadre mouluré", "Épaisseur: 48mm", "Performance: 1.4 W/(m².K)", "Dimensions: H: 2000-2250mm, L: 800-1000mm", "Vitrage: triple-vitrage", "Style: classique"],
+    isPopular: true,
+    isNew: false,
+    isActive: true,
+  },
+  {
+    name: "ORPHIE 80",
+    category: "PORTE_ENTRER",
+    material: "ALUMINIUM",
+    seller: "SYBAIE",
+    description: "Design exclusif, ouvrant rainuré, demi-lune vitrée avec triple vitrage feuilleté sablé.",
+    priceRange: "2200€",
+    rating: 4.8,
+    image: "/images/portes/orphie-80.jpg",
+    colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
+    features: ["Design exclusif", "Ouvrant rainuré", "Demi-lune vitrée", "Embouts inox", "Épaisseur: 80mm", "Performance: 1.2 W/(m².K)", "Dimensions: H: 1920-2250mm, L: 780-1000mm", "Vitrage: triple-vitrage", "Style: contemporain"],
+    isPopular: false,
+    isNew: true,
+    isActive: true,
+  },
+  {
+    name: "BLENNIE 80",
+    category: "PORTE_ENTRER",
+    material: "ALUMINIUM",
+    seller: "SYBAIE",
+    description: "Design exclusif Sy baie avec lignes épurées pour un maximum de luminosité.",
+    priceRange: "2100€",
+    rating: 4.6,
+    image: "/images/portes/blennie-80.webp",
+    colors: ["Gris clair", "Blanc", "Anthracite", "Bronze"],
+    features: ["Design exclusif Sy baie", "Lignes épurées", "Grande surface vitrée", "Profilés fins", "Épaisseur: 80mm", "Performance: 1.2 W/(m².K)", "Dimensions: H: 2000-2250mm, L: 800-1000mm", "Vitrage: double-vitrage", "Style: contemporain"],
+    isPopular: false,
+    isNew: false,
+    isActive: true,
+  },
+  // ... ajoutez toutes les autres portes ici (112 restantes)
+];
+
 async function main() {
   logger.info("🌱 Seeding database...");
+
+  // Clean existing data (in order due to foreign key constraints)
+  logger.info("🧹 Cleaning existing data...");
+  await prisma.member.deleteMany({});
+  await prisma.product.deleteMany({});
+  await prisma.organization.deleteMany({});
+  await prisma.user.deleteMany({});
+  logger.info("✅ Cleaned existing data");
 
   // Create 10 users
   const userCreatePromises = Array.from({ length: 10 }, async () => {
     const email = faker.internet.email();
-    return prisma.user.upsert({
-      where: { email },
-      update: {},
-      create: {
+    return prisma.user.create({
+      data: {
         id: nanoid(11),
         name: faker.person.fullName(),
         email,
-        emailVerified: faker.datatype.boolean(0.8), // 80% chance of being verified
+        emailVerified: faker.datatype.boolean(0.8),
         image: faker.image.avatar(),
         createdAt: faker.date.past(),
         updatedAt: faker.date.recent(),
@@ -27,7 +83,6 @@ async function main() {
       },
     });
   });
-
   const users = await Promise.all(userCreatePromises);
   users.forEach((user) => logger.info(`👤 Created user: ${user.name}`));
 
@@ -35,21 +90,17 @@ async function main() {
   const memberPromises: Promise<unknown>[] = [];
   const invitationPromises: Promise<unknown>[] = [];
 
-  // Prepare organization creation data
   const orgData = Array.from({ length: 3 }, () => {
     const orgName = faker.company.name();
     const orgSlug = orgName.toLowerCase().replace(/[^a-z0-9]/g, "-");
     return { orgName, orgSlug };
   });
 
-  // Create all organizations first
   const organizations = await Promise.all(
     orgData.map(async ({ orgName, orgSlug }) =>
       prisma.organization
-        .upsert({
-          where: { slug: orgSlug },
-          update: {},
-          create: {
+        .create({
+          data: {
             id: nanoid(11),
             name: orgName,
             slug: orgSlug,
@@ -65,18 +116,16 @@ async function main() {
     ),
   );
 
-  // Process members and invitations for each organization
   organizations.forEach((organization) => {
     const roleOptions = ["owner", "admin", "member"];
 
-    // Make sure each org has at least one owner
     memberPromises.push(
       prisma.member
         .create({
           data: {
             id: nanoid(11),
             organizationId: organization.id,
-            userId: users[0].id, // First user is always an owner
+            userId: users[0].id,
             role: "owner",
             createdAt: faker.date.past(),
           },
@@ -88,7 +137,6 @@ async function main() {
         ),
     );
 
-    // Add 2-4 more random members to each org
     const memberCount = faker.number.int({ min: 2, max: 4 });
     const memberIndices = faker.helpers.uniqueArray(
       () => faker.number.int({ min: 1, max: users.length - 1 }),
@@ -98,7 +146,6 @@ async function main() {
     for (const index of memberIndices) {
       const user = users[index];
       const role = faker.helpers.arrayElement(roleOptions);
-
       memberPromises.push(
         prisma.member
           .create({
@@ -121,6 +168,22 @@ async function main() {
 
   await Promise.all([...memberPromises, ...invitationPromises]);
 
+  // Seed Portes (Products)
+  logger.info("🚪 Creating portes...");
+  
+  // Prepare data with IDs
+  const portesWithIds = portesData.map((porte) => ({
+    id: `porte-${porte.name.toLowerCase().replace(/\s+/g, "-")}`,
+    ...porte,
+  }));
+
+  // Create all products at once using createMany (more efficient)
+  const result = await prisma.product.createMany({
+    data: portesWithIds,
+    skipDuplicates: false, // Will throw error if duplicates exist
+  });
+
+  logger.info(`✅ Created ${result.count} portes`);
   logger.info("✅ Seeding completed!");
 }
 
