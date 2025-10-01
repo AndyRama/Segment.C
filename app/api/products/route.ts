@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   const offset = parseInt(searchParams.get('offset') ?? '0');
   const search = searchParams.get('search');
 
-  // Only set category if it's not 'all' and is a valid enum value
+  // Only set category/material/seller if not 'all' and is a valid value
   const category = categoryParam && categoryParam !== 'all' ? (categoryParam as ProductCategory) : null;
   const material = materialParam && materialParam !== 'all' ? (materialParam as ProductMaterial) : null;
   const seller = sellerParam && sellerParam !== 'all' ? sellerParam : null;
