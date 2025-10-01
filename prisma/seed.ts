@@ -2,12 +2,30 @@ import { logger } from "@/lib/logger";
 import { faker } from "@faker-js/faker";
 import { nanoid } from "nanoid";
 import { prisma } from "../src/lib/prisma";
+import type { ProductCategory, ProductMaterial, ProductSeller } from "@/generated/prisma";
 
 // Set seed for reproducibility
 faker.seed(123);
 
+// Type for porte data before adding ID
+type PorteData = {
+  name: string;
+  category: ProductCategory;
+  material: ProductMaterial;
+  seller: ProductSeller;
+  description: string;
+  priceRange: string;
+  rating: number;
+  image: string;
+  colors: string[];
+  features: string[];
+  isPopular: boolean;
+  isNew: boolean;
+  isActive: boolean;
+};
+
 // Données des portes
-const portesData = [
+const portesData: PorteData[] = [
   {
     name: "ABLETTE",
     category: "PORTE_ENTRER",
