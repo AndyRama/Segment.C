@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import type { ProductCategory, ProductMaterial } from '@/generated/prisma';
+import type { ProductCategory, ProductMaterial, ProductSeller } from '@/generated/prisma';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   // Only set category/material/seller if not 'all' and is a valid value
   const category = categoryParam && categoryParam !== 'all' ? (categoryParam as ProductCategory) : null;
   const material = materialParam && materialParam !== 'all' ? (materialParam as ProductMaterial) : null;
-  const seller = sellerParam && sellerParam !== 'all' ? sellerParam : null;
+  const seller = sellerParam && sellerParam !== 'all' ? (sellerParam as ProductSeller) : null;
 
   try {
     const where = {
