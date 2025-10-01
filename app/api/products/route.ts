@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { ProductCategory, ProductMaterial } from '@prisma/client';
+import type { ProductCategory, ProductMaterial } from '@prisma/client';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -8,8 +8,8 @@ export async function GET(request: Request) {
   const category = searchParams.get('category') as ProductCategory | null;
   const material = searchParams.get('material') as ProductMaterial | null;
   const seller = searchParams.get('seller');
-  const limit = parseInt(searchParams.get('limit') || '40');
-  const offset = parseInt(searchParams.get('offset') || '0');
+  const limit = parseInt(searchParams.get('limit') ?? '40');
+  const offset = parseInt(searchParams.get('offset') ?? '0');
   const search = searchParams.get('search');
 
   try {
@@ -43,6 +43,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ products, total });
   } catch (error) {
+    // Error logging in API route for debugging purposes
     console.error('Error fetching products:', error);
     return NextResponse.json(
       { error: 'Failed to fetch products' },

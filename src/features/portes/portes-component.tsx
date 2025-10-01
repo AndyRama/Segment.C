@@ -11,11 +11,11 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { X, Star, Shield, Home, Thermometer, Volume2, Lock, Filter } from "lucide-react";
 import type { Product } from "@prisma/client";
 
-type PorteSectionProps = {
+type PortesSectionProps = {
   className?: string;
 }
 
-const PorteSection = ({ className }: PorteSectionProps) => {
+const PortesSection = ({ className }: PortesSectionProps) => {
   const [selectedPorte, setSelectedPorte] = useState<Product | null>(null);
   const [portes, setPortes] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
@@ -60,13 +60,14 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         }
         setTotal(data.total);
       } catch (error) {
+        // Error handling for fetch operation
         console.error('Error fetching portes:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPortes();
+    void fetchPortes();
   }, [filters, offset]);
 
   const materialFilters = [
@@ -694,4 +695,4 @@ const PorteModal = ({
   );
 };
 
-export default PorteSection;
+export default PortesSection;
