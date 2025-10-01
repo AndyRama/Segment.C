@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { X, Star, Shield, Home, Thermometer, Volume2, Lock, Filter } from "lucide-react";
-import type { Product } from "@prisma/client";
+import type { Product } from "@/generated/prisma";
 
 type PortesSectionProps = {
   className?: string;
