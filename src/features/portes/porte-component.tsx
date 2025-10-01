@@ -8,7 +8,7 @@ import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { X, Star, Shield, Home, Mail, MapPin, Sun, Thermometer, Volume2, Lock, Filter } from "lucide-react";
+import { X, Star, Shield, Home, Mail, Phone, MapPin, Sun, Thermometer, Volume2, Lock, Filter } from "lucide-react";
 
 type PorteProps = {
   id: string;
@@ -2304,7 +2304,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
       <PorteHeader />
-      
+
       <div className="flex gap-8 mt-8">
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <PortesFiltersSidebar
@@ -2315,7 +2315,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
             onFilterChange={handleFilterChange}
           />
         </aside>
-      
+
         <div className="flex-1">
           <div className="lg:hidden mb-4">
             <Button
@@ -2328,11 +2328,11 @@ const PorteSection = ({ className }: PorteSectionProps) => {
             </Button>
           </div>
 
-          <PortesGrid 
+          <PortesGrid
             portes={filteredPortes.slice(0, visibleCount)}
             onPorteClick={setSelectedPorte}
           />
-          
+
           {visibleCount < filteredPortes.length && (
             <div className="mt-8 flex justify-center">
               <Button
@@ -2645,7 +2645,7 @@ const PortesGrid = ({
   portes: PorteProps[];
   onPorteClick: (porte: PorteProps) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {portes.map((porte, index) => (
       <PorteCard
         key={porte.id}
@@ -2657,17 +2657,17 @@ const PortesGrid = ({
   </div>
 );
 
-const PorteCard = ({ 
-  porte, 
-  index, 
-  onClick 
+const PorteCard = ({
+  porte,
+  index,
+  onClick
 }: {
   porte: PorteProps;
   index: number;
   onClick: () => void;
 }) => {
   const delay = index * 0.1;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -2693,7 +2693,7 @@ const PorteCard = ({
             </span>
           )}
         </div>
-        
+
         <div className="relative h-64">
           <Image
             src={porte.image}
@@ -2703,7 +2703,7 @@ const PorteCard = ({
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
-        
+
         <div className="space-y-3 p-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">{porte.name}</h3>
@@ -2712,7 +2712,7 @@ const PorteCard = ({
               <span className="text-sm font-medium">{porte.rating}</span>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
               {porte.material}
@@ -2724,11 +2724,11 @@ const PorteCard = ({
               {porte.style}
             </span>
           </div>
-          
+
           <p className="line-clamp-2 text-sm text-muted-foreground">
             {porte.description}
           </p>
-          
+
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span className="flex items-center gap-1">
               <Thermometer size={12} />
@@ -2736,7 +2736,7 @@ const PorteCard = ({
             </span>
             <span className="text-blue-600 font-medium">{porte.fournisseur}</span>
           </div>
-          
+
           <div className="flex items-center justify-between pt-2">
             <span className="font-semibold text-primary">{porte.priceRange}</span>
             <Button size="sm" variant="outline" className="text-xs">
@@ -2749,9 +2749,9 @@ const PorteCard = ({
   );
 };
 
-const PorteModal = ({ 
-  porte, 
-  onClose 
+const PorteModal = ({
+  porte,
+  onClose
 }: {
   porte: PorteProps;
   onClose: () => void;
@@ -2797,7 +2797,7 @@ const PorteModal = ({
                   <Typography variant="small">{porte.rating}</Typography>
                 </div>
               </div>
-              
+
               <div className="mb-4 flex flex-wrap gap-2">
                 <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
                   {porte.material}
@@ -2809,7 +2809,7 @@ const PorteModal = ({
                   {porte.style}
                 </span>
               </div>
-              
+
               <Typography variant="large" className="text-primary">{porte.priceRange}</Typography>
             </div>
 
@@ -2858,7 +2858,7 @@ const PorteModal = ({
               <Typography variant="h3" className="mb-3">Couleurs disponibles</Typography>
               <div className="flex flex-wrap gap-2">
                 {porte.colors.map((color, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="rounded-full bg-gray-100 px-3 py-1 text-sm"
                   >
@@ -2870,41 +2870,80 @@ const PorteModal = ({
 
             <div className="flex gap-3 pt-4">
               {session ? (
-                <Link 
-                  href="/account/devis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/account/devis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
                   Demander un devis
                 </Link>
               ) : (
-                <Link 
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
                   Se connecter pour un devis
                 </Link>
               )}
-              <Button 
+              <Button
                 variant="outline"
                 onClick={onClose}
                 className="flex-1"
               >
-                Fermer
+                Ajouter au panier
               </Button>
             </div>
 
-            <div className="mt-6 rounded-lg bg-gray-50 p-4">
-              <h4 className="mb-3 font-semibold">Ou contactez-nous directement</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  <span>St Jean d'Illac, Gironde</span>
+            <div className="flex flex-row gap-6">
+              <div className="flex-1 rounded-lg bg-gray-50 p-2">
+                <Typography variant="small" className="mb-3 font-semibold">
+                  Informations
+                </Typography>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Home size={14} className="text-blue-600" />
+                    <Typography variant="small">Fabriqué en France</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Shield size={14} className="text-green-600" />
+                    <Typography variant="small">Sur mesure disponible</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Lock size={14} className="text-orange-600" />
+                    <Typography variant="small">Serrure multi-points incluse</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Thermometer size={14} className="text-red-600" />
+                    <Typography variant="small">Conformité RT2012</Typography>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1 rounded-lg bg-blue-50 p-2">
+                <Typography variant="small" className="mb-3 font-semibold text-blue-800">
+                  Contactez Segment-C pour ce modele.
+                </Typography>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Phone size={14} className="text-blue-600" />
+                    <Typography variant="small">05 56 32 34 56</Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail size={14} className="text-blue-600" />
+                    <Typography variant="small">
+                      contact@segment-c.com
+                    </Typography>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={14} className="text-blue-600" />
+                    <Typography variant="small">
+                      St Jean d'Illac, Gironde
+                    </Typography>
+                  </div>
                 </div>
               </div>
             </div>
