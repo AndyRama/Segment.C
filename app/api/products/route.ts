@@ -5,23 +5,28 @@ import type { ProductCategory, ProductMaterial } from '@/generated/prisma';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   
-  const category = searchParams.get('category') as ProductCategory | null;
-  const material = searchParams.get('material') as ProductMaterial | null;
-  const seller = searchParams.get('seller');
+  const categoryParam = searchParams.get('category');
+  const materialParam = searchParams.get('material');
+  const sellerParam = searchParams.get('seller');
   const limit = parseInt(searchParams.get('limit') ?? '40');
   const offset = parseInt(searchParams.get('offset') ?? '0');
   const search = searchParams.get('search');
 
+  // Only set category if it's not 'all' and is a valid enum value
+  const category = categoryParam && categoryParam !== 'all' ? (categoryParam as ProductCategory) : null;
+  const material = materialParam && materialParam !== 'all' ? (materialParam as ProductMaterial) : null;
+  const seller = sellerParam && sellerParam !== 'all' ? sellerParam : null;
+
   try {
     const where = {
       isActive: true,
-      ...(category && category !== 'all' ? { category } : {}),
-      ...(material && material !== 'all' ? { material } : {}),
-      ...(seller && seller !== 'all' ? { seller } : {}),
+      ...(category ? { category } : {}),
+      ...(material ? { material } : {}),
+      ...(seller ? { seller } : {}),
       ...(search ? {
         OR: [
-          { name: { contains: search, mode: 'insensitive' } },
-          { description: { contains: search, mode: 'insensitive' } },
+          { name: { contains: search, mode: 'insensitive' as const } },
+          { description: { contains: search, mode: 'insensitive' as const } },
         ],
       } : {}),
     };
