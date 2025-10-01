@@ -1,9 +1,9 @@
-import PortesSection  from "@/features/portes/portes-component";
+import PorteSection  from "@/features/portes/porte-component";
 
 export default function Portes() {
   return (
     <>
-      <PortesSection />
+      <PorteSection />
     </>
   );
 }
