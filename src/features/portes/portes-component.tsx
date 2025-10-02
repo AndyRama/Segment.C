@@ -48,6 +48,9 @@ const PorteSection = ({ className }: PorteSectionProps) => {
 
   const limit = 40;
 
+// Catégories de portes autorisées
+  const allowedCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE", "PORTE_GARAGE"];
+
   // Fetch portes from API
   useEffect(() => {
     const fetchPortes = async () => {
@@ -67,10 +70,15 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         
         const data = await response.json();
         
+        // Filtrer pour ne garder que les catégories autorisées
+        const filteredProducts = data.products.filter((product: Product) => 
+          allowedCategories.includes(product.category)
+        );
+        
         if (offset === 0) {
-          setPortes(data.products);
+          setPortes(filteredProducts);
         } else {
-          setPortes(prev => [...prev, ...data.products]);
+          setPortes(prev => [...prev, ...filteredProducts]);
         }
         setTotal(data.total);
       } catch (error) {

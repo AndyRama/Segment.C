@@ -44,9 +44,13 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     material: "all",
     seller: "all",
     category: "all",
+    openingType: "all",
   });
 
   const limit = 40;
+
+  // Catégories de fenêtres autorisées
+  const allowedCategories = ["VERANDA", "FENETRE", "BAIE_VITREE"];
 
   // Fetch fenetres from API
   useEffect(() => {
@@ -60,6 +64,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
           ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
           ...(filters.seller !== 'all' && { seller: filters.seller }),
+          ...(filters.openingType !== 'all' && { openingType: filters.openingType }),
         });
 
         const response = await fetch(`/api/products?${params}`);
@@ -67,10 +72,15 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         
         const data = await response.json();
         
+        // Filtrer pour ne garder que les catégories autorisées
+        const filteredProducts = data.products.filter((product: Product) => 
+          allowedCategories.includes(product.category)
+        );
+        
         if (offset === 0) {
-          setFenetres(data.products);
+          setFenetres(filteredProducts);
         } else {
-          setFenetres(prev => [...prev, ...data.products]);
+          setFenetres(prev => [...prev, ...filteredProducts]);
         }
         setTotal(data.total);
       } catch (error) {
@@ -86,13 +96,9 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
 
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
-    { key: "FENETRE", label: "Fenêtre standard" },
-    { key: "FENETRE_FIXE", label: "Fenêtre fixe" },
-    { key: "FENETRE_OSCILLO_BATTANTE", label: "Oscillo-battante" },
-    { key: "FENETRE_COULISSANTE", label: "Coulissante" },
-    { key: "FENETRE_BATTANTE", label: "Battante" },
-    { key: "FENETRE_BAIE_VITREE", label: "Baie vitrée" },
-    { key: "FENETRE_TOIT", label: "Fenêtre de toit" },
+    { key: "VERANDA", label: "Veranda" },
+    { key: "FENETRE", label: "Fenêtre" },
+    { key: "BAIE_VITREE", label: "Baie vitrée" },
   ];
 
   const materialFilters = [
@@ -110,6 +116,18 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "C2R", label: "C2R" },
     { key: "SWAO", label: "SWAO" },
     { key: "PROFERM", label: "Proferm" },
+  ];
+
+  const openingTypeFilters = [
+    { key: "all", label: "Tous types d'ouverture" },
+    { key: "BATTANT", label: "Battant" },
+    { key: "COULISSANTE", label: "Coulissante" },
+    { key: "OSCILLO_BATTANT", label: "Oscillo-battant" },
+    { key: "PLIANTE", label: "Pliante" },
+    { key: "FIXE", label: "Fixe" },
+    { key: "PIVOTANTE", label: "Pivotante" },
+    { key: "PROJECTION", label: "Projection" },
+    { key: "COULISSANTE_GALANDAGE", label: "Coulissante à galandage" },
   ];
 
   const handleShowMore = () => {
@@ -131,6 +149,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
             categoryFilters={categoryFilters}
             materialFilters={materialFilters}
             sellerFilters={sellerFilters}
+            openingTypeFilters={openingTypeFilters}
             activeFilters={filters}
             onFilterChange={handleFilterChange}
           />
@@ -194,6 +213,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         categoryFilters={categoryFilters}
         materialFilters={materialFilters}
         sellerFilters={sellerFilters}
+        openingTypeFilters={openingTypeFilters}
         activeFilters={filters}
         onFilterChange={(filterType, value) => {
           handleFilterChange(filterType, value);
@@ -210,6 +230,7 @@ const MobileFiltersModal = ({
   categoryFilters,
   materialFilters,
   sellerFilters,
+  openingTypeFilters,
   activeFilters,
   onFilterChange,
 }: {
@@ -218,7 +239,8 @@ const MobileFiltersModal = ({
   categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
   sellerFilters: { key: string; label: string }[];
-  activeFilters: { category: string; material: string; seller: string };
+  openingTypeFilters: { key: string; label: string }[];
+  activeFilters: { category: string; material: string; seller: string; openingType: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => {
   if (!isOpen) return null;
@@ -305,13 +327,36 @@ const MobileFiltersModal = ({
             </div>
           </div>
 
-          {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Type d'ouverture
+            </Typography>
+            <div className="space-y-2">
+              {openingTypeFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("openingType", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.openingType === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all' || activeFilters.openingType !== 'all') && (
             <Button
               variant="outline"
               onClick={() => {
                 onFilterChange('category', 'all');
                 onFilterChange('material', 'all');
                 onFilterChange('seller', 'all');
+                onFilterChange('openingType', 'all');
               }}
               className="w-full"
             >
@@ -331,7 +376,7 @@ const FenetreHeader = () => (
         Notre sélection de fenêtres
       </Typography>
       <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
-        Découvrez notre gamme complète de fenêtres haute performance.
+        Découvrez notre gamme complète de fenêtres, baies vitrées et vérandas haute performance.
         Fabriquées en France, sur mesure, en aluminium, PVC, bois et mixte.
         Isolation thermique et acoustique optimale pour tous vos projets de rénovation ou construction.
       </Typography>
@@ -368,13 +413,15 @@ const FenetresFiltersSidebar = ({
   categoryFilters,
   materialFilters,
   sellerFilters,
+  openingTypeFilters,
   activeFilters,
   onFilterChange,
 }: {
   categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
   sellerFilters: { key: string; label: string }[];
-  activeFilters: { category: string; material: string; seller: string };
+  openingTypeFilters: { key: string; label: string }[];
+  activeFilters: { category: string; material: string; seller: string; openingType: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => (
   <div className="sticky top-4 space-y-6 bg-white rounded-lg border p-6 shadow-sm">
@@ -450,9 +497,31 @@ const FenetresFiltersSidebar = ({
           ))}
         </div>
       </div>
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Type d'ouverture
+        </Typography>
+        <div className="space-y-2">
+          {openingTypeFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("openingType", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.openingType === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
 
-    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all' || activeFilters.openingType !== 'all') && (
       <Button
         variant="outline"
         size="sm"
@@ -460,6 +529,7 @@ const FenetresFiltersSidebar = ({
           onFilterChange('category', 'all');
           onFilterChange('material', 'all');
           onFilterChange('seller', 'all');
+          onFilterChange('openingType', 'all');
         }}
         className="w-full"
       >
@@ -476,7 +546,7 @@ const FenetresGrid = ({
   fenetres: Product[];
   onFenetreClick: (fenetre: Product) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {fenetres.map((fenetre, index) => (
       <FenetreCard
         key={fenetre.id}
@@ -498,6 +568,13 @@ const FenetreCard = ({
   onClick: () => void;
 }) => {
   const delay = index * 0.1;
+
+  const getCategoryLabel = (category: string) => {
+    if (category === 'VERANDA') return 'Véranda';
+    if (category === 'FENETRE') return 'Fenêtre';
+    if (category === 'BAIE_VITREE') return 'Baie vitrée';
+    return category;
+  };
 
   return (
     <motion.div
@@ -548,8 +625,8 @@ const FenetreCard = ({
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
               {fenetre.material.replace('_', ' ')}
             </span>
-            <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {fenetre.category === 'FENETRE' ? 'Standard' : fenetre.category.replace('FENETRE_', '').replace('_', ' ')}
+            <span className="rounded-full bg-green-100 px-2 py-1 text-green-800">
+              {getCategoryLabel(fenetre.category)}
             </span>
           </div>
 
@@ -589,6 +666,13 @@ const FenetreModal = ({
   onClose: () => void;
 }) => {
   const { data: session } = useSession();
+
+  const getCategoryLabel = (category: string) => {
+    if (category === 'VERANDA') return 'Véranda';
+    if (category === 'FENETRE') return 'Fenêtre';
+    if (category === 'BAIE_VITREE') return 'Baie vitrée';
+    return category;
+  };
 
   const getPerformanceIcon = (feature: string) => {
     if (feature.toLowerCase().includes('vitrage') || feature.toLowerCase().includes('isolation') || feature.toLowerCase().includes('thermique')) return Thermometer;
@@ -635,8 +719,8 @@ const FenetreModal = ({
                 <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
                   {fenetre.material.replace('_', ' ')}
                 </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {fenetre.category === 'FENETRE' ? 'Standard' : fenetre.category.replace('FENETRE_', '').replace('_', ' ')}
+                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800">
+                  {getCategoryLabel(fenetre.category)}
                 </span>
               </div>
 
