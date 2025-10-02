@@ -322,7 +322,7 @@ const MobileFiltersModal = ({
 };
 
 const PorteHeader = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-0 md:mb-20">
     <div className="space-y-6">
       <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
         Notre sélection de portes
