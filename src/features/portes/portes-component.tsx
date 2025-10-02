@@ -429,8 +429,8 @@ const PorteCard = ({
   getFeatureValue: (features: string[], prefix: string) => string | null;
 }) => {
   const delay = index * 0.1;
-  const style = getFeatureValue(porte.features, "Style");
-  const vitrage = getFeatureValue(porte.features, "Vitrage");
+  // const style = getFeatureValue(porte.features, "Style");
+  // const vitrage = getFeatureValue(porte.features, "Vitrage");
   const performance = getFeatureValue(porte.features, "Performance");
 
   return (
@@ -482,12 +482,12 @@ const PorteCard = ({
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
               {porte.material.replace('_', ' ')}
             </span>
-            {vitrage && (
+            {/* {vitrage && (
               <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
                 {vitrage}
               </span>
             )}
-            {/* {style && (
+            {style && (
               <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
                 {style}
               </span>
