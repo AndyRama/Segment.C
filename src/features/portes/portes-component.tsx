@@ -9,13 +9,28 @@ import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { X, Star, Shield, Home, Thermometer, Volume2, Lock, Filter } from "lucide-react";
-import type { Product } from "@/generated/prisma";
 
-type PortesSectionProps = {
+type Product = {
+  id: string;
+  name: string;
+  category: string;
+  material: string;
+  image: string;
+  colors: string[];
+  features: string[];
+  description: string;
+  priceRange: string;
+  rating: number;
+  seller?: string;
+  isPopular?: boolean;
+  isNew?: boolean;
+}
+
+type PorteSectionProps = {
   className?: string;
 }
 
-const PortesSection = ({ className }: PortesSectionProps) => {
+const PorteSection = ({ className }: PorteSectionProps) => {
   const [selectedPorte, setSelectedPorte] = useState<Product | null>(null);
   const [portes, setPortes] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
@@ -25,6 +40,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
   const [filters, setFilters] = useState({
     material: "all",
     seller: "all",
+    category: "all",
   });
 
   const limit = 40;
@@ -41,9 +57,9 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       setLoading(true);
       try {
         const params = new URLSearchParams({
-          category: 'PORTE_ENTRER',
           limit: limit.toString(),
           offset: offset.toString(),
+          ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
           ...(filters.seller !== 'all' && { seller: filters.seller }),
         });
@@ -60,7 +76,6 @@ const PortesSection = ({ className }: PortesSectionProps) => {
         }
         setTotal(data.total);
       } catch (error) {
-        // Error handling for fetch operation
         console.error('Error fetching portes:', error);
       } finally {
         setLoading(false);
@@ -69,6 +84,14 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 
     void fetchPortes();
   }, [filters, offset]);
+
+  const categoryFilters = [
+    { key: "all", label: "Toutes catégories" },
+    { key: "PORTE", label: "Porte" },
+    { key: "PORTE_ENTRER", label: "Porte d'entrée" },
+    { key: "PORTE_VITRAGE", label: "Porte vitrée" },
+    { key: "PORTE_GARAGE", label: "Porte de garage" },
+  ];
 
   const materialFilters = [
     { key: "all", label: "Tous matériaux" },
@@ -104,6 +127,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       <div className="flex gap-8 mt-8">
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <PortesFiltersSidebar
+            categoryFilters={categoryFilters}
             materialFilters={materialFilters}
             sellerFilters={sellerFilters}
             activeFilters={filters}
@@ -168,6 +192,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
       <MobileFiltersModal
         isOpen={showMobileFilters}
         onClose={() => setShowMobileFilters(false)}
+        categoryFilters={categoryFilters}
         materialFilters={materialFilters}
         sellerFilters={sellerFilters}
         activeFilters={filters}
@@ -183,6 +208,7 @@ const PortesSection = ({ className }: PortesSectionProps) => {
 const MobileFiltersModal = ({
   isOpen,
   onClose,
+  categoryFilters,
   materialFilters,
   sellerFilters,
   activeFilters,
@@ -190,9 +216,10 @@ const MobileFiltersModal = ({
 }: {
   isOpen: boolean;
   onClose: () => void;
+  categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
   sellerFilters: { key: string; label: string }[];
-  activeFilters: { material: string; seller: string };
+  activeFilters: { category: string; material: string; seller: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => {
   if (!isOpen) return null;
@@ -214,6 +241,28 @@ const MobileFiltersModal = ({
 
         <div className="p-4 space-y-6">
           <div>
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Catégorie
+            </Typography>
+            <div className="space-y-2">
+              {categoryFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("category", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.category === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
             <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
               Matériaux
             </Typography>
@@ -257,10 +306,11 @@ const MobileFiltersModal = ({
             </div>
           </div>
 
-          {(activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+          {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
             <Button
               variant="outline"
               onClick={() => {
+                onFilterChange('category', 'all');
                 onFilterChange('material', 'all');
                 onFilterChange('seller', 'all');
               }}
@@ -276,7 +326,7 @@ const MobileFiltersModal = ({
 };
 
 const PorteHeader = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-0 md:mb-20">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
     <div className="space-y-6">
       <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
         Notre sélection de portes
@@ -316,14 +366,16 @@ const PorteHeader = () => (
 );
 
 const PortesFiltersSidebar = ({
+  categoryFilters,
   materialFilters,
   sellerFilters,
   activeFilters,
   onFilterChange,
 }: {
+  categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
   sellerFilters: { key: string; label: string }[];
-  activeFilters: { material: string; seller: string };
+  activeFilters: { category: string; material: string; seller: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => (
   <div className="sticky top-4 space-y-6 bg-white rounded-lg border p-6 shadow-sm">
@@ -335,6 +387,28 @@ const PortesFiltersSidebar = ({
 
     <div className="space-y-4">
       <div>
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Catégorie
+        </Typography>
+        <div className="space-y-2">
+          {categoryFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("category", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.category === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t pt-4">
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
           Matériaux
         </Typography>
@@ -379,11 +453,12 @@ const PortesFiltersSidebar = ({
       </div>
     </div>
 
-    {(activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
       <Button
         variant="outline"
         size="sm"
         onClick={() => {
+          onFilterChange('category', 'all');
           onFilterChange('material', 'all');
           onFilterChange('seller', 'all');
         }}
@@ -429,8 +504,6 @@ const PorteCard = ({
   getFeatureValue: (features: string[], prefix: string) => string | null;
 }) => {
   const delay = index * 0.1;
-  // const style = getFeatureValue(porte.features, "Style");
-  // const vitrage = getFeatureValue(porte.features, "Vitrage");
   const performance = getFeatureValue(porte.features, "Performance");
 
   return (
@@ -482,16 +555,9 @@ const PorteCard = ({
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
               {porte.material.replace('_', ' ')}
             </span>
-            {/* {vitrage && (
-              <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-                {vitrage}
-              </span>
-            )}
-            {style && (
-              <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
-                {style}
-              </span>
-            )} */}
+            <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
+              {porte.category}
+            </span>
           </div>
 
           <p className="line-clamp-2 text-sm text-muted-foreground">
@@ -541,7 +607,6 @@ const PorteModal = ({
     return Shield;
   };
 
-  const style = getFeatureValue(porte.features, "Style");
   const dimensions = getFeatureValue(porte.features, "Dimensions");
   const performance = getFeatureValue(porte.features, "Performance");
   const epaisseur = getFeatureValue(porte.features, "Épaisseur");
@@ -585,11 +650,6 @@ const PorteModal = ({
                 <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
                   {porte.category}
                 </span>
-                {style && (
-                  <span className="rounded-full bg-purple-100 px-3 py-1 text-sm capitalize text-purple-800">
-                    {style}
-                  </span>
-                )}
               </div>
 
               <Typography variant="large" className="text-primary">{porte.priceRange}</Typography>
@@ -617,7 +677,7 @@ const PorteModal = ({
               {epaisseur && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold">{epaisseur}</Typography>
+                  <Typography variant="small" className="font-semibold">{epaisseur}mm</Typography>
                 </div>
               )}
             </div>
@@ -632,7 +692,11 @@ const PorteModal = ({
             <div>
               <Typography variant="h3" className="mb-3">Caractéristiques</Typography>
               <div className="grid grid-cols-1 gap-2">
-                {porte.features.filter(f => !f.startsWith('Style:') && !f.startsWith('Dimensions:') && !f.startsWith('Performance:') && !f.startsWith('Épaisseur:')).map((feature, index) => {
+                {porte.features.filter(f => 
+                  !f.startsWith('Dimensions:') && 
+                  !f.startsWith('Performance:') && 
+                  !f.startsWith('Épaisseur:')
+                ).map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
                   return (
                     <div key={index} className="flex items-center gap-2">
@@ -695,4 +759,4 @@ const PorteModal = ({
   );
 };
 
-export default PortesSection;
+export default PorteSection;

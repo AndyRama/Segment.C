@@ -144,11 +144,16 @@ model Product {
   material    ProductMaterial
   seller      ProductSeller?
   description String          @db.Text
+  dimensions  String?
+
+  // Spécifique aux portes
+  // performance  String?
+  // epaisseur  String?
+
 
   // Spécifique aux fenêtres et baies vitrées
   vitrage     VitragType?
   ouverture   OpeningType?
-  dimensions  String?
   uw          String?         // Coefficient thermique
   
   // Spécifique aux vérandas et pergolas
