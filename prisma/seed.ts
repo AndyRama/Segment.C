@@ -83,6 +83,21 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
+    {
+      name: "MOSTELLE 80",
+      category: "PORTE_ENTRER",
+      material: "ALUMINIUM",
+      seller: "SYBAIE",
+      epaisseur: "80mm",
+      dimensions: "H: 2000-2250mm, L: 800-1000mm",
+      image: "images/portes/mostelle-80.webp",
+      colors: ["Anthracite", "Blanc", "Gris", "Bronze"],
+      features: ["Design exclusif", "Style moderne", "Haute performance", "Finition premium"],
+      description: "Design exclusif aluminium au style moderne avec finition premium.",
+      priceRange: "2150€",
+      rating: 4.7,
+      performance: "1.2 W/(m².K)",
+    },
   // ... ajoutez toutes les autres portes ici (112 restantes)
 ];
 
