@@ -94,7 +94,7 @@ const portesData: PorteData[] = [
     colors: ["Anthracite", "Blanc", "Gris", "Bronze"],
     features: ["Design exclusif", "Style moderne", "Haute performance", "Finition premium"],
     description: "Design exclusif aluminium au style moderne avec finition premium.",
-    priceRange: "2150€",
+    priceRange: "1900€ - 2150€",
     rating: 4.7,
     performance: "1.2 W/(m².K)",
     isPopular: false,
