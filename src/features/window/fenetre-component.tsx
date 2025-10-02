@@ -42,7 +42,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [filters, setFilters] = useState({
     material: "all",
-    seller: "all",
+    // seller: "all",
     openingType: "all",
     category: "all",
   });
@@ -64,7 +64,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
           ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
           ...(filters.openingType !== 'all' && { openingType: filters.openingType }),
-          ...(filters.seller !== 'all' && { seller: filters.seller }),
+          // ...(filters.seller !== 'all' && { seller: filters.seller }),
         });
 
         const response = await fetch(`/api/products?${params}`);
@@ -96,9 +96,9 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
 
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
-    { key: "VERANDA", label: "Veranda" },
     { key: "FENETRE", label: "Fenêtre" },
     { key: "BAIE_VITREE", label: "Baie vitrée" },
+    { key: "VERANDA", label: "Veranda" },
   ];
 
   const materialFilters = [
@@ -122,13 +122,13 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "COULISSANTE_GALANDAGE", label: "Coulissante à galandage" },
   ];
 
-  const sellerFilters = [
-    { key: "all", label: "Tous fournisseurs" },
-    { key: "SYBAIE", label: "Sy Baie" },
-    { key: "C2R", label: "C2R" },
-    { key: "SWAO", label: "SWAO" },
-    { key: "PROFERM", label: "Proferm" },
-  ];
+  // const sellerFilters = [
+  //   { key: "all", label: "Tous fournisseurs" },
+  //   { key: "SYBAIE", label: "Sy Baie" },
+  //   { key: "C2R", label: "C2R" },
+  //   { key: "SWAO", label: "SWAO" },
+  //   { key: "PROFERM", label: "Proferm" },
+  // ];
 
   const handleShowMore = () => {
     setOffset(prev => prev + limit);
@@ -229,7 +229,7 @@ const MobileFiltersModal = ({
   onClose,
   categoryFilters,
   materialFilters,
-  sellerFilters,
+  // sellerFilters,
   openingTypeFilters,
   activeFilters,
   onFilterChange,
@@ -238,7 +238,7 @@ const MobileFiltersModal = ({
   onClose: () => void;
   categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
-  sellerFilters: { key: string; label: string }[];
+  // sellerFilters: { key: string; label: string }[];
   openingTypeFilters: { key: string; label: string }[];
   activeFilters: { category: string; material: string; seller: string; openingType: string };
   onFilterChange: (filterType: string, value: string) => void;
@@ -305,7 +305,7 @@ const MobileFiltersModal = ({
             </div>
           </div>
 
-          <div className="border-t pt-4">
+          {/* <div className="border-t pt-4">
             <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
               Fournisseur
             </Typography>
@@ -325,7 +325,7 @@ const MobileFiltersModal = ({
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
 
           <div className="border-t pt-4">
             <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
@@ -412,14 +412,14 @@ const FenetreHeader = () => (
 const FenetresFiltersSidebar = ({
   categoryFilters,
   materialFilters,
-  sellerFilters,
+  // sellerFilters,
   openingTypeFilters,
   activeFilters,
   onFilterChange,
 }: {
   categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
-  sellerFilters: { key: string; label: string }[];
+  // sellerFilters: { key: string; label: string }[];
   openingTypeFilters: { key: string; label: string }[];
   activeFilters: { category: string; material: string; seller: string; openingType: string };
   onFilterChange: (filterType: string, value: string) => void;
@@ -476,7 +476,7 @@ const FenetresFiltersSidebar = ({
         </div>
       </div>
 
-      <div className="border-t pt-4">
+      {/* <div className="border-t pt-4">
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
           Fournisseur
         </Typography>
@@ -496,7 +496,7 @@ const FenetresFiltersSidebar = ({
             </button>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <div className="border-t pt-4">
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
@@ -521,7 +521,7 @@ const FenetresFiltersSidebar = ({
       </div>
     </div>
 
-    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all' || activeFilters.openingType !== 'all') && (
+    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.openingType !== 'all') && (
       <Button
         variant="outline"
         size="sm"
@@ -668,8 +668,8 @@ const FenetreModal = ({
   const { data: session } = useSession();
 
   const getCategoryLabel = (category: string) => {
-    if (category === 'VERANDA') return 'Véranda';
     if (category === 'FENETRE') return 'Fenêtre';
+    if (category === 'VERANDA') return 'Véranda';
     if (category === 'BAIE_VITREE') return 'Baie vitrée';
     return category;
   };
