@@ -27,6 +27,26 @@ type PorteData = {
   isActive: boolean;
 };
 
+// Type for fenetre data before adding ID
+type FenetreData = {
+  name: string;
+  category: ProductCategory;
+  material: ProductMaterial;
+  seller: ProductSeller;
+  description: string;
+  priceRange: string;
+  rating: number;
+  dimensions: string;
+  performance: string;
+  vitrage: "SIMPLE" | "DOUBLE" | "TRIPLE"; // VitragType enum
+  image: string;
+  colors: string[];
+  features: string[];
+  isPopular: boolean;
+  isNew: boolean;
+  isActive: boolean;
+};
+
 // Données des portes
 const portesData: PorteData[] = [
   //Porte d'entrer Swao
@@ -106,6 +126,7 @@ const portesData: PorteData[] = [
     name: "NAPILUS 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
+    seller: "SYBAIE",
     epaisseur: "80mm",
     image: "images/portes/maewo2.png",
     colors: ["Gris anthracite", "Blanc", "Bronze", "Noir"],
@@ -115,30 +136,69 @@ const portesData: PorteData[] = [
     rating: 4.6,
     dimensions: "H: 2000-2250mm, L: 800-1000mm",
     performance: "1.2 W/(m².K)",
-    seller: "SYBAIE",
     isPopular: false,
     isNew: false,
     isActive: true,
   },
   {
     name: "FANTAZY 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_GARAGE",
     material: "ALUMINIUM",
+    seller: "SYBAIE",
     epaisseur: "80mm",
-    image: "images/alesia-60.webp",
+    image: "images/portes/alesia-60.webp",
     colors: ["Anthracite", "Blanc", "Gris", "Noir mat"],
     features: ["Nouveau design 2025", "Innovation", "Style unique", "Performance"],
-    description: "Nouveau design 2025 avec innovation et style unique pour votre entrée.",
+    description: "Nouveau design 2025 avec innovation et style unique pour votre garage.",
     priceRange: "2000€ - 2250€",
     rating: 4.8,
     dimensions: "H: 2000-2250mm, L: 800-1000mm",
     performance: "1.2 W/(m².K)",
-    seller : "SYBAIE",
+    isPopular: false,
+    isNew: true,
+    isActive: true,
+  },
+  {
+    name: "LUBERON",
+    category: "PORTE_GARAGE",
+    material: "BOIS",
+    seller: "C2R",
+    epaisseur: "80mm",
+    image: "images/portes/pg-pliante-bois-luberon.png",
+    colors: ["Marron", "Mat"],
+    features: ["Pliante", "Bois", "4 battants", "Performance"],
+    description: "Pliante en bois 4 battants et style unique pour votre garage.",
+    priceRange: "2000€ - 2250€",
+    rating: 4.8,
+    dimensions: "H: 2000-2250mm, L: 800-1800mm",
+    performance: "1.2 W/(m².K)",
     isPopular: false,
     isNew: true,
     isActive: true,
   },
   // ... ajoutez toutes les autres portes ici (112 restantes)
+];
+
+const fenetresData: FenetreData[] = [
+  {
+    name: "LUBER",
+    category: "FENETRE",
+    material: "ALUMINIUM",
+    seller: "C2R",
+    vitrage: "DOUBLE",
+    image: "images/hero-fenetre.jpg",
+    colors: ["Marron", "Mat"],
+    features: ["dormant invisible", "Aluminum", "Performance"],
+    description: "Fenêtre avec dormant invisible style unique pour vos pièces à vivre.",
+    priceRange: "2000€ - 2250€",
+    rating: 4.8,
+    dimensions: "H: 1000-1500mm, L: 800-1800mm",
+    performance: "1.2 W/(m².K)",
+    isPopular: false,
+    isNew: true,
+    isActive: true,
+  },
+  // ... ajoutez d'autres fenêtres ici
 ];
 
 async function main() {
@@ -263,12 +323,30 @@ async function main() {
   }));
 
   // Create all products at once using createMany (more efficient)
-  const result = await prisma.product.createMany({
+  const portesResult = await prisma.product.createMany({
     data: portesWithIds,
-    skipDuplicates: false, // Will throw error if duplicates exist
+    skipDuplicates: false,
   });
 
-  logger.info(`✅ Created ${result.count} portes`);
+  logger.info(`✅ Created ${portesResult.count} portes`);
+
+  // Seed Fenêtres (Products)
+  logger.info("🪟 Creating fenêtres...");
+  
+  // Prepare fenetre data with IDs
+  const fenetresWithIds = fenetresData.map((fenetre) => ({
+    id: `fenetre-${fenetre.name.toLowerCase().replace(/\s+/g, "-")}`,
+    ...fenetre,
+  }));
+
+  // Create all fenêtres at once
+  const fenetresResult = await prisma.product.createMany({
+    data: fenetresWithIds,
+    skipDuplicates: false,
+  });
+
+  logger.info(`✅ Created ${fenetresResult.count} fenêtres`);
+  
   logger.info("✅ Seeding completed!");
 }
 

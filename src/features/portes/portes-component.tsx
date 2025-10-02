@@ -643,25 +643,25 @@ const PorteModal = ({
               {porte.seller && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                  <Typography variant="small" className="font-semibold text-blue-600">{porte.seller}</Typography>
+                  <Typography variant="small" className="font-semibold text-blue-600 mt-4">{porte.seller}</Typography>
                 </div>
               )}
               {porte.performance && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold">{porte.performance}</Typography>
+                  <Typography variant="small" className="font-semibold mt-4">{porte.performance}</Typography>
                 </div>
               )}
               {porte.epaisseur && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold">{porte.epaisseur}</Typography>
+                  <Typography variant="small" className="font-semibold mt-4">{porte.epaisseur}</Typography>
                 </div>
               )}
               {porte.dimensions && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold">{porte.dimensions}</Typography>
+                  <Typography variant="small" className="font-semibold mt-4">{porte.dimensions}</Typography>
                 </div>
               )}
             </div>
