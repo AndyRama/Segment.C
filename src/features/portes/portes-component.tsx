@@ -276,7 +276,7 @@ const MobileFiltersModal = ({
 };
 
 const PorteHeader = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-0 md:mb-20">
     <div className="space-y-6">
       <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
         Notre sélection de portes
@@ -487,11 +487,11 @@ const PorteCard = ({
                 {vitrage}
               </span>
             )}
-            {style && (
+            {/* {style && (
               <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
                 {style}
               </span>
-            )}
+            )} */}
           </div>
 
           <p className="line-clamp-2 text-sm text-muted-foreground">
@@ -677,7 +677,7 @@ const PorteModal = ({
                     className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
-                  Se connecter pour un devis
+                  Demander un devis
                 </Link>
               )}
               <Button
@@ -685,7 +685,7 @@ const PorteModal = ({
                 onClick={onClose}
                 className="flex-1"
               >
-                Fermer
+                Ajouter au panier
               </Button>
             </div>
           </div>
