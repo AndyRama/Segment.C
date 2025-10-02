@@ -43,8 +43,8 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
   const [filters, setFilters] = useState({
     material: "all",
     seller: "all",
-    category: "all",
     openingType: "all",
+    category: "all",
   });
 
   const limit = 40;
@@ -63,8 +63,8 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
           type: 'FENETRE', // Filtre pour n'afficher que les fenêtres
           ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
-          ...(filters.seller !== 'all' && { seller: filters.seller }),
           ...(filters.openingType !== 'all' && { openingType: filters.openingType }),
+          ...(filters.seller !== 'all' && { seller: filters.seller }),
         });
 
         const response = await fetch(`/api/products?${params}`);
@@ -109,15 +109,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "BOIS_ALUMINIUM", label: "Bois-Aluminium" },
     { key: "MIXTE", label: "Mixte" },
   ];
-
-  const sellerFilters = [
-    { key: "all", label: "Tous fournisseurs" },
-    { key: "SYBAIE", label: "Sy Baie" },
-    { key: "C2R", label: "C2R" },
-    { key: "SWAO", label: "SWAO" },
-    { key: "PROFERM", label: "Proferm" },
-  ];
-
+  
   const openingTypeFilters = [
     { key: "all", label: "Tous types d'ouverture" },
     { key: "BATTANT", label: "Battant" },
@@ -128,6 +120,14 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "PIVOTANTE", label: "Pivotante" },
     { key: "PROJECTION", label: "Projection" },
     { key: "COULISSANTE_GALANDAGE", label: "Coulissante à galandage" },
+  ];
+
+  const sellerFilters = [
+    { key: "all", label: "Tous fournisseurs" },
+    { key: "SYBAIE", label: "Sy Baie" },
+    { key: "C2R", label: "C2R" },
+    { key: "SWAO", label: "SWAO" },
+    { key: "PROFERM", label: "Proferm" },
   ];
 
   const handleShowMore = () => {
@@ -528,8 +528,8 @@ const FenetresFiltersSidebar = ({
         onClick={() => {
           onFilterChange('category', 'all');
           onFilterChange('material', 'all');
-          onFilterChange('seller', 'all');
           onFilterChange('openingType', 'all');
+          onFilterChange('seller', 'all');
         }}
         className="w-full"
       >
@@ -607,7 +607,7 @@ const FenetreCard = ({
             src={fenetre.image}
             alt={fenetre.name}
             fill
-            className="object-contain transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
@@ -685,7 +685,7 @@ const FenetreModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -700,7 +700,7 @@ const FenetreModal = ({
                 src={fenetre.image}
                 alt={fenetre.name}
                 fill
-                className="object-contain"
+                className="object-sticky"
               />
             </div>
           </div>
