@@ -73,6 +73,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         }
         setTotal(data.total);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error fetching portes:', error);
       } finally {
         setLoading(false);
