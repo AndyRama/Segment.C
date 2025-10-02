@@ -17,6 +17,8 @@ type PorteData = {
   priceRange: string;
   rating: number;
   dimensions: string;
+  performance: string;
+  epaisseur: string;
   image: string;
   colors: string[];
   features: string[];
@@ -36,6 +38,8 @@ const portesData: PorteData[] = [
     priceRange: "1800€",
     rating: 4.7,
     dimensions: "H: 2000-2250mm, L: 800-1000mm",
+    epaisseur:"80mm",
+    performance:"",
     image: "/images/portes/ablette.jpg",
     colors: ["Gris anthracite", "Blanc", "Bronze", "Noir"],
     features: ["Triple vitrage feuilleté", "Petits bois plombs", "Performance thermique", "Cadre mouluré", "Épaisseur: 48mm", "Performance: 1.4 W/(m².K)", "Dimensions: H: 2000-2250mm, L: 800-1000mm", "Vitrage: triple-vitrage", "Style: classique"],
@@ -52,6 +56,8 @@ const portesData: PorteData[] = [
     priceRange: "2200€",
     rating: 4.8,
     dimensions: "H: 1920-2250mm, L: 780-1000mm",
+    epaisseur:"80mm",
+    performance:"",
     image: "/images/portes/orphie-80.jpg",
     colors: ["Anthracite", "Blanc", "Bronze", "Gris"],
     features: ["Design exclusif", "Ouvrant rainuré", "Demi-lune vitrée", "Embouts inox", "Épaisseur: 80mm", "Performance: 1.2 W/(m².K)", "Dimensions: H: 1920-2250mm, L: 780-1000mm", "Vitrage: triple-vitrage", "Style: contemporain"],
@@ -68,6 +74,8 @@ const portesData: PorteData[] = [
     priceRange: "2100€",
     rating: 4.6,
     dimensions: "H: 2000-2250mm, L: 800-1000mm",
+    epaisseur:"80mm",
+    performance:"",
     image: "/images/portes/blennie-80.webp",
     colors: ["Gris clair", "Blanc", "Anthracite", "Bronze"],
     features: ["Design exclusif Sy baie", "Lignes épurées", "Grande surface vitrée", "Profilés fins", "Épaisseur: 80mm", "Performance: 1.2 W/(m².K)", "Dimensions: H: 2000-2250mm, L: 800-1000mm", "Vitrage: double-vitrage", "Style: contemporain"],
