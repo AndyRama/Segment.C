@@ -19,6 +19,9 @@ type Product = {
   colors: string[];
   features: string[];
   description: string;
+  dimensions: string;
+  epaisseur: string;
+  performance: string;
   priceRange: string;
   rating: number;
   seller?: string;
@@ -44,12 +47,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
   });
 
   const limit = 40;
-
-  // Fonction helper pour extraire des valeurs des features
-  const getFeatureValue = (features: string[], prefix: string) => {
-    const feature = features.find(f => f.toLowerCase().startsWith(prefix.toLowerCase()));
-    return feature ? feature.split(': ')[1] || feature : null;
-  };
 
   // Fetch portes from API
   useEffect(() => {
@@ -156,7 +153,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
               <PortesGrid
                 portes={portes}
                 onPorteClick={setSelectedPorte}
-                getFeatureValue={getFeatureValue}
               />
 
               {portes.length < total && (
@@ -185,7 +181,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         <PorteModal
           porte={selectedPorte}
           onClose={() => setSelectedPorte(null)}
-          getFeatureValue={getFeatureValue}
         />
       )}
 
@@ -473,11 +468,9 @@ const PortesFiltersSidebar = ({
 const PortesGrid = ({
   portes,
   onPorteClick,
-  getFeatureValue,
 }: {
   portes: Product[];
   onPorteClick: (porte: Product) => void;
-  getFeatureValue: (features: string[], prefix: string) => string | null;
 }) => (
   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {portes.map((porte, index) => (
@@ -486,7 +479,6 @@ const PortesGrid = ({
         porte={porte}
         index={index}
         onClick={() => onPorteClick(porte)}
-        getFeatureValue={getFeatureValue}
       />
     ))}
   </div>
@@ -496,15 +488,12 @@ const PorteCard = ({
   porte,
   index,
   onClick,
-  getFeatureValue,
 }: {
   porte: Product;
   index: number;
   onClick: () => void;
-  getFeatureValue: (features: string[], prefix: string) => string | null;
 }) => {
   const delay = index * 0.1;
-  const performance = getFeatureValue(porte.features, "Performance");
 
   return (
     <motion.div
@@ -565,10 +554,10 @@ const PorteCard = ({
           </p>
 
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            {performance && (
+            {porte.performance && (
               <span className="flex items-center gap-1">
                 <Thermometer size={12} />
-                {performance}
+                {porte.performance}
               </span>
             )}
             {porte.seller && (
@@ -591,11 +580,9 @@ const PorteCard = ({
 const PorteModal = ({
   porte,
   onClose,
-  getFeatureValue,
 }: {
   porte: Product;
   onClose: () => void;
-  getFeatureValue: (features: string[], prefix: string) => string | null;
 }) => {
   const { data: session } = useSession();
 
@@ -606,10 +593,6 @@ const PorteModal = ({
     if (feature.toLowerCase().includes('phonique') || feature.toLowerCase().includes('acoustique')) return Volume2;
     return Shield;
   };
-
-  const dimensions = getFeatureValue(porte.features, "Dimensions");
-  const performance = getFeatureValue(porte.features, "Performance");
-  const epaisseur = getFeatureValue(porte.features, "Épaisseur");
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
@@ -656,10 +639,10 @@ const PorteModal = ({
             </div>
 
             <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
-              {performance && (
+              {porte.performance && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold">{performance}</Typography>
+                  <Typography variant="small" className="font-semibold">{porte.performance}</Typography>
                 </div>
               )}
               {porte.seller && (
@@ -668,16 +651,16 @@ const PorteModal = ({
                   <Typography variant="small" className="font-semibold text-blue-600">{porte.seller}</Typography>
                 </div>
               )}
-              {dimensions && (
+              {porte.dimensions && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold">{dimensions}</Typography>
+                  <Typography variant="small" className="font-semibold">{porte.dimensions}</Typography>
                 </div>
               )}
-              {epaisseur && (
+              {porte.epaisseur && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold">{epaisseur}mm</Typography>
+                  <Typography variant="small" className="font-semibold">{porte.epaisseur}</Typography>
                 </div>
               )}
             </div>
@@ -692,11 +675,7 @@ const PorteModal = ({
             <div>
               <Typography variant="h3" className="mb-3">Caractéristiques</Typography>
               <div className="grid grid-cols-1 gap-2">
-                {porte.features.filter(f => 
-                  !f.startsWith('Dimensions:') && 
-                  !f.startsWith('Performance:') && 
-                  !f.startsWith('Épaisseur:')
-                ).map((feature, index) => {
+                {porte.features.map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
                   return (
                     <div key={index} className="flex items-center gap-2">
