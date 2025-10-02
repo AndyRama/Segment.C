@@ -56,7 +56,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         const params = new URLSearchParams({
           limit: limit.toString(),
           offset: offset.toString(),
-          type: 'FENETRE',
+          type: 'FENETRE', // Filtre pour n'afficher que les fenêtres
           ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
           ...(filters.seller !== 'all' && { seller: filters.seller }),
@@ -86,6 +86,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
 
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
+    { key: "FENETRE", label: "Fenêtre standard" },
     { key: "FENETRE_FIXE", label: "Fenêtre fixe" },
     { key: "FENETRE_OSCILLO_BATTANTE", label: "Oscillo-battante" },
     { key: "FENETRE_COULISSANTE", label: "Coulissante" },
@@ -548,7 +549,7 @@ const FenetreCard = ({
               {fenetre.material.replace('_', ' ')}
             </span>
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {fenetre.category.replace('FENETRE_', '').replace('_', ' ')}
+              {fenetre.category === 'FENETRE' ? 'Standard' : fenetre.category.replace('FENETRE_', '').replace('_', ' ')}
             </span>
           </div>
 
@@ -635,7 +636,7 @@ const FenetreModal = ({
                   {fenetre.material.replace('_', ' ')}
                 </span>
                 <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {fenetre.category.replace('FENETRE_', '').replace('_', ' ')}
+                  {fenetre.category === 'FENETRE' ? 'Standard' : fenetre.category.replace('FENETRE_', '').replace('_', ' ')}
                 </span>
               </div>
 

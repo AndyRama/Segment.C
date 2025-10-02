@@ -56,6 +56,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         const params = new URLSearchParams({
           limit: limit.toString(),
           offset: offset.toString(),
+          type: 'PORTE', // Filtre pour n'afficher que les portes
           ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
           ...(filters.seller !== 'all' && { seller: filters.seller }),
@@ -546,7 +547,7 @@ const PorteCard = ({
               {porte.material.replace('_', ' ')}
             </span>
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {porte.category}
+              {porte.category.replace('PORTE_', '').replace('_', ' ')}
             </span>
           </div>
 
@@ -632,7 +633,7 @@ const PorteModal = ({
                   {porte.material.replace('_', ' ')}
                 </span>
                 <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {porte.category}
+                  {porte.category.replace('PORTE_', '').replace('_', ' ')}
                 </span>
               </div>
 
