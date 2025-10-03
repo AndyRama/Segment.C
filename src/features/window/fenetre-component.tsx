@@ -50,7 +50,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
   const limit = 40;
 
   // Catégories de fenêtres autorisées
-  const allowedCategories = ["VERANDA", "FENETRE", "BAIE_VITREE"];
+  const allowedCategories = ["FENETRE", "BAIE_VITREE"];
 
   // Fetch fenetres from API
   useEffect(() => {
@@ -97,7 +97,6 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
     { key: "FENETRE", label: "Fenêtre" },
-    { key: "VERANDA", label: "Veranda" },
     { key: "BAIE_VITREE", label: "Baie vitrée" },
   ];
 
@@ -398,7 +397,7 @@ const FenetreHeader = () => (
     <div className="relative">
       <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
-          src="/images/fenetre.jpg"
+          src="/images/fenetre2.jpg"
           alt="Fenêtre moderne avec vue sur extérieur"
           fill
           className="object-cover"
