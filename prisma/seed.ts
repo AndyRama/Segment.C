@@ -64,7 +64,7 @@ const portesData: PorteData[] = [
     epaisseur:"48mm",
     performance: "1.4 W/(m².K)",
     image: "/images/portes/ablette.jpg",
-    colors: ["Gris anthracite", "Blanc", "Bronze", "Noir"],
+    colors: ["Gris", "Blanc", "Bronze", "Noir"],
     features: ["Triple vitrage feuilleté", "Petits bois plombs", "Performance thermique", "Cadre mouluré"],
     isPopular: true,
     isNew: false,
@@ -151,7 +151,7 @@ const portesData: PorteData[] = [
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
     image: "images/portes/hobbinox-80.webp",
-    colors: ["Gris 7016 texturé", "Anthracite", "Blanc", "Bronze"],
+    colors: ["Gris", "Anthracite", "Blanc", "Bronze"],
     features: [
       "Design exclusif SWAO",
       "Décors alunox extérieur",
@@ -178,7 +178,7 @@ const portesData: PorteData[] = [
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
     image: "images/portes/shiny-80.webp",
-    colors: ["Bleu 2700 texturé", "Anthracite", "Blanc", "Gris"],
+    colors: ["Bleu", "Anthracite", "Blanc", "Gris"],
     features: [
       "Design exclusif SWAO",
       "Vitrage vertical arrondi affleurant",
@@ -205,7 +205,7 @@ const portesData: PorteData[] = [
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
     image: "images/portes/moony-80.webp",
-    colors: ["Gris 2900 texturé", "Anthracite", "Blanc", "Bronze"],
+    colors: ["Gris", "Anthracite", "Blanc", "Bronze"],
     features: [
       "Design exclusif SWAO",
       "Esthétique contemporaine ajourée",
@@ -232,7 +232,7 @@ const portesData: PorteData[] = [
     epaisseur: "80mm",
     dimensions: "H: 1950-2350mm, L: 800-1100mm",
     image: "images/portes/jeanne-80.webp",
-    colors: ["Gris 9007 texturé", "Gris 7022 texturé", "Blanc", "Bronze"],
+    colors: ["Gris", "Gris", "Blanc", "Bronze"],
     features: [
       "Design exclusif SWAO",
       "Moulures classiques revisitées",

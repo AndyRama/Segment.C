@@ -605,7 +605,7 @@ const PorteModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-2">
-      <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-md bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -635,7 +635,7 @@ const PorteModal = ({
                 </div>
               </div>
 
-              <div className="mb-4 flex flex-wrap gap-2">
+              <div className="mb-2 flex flex-wrap gap-2">
                 <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
                   {porte.material.replace('_', ' ')}
                 </span>
@@ -647,7 +647,7 @@ const PorteModal = ({
               <Typography variant="large" className="text-primary">{porte.priceRange}</Typography>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 rounded-lg bg-gray-50 p-2">
+            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-2">
               {porte.seller && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
@@ -683,7 +683,7 @@ const PorteModal = ({
 
             <div>
               <Typography variant="h3" className="mb-2">Caractéristiques</Typography>
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {porte.features.map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
                   return (
