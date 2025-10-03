@@ -7,17 +7,11 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { Menu, ChevronDown } from "react-feather";
+import { Menu } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { Layout } from "../page/layout";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -68,29 +62,12 @@ export function HeaderBase({ children }: PropsWithChildren) {
   );
 
   const topRoutes = [
-    {
-      path: "/fenetres",
-      label: "Fenêtre",
-      dropdown: [
-        { path: "/fenetres", label: "Fenêtre" },
-        { path: "/baie", label: "Baie vitrée" },
-        { path: "/portes", label: "Porte fenêtre" },
-        { path: "/verandas", label: "Vérandas" },
-      ]
-    },
-    {
-      path: "/portes",
-      label: "Portes",
-      dropdown: [
-        { path: "/portes", label: "Porte d'entrée" },
-        { path: "/service", label: "Porte de service" },
-        { path: "/vitrage", label: "Porte grand vitrage" },
-        { path: "/garage", label: "Porte de garage" },
-      ]
-    },
+    { path: "/fenetres", label: "Fenêtre" },
+    { path: "/portes", label: "Porte" },
     { path: "/pergolas", label: "Pergolas" },
+    { path: "/verandas", label: "Vérandas" },
     { path: "/portails", label: "Portails" },
-    { path: "/volet", label: "Volet" },
+    { path: "/garage", label: "Garage" },
     { path: "/posts", label: "Actualités" },
   ];
 
@@ -137,31 +114,13 @@ export function HeaderBase({ children }: PropsWithChildren) {
             className="hidden origin-right items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
           >
             {topRoutes.map((route) => (
-              route.dropdown ? (
-                <DropdownMenu key={route.path}>
-                  <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
-                    {route.label}
-                    <ChevronDown className="size-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-48">
-                    {route.dropdown.map((item) => (
-                      <DropdownMenuItem key={item.path} asChild>
-                        <Link href={item.path} className="w-full cursor-pointer">
-                          {item.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Link
-                  href={route.path}
-                  key={route.path}
-                  className="relative flex items-center hover:text-green-500 transition-colors"
-                >
-                  {route.label}
-                </Link>
-              )
+              <Link
+                href={route.path}
+                key={route.path}
+                className="relative flex items-center hover:text-green-500 transition-colors"
+              >
+                {route.label}
+              </Link>
             ))}
           </motion.nav>
         </div>
@@ -239,32 +198,13 @@ export function HeaderBase({ children }: PropsWithChildren) {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    route.dropdown ? (
-                      <div key={route.path} className="flex flex-col gap-2">
-                        <span className="text-sm font-semibold text-green-500">
-                          {route.label}
-                        </span>
-                        <div className="pl-4 flex flex-col gap-2">
-                          {route.dropdown.map((item) => (
-                            <Link
-                              href={item.path}
-                              key={item.path}
-                              className="text-sm font-medium hover:text-green-500 transition-colors"
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <Link
-                        href={route.path}
-                        key={route.path}
-                        className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
-                      >
-                        {route.label}
-                      </Link>
-                    )
+                    <Link
+                      href={route.path}
+                      key={route.path}
+                      className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
+                    >
+                      {route.label}
+                    </Link>
                   ))}
                 </div>
               </SheetContent>
