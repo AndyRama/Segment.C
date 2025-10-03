@@ -76,7 +76,7 @@ export function HeaderBase({ children }: PropsWithChildren) {
       style={{
         height: useTransform(scrollYBoundedProgressDelayed, [0, 1], [70, 50]),
       }}
-      className="bg-muted/40 sticky top-0 z-50 flex h-14 w-screen items-center gap-4 border-b shadow backdrop-blur-md lg:h-[60px]"
+      className="bg-muted/40 sticky top-0 z-50 flex h-14 items-center gap-4 border-b shadow backdrop-blur-md lg:h-[60px]"
     >
       <Layout className="my-2">
         <div className="flex items-center gap-2">

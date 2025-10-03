@@ -65,7 +65,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/baie"
+                    href="/fenetre"
                   >
                     Baie-vitrée
                   </Typography>
@@ -98,7 +98,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/entrer"
+                    href="/portes"
                   >
                     Portes d'entrée
                   </Typography>
@@ -106,15 +106,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/garage"
-                  >
-                    Portes de garage
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/service"
+                    href="/portes"
                   >
                     Portes de service
                   </Typography>
@@ -151,6 +143,14 @@ export const Footer = () => {
                   >
                     Pergolas
                   </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/garage"
+                  >
+                    Portes de garage
+                  </Typography>
                 </div>
               </div>     
 
@@ -160,6 +160,14 @@ export const Footer = () => {
                   Site
                 </Typography>
                 <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/home"
+                  >
+                    Accueil
+                  </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
@@ -174,7 +182,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/account"
                   >
-                    Compte utilisateur
+                    Mon compte
                   </Typography>
                 </div>
               </div>
