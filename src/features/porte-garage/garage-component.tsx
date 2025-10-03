@@ -477,7 +477,7 @@ const GarageGrid = ({
   garages: Product[];
   onGarageClick: (garage: Product) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
     {garages.map((garage, index) => (
       <GarageCard
         key={garage.id}
@@ -601,7 +601,7 @@ const GarageModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -616,7 +616,7 @@ const GarageModal = ({
                 src={garage.image}
                 alt={garage.name}
                 fill
-                className="object-contain"
+                className="object-contain px-4"
               />
             </div>
           </div>
@@ -643,29 +643,29 @@ const GarageModal = ({
               <Typography variant="large" className="text-primary">{garage.priceRange}</Typography>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 rounded-lg bg-gray-50 p-2">
+            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-2">
               {garage.seller && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                  <Typography variant="small" className="font-semibold text-blue-600 mt-4">{garage.seller}</Typography>
+                  <Typography variant="small" className="font-semibold text-blue-600 mt-2">{garage.seller}</Typography>
                 </div>
               )}
               {garage.performance && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold mt-4">{garage.performance}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{garage.performance}</Typography>
                 </div>
               )}
               {garage.epaisseur && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold mt-4">{garage.epaisseur}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{garage.epaisseur}</Typography>
                 </div>
               )}
               {garage.dimensions && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold mt-4">{garage.dimensions}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{garage.dimensions}</Typography>
                 </div>
               )}
             </div>
