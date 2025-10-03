@@ -92,14 +92,6 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/portes"
                   >
-                    Portes 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
                     Portes d'entrée
                   </Typography>
                   <Typography
@@ -109,6 +101,14 @@ export const Footer = () => {
                     href="/portes"
                   >
                     Portes de service
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/garage"
+                  >
+                    Portes de garage
                   </Typography>
                 </div>
               </div>    
@@ -142,14 +142,6 @@ export const Footer = () => {
                     href="/pergolas"
                   >
                     Pergolas
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/garage"
-                  >
-                    Portes de garage
                   </Typography>
                 </div>
               </div>     
