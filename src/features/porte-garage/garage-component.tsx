@@ -352,7 +352,7 @@ const GarageHeader = () => (
       </div>
     </div>
     <div className="relative">
-      <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+      <div className="relative h-[400px] lg:h-[500px] rounded-md overflow-hidden shadow-md">
         <Image
           src="/images/porte.jpg"
           alt="Porte de garage moderne"
@@ -601,7 +601,7 @@ const GarageModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
