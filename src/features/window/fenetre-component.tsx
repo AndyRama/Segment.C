@@ -569,7 +569,6 @@ const FenetreCard = ({
   const delay = index * 0.1;
 
   const getCategoryLabel = (category: string) => {
-    if (category === 'VERANDA') return 'Véranda';
     if (category === 'FENETRE') return 'Fenêtre';
     if (category === 'BAIE_VITREE') return 'Baie vitrée';
     return category;
@@ -667,7 +666,6 @@ const FenetreModal = ({
   const { data: session } = useSession();
 
   const getCategoryLabel = (category: string) => {
-    if (category === 'VERANDA') return 'Véranda';
     if (category === 'FENETRE') return 'Fenêtre';
     if (category === 'BAIE_VITREE') return 'Baie vitrée';
     return category;
@@ -684,7 +682,7 @@ const FenetreModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -730,25 +728,25 @@ const FenetreModal = ({
               {fenetre.seller && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                  <Typography variant="small" className="font-semibold text-blue-600">{fenetre.seller}</Typography>
+                  <Typography variant="small" className="font-semibold text-blue-600 mt-2">{fenetre.seller}</Typography>
                 </div>
               )}
               {fenetre.performance && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold">{fenetre.performance}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{fenetre.performance}</Typography>
                 </div>
               )}
               {fenetre.vitrage && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Vitrage</Typography>
-                  <Typography variant="small" className="font-semibold">{fenetre.vitrage}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{fenetre.vitrage}</Typography>
                 </div>
               )}
               {fenetre.dimensions && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold">{fenetre.dimensions}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{fenetre.dimensions}</Typography>
                 </div>
               )}
             </div>

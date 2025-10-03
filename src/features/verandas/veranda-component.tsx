@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,385 +8,178 @@ import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  X,
-  Star,
-  Shield,
-  Phone,
-  Mail,
-  MapPin,
-  Sun,
-  Home,
-  TreePine,
-} from "lucide-react";
+import { X, Star, Shield, Home, Thermometer, Volume2, Sun, Eye, Filter } from "lucide-react";
 
-type VerandaProps = {
-  id: number;
+type Product = {
+  id: string;
   name: string;
   category: string;
   material: string;
-  style: string;
-  toiture: string;
   image: string;
   colors: string[];
   features: string[];
   description: string;
+  dimensions: string;
+  vitrage: string;
+  performance: string;
   priceRange: string;
   rating: number;
-  surface: string;
+  seller?: string;
   isPopular?: boolean;
   isNew?: boolean;
-};
+}
 
-type VerandasSectionProps = {
+type VerandaSectionProps = {
   className?: string;
-};
+}
 
-const VerandasSection = ({ className }: VerandasSectionProps) => {
-  const [selectedVeranda, setSelectedVeranda] = useState<VerandaProps | null>(
-    null,
-  );
-  const [visibleCount, setVisibleCount] = useState(9);
+const VerandaSection = ({ className }: VerandaSectionProps) => {
+  const [selectedVeranda, setSelectedVeranda] = useState<Product | null>(null);
+  const [verandas, setVerandas] = useState<Product[]>([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [offset, setOffset] = useState(0);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [filters, setFilters] = useState({
     material: "all",
-    style: "all",
-    toiture: "all",
+    seller: "all",
+    category: "all",
   });
 
-  const verandas: VerandaProps[] = [
-    {
-      id: 1,
-      name: "JARDIN D'HIVER",
-      category: "veranda",
-      material: "aluminium",
-      style: "contemporaine",
-      toiture: "verre",
-      image: "/images/veranda.jpg",
-      colors: ["Blanc", "Gris anthracite", "Bronze"],
-      features: [
-        "Toiture vitrée",
-        "Isolation renforcée",
-        "Ventilation naturelle",
-        "Éclairage optimal",
-      ],
-      description:
-        "Véranda aluminium contemporaine avec toiture entièrement vitrée. Créez votre jardin d'hiver pour profiter de la nature toute l'année.",
-      priceRange: "15000€ - 25000€",
-      rating: 4.8,
-      surface: "15 à 30 m²",
-      isPopular: true,
-    },
-    {
-      id: 2,
-      name: "TRADITION CLASSIC",
-      category: "veranda",
-      material: "pvc",
-      style: "traditionnelle",
-      toiture: "tuile",
-      image: "/images/veranda-tradition-classic.jpg",
-      colors: ["Blanc", "Crème", "Gris clair"],
-      features: [
-        "Toiture tuile",
-        "Style authentique",
-        "Isolation thermique",
-        "Prix accessible",
-      ],
-      description:
-        "Véranda PVC au style traditionnel avec toiture tuile, parfaitement intégrée à l'architecture classique de votre maison.",
-      priceRange: "8000€ - 15000€",
-      rating: 4.5,
-      surface: "10 à 25 m²",
-    },
-    {
-      id: 3,
-      name: "PRESTIGE BOIS",
-      category: "veranda",
-      material: "bois",
-      style: "traditionnelle",
-      toiture: "mixte",
-      image: "/images/veranda-prestige-bois.jpg",
-      colors: ["Chêne naturel", "Pin lasuré", "Mélèze"],
-      features: [
-        "Bois massif",
-        "Toiture mixte",
-        "Charme authentique",
-        "Isolation naturelle",
-      ],
-      description:
-        "Véranda en bois massif au charme intemporel. Matériau noble pour une extension harmonieuse et chaleureuse.",
-      priceRange: "18000€ - 30000€",
-      rating: 4.9,
-      surface: "15 à 35 m²",
-      isNew: true,
-    },
-    {
-      id: 4,
-      name: "MODERN GLASS",
-      category: "veranda",
-      material: "aluminium",
-      style: "contemporaine",
-      toiture: "verre",
-      image: "/images/veranda-modern-glass.jpg",
-      colors: ["Gris anthracite", "Noir mat", "Blanc pur"],
-      features: [
-        "Design épuré",
-        "Toiture verre",
-        "Grandes ouvertures",
-        "Performance énergétique",
-      ],
-      description:
-        "Véranda aluminium au design contemporain avec un maximum de vitrage. Architecture moderne pour une luminosité exceptionnelle.",
-      priceRange: "20000€ - 35000€",
-      rating: 4.7,
-      surface: "20 à 40 m²",
-    },
-    {
-      id: 5,
-      name: "BIOCLIMATIQUE PRO",
-      category: "veranda",
-      material: "aluminium",
-      style: "contemporaine",
-      toiture: "bioclimatique",
-      image: "/images/veranda-bioclimatique.jpg",
-      colors: ["Anthracite", "Blanc", "Bronze"],
-      features: [
-        "Lames orientables",
-        "Gestion climatique",
-        "Protection solaire",
-        "Ventilation automatique",
-      ],
-      description:
-        "Véranda bioclimatique avec toiture à lames orientables. Contrôlez parfaitement température et luminosité selon les saisons.",
-      priceRange: "25000€ - 45000€",
-      rating: 4.9,
-      surface: "20 à 50 m²",
-      isNew: true,
-    },
-    {
-      id: 6,
-      name: "COTTAGE ANGLAIS",
-      category: "veranda",
-      material: "pvc",
-      style: "traditionnelle",
-      toiture: "polycarbonate",
-      image: "/images/veranda-cottage.jpg",
-      colors: ["Blanc cassé", "Vert anglais", "Bleu gris"],
-      features: [
-        "Style cottage",
-        "Toiture polycarbonate",
-        "Isolation correcte",
-        "Entretien minimal",
-      ],
-      description:
-        "Véranda PVC au style cottage anglais avec toiture polycarbonate. Charme britannique pour une extension cosy et lumineuse.",
-      priceRange: "6000€ - 12000€",
-      rating: 4.3,
-      surface: "8 à 20 m²",
-      isPopular: true,
-    },
-    {
-      id: 7,
-      name: "FUSION ÉLÉGANCE",
-      category: "veranda",
-      material: "bois-aluminium",
-      style: "contemporaine",
-      toiture: "verre",
-      image: "/images/veranda-fusion-elegance.jpg",
-      colors: ["Chêne/Anthracite", "Pin/Blanc", "Mélèze/Bronze"],
-      features: [
-        "Matériaux mixtes",
-        "Toiture vitrée",
-        "Haute performance",
-        "Design sophistiqué",
-      ],
-      description:
-        "Véranda mixte bois-aluminium alliant esthétique du bois et performance de l'aluminium. Excellence technique et visuelle.",
-      priceRange: "30000€ - 50000€",
-      rating: 4.8,
-      surface: "25 à 50 m²",
-    },
-    {
-      id: 8,
-      name: "EXTENSION FAMILIALE",
-      category: "veranda",
-      material: "aluminium",
-      style: "contemporaine",
-      toiture: "mixte",
-      image: "/images/veranda-extension-familiale.jpg",
-      colors: ["Blanc", "Gris clair", "Anthracite"],
-      features: [
-        "Grande surface",
-        "Toiture mixte",
-        "Isolation renforcée",
-        "Chauffage intégré",
-      ],
-      description:
-        "Grande véranda familiale pour agrandir votre espace de vie. Conception adaptée aux grandes réunions de famille.",
-      priceRange: "22000€ - 40000€",
-      rating: 4.6,
-      surface: "30 à 60 m²",
-    },
-    {
-      id: 9,
-      name: "SPA DÉTENTE",
-      category: "veranda",
-      material: "aluminium",
-      style: "contemporaine",
-      toiture: "opaque",
-      image: "/images/veranda-spa.jpg",
-      colors: ["Gris zen", "Blanc nature", "Taupe"],
-      features: [
-        "Ambiance spa",
-        "Toiture isolante",
-        "Intimité préservée",
-        "Équipements wellness",
-      ],
-      description:
-        "Véranda dédiée au bien-être avec toiture opaque pour créer une ambiance spa relaxante et intimiste.",
-      priceRange: "18000€ - 32000€",
-      rating: 4.7,
-      surface: "15 à 30 m²",
-    },
-    {
-      id: 10,
-      name: "ATELIER ARTISTE",
-      category: "veranda",
-      material: "acier",
-      style: "industrielle",
-      toiture: "verre",
-      image: "/images/veranda-atelier.jpg",
-      colors: ["Noir mat", "Gris industriel"],
-      features: [
-        "Style atelier",
-        "Toiture verrière",
-        "Luminosité nordique",
-        "Structure robuste",
-      ],
-      description:
-        "Véranda style atelier d'artiste avec structure acier et verrière. Lumière parfaite pour la création et les activités artistiques.",
-      priceRange: "16000€ - 28000€",
-      rating: 4.8,
-      surface: "20 à 35 m²",
-      isNew: true,
-    },
-    {
-      id: 11,
-      name: "ÉCONOMIQUE PLUS",
-      category: "veranda",
-      material: "pvc",
-      style: "contemporaine",
-      toiture: "polycarbonate",
-      image: "/images/veranda-economique.jpg",
-      colors: ["Blanc", "Gris", "Beige"],
-      features: [
-        "Excellent rapport qualité-prix",
-        "Installation rapide",
-        "Entretien facile",
-        "Garantie étendue",
-      ],
-      description:
-        "Véranda PVC économique sans compromis sur la qualité. Solution accessible pour agrandir votre espace de vie.",
-      priceRange: "5000€ - 10000€",
-      rating: 4.2,
-      surface: "8 à 18 m²",
-      isPopular: true,
-    },
-    {
-      id: 12,
-      name: "LOFT URBAIN",
-      category: "veranda",
-      material: "acier",
-      style: "industrielle",
-      toiture: "mixte",
-      image: "/images/veranda-loft.jpg",
-      colors: ["Noir", "Gris anthracite", "Rouille"],
-      features: [
-        "Esprit loft",
-        "Structure apparente",
-        "Toiture mixte",
-        "Design urbain",
-      ],
-      description:
-        "Véranda style loft industriel avec structure acier apparente. Extension moderne pour les architectures urbaines contemporaines.",
-      priceRange: "20000€ - 35000€",
-      rating: 4.6,
-      surface: "20 à 40 m²",
-    },
+  const limit = 40;
+
+  // Catégories de vérandas autorisées
+  const allowedCategories = ["VERANDA"];
+
+  // Fetch verandas from API
+  useEffect(() => {
+    const fetchVerandas = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams({
+          limit: limit.toString(),
+          offset: offset.toString(),
+          type: 'VERANDA',
+          ...(filters.category !== 'all' && { category: filters.category }),
+          ...(filters.material !== 'all' && { material: filters.material }),
+          ...(filters.seller !== 'all' && { seller: filters.seller }),
+        });
+
+        const response = await fetch(`/api/products?${params}`);
+        if (!response.ok) throw new Error('Failed to fetch verandas');
+        
+        const data = await response.json();
+        
+        // Filtrer pour ne garder que les catégories autorisées
+        const filteredProducts = data.products.filter((product: Product) => 
+          allowedCategories.includes(product.category)
+        );
+        
+        if (offset === 0) {
+          setVerandas(filteredProducts);
+        } else {
+          setVerandas(prev => [...prev, ...filteredProducts]);
+        }
+        setTotal(data.total);
+      } catch (error) {
+        console.error('Error fetching verandas:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchVerandas();
+  }, [filters, offset]);
+
+  const categoryFilters = [
+    { key: "VERANDA", label: "Véranda" },
   ];
 
   const materialFilters = [
     { key: "all", label: "Tous matériaux" },
-    { key: "aluminium", label: "Aluminium" },
-    { key: "pvc", label: "PVC" },
-    { key: "bois", label: "Bois" },
-    { key: "bois-aluminium", label: "Bois-Aluminium" },
-    { key: "acier", label: "Acier" },
+    { key: "ALUMINIUM", label: "Aluminium" },
+    { key: "PVC", label: "PVC" },
+    { key: "BOIS", label: "Bois" },
+    { key: "BOIS_ALUMINIUM", label: "Bois-Aluminium" },
+    { key: "MIXTE", label: "Mixte" },
   ];
 
-  const styleFilters = [
-    { key: "all", label: "Tous styles" },
-    { key: "contemporaine", label: "Contemporaine" },
-    { key: "traditionnelle", label: "Traditionnelle" },
-    { key: "industrielle", label: "Industrielle" },
+  const sellerFilters = [
+    { key: "all", label: "Tous fournisseurs" },
+    { key: "SYBAIE", label: "Sy Baie" },
+    { key: "C2R", label: "C2R" },
+    { key: "SWAO", label: "SWAO" },
+    { key: "PROFERM", label: "Proferm" },
   ];
-
-  const toitureFilters = [
-    { key: "all", label: "Toutes toitures" },
-    { key: "verre", label: "Verre" },
-    { key: "tuile", label: "Tuile" },
-    { key: "polycarbonate", label: "Polycarbonate" },
-    { key: "mixte", label: "Mixte" },
-    { key: "bioclimatique", label: "Bioclimatique" },
-    { key: "opaque", label: "Opaque" },
-  ];
-
-  const filteredVerandas = verandas.filter((veranda) => {
-    return (
-      (filters.material === "all" || veranda.material === filters.material) &&
-      (filters.style === "all" || veranda.style === filters.style) &&
-      (filters.toiture === "all" || veranda.toiture === filters.toiture)
-    );
-  });
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 3, filteredVerandas.length));
+    setOffset(prev => prev + limit);
   };
 
   const handleFilterChange = (filterType: string, value: string) => {
-    setFilters((prev) => ({ ...prev, [filterType]: value }));
-    setVisibleCount(9);
+    setFilters(prev => ({ ...prev, [filterType]: value }));
+    setOffset(0);
   };
 
   return (
-    <section
-      className={cn(
-        "relative mx-auto w-full max-w-7xl px-4 py-20 lg:px-0",
-        className,
-      )}
-    >
-      <VerandasHeader />
-      <VerandasFilters
-        materialFilters={materialFilters}
-        styleFilters={styleFilters}
-        toitureFilters={toitureFilters}
-        activeFilters={filters}
-        onFilterChange={handleFilterChange}
-      />
-      <VerandasGrid
-        verandas={filteredVerandas.slice(0, visibleCount)}
-        onVerandaClick={setSelectedVeranda}
-      />
+    <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
+      <VerandaHeader />
 
-      {visibleCount < filteredVerandas.length && (
-        <div className="mt-8 flex justify-center">
-          <Button
-            onClick={handleShowMore}
-            className="bg-primary hover:bg-primary/90 text-white"
-          >
-            Voir plus de vérandas
-          </Button>
+      <div className="flex gap-8 mt-8">
+        <aside className="hidden lg:block w-64 flex-shrink-0">
+          <VerandasFiltersSidebar
+            categoryFilters={categoryFilters}
+            materialFilters={materialFilters}
+            sellerFilters={sellerFilters}
+            activeFilters={filters}
+            onFilterChange={handleFilterChange}
+          />
+        </aside>
+
+        <div className="flex-1">
+          <div className="lg:hidden mb-4">
+            <Button
+              onClick={() => setShowMobileFilters(true)}
+              variant="outline"
+              className="w-full"
+            >
+              <Filter size={16} className="mr-2" />
+              Filtres ({Object.values(filters).filter(f => f !== 'all').length})
+            </Button>
+          </div>
+
+          {loading && offset === 0 ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+          ) : (
+            <>
+              <VerandasGrid
+                verandas={verandas}
+                onVerandaClick={setSelectedVeranda}
+              />
+
+              {verandas.length < total && (
+                <div className="mt-8 flex justify-center">
+                  <Button
+                    onClick={handleShowMore}
+                    disabled={loading}
+                    className="bg-primary text-white hover:bg-primary/90"
+                  >
+                    {loading ? 'Chargement...' : 'Voir plus de vérandas'}
+                  </Button>
+                </div>
+              )}
+
+              <div className="mt-8 text-center">
+                <Typography variant="small" className="text-muted-foreground">
+                  {verandas.length} vérandas sur {total} modèles disponibles
+                </Typography>
+              </div>
+            </>
+          )}
         </div>
-      )}
+      </div>
 
       {selectedVeranda && (
         <VerandaModal
@@ -394,107 +187,285 @@ const VerandasSection = ({ className }: VerandasSectionProps) => {
           onClose={() => setSelectedVeranda(null)}
         />
       )}
+
+      <MobileFiltersModal
+        isOpen={showMobileFilters}
+        onClose={() => setShowMobileFilters(false)}
+        categoryFilters={categoryFilters}
+        materialFilters={materialFilters}
+        sellerFilters={sellerFilters}
+        activeFilters={filters}
+        onFilterChange={(filterType, value) => {
+          handleFilterChange(filterType, value);
+          setShowMobileFilters(false);
+        }}
+      />
     </section>
   );
 };
 
-const VerandasHeader = () => (
-  <div className="mb-12 space-y-4 text-center">
-    <Typography variant="h1" className="text-3xl md:text-4xl xl:text-5xl">
-      Notre selection de Vérandas
-    </Typography>
-    <Typography
-      variant="large"
-      className="text-muted-foreground mx-auto max-w-3xl"
-    >
-      Agrandissez votre espace de vie avec nos vérandas sur mesure. Jardin
-      d'hiver, extension familiale ou espace détente, créez votre pièce
-      supplémentaire baignée de lumière naturelle.
-    </Typography>
-  </div>
-);
-
-const VerandasFilters = ({
+const MobileFiltersModal = ({
+  isOpen,
+  onClose,
+  categoryFilters,
   materialFilters,
-  styleFilters,
-  toitureFilters,
+  sellerFilters,
   activeFilters,
   onFilterChange,
 }: {
+  isOpen: boolean;
+  onClose: () => void;
+  categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
-  styleFilters: { key: string; label: string }[];
-  toitureFilters: { key: string; label: string }[];
-  activeFilters: { material: string; style: string; toiture: string };
+  sellerFilters: { key: string; label: string }[];
+  activeFilters: { category: string; material: string; seller: string };
+  onFilterChange: (filterType: string, value: string) => void;
+}) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 lg:hidden">
+      <div className="w-full max-h-[80vh] overflow-y-auto rounded-t-2xl bg-white">
+        <div className="sticky top-0 bg-white border-b px-4 py-4 flex items-center justify-between">
+          <Typography variant="h3" className="text-lg font-semibold">
+            Filtres
+          </Typography>
+          <button
+            onClick={onClose}
+            className="rounded-full p-2 hover:bg-gray-100 transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="p-4 space-y-6">
+          <div>
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Catégorie
+            </Typography>
+            <div className="space-y-2">
+              {categoryFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("category", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.category === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Matériaux
+            </Typography>
+            <div className="space-y-2">
+              {materialFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("material", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.material === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Fournisseur
+            </Typography>
+            <div className="space-y-2">
+              {sellerFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("seller", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.seller === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+            <Button
+              variant="outline"
+              onClick={() => {
+                onFilterChange('category', 'all');
+                onFilterChange('material', 'all');
+                onFilterChange('seller', 'all');
+              }}
+              className="w-full"
+            >
+              Réinitialiser les filtres
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const VerandaHeader = () => (
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-0 md:mb-20">
+    <div className="space-y-6">
+      <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+        Notre sélection de vérandas
+      </Typography>
+      <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
+        Découvrez notre gamme complète de vérandas sur mesure et extensions vitrées.
+        Fabriquées en France, en aluminium, PVC, bois et mixte.
+        Solutions modernes avec isolation thermique et acoustique optimale pour agrandir votre espace de vie.
+      </Typography>
+      <div className="flex justify-start items-center gap-4 mt-6">
+        <div className="flex items-center gap-2">
+          <Home size={20} className="text-blue-600" />
+          <Typography variant="small" className="font-medium">Made in France</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Thermometer size={20} className="text-green-600" />
+          <Typography variant="small" className="font-medium">Haute isolation</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Sun size={20} className="text-orange-600" />
+          <Typography variant="small" className="font-medium">Lumière naturelle</Typography>
+        </div>
+      </div>
+    </div>
+    <div className="relative">
+      <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+        <Image
+          src="/images/veranda.jpg"
+          alt="Véranda moderne avec vue panoramique"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+    </div>
+  </div>
+);
+
+const VerandasFiltersSidebar = ({
+  categoryFilters,
+  materialFilters,
+  sellerFilters,
+  activeFilters,
+  onFilterChange,
+}: {
+  categoryFilters: { key: string; label: string }[];
+  materialFilters: { key: string; label: string }[];
+  sellerFilters: { key: string; label: string }[];
+  activeFilters: { category: string; material: string; seller: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => (
-  <div className="mb-8 space-y-4">
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-        Matériaux:
-      </span>
-      {materialFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={
-            activeFilters.material === filter.key ? "default" : "outline"
-          }
-          size="sm"
-          onClick={() => onFilterChange("material", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.material === filter.key
-              ? "bg-primary text-white"
-              : "hover:bg-primary/10",
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
+  <div className="sticky top-4 space-y-6 bg-white rounded-lg border p-6 shadow-sm">
+    <div>
+      <Typography variant="h3" className="text-lg font-semibold mb-4">
+        Filtres
+      </Typography>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-        Styles:
-      </span>
-      {styleFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.style === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("style", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.style === filter.key
-              ? "bg-primary text-white"
-              : "hover:bg-primary/10",
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
+    <div className="space-y-4">
+      <div>
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Catégorie
+        </Typography>
+        <div className="space-y-2">
+          {categoryFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("category", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.category === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Matériaux
+        </Typography>
+        <div className="space-y-2">
+          {materialFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("material", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.material === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Fournisseur
+        </Typography>
+        <div className="space-y-2">
+          {sellerFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("seller", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.seller === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="text-muted-foreground mr-2 self-center text-sm font-medium">
-        Toiture:
-      </span>
-      {toitureFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.toiture === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("toiture", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.toiture === filter.key
-              ? "bg-primary text-white"
-              : "hover:bg-primary/10",
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
+    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => {
+          onFilterChange('category', 'all');
+          onFilterChange('material', 'all');
+          onFilterChange('seller', 'all');
+        }}
+        className="w-full"
+      >
+        Réinitialiser les filtres
+      </Button>
+    )}
   </div>
 );
 
@@ -502,8 +473,8 @@ const VerandasGrid = ({
   verandas,
   onVerandaClick,
 }: {
-  verandas: VerandaProps[];
-  onVerandaClick: (veranda: VerandaProps) => void;
+  verandas: Product[];
+  onVerandaClick: (veranda: Product) => void;
 }) => (
   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {verandas.map((veranda, index) => (
@@ -522,7 +493,7 @@ const VerandaCard = ({
   index,
   onClick,
 }: {
-  veranda: VerandaProps;
+  veranda: Product;
   index: number;
   onClick: () => void;
 }) => {
@@ -534,15 +505,14 @@ const VerandaCard = ({
       whileInView={{
         opacity: 1,
         y: 0,
-        transition: { delay, duration: 0.6 },
+        transition: { delay, duration: 0.6 }
       }}
       viewport={{ once: true }}
       className="group cursor-pointer"
       onClick={onClick}
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        {/* Badges */}
-        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
+        <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
           {veranda.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
               Nouveau
@@ -567,45 +537,40 @@ const VerandaCard = ({
 
         <div className="space-y-3 p-4">
           <div className="flex items-center justify-between">
-            <Typography variant="large" className="font-semibold">
-              {veranda.name}
-            </Typography>
+            <h3 className="text-lg font-semibold">{veranda.name}</h3>
             <div className="flex items-center gap-1">
               <Star size={14} className="fill-yellow-400 text-yellow-400" />
-              <Typography variant="small">{veranda.rating}</Typography>
+              <span className="text-sm font-medium">{veranda.rating}</span>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full bg-blue-100 px-2 py-1 text-blue-800 capitalize">
-              {veranda.material}
+            <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
+              {veranda.material.replace('_', ' ')}
             </span>
-            <span className="rounded-full bg-green-100 px-2 py-1 text-green-800 capitalize">
-              {veranda.style}
-            </span>
-            <span className="rounded-full bg-purple-100 px-2 py-1 text-purple-800 capitalize">
-              {veranda.toiture}
+            <span className="rounded-full bg-green-100 px-2 py-1 text-green-800">
+              Véranda
             </span>
           </div>
 
-          <Typography
-            variant="small"
-            className="text-muted-foreground line-clamp-2"
-          >
+          <p className="line-clamp-2 text-sm text-muted-foreground">
             {veranda.description}
-          </Typography>
+          </p>
 
-          <div className="text-muted-foreground flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1">
-              <Home size={12} />
-              {veranda.surface}
-            </span>
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            {veranda.vitrage && (
+              <span className="flex items-center gap-1">
+                <Eye size={12} />
+                {veranda.vitrage}
+              </span>
+            )}
+            {veranda.seller && (
+              <span className="text-blue-600 font-medium">{veranda.seller}</span>
+            )}
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <Typography variant="small" className="text-primary font-semibold">
-              {veranda.priceRange}
-            </Typography>
+            <span className="font-semibold text-primary">{veranda.priceRange}</span>
             <Button size="sm" variant="outline" className="text-xs">
               Voir détails
             </Button>
@@ -620,39 +585,33 @@ const VerandaModal = ({
   veranda,
   onClose,
 }: {
-  veranda: VerandaProps;
+  veranda: Product;
   onClose: () => void;
 }) => {
   const { data: session } = useSession();
 
   const getPerformanceIcon = (feature: string) => {
-    if (feature.includes("Toiture") || feature.includes("toiture")) return Sun;
-    if (feature.includes("Isolation") || feature.includes("thermique"))
-      return Shield;
-    if (
-      feature.includes("naturelle") ||
-      feature.includes("Bois") ||
-      feature.includes("Charme")
-    )
-      return TreePine;
-    if (feature.includes("Surface") || feature.includes("Grande")) return Home;
+    if (feature.toLowerCase().includes('vitrage') || feature.toLowerCase().includes('isolation') || feature.toLowerCase().includes('thermique')) return Thermometer;
+    if (feature.toLowerCase().includes('sécurisé') || feature.toLowerCase().includes('anti-effraction') || feature.toLowerCase().includes('sécurité')) return Shield;
+    if (feature.toLowerCase().includes('design') || feature.toLowerCase().includes('esthétique')) return Eye;
+    if (feature.toLowerCase().includes('phonique') || feature.toLowerCase().includes('acoustique')) return Volume2;
+    if (feature.toLowerCase().includes('solaire') || feature.toLowerCase().includes('lumière')) return Sun;
     return Shield;
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-lg bg-white">
+      <div className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
         >
           <X size={20} />
         </button>
 
-        <div className="flex h-full max-h-[90vh] overflow-y-auto">
-          {/* Image */}
-          <div className="hidden md:block md:w-1/2">
-            <div className="relative h-full min-h-[500px]">
+        <div className="flex h-full max-h-[90vh] overflow-y-auto flex-col md:flex-row">
+          <div className="md:w-1/2">
+            <div className="relative h-64 md:h-full md:min-h-[500px]">
               <Image
                 src={veranda.image}
                 alt={veranda.name}
@@ -662,113 +621,64 @@ const VerandaModal = ({
             </div>
           </div>
 
-          {/* Contenu */}
-          <div className="w-full space-y-6 p-6 md:w-1/2">
-            {/* En-tête */}
+          <div className="w-full space-y-6 p-6 md:w-1/2 overflow-y-auto">
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <Typography variant="h2">{veranda.name}</Typography>
                 <div className="flex items-center gap-1">
-                  <Star
-                    size={16}
-                    className="fill-yellow-400 text-yellow-400"
-                  />
+                  <Star size={16} className="fill-yellow-400 text-yellow-400" />
                   <Typography variant="small">{veranda.rating}</Typography>
                 </div>
               </div>
 
               <div className="mb-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 capitalize">
-                  {veranda.material}
+                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
+                  {veranda.material.replace('_', ' ')}
                 </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800 capitalize">
-                  {veranda.style}
-                </span>
-                <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 capitalize">
-                  Toiture {veranda.toiture}
+                <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800">
+                  Véranda
                 </span>
               </div>
 
-              <Typography variant="large" className="text-primary">
-                {veranda.priceRange}
-              </Typography>
+              <Typography variant="large" className="text-primary">{veranda.priceRange}</Typography>
             </div>
 
-            {/* Informations techniques */}
-            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
-              <div>
-                <Typography
-                  variant="small"
-                  className="text-muted-foreground"
-                >
-                  Surface
-                </Typography>
-                <Typography variant="small" className="font-semibold">
-                  {veranda.surface}
-                </Typography>
-              </div>
-              <div>
-                <Typography
-                  variant="small"
-                  className="text-muted-foreground"
-                >
-                  Matériau
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="font-semibold capitalize"
-                >
-                  {veranda.material}
-                </Typography>
-              </div>
-              <div>
-                <Typography
-                  variant="small"
-                  className="text-muted-foreground"
-                >
-                  Style
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="font-semibold capitalize"
-                >
-                  {veranda.style}
-                </Typography>
-              </div>
-              <div>
-                <Typography
-                  variant="small"
-                  className="text-muted-foreground"
-                >
-                  Toiture
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="font-semibold capitalize"
-                >
-                  {veranda.toiture}
-                </Typography>
-              </div>
+            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-2">
+              {veranda.seller && (
+                <div>
+                  <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
+                  <Typography variant="small" className="font-semibold text-blue-600 mt-2">{veranda.seller}</Typography>
+                </div>
+              )}
+              {veranda.performance && (
+                <div>
+                  <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{veranda.performance}</Typography>
+                </div>
+              )}
+              {veranda.vitrage && (
+                <div>
+                  <Typography variant="small" className="text-muted-foreground">Vitrage</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{veranda.vitrage}</Typography>
+                </div>
+              )}
+              {veranda.dimensions && (
+                <div>
+                  <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{veranda.dimensions}</Typography>
+                </div>
+              )}
             </div>
 
-            {/* Description */}
             <div>
-              <Typography variant="h3" className="mb-2">
-                Description
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-muted-foreground leading-relaxed"
-              >
+              <Typography variant="h3" className="mb-2">Description</Typography>
+              <Typography variant="p" className="leading-relaxed text-muted-foreground">
                 {veranda.description}
               </Typography>
             </div>
 
-            {/* Caractéristiques */}
             <div>
-              <Typography variant="h3" className="mb-3">
-                Caractéristiques
-              </Typography>
+              <Typography variant="h3" className="mb-3">Caractéristiques</Typography>
               <div className="grid grid-cols-1 gap-2">
                 {veranda.features.map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
@@ -782,11 +692,8 @@ const VerandaModal = ({
               </div>
             </div>
 
-            {/* Couleurs disponibles */}
             <div>
-              <Typography variant="h3" className="mb-3">
-                Couleurs disponibles
-              </Typography>
+              <Typography variant="h3" className="mb-3">Couleurs disponibles</Typography>
               <div className="flex flex-wrap gap-2">
                 {veranda.colors.map((color, index) => (
                   <span
@@ -799,61 +706,35 @@ const VerandaModal = ({
               </div>
             </div>
 
-            {/* Boutons d'action avec authentification */}
             <div className="flex gap-3 pt-4">
               {session ? (
-                <Link 
-                  href="/account/devis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/account/devis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
                   Demander un devis
                 </Link>
               ) : (
-                <Link 
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
                   })}
                 >
-                  Se connecter pour un devis
+                  Demander un devis
                 </Link>
               )}
-              <Button 
+              <Button
                 variant="outline"
                 onClick={onClose}
                 className="flex-1"
               >
-                Fermer
+                Ajouter au panier
               </Button>
-            </div>
-
-            {/* Informations de contact */}
-            <div className="mt-6 rounded-lg bg-gray-50 p-4">
-              <Typography variant="small" className="mb-3 font-semibold">
-                Ou contactez-nous directement
-              </Typography>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Phone size={14} />
-                  <Typography variant="small">05 56 12 34 56</Typography>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail size={14} />
-                  <Typography variant="small">
-                    contact@segment-c.com
-                  </Typography>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  <Typography variant="small">
-                    St Jean d'Illac, Gironde
-                  </Typography>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -862,4 +743,4 @@ const VerandaModal = ({
   );
 };
 
-export default VerandasSection;
+export default VerandaSection;
