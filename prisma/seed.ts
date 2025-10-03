@@ -150,7 +150,7 @@ const portesData: PorteData[] = [
     seller: "SWAO",
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
-    image: "images/portes/hobbinox-80.jpg",
+    image: "images/portes/hobbinox-80.webp",
     colors: ["Gris 7016 texturé", "Anthracite", "Blanc", "Bronze"],
     features: [
       "Design exclusif SWAO",
@@ -177,7 +177,7 @@ const portesData: PorteData[] = [
     seller: "SWAO",
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
-    image: "images/portes/shiny-80.jpg",
+    image: "images/portes/shiny-80.webp",
     colors: ["Bleu 2700 texturé", "Anthracite", "Blanc", "Gris"],
     features: [
       "Design exclusif SWAO",
@@ -204,7 +204,7 @@ const portesData: PorteData[] = [
     seller: "SWAO",
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
-    image: "images/portes/moony-80.jpg",
+    image: "images/portes/moony-80.webp",
     colors: ["Gris 2900 texturé", "Anthracite", "Blanc", "Bronze"],
     features: [
       "Design exclusif SWAO",
@@ -231,7 +231,7 @@ const portesData: PorteData[] = [
     seller: "SWAO",
     epaisseur: "80mm",
     dimensions: "H: 1950-2350mm, L: 800-1100mm",
-    image: "images/portes/jeanne-80.jpg",
+    image: "images/portes/jeanne-80.webp",
     colors: ["Gris 9007 texturé", "Gris 7022 texturé", "Blanc", "Bronze"],
     features: [
       "Design exclusif SWAO",
@@ -259,7 +259,7 @@ const portesData: PorteData[] = [
     seller: "SWAO",
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
-    image: "images/portes/dormelle-80.jpg",
+    image: "images/portes/dormelle-80.webp",
     colors: ["Anthracite", "Blanc", "Gris", "Bronze"],
     features: [
       "Design exclusif",
@@ -286,7 +286,7 @@ const portesData: PorteData[] = [
     seller: "SWAO",
     epaisseur: "80mm",
     dimensions: "H: 1950-2500mm, L: 820-1200mm",
-    image: "images/portes/divinox-80.jpg",
+    image: "images/portes/divinox-80.webp",
     colors: ["Anthracite", "Blanc", "Gris", "Bronze"],
     features: [
       "Décor alunox face extérieure",

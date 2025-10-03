@@ -604,7 +604,7 @@ const PorteModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-2">
       <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-lg bg-white">
         <button
           onClick={onClose}
@@ -625,7 +625,7 @@ const PorteModal = ({
             </div>
           </div>
 
-          <div className="w-full space-y-6 p-6 md:w-1/2 overflow-y-auto">
+          <div className="w-full space-y-6 p-2 md:w-1/2 overflow-y-auto">
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <Typography variant="h2">{porte.name}</Typography>
@@ -651,25 +651,25 @@ const PorteModal = ({
               {porte.seller && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                  <Typography variant="small" className="font-semibold text-blue-600 mt-4">{porte.seller}</Typography>
+                  <Typography variant="small" className="font-semibold text-blue-600 mt-2">{porte.seller}</Typography>
                 </div>
               )}
               {porte.performance && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold mt-4">{porte.performance}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{porte.performance}</Typography>
                 </div>
               )}
               {porte.epaisseur && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold mt-4">{porte.epaisseur}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{porte.epaisseur}</Typography>
                 </div>
               )}
               {porte.dimensions && (
                 <div>
                   <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold mt-4">{porte.dimensions}</Typography>
+                  <Typography variant="small" className="font-semibold mt-2">{porte.dimensions}</Typography>
                 </div>
               )}
             </div>
@@ -682,7 +682,7 @@ const PorteModal = ({
             </div>
 
             <div>
-              <Typography variant="h3" className="mb-3">Caractéristiques</Typography>
+              <Typography variant="h3" className="mb-2">Caractéristiques</Typography>
               <div className="grid grid-cols-1 gap-2">
                 {porte.features.map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
@@ -697,7 +697,7 @@ const PorteModal = ({
             </div>
 
             <div>
-              <Typography variant="h3" className="mb-3">Couleurs disponibles</Typography>
+              <Typography variant="h3" className="mb-2">Couleurs disponibles</Typography>
               <div className="flex flex-wrap gap-2">
                 {porte.colors.map((color, index) => (
                   <span
@@ -710,7 +710,7 @@ const PorteModal = ({
               </div>
             </div>
 
-            <div className="flex gap-3 pt-4">
+            <div className="flex gap-3 pt-0">
               {session ? (
                 <Link
                   href="/account/devis"
