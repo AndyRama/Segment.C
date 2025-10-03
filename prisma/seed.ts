@@ -90,7 +90,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "BLENNIE 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Design exclusif Sy baie avec lignes épurées pour un maximum de luminosité.",
@@ -126,7 +126,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "NAPILUS 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     epaisseur: "80mm",
@@ -166,8 +166,8 @@ const portesData: PorteData[] = [
     priceRange: "1850€ - 2250€",
     rating: 4.7,
     performance: "1.1 W/(m².K)",
-    isPopular: true,
-    isNew: true,
+    isPopular: false,
+    isNew: false,
     isActive: true,
   },
   {

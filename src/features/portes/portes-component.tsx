@@ -683,7 +683,7 @@ const PorteModal = ({
 
             <div>
               <Typography variant="h3" className="mb-2">Caractéristiques</Typography>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2">
                 {porte.features.map((feature, index) => {
                   const IconComponent = getPerformanceIcon(feature);
                   return (
