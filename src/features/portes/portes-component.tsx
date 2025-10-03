@@ -49,7 +49,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
   const limit = 40;
 
 // Catégories de portes autorisées
-  const allowedCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE", "PORTE_GARAGE"];
+  const allowedCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
 
   // Fetch portes from API
   useEffect(() => {
@@ -97,7 +97,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     { key: "PORTE", label: "Porte" },
     { key: "PORTE_ENTRER", label: "Porte d'entrée" },
     { key: "PORTE_VITRAGE", label: "Porte vitrée" },
-    { key: "PORTE_GARAGE", label: "Porte de garage" },
   ];
 
   const materialFilters = [
