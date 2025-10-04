@@ -1,7 +1,7 @@
 "use client";
-
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 
@@ -23,7 +23,6 @@ export default function VerandasHero({ className }: VerandasHeroProps) {
           <Typography variant="h1" className="text-4xl md:text-5xl lg:text-6xl">
             Nos vérandas
           </Typography>
-
           <Typography
             variant="p"
             className="text-muted-foreground leading-relaxed"
@@ -37,6 +36,14 @@ export default function VerandasHero({ className }: VerandasHeroProps) {
             bois, toiture vitrée ou isolée, personnalisez votre extension selon
             vos envies et votre budget.
           </Typography>
+          
+          {/* Bouton CTA */}
+          <Link
+            href="/veranda/catalogue"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            Découvrir notre catalogue
+          </Link>
         </div>
 
         {/* Image */}
