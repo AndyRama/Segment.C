@@ -476,7 +476,7 @@ const VerandasGrid = ({
   verandas: Product[];
   onVerandaClick: (veranda: Product) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="grid grid-cols-1">
     {verandas.map((veranda, index) => (
       <VerandaCard
         key={veranda.id}

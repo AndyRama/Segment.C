@@ -551,7 +551,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.5 W/(m².K)",
     ouverture: "COULISSANTE",
-    image: "images/fenetres/veranda-classic.jpg",
+    image: "images/fenetres/veranda.jpg",
     colors: ["Blanc", "Anthracite", "Gris"],
     features: ["Structure aluminium", "Toiture isolante", "Baies vitrées", "Extension de vie"],
     description: "Véranda aluminium avec toiture isolante, idéale pour agrandir votre espace de vie.",
