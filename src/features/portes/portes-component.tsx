@@ -574,8 +574,8 @@ const PorteCard = ({
             )}
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <span className="font-semibold text-primary">{porte.priceRange}</span>
+          <span className="font-semibold text-primary">{porte.priceRange}</span>
+          <div className="flex items-right justify-end pt-2">
             <Button size="sm" variant="outline" className="text-xs">
               Voir détails
             </Button>

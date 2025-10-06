@@ -46,7 +46,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
           </span>
         </Typography>
         <CardTitle>{post.attributes.title}</CardTitle>
-        <CardDescription className="pb-8">{post.attributes.description}</CardDescription>
+        <CardDescription className="pb-4">{post.attributes.description}</CardDescription>
         <div className="flex w-[250px] items-center justify-between">
           <Link
             href={`/posts/${post.slug}`}
