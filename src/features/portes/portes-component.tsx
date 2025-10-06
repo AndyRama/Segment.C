@@ -481,7 +481,7 @@ const PortesGrid = ({
   portes: Product[];
   onPorteClick: (porte: Product) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
     {portes.map((porte, index) => (
       <PorteCard
         key={porte.id}
