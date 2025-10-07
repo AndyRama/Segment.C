@@ -44,9 +44,9 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
       className="flex-shrink-0 w-72 group"
     >
       <Link href={`/portes/${createSlug(product.name)}`}>
-        <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
+        <div className="relative overflow-hidden rounded-md bg-white shadow-md transition-all duration-300 hover:shadow-xl">
           {/* Badges */}
-          <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
+          <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
             {product.isNew && (
               <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
                 Nouveau
