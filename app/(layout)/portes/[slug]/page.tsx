@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import SimilarProductsSection from '@/portes/SimilarProductsSection';
-import AvailableFormsSection from '@/portes/availableFormsSection';
+import SimilarProductsSection from '@/features/portes/similarProductsSection';
+import AvailableFormsSection from '@/features/portes/availableFormsSection';
 import { 
   Star, 
   Shield, 
