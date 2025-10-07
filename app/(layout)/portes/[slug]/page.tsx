@@ -460,7 +460,7 @@ const PorteDetailPage = () => {
       <AvailableFormsSection />
 
       {/* Section Dans le même style */}
-      {<SimilarProductsSection currentProduct={porte} />}
+      <SimilarProductsSection currentProduct={porte} />
     </div>
   );
 };
