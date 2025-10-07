@@ -110,8 +110,8 @@ const AvailableFormsSection = () => {
             <button
               key={form.id}
               onClick={() => setSelectedForm(form.id)}
-              className={`relative p-6 bg-white border-2 transition-all hover:border-green-500 group ${
-                selectedForm === form.id ? 'border-green-500 shadow-lg' : 'border-gray-200'
+              className={`relative p-6 bg-white border-2 border-rounded-md transition-all hover:border-green-500 group ${
+                selectedForm === form.id ? 'border-green-500 border-rounded-md shadow-lg' : 'border-gray-200'
               }`}
             >
               {selectedForm === form.id && (
@@ -131,7 +131,7 @@ const AvailableFormsSection = () => {
           ))}
         </div>
 
-        <div className="mt-8 p-6 bg-white border-2 border-green-200">
+        <div className="mt-8 p-6 bg-white border-2 border-green-200 rounded-md">
           <div className="flex items-start gap-3">
             <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
             <div>
