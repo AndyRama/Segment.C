@@ -128,11 +128,11 @@ const PorteDetailPage = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <Button
           onClick={() => router.back()}
           variant="ghost"
-          className="mb-6 -ml-2 text-gray-600 hover:text-gray-900"
+          className="mb-2 -ml-2 text-gray-600 hover:text-gray-900"
         >
           <ArrowLeft size={18} className="mr-2" />
           Retour
@@ -170,7 +170,7 @@ const PorteDetailPage = () => {
             </div>
 
             {/* Tags matériau et catégorie */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-4">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
                 <Package size={16} />
                 {porte.material.replace('_', ' ')}
