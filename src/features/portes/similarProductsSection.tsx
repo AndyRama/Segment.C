@@ -111,7 +111,6 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
 };
 
 const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -137,16 +136,14 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
           .slice(0, 4);
         
         setSimilarProducts(filtered);
-      } catch (error) {
-        console.error('Error fetching similar products:', error);
+      } catch (_error) {
+        // Error handled silently
       } finally {
         setLoading(false);
       }
     };
 
-    if (currentProduct) {
-      void fetchSimilarProducts();
-    }
+    void fetchSimilarProducts();
   }, [currentProduct]);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -156,10 +153,8 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
     const scrollAmount = 300;
     if (direction === 'left') {
       container.scrollLeft -= scrollAmount;
-      setScrollPosition(container.scrollLeft - scrollAmount);
     } else {
       container.scrollLeft += scrollAmount;
-      setScrollPosition(container.scrollLeft + scrollAmount);
     }
   };
 
