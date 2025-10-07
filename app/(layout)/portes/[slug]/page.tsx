@@ -151,7 +151,7 @@ const PorteDetailPage = () => {
               </div>
               
               {/* Badges overlay */}
-              {(porte.isNew || porte.isPopular) && (
+              {(Boolean(porte.isNew) || Boolean(porte.isPopular)) && (
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
                   {porte.isNew && (
                     <span className="bg-green-600 text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
