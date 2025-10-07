@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { X, Star, Shield, Home, Thermometer, Volume2, Lock, Filter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { X, Star, Shield, Home, Lock, Filter } from "lucide-react";
 
 type Product = {
   id: string;
@@ -33,8 +33,18 @@ type PorteSectionProps = {
   className?: string;
 }
 
+// Fonction pour créer un slug à partir du nom du produit
+const createSlug = (name: string): string => {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Enlever les accents
+    .replace(/[^a-z0-9]+/g, "-") // Remplacer les caractères spéciaux par des tirets
+    .replace(/^-+|-+$/g, ""); // Enlever les tirets en début et fin
+};
+
 const PorteSection = ({ className }: PorteSectionProps) => {
-  const [selectedPorte, setSelectedPorte] = useState<Product | null>(null);
+  const router = useRouter();
   const [portes, setPortes] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -47,11 +57,8 @@ const PorteSection = ({ className }: PorteSectionProps) => {
   });
 
   const limit = 40;
-
-// Catégories de portes autorisées
   const allowedCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
 
-  // Fetch portes from API
   useEffect(() => {
     const fetchPortes = async () => {
       setLoading(true);
@@ -59,7 +66,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         const params = new URLSearchParams({
           limit: limit.toString(),
           offset: offset.toString(),
-          type: 'PORTE', // Filtre pour n'afficher que les portes
+          type: 'PORTE',
           ...(filters.category !== 'all' && { category: filters.category }),
           ...(filters.material !== 'all' && { material: filters.material }),
           ...(filters.seller !== 'all' && { seller: filters.seller }),
@@ -70,7 +77,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         
         const data = await response.json();
         
-        // Filtrer pour ne garder que les catégories autorisées
         const filteredProducts = data.products.filter((product: Product) => 
           allowedCategories.includes(product.category)
         );
@@ -82,7 +88,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         }
         setTotal(data.total);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error('Error fetching portes:', error);
       } finally {
         setLoading(false);
@@ -126,6 +131,11 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     setOffset(0);
   };
 
+  const handlePorteClick = (porte: Product) => {
+    const slug = createSlug(porte.name);
+    router.push(`/portes/${slug}`);
+  };
+
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
       <PorteHeader />
@@ -161,7 +171,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
             <>
               <PortesGrid
                 portes={portes}
-                onPorteClick={setSelectedPorte}
+                onPorteClick={handlePorteClick}
               />
 
               {portes.length < total && (
@@ -185,13 +195,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
           )}
         </div>
       </div>
-
-      {selectedPorte && (
-        <PorteModal
-          porte={selectedPorte}
-          onClose={() => setSelectedPorte(null)}
-        />
-      )}
 
       <MobileFiltersModal
         isOpen={showMobileFilters}
@@ -562,18 +565,6 @@ const PorteCard = ({
             {porte.description}
           </p>
 
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            {porte.performance && (
-              <span className="flex items-center gap-1">
-                <Thermometer size={12} />
-                {porte.performance}
-              </span>
-            )}
-            {porte.seller && (
-              <span className="text-blue-600 font-medium">{porte.seller}</span>
-            )}
-          </div>
-
           <span className="font-semibold text-primary">{porte.priceRange}</span>
           <div className="flex items-right justify-end pt-2">
             <Button size="sm" variant="outline" className="text-xs">
@@ -583,167 +574,6 @@ const PorteCard = ({
         </div>
       </div>
     </motion.div>
-  );
-};
-
-const PorteModal = ({
-  porte,
-  onClose,
-}: {
-  porte: Product;
-  onClose: () => void;
-}) => {
-  const { data: session } = useSession();
-
-  const getPerformanceIcon = (feature: string) => {
-    if (feature.toLowerCase().includes('vitrage') || feature.toLowerCase().includes('isolation')) return Thermometer;
-    if (feature.toLowerCase().includes('sécurisé') || feature.toLowerCase().includes('anti-effraction') || feature.toLowerCase().includes('sécurité')) return Lock;
-    if (feature.toLowerCase().includes('design') || feature.toLowerCase().includes('esthétique')) return Shield;
-    if (feature.toLowerCase().includes('phonique') || feature.toLowerCase().includes('acoustique')) return Volume2;
-    return Shield;
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-2">
-      <div className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-md bg-white">
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
-        >
-          <X size={20} />
-        </button>
-
-        <div className="flex h-full max-h-[90vh] overflow-y-auto flex-col md:flex-row">
-          <div className="md:w-1/2">
-            <div className="relative h-64 md:h-full md:min-h-[500px]">
-              <Image
-                src={porte.image}
-                alt={porte.name}
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-
-          <div className="w-full space-y-6 p-2 md:w-1/2 overflow-y-auto">
-            <div>
-              <div className="mb-2 flex items-center gap-2">
-                <Typography variant="h2">{porte.name}</Typography>
-                <div className="flex items-center gap-1">
-                  <Star size={16} className="fill-yellow-400 text-yellow-400" />
-                  <Typography variant="small">{porte.rating}</Typography>
-                </div>
-              </div>
-
-              <div className="mb-2 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
-                  {porte.material.replace('_', ' ')}
-                </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {porte.category.replace('PORTE_', '').replace('_', ' ')}
-                </span>
-              </div>
-
-              <Typography variant="large" className="text-primary">{porte.priceRange}</Typography>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-2">
-              {porte.seller && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                  <Typography variant="small" className="font-semibold text-blue-600 mt-2">{porte.seller}</Typography>
-                </div>
-              )}
-              {porte.performance && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold mt-2">{porte.performance}</Typography>
-                </div>
-              )}
-              {porte.epaisseur && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold mt-2">{porte.epaisseur}</Typography>
-                </div>
-              )}
-              {porte.dimensions && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold mt-2">{porte.dimensions}</Typography>
-                </div>
-              )}
-            </div>
-
-            <div>
-              <Typography variant="h3" className="mb-2">Description</Typography>
-              <Typography variant="p" className="leading-relaxed text-muted-foreground">
-                {porte.description}
-              </Typography>
-            </div>
-
-            <div>
-              <Typography variant="h3" className="mb-2">Caractéristiques</Typography>
-              <div className="grid grid-cols-1 gap-2">
-                {porte.features.map((feature, index) => {
-                  const IconComponent = getPerformanceIcon(feature);
-                  return (
-                    <div key={index} className="flex items-center gap-2">
-                      <IconComponent size={16} className="text-green-600" />
-                      <Typography variant="small">{feature}</Typography>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div>
-              <Typography variant="h3" className="mb-2">Couleurs disponibles</Typography>
-              <div className="flex flex-wrap gap-2">
-                {porte.colors.map((color, index) => (
-                  <span
-                    key={index}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-sm"
-                  >
-                    {color}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-3 pt-0">
-              {session ? (
-                <Link
-                  href="/account/devis"
-                  className={buttonVariants({
-                    size: "default",
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
-                  })}
-                >
-                  Demander un devis
-                </Link>
-              ) : (
-                <Link
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className={buttonVariants({
-                    size: "default",
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
-                  })}
-                >
-                  Demander un devis
-                </Link>
-              )}
-              <Button
-                variant="outline"
-                onClick={onClose}
-                className="flex-1"
-              >
-                Ajouter au panier
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
