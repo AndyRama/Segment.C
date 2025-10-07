@@ -43,7 +43,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
   const [portes, setPortes] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [filters, setFilters] = useState({
     material: "all",
@@ -58,6 +58,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     const fetchPortes = async () => {
       setLoading(true);
       try {
+        const offset = (currentPage - 1) * limit;
         const params = new URLSearchParams({
           limit: limit.toString(),
           offset: offset.toString(),
@@ -76,21 +77,22 @@ const PorteSection = ({ className }: PorteSectionProps) => {
           allowedCategories.includes(product.category)
         );
         
-        if (offset === 0) {
-          setPortes(filteredProducts);
-        } else {
-          setPortes(prev => [...prev, ...filteredProducts]);
-        }
+        setPortes(filteredProducts);
         setTotal(data.total);
-      } catch (error) {
-        console.error('Error fetching portes:', error);
+        
+        // Scroll to top when page changes
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (_error) {
+        // Error handled silently
       } finally {
         setLoading(false);
       }
     };
 
     void fetchPortes();
-  }, [filters, offset]);
+  }, [filters, currentPage, allowedCategories]);
+
+  const totalPages = Math.ceil(total / limit);
 
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
@@ -117,18 +119,18 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     { key: "PROFERM", label: "Proferm" },
   ];
 
-  const handleShowMore = () => {
-    setOffset(prev => prev + limit);
-  };
-
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters(prev => ({ ...prev, [filterType]: value }));
-    setOffset(0);
+    setCurrentPage(1); // Reset to first page when filter changes
   };
 
   const handlePorteClick = (porte: Product) => {
     const slug = createSlug(porte.name);
     router.push(`/portes/${slug}`);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -158,7 +160,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
             </Button>
           </div>
 
-          {loading && offset === 0 ? (
+          {loading ? (
             <div className="flex justify-center items-center min-h-[400px]">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
@@ -169,21 +171,17 @@ const PorteSection = ({ className }: PorteSectionProps) => {
                 onPorteClick={handlePorteClick}
               />
 
-              {portes.length < total && (
-                <div className="mt-8 flex justify-center">
-                  <Button
-                    onClick={handleShowMore}
-                    disabled={loading}
-                    className="bg-primary text-white hover:bg-primary/90"
-                  >
-                    {loading ? 'Chargement...' : 'Voir plus de portes'}
-                  </Button>
-                </div>
+              {totalPages > 1 && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
               )}
 
               <div className="mt-8 text-center">
                 <Typography variant="small" className="text-muted-foreground">
-                  {portes.length} portes sur {total} modèles disponibles
+                  Page {currentPage} sur {totalPages} • {total} modèles disponibles
                 </Typography>
               </div>
             </>
@@ -491,6 +489,111 @@ const PortesGrid = ({
   </div>
 );
 
+// Composant Pagination
+const Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) => {
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisiblePages = 7;
+
+    if (totalPages <= maxVisiblePages) {
+      // Afficher toutes les pages si le total est petit
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Toujours afficher la première page
+      pages.push(1);
+
+      if (currentPage > 3) {
+        pages.push('...');
+      }
+
+      // Pages autour de la page courante
+      const startPage = Math.max(2, currentPage - 1);
+      const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pages.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push('...');
+      }
+
+      // Toujours afficher la dernière page
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  return (
+    <div className="flex items-center justify-center gap-2 mt-8">
+      {/* Bouton Précédent */}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className={cn(
+          "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+          currentPage === 1
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-gray-700 hover:bg-gray-100"
+        )}
+      >
+        Précédent
+      </button>
+
+      {/* Numéros de page */}
+      {getPageNumbers().map((page, index) => {
+        if (page === '...') {
+          return (
+            <span key={`ellipsis-${index}`} className="px-3 py-2 text-gray-400">
+              ...
+            </span>
+          );
+        }
+
+        return (
+          <button
+            key={page}
+            onClick={() => onPageChange(page as number)}
+            className={cn(
+              "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+              currentPage === page
+                ? "bg-primary text-white"
+                : "text-gray-700 hover:bg-gray-100"
+            )}
+          >
+            {page}
+          </button>
+        );
+      })}
+
+      {/* Bouton Suivant */}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={cn(
+          "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+          currentPage === totalPages
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-gray-700 hover:bg-gray-100"
+        )}
+      >
+        Suivant
+      </button>
+    </div>
+  );
+};
+
 const PorteCard = ({
   porte,
   index,
@@ -515,7 +618,7 @@ const PorteCard = ({
       onClick={onClick}
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
+        <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
           {porte.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
               Nouveau
