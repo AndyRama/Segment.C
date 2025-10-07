@@ -109,7 +109,7 @@ const PorteDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-0">
       {/* Breadcrumb */}
       <div className="border-b bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 py-3">
@@ -128,7 +128,7 @@ const PorteDetailPage = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4">
         <Button
           onClick={() => router.back()}
           variant="ghost"
