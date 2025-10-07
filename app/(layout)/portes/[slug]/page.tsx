@@ -39,14 +39,9 @@ type Product = {
   isNew?: boolean;
 };
 
-// Fonction pour créer un slug à partir du nom
+// Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
-  return name
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  return name.toLowerCase().replace(/\s+/g, '-');
 };
 
 const PorteDetailPage = () => {
@@ -77,7 +72,6 @@ const PorteDetailPage = () => {
           setPorte(foundPorte);
         }
       } catch (err) {
-        console.error('Error fetching porte:', err);
         setError("Erreur lors du chargement du produit");
       } finally {
         setLoading(false);
@@ -151,7 +145,7 @@ const PorteDetailPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Image */}
-          <div className="bg-white rounded-md shadow-lg p-6">
+          <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="relative h-[500px] lg:h-[600px]">
               <Image
                 src={porte.image}
