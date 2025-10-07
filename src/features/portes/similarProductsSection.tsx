@@ -130,10 +130,10 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
         
         const data = await response.json();
         
-        // Filtrer pour exclure le produit actuel et limiter à 4 produits
+        // Filtrer pour exclure le produit actuel et limiter à 20 produits
         const filtered = data.products
           .filter((p: Product) => p.id !== currentProduct.id)
-          .slice(0, 4);
+          .slice(0, 20);
         
         setSimilarProducts(filtered);
       } catch (_error) {

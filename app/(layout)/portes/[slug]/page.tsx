@@ -420,6 +420,9 @@ const PorteDetailPage = () => {
         </div>
       </div>
 
+      {/* Section Les formes disponibles */}
+      <AvailableFormsSection />
+
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">
         <div className="max-w-7xl mx-auto px-4">
@@ -456,8 +459,6 @@ const PorteDetailPage = () => {
           </div>
         </div>
       </div>
-      {/* Section Les formes disponibles */}
-      <AvailableFormsSection />
 
       {/* Section Dans le même style */}
       <SimilarProductsSection currentProduct={porte} />
