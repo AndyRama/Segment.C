@@ -119,7 +119,7 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
       try {
         setLoading(true);
         const params = new URLSearchParams({
-          limit: '8',
+          limit: '20',
           offset: '0',
           type: 'PORTE',
           category: currentProduct.category,
@@ -179,7 +179,7 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-orange-500 pl-4">
-            Dans le même style
+            Dans le même catégorie
           </h2>
           <div className="flex gap-2">
             <button
