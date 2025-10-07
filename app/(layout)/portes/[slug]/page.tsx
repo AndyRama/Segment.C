@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
+import SimilarProductsSection from '@/portes/SimilarProductsSection';
+import AvailableFormsSection from '@/portes/availableFormsSection';
 import { 
   Star, 
   Shield, 
@@ -454,6 +456,11 @@ const PorteDetailPage = () => {
           </div>
         </div>
       </div>
+      {/* Section Les formes disponibles */}
+      <AvailableFormsSection />
+
+      {/* Section Dans le même style */}
+      {porte && <SimilarProductsSection currentProduct={porte} />}
     </div>
   );
 };
