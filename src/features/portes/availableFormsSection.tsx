@@ -105,7 +105,7 @@ const AvailableFormsSection = () => {
           Les formes disponibles pour ce modèle
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 rounded-md">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {forms.map((form) => (
             <button
               key={form.id}

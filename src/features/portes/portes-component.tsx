@@ -33,6 +33,10 @@ type PorteSectionProps = {
   className?: string;
 }
 
+// Constantes en dehors du composant
+const ALLOWED_CATEGORIES = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
+const LIMIT = 40;
+
 // Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
@@ -51,16 +55,13 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     category: "all",
   });
 
-  const limit = 40;
-  const allowedCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
-
   useEffect(() => {
     const fetchPortes = async () => {
       setLoading(true);
       try {
-        const offset = (currentPage - 1) * limit;
+        const offset = (currentPage - 1) * LIMIT;
         const params = new URLSearchParams({
-          limit: limit.toString(),
+          limit: LIMIT.toString(),
           offset: offset.toString(),
           type: 'PORTE',
           ...(filters.category !== 'all' && { category: filters.category }),
@@ -74,7 +75,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         const data = await response.json();
         
         const filteredProducts = data.products.filter((product: Product) => 
-          allowedCategories.includes(product.category)
+          ALLOWED_CATEGORIES.includes(product.category)
         );
         
         setPortes(filteredProducts);
@@ -90,9 +91,9 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     };
 
     void fetchPortes();
-  }, [filters, currentPage, allowedCategories]);
+  }, [filters, currentPage]);
 
-  const totalPages = Math.ceil(total / limit);
+  const totalPages = Math.ceil(total / LIMIT);
 
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
