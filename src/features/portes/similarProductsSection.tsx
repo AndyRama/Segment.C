@@ -175,10 +175,10 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
   }
 
   return (
-    <div className="bg-white py-12 border-t">
+    <div className="bg-white py-12">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-orange-500 pl-4">
+          <h2 className="text-2xl font-bold text-gray-900 border-l-4pl-4">
             Dans le même catégorie
           </h2>
           <div className="flex gap-2">

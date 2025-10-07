@@ -22,7 +22,7 @@ import {
   CheckCircle2,
   Droplets,
   Wind,
-  FileText
+  DoorClosed
 } from "lucide-react";
 
 type Product = {
@@ -154,14 +154,14 @@ const PorteDetailPage = () => {
               
               {/* Badges overlay */}
               {((porte.isNew ?? false) || (porte.isPopular ?? false)) && (
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                <div className="absolute top-4 left-4 flex flex-row gap-2">
                   {porte.isNew && (
-                    <span className="bg-green-600 text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                    <span className="bg-green-600 rounded-md text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
                       Nouveau
                     </span>
                   )}
                   {porte.isPopular && (
-                    <span className="bg-orange-600 text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                    <span className="bg-orange-600 rounded-md text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
                       Populaire
                     </span>
                   )}
@@ -176,7 +176,7 @@ const PorteDetailPage = () => {
                 {porte.material.replace('_', ' ')}
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
-                <FileText size={16} />
+                <DoorClosed size={16} />
                 {porte.category.replace('PORTE_', '').replace('_', ' ')}
               </span>
             </div>
@@ -428,7 +428,7 @@ const PorteDetailPage = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-white border mb-4">
+              <div className="inline-flex items-center justify-center rounded-md w-16 h-16 bg-white border mb-4">
                 <Home size={28} className="text-primary" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">Made in France</h3>
@@ -438,7 +438,7 @@ const PorteDetailPage = () => {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-white border mb-4">
+              <div className="inline-flex items-center justify-center rounded-md w-16 h-16 bg-white border mb-4">
                 <Ruler size={28} className="text-primary" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">Sur mesure</h3>
@@ -448,7 +448,7 @@ const PorteDetailPage = () => {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-white border mb-4">
+              <div className="inline-flex items-center justify-center rounded-md w-16 h-16 bg-white border mb-4">
                 <Lock size={28} className="text-primary" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">Sécurité maximale</h3>
