@@ -71,7 +71,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
               src={product.image}
               alt={product.name}
               fill
-              className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/10" />
           </div>

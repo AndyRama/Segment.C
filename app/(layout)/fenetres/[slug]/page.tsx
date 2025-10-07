@@ -409,7 +409,7 @@ const FenetreDetailPage = () => {
                   href="/account/devis"
                   className={buttonVariants({
                     size: "lg",
-                    className: "w-1/2 bg-primary hover:bg-primary/90 text-white font-semibold text-base"
+                    className: "w-full bg-primary hover:bg-primary/90 text-white font-semibold text-base"
                   })}
                 >
                   Demander un devis gratuit
@@ -419,7 +419,7 @@ const FenetreDetailPage = () => {
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   className={buttonVariants({
                     size: "lg",
-                    className: "w-1/2 bg-primary hover:bg-primary/90 text-white font-semibold text-base"
+                    className: "w-full bg-primary hover:bg-primary/90 text-white font-semibold text-base"
                   })}
                 >
                   Demander un devis gratuit
