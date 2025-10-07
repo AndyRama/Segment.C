@@ -17,7 +17,10 @@ import {
   ArrowLeft,
   Package,
   Ruler,
-  Info
+  CheckCircle2,
+  Droplets,
+  Wind,
+  FileText
 } from "lucide-react";
 
 type Product = {
@@ -39,7 +42,6 @@ type Product = {
   isNew?: boolean;
 };
 
-// Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
@@ -51,6 +53,7 @@ const PorteDetailPage = () => {
   const [porte, setPorte] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'description' | 'caracteristiques' | 'dimensions'>('description');
 
   useEffect(() => {
     const fetchPorte = async () => {
@@ -60,8 +63,6 @@ const PorteDetailPage = () => {
         if (!response.ok) throw new Error('Failed to fetch products');
         
         const data = await response.json();
-        
-        // Trouver le produit correspondant au slug
         const foundPorte = data.products.find((p: Product) => 
           createSlug(p.name) === params.slug
         );
@@ -83,28 +84,19 @@ const PorteDetailPage = () => {
     }
   }, [params.slug]);
 
-  const getPerformanceIcon = (feature: string) => {
-    const lowerFeature = feature.toLowerCase();
-    if (lowerFeature.includes('vitrage') || lowerFeature.includes('isolation')) return Thermometer;
-    if (lowerFeature.includes('sécurisé') || lowerFeature.includes('anti-effraction') || lowerFeature.includes('sécurité')) return Lock;
-    if (lowerFeature.includes('design') || lowerFeature.includes('esthétique')) return Shield;
-    if (lowerFeature.includes('phonique') || lowerFeature.includes('acoustique')) return Volume2;
-    return Shield;
-  };
-
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
       </div>
     );
   }
 
-  if (error || !porte) {
+  if (error ?? !porte) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-white">
         <Typography variant="h2" className="text-2xl text-muted-foreground">
-          {error || "Porte non trouvée"}
+          {error ?? "Porte non trouvée"}
         </Typography>
         <Button onClick={() => router.push('/portes')} variant="outline">
           <ArrowLeft size={16} className="mr-2" />
@@ -115,295 +107,350 @@ const PorteDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-10">
+      <div className="border-b bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-muted-foreground hover:text-primary transition-colors font-medium">
+            <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
               Accueil
             </Link>
-            <span className="text-muted-foreground">/</span>
-            <Link href="/portes" className="text-muted-foreground hover:text-primary transition-colors font-medium">
+            <span className="text-gray-400">/</span>
+            <Link href="/portes" className="text-gray-600 hover:text-primary transition-colors">
               Portes
             </Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="text-foreground font-semibold">{porte.name}</span>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-900 font-medium">{porte.name}</span>
           </div>
         </div>
       </div>
 
-      {/* Contenu principal */}
-      <div className="max-w-7xl mx-auto px-4 py-6 md:py-10">
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
         <Button
           onClick={() => router.back()}
           variant="ghost"
-          className="mb-6 hover:bg-white/80"
+          className="mb-6 -ml-2 text-gray-600 hover:text-gray-900"
         >
           <ArrowLeft size={18} className="mr-2" />
           Retour
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
-          {/* Image */}
-          <div className="bg-white rounded-md shadow-sm border p-6 sticky top-24 h-fit">
-            <div className="relative h-[450px] lg:h-[550px] bg-gray-50 rounded-md overflow-hidden">
-              <Image
-                src={porte.image}
-                alt={porte.name}
-                fill
-                className="object-contain p-4"
-                priority
-              />
-            </div>
-            
-            {/* Badges */}
-            {(porte.isNew || porte.isPopular) && (
-              <div className="flex gap-2 mt-4">
-                {porte.isNew && (
-                  <span className="rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">
-                    ✨ Nouveau
-                  </span>
-                )}
-                {porte.isPopular && (
-                  <span className="rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">
-                    🔥 Populaire
-                  </span>
-                )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+          {/* Colonne gauche - Image */}
+          <div className="space-y-6">
+            <div className="relative bg-gray-50 rounded-sm overflow-hidden border">
+              <div className="relative h-[500px] lg:h-[650px]">
+                <Image
+                  src={porte.image}
+                  alt={porte.name}
+                  fill
+                  className="object-contain p-8"
+                  priority
+                />
               </div>
-            )}
+              
+              {/* Badges overlay */}
+              {(porte.isNew || porte.isPopular) && (
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  {porte.isNew && (
+                    <span className="bg-green-600 text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                      Nouveau
+                    </span>
+                  )}
+                  {porte.isPopular && (
+                    <span className="bg-orange-600 text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                      Populaire
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Tags matériau et catégorie */}
+            <div className="flex flex-wrap gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
+                <Package size={16} />
+                {porte.material.replace('_', ' ')}
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
+                <FileText size={16} />
+                {porte.category.replace('PORTE_', '').replace('_', ' ')}
+              </span>
+            </div>
           </div>
 
-          {/* Informations */}
-          <div className="space-y-4">
-            {/* Header */}
-            <div className="bg-white rounded-md shadow-sm border p-6">
-              <div className="flex items-start justify-between gap-4 mb-3">
-                <Typography variant="h1" className="text-2xl md:text-3xl lg:text-4xl font-bold">
+          {/* Colonne droite - Informations */}
+          <div className="space-y-8">
+            {/* En-tête */}
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <Typography variant="h1" className="text-3xl lg:text-4xl font-bold text-gray-900">
                   {porte.name}
                 </Typography>
-                <div className="flex items-center gap-1.5 bg-amber-50 px-3 py-2 rounded-md border border-amber-200 shrink-0">
-                  <Star size={18} className="fill-amber-400 text-amber-400" />
-                  <span className="text-base font-bold text-amber-700">{porte.rating}</span>
-                </div>
+                {porte.rating && (
+                  <div className="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-200">
+                    <Star size={16} className="fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold text-amber-700">{porte.rating}</span>
+                  </div>
+                )}
               </div>
+              
+              {porte.seller && (
+                <p className="text-sm text-gray-600">
+                  Fabriqué par <span className="font-semibold text-primary">{porte.seller}</span>
+                </p>
+              )}
+            </div>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-1.5 text-xs capitalize font-semibold text-blue-700">
-                  {porte.material.replace('_', ' ')}
-                </span>
-                <span className="rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-xs capitalize font-semibold text-emerald-700">
-                  {porte.category.replace('PORTE_', '').replace('_', ' ')}
-                </span>
-              </div>
-
-              <Typography variant="h2" className="text-2xl md:text-3xl text-primary font-bold">
+            {/* Prix */}
+            <div className="py-4 border-y">
+              <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
                 {porte.priceRange}
               </Typography>
+              <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
             </div>
 
-            {/* Spécifications techniques */}
-            <div className="bg-white rounded-md shadow-sm border p-6">
-              <Typography variant="h3" className="text-lg font-bold mb-4 flex items-center gap-2">
-                <Info size={20} className="text-primary" />
-                Spécifications techniques
-              </Typography>
-              <div className="grid grid-cols-2 gap-3">
-                {porte.seller && (
-                  <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-md border border-blue-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Home size={16} className="text-blue-600" />
-                      <Typography variant="small" className="text-xs font-medium text-blue-900/70">
-                        Fournisseur
-                      </Typography>
-                    </div>
-                    <Typography variant="p" className="font-bold text-blue-700 text-sm">
-                      {porte.seller}
-                    </Typography>
-                  </div>
-                )}
-                {porte.performance && (
-                  <div className="p-4 bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-md border border-orange-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Thermometer size={16} className="text-orange-600" />
-                      <Typography variant="small" className="text-xs font-medium text-orange-900/70">
-                        Performance
-                      </Typography>
-                    </div>
-                    <Typography variant="p" className="font-bold text-orange-700 text-sm">
-                      {porte.performance}
-                    </Typography>
-                  </div>
-                )}
-                {porte.epaisseur && (
-                  <div className="p-4 bg-gradient-to-br from-green-50 to-green-100/50 rounded-md border border-green-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Package size={16} className="text-green-600" />
-                      <Typography variant="small" className="text-xs font-medium text-green-900/70">
-                        Épaisseur
-                      </Typography>
-                    </div>
-                    <Typography variant="p" className="font-bold text-green-700 text-sm">
-                      {porte.epaisseur}
-                    </Typography>
-                  </div>
-                )}
-                {porte.dimensions && (
-                  <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-md border border-purple-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Ruler size={16} className="text-purple-600" />
-                      <Typography variant="small" className="text-xs font-medium text-purple-900/70">
-                        Dimensions
-                      </Typography>
-                    </div>
-                    <Typography variant="p" className="font-bold text-purple-700 text-sm">
-                      {porte.dimensions}
-                    </Typography>
-                  </div>
-                )}
+            {/* Onglets */}
+            <div>
+              <div className="flex border-b mb-6">
+                <button
+                  onClick={() => setActiveTab('description')}
+                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+                    activeTab === 'description'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Description
+                </button>
+                <button
+                  onClick={() => setActiveTab('caracteristiques')}
+                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+                    activeTab === 'caracteristiques'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Caractéristiques
+                </button>
+                <button
+                  onClick={() => setActiveTab('dimensions')}
+                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+                    activeTab === 'dimensions'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Dimensions
+                </button>
               </div>
-            </div>
 
-            {/* Description */}
-            <div className="bg-white rounded-md shadow-sm border p-6">
-              <Typography variant="h3" className="text-lg font-bold mb-3">
-                Description
-              </Typography>
-              <Typography variant="p" className="leading-relaxed text-muted-foreground text-sm">
-                {porte.description}
-              </Typography>
-            </div>
+              {/* Contenu des onglets */}
+              <div className="space-y-6">
+                {activeTab === 'description' && (
+                  <div className="prose prose-sm max-w-none">
+                    <p className="text-gray-700 leading-relaxed">{porte.description}</p>
+                  </div>
+                )}
 
-            {/* Caractéristiques */}
-            <div className="bg-white rounded-md shadow-sm border p-6">
-              <Typography variant="h3" className="text-lg font-bold mb-4">
-                Caractéristiques principales
-              </Typography>
-              <div className="grid grid-cols-1 gap-2">
-                {porte.features.map((feature, index) => {
-                  const IconComponent = getPerformanceIcon(feature);
-                  return (
-                    <div 
-                      key={index} 
-                      className="flex items-center gap-3 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-md border border-green-200 hover:border-green-300 transition-colors"
-                    >
-                      <div className="bg-white p-2 rounded-md border border-green-200">
-                        <IconComponent size={18} className="text-green-600" />
-                      </div>
-                      <Typography variant="small" className="font-medium text-sm">
-                        {feature}
-                      </Typography>
+                {activeTab === 'caracteristiques' && (
+                  <div className="space-y-4">
+                    {/* Caractéristiques principales */}
+                    <div className="grid gap-3">
+                      {porte.features.map((feature, index) => (
+                        <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 border">
+                          <CheckCircle2 size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-gray-900">{feature}</span>
+                        </div>
+                      ))}
                     </div>
-                  );
-                })}
+
+                    {/* Performances techniques */}
+                    <div className="mt-6 pt-6 border-t">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4">Performances techniques</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        {porte.performance && (
+                          <div className="p-4 bg-orange-50 border border-orange-200">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Thermometer size={18} className="text-orange-600" />
+                              <span className="text-xs font-semibold text-orange-900 uppercase tracking-wide">
+                                Thermique
+                              </span>
+                            </div>
+                            <p className="text-sm font-bold text-orange-900">{porte.performance}</p>
+                          </div>
+                        )}
+                        
+                        <div className="p-4 bg-blue-50 border border-blue-200">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Droplets size={18} className="text-blue-600" />
+                            <span className="text-xs font-semibold text-blue-900 uppercase tracking-wide">
+                              Étanchéité
+                            </span>
+                          </div>
+                          <p className="text-sm font-bold text-blue-900">A*3 E*3B</p>
+                        </div>
+
+                        <div className="p-4 bg-purple-50 border border-purple-200">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Volume2 size={18} className="text-purple-600" />
+                            <span className="text-xs font-semibold text-purple-900 uppercase tracking-wide">
+                              Acoustique
+                            </span>
+                          </div>
+                          <p className="text-sm font-bold text-purple-900">29dB</p>
+                        </div>
+
+                        <div className="p-4 bg-green-50 border border-green-200">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Wind size={18} className="text-green-600" />
+                            <span className="text-xs font-semibold text-green-900 uppercase tracking-wide">
+                              Résistance
+                            </span>
+                          </div>
+                          <p className="text-sm font-bold text-green-900">V*C3</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'dimensions' && (
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {porte.dimensions && (
+                        <div className="p-4 bg-gray-50 border">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Ruler size={18} className="text-gray-700" />
+                            <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                              Dimensions
+                            </span>
+                          </div>
+                          <p className="text-sm font-bold text-gray-900">{porte.dimensions}</p>
+                        </div>
+                      )}
+                      
+                      {porte.epaisseur && (
+                        <div className="p-4 bg-gray-50 border">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Package size={18} className="text-gray-700" />
+                            <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                              Épaisseur
+                            </span>
+                          </div>
+                          <p className="text-sm font-bold text-gray-900">{porte.epaisseur}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="p-4 bg-blue-50 border border-blue-200 mt-4">
+                      <p className="text-sm text-blue-900">
+                        <strong>Sur mesure :</strong> Dimensions personnalisables selon vos besoins spécifiques.
+                        Contactez-nous pour plus d'informations.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Couleurs disponibles */}
-            <div className="bg-white rounded-md shadow-sm border p-6">
-              <Typography variant="h3" className="text-lg font-bold mb-4">
-                Couleurs disponibles
-              </Typography>
-              <div className="flex flex-wrap gap-2">
-                {porte.colors.map((color, index) => (
-                  <span
-                    key={index}
-                    className="rounded-full bg-gray-50 border-2 border-gray-200 px-4 py-2 text-xs font-semibold hover:bg-gray-100 hover:border-gray-300 transition-all cursor-pointer"
-                  >
-                    {color}
-                  </span>
-                ))}
+            {porte.colors && porte.colors.length > 0 && (
+              <div className="pt-6 border-t">
+                <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
+                  Couleurs disponibles
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {porte.colors.map((color, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-2 bg-white border border-gray-300 text-sm text-gray-900 hover:border-gray-900 transition-colors cursor-pointer"
+                    >
+                      {color}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Actions */}
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-md shadow-sm border-2 border-primary/20 p-6">
-              <div className="flex flex-col sm:flex-row gap-3">
-                {session ? (
-                  <Link
-                    href="/account/devis"
-                    className={buttonVariants({
-                      size: "lg",
-                      className: "flex-1 bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-md hover:shadow-lg transition-all font-semibold"
-                    })}
-                  >
-                    Demander un devis
-                  </Link>
-                ) : (
-                  <Link
-                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                    className={buttonVariants({
-                      size: "lg",
-                      className: "flex-1 bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-md hover:shadow-lg transition-all font-semibold"
-                    })}
-                  >
-                    Demander un devis
-                  </Link>
-                )}
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="flex-1 border-2 hover:bg-gray-50 font-semibold"
+            {/* CTA */}
+            <div className="pt-6 border-t space-y-3">
+              {session ? (
+                <Link
+                  href="/account/devis"
+                  className={buttonVariants({
+                    size: "lg",
+                    className: "w-full bg-primary hover:bg-primary/90 text-white font-semibold text-base"
+                  })}
                 >
-                  Ajouter au panier
-                </Button>
-              </div>
+                  Demander un devis gratuit
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className={buttonVariants({
+                    size: "lg",
+                    className: "w-full bg-primary hover:bg-primary/90 text-white font-semibold text-base"
+                  })}
+                >
+                  Demander un devis gratuit
+                </Link>
+              )}
               
-              <div className="mt-4 p-4 bg-blue-50 rounded-md border border-blue-200">
-                <div className="flex items-start gap-3">
-                  <div className="bg-white p-2 rounded-md border border-blue-200">
-                    <Shield size={18} className="text-blue-600" />
-                  </div>
-                  <div>
-                    <Typography variant="small" className="font-bold text-blue-900 mb-1 text-sm">
-                      Garantie et service
-                    </Typography>
-                    <Typography variant="small" className="text-blue-700 text-xs">
-                      Fabrication française sur mesure • Installation professionnelle • Garantie fabricant
-                    </Typography>
-                  </div>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full border-2 font-semibold text-base"
+              >
+                Ajouter au panier
+              </Button>
+
+              <div className="flex items-start gap-3 p-4 bg-gray-50 border mt-4">
+                <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
+                <div className="text-sm text-gray-700">
+                  <p className="font-semibold mb-1">Garantie fabricant incluse</p>
+                  <p className="text-xs">Fabrication française • Installation professionnelle • SAV réactif</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Section informations supplémentaires */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-md shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-md mb-4">
-              <Home size={28} className="text-blue-600" />
+      {/* Section avantages */}
+      <div className="bg-gray-50 border-y mt-16 py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white border mb-4">
+                <Home size={28} className="text-primary" />
+              </div>
+              <h3 className="text-base font-bold text-gray-900 mb-2">Made in France</h3>
+              <p className="text-sm text-gray-600">
+                Fabrication française avec des matériaux de première qualité
+              </p>
             </div>
-            <Typography variant="h3" className="text-base font-bold mb-2">
-              Made in France
-            </Typography>
-            <Typography variant="small" className="text-muted-foreground text-xs">
-              Produits fabriqués en France avec des matériaux de qualité
-            </Typography>
-          </div>
 
-          <div className="bg-white rounded-md shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-md mb-4">
-              <Ruler size={28} className="text-green-600" />
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white border mb-4">
+                <Ruler size={28} className="text-primary" />
+              </div>
+              <h3 className="text-base font-bold text-gray-900 mb-2">Sur mesure</h3>
+              <p className="text-sm text-gray-600">
+                Dimensions personnalisées adaptées à votre projet
+              </p>
             </div>
-            <Typography variant="h3" className="text-base font-bold mb-2">
-              Sur mesure
-            </Typography>
-            <Typography variant="small" className="text-muted-foreground text-xs">
-              Dimensions personnalisées selon vos besoins spécifiques
-            </Typography>
-          </div>
 
-          <div className="bg-white rounded-md shadow-sm border p-6 text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-md mb-4">
-              <Lock size={28} className="text-orange-600" />
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white border mb-4">
+                <Lock size={28} className="text-primary" />
+              </div>
+              <h3 className="text-base font-bold text-gray-900 mb-2">Sécurité maximale</h3>
+              <p className="text-sm text-gray-600">
+                Serrures multipoints et protection anti-effraction
+              </p>
             </div>
-            <Typography variant="h3" className="text-base font-bold mb-2">
-              Sécurité renforcée
-            </Typography>
-            <Typography variant="small" className="text-muted-foreground text-xs">
-              Protection optimale avec serrures multipoints certifiées
-            </Typography>
           </div>
         </div>
       </div>
