@@ -92,7 +92,7 @@ const PorteDetailPage = () => {
     );
   }
 
-  if (error ?? !porte) {
+  if (error || !porte) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-white">
         <Typography variant="h2" className="text-2xl text-muted-foreground">
@@ -151,7 +151,7 @@ const PorteDetailPage = () => {
               </div>
               
               {/* Badges overlay */}
-              {(porte.isNew || porte.isPopular) && (
+              {(porte.isNew ?? porte.isPopular) && (
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
                   {porte.isNew && (
                     <span className="bg-green-600 text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide">
@@ -356,7 +356,7 @@ const PorteDetailPage = () => {
             </div>
 
             {/* Couleurs disponibles */}
-            {porte.colors && porte.colors.length > 0 && (
+            {porte.colors.length > 0 && (
               <div className="pt-6 border-t">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
                   Couleurs disponibles
