@@ -64,10 +64,10 @@ export function HeaderBase({ children }: PropsWithChildren) {
   const topRoutes = [
     { path: "/fenetres", label: "Fenêtre" },
     { path: "/portes", label: "Porte" },
-    { path: "/pergolas", label: "Pergolas" },
-    { path: "/verandas", label: "Vérandas" },
-    { path: "/portails", label: "Portails" },
     { path: "/garage", label: "Garage" },
+    { path: "/verandas", label: "Vérandas" },
+    { path: "/pergolas", label: "Pergolas" },
+    { path: "/portails", label: "Portails" },
     { path: "/posts", label: "Actualités" },
   ];
 

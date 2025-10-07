@@ -63,10 +63,10 @@ export function LandingHeader() {
   const topRoutes = [
     { path: "/fenetres", label: "Fenêtre" },
     { path: "/portes", label: "Porte" },
+    { path: "/garage", label: "Garage" },
     { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Vérandas" },
     { path: "/portails", label: "Portails" },
-    { path: "/garage", label: "Garage" },
     { path: "/posts", label: "Actualités" },
   ];
 

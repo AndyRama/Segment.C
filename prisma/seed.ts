@@ -111,7 +111,7 @@ const portesData: PorteData[] = [
   // 4. ALIÉNOR 80
   {
     name: "ALIÉNOR 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm avec élégance classique.",
@@ -149,7 +149,7 @@ const portesData: PorteData[] = [
   // 6. ANEMONE
   {
     name: "ANEMONE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle avec charme classique.",
@@ -225,7 +225,7 @@ const portesData: PorteData[] = [
   // 10. ARIANE 80
   {
     name: "ARIANE 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm avec raffinement.",
@@ -282,7 +282,7 @@ const portesData: PorteData[] = [
   // 13. AURORA
   {
     name: "AURORA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
     description: "Porte d'entrée acier traditionnelle avec élégance intemporelle.",
@@ -301,7 +301,7 @@ const portesData: PorteData[] = [
   // 14. BALISTE-NOVA
   {
     name: "BALISTE-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -339,7 +339,7 @@ const portesData: PorteData[] = [
   // 16. BARDANE 1
   {
     name: "BARDANE 1",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle modèle 1.",
@@ -358,7 +358,7 @@ const portesData: PorteData[] = [
   // 17. BARDANE 2
   {
     name: "BARDANE 2",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle modèle 2.",
@@ -377,7 +377,7 @@ const portesData: PorteData[] = [
   // 18. BARDANE 3
   {
     name: "BARDANE 3",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle modèle 3.",
@@ -415,7 +415,7 @@ const portesData: PorteData[] = [
   // 20. BELAIR
   {
     name: "BELAIR",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle avec élégance simple.",
@@ -530,7 +530,7 @@ const portesData: PorteData[] = [
   // 26. CADIX
   {
     name: "CADIX",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle au style méditerranéen.",
@@ -587,7 +587,7 @@ const portesData: PorteData[] = [
   // 29. CAPARIS SV1
   {
     name: "CAPARIS SV1",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle variante SV1.",
@@ -623,12 +623,11 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   // 31-50 suivent le même modèle...
-  // Je continue avec les portes importantes manquantes
 
   // 31. CARVI
   {
     name: "CARVI",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle avec simplicité élégante.",
@@ -647,7 +646,7 @@ const portesData: PorteData[] = [
   // 32. CARVI-B
   {
     name: "CARVI-B",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle variante B.",
@@ -666,7 +665,7 @@ const portesData: PorteData[] = [
   // 33. CATANE
   {
     name: "CATANE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
     description: "Porte d'entrée acier traditionnelle au charme italien.",
@@ -685,7 +684,7 @@ const portesData: PorteData[] = [
   // 34. CEDRE
   {
     name: "CEDRE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle inspirée de la nature.",
@@ -723,7 +722,7 @@ const portesData: PorteData[] = [
   // 36. CLARESSE
   {
     name: "CLARESSE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine au design élégant.",
@@ -742,7 +741,7 @@ const portesData: PorteData[] = [
   // 37. CLARESSE-NOVA
   {
     name: "CLARESSE-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -761,7 +760,7 @@ const portesData: PorteData[] = [
   // 38. COPAL 60
   {
     name: "COPAL 60",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 60mm.",
@@ -780,7 +779,7 @@ const portesData: PorteData[] = [
   // 39. CORAIL
   {
     name: "CORAIL",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine aux lignes fluides.",
@@ -799,7 +798,7 @@ const portesData: PorteData[] = [
   // 40. CORAIL-NOVA
   {
     name: "CORAIL-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -1159,7 +1158,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "GAVI 60",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine 60mm épurée.",
@@ -1231,7 +1230,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "HIRONDELLE 1",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
     description: "Porte d'entrée acier traditionnelle version 1.",
@@ -1249,7 +1248,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "HIRONDELLE 2",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
     description: "Porte d'entrée acier traditionnelle version 2.",
@@ -1267,7 +1266,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "HIRONDELLE 3",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
     description: "Porte d'entrée acier traditionnelle version 3.",
@@ -1321,7 +1320,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "INTERLUDE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine musicale et élégante.",
@@ -1339,7 +1338,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "INTERLUDE-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine version Nova modernisée.",
@@ -1375,7 +1374,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "IRIS",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle florale et colorée.",
@@ -1411,7 +1410,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "JEANNE 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm classique et noble.",
@@ -1447,7 +1446,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "LAMPARO",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine lumineuse.",
@@ -1465,7 +1464,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "LAMPARO-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine version Nova illuminée.",
@@ -1483,7 +1482,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "LEONIE 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm féminine et délicate.",
@@ -1519,7 +1518,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "LIMIA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
     description: "Porte d'entrée acier contemporaine au design aquatique.",
@@ -1537,7 +1536,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "LOFT",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine style industriel.",
@@ -1555,7 +1554,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "LORRIS",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle du Val de Loire.",
@@ -1609,7 +1608,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "MAKAIRE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine inspirée du marlin.",
@@ -1627,7 +1626,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "MAKAIRE-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine version Nova marine.",
@@ -1681,7 +1680,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "MALAGA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle andalouse.",
@@ -1771,7 +1770,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "MELISSE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle au charme doux.",
@@ -1898,7 +1897,7 @@ const portesData: PorteData[] = [
 
    {
     name: "MOSTELLE 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm au design exclusif.",
@@ -1916,7 +1915,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "MOTTA 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm élégante.",
@@ -2132,7 +2131,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PANGA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine au design affirmé.",
@@ -2150,7 +2149,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PANGA-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -2167,7 +2166,6 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   // Portes 101-153 suivent...
-  // Je continue avec les dernières portes essentielles
 
   {
     name: "PARTINOX 80",
@@ -2207,7 +2205,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PHOCEA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine au style méditerranéen.",
@@ -2225,7 +2223,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PHOCEA-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -2243,7 +2241,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PICAREL",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine au design léger.",
@@ -2261,7 +2259,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PICAREL-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -2279,7 +2277,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "PRELE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle naturelle.",
@@ -2298,7 +2296,7 @@ const portesData: PorteData[] = [
   // Portes S à Z (120-153)
   {
     name: "SALINA 60",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 60mm au style salin.",
@@ -2316,7 +2314,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "SANARY",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "BOIS",
     seller: "SWAO",
     description: "Porte d'entrée bois traditionnelle au charme provençal.",
@@ -2334,7 +2332,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "SERAPHINE 80",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium traditionnelle 80mm élégante.",
@@ -2352,7 +2350,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "SERIOLE",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine au design marin.",
@@ -2370,7 +2368,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "SERIOLE-NOVA",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
     description: "Porte d'entrée aluminium contemporaine collection Nova.",
@@ -2406,7 +2404,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "SILENE 1",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle modèle 1.",
@@ -2424,7 +2422,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "SILENE 2",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
     description: "Porte d'entrée PVC traditionnelle modèle 2.",
