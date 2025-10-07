@@ -132,7 +132,7 @@ const PorteDetailPage = () => {
         <Button
           onClick={() => router.back()}
           variant="ghost"
-          className="mb-2 -ml-2 text-gray-600 hover:text-gray-900"
+          className="mb-1 mt-1 text-gray-600 hover:text-gray-900"
         >
           <ArrowLeft size={18} className="mr-2" />
           Retour
@@ -259,7 +259,7 @@ const PorteDetailPage = () => {
                 {activeTab === 'caracteristiques' && (
                   <div className="space-y-4">
                     {/* Caractéristiques principales */}
-                    <div className="grid gap-3">
+                    <div className="grid grid-cols-2 gap-3">
                       {porte.features.map((feature, index) => (
                         <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 border">
                           <CheckCircle2 size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
