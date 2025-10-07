@@ -73,7 +73,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
           {/* Contenu */}
           <div className="space-y-3 p-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
                 {product.name}
               </h3>
               {product.rating && (
