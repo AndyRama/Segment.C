@@ -109,7 +109,7 @@ const PorteDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white lg:-mt-12 -mt-8">
+    <div className="min-h-screen bg-white -mt-8 lg:-mt-12 ">
       {/* Breadcrumb */}
       <div className="border-b bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 py-3">
