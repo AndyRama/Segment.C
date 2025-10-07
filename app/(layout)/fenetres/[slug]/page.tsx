@@ -203,7 +203,7 @@ const FenetreDetailPage = () => {
                   {fenetre.name}
                 </Typography>
                 {fenetre.rating && (
-                  <div className="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-200">
+                  <div className="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-200 rounded-md">
                     <Star size={16} className="fill-amber-400 text-amber-400" />
                     <span className="text-sm font-semibold text-amber-700">{fenetre.rating}</span>
                   </div>
