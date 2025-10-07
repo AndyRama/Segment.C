@@ -71,7 +71,7 @@ const PorteDetailPage = () => {
         } else {
           setPorte(foundPorte);
         }
-      } catch (err) {
+      } catch {
         setError("Erreur lors du chargement du produit");
       } finally {
         setLoading(false);
@@ -84,10 +84,11 @@ const PorteDetailPage = () => {
   }, [params.slug]);
 
   const getPerformanceIcon = (feature: string) => {
-    if (feature.toLowerCase().includes('vitrage') || feature.toLowerCase().includes('isolation')) return Thermometer;
-    if (feature.toLowerCase().includes('sécurisé') || feature.toLowerCase().includes('anti-effraction') || feature.toLowerCase().includes('sécurité')) return Lock;
-    if (feature.toLowerCase().includes('design') || feature.toLowerCase().includes('esthétique')) return Shield;
-    if (feature.toLowerCase().includes('phonique') || feature.toLowerCase().includes('acoustique')) return Volume2;
+    const lowerFeature = feature.toLowerCase();
+    if (lowerFeature.includes('vitrage') || lowerFeature.includes('isolation')) return Thermometer;
+    if (lowerFeature.includes('sécurisé') || lowerFeature.includes('anti-effraction') || lowerFeature.includes('sécurité')) return Lock;
+    if (lowerFeature.includes('design') || lowerFeature.includes('esthétique')) return Shield;
+    if (lowerFeature.includes('phonique') || lowerFeature.includes('acoustique')) return Volume2;
     return Shield;
   };
 
@@ -103,7 +104,7 @@ const PorteDetailPage = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4">
         <Typography variant="h2" className="text-2xl text-muted-foreground">
-          {error || "Porte non trouvée"}
+          {error ?? "Porte non trouvée"}
         </Typography>
         <Button onClick={() => router.push('/portes')} variant="outline">
           <ArrowLeft size={16} className="mr-2" />
