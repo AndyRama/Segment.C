@@ -33,14 +33,9 @@ type PorteSectionProps = {
   className?: string;
 }
 
-// Fonction pour créer un slug à partir du nom du produit
+// Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
-  return name
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Enlever les accents
-    .replace(/[^a-z0-9]+/g, "-") // Remplacer les caractères spéciaux par des tirets
-    .replace(/^-+|-+$/g, ""); // Enlever les tirets en début et fin
+  return name.toLowerCase().replace(/\s+/g, '-');
 };
 
 const PorteSection = ({ className }: PorteSectionProps) => {
