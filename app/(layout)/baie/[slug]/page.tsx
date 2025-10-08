@@ -49,7 +49,6 @@ const createSlug = (name: string): string => {
 };
 
 const getCategoryLabel = (category: string) => {
-  if (category === 'FENETRE') return 'Fenêtre';
   if (category === 'BAIE_VITREE') return 'Baie vitrée';
   return category;
 };
