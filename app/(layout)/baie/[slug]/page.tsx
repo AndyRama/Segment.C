@@ -433,7 +433,7 @@ const FenetreDetailPage = () => {
                 Ajouter au panier
               </Button>
 
-              <div className="flex items-start gap-3 p-4 bg-gray-50 border rounded-md mt-1">
+              <div className="flex items-start gap-3 p-4 bg-gray-50 border rounded-md mt-0.5 mb-4">
                 <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
                 <div className="text-sm text-gray-700">
                   <p className="font-semibold mb-1">Garantie fabricant incluse</p>

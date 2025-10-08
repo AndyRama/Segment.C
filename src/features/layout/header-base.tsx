@@ -61,13 +61,15 @@ export function HeaderBase({ children }: PropsWithChildren) {
     [0, 0, 1],
   );
 
-  const topRoutes = [
+ const topRoutes = [
     { path: "/fenetres", label: "Fenêtre" },
     { path: "/portes", label: "Porte" },
+    { path: "/baie", label: "Baie vitrée" },
+    { path: "/volet", label: "Volet" },
     { path: "/garage", label: "Garage" },
-    { path: "/verandas", label: "Vérandas" },
-    { path: "/pergolas", label: "Pergolas" },
     { path: "/portails", label: "Portails" },
+    { path: "/pergolas", label: "Pergolas" },
+    { path: "/verandas", label: "Vérandas" },
     { path: "/posts", label: "Actualités" },
   ];
 

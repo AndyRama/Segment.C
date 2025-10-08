@@ -57,7 +57,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/fenetre"
+                    href="/fenetres"
                   >
                     Fenêtres 
                   </Typography>
@@ -65,7 +65,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/fenetre"
+                    href="/baie"
                   >
                     Baie-vitrée
                   </Typography>
