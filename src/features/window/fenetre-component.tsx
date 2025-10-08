@@ -53,7 +53,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     material: "all",
     seller: "all",
     openingType: "all",
-    category: "all",
+    category: "FENETRE",
   });
 
   useEffect(() => {
