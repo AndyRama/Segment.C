@@ -1,4 +1,4 @@
-import FenetresSection  from "@/features/window/fenetre-component";
+import FenetresSection  from "@/features/baie/baie-component";
 
 export default function Baie() {
   return (
