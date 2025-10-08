@@ -30,7 +30,7 @@ export const CardImage = ({ title, image, index, link }: CardImageProps) => {
           },
         }}
         viewport={{ once: true }}
-        className="group relative cursor-pointer overflow-hidden rounded-[10px]"
+        className="group relative cursor-pointer overflow-hidden rounded-md"
       >
         <Image
           src={image}
@@ -67,15 +67,14 @@ type CardGridProps = {
 
 export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
-    { title: "Baie vitrée", image: "/images/fenetre4.jpg", link: "/baie" },
     { title: "Fenêtres", image: "/images/fenetre1.jpg", link: "/fenetres" },
-    { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/verandas" },
-    { title: "Volets", image: "/images/fenetre5.jpg", link: "/volet" },
+    { title: "Baie vitrée", image: "/images/fenetre4.jpg", link: "/baie" },
     { title: "Portes", image: "/images/fenetre3.jpg", link: "/portes" },
+    { title: "Volets", image: "/images/fenetre5.jpg", link: "/volet" },
     { title: "Portails", image: "/images/fenetre2.jpg", link: "/portails" },
-    { title: "Pergolas", image: "/images/fenetre3.jpg", link: "/pergolas" },
     { title: "Portes-garage", image: "/images/fenetre5.jpg", link: "/garage" },
-    { title: "Menuiseries", image: "/images/fenetre2.jpg", link: "/#" },
+    { title: "Pergolas", image: "/images/fenetre3.jpg", link: "/pergolas" },
+    { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/verandas" },
   ];
  
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);

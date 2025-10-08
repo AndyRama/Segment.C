@@ -97,7 +97,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
 
   const categoryFilters = [
     { key: "all", label: "Toutes catégories" },
-    { key: "PORTE", label: "Porte" },
+    { key: "PORTE", label: "Porte de service" },
     { key: "PORTE_ENTRER", label: "Porte d'entrée" },
     { key: "PORTE_VITRAGE", label: "Porte vitrée" },
   ];
