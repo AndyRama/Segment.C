@@ -123,8 +123,8 @@ const FenetreDetailPage = () => {
               Accueil
             </Link>
             <span className="text-gray-400">/</span>
-            <Link href="/fenetres" className="text-gray-600 hover:text-primary transition-colors">
-              Fenêtres
+            <Link href="/baie" className="text-gray-600 hover:text-primary transition-colors">
+              Baie vitrée
             </Link>
             <span className="text-gray-400">/</span>
             <span className="text-gray-900 font-medium">{fenetre.name}</span>

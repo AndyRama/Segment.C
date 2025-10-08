@@ -34,7 +34,7 @@ type FenetreSectionProps = {
 }
 
 // Constantes en dehors du composant
-const ALLOWED_CATEGORIES = ["FENETRE", "BAIE_VITREE"];
+const ALLOWED_CATEGORIES = ["FENETRE"];
 const LIMIT = 40;
 
 // Fonction simple pour créer un slug : minuscules + tirets entre les mots
@@ -98,9 +98,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
   const totalPages = Math.ceil(total / LIMIT);
 
   const categoryFilters = [
-    { key: "all", label: "Toutes catégories" },
     { key: "FENETRE", label: "Fenêtre" },
-    { key: "BAIE_VITREE", label: "Baie vitrée" },
   ];
 
   const materialFilters = [
@@ -452,6 +450,28 @@ const FenetresFiltersSidebar = ({
 
       <div className="border-t pt-4">
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Type d'ouverture
+        </Typography>
+        <div className="space-y-2">
+          {openingTypeFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("openingType", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.openingType === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
           Matériaux
         </Typography>
         <div className="space-y-2">
@@ -472,27 +492,6 @@ const FenetresFiltersSidebar = ({
         </div>
       </div>   
 
-      <div className="border-t pt-4">
-        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-          Type d'ouverture
-        </Typography>
-        <div className="space-y-2">
-          {openingTypeFilters.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => onFilterChange("openingType", filter.key)}
-              className={cn(
-                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                activeFilters.openingType === filter.key
-                  ? "bg-primary text-white font-medium"
-                  : "hover:bg-gray-100"
-              )}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
-      </div>
 
       <div className="border-t pt-4">
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">

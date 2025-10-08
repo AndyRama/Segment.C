@@ -98,7 +98,6 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
   const totalPages = Math.ceil(total / LIMIT);
 
   const categoryFilters = [
-    { key: "all", label: "Toutes catégories" },
     { key: "BAIE_VITREE", label: "Baie vitrée" },
   ];
 
