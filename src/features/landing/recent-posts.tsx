@@ -23,7 +23,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
   const author = 'Segment-C';
 
   return (
-    <Card className="transition-all hover:shadow-xl overflow-hidden rounded-md py-0">
+    <Card className="transition-all hover:shadow-xl overflow-hidden rounded-md py-0 flex flex-col h-full">
       <CardHeader className="h-fit p-0 m-0">
         <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-t-md">
           <img
@@ -33,7 +33,7 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
           />
         </AspectRatio>
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="space-y-2 flex flex-col flex-grow">
         <Typography variant="p" className="!leading-tight">
           <span className="inline-block text-sm text-gray-500">
             <span className="relative inline-block">
@@ -46,8 +46,8 @@ export const RecentPostCard = ({ post }: { post: Post }) => {
           </span>
         </Typography>
         <CardTitle>{post.attributes.title}</CardTitle>
-        <CardDescription className="pb-4">{post.attributes.description}</CardDescription>
-        <div className="flex w-[250px] items-center justify-between">
+        <CardDescription className="pb-4 flex-grow">{post.attributes.description}</CardDescription>
+        <div className="flex w-[250px] items-center justify-between pt-2">
           <Link
             href={`/posts/${post.slug}`}
             className="rounded-[5px] border border-gray-600 px-4 text-green hover:border-green-500 xl:px-8"
@@ -64,12 +64,12 @@ export const RecentPosts = () => {
   const posts: Post[] = [
     {
       attributes: {
-        title: 'Comment entretenir votre pergola : guide complet bois et aluminium',
-        description: 'Découvrez tous nos conseils d\'experts pour entretenir votre pergola selon son matériau. Techniques de nettoyage, protection contre les intempéries, fréquence d\'entretien et produits recommandés pour prolonger la durée de vie de votre installation.',
+        title: 'Guide complet pour choisir et installer une pergola bioclimatique en 2025',
+        description: "Découvrez tout ce qu'il faut savoir sur les pergolas bioclimatiques - fonctionnement, avantages, prix, installation et entretien. Guide expert pour faire le bon choix.",
         date: '2024-12-01',
-        coverUrl: '/images/pergolas.jpg',
+        coverUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2970&auto=format&fit=crop',
       },
-      slug: '2024-12-01_Comment-entretenir-votre-pergola-guide-complet-bois-aluminium',
+      slug: '2025-01-22_Comment-entretenir-votre-pergola-guide-complet-bois-aluminium',
     },
     {
       attributes: {
