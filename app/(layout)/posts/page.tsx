@@ -7,18 +7,19 @@ import {
   LayoutHeader,
   LayoutTitle,
 } from "@/features/page/layout";
-import { PostCard } from "@/features/posts/post-card";
 import { getPosts, getPostsTags } from "@/features/posts/post-manager";
 import { SiteConfig } from "@/site-config";
 import type { PageParams } from "@/types/next";
-import { FileQuestion, ArrowRight } from "lucide-react";
+import { FileQuestion, Calendar, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { formatDate } from "@/lib/format/date";
 import { calculateReadingTime } from "@/features/posts/calculate-reading-time";
+import { RecentPosts } from "@/features/posts/recent-posts";
+import { FeaturedPosts } from "@/features/posts/featured-posts";
 
 export const metadata: Metadata = {
-  title: `${SiteConfig.title}'s Blog`,
+  title: `Blog de ${SiteConfig.title}`,
   description: SiteConfig.description,
   keywords: ["posts"],
   openGraph: {
@@ -33,10 +34,10 @@ export default async function RoutePage(props: PageParams) {
   const tags = await getPostsTags();
   const posts = await getPosts();
   
-  // Séparer les articles : 1 hero + 3 en sidebar + le reste
-  const [latestPost, ...remainingPosts] = posts;
-  const sidebarPosts = remainingPosts.slice(0, 3);
-  const gridPosts = remainingPosts.slice(3);
+  // Séparer les articles : 1 hero + 3 featured + le reste recent
+  const [heroPost, ...remainingPosts] = posts;
+  const featuredPosts = remainingPosts.slice(0, 3);
+  const recentPosts = remainingPosts.slice(3);
 
   return (
     <Layout>
@@ -44,7 +45,7 @@ export default async function RoutePage(props: PageParams) {
         <LayoutTitle>Blog</LayoutTitle>
       </LayoutHeader>
       
-      <LayoutContent className="flex flex-wrap gap-2">
+      <LayoutContent className="flex flex-wrap gap-2 mb-8">
         {tags.map((tag) => (
           <Link
             key={tag}
@@ -52,7 +53,9 @@ export default async function RoutePage(props: PageParams) {
               pathname: `/posts/categories/${tag}`,
             }}
           >
-            <Badge variant="outline">{tag}</Badge>
+            <Badge variant="outline" className="capitalize">
+              {tag}
+            </Badge>
           </Link>
         ))}
       </LayoutContent>
@@ -69,101 +72,72 @@ export default async function RoutePage(props: PageParams) {
         </LayoutContent>
       ) : (
         <>
-          {/* Hero Section - Article principal à gauche + 3 articles à droite */}
-          <LayoutContent>
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-              {/* Article principal (Hero) - 2 colonnes sur desktop */}
-              <div className="lg:col-span-2">
-                <Link 
-                  href={`/posts/${latestPost.slug}`}
-                  className="group block h-full"
-                >
-                  <article className="relative h-full overflow-hidden rounded-lg">
-                    <div
-                      className="h-full min-h-[500px] w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105 lg:min-h-[600px]"
-                      style={{
-                        backgroundImage: `url(${latestPost.attributes.coverUrl})`,
-                      }}
-                    >
-                      <div className="flex h-full w-full flex-col justify-end bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 lg:p-8">
-                        <div className="flex flex-col gap-3">
-                          {latestPost.attributes.status === "draft" && (
-                            <Badge className="w-fit" variant="secondary">
-                              Draft
-                            </Badge>
-                          )}
-                          <Typography 
-                            variant="h1" 
-                            className="text-2xl font-bold text-white drop-shadow-lg lg:text-4xl"
-                          >
-                            {latestPost.attributes.title}
-                          </Typography>
-                          <Typography className="text-sm text-white/90 drop-shadow-md lg:text-base">
-                            {latestPost.attributes.description}
-                          </Typography>
-                          <div className="flex items-center gap-4 text-sm text-white/80">
-                            <span>{formatDate(new Date(latestPost.attributes.date))}</span>
-                            <span>·</span>
-                            <span>{calculateReadingTime(latestPost.content)} min de lecture</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-white font-medium">
-                            Lire l'article
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              </div>
-
-              {/* 3 articles en colonne à droite - 1 colonne sur desktop */}
-              <div className="flex flex-col gap-6">
-                {sidebarPosts.map((post) => (
-                  <Link 
-                    key={post.slug}
-                    href={`/posts/${post.slug}`}
-                    className="group block"
+          {/* Hero Article - Grand article en haut */}
+          <LayoutContent className="mb-16">
+            <Link 
+              href={`/posts/${heroPost.slug}`}
+              className="group block overflow-hidden rounded-xl"
+            >
+              <article className="relative">
+                {/* Image de couverture */}
+                <div className="relative aspect-[2/1] w-full overflow-hidden">
+                  <div
+                    className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    style={{
+                      backgroundImage: `url(${heroPost.attributes.coverUrl})`,
+                    }}
+                  />
+                </div>
+                
+                {/* Contenu en dessous de l'image */}
+                <div className="mt-6 space-y-4">
+                  {/* Tag de catégorie */}
+                  {heroPost.attributes.keywords?.[0] && (
+                    <Badge variant="secondary" className="capitalize">
+                      {heroPost.attributes.keywords[0]}
+                    </Badge>
+                  )}
+                  
+                  {/* Titre */}
+                  <Typography 
+                    variant="h1" 
+                    className="text-3xl font-bold group-hover:text-primary transition-colors lg:text-5xl"
                   >
-                    <article className="flex h-full flex-col gap-3 rounded-lg border bg-card p-4 transition-shadow hover:shadow-lg">
-                      <div
-                        className="aspect-video w-full rounded-md bg-cover bg-center"
-                        style={{
-                          backgroundImage: `url(${post.attributes.coverUrl})`,
-                        }}
-                      />
-                      {post.attributes.status === "draft" && (
-                        <Badge className="w-fit" variant="secondary">
-                          Draft
-                        </Badge>
-                      )}
-                      <Typography 
-                        variant="h3" 
-                        className="line-clamp-2 text-lg font-semibold group-hover:text-primary"
-                      >
-                        {post.attributes.title}
-                      </Typography>
-                      <Typography className="line-clamp-2 text-sm text-muted-foreground">
-                        {post.attributes.description}
-                      </Typography>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span>{formatDate(new Date(post.attributes.date))}</span>
-                        <span>·</span>
-                        <span>{calculateReadingTime(post.content)} min</span>
-                      </div>
-                    </article>
-                  </Link>
-                ))}
-              </div>
-            </div>
+                    {heroPost.attributes.title}
+                  </Typography>
+                  
+                  {/* Description */}
+                  <Typography className="text-base text-muted-foreground lg:text-lg">
+                    {heroPost.attributes.description}
+                  </Typography>
+                  
+                  {/* Métadonnées */}
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{formatDate(new Date(heroPost.attributes.date))}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{calculateReadingTime(heroPost.content)} min de lecture</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </Link>
           </LayoutContent>
 
-          {/* Grille des autres articles */}
-          {gridPosts.length > 0 && (
-            <LayoutContent className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {gridPosts.map((post) => (
-                <PostCard key={post.slug} post={post} />
-              ))}
+          {/* Featured Posts - Articles en vedette (3 colonnes) */}
+          {featuredPosts.length > 0 && (
+            <LayoutContent className="mb-16">
+              <FeaturedPosts posts={featuredPosts} />
+            </LayoutContent>
+          )}
+
+          {/* Recent Posts - Articles récents (grille) */}
+          {recentPosts.length > 0 && (
+            <LayoutContent>
+              <RecentPosts posts={recentPosts} />
             </LayoutContent>
           )}
         </>
