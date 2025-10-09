@@ -76,13 +76,13 @@ export default async function RoutePage(props: PageParams) {
           <LayoutContent className="mb-16">
             <Link 
               href={`/posts/${heroPost.slug}`}
-              className="group block overflow-hidden rounded-xl"
+              className="group block overflow-hidden rounded-md"
             >
               <article className="relative">
                 {/* Image de couverture */}
                 <div className="relative aspect-[2/1] w-full overflow-hidden">
                   <div
-                    className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full max-w-7xl  bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{
                       backgroundImage: `url(${heroPost.attributes.coverUrl})`,
                     }}

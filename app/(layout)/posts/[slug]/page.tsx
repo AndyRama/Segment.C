@@ -74,7 +74,7 @@ export default async function RoutePage(props: PostParams) {
 
   return (
     <Layout>
-      <LayoutContent className="max-w-4xl mx-auto">
+      <LayoutContent className="max-w-8xl mx-auto">
         <Link className={buttonVariants({ variant: "link" })} href="/posts">
           <ArrowLeft size={16} /> Retour
         </Link>
