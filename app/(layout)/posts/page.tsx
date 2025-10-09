@@ -92,7 +92,7 @@ export default async function RoutePage(props: PageParams) {
                 {/* Contenu en dessous de l'image */}
                 <div className="mt-6 space-y-4">
                   {/* Tag de catégorie */}
-                  {heroPost.attributes.keywords?.[0] && (
+                  {heroPost.attributes.keywords[0] && (
                     <Badge variant="secondary" className="capitalize">
                       {heroPost.attributes.keywords[0]}
                     </Badge>
