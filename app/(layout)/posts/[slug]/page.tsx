@@ -74,11 +74,12 @@ export default async function RoutePage(props: PostParams) {
 
   return (
     <Layout>
-      <LayoutContent>
+      <LayoutContent className="max-w-4xl mx-auto">
         <Link className={buttonVariants({ variant: "link" })} href="/posts">
-          <ArrowLeft size={16} /> Back
+          <ArrowLeft size={16} /> Retour
         </Link>
       </LayoutContent>
+      
       <LayoutHeader
         style={{
           backgroundImage: `url(${post.attributes.coverUrl})`,
@@ -97,18 +98,19 @@ export default async function RoutePage(props: PostParams) {
             {post.attributes.title}
           </LayoutTitle>
           <LayoutDescription className="drop-shadow-sm">
-            Published by {formatDate(new Date(post.attributes.date))} · Reading
-            time {calculateReadingTime(post.content)} minutes · Created by{" "}
+            Publié le {formatDate(new Date(post.attributes.date))} · {calculateReadingTime(post.content)} minutes de lecture · Créé par{" "}
             <Typography variant="link" as={Link} href={SiteConfig.team.website}>
               {SiteConfig.team.name}
             </Typography>
           </LayoutDescription>
         </div>
       </LayoutHeader>
-      <Separator />
-      <LayoutContent>
+      
+      <Separator className="my-8" />
+      
+      <LayoutContent className="max-w-4xl mx-auto">
         <ServerMdx
-          className="prose dark:prose-invert lg:prose-lg xl:prose-xl mb-8"
+          className="prose prose-lg dark:prose-invert xl:prose-xl mb-8"
           source={post.content}
         />
       </LayoutContent>
