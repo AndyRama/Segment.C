@@ -33,8 +33,10 @@ export default async function RoutePage(props: PageParams) {
   const tags = await getPostsTags();
   const posts = await getPosts();
   
-  // Séparer le dernier article des autres
-  const [latestPost, ...otherPosts] = posts;
+  // Séparer les articles : 1 hero + 3 en sidebar + le reste
+  const [latestPost, ...remainingPosts] = posts;
+  const sidebarPosts = remainingPosts.slice(0, 3);
+  const gridPosts = remainingPosts.slice(3);
 
   return (
     <Layout>
@@ -67,55 +69,99 @@ export default async function RoutePage(props: PageParams) {
         </LayoutContent>
       ) : (
         <>
-          {/* Hero - Dernier article */}
+          {/* Hero Section - Article principal à gauche + 3 articles à droite */}
           <LayoutContent>
-            <Link 
-              href={`/posts/${latestPost.slug}`}
-              className="group block"
-            >
-              <article className="relative overflow-hidden rounded-lg">
-                <div
-                  className="aspect-[21/9] w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url(${latestPost.attributes.coverUrl})`,
-                  }}
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+              {/* Article principal (Hero) - 2 colonnes sur desktop */}
+              <div className="lg:col-span-2">
+                <Link 
+                  href={`/posts/${latestPost.slug}`}
+                  className="group block h-full"
                 >
-                  <div className="flex h-full w-full flex-col justify-end bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 lg:p-12">
-                    <div className="flex flex-col gap-3">
-                      {latestPost.attributes.status === "draft" && (
+                  <article className="relative h-full overflow-hidden rounded-lg">
+                    <div
+                      className="h-full min-h-[500px] w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105 lg:min-h-[600px]"
+                      style={{
+                        backgroundImage: `url(${latestPost.attributes.coverUrl})`,
+                      }}
+                    >
+                      <div className="flex h-full w-full flex-col justify-end bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 lg:p-8">
+                        <div className="flex flex-col gap-3">
+                          {latestPost.attributes.status === "draft" && (
+                            <Badge className="w-fit" variant="secondary">
+                              Draft
+                            </Badge>
+                          )}
+                          <Typography 
+                            variant="h1" 
+                            className="text-2xl font-bold text-white drop-shadow-lg lg:text-4xl"
+                          >
+                            {latestPost.attributes.title}
+                          </Typography>
+                          <Typography className="text-sm text-white/90 drop-shadow-md lg:text-base">
+                            {latestPost.attributes.description}
+                          </Typography>
+                          <div className="flex items-center gap-4 text-sm text-white/80">
+                            <span>{formatDate(new Date(latestPost.attributes.date))}</span>
+                            <span>·</span>
+                            <span>{calculateReadingTime(latestPost.content)} min de lecture</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-white font-medium">
+                            Lire l'article
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              </div>
+
+              {/* 3 articles en colonne à droite - 1 colonne sur desktop */}
+              <div className="flex flex-col gap-6">
+                {sidebarPosts.map((post) => (
+                  <Link 
+                    key={post.slug}
+                    href={`/posts/${post.slug}`}
+                    className="group block"
+                  >
+                    <article className="flex h-full flex-col gap-3 rounded-lg border bg-card p-4 transition-shadow hover:shadow-lg">
+                      <div
+                        className="aspect-video w-full rounded-md bg-cover bg-center"
+                        style={{
+                          backgroundImage: `url(${post.attributes.coverUrl})`,
+                        }}
+                      />
+                      {post.attributes.status === "draft" && (
                         <Badge className="w-fit" variant="secondary">
                           Draft
                         </Badge>
                       )}
                       <Typography 
-                        variant="h1" 
-                        className="text-3xl font-bold text-white drop-shadow-lg lg:text-5xl"
+                        variant="h3" 
+                        className="line-clamp-2 text-lg font-semibold group-hover:text-primary"
                       >
-                        {latestPost.attributes.title}
+                        {post.attributes.title}
                       </Typography>
-                      <Typography className="text-base text-white/90 drop-shadow-md lg:text-lg">
-                        {latestPost.attributes.description}
+                      <Typography className="line-clamp-2 text-sm text-muted-foreground">
+                        {post.attributes.description}
                       </Typography>
-                      <div className="flex items-center gap-4 text-sm text-white/80">
-                        <span>{formatDate(new Date(latestPost.attributes.date))}</span>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span>{formatDate(new Date(post.attributes.date))}</span>
                         <span>·</span>
-                        <span>{calculateReadingTime(latestPost.content)} min de lecture</span>
+                        <span>{calculateReadingTime(post.content)} min</span>
                       </div>
-                      <div className="flex items-center gap-2 text-white font-medium">
-                        Lire l'article
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </Link>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </LayoutContent>
 
           {/* Grille des autres articles */}
-          {otherPosts.length > 0 && (
+          {gridPosts.length > 0 && (
             <LayoutContent className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {otherPosts.map((post) => (
+              {gridPosts.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </LayoutContent>
