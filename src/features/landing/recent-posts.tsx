@@ -69,7 +69,7 @@ export const RecentPosts = () => {
         date: '2024-12-01',
         coverUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2970&auto=format&fit=crop',
       },
-      slug: '2025-01-22_Comment-entretenir-votre-pergola-guide-complet-bois-aluminium',
+      slug: 'Comment-entretenir-votre-pergola-guide-complet-bois-aluminium',
     },
     {
       attributes: {
