@@ -45,7 +45,7 @@ export function RecentPosts({ posts, title = "Articles récents" }: RecentPostsP
               </div>
               
               {/* Badge de catégorie */}
-              {post.attributes.keywords?.[0] && (
+              {post.attributes.keywords[0] && (
                 <Badge variant="secondary" className="capitalize">
                   {post.attributes.keywords[0]}
                 </Badge>

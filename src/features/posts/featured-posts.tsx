@@ -46,7 +46,7 @@ export function FeaturedPosts({ posts, title = "Articles en vedette" }: Featured
               
               {/* Badges */}
               <div className="flex items-center gap-2">
-                {post.attributes.keywords?.[0] && (
+                {post.attributes.keywords[0] && (
                   <Badge variant="secondary" className="capitalize">
                     {post.attributes.keywords[0]}
                   </Badge>
