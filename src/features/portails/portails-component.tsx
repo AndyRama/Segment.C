@@ -1,30 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { X, Star, Shield, Phone, Mail, MapPin, Zap, Lock, Home, Fence } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { X, Star, Shield, Home, Lock, Filter, Zap, Fence } from "lucide-react";
 
-type PortailProps = {
-  id: number;
+type Product = {
+  id: string;
   name: string;
   category: string;
-  type: string;
   material: string;
-  motorisation: string;
   image: string;
   colors: string[];
   features: string[];
   description: string;
+  dimensions: string;
+  epaisseur: string;
+  performance: string;
   priceRange: string;
   rating: number;
-  dimensions: string;
-  fournisseur: string;
+  seller?: string;
   isPopular?: boolean;
   isNew?: boolean;
 }
@@ -33,457 +33,588 @@ type PortailsSectionProps = {
   className?: string;
 }
 
+// Constantes en dehors du composant
+const ALLOWED_CATEGORIES = ["PORTAIL", "PORTILLON", "CLOTURE", "GARDE_CORPS"];
+const LIMIT = 40;
+
+// Fonction simple pour créer un slug : minuscules + tirets entre les mots
+const createSlug = (name: string): string => {
+  return name.toLowerCase().replace(/\s+/g, '-');
+};
+
 const PortailsSection = ({ className }: PortailsSectionProps) => {
-  const [selectedPortail, setSelectedPortail] = useState<PortailProps | null>(null);
-  const [visibleCount, setVisibleCount] = useState(9);
+  const router = useRouter();
+  const [portails, setPortails] = useState<Product[]>([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [filters, setFilters] = useState({
-    category: "all",
-    type: "all",
     material: "all",
-    motorisation: "all"
+    seller: "all",
+    category: "all",
   });
 
-  const portails: PortailProps[] = [
-    // Portails Battants
-    {
-      id: 1,
-      name: "PORTAIL BATTANT ALU DESIGN",
-      category: "portail",
-      type: "battant",
-      material: "aluminium",
-      motorisation: "manuel",
-      image: "/images/portail-battant-alu.jpg",
-      colors: ["Gris anthracite", "Blanc", "Noir mat", "Bronze"],
-      features: ["Lames horizontales", "Design contemporain", "Résistance corrosion", "Poteaux inclus"],
-      description: "Portail battant aluminium au design contemporain avec lames horizontales. Élégance et robustesse pour sécuriser votre entrée.",
-      priceRange: "1200€ - 1800€",
-      rating: 4.7,
-      dimensions: "300x150 à 400x180 cm",
-      fournisseur: "Orial",
-      isPopular: true
-    },
-    {
-      id: 2,
-      name: "PORTAIL BATTANT ALU MOTORISÉ",
-      category: "portail",
-      type: "battant",
-      material: "aluminium",
-      motorisation: "electrique",
-      image: "/images/portail-battant-motorise.jpg",
-      colors: ["Anthracite", "Blanc", "Gris", "Bronze"],
-      features: ["Motorisation à vérins", "Télécommande", "Feux clignotants", "Photocellules sécurité"],
-      description: "Portail battant aluminium avec motorisation électrique. Confort et sécurité pour un accès automatisé à votre propriété.",
-      priceRange: "2000€ - 2800€",
-      rating: 4.8,
-      dimensions: "300x150 à 400x180 cm",
-      fournisseur: "Orial",
-      isPopular: true
-    },
-    {
-      id: 3,
-      name: "PORTAIL BATTANT ACIER TRADITIONNEL",
-      category: "portail",
-      type: "battant",
-      material: "acier",
-      motorisation: "manuel",
-      image: "/images/portail-battant-acier.jpg",
-      colors: ["Vert RAL 6005", "Gris anthracite", "Noir", "Blanc"],
-      features: ["Barreaudage vertical", "Style classique", "Robustesse acier", "Serrurerie française"],
-      description: "Portail battant acier au style traditionnel français. Authentique et robuste pour les propriétés de caractère.",
-      priceRange: "800€ - 1300€",
-      rating: 4.5,
-      dimensions: "300x150 à 400x200 cm",
-      fournisseur: "Orial"
-    },
-    // Portails Coulissants
-    {
-      id: 4,
-      name: "PORTAIL COULISSANT ALU",
-      category: "portail",
-      type: "coulissant",
-      material: "aluminium",
-      motorisation: "manuel",
-      image: "/images/portail-coulissant-alu.jpg",
-      colors: ["Gris anthracite", "Blanc", "Bronze"],
-      features: ["Rail de guidage", "Gain de place", "Lames pleines", "Pose simplifiée"],
-      description: "Portail coulissant aluminium pour optimiser l'espace devant votre entrée. Solution pratique et esthétique.",
-      priceRange: "1400€ - 2000€",
-      rating: 4.6,
-      dimensions: "350x150 à 500x180 cm",
-      fournisseur: "Orial"
-    },
-    {
-      id: 5,
-      name: "PORTAIL COULISSANT MOTORISÉ",
-      category: "portail",
-      type: "coulissant",
-      material: "aluminium",
-      motorisation: "electrique",
-      image: "/images/portail-coulissant-motorise.jpg",
-      colors: ["Anthracite", "Blanc", "Gris", "Noir"],
-      features: ["Motorisation autoportée", "Télécommande programmable", "Arrêt d'urgence", "Éclairage intégré"],
-      description: "Portail coulissant aluminium avec motorisation autoportée. Technologie avancée pour un fonctionnement optimal.",
-      priceRange: "2200€ - 3200€",
-      rating: 4.9,
-      dimensions: "350x150 à 500x200 cm",
-      fournisseur: "Orial",
-      isNew: true
-    },
-    // Portillons
-    {
-      id: 6,
-      name: "PORTILLON ASSORTI ALU",
-      category: "portillon",
-      type: "battant",
-      material: "aluminium",
-      motorisation: "manuel",
-      image: "/images/portillon-alu.jpg",
-      colors: ["Gris anthracite", "Blanc", "Bronze", "Noir"],
-      features: ["Assorti au portail", "Serrure intégrée", "Ferme-porte automatique", "Réglage facile"],
-      description: "Portillon aluminium assorti à nos gammes de portails. Harmonie esthétique parfaite pour votre entrée piétonne.",
-      priceRange: "300€ - 500€",
-      rating: 4.4,
-      dimensions: "100x150 à 120x180 cm",
-      fournisseur: "Orial"
-    },
-    {
-      id: 7,
-      name: "PORTILLON ACIER CLASSIQUE",
-      category: "portillon",
-      type: "battant",
-      material: "acier",
-      motorisation: "manuel",
-      image: "/images/portillon-acier.jpg",
-      colors: ["Vert RAL 6005", "Gris", "Noir", "Blanc"],
-      features: ["Barreaux verticaux", "Serrure 3 points", "Paumelles renforcées", "Style traditionnel"],
-      description: "Portillon acier au design classique français. Robustesse et authenticité pour l'accès piéton de votre propriété.",
-      priceRange: "200€ - 400€",
-      rating: 4.3,
-      dimensions: "100x150 à 120x200 cm",
-      fournisseur: "Orial"
-    },
-    // Clôtures
-    {
-      id: 8,
-      name: "CLÔTURE ALU LAMES HORIZONTALES",
-      category: "cloture",
-      type: "panneaux",
-      material: "aluminium",
-      motorisation: "manuel",
-      image: "/images/cloture-alu-lames.jpg",
-      colors: ["Gris anthracite", "Blanc", "Bronze"],
-      features: ["Lames horizontales", "Occultation totale", "Poteaux carrés", "Fixation invisibles"],
-      description: "Clôture aluminium à lames horizontales pour délimiter et occulter votre propriété. Design moderne et entretien minimal.",
-      priceRange: "80€ - 120€ /ml",
-      rating: 4.6,
-      dimensions: "Hauteur 120 à 200 cm",
-      fournisseur: "Orial",
-      isPopular: true
-    },
-    {
-      id: 9,
-      name: "CLÔTURE GRILLAGE RIGIDE",
-      category: "cloture",
-      type: "grillage",
-      material: "acier",
-      motorisation: "manuel",
-      image: "/images/cloture-grillage-rigide.jpg",
-      colors: ["Vert RAL 6005", "Gris anthracite", "Blanc"],
-      features: ["Panneaux rigides", "Mailles soudées", "Poteaux galvanisés", "Économique"],
-      description: "Clôture grillage rigide pour délimitation économique et efficace. Solution durable pour sécuriser votre terrain.",
-      priceRange: "35€ - 55€ /ml",
-      rating: 4.2,
-      dimensions: "Hauteur 100 à 200 cm",
-      fournisseur: "Orial"
-    },
-    // Garde-corps
-    {
-      id: 10,
-      name: "GARDE-CORPS ALU TERRASSE",
-      category: "garde-corps",
-      type: "terrasse",
-      material: "aluminium",
-      motorisation: "manuel",
-      image: "/images/garde-corps-terrasse.jpg",
-      colors: ["Gris anthracite", "Blanc", "Bronze"],
-      features: ["Barres horizontales", "Fixation au sol", "Normes NF", "Design épuré"],
-      description: "Garde-corps aluminium pour terrasse conforme aux normes de sécurité. Élégance et protection pour vos espaces extérieurs.",
-      priceRange: "120€ - 180€ /ml",
-      rating: 4.7,
-      dimensions: "Hauteur 110 cm standard",
-      fournisseur: "Orial"
-    },
-    {
-      id: 11,
-      name: "GARDE-CORPS ESCALIER DESIGN",
-      category: "garde-corps",
-      type: "escalier",
-      material: "aluminium",
-      motorisation: "manuel",
-      image: "/images/garde-corps-escalier.jpg",
-      colors: ["Anthracite", "Blanc", "Noir mat"],
-      features: ["Fixation latérale", "Adaptation sur mesure", "Barres verticales", "Finition soignée"],
-      description: "Garde-corps aluminium pour escalier extérieur. Protection et esthétique pour sécuriser vos accès en pente.",
-      priceRange: "100€ - 150€ /ml",
-      rating: 4.5,
-      dimensions: "Hauteur 100 cm, sur mesure",
-      fournisseur: "Orial"
-    },
-    {
-      id: 12,
-      name: "GARDE-CORPS VERRE MODERNE",
-      category: "garde-corps",
-      type: "verre",
-      material: "verre-aluminium",
-      motorisation: "manuel",
-      image: "/images/garde-corps-verre.jpg",
-      colors: ["Structure anthracite", "Structure blanche"],
-      features: ["Verre sécurit", "Vue dégagée", "Design contemporain", "Fixations discrètes"],
-      description: "Garde-corps verre et aluminium pour un design ultra-moderne. Transparence et élégance pour vos terrasses contemporaines.",
-      priceRange: "200€ - 300€ /ml",
-      rating: 4.8,
-      dimensions: "Hauteur 110 cm, verre 8mm",
-      fournisseur: "Orial",
-      isNew: true
-    }
-  ];
+  useEffect(() => {
+    const fetchPortails = async () => {
+      setLoading(true);
+      try {
+        const offset = (currentPage - 1) * LIMIT;
+        const params = new URLSearchParams({
+          limit: LIMIT.toString(),
+          offset: offset.toString(),
+          type: 'PORTAIL',
+          ...(filters.category !== 'all' && { category: filters.category }),
+          ...(filters.material !== 'all' && { material: filters.material }),
+          ...(filters.seller !== 'all' && { seller: filters.seller }),
+        });
+
+        const response = await fetch(`/api/products?${params}`);
+        if (!response.ok) throw new Error('Failed to fetch portails');
+        
+        const data = await response.json();
+        
+        const filteredProducts = data.products.filter((product: Product) => 
+          ALLOWED_CATEGORIES.includes(product.category)
+        );
+        
+        setPortails(filteredProducts);
+        setTotal(data.total);
+        
+        // Scroll to top when page changes
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (_error) {
+        // Error handled silently
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchPortails();
+  }, [filters, currentPage]);
+
+  const totalPages = Math.ceil(total / LIMIT);
 
   const categoryFilters = [
     { key: "all", label: "Tous produits" },
-    { key: "portail", label: "Portails" },
-    { key: "portillon", label: "Portillons" },
-    { key: "cloture", label: "Clôtures" },
-    { key: "garde-corps", label: "Garde-corps" }
-  ];
-
-  const typeFilters = [
-    { key: "all", label: "Tous types" },
-    { key: "battant", label: "Battant" },
-    { key: "coulissant", label: "Coulissant" },
-    { key: "panneaux", label: "Panneaux" },
-    { key: "grillage", label: "Grillage" },
-    { key: "terrasse", label: "Terrasse" },
-    { key: "escalier", label: "Escalier" },
-    { key: "verre", label: "Verre" }
+    { key: "PORTAIL", label: "Portails" },
+    { key: "PORTILLON", label: "Portillons" },
+    { key: "CLOTURE", label: "Clôtures" },
+    { key: "GARDE_CORPS", label: "Garde-corps" },
   ];
 
   const materialFilters = [
     { key: "all", label: "Tous matériaux" },
-    { key: "aluminium", label: "Aluminium" },
-    { key: "acier", label: "Acier" },
-    { key: "verre-aluminium", label: "Verre + Aluminium" }
+    { key: "ALUMINIUM", label: "Aluminium" },
+    { key: "ACIER", label: "Acier" },
+    { key: "PVC", label: "PVC" },
+    { key: "BOIS", label: "Bois" },
+    { key: "VERRE_ALUMINIUM", label: "Verre + Aluminium" },
+    { key: "MIXTE", label: "Mixte" },
   ];
 
-  const motorisationFilters = [
-    { key: "all", label: "Toutes motorisations" },
-    { key: "manuel", label: "Manuel" },
-    { key: "electrique", label: "Électrique" }
+  const sellerFilters = [
+    { key: "all", label: "Tous fournisseurs" },
+    { key: "ORIAL", label: "Orial" },
+    { key: "SYBAIE", label: "Sy Baie" },
+    { key: "C2R", label: "C2R" },
+    { key: "SWAO", label: "SWAO" },
   ];
-
-  const filteredPortails = portails.filter(portail => {
-    return (filters.category === "all" || portail.category === filters.category) &&
-           (filters.type === "all" || portail.type === filters.type) &&
-           (filters.material === "all" || portail.material === filters.material) &&
-           (filters.motorisation === "all" || portail.motorisation === filters.motorisation);
-  });
-
-  const handleShowMore = () => {
-    setVisibleCount(prev => Math.min(prev + 3, filteredPortails.length));
-  };
 
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters(prev => ({ ...prev, [filterType]: value }));
-    setVisibleCount(9);
+    setCurrentPage(1);
+  };
+
+  const handlePortailClick = (portail: Product) => {
+    const slug = createSlug(portail.name);
+    router.push(`/portails/${slug}`);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch(category) {
+      case 'PORTAIL': return 'Portail';
+      case 'PORTILLON': return 'Portillon';
+      case 'CLOTURE': return 'Clôture';
+      case 'GARDE_CORPS': return 'Garde-corps';
+      default: return category;
+    }
   };
 
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
       <PortailsHeader />
-      <PortailsFilters 
-        categoryFilters={categoryFilters}
-        typeFilters={typeFilters}
-        materialFilters={materialFilters}
-        motorisationFilters={motorisationFilters}
-        activeFilters={filters}
-        onFilterChange={handleFilterChange}
-      />
-      <PortailsGrid 
-        portails={filteredPortails.slice(0, visibleCount)}
-        onPortailClick={setSelectedPortail}
-      />
-      
-      {visibleCount < filteredPortails.length && (
-        <div className="mt-8 flex justify-center">
-          <Button
-            onClick={handleShowMore}
-            className="bg-primary text-white hover:bg-primary/90"
-          >
-            Voir plus de produits
-          </Button>
-        </div>
-      )}
 
-      {selectedPortail && (
-        <PortailModal 
-          portail={selectedPortail}
-          onClose={() => setSelectedPortail(null)}
-        />
-      )}
+      <div className="flex gap-8 mt-8">
+        <aside className="hidden lg:block w-64 flex-shrink-0">
+          <PortailsFiltersSidebar
+            categoryFilters={categoryFilters}
+            materialFilters={materialFilters}
+            sellerFilters={sellerFilters}
+            activeFilters={filters}
+            onFilterChange={handleFilterChange}
+          />
+        </aside>
+
+        <div className="flex-1">
+          <div className="lg:hidden mb-4">
+            <Button
+              onClick={() => setShowMobileFilters(true)}
+              variant="outline"
+              className="w-full"
+            >
+              <Filter size={16} className="mr-2" />
+              Filtres ({Object.values(filters).filter(f => f !== 'all').length})
+            </Button>
+          </div>
+
+          {loading ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+          ) : (
+            <>
+              <PortailsGrid
+                portails={portails}
+                onPortailClick={handlePortailClick}
+                getCategoryLabel={getCategoryLabel}
+              />
+
+              {totalPages > 1 && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              )}
+
+              <div className="mt-8 text-center">
+                <Typography variant="small" className="text-muted-foreground">
+                  Page {currentPage} sur {totalPages} • {total} produits disponibles
+                </Typography>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <MobileFiltersModal
+        isOpen={showMobileFilters}
+        onClose={() => setShowMobileFilters(false)}
+        categoryFilters={categoryFilters}
+        materialFilters={materialFilters}
+        sellerFilters={sellerFilters}
+        activeFilters={filters}
+        onFilterChange={(filterType, value) => {
+          handleFilterChange(filterType, value);
+          setShowMobileFilters(false);
+        }}
+      />
     </section>
   );
 };
 
+const MobileFiltersModal = ({
+  isOpen,
+  onClose,
+  categoryFilters,
+  materialFilters,
+  sellerFilters,
+  activeFilters,
+  onFilterChange,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  categoryFilters: { key: string; label: string }[];
+  materialFilters: { key: string; label: string }[];
+  sellerFilters: { key: string; label: string }[];
+  activeFilters: { category: string; material: string; seller: string };
+  onFilterChange: (filterType: string, value: string) => void;
+}) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 lg:hidden">
+      <div className="w-full max-h-[80vh] overflow-y-auto rounded-t-2xl bg-white">
+        <div className="sticky top-0 bg-white border-b px-4 py-4 flex items-center justify-between">
+          <Typography variant="h3" className="text-lg font-semibold">
+            Filtres
+          </Typography>
+          <button
+            onClick={onClose}
+            className="rounded-full p-2 hover:bg-gray-100 transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="p-4 space-y-6">
+          <div>
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Catégorie
+            </Typography>
+            <div className="space-y-2">
+              {categoryFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("category", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.category === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Matériaux
+            </Typography>
+            <div className="space-y-2">
+              {materialFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("material", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.material === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-4">
+            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+              Fournisseur
+            </Typography>
+            <div className="space-y-2">
+              {sellerFilters.map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => onFilterChange("seller", filter.key)}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
+                    activeFilters.seller === filter.key
+                      ? "bg-primary text-white font-medium"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+            <Button
+              variant="outline"
+              onClick={() => {
+                onFilterChange('category', 'all');
+                onFilterChange('material', 'all');
+                onFilterChange('seller', 'all');
+              }}
+              className="w-full"
+            >
+              Réinitialiser les filtres
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PortailsHeader = () => (
-  <div className="mb-12 space-y-4 text-center">
-    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-      Portails, Clôtures & Garde-corps
-    </Typography>
-    <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
-      Sécurisez et délimitez votre propriété avec élégance. Portails battants ou coulissants, 
-      portillons assortis, clôtures occultantes ou garde-corps de sécurité, nous créons 
-      l'harmonie parfaite pour votre extérieur.
-    </Typography>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-0 md:mb-20">
+    <div className="space-y-6">
+      <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+        Portails, Clôtures & Garde-corps
+      </Typography>
+      <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
+        Sécurisez et délimitez votre propriété avec élégance. Portails battants ou coulissants, 
+        portillons assortis, clôtures occultantes ou garde-corps de sécurité, nous créons 
+        l'harmonie parfaite pour votre extérieur.
+      </Typography>
+      <div className="flex justify-start items-center gap-4 mt-6">
+        <div className="flex items-center gap-2">
+          <Home size={20} className="text-blue-600" />
+          <Typography variant="small" className="font-medium">Made in France</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Shield size={20} className="text-green-600" />
+          <Typography variant="small" className="font-medium">Sur mesure</Typography>
+        </div>
+        <div className="flex items-center gap-2">
+          <Fence size={20} className="text-orange-600" />
+          <Typography variant="small" className="font-medium">Gamme complète</Typography>
+        </div>
+      </div>
+    </div>
+    <div className="relative">
+      <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+        <Image
+          src="/images/porte.jpg"
+          alt="Portail moderne"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+    </div>
   </div>
 );
 
-const PortailsFilters = ({ 
+const PortailsFiltersSidebar = ({
   categoryFilters,
-  typeFilters,
   materialFilters,
-  motorisationFilters,
-  activeFilters, 
-  onFilterChange 
+  sellerFilters,
+  activeFilters,
+  onFilterChange,
 }: {
   categoryFilters: { key: string; label: string }[];
-  typeFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
-  motorisationFilters: { key: string; label: string }[];
-  activeFilters: { category: string; type: string; material: string; motorisation: string };
+  sellerFilters: { key: string; label: string }[];
+  activeFilters: { category: string; material: string; seller: string };
   onFilterChange: (filterType: string, value: string) => void;
 }) => (
-  <div className="mb-8 space-y-4">
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Catégories:</span>
-      {categoryFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.category === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("category", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.category === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
-    
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Types:</span>
-      {typeFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.type === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("type", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.type === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
+  <div className="sticky top-4 space-y-6 bg-white rounded-lg border p-6 shadow-sm">
+    <div>
+      <Typography variant="h3" className="text-lg font-semibold mb-4">
+        Filtres
+      </Typography>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Matériaux:</span>
-      {materialFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.material === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("material", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.material === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
+    <div className="space-y-4">
+      <div>
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Catégorie
+        </Typography>
+        <div className="space-y-2">
+          {categoryFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("category", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.category === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Matériaux
+        </Typography>
+        <div className="space-y-2">
+          {materialFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("material", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.material === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Fournisseur
+        </Typography>
+        <div className="space-y-2">
+          {sellerFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("seller", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.seller === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-2">
-      <span className="mr-2 self-center text-sm font-medium text-muted-foreground">Motorisation:</span>
-      {motorisationFilters.map((filter) => (
-        <Button
-          key={filter.key}
-          variant={activeFilters.motorisation === filter.key ? "default" : "outline"}
-          size="sm"
-          onClick={() => onFilterChange("motorisation", filter.key)}
-          className={cn(
-            "transition-all duration-200",
-            activeFilters.motorisation === filter.key 
-              ? "bg-primary text-white" 
-              : "hover:bg-primary/10"
-          )}
-        >
-          {filter.label}
-        </Button>
-      ))}
-    </div>
+    {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all') && (
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => {
+          onFilterChange('category', 'all');
+          onFilterChange('material', 'all');
+          onFilterChange('seller', 'all');
+        }}
+        className="w-full"
+      >
+        Réinitialiser les filtres
+      </Button>
+    )}
   </div>
 );
 
-const PortailsGrid = ({ 
-  portails, 
-  onPortailClick 
+const PortailsGrid = ({
+  portails,
+  onPortailClick,
+  getCategoryLabel,
 }: {
-  portails: PortailProps[];
-  onPortailClick: (portail: PortailProps) => void;
+  portails: Product[];
+  onPortailClick: (portail: Product) => void;
+  getCategoryLabel: (category: string) => string;
 }) => (
   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {portails.map((portail, index) => (
-      <PortailCard 
+      <PortailCard
         key={portail.id}
         portail={portail}
         index={index}
         onClick={() => onPortailClick(portail)}
+        getCategoryLabel={getCategoryLabel}
       />
     ))}
   </div>
 );
 
-const PortailCard = ({ 
-  portail, 
-  index, 
-  onClick 
+const Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
 }: {
-  portail: PortailProps;
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) => {
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisiblePages = 7;
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      pages.push(1);
+
+      if (currentPage > 3) {
+        pages.push('...');
+      }
+
+      const startPage = Math.max(2, currentPage - 1);
+      const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pages.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push('...');
+      }
+
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  return (
+    <div className="flex items-center justify-center gap-2 mt-8">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className={cn(
+          "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+          currentPage === 1
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-gray-700 hover:bg-gray-100"
+        )}
+      >
+        Précédent
+      </button>
+
+      {getPageNumbers().map((page, index) => {
+        if (page === '...') {
+          return (
+            <span key={`ellipsis-${index}`} className="px-3 py-2 text-gray-400">
+              ...
+            </span>
+          );
+        }
+
+        return (
+          <button
+            key={page}
+            onClick={() => onPageChange(page as number)}
+            className={cn(
+              "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+              currentPage === page
+                ? "bg-primary text-white"
+                : "text-gray-700 hover:bg-gray-100"
+            )}
+          >
+            {page}
+          </button>
+        );
+      })}
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={cn(
+          "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+          currentPage === totalPages
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-gray-700 hover:bg-gray-100"
+        )}
+      >
+        Suivant
+      </button>
+    </div>
+  );
+};
+
+const PortailCard = ({
+  portail,
+  index,
+  onClick,
+  getCategoryLabel,
+}: {
+  portail: Product;
   index: number;
   onClick: () => void;
+  getCategoryLabel: (category: string) => string;
 }) => {
   const delay = index * 0.1;
-  
-  const getCategoryLabel = (category: string) => {
-    switch(category) {
-      case 'portail': return 'Portail';
-      case 'portillon': return 'Portillon';
-      case 'cloture': return 'Clôture';
-      case 'garde-corps': return 'Garde-corps';
-      default: return category;
-    }
-  };
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -497,7 +628,7 @@ const PortailCard = ({
       onClick={onClick}
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
+        <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
           {portail.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
               Nouveau
@@ -509,17 +640,17 @@ const PortailCard = ({
             </span>
           )}
         </div>
-        
+
         <div className="relative h-64">
           <Image
             src={portail.image}
             alt={portail.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
-        
+
         <div className="space-y-3 p-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">{portail.name}</h3>
@@ -528,223 +659,31 @@ const PortailCard = ({
               <span className="text-sm font-medium">{portail.rating}</span>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-blue-100 px-2 py-1 text-blue-800">
               {getCategoryLabel(portail.category)}
             </span>
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {portail.material}
+              {portail.material.replace('_', ' ')}
             </span>
-            {portail.motorisation !== 'manuel' && (
-              <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
-                {portail.motorisation}
-              </span>
-            )}
           </div>
-          
+
           <p className="line-clamp-2 text-sm text-muted-foreground">
             {portail.description}
           </p>
-          
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>{portail.dimensions}</span>
-            <span className="text-blue-600 font-medium">{portail.fournisseur}</span>
-          </div>
-          
-          <div className="flex items-center justify-between pt-2">
-            <span className="font-semibold text-primary">{portail.priceRange}</span>
-            <Button size="sm" variant="outline" className="text-xs">
-              Voir détails
-            </Button>
+
+          <span className="font-semibold text-primary">{portail.priceRange}</span>
+          <div className="flex items-right justify-end pt-2">
+            <Link href={`/portails/${createSlug(portail.name)}`} onClick={(e) => { e.stopPropagation(); }}>
+              <Button size="sm" variant="outline" className="text-xs">
+                Voir détails
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
     </motion.div>
-  );
-};
-
-const PortailModal = ({ 
-  portail, 
-  onClose 
-}: {
-  portail: PortailProps;
-  onClose: () => void;
-}) => {
-  const { data: session } = useSession();
-
-  const getPerformanceIcon = (feature: string) => {
-    if (feature.includes('Motorisation') || feature.includes('Électrique') || feature.includes('Télécommande')) return Zap;
-    if (feature.includes('Sécurité') || feature.includes('Serrure') || feature.includes('sécurité')) return Lock;
-    if (feature.includes('Design') || feature.includes('Esthétique')) return Home;
-    if (feature.includes('Clôture') || feature.includes('Délimitation')) return Fence;
-    return Shield;
-  };
-
-  const getCategoryLabel = (category: string) => {
-    switch(category) {
-      case 'portail': return 'Portail';
-      case 'portillon': return 'Portillon';
-      case 'cloture': return 'Clôture';
-      case 'garde-corps': return 'Garde-corps';
-      default: return category;
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg bg-white">
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
-        >
-          <X size={20} />
-        </button>
-
-        <div className="flex h-full max-h-[90vh] overflow-y-auto">
-          <div className="hidden md:block md:w-1/2">
-            <div className="relative h-full min-h-[500px]">
-              <Image
-                src={portail.image}
-                alt={portail.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="w-full space-y-6 p-6 md:w-1/2">
-            <div>
-              <div className="mb-2 flex items-center gap-2">
-                <h2 className="text-2xl font-bold">{portail.name}</h2>
-                <div className="flex items-center gap-1">
-                  <Star size={16} className="fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium">{portail.rating}</span>
-                </div>
-              </div>
-              
-              <div className="mb-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
-                  {getCategoryLabel(portail.category)}
-                </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {portail.material}
-                </span>
-                <span className="rounded-full bg-purple-100 px-3 py-1 text-sm capitalize text-purple-800">
-                  {portail.type}
-                </span>
-              </div>
-              
-              <p className="text-xl font-semibold text-primary">{portail.priceRange}</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
-              <div>
-                <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                <Typography variant="small" className="font-semibold text-blue-600">{portail.fournisseur}</Typography>
-              </div>
-              <div>
-                <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                <Typography variant="small" className="font-semibold">{portail.dimensions}</Typography>
-              </div>
-              <div>
-                <Typography variant="small" className="text-muted-foreground">Type</Typography>
-                <Typography variant="small" className="font-semibold capitalize">{portail.type}</Typography>
-              </div>
-              <div>
-                <Typography variant="small" className="text-muted-foreground">Motorisation</Typography>
-                <Typography variant="small" className="font-semibold capitalize">{portail.motorisation}</Typography>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-2 font-semibold">Description</h3>
-              <p className="leading-relaxed text-muted-foreground">
-                {portail.description}
-              </p>
-            </div>
-
-            <div>
-              <h3 className="mb-3 font-semibold">Caractéristiques</h3>
-              <div className="grid grid-cols-1 gap-2">
-                {portail.features.map((feature, index) => {
-                  const IconComponent = getPerformanceIcon(feature);
-                  return (
-                    <div key={index} className="flex items-center gap-2">
-                      <IconComponent size={16} className="text-green-600" />
-                      <span className="text-sm">{feature}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-3 font-semibold">Couleurs disponibles</h3>
-              <div className="flex flex-wrap gap-2">
-                {portail.colors.map((color, index) => (
-                  <span 
-                    key={index}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-sm"
-                  >
-                    {color}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-3 pt-4">
-              {session ? (
-                <Link 
-                  href="/account/devis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
-                  })}
-                >
-                  Demander un devis
-                </Link>
-              ) : (
-                <Link 
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
-                  className={buttonVariants({ 
-                    size: "default", 
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90" 
-                  })}
-                >
-                  Se connecter pour un devis
-                </Link>
-              )}
-              <Button 
-                variant="outline"
-                onClick={onClose}
-                className="flex-1"
-              >
-                Fermer
-              </Button>
-            </div>
-
-            <div className="mt-6 rounded-lg bg-gray-50 p-4">
-              <h4 className="mb-3 font-semibold">Ou contactez-nous directement</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <Phone size={14} />
-                  <span>05 56 12 34 56</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail size={14} />
-                  <span>contact@segment-c.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  <span>St Jean d'Illac, Gironde</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
