@@ -64,11 +64,11 @@ export function LandingHeader() {
     { path: "/fenetres", label: "Fenêtre" },
     { path: "/portes", label: "Porte" },
     { path: "/baie", label: "Baie vitrée" },
-    { path: "/volet", label: "Volet" },
+    // { path: "/volet", label: "Volet" },
     { path: "/garage", label: "Garage" },
-    { path: "/portails", label: "Portails" },
-    { path: "/pergolas", label: "Pergolas" },
-    { path: "/verandas", label: "Vérandas" },
+    // { path: "/portails", label: "Portails" },
+    // { path: "/pergolas", label: "Pergolas" },
+    // { path: "/verandas", label: "Vérandas" },
     { path: "/posts", label: "Actualités" },
   ];
 
