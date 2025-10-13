@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { X, Star, Shield, Home, Thermometer, Volume2, Lock, Filter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { X, Star, Shield, Home, Lock, Filter, Zap } from "lucide-react";
 
 type Product = {
   id: string;
@@ -33,12 +33,21 @@ type GarageSectionProps = {
   className?: string;
 }
 
+// Constantes en dehors du composant
+const ALLOWED_CATEGORIES = ["PORTE_GARAGE"];
+const LIMIT = 40;
+
+// Fonction simple pour créer un slug : minuscules + tirets entre les mots
+const createSlug = (name: string): string => {
+  return name.toLowerCase().replace(/\s+/g, '-');
+};
+
 const GarageSection = ({ className }: GarageSectionProps) => {
-  const [selectedGarage, setSelectedGarage] = useState<Product | null>(null);
+  const router = useRouter();
   const [garages, setGarages] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [filters, setFilters] = useState({
     material: "all",
@@ -46,18 +55,13 @@ const GarageSection = ({ className }: GarageSectionProps) => {
     category: "all",
   });
 
-  const limit = 40;
-
-  // Catégories de portes de garage autorisées
-  const allowedCategories = ["PORTE_GARAGE"];
-
-  // Fetch garages from API
   useEffect(() => {
     const fetchGarages = async () => {
       setLoading(true);
       try {
+        const offset = (currentPage - 1) * LIMIT;
         const params = new URLSearchParams({
-          limit: limit.toString(),
+          limit: LIMIT.toString(),
           offset: offset.toString(),
           type: 'PORTE',
           ...(filters.category !== 'all' && { category: filters.category }),
@@ -70,28 +74,29 @@ const GarageSection = ({ className }: GarageSectionProps) => {
         
         const data = await response.json();
         
-        // Filtrer pour ne garder que les catégories autorisées
         const filteredProducts = data.products.filter((product: Product) => 
-          allowedCategories.includes(product.category)
+          ALLOWED_CATEGORIES.includes(product.category)
         );
         
-        if (offset === 0) {
-          setGarages(filteredProducts);
-        } else {
-          setGarages(prev => [...prev, ...filteredProducts]);
-        }
+        setGarages(filteredProducts);
         setTotal(data.total);
-      } catch (error) {
-        console.error('Error fetching garages:', error);
+        
+        // Scroll to top when page changes
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (_error) {
+        // Error handled silently
       } finally {
         setLoading(false);
       }
     };
 
     void fetchGarages();
-  }, [filters, offset]);
+  }, [filters, currentPage]);
+
+  const totalPages = Math.ceil(total / LIMIT);
 
   const categoryFilters = [
+    { key: "all", label: "Toutes catégories" },
     { key: "PORTE_GARAGE", label: "Porte de garage" },
   ];
 
@@ -113,13 +118,18 @@ const GarageSection = ({ className }: GarageSectionProps) => {
     { key: "PROFERM", label: "Proferm" },
   ];
 
-  const handleShowMore = () => {
-    setOffset(prev => prev + limit);
-  };
-
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters(prev => ({ ...prev, [filterType]: value }));
-    setOffset(0);
+    setCurrentPage(1); // Reset to first page when filter changes
+  };
+
+  const handleGarageClick = (garage: Product) => {
+    const slug = createSlug(garage.name);
+    router.push(`/garage/${slug}`);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -149,7 +159,7 @@ const GarageSection = ({ className }: GarageSectionProps) => {
             </Button>
           </div>
 
-          {loading && offset === 0 ? (
+          {loading ? (
             <div className="flex justify-center items-center min-h-[400px]">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
@@ -157,37 +167,26 @@ const GarageSection = ({ className }: GarageSectionProps) => {
             <>
               <GarageGrid
                 garages={garages}
-                onGarageClick={setSelectedGarage}
+                onGarageClick={handleGarageClick}
               />
 
-              {garages.length < total && (
-                <div className="mt-8 flex justify-center">
-                  <Button
-                    onClick={handleShowMore}
-                    disabled={loading}
-                    className="bg-primary text-white hover:bg-primary/90"
-                  >
-                    {loading ? 'Chargement...' : 'Voir plus de portes de garage'}
-                  </Button>
-                </div>
+              {totalPages > 1 && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
               )}
 
               <div className="mt-8 text-center">
                 <Typography variant="small" className="text-muted-foreground">
-                  {garages.length} portes de garage sur {total} modèles disponibles
+                  Page {currentPage} sur {totalPages} • {total} modèles disponibles
                 </Typography>
               </div>
             </>
           )}
         </div>
       </div>
-
-      {selectedGarage && (
-        <GarageModal
-          garage={selectedGarage}
-          onClose={() => setSelectedGarage(null)}
-        />
-      )}
 
       <MobileFiltersModal
         isOpen={showMobileFilters}
@@ -346,13 +345,13 @@ const GarageHeader = () => (
           <Typography variant="small" className="font-medium">Sur mesure</Typography>
         </div>
         <div className="flex items-center gap-2">
-          <Lock size={20} className="text-orange-600" />
+          <Zap size={20} className="text-orange-600" />
           <Typography variant="small" className="font-medium">Motorisation possible</Typography>
         </div>
       </div>
     </div>
     <div className="relative">
-      <div className="relative h-[400px] lg:h-[500px] rounded-md overflow-hidden shadow-md">
+      <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
           src="/images/porte.jpg"
           alt="Porte de garage moderne"
@@ -477,7 +476,7 @@ const GarageGrid = ({
   garages: Product[];
   onGarageClick: (garage: Product) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {garages.map((garage, index) => (
       <GarageCard
         key={garage.id}
@@ -488,6 +487,104 @@ const GarageGrid = ({
     ))}
   </div>
 );
+
+// Composant Pagination
+const Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) => {
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisiblePages = 7;
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      pages.push(1);
+
+      if (currentPage > 3) {
+        pages.push('...');
+      }
+
+      const startPage = Math.max(2, currentPage - 1);
+      const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pages.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push('...');
+      }
+
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  return (
+    <div className="flex items-center justify-center gap-2 mt-8">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className={cn(
+          "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+          currentPage === 1
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-gray-700 hover:bg-gray-100"
+        )}
+      >
+        Précédent
+      </button>
+
+      {getPageNumbers().map((page, index) => {
+        if (page === '...') {
+          return (
+            <span key={`ellipsis-${index}`} className="px-3 py-2 text-gray-400">
+              ...
+            </span>
+          );
+        }
+
+        return (
+          <button
+            key={page}
+            onClick={() => onPageChange(page as number)}
+            className={cn(
+              "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+              currentPage === page
+                ? "bg-primary text-white"
+                : "text-gray-700 hover:bg-gray-100"
+            )}
+          >
+            {page}
+          </button>
+        );
+      })}
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={cn(
+          "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+          currentPage === totalPages
+            ? "text-gray-400 cursor-not-allowed"
+            : "text-gray-700 hover:bg-gray-100"
+        )}
+      >
+        Suivant
+      </button>
+    </div>
+  );
+};
 
 const GarageCard = ({
   garage,
@@ -513,7 +610,7 @@ const GarageCard = ({
       onClick={onClick}
     >
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
+        <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
           {garage.isNew && (
             <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
               Nouveau
@@ -549,8 +646,8 @@ const GarageCard = ({
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
               {garage.material.replace('_', ' ')}
             </span>
-            <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {garage.category.replace('PORTE_', '').replace('_', ' ')}
+            <span className="rounded-full bg-purple-100 px-2 py-1 text-purple-800">
+              Garage
             </span>
           </div>
 
@@ -558,188 +655,17 @@ const GarageCard = ({
             {garage.description}
           </p>
 
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            {garage.performance && (
-              <span className="flex items-center gap-1">
-                <Thermometer size={12} />
-                {garage.performance}
-              </span>
-            )}
-            {garage.seller && (
-              <span className="text-blue-600 font-medium">{garage.seller}</span>
-            )}
-          </div>
-
-          <div className="flex items-center justify-between pt-2">
-            <span className="font-semibold text-primary">{garage.priceRange}</span>
-            <Button size="sm" variant="outline" className="text-xs">
-              Voir détails
-            </Button>
+          <span className="font-semibold text-primary">{garage.priceRange}</span>
+          <div className="flex items-right justify-end pt-2">
+            <Link href={`/garage/${createSlug(garage.name)}`} onClick={(e) => { e.stopPropagation(); }}>
+              <Button size="sm" variant="outline" className="text-xs">
+                Voir détails
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
     </motion.div>
-  );
-};
-
-const GarageModal = ({
-  garage,
-  onClose,
-}: {
-  garage: Product;
-  onClose: () => void;
-}) => {
-  const { data: session } = useSession();
-
-  const getPerformanceIcon = (feature: string) => {
-    if (feature.toLowerCase().includes('vitrage') || feature.toLowerCase().includes('isolation')) return Thermometer;
-    if (feature.toLowerCase().includes('sécurisé') || feature.toLowerCase().includes('anti-effraction') || feature.toLowerCase().includes('sécurité')) return Lock;
-    if (feature.toLowerCase().includes('design') || feature.toLowerCase().includes('esthétique')) return Shield;
-    if (feature.toLowerCase().includes('phonique') || feature.toLowerCase().includes('acoustique')) return Volume2;
-    return Shield;
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-lg bg-white">
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
-        >
-          <X size={20} />
-        </button>
-
-        <div className="flex h-full max-h-[90vh] overflow-y-auto flex-col md:flex-row">
-          <div className="md:w-1/2">
-            <div className="relative h-64 md:h-full md:min-h-[500px]">
-              <Image
-                src={garage.image}
-                alt={garage.name}
-                fill
-                className="object-contain px-4"
-              />
-            </div>
-          </div>
-
-          <div className="w-full space-y-6 p-6 md:w-1/2 overflow-y-auto">
-            <div>
-              <div className="mb-2 flex items-center gap-2">
-                <Typography variant="h2">{garage.name}</Typography>
-                <div className="flex items-center gap-1">
-                  <Star size={16} className="fill-yellow-400 text-yellow-400" />
-                  <Typography variant="small">{garage.rating}</Typography>
-                </div>
-              </div>
-
-              <div className="mb-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-sm capitalize text-blue-800">
-                  {garage.material.replace('_', ' ')}
-                </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-sm capitalize text-green-800">
-                  {garage.category.replace('PORTE_', '').replace('_', ' ')}
-                </span>
-              </div>
-
-              <Typography variant="large" className="text-primary">{garage.priceRange}</Typography>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-2">
-              {garage.seller && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Fournisseur</Typography>
-                  <Typography variant="small" className="font-semibold text-blue-600 mt-2">{garage.seller}</Typography>
-                </div>
-              )}
-              {garage.performance && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Performance thermique</Typography>
-                  <Typography variant="small" className="font-semibold mt-2">{garage.performance}</Typography>
-                </div>
-              )}
-              {garage.epaisseur && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Épaisseur</Typography>
-                  <Typography variant="small" className="font-semibold mt-2">{garage.epaisseur}</Typography>
-                </div>
-              )}
-              {garage.dimensions && (
-                <div>
-                  <Typography variant="small" className="text-muted-foreground">Dimensions</Typography>
-                  <Typography variant="small" className="font-semibold mt-2">{garage.dimensions}</Typography>
-                </div>
-              )}
-            </div>
-
-            <div>
-              <Typography variant="h3" className="mb-2">Description</Typography>
-              <Typography variant="p" className="leading-relaxed text-muted-foreground">
-                {garage.description}
-              </Typography>
-            </div>
-
-            <div>
-              <Typography variant="h3" className="mb-3">Caractéristiques</Typography>
-              <div className="grid grid-cols-1 gap-2">
-                {garage.features.map((feature, index) => {
-                  const IconComponent = getPerformanceIcon(feature);
-                  return (
-                    <div key={index} className="flex items-center gap-2">
-                      <IconComponent size={16} className="text-green-600" />
-                      <Typography variant="small">{feature}</Typography>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div>
-              <Typography variant="h3" className="mb-3">Couleurs disponibles</Typography>
-              <div className="flex flex-wrap gap-2">
-                {garage.colors.map((color, index) => (
-                  <span
-                    key={index}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-sm"
-                  >
-                    {color}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-3 pt-4">
-              {session ? (
-                <Link
-                  href="/account/devis"
-                  className={buttonVariants({
-                    size: "default",
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
-                  })}
-                >
-                  Demander un devis
-                </Link>
-              ) : (
-                <Link
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className={buttonVariants({
-                    size: "default",
-                    className: "flex-1 bg-primary text-white hover:bg-primary/90"
-                  })}
-                >
-                  Demander un devis
-                </Link>
-              )}
-              <Button
-                variant="outline"
-                onClick={onClose}
-                className="flex-1"
-              >
-                Ajouter au panier
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
