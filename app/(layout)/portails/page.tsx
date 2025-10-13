@@ -1,13 +1,9 @@
-import PortesSection  from "@/features/portes/portes-component";
-// import PortesHero  from "@/features/portes/hero";
-// import { SectionDivider } from "@/features/landing/section-divider";
+import PortailsSection  from "@/features/portails/portails-component";
 
-export default function Portes() {
+export default function Portails() {
   return (
     <>
-      {/* <PortesHero /> */}
-      {/* <SectionDivider /> */}
-      <PortesSection />
+      <PortailsSection />
     </>
   );
 }
