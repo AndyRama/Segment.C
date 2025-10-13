@@ -367,7 +367,7 @@ const FenetreHeader = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-0 md:mb-20">
     <div className="space-y-6">
       <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
-        Notre sélection de baie vitrée
+        Nos plus belle baie vitrée
       </Typography>
       <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
         Découvrez notre gamme complète de baie vitrée haute performance.
@@ -392,7 +392,7 @@ const FenetreHeader = () => (
     <div className="relative">
       <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
-          src="/images/fenetre2.jpg"
+          src="/images/baie/syal_10.jpg"
           alt="Fenêtre moderne avec vue sur extérieur"
           fill
           className="object-cover"
