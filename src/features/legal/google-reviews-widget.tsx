@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import { Star, MapPin, ExternalLink, X } from 'lucide-react';
@@ -40,12 +40,12 @@ export default function GoogleReviewsWidget() {
         className="fixed bottom-6 right-6 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all hover:shadow-xl z-40"
         aria-label="Ouvrir les avis Google"
       >
-        <img 
-          src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
-          alt="Google"
-          className="w-6 h-6"
-        />
         <div className="flex items-center gap-2">
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
+            alt="Google"
+            className="w-5 h-5"
+          />
           <div className="flex gap-0.5">
             {renderStars(businessInfo.rating)}
           </div>
