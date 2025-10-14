@@ -93,12 +93,6 @@ export function LandingHeader() {
         { path: "/volet", label: "volet" },
       ]
     },
-    // { 
-    //   path: "#",
-    //   label: "Pergolas",
-    //   dropdown: [ 
-    //   ]
-    // },
     { path: "/pergolas", label: "Pergolas" },
     { path: "/verandas", label: "Verandas" },
     { path: "/posts", label: "Actualités" },

@@ -69,11 +69,11 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
     { title: "Fenêtres", image: "/images/hero-fenetre.jpg", link: "/fenetres" },
     { title: "Baie vitrée", image: "/images/baie/syal_7.jpg", link: "/baie" },
-    { title: "Portes", image: "/images/porte1.jpg", link: "/portes" },
+    { title: "Portes", image: "/images/porte3.jpg", link: "/portes" },
     { title: "Volets", image: "/images/fenetre5.jpg", link: "/volet" },
     { title: "Portails", image: "/images/", link: "/portails" },
     { title: "Portes-garage", image: "/images/", link: "/garage" },
-    { title: "Pergolas", image: "/images/pergolas.jpg", link: "/pergolas" },
+    { title: "Pergolas", image: "/images/", link: "/pergolas" },
     { title: "Vérandas", image: "/images/veranda.jpg", link: "/verandas" },
   ];
  
