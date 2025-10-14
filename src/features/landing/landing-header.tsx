@@ -6,11 +6,17 @@ import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "../../components/ui/sheet";
-import { Menu } from "react-feather";
+import { Menu, ChevronDown } from "react-feather";
 import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -61,14 +67,40 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
-    { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Porte" },
-    { path: "/baie", label: "Baie vitrée" },
-    // { path: "/volet", label: "Volet" },
-    { path: "/garage", label: "Garage" },
-    // { path: "/portails", label: "Portails" },
-    // { path: "/pergolas", label: "Pergolas" },
-    // { path: "/verandas", label: "Vérandas" },
+    { 
+      path: "#",
+      label: "Fenêtre",
+      dropdown: [ 
+        { path: "/fenetres", label: "Fenêtre" },
+        { path: "/baie", label: "Baie vitrée" },
+      ]
+    },
+    { 
+      path: "/portes",
+      label: "Porte",
+      dropdown: [ 
+        { path: "/Porte", label: "Porte d'entrée" },
+        { path: "/Porte", label: "Porte de service" },
+        { path: "/Porte", label: "Porte vitrée" },
+      ]
+    },
+    { 
+      path: "#",
+      label: "Garage",
+      dropdown: [ 
+        { path: "/garage", label: "Porte garage " },
+        { path: "/portails", label: "Portails" },
+        { path: "/volet", label: "volet" },
+      ]
+    },
+    // { 
+    //   path: "#",
+    //   label: "Pergolas",
+    //   dropdown: [ 
+    //   ]
+    // },
+    { path: "/pergolas", label: "Pergolas" },
+    { path: "/verandas", label: "Verandas" },
     { path: "/posts", label: "Actualités" },
   ];
 
@@ -114,13 +146,31 @@ export function LandingHeader() {
           className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
         >
           {topRoutes.map((route) => (
-            <Link
-              href={route.path}
-              key={route.path}
-              className="relative flex items-center hover:text-green-500 transition-colors"
-            >
-              {route.label}
-            </Link>
+            route.dropdown ? (
+              <DropdownMenu key={route.path}>
+                <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
+                  {route.label}
+                  <ChevronDown className="size-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {route.dropdown.map((item) => (
+                    <DropdownMenuItem key={item.path} asChild>
+                      <Link href={item.path} className="w-full cursor-pointer">
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                href={route.path}
+                key={route.path}
+                className="relative flex items-center hover:text-green-500 transition-colors"
+              >
+                {route.label}
+              </Link>
+            )
           ))}
         </motion.nav>
 
@@ -196,13 +246,32 @@ export function LandingHeader() {
                   </div>
                   <hr />
                   {topRoutes.map((route) => (
-                    <Link
-                      href={route.path}
-                      key={route.path}
-                      className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
-                    >
-                      {route.label}
-                    </Link>
+                    route.dropdown ? (
+                      <div key={route.path} className="flex flex-col gap-2">
+                        <span className="text-sm font-semibold text-green-500">
+                          {route.label}
+                        </span>
+                        <div className="pl-4 flex flex-col gap-2">
+                          {route.dropdown.map((item) => (
+                            <Link
+                              href={item.path}
+                              key={item.path}
+                              className="text-sm font-medium hover:text-green-500 transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={route.path}
+                        key={route.path}
+                        className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
+                      >
+                        {route.label}
+                      </Link>
+                    )
                   ))}
                 </div>
               </SheetContent>
