@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Star, MapPin, ExternalLink, X } from 'lucide-react';
 
-interface BusinessInfo {
+type BusinessInfo = {
   name: string;
   rating: number;
   totalReviews: number;
