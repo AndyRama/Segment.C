@@ -80,9 +80,9 @@ export function HeaderBase({ children }: PropsWithChildren) {
       path: "/portes",
       label: "Porte",
       dropdown: [
-        { path: "/Porte", label: "Porte d'entrée" },
-        { path: "/Porte", label: "Porte de service" },
-        { path: "/Porte", label: "Porte vitrée" },
+        { path: "/portes", label: "Porte d'entrée" },
+        { path: "/portes", label: "Porte de service" },
+        { path: "/portes", label: "Porte vitrée" },
       ],
     },
     {
