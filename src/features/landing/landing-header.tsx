@@ -90,11 +90,11 @@ export function LandingHeader() {
       dropdown: [ 
         { path: "/garage", label: "Porte garage " },
         { path: "/portails", label: "Portails" },
-        { path: "/volet", label: "volet" },
+        { path: "/#", label: "volet" },
       ]
     },
-    { path: "/pergolas", label: "Pergolas" },
-    { path: "/verandas", label: "Verandas" },
+    { path: "/#", label: "Pergolas" },
+    { path: "/#", label: "Verandas" },
     { path: "/posts", label: "Actualités" },
   ];
 
