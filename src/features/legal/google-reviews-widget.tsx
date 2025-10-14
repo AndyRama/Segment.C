@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Star } from 'lucide-react';
+import Link from 'next/link';
 
 type BusinessInfo = {
   name: string;
@@ -41,13 +42,11 @@ export default function GoogleReviewsWidget() {
   };
 
   return (
-    <a
+    <Link
       href={businessInfo.googleMapsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-6 right-6 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all hover:shadow-xl z-40 ${
-        isExpanded ? '' : 'pr-4'
-      }`}
+      className="fixed bottom-8 right-6 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all hover:shadow-xl z-40"
       aria-label="Voir les avis Google"
       onMouseEnter={() => setIsExpanded(true)}
     >
@@ -57,19 +56,22 @@ export default function GoogleReviewsWidget() {
           alt="Google"
           className="w-5 h-5 flex-shrink-0"
         />
-        <div className="flex gap-0.5">
-          {renderStars(businessInfo.rating)}
-        </div>
+        <Star size={20} className="fill-yellow-400 text-yellow-400" />
         <span className="font-bold text-gray-800">{businessInfo.rating}</span>
       </div>
       
-      <span 
-        className={`text-sm text-gray-600 whitespace-nowrap overflow-hidden transition-all duration-300 ${
+      <div 
+        className={`flex items-center gap-2 overflow-hidden transition-all duration-300 ${
           isExpanded ? 'max-w-[200px] opacity-100' : 'max-w-0 opacity-0'
         }`}
       >
-        ({businessInfo.totalReviews} avis)
-      </span>
-    </a>
+        <div className="flex gap-0.5">
+          {renderStars(businessInfo.rating)}
+        </div>
+        <span className="text-sm text-gray-600 whitespace-nowrap">
+          ({businessInfo.totalReviews} avis)
+        </span>
+      </div>
+    </Link>
   );
 }
