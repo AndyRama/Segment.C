@@ -847,7 +847,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "TRIPLE",
     uw: "0.9 W/(m².K)",
     ouverture: "FIXE",
-    image: "images/fenetre/syma_7.jpg",
+    image: "images/fenetre7.jpg",
     colors: ["Gris anthracite", "Blanc", "Bronze"],
     features: ["Fenêtre fixe", "Triple vitrage", "Maximum de luminosité", "Profilés ultra-fins"],
     description: "Fenêtre fixe aluminium avec profilés ultra-fins pour une luminosité maximale.",
