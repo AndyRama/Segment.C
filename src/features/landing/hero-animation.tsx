@@ -10,14 +10,14 @@ const HeroAnimation = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
-    "/images/fenetre1.jpg",
-    "/images/fenetre2.jpg",
-    "/images/fenetre3.jpg",
+    "/images/simple-invisible.jpg",
+    "/images/COULISSANT_AUTOMNE_HD.png",
+    "/images/opera.jpg",
     "/images/fenetre5.jpg",
-    "/images/fenetre1.jpg",
-    "/images/fenetre2.jpg",
-    "/images/fenetre3.jpg",
-    "/images/fenetre5.jpg",
+    "/images/beaulieu-sybaie.jpg",
+    "/images/baie/baie2.jpg",
+    "/images/syal5.jpg",
+    "/images/Visuel_2_Produits_Proferm.png",
   ];
 
   const getLeftImage = () => slides[currentSlide];
