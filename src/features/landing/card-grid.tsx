@@ -73,8 +73,8 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
     { title: "Volets", image: "/images/fenetre5.jpg", link: "/volet" },
     { title: "Portails", image: "/images/", link: "/portails" },
     { title: "Portes-garage", image: "/images/", link: "/garage" },
-    { title: "Pergolas", image: "/images/", link: "/pergolas" },
-    { title: "Vérandas", image: "/images/veranda.jpg", link: "/verandas" },
+    { title: "Pergolas", image: "/images/pergolas1", link: "/pergolas" },
+    { title: "Vérandas", image: "/images/veranda2.jpg", link: "/verandas" },
   ];
  
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
