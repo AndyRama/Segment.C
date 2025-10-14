@@ -16,7 +16,7 @@ const HeroAnimation = () => {
     "/images/fenetre5.jpg",
     "/images/beaulieu-sybaie.jpg",
     "/images/baie/baie2.jpg",
-    "/images/simple-invisible-9.jpg",
+    "/images/B1chambre vdef.jpg",
     "/images/Visuel_2_Produits_Proferm.png",
   ];
 

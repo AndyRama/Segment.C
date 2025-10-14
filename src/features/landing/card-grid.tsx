@@ -68,13 +68,13 @@ type CardGridProps = {
 export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
     { title: "Fenêtres", image: "/images/hero-fenetre.jpg", link: "/fenetres" },
-    { title: "Baie vitrée", image: "/images/syal_7.jpg", link: "/baie" },
-    { title: "Portes", image: "/images/porte.jpg", link: "/portes" },
+    { title: "Baie vitrée", image: "/images/baie/syal_7.jpg", link: "/baie" },
+    { title: "Portes", image: "/images/porte1.jpg", link: "/portes" },
     { title: "Volets", image: "/images/fenetre5.jpg", link: "/volet" },
-    { title: "Portails", image: "/images/fenetre2.jpg", link: "/portails" },
-    { title: "Portes-garage", image: "/images/fenetre5.jpg", link: "/garage" },
-    { title: "Pergolas", image: "/images/fenetre3.jpg", link: "/pergolas" },
-    { title: "Vérandas", image: "/images/fenetre4.jpg", link: "/verandas" },
+    { title: "Portails", image: "/images/", link: "/portails" },
+    { title: "Portes-garage", image: "/images/", link: "/garage" },
+    { title: "Pergolas", image: "/images/pergolas.jpg", link: "/pergolas" },
+    { title: "Vérandas", image: "/images/veranda.jpg", link: "/verandas" },
   ];
  
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
