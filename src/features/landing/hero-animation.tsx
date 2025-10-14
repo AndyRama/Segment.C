@@ -10,7 +10,7 @@ const HeroAnimation = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
-    "/images/fenetre6.jpg",
+    "/images/hero-fenetre.jpg",
     "/images/COULISSANT_AUTOMNE_HD.png",
     "/images/opera.jpg",
     "/images/fenetre5.jpg",
