@@ -100,9 +100,9 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
             </p>
 
             {/* Prix */}
-            <div className="pt-2 border-t">
+            {/* <div className="pt-2 border-t">
               <span className="font-bold text-lg text-gray-900">{product.priceRange}</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </Link>

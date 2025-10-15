@@ -664,7 +664,7 @@ const PorteCard = ({
             {porte.description}
           </p>
 
-          <span className="font-semibold text-primary">{porte.priceRange}</span>
+          {/* <span className="font-semibold text-primary">{porte.priceRange}</span> */}
           <div className="flex items-right justify-end pt-2">
             <Link href={`/portes/${createSlug(porte.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">
