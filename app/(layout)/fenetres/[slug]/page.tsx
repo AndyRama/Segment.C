@@ -175,23 +175,7 @@ const FenetreDetailPage = () => {
               )}
             </div>
 
-            {/* Tags matériau et catégorie */}
-            <div className="flex flex-wrap gap-3 mb-4">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                <Package size={16} />
-                {fenetre.material.replace('_', ' ')}
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                <Grid2x2 size={16} />
-                {getCategoryLabel(fenetre.category)}
-              </span>
-              {fenetre.vitrage && (
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                  <Sun size={16} />
-                  {fenetre.vitrage}
-                </span>
-              )}
-            </div>
+
           </div>
 
           {/* Colonne droite - Informations */}
@@ -381,6 +365,27 @@ const FenetreDetailPage = () => {
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* Tags matériau et catégorie */}
+            <div className="flex flex-wrap gap-3 mb-4 border-t">
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
+                Matériau & Catégorie
+              </h3>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                <Package size={16} />
+                {fenetre.material.replace('_', ' ')}
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                <Grid2x2 size={16} />
+                {getCategoryLabel(fenetre.category)}
+              </span>
+              {fenetre.vitrage && (
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                  <Sun size={16} />
+                  {fenetre.vitrage}
+                </span>
+              )}
             </div>
 
             {/* Couleurs disponibles */}
