@@ -733,7 +733,7 @@ const FenetreCard = ({
             </div>
           )}
 
-          <span className="font-semibold text-primary">{fenetre.priceRange}</span>
+          {/* <span className="font-semibold text-primary">{fenetre.priceRange}</span> */}
           <div className="flex items-right justify-end pt-2">
             <Link href={`/fenetres/${createSlug(fenetre.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">

@@ -214,31 +214,28 @@ const FenetreDetailPage = () => {
               <div className="flex border-b mb-6">
                 <button
                   onClick={() => setActiveTab('description')}
-                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer ${
-                    activeTab === 'description'
+                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer ${activeTab === 'description'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   Description
                 </button>
                 <button
                   onClick={() => setActiveTab('caracteristiques')}
-                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer ${
-                    activeTab === 'caracteristiques'
+                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer ${activeTab === 'caracteristiques'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   Caractéristiques
                 </button>
                 <button
                   onClick={() => setActiveTab('dimensions')}
-                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer ${
-                    activeTab === 'dimensions'
+                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer ${activeTab === 'dimensions'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   Dimensions
                 </button>
@@ -368,24 +365,26 @@ const FenetreDetailPage = () => {
             </div>
 
             {/* Tags matériau et catégorie */}
-            <div className="flex flex-wrap gap-3 mb-4 border-t">
+            <div className="py-6 border-t">
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
                 Matériau & Catégorie
               </h3>
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                <Package size={16} />
-                {fenetre.material.replace('_', ' ')}
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                <Grid2x2 size={16} />
-                {getCategoryLabel(fenetre.category)}
-              </span>
-              {fenetre.vitrage && (
+              <div className="flex flex-wrap gap-3 mb-4">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                  <Sun size={16} />
-                  {fenetre.vitrage}
+                  <Package size={16} />
+                  {fenetre.material.replace('_', ' ')}
                 </span>
-              )}
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                  <Grid2x2 size={16} />
+                  {getCategoryLabel(fenetre.category)}
+                </span>
+                {fenetre.vitrage && (
+                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                    <Sun size={16} />
+                    {fenetre.vitrage}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Couleurs disponibles */}
