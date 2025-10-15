@@ -369,7 +369,7 @@ const FenetreDetailPage = () => {
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
                 Matériau & Catégorie
               </h3>
-              <div className="flex flex-wrap gap-3 mb-4">
+              <div className="flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
                   <Package size={16} />
                   {fenetre.material.replace('_', ' ')}
