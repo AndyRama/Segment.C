@@ -67,34 +67,20 @@ export function LandingHeader() {
   );
 
   const topRoutes = [
+    { path: "/fenetres", label: "Fenêtre" },
+    { path: "/portes", label: "Porte" },
+    { path: "/baie", label: "Baie vitrée" },
+    { path: "/garage", label: "Porte garage " },
     { 
       path: "#",
-      label: "Fenêtre",
+      label: "autres produits",
       dropdown: [ 
-        { path: "/fenetres", label: "Fenêtre" },
-        { path: "/baie", label: "Baie vitrée" },
-      ]
-    },
-    { 
-      path: "/portes",
-      label: "Porte",
-      dropdown: [ 
-        { path: "/portes", label: "Porte d'entrée" },
-        { path: "/portes", label: "Porte de service" },
-        { path: "/portes", label: "Porte vitrée" },
-      ]
-    },
-    { 
-      path: "#",
-      label: "Garage",
-      dropdown: [ 
-        { path: "/garage", label: "Porte garage " },
         { path: "/portails", label: "Portails" },
         { path: "/#", label: "volet" },
+        { path: "/#", label: "Pergolas" },
+        { path: "/#", label: "Verandas" },
       ]
     },
-    { path: "/#", label: "Pergolas" },
-    { path: "/#", label: "Verandas" },
     { path: "/posts", label: "Actualités" },
   ];
 

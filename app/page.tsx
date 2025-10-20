@@ -43,20 +43,20 @@ export default function HomePage() {
 
       <ProcessSection />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
-      <VideoSection
+      {/* <VideoSection
         videoUrl="/videos/demo.mp4"
         title="Présentation d'un de nos produits"
         description=""
         className="mt-20 mb-30"
-      />
+      /> */}
 
       <SectionDivider />
 
       <GallerySection />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <FAQSection
         faq={[
@@ -106,7 +106,7 @@ export default function HomePage() {
         ]}
       />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
       <ReviewGrid initialReviewsCount={3}
         reviews={[
