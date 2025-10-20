@@ -13,7 +13,7 @@ export const CTAImageSection = () => {
     <div
       style={{
         backgroundImage:
-          "url(images/camion.png)",
+          "url(images/camion.jpg)",
         backgroundSize: "cover",
       }}
     >
