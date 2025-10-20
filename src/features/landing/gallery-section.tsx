@@ -28,11 +28,11 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
   const projects: ProjectProps[] = [
     {
       id: 1,
-      title: "Porte d'entrée sur mesure",
+      title: "Hestïa | Porte d'entrée sur mesure",
       category: "porte -fenetre",
       location: "Bordeaux",
       date: "Mars 2024",
-      images: ["/images/gallery/hestia.jpg", "/images/gallery/hestia1.jpg", "/images/gallery/hestia2.jpg", "/images/gallery/hestia3.jpg"],
+      images: ["/images/gallery/hestia.jpg"],
       description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
     },
     {
@@ -77,7 +77,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "menuiserie",
       location: "Pessac",
       date: "Octobre 2023",
-      images: ["/images/fenetre1.jpg", "/images/fenetre2.jpg", "/images/fenetre3.jpg"],
+      images: ["/images/fenetre3.jpg"],
       description: "Rénovation complète des menuiseries d'une maison traditionnelle."
     }
   ];
