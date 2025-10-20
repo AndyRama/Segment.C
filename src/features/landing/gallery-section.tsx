@@ -28,47 +28,47 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
   const projects: ProjectProps[] = [
     {
       id: 1,
-      title: "Rénovation fenêtres PVC",
-      category: "fenetre",
-      location: "Lacanau",
+      title: "Porte d'entrée sur mesure",
+      category: "porte -fenetre",
+      location: "Bordeaux",
       date: "Mars 2024",
-      images: ["/images/fenetre1.jpg", "/images/fenetre2.jpg", "/images/fenetre3.jpg"],
-      description: "Remplacement complet de 8 fenêtres en PVC double vitrage avec volets intégrés."
+      images: ["/images/gallery/hestia.jpg", "/images/gallery/hestia1.jpg", "/images/gallery/hestia2.jpg", "/images/gallery/hestia3.jpg"],
+      description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
     },
     {
       id: 2,
-      title: "Porte d'entrée sur mesure",
+      title: "Porte d'entrée sur mesure coulissante",
       category: "porte",
       location: "Bordeaux",
       date: "Février 2024",
-      images: ["/images/fenetre2.jpg", "/images/fenetre3.jpg"],
-      description: "Création et pose d'une porte d'entrée en bois massif avec vitrage sécurisé."
+      images: ["/images/gallery/brut.webp"],
+      description: "Création et pose d'une porte baie vitrée coulissante en bois massif avec vitrage sécurisé."
     },
     {
       id: 3,
       title: "Baie vitrée coulissante",
       category: "baie",
-      location: "Arcachon",
+      location: "Bordeaux",
       date: "Janvier 2024",
-      images: ["/images/fenetre3.jpg", "/images/fenetre4.jpg", "/images/fenetre5.jpg"],
+      images: ["/images/gallery/eva.jpg"],
       description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
     },
     {
       id: 4,
-      title: "Volets battants bois",
-      category: "volet",
-      location: "Cap Ferret",
+      title: "Baie vitrée",
+      category: "baie-vitree",
+      location: "Bordeaux",
       date: "Décembre 2023",
-      images: ["/images/fenetre4.jpg", "/images/fenetre5.jpg"],
-      description: "Fabrication et pose de volets battants en bois traité classe 4."
+      images: ["/images/gallery/bouch.jpg"],
+      description: "Fabrication et pose d'une baie pour deventure d'enseigne de boucherie."
     },
     {
       id: 5,
       title: "Véranda contemporaine",
       category: "veranda",
-      location: "Lacanau",
+      location: "Bordeaux",
       date: "Novembre 2023",
-      images: ["/images/fenetre5.jpg", "/images/fenetre1.jpg"],
+      images: ["/images/gallery/oakberry.jpg"],
       description: "Construction d'une véranda moderne en aluminium et verre."
     },
     {
