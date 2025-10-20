@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
 import { X, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { SectionLayout } from "../section-layout";
 
 type ProjectProps = {
   id: number;
@@ -82,7 +83,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
   ];
 
   return (
-    <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
+    <SectionLayout className={className}>
       <GalleryHeader />
       <GalleryGrid 
         projects={projects}
@@ -95,7 +96,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
           onClose={() => setSelectedProject(null)}
         />
       )}
-    </section>
+    </SectionLayout>
   );
 };
 
@@ -202,21 +203,29 @@ const ProjectModal = ({
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const handlePrevious = () => {
+  const handlePrevious = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentImageIndex((prev) => 
       prev === 0 ? project.images.length - 1 : prev - 1
     );
   };
 
-  const handleNext = () => {
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentImageIndex((prev) => 
       prev === project.images.length - 1 ? 0 : prev + 1
     );
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative w-full max-w-4xl overflow-hidden rounded-md bg-white">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="relative w-full max-w-4xl overflow-hidden rounded-md bg-white"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -261,7 +270,6 @@ const ProjectModal = ({
             </div>
           </div>
 
-          {/* Détails du projet */}
           <div className="space-y-4 p-6">
             <div>
               <h2 className="mb-2 text-2xl font-bold">{project.title}</h2>
