@@ -27,7 +27,7 @@ export default function HomePage() {
       <SectionDivider />
 
       <AboutSection
-        name="Rui Decarvalho"
+        name="Rui De Carvalho"
         title="Une idée, une envie, Segment.C est une porte ouverte sur vos fenêtres"
         description="Votre spécialiste de confiance pour votre pose et rénovation de fenêtres sur mesure. J'accompagne les particuliers comme
                       les professionnels dans tous leurs projets de menuiserie avec un savoir-faire artisanal et des finitions soignées."

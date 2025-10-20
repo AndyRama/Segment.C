@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
-import { X, MapPin, Calendar } from "lucide-react";
+import { X, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 type ProjectProps = {
   id: number;
@@ -13,8 +13,7 @@ type ProjectProps = {
   category: string;
   location: string;
   date: string;
-  beforeImage: string;
-  afterImage: string;
+  images: string[];
   description: string;
 }
 
@@ -24,8 +23,6 @@ type GallerySectionProps = {
 
 export const GallerySection = ({ className }: GallerySectionProps) => {
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
-  const [visibleCount, setVisibleCount] = useState(6);
-  const [filter, setFilter] = useState<string>("all");
 
   const projects: ProjectProps[] = [
     {
@@ -34,8 +31,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "fenetre",
       location: "Lacanau",
       date: "Mars 2024",
-      beforeImage: "/images/fenetre1.jpg",
-      afterImage: "/images/fenetre2.jpg",
+      images: ["/images/fenetre1.jpg", "/images/fenetre2.jpg", "/images/fenetre3.jpg"],
       description: "Remplacement complet de 8 fenêtres en PVC double vitrage avec volets intégrés."
     },
     {
@@ -44,8 +40,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "porte",
       location: "Bordeaux",
       date: "Février 2024",
-      beforeImage: "/images/fenetre2.jpg",
-      afterImage: "/images/fenetre3.jpg",
+      images: ["/images/fenetre2.jpg", "/images/fenetre3.jpg"],
       description: "Création et pose d'une porte d'entrée en bois massif avec vitrage sécurisé."
     },
     {
@@ -54,8 +49,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "baie",
       location: "Arcachon",
       date: "Janvier 2024",
-      beforeImage: "/images/fenetre3.jpg",
-      afterImage: "/images/fenetre4.jpg",
+      images: ["/images/fenetre3.jpg", "/images/fenetre4.jpg", "/images/fenetre5.jpg"],
       description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
     },
     {
@@ -64,8 +58,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "volet",
       location: "Cap Ferret",
       date: "Décembre 2023",
-      beforeImage: "/images/fenetre4.jpg",
-      afterImage: "/images/fenetre5.jpg",
+      images: ["/images/fenetre4.jpg", "/images/fenetre5.jpg"],
       description: "Fabrication et pose de volets battants en bois traité classe 4."
     },
     {
@@ -74,8 +67,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "veranda",
       location: "Lacanau",
       date: "Novembre 2023",
-      beforeImage: "/images/fenetre5.jpg",
-      afterImage: "/images/fenetre1.jpg",
+      images: ["/images/fenetre5.jpg", "/images/fenetre1.jpg"],
       description: "Construction d'une véranda moderne en aluminium et verre."
     },
     {
@@ -84,113 +76,18 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "menuiserie",
       location: "Pessac",
       date: "Octobre 2023",
-      beforeImage: "/images/fenetre1.jpg",
-      afterImage: "/images/fenetre2.jpg",
-      description: "Rénovation complète des menuiseries d'une maison traditionnelle."
-    },
-    {
-      id: 7,
-      title: "Rénovation fenêtres PVC",
-      category: "fenetre",
-      location: "Lacanau",
-      date: "Mars 2024",
-      beforeImage: "/images/fenetre1.jpg",
-      afterImage: "/images/fenetre2.jpg",
-      description: "Remplacement complet de 8 fenêtres en PVC double vitrage avec volets intégrés."
-    },
-    {
-      id: 8,
-      title: "Porte d'entrée sur mesure",
-      category: "porte",
-      location: "Bordeaux",
-      date: "Février 2024",
-      beforeImage: "/images/fenetre2.jpg",
-      afterImage: "/images/fenetre3.jpg",
-      description: "Création et pose d'une porte d'entrée en bois massif avec vitrage sécurisé."
-    },
-    {
-      id: 9,
-      title: "Baie vitrée coulissante",
-      category: "baie",
-      location: "Arcachon",
-      date: "Janvier 2024",
-      beforeImage: "/images/fenetre3.jpg",
-      afterImage: "/images/fenetre4.jpg",
-      description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
-    },
-    {
-      id: 10,
-      title: "Volets battants bois",
-      category: "volet",
-      location: "Cap Ferret",
-      date: "Décembre 2023",
-      beforeImage: "/images/fenetre4.jpg",
-      afterImage: "/images/fenetre5.jpg",
-      description: "Fabrication et pose de volets battants en bois traité classe 4."
-    },
-    {
-      id: 11,
-      title: "Véranda contemporaine",
-      category: "veranda",
-      location: "Lacanau",
-      date: "Novembre 2023",
-      beforeImage: "/images/fenetre5.jpg",
-      afterImage: "/images/fenetre1.jpg",
-      description: "Construction d'une véranda moderne en aluminium et verre."
-    },
-    {
-      id: 12,
-      title: "Menuiseries complètes",
-      category: "menuiserie",
-      location: "Pessac",
-      date: "Octobre 2023",
-      beforeImage: "/images/fenetre1.jpg",
-      afterImage: "/images/fenetre2.jpg",
+      images: ["/images/fenetre1.jpg", "/images/fenetre2.jpg", "/images/fenetre3.jpg"],
       description: "Rénovation complète des menuiseries d'une maison traditionnelle."
     }
   ];
 
-  const categories = [
-    { key: "all", label: "Tous les projets" },
-    { key: "fenetre", label: "Fenêtres" },
-    { key: "porte", label: "Portes" },
-    { key: "baie", label: "Baies vitrées" },
-    { key: "volet", label: "Volets" },
-    { key: "veranda", label: "Vérandas" },
-    { key: "menuiserie", label: "Menuiseries" }
-  ];
-
-  const filteredProjects = filter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === filter);
-
-  const handleShowMore = () => {
-    setVisibleCount(prev => Math.min(prev + 3, filteredProjects.length));
-  };
-
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
       <GalleryHeader />
-      <GalleryFilters 
-        categories={categories}
-        activeFilter={filter}
-        onFilterChange={setFilter}
-      />
       <GalleryGrid 
-        projects={filteredProjects.slice(0, visibleCount)}
+        projects={projects}
         onProjectClick={setSelectedProject}
       />
-      
-      {visibleCount < filteredProjects.length && (
-        <div className="mt-8 flex justify-center">
-          <Button
-            onClick={handleShowMore}
-            className="bg-[#4bb484] text-white hover:bg-[#4bb484]/90"
-          >
-            Voir plus de réalisations
-          </Button>
-        </div>
-      )}
 
       {selectedProject && (
         <ProjectModal 
@@ -210,35 +107,6 @@ const GalleryHeader = () => (
     <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
       Découvrez quelques-unes de nos réalisations récentes. Chaque projet est unique et réalisé sur mesure selon vos besoins.
     </Typography>
-  </div>
-);
-
-const GalleryFilters = ({ 
-  categories, 
-  activeFilter, 
-  onFilterChange 
-}: {
-  categories: { key: string; label: string }[];
-  activeFilter: string;
-  onFilterChange: (filter: string) => void;
-}) => (
-  <div className="mb-8 flex flex-wrap justify-center gap-2">
-    {categories.map((category) => (
-      <Button
-        key={category.key}
-        variant={activeFilter === category.key ? "default" : "outline"}
-        size="sm"
-        onClick={() => onFilterChange(category.key)}
-        className={cn(
-          "transition-all duration-200",
-          activeFilter === category.key 
-            ? "bg-green-500 text-white" 
-            : "hover:bg-green-500/10"
-        )}
-      >
-        {category.label}
-      </Button>
-    ))}
   </div>
 );
 
@@ -287,17 +155,19 @@ const ProjectCard = ({
       <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
         <div className="relative h-64">
           <Image
-            src={project.afterImage}
+            src={project.images[0]}
             alt={project.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
           
-          {/* Badge catégorie */}
-          <div className="absolute left-3 top-3 rounded-full bg-green-500 px-2 py-1 text-xs text-white">
-            {project.category}
-          </div>
+          {/* Badge nombre de photos */}
+          {project.images.length > 1 && (
+            <div className="absolute right-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white">
+              {project.images.length} photos
+            </div>
+          )}
         </div>
         
         <div className="space-y-2 p-4">
@@ -330,7 +200,19 @@ const ProjectModal = ({
   project: ProjectProps;
   onClose: () => void;
 }) => {
-  const [showBefore, setShowBefore] = useState(true);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handlePrevious = () => {
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? project.images.length - 1 : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prev) => 
+      prev === project.images.length - 1 ? 0 : prev + 1
+    );
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
@@ -343,37 +225,39 @@ const ProjectModal = ({
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Images avant/après */}
+          {/* Images avec navigation */}
           <div className="relative">
             <div className="relative h-80 md:h-96">
               <Image
-                src={showBefore ? project.beforeImage : project.afterImage}
-                alt={`${project.title} - ${showBefore ? 'Avant' : 'Après'}`}
+                src={project.images[currentImageIndex]}
+                alt={`${project.title} - Image ${currentImageIndex + 1}`}
                 fill
                 className="object-cover"
               />
               
-              {/* Toggle avant/après */}
-              <div className="absolute bottom-4 left-4 flex overflow-hidden rounded-lg bg-black/50">
-                <button
-                  onClick={() => setShowBefore(true)}
-                  className={cn(
-                    "px-3 py-1 text-sm transition-colors",
-                    showBefore ? "bg-white text-black" : "text-white"
-                  )}
-                >
-                  Avant
-                </button>
-                <button
-                  onClick={() => setShowBefore(false)}
-                  className={cn(
-                    "px-3 py-1 text-sm transition-colors",
-                    !showBefore ? "bg-white text-black" : "text-white"
-                  )}
-                >
-                  Après
-                </button>
-              </div>
+              {/* Navigation des images */}
+              {project.images.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrevious}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+
+                  {/* Indicateur de position */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs text-white">
+                    {currentImageIndex + 1} / {project.images.length}
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
