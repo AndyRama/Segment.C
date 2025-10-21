@@ -48,7 +48,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
       viewport={{ once: true }}
       className="flex-shrink-0 w-72 group"
     >
-      <Link href={`/fenetres/${createSlug(product.name)}`}>
+      <Link href={`/baie/${createSlug(product.name)}`}>
         <div className="relative overflow-hidden rounded-md bg-white shadow-md transition-all duration-300 hover:shadow-xl">
           {/* Badges */}
           <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
@@ -112,10 +112,6 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
               </div>
             )}
 
-            {/* Prix */}
-            <div className="pt-2 border-t">
-              <span className="font-bold text-lg text-gray-900">{product.priceRange}</span>
-            </div>
           </div>
         </div>
       </Link>

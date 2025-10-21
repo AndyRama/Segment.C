@@ -7,7 +7,7 @@ import logo1 from './../../../public/images/sybaie.png';
 import logo2 from './../../../public/images/orial.png';
 import logo3 from './../../../public/images/c2r.png';
 import logo4 from './../../../public/images/swao.png';
-import logo5 from './../../../public/images/logo4.jpg';
+import logo5 from './../../../public/images/proferm-logo.jpg';
 
 type LogoItem = {
   id: number
