@@ -170,6 +170,14 @@ const PorteDetailPage = () => {
               )}
             </div>
 
+            <div className="flex items-start gap-3 p-4 bg-gray-50 border mt-4">
+              <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-gray-700">
+                <p className="font-semibold mb-1">Garantie fabricant incluse</p>
+                <p className="text-xs">Fabrication française • Installation professionnelle • SAV réactif</p>
+              </div>
+            </div>
+
             {/* Tags matériau et catégorie */}
             <div className="flex flex-wrap gap-3">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
@@ -180,9 +188,9 @@ const PorteDetailPage = () => {
                 <DoorClosed size={16} />
                 {porte.category.replace('PORTE_', '').replace('_', ' ')}
               </span>
-            </div>      
-          </div>
-
+            </div>    
+          </div>    
+  
           {/* Colonne droite - Informations */}
           <div className="space-y-8">
             {/* En-tête */}
@@ -403,13 +411,6 @@ const PorteDetailPage = () => {
                 Ajouter au panier
               </Button>
 
-              <div className="flex items-start gap-3 p-4 bg-gray-50 border mt-4">
-                <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
-                <div className="text-sm text-gray-700">
-                  <p className="font-semibold mb-1">Garantie fabricant incluse</p>
-                  <p className="text-xs">Fabrication française • Installation professionnelle • SAV réactif</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

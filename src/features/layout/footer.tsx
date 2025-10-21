@@ -98,14 +98,6 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/portes"
-                  >
-                    Portes de service
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
                     href="/garage"
                   >
                     Portes de garage
