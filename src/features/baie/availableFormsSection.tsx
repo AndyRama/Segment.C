@@ -225,7 +225,7 @@ const AvailableFormsSection = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-8 border-t">
+    <div className="bg-gray-50 py-8 border-t mt-16">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
           Toutes les possibilités de baies vitrées

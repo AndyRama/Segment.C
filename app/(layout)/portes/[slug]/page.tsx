@@ -169,7 +169,17 @@ const PorteDetailPage = () => {
               )}
             </div>
 
-      
+            {/* Tags matériau et catégorie */}
+            <div className="flex flex-wrap gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
+                <Package size={16} />
+                {porte.material.replace('_', ' ')}
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
+                <DoorClosed size={16} />
+                {porte.category.replace('PORTE_', '').replace('_', ' ')}
+              </span>
+            </div>      
           </div>
 
           {/* Colonne droite - Informations */}
@@ -196,12 +206,12 @@ const PorteDetailPage = () => {
             </div>
 
             {/* Prix */}
-            <div className="py-4 border-y">
+            {/* <div className="py-4 border-y">
               <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
                 {porte.priceRange}
               </Typography>
               <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
-            </div>
+            </div> */}
 
             {/* Onglets */}
             <div>
@@ -350,17 +360,7 @@ const PorteDetailPage = () => {
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
                 Matériau & Catégorie
               </h3>
-            {/* Tags matériau et catégorie */}
-            <div className="flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
-                <Package size={16} />
-                {porte.material.replace('_', ' ')}
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
-                <DoorClosed size={16} />
-                {porte.category.replace('PORTE_', '').replace('_', ' ')}
-              </span>
-            </div>
+
             </div>
 
             {/* Couleurs disponibles */}

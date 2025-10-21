@@ -114,7 +114,7 @@ const FenetreDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white -mt-8 lg:-mt-12 ">
+    <div className="bg-white -mt-8 lg:-mt-12 ">
       {/* Breadcrumb */}
       <div className="border-b bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 py-3">
@@ -217,12 +217,12 @@ const FenetreDetailPage = () => {
             </div>
 
             {/* Prix */}
-            <div className="py-4 border-y">
+            {/* <div className="py-4 border-y">
               <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
                 {fenetre.priceRange}
               </Typography>
               <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
-            </div>
+            </div> */}
 
             {/* Onglets */}
             <div>
