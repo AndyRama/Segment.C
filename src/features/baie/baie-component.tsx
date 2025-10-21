@@ -732,7 +732,7 @@ const FenetreCard = ({
           )}
 
           <div className="flex items-right justify-end pt-2">
-            <Link href={`/fenetres/${createSlug(fenetre.name)}`} onClick={(e) => { e.stopPropagation(); }}>
+            <Link href={`/baie/${createSlug(fenetre.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">
                 Voir détails
               </Button>

@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import SimilarProductsSection from '@/features/window/similarProductsSection';
-import AvailableFormsSection from '@/features/window/availableFormsSection';
+import SimilarProductsSection from '@/features/baie/similarProductsSection';
+import AvailableFormsSection from '@/features/baie/availableFormsSection';
 import {
   Star,
   Shield,
@@ -215,14 +215,6 @@ const FenetreDetailPage = () => {
                 </p>
               )}
             </div>
-
-            {/* Prix */}
-            {/* <div className="py-4 border-y">
-              <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
-                {fenetre.priceRange}
-              </Typography>
-              <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
-            </div> */}
 
             {/* Onglets */}
             <div>
