@@ -8,7 +8,7 @@ import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SimilarProductsSection from '@/features/window/similarProductsSection';
-import AvailableFormsSection from '@/features/window/availableFormsSection';
+import AvailableFormsMiniature from '@/features/window/availableFormsMiniature';
 import {
   Star,
   Shield,
@@ -175,6 +175,31 @@ const FenetreDetailPage = () => {
               )}
             </div>
 
+            <div className="flex flex-wrap gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                <Package size={16} />
+                {fenetre.material.replace('_', ' ')}
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                <Grid2x2 size={16} />
+                {getCategoryLabel(fenetre.category)}
+              </span>
+              {fenetre.vitrage && (
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+                  <Sun size={16} />
+                  {fenetre.vitrage}
+                </span>
+              )}
+            </div>
+
+             <div className="flex items-start gap-3 p-4 bg-gray-50 border mt-4">
+              <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-gray-700">
+                <p className="font-semibold mb-1">Garantie fabricant incluse</p>
+                <p className="text-xs">Fabrication française • Installation professionnelle • SAV réactif</p>
+              </div>
+            </div>
+
 
           </div>
 
@@ -200,14 +225,6 @@ const FenetreDetailPage = () => {
                 </p>
               )}
             </div>
-
-            {/* Prix */}
-            {/* <div className="py-4 border-y">
-              <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
-                {fenetre.priceRange}
-              </Typography>
-              <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
-            </div> */}
 
             {/* Onglets */}
             <div>
@@ -364,29 +381,6 @@ const FenetreDetailPage = () => {
               </div>
             </div>
 
-            {/* Tags matériau et catégorie */}
-            <div className="py-6 border-t">
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
-                Matériau & Catégorie
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                  <Package size={16} />
-                  {fenetre.material.replace('_', ' ')}
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                  <Grid2x2 size={16} />
-                  {getCategoryLabel(fenetre.category)}
-                </span>
-                {fenetre.vitrage && (
-                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
-                    <Sun size={16} />
-                    {fenetre.vitrage}
-                  </span>
-                )}
-              </div>
-            </div>
-
             {/* Couleurs disponibles */}
             {fenetre.colors.length > 0 && (
               <div className="pt-6 border-t">
@@ -405,6 +399,8 @@ const FenetreDetailPage = () => {
                 </div>
               </div>
             )}
+
+            <AvailableFormsMiniature />
 
             {/* CTA */}
             <div className="pt-6 border-t space-y-3">
@@ -437,21 +433,10 @@ const FenetreDetailPage = () => {
               >
                 Ajouter au panier
               </Button>
-
-              <div className="flex items-start gap-3 p-4 bg-gray-50 border rounded-md mt-1">
-                <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
-                <div className="text-sm text-gray-700">
-                  <p className="font-semibold mb-1">Garantie fabricant incluse</p>
-                  <p className="text-xs">Fabrication française • Installation professionnelle • SAV réactif</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Section Les formes disponibles */}
-      <AvailableFormsSection />
 
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">
