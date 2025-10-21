@@ -192,7 +192,7 @@ const FenetreDetailPage = () => {
               )}
             </div>
 
-             <div className="flex items-start gap-3 p-4 bg-gray-50 border mt-4">
+             <div className="flex items-start gap-3 p-4 bg-gray-50 border rounded-md mt-4">
               <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-gray-700">
                 <p className="font-semibold mb-1">Garantie fabricant incluse</p>
@@ -325,20 +325,6 @@ const FenetreDetailPage = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Vitrage spécifique */}
-                    {fenetre.vitrage && (
-                      <div className="mt-4 p-4 bg-sky-50 border border-sky-200 rounded-md">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Sun size={18} className="text-sky-600" />
-                          <span className="text-xs font-semibold text-sky-900 uppercase tracking-wide">
-                            Vitrage
-                          </span>
-                        </div>
-                        <p className="text-sm font-bold text-sky-900">{fenetre.vitrage}</p>
-                        <p className="text-xs text-sky-700 mt-1">Isolation thermique et acoustique optimale</p>
-                      </div>
-                    )}
                   </div>
                 )}
 

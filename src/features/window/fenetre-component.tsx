@@ -720,6 +720,9 @@ const FenetreCard = ({
             <span className="rounded-full bg-green-100 px-2 py-1 text-green-800">
               {getCategoryLabel(fenetre.category)}
             </span>
+             <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
+              {fenetre.seller}
+            </span>
           </div>
 
           <p className="line-clamp-2 text-sm text-muted-foreground">
