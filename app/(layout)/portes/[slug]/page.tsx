@@ -8,7 +8,7 @@ import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SimilarProductsSection from '@/features/portes/similarProductsSection';
-import AvailableFormsSection from '@/features/portes/availableFormsSection';
+// import AvailableFormsSection from '@/features/portes/availableFormsSection';
 import AvailableFormsMiniature from '@/features/portes/availableFormsMiniature';
 import { 
   Star, 
@@ -416,7 +416,7 @@ const PorteDetailPage = () => {
       </div>
 
       {/* Section Les formes disponibles */}
-      <AvailableFormsSection />
+      {/* <AvailableFormsSection /> */}
 
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">
