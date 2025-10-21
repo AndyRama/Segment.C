@@ -9,6 +9,7 @@ import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SimilarProductsSection from '@/features/portes/similarProductsSection';
 import AvailableFormsSection from '@/features/portes/availableFormsSection';
+import AvailableFormsMiniature from '@/features/portes/availableFormsMiniature';
 import { 
   Star, 
   Shield, 
@@ -367,6 +368,8 @@ const PorteDetailPage = () => {
                 </div>
               </div>
             )}
+
+            <AvailableFormsMiniature />
 
             {/* CTA */}
             <div className="pt-6 border-t space-y-3">

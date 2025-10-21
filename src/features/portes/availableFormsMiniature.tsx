@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 
-const AvailableFormsSection = () => {
+const AvailableFormsMiniature = () => {
   const [selectedForm, setSelectedForm] = useState('1-vantail');
 
   const forms = [
@@ -83,71 +83,43 @@ const AvailableFormsSection = () => {
         </svg>
       )
     },
-    {
-      id: '3-vantaux',
-      name: 'PORTE 3 VANTAUX + 1 SEMI-FIXE + 1 VANTAIL + 1 FIXE EN BATTANT',
-      icon: (
-        <svg viewBox="0 0 220 180" className="w-full h-full">
-          <rect x="10" y="10" width="55" height="160" fill="none" stroke="#000000" strokeWidth="2" />
-          <rect x="70" y="10" width="70" height="160" fill="none" stroke="#000000" strokeWidth="2" />
-          <line x1="125" y1="90" x2="135" y2="90" stroke="#000000" strokeWidth="2" />
-          <circle cx="130" cy="90" r="3" fill="#000000" />
-          <rect x="145" y="10" width="65" height="160" fill="none" stroke="#000000" strokeWidth="2" />
-        </svg>
-      )
-    }
   ];
 
   return (
-    <div className="bg-gray-50 py-6 mt-6">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
-          Les formes disponibles pour ce modèle
-        </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {forms.map((form) => (
-            <button
-              key={form.id}
-              onClick={() => setSelectedForm(form.id)}
-              className={`relative p-6 bg-white border-2 border-rounded-md transition-all hover:border-green-500 group ${
-                selectedForm === form.id ? 'border-green-500 border-rounded-md shadow-lg' : 'border-gray-200'
-              }`}
-            >
-              {selectedForm === form.id && (
-                <div className="absolute top-2 right-2 bg-green-500 text-white rounded-full p-1">
-                  <Check size={16} />
-                </div>
-              )}
-              
-              <div className="h-40 flex items-center justify-center mb-4">
-                {form.icon}
+    <div className="pt-6 border-t">
+      <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
+        Formes disponibles
+      </h3>
+      
+      <div className="grid grid-cols-3 gap-3">
+        {forms.map((form) => (
+          <button
+            key={form.id}
+            onClick={() => setSelectedForm(form.id)}
+            className={`relative p-3 bg-white border transition-all hover:border-primary ${
+              selectedForm === form.id ? 'border-primary shadow-md' : 'border-gray-200'
+            }`}
+            title={form.name}
+          >
+            {selectedForm === form.id && (
+              <div className="absolute top-1 right-1 bg-primary text-white rounded-full p-0.5">
+                <Check size={12} />
               </div>
-              
-              <p className="text-xs font-semibold text-gray-900 text-left md:text-center uppercase leading-tight">
-                {form.name}
-              </p>
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-8 p-6 bg-white border-2 border-green-200 rounded-md">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-            <div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
-                Configuration personnalisée
-              </p>
-              <p className="text-sm text-gray-600">
-                Vous avez besoin d'une configuration spécifique ? Contactez-nous pour discuter de vos besoins.
-                Toutes nos portes peuvent être adaptées selon vos dimensions et exigences.
-              </p>
+            )}
+            
+            <div className="h-20 flex items-center justify-center">
+              {form.icon}
             </div>
-          </div>
-        </div>
+          </button>
+        ))}
       </div>
+
+      <p className="text-xs text-gray-600 mt-3 flex items-start gap-2">
+        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full mt-1 flex-shrink-0"></span>
+        <span>Configuration personnalisée disponible sur demande</span>
+      </p>
     </div>
   );
 };
 
-export default AvailableFormsSection;
+export default AvailableFormsMiniature;

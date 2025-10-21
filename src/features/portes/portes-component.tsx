@@ -82,7 +82,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         setTotal(data.total);
         
         // Scroll to top when page changes
-        window.scrollTo({ top: 40, behavior: 'smooth' });
+        window.scrollTo({ top: 50, behavior: 'smooth' });
       } catch (_error) {
         // Error handled silently
       } finally {
@@ -108,15 +108,14 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     { key: "ACIER", label: "Acier" },
     { key: "PVC", label: "PVC" },
     { key: "BOIS", label: "Bois" },
-    { key: "BOIS_ALUMINIUM", label: "Bois-Aluminium" },
     { key: "MIXTE", label: "Mixte" },
   ];
 
   const sellerFilters = [
-    { key: "all", label: "Tous fournisseurs" },
+    { key: "all", label: "Tous les fournisseurs" },
     { key: "SYBAIE", label: "Sy Baie" },
-    { key: "C2R", label: "C2R" },
-    { key: "SWAO", label: "SWAO" },
+    { key: "C2R", label: "C2r" },
+    { key: "SWAO", label: "Swao" },
     { key: "PROFERM", label: "Proferm" },
   ];
 
@@ -639,7 +638,7 @@ const PorteCard = ({
             fill
             className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
+          <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20 group-hover:scale-105" />
         </div>
 
         <div className="space-y-3 p-4">
@@ -658,7 +657,7 @@ const PorteCard = ({
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
               {porte.category.replace('PORTE_', '').replace('_', ' ')}
             </span>
-            <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-purple-800">
+            <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
               {porte.seller}
             </span>
           </div>
