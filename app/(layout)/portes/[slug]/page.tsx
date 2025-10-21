@@ -205,14 +205,6 @@ const PorteDetailPage = () => {
               )}
             </div>
 
-            {/* Prix */}
-            {/* <div className="py-4 border-y">
-              <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
-                {porte.priceRange}
-              </Typography>
-              <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
-            </div> */}
-
             {/* Onglets */}
             <div>
               <div className="flex border-b mb-6">
@@ -355,12 +347,6 @@ const PorteDetailPage = () => {
                   </div>
                 )}
               </div>
-            </div>
-            <div className="py-6 border-t">
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
-                Matériau & Catégorie
-              </h3>
-
             </div>
 
             {/* Couleurs disponibles */}

@@ -82,7 +82,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         setTotal(data.total);
         
         // Scroll to top when page changes
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 40, behavior: 'smooth' });
       } catch (_error) {
         // Error handled silently
       } finally {
@@ -658,13 +658,15 @@ const PorteCard = ({
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
               {porte.category.replace('PORTE_', '').replace('_', ' ')}
             </span>
+            <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-purple-800">
+              {porte.seller}
+            </span>
           </div>
 
           <p className="line-clamp-2 text-sm text-muted-foreground">
             {porte.description}
           </p>
 
-          {/* <span className="font-semibold text-primary">{porte.priceRange}</span> */}
           <div className="flex items-right justify-end pt-2">
             <Link href={`/portes/${createSlug(porte.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">
