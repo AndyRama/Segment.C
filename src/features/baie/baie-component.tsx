@@ -84,7 +84,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         setTotal(data.total);
         
         // Scroll to top when page changes
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 50, behavior: 'smooth' });
       } catch (_error) {
         // Error handled silently
       } finally {
@@ -137,7 +137,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
 
   const handleFenetreClick = (fenetre: Product) => {
     const slug = createSlug(fenetre.name);
-    router.push(`/fenetres/${slug}`);
+    router.push(`/baie/${slug}`);
   };
 
   const handlePageChange = (page: number) => {
@@ -662,7 +662,6 @@ const FenetreCard = ({
   const delay = index * 0.1;
 
   const getCategoryLabel = (category: string) => {
-    if (category === 'FENETRE') return 'Fenêtre';
     if (category === 'BAIE_VITREE') return 'Baie vitrée';
     return category;
   };
@@ -732,7 +731,6 @@ const FenetreCard = ({
             </div>
           )}
 
-          {/* <span className="font-semibold text-primary">{fenetre.priceRange}</span> */}
           <div className="flex items-right justify-end pt-2">
             <Link href={`/fenetres/${createSlug(fenetre.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">
