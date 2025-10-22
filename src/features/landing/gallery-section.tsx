@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
-import { X, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, MapPin, Calendar, ChevronLeft, ChevronRight, Grid2X2, DoorOpen, Grid3X3 } from "lucide-react";
 
 type ProjectProps = {
   id: number;
@@ -223,6 +223,23 @@ const ProjectModal = ({
     );
   };
 
+  // Fonction pour obtenir l'icône appropriée
+  const getProjectIcon = () => {
+    switch(project.id) {
+      case 5: // Rénovation maison
+        return <Grid2X2 size={20} className="text-green-500" />;
+      case 2: // EVA
+      case 4: // Oakberry
+        return <DoorOpen size={20} className="text-green-500" />;
+      case 1: // Brut
+      case 3: // Hestïa
+      case 6: // Boucherie
+        return <Grid3X3 size={20} className="text-green-500" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
       <div className="relative w-full max-w-5xl overflow-hidden rounded-md bg-white">
@@ -273,7 +290,10 @@ const ProjectModal = ({
           {/* Détails du projet */}
           <div className="space-y-4 p-6">
             <div>
-              <h2 className="mb-2 text-2xl font-bold">{project.title}</h2>
+              <div className="mb-2 flex items-center gap-2">
+                {getProjectIcon()}
+                <h2 className="text-2xl font-bold">{project.title}</h2>
+              </div>
               <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <MapPin size={16} />
