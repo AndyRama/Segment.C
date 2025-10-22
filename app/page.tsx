@@ -8,9 +8,7 @@ import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
 import { GallerySection } from "@/features/landing/gallery-section";
 import { ProcessSection } from "@/features/landing/process-section";
-// import { ProcessSection2 } from "@/features/landing/process-section-v2";
 import { ServiceAreaSection } from "@/features/landing/services-area-section";
-import { VideoSection } from "@/features/landing/video-section";
 import { Partenaire } from "@/features/landing/partenaire";
 import { RecentPosts } from "@/features/landing/recent-posts";
 import { Footer } from "@/features/layout/footer";
@@ -34,7 +32,7 @@ export default function HomePage() {
         image="/images/portrait-artisan.jpg"
         experience="15 ans d'expérience"
       />
-  
+
       <SectionDivider />
 
       <CardGrid initialVisibleCount={4} />
@@ -43,20 +41,9 @@ export default function HomePage() {
 
       <ProcessSection />
 
-      {/* <SectionDivider /> */}
-
-      {/* <VideoSection
-        videoUrl="/videos/demo.mp4"
-        title="Présentation d'un de nos produits"
-        description=""
-        className="mt-20 mb-30"
-      /> */}
-
       <SectionDivider />
 
       <GallerySection />
-
-      {/* <SectionDivider /> */}
 
       <FAQSection
         faq={[
@@ -106,20 +93,20 @@ export default function HomePage() {
         ]}
       />
 
-      {/* <SectionDivider /> */}
-
-      <ReviewGrid initialReviewsCount={3}
+      <ReviewGrid
+        initialReviewsCount={3}
         reviews={[
+          // Avis généraux Segment.C
           {
             image: "https://i.pravatar.cc/300?u=marie1",
             name: "Marc Dubois",
             review:
-              "Rui a remplacé toutes nos fenêtres en PVC. Le travail est impeccable, les finitions parfaites et les délais respectés. Je recommande vivement Segment.c pour leur professionnalisme et leur écoute.",
+              "Rui a remplacé toutes nos fenêtres en Bois. Le travail est impeccable, les finitions parfaites et les délais respectés. Je recommande vivement Segment.c pour leur professionnalisme et leur écoute.",
             role: "Propriétaire - Bordeaux",
           },
           {
             image: "https://i.pravatar.cc/300?u=pierre2",
-            name: "karin Martin",
+            name: "Karin Martin",
             review:
               "Installation d'une porte d'entrée en aluminium. Rui m'a conseillé sur le choix du modèle et l'équipe a fait un travail remarquable. La pose a été réalisée en une journée sans aucun désagrément.",
             role: "Particulier - Lacanau",
@@ -131,47 +118,85 @@ export default function HomePage() {
               "Très satisfaite du remplacement de mes volets roulants. Rui est un artisan sérieux qui prend le temps d'expliquer et de bien faire. Le devis était détaillé et transparent, aucune surprise.",
             role: "Cliente - Mérignac",
           },
+
+          // Avis BRUT Restaurant
           {
-            image: "https://i.pravatar.cc/300?u=julien4",
+            image: "https://i.pravatar.cc/300?u=brut1",
+            name: "Alexandre - BRUT",
+            review:
+              "Segment.C a réalisé notre porte d'entrée sur mesure en bois massif avec vitrage sécurisé. Le résultat correspond parfaitement à l'identité brute de notre restaurant. Un travail de qualité qui allie esthétique et sécurité.",
+            role: "Chef & Propriétaire - BRUT Cuisine 1000°C",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=brut2",
+            name: "Client de BRUT",
+            review:
+              "La nouvelle porte du restaurant BRUT est magnifique, elle s'intègre parfaitement au décor épuré de cet établissement. On voit que c'est du travail d'artisan de qualité.",
+            role: "Habitué - Bordeaux Centre",
+          },
+
+          // Avis EVA VR
+          {
+            image: "https://i.pravatar.cc/300?u=eva1",
+            name: "Équipe EVA Bordeaux",
+            review:
+              "Installation impeccable de notre grande baie vitrée coulissante. Rui a su comprendre nos besoins spécifiques pour un lieu high-tech accueillant du public. Travail professionnel et dans les délais.",
+            role: "Manager - EVA Esports Virtual Arenas",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=eva2",
+            name: "Lucas - Joueur régulier",
+            review:
+              "L'espace EVA a gagné en luminosité avec la nouvelle baie vitrée. C'est top pour l'ambiance futuriste du lieu tout en gardant une excellente isolation phonique.",
+            role: "Abonné EVA - Bordeaux Lac",
+          },
+
+          // Avis HESTÏA
+          {
+            image: "https://i.pravatar.cc/300?u=hestia1",
+            name: "David & Théo - HESTÏA",
+            review:
+              "Remplacement complet de notre porte d'entrée par Segment.C. Le résultat est au-delà de nos attentes : sécurisée, esthétique et parfaitement adaptée à notre street food grecque. Rui a été très pro et à l'écoute.",
+            role: "Co-gérants - Restaurant Hestïa",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=hestia2",
+            name: "Marie - Cliente fidèle",
+            review:
+              "La nouvelle porte d'entrée d'Hestïa donne vraiment envie de rentrer ! Elle est accueillante et moderne, exactement comme le restaurant. Beau travail de menuiserie.",
+            role: "Habitante - Bordeaux",
+          },
+
+          // Avis OAKBERRY
+          {
+            image: "https://i.pravatar.cc/300?u=oakberry1",
+            name: "Manager Oakberry",
+            review:
+              "Construction d'une superbe véranda moderne en aluminium et verre par Segment.C. Parfait pour notre concept healthy et lumineux. Les clients adorent l'espace vitré qui apporte une ambiance zen.",
+            role: "Responsable - Oakberry Bordeaux",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=oakberry2",
+            name: "Sarah - Sportive",
+            review:
+              "J'adore venir chez Oakberry avec la nouvelle véranda vitrée. On se croirait en terrasse même quand il pleut ! L'installation est vraiment réussie et moderne.",
+            role: "Cliente régulière - Bordeaux",
+          },
+
+          // Avis Boucherie
+          {
+            image: "https://i.pravatar.cc/300?u=bouch1",
+            name: "Francis - Boucher",
+            review:
+              "Segment.C a réalisé notre devanture avec une magnifique baie vitrée. Elle met parfaitement en valeur nos produits tout en respectant toutes les normes d'hygiène. Un artisan sérieux et compétent.",
+            role: "Propriétaire - Boucherie Bordeaux",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=bouch2",
             name: "Julien Rousseau",
             review:
-              "Rénovation complète des menuiseries de ma maison. Segment.c a su s'adapter à mes contraintes et proposer des solutions techniques adaptées. Un vrai professionnel à l'écoute de ses clients.",
-            role: "Propriétaire - Arcachon",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=claire5",
-            name: "David Moreau",
-            review:
-              "Rui m'a aidée à choisir des fenêtres adaptées au style de ma maison traditionnelle. Son expertise et ses conseils ont été précieux. L'isolation thermique est maintenant parfaite.",
-            role: "Particulière - Pessac",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=michel6",
-            name: "Michel Fournier",
-            review:
-              "Installation de baies vitrées coulissantes. Le chantier a été mené avec rigueur, propreté irréprochable et respect des horaires. Je recommande sans hésiter cette entreprise.",
-            role: "Client - Talence",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=anne7",
-            name: "Anne Durand",
-            review:
-              "Segment.c a remplacé ma porte de garage sectionnelle. Rui est un artisan de confiance, ponctuel et méticuleux. Le résultat dépasse mes attentes et l'installation s'est faite sans problème.",
-            role: "Propriétaire - Bègles",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=nathalie9",
-            name: "Nathan Bertrand",
-            review:
-              "Excellent service de A à Z. Du devis gratuit à la pose finale, tout s'est parfaitement déroulé. Rui est un professionnel passionné qui livre un travail de grande qualité.",
-            role: "Particulière - Gradignan",
-          },
-          {
-            image: "https://i.pravatar.cc/300?u=stephane10",
-            name: "Stéphanie Girard",
-            review:
-              "Remplacement d'urgence d'une porte suite à un cambriolage. Rui a su réagir rapidement et proposer une solution sécurisée. Son réactivité et son professionnalisme m'ont vraiment aidé.",
-            role: "Client - Le Bouscat",
+              "La nouvelle vitrine de la boucherie est superbe, on voit bien les produits depuis la rue. C'est du beau travail, bien fini et solide.",
+            role: "Client - Bordeaux",
           },
         ]}
       />
@@ -182,7 +207,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ServiceAreaSection/>
+      <ServiceAreaSection />
 
       {/* <ProcessSection2/> */}
 
@@ -190,10 +215,10 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <RecentPosts/>
+      <RecentPosts />
 
       <SectionDivider />
-      
+
       <Footer />
     </div>
   );

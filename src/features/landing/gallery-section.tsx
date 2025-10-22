@@ -17,7 +17,7 @@ type ProjectProps = {
   date: string;
   images: string[];
   description: string;
-  description2: string;
+  description1: string;
 }
 
 type GallerySectionProps = {
