@@ -166,7 +166,7 @@ const ProjectCard = ({
             src={project.images[0]}
             alt={project.title}
             fill
-            className="object-fit transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
           
@@ -241,7 +241,7 @@ const ProjectModal = ({
                 src={project.images[currentImageIndex]}
                 alt={`${project.title} - Image ${currentImageIndex + 1}`}
                 fill
-                className="object-cover"
+                className="object-fit"
               />
               
               {/* Navigation des images */}
