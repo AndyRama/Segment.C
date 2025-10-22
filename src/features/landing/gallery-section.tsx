@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
-import { X, MapPin, Calendar, ChevronLeft, ChevronRight, Grid2X2, Grid3x2, DoorOpen, CookingPot, Gamepad, Home , ChefHat } from "lucide-react";
+import { X, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 type ProjectProps = {
   id: number;
@@ -54,7 +54,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       category: "porte -fenetre",
       location: "Bordeaux",
       date: "Avril 2025",
-      images: ["/images/gallery/hestia.jpg"],
+      images: ["/images/gallery/hestia.jpg","/images/gallery/hestia3.jpg"],
       description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
     },
     {
@@ -223,24 +223,6 @@ const ProjectModal = ({
     );
   };
 
-  // Fonction pour obtenir l'icône appropriée
-  const getProjectIcon = () => {
-    switch(project.id) {
-      case 5: // Rénovation maison
-        return <Home size={20} className="text-green-500" />;
-      case 2: // EVA
-      return <GamePad size={20} className="text-green-500" />;
-      case 4: // Oakberry
-      case 1: // Brut
-      case 3: // Hestïa
-       return <CookingPot size={20} className="text-green-500" />;
-      case 6: // Boucherie
-        return <ChefHat  size={20} className="text-green-500" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
       <div className="relative w-full max-w-5xl overflow-hidden rounded-md bg-white">
@@ -291,10 +273,7 @@ const ProjectModal = ({
           {/* Détails du projet */}
           <div className="space-y-4 p-6">
             <div>
-              <div className="mb-2 flex items-center gap-2">
-                {getProjectIcon()}
-                <h2 className="text-2xl font-bold">{project.title}</h2>
-              </div>
+              <h2 className="mb-2 text-2xl font-bold">{project.title}</h2>
               <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <MapPin size={16} />
