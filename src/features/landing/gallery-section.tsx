@@ -11,6 +11,7 @@ import { X, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 type ProjectProps = {
   id: number;
   title: string;
+  subtitle: string;
   category: string;
   location: string;
   date: string;
@@ -178,7 +179,8 @@ const ProjectCard = ({
         </div>
         
         <div className="space-y-2 p-4">
-          <h3 className="text-lg font-semibold">{project.title}</h3>
+          <h2 className="text-lg font-semibold">{project.title}</h2>
+          <h3 className="text-lg font-semibold">{project.subtitle}</h3>
           
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
