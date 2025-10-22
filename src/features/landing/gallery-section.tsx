@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
-import { X, MapPin, Calendar, ChevronLeft, ChevronRight, Grid2X2, Grid3X2, DoorOpen, CookingPot, GamePad, Home , ChefHat } from "lucide-react";
+import { X, MapPin, Calendar, ChevronLeft, ChevronRight, Grid2X2, Grid3x2, DoorOpen, CookingPot, Gamepad, Home , ChefHat } from "lucide-react";
 
 type ProjectProps = {
   id: number;
