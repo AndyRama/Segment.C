@@ -28,52 +28,58 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
   const projects: ProjectProps[] = [
     {
       id: 1,
-      title: "Hestïa | Porte d'entrée sur mesure",
+      title: "Hestïa |",
+      subtitle: "Porte d'entrée sur mesure", 
       category: "porte -fenetre",
       location: "Bordeaux",
-      date: "Mars 2024",
+      date: "Avril 2025",
       images: ["/images/gallery/hestia.jpg"],
       description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
     },
     {
       id: 2,
-      title: "Porte d'entrée sur mesure coulissante",
+      title: "Brut | Cuisine 1000°C",
+      subtitle: "Porte d'entrée sur mesure", 
       category: "porte",
       location: "Bordeaux",
-      date: "Février 2024",
+      date: "Février 2025",
       images: ["/images/gallery/brut.webp"],
       description: "Création et pose d'une porte baie vitrée coulissante en bois massif avec vitrage sécurisé."
     },
     {
       id: 3,
-      title: "Baie vitrée coulissante",
+      title: "EVA |",
+      subtitle: "Porte d'entrée sur mesure", 
       category: "baie",
       location: "Bordeaux",
-      date: "Janvier 2024",
+      date: "Janvier 2025",
       images: ["/images/gallery/eva.jpg"],
       description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
     },
     {
       id: 4,
-      title: "Baie vitrée",
+      title: "Boucherie |",
+      subtitle: "Porte d'entrée sur mesure", 
       category: "baie-vitree",
       location: "Bordeaux",
-      date: "Décembre 2023",
+      date: "Décembre 2024",
       images: ["/images/gallery/bouch.jpg"],
       description: "Fabrication et pose d'une baie pour deventure d'enseigne de boucherie."
     },
     {
       id: 5,
-      title: "Véranda contemporaine",
+      title: "Oakberry |",
+      subtitle: "Porte d'entrée sur mesure", 
       category: "veranda",
       location: "Bordeaux",
-      date: "Novembre 2023",
+      date: "Novembre 2024",
       images: ["/images/gallery/oakberry.jpg"],
       description: "Construction d'une véranda moderne en aluminium et verre."
     },
     {
       id: 6,
-      title: "Menuiseries complètes",
+      title: "Rénovation maison",
+      subtitle: "Meunuiserie complète", 
       category: "menuiserie",
       location: "Pessac",
       date: "Mai 2025",
@@ -159,7 +165,7 @@ const ProjectCard = ({
             src={project.images[0]}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-fit transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
           
