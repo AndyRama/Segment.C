@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
-import { X, MapPin, Calendar, ChevronLeft, ChevronRight, Grid2X2, DoorOpen, Grid3X3 } from "lucide-react";
+import { X, MapPin, Calendar, ChevronLeft, ChevronRight, Grid2X2, Grid3X2, DoorOpen, CookingPot, GamePad, Home , ChefHat } from "lucide-react";
 
 type ProjectProps = {
   id: number;
@@ -227,14 +227,15 @@ const ProjectModal = ({
   const getProjectIcon = () => {
     switch(project.id) {
       case 5: // Rénovation maison
-        return <Grid2X2 size={20} className="text-green-500" />;
+        return <Home size={20} className="text-green-500" />;
       case 2: // EVA
+      return <GamePad size={20} className="text-green-500" />;
       case 4: // Oakberry
-        return <DoorOpen size={20} className="text-green-500" />;
       case 1: // Brut
       case 3: // Hestïa
+       return <CookingPot size={20} className="text-green-500" />;
       case 6: // Boucherie
-        return <Grid3X3 size={20} className="text-green-500" />;
+        return <ChefHat  size={20} className="text-green-500" />;
       default:
         return null;
     }
