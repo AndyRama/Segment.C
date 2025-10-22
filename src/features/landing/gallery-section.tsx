@@ -17,6 +17,7 @@ type ProjectProps = {
   date: string;
   images: string[];
   description: string;
+  description2: string;
 }
 
 type GallerySectionProps = {
@@ -26,66 +27,72 @@ type GallerySectionProps = {
 export const GallerySection = ({ className }: GallerySectionProps) => {
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
 
-  const projects: ProjectProps[] = [
+ const projects: ProjectProps[] = [
     {
       id: 1,
       title: "Brut | Cuisine 1000°C",
-      subtitle: "Porte d'entrée sur mesure", 
+      subtitle: "Porte d'entrée sur mesure",
       category: "porte",
       location: "Bordeaux",
       date: "Février 2025",
       images: ["/images/gallery/brut.webp"],
-      description: "Création et pose d'une porte baie vitrée coulissante en bois massif avec vitrage sécurisé."
+      description: "Création et pose d'une porte baie vitrée coulissante en bois massif avec vitrage sécurisé.",
+      description1: "Restaurant bistronomique niché au cœur de Bordeaux, BRUT célèbre la puissance du feu maîtrisé à travers une cuisine singulière réalisée au barbecue japonais alimenté au bois de Binchotan. Un charbon rare et noble qui révèle la quintessence des saveurs. Installation d'une porte d'entrée alliant esthétique brute et sécurité pour ce lieu où la flamme devient un art."
     },
     {
       id: 2,
-      title: "EVA |",
-      subtitle: "Porte d'entrée sur mesure", 
+      title: "EVA | Expérience VR",
+      subtitle: "Porte d'entrée sur mesure",
       category: "baie",
       location: "Bordeaux",
       date: "Janvier 2025",
       images: ["/images/gallery/eva.jpg"],
-      description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
+      description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse.",
+      description1: "EVA (Esports Virtual Arenas) est un complexe de 2400 m² à Bordeaux-Lac offrant une expérience immersive unique qui associe sport, réalité virtuelle et jeu vidéo. Les joueurs évoluent dans des arènes de 500 m² équipés de casques VR et d'armes connectées. Installation d'une baie vitrée pour ce lieu futuriste dédié à la nouvelle génération de divertissement."
     },
     {
       id: 3,
-      title: "Hestïa |",
-      subtitle: "Porte d'entrée sur mesure", 
-      category: "porte -fenetre",
+      title: "Hestïa | Restaurant grec",
+      subtitle: "Porte d'entrée sur mesure",
+      category: "porte-fenetre",
       location: "Bordeaux",
       date: "Avril 2025",
       images: ["/images/gallery/hestia.jpg","/images/gallery/hestia3.jpg"],
-      description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
+      description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé.",
+      description1: "Restaurant de street food grec situé au 4 rue Castillon à Bordeaux. Hestïa propose des gyros artisanaux en pita ou en bowls, avec des produits frais préparés maison. Deux amis passionnés par la Grèce ont créé ce lieu chaleureux où tout est fait avec amour, du pain pita à la broche de poulet mariné. Réalisation d'une porte d'entrée accueillante pour ce restaurant qui transporte ses clients en Grèce."
     },
     {
       id: 4,
-      title: "Oakberry |",
-      subtitle: "Porte d'entrée sur mesure", 
+      title: "Oakberry | Açaí Bowl",
+      subtitle: "Porte d'entrée sur mesure",
       category: "veranda",
       location: "Bordeaux",
       date: "Novembre 2024",
-      images: ["/images/gallery/oakberry.jpg"],
-      description: "Construction d'une véranda moderne en aluminium et verre."
+      images: ["/images/gallery/oakberry.jpg","/images/gallery/oakberry2.jpg","/images/gallery/oakberry1.jpg"],
+      description: "Construction d'une véranda moderne en aluminium et verre.",
+      description1: "Oakberry est la marque n°1 d'açaí dans le monde. Cette enseigne propose des bowls à base d'açaí bio 100% organique provenant directement d'Amazonie, accompagnés de toppings variés : granola, fruits frais, beurre de cacahuètes, chia pudding. Un superfood riche en antioxydants, vegan et sans colorants. Construction d'une véranda vitrée pour ce lieu moderne dédié à la santé et au bien-être."
     },
     {
       id: 5,
       title: "Rénovation maison",
-      subtitle: "Meunuiserie complète", 
+      subtitle: "Menuiserie complète",
       category: "menuiserie",
       location: "Pessac",
       date: "Mai 2025",
       images: ["/images/fenetre5.jpg"],
-      description: "Rénovation complète des menuiseries d'une maison traditionnelle."
+      description: "Rénovation complète des menuiseries d'une maison traditionnelle.",
+      description1: "Rénovation complète des menuiseries extérieures d'une maison traditionnelle à Pessac. Remplacement de l'ensemble des fenêtres, portes et volets pour améliorer l'isolation thermique et phonique tout en conservant le cachet architectural du bâtiment. Travaux réalisés avec des matériaux de qualité pour une performance énergétique optimale."
     },
     {
       id: 6,
-      title: "Boucherie |",
-      subtitle: "Porte d'entrée sur mesure", 
+      title: "Boucherie | Devanture commerciale",
+      subtitle: "Porte d'entrée sur mesure",
       category: "baie-vitree",
       location: "Bordeaux",
       date: "Décembre 2024",
       images: ["/images/gallery/bouch.jpg"],
-      description: "Fabrication et pose d'une baie pour deventure d'enseigne de boucherie."
+      description: "Fabrication et pose d'une baie pour deventure d'enseigne de boucherie.",
+      description1: "Boucherie artisanale à Bordeaux proposant des viandes de qualité sélectionnées avec soin auprès de producteurs locaux. Fabrication et installation d'une grande baie vitrée pour la devanture, permettant une visibilité optimale des produits et respectant les normes d'hygiène et de sécurité alimentaire. Un aménagement qui met en valeur le savoir-faire artisanal du boucher."
     }
   ];
 
@@ -290,6 +297,13 @@ const ProjectModal = ({
               <h3 className="mb-2 font-semibold">Description du projet</h3>
               <p className="leading-relaxed text-muted-foreground">
                 {project.description}
+              </p>
+            </div>
+
+             <div>
+              <h3 className="mb-2 font-semibold borter-t">informations</h3>
+              <p className="leading-relaxed text-muted-foreground">
+                {project.description1}
               </p>
             </div>
             
