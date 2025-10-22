@@ -225,7 +225,7 @@ const ProjectModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative w-full max-w-4xl overflow-hidden rounded-md bg-white">
+      <div className="relative w-full max-w-5xl overflow-hidden rounded-md bg-white">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -236,7 +236,7 @@ const ProjectModal = ({
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Images avec navigation */}
           <div className="relative">
-            <div className="relative h-80 md:h-96">
+            <div className="relative h-96 md:h-[32rem] lg:h-[36rem]">
               <Image
                 src={project.images[currentImageIndex]}
                 alt={`${project.title} - Image ${currentImageIndex + 1}`}
