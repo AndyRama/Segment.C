@@ -94,7 +94,7 @@ export default function HomePage() {
       />
 
       <ReviewGrid
-        initialReviewsCount={3}
+        initialReviewsCount={6}
         reviews={[
           // Avis généraux Segment.C
           {
