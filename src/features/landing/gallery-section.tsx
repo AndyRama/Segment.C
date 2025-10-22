@@ -29,16 +29,6 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
   const projects: ProjectProps[] = [
     {
       id: 1,
-      title: "Hestïa |",
-      subtitle: "Porte d'entrée sur mesure", 
-      category: "porte -fenetre",
-      location: "Bordeaux",
-      date: "Avril 2025",
-      images: ["/images/gallery/hestia.jpg"],
-      description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
-    },
-    {
-      id: 2,
       title: "Brut | Cuisine 1000°C",
       subtitle: "Porte d'entrée sur mesure", 
       category: "porte",
@@ -48,7 +38,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       description: "Création et pose d'une porte baie vitrée coulissante en bois massif avec vitrage sécurisé."
     },
     {
-      id: 3,
+      id: 2,
       title: "EVA |",
       subtitle: "Porte d'entrée sur mesure", 
       category: "baie",
@@ -58,17 +48,17 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       description: "Installation d'une grande baie vitrée coulissante donnant sur terrasse."
     },
     {
-      id: 4,
-      title: "Boucherie |",
+      id: 3,
+      title: "Hestïa |",
       subtitle: "Porte d'entrée sur mesure", 
-      category: "baie-vitree",
+      category: "porte -fenetre",
       location: "Bordeaux",
-      date: "Décembre 2024",
-      images: ["/images/gallery/bouch.jpg"],
-      description: "Fabrication et pose d'une baie pour deventure d'enseigne de boucherie."
+      date: "Avril 2025",
+      images: ["/images/gallery/hestia.jpg"],
+      description: "Remplacement complet d'une porte d'entrée sur mesure d'un restaurant en bois avec vitrage sécurisé."
     },
     {
-      id: 5,
+      id: 4,
       title: "Oakberry |",
       subtitle: "Porte d'entrée sur mesure", 
       category: "veranda",
@@ -78,7 +68,7 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       description: "Construction d'une véranda moderne en aluminium et verre."
     },
     {
-      id: 6,
+      id: 5,
       title: "Rénovation maison",
       subtitle: "Meunuiserie complète", 
       category: "menuiserie",
@@ -86,6 +76,16 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       date: "Mai 2025",
       images: ["/images/fenetre5.jpg"],
       description: "Rénovation complète des menuiseries d'une maison traditionnelle."
+    },
+    {
+      id: 6,
+      title: "Boucherie |",
+      subtitle: "Porte d'entrée sur mesure", 
+      category: "baie-vitree",
+      location: "Bordeaux",
+      date: "Décembre 2024",
+      images: ["/images/gallery/bouch.jpg"],
+      description: "Fabrication et pose d'une baie pour deventure d'enseigne de boucherie."
     }
   ];
 
