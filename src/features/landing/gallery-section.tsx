@@ -76,8 +76,8 @@ export const GallerySection = ({ className }: GallerySectionProps) => {
       title: "Menuiseries complètes",
       category: "menuiserie",
       location: "Pessac",
-      date: "Octobre 2023",
-      images: ["/images/fenetre3.jpg"],
+      date: "Mai 2025",
+      images: ["/images/fenetre5.jpg"],
       description: "Rénovation complète des menuiseries d'une maison traditionnelle."
     }
   ];
