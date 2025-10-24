@@ -5,7 +5,7 @@ import { SiteConfig } from "@/site-config";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 
-const markdown = `Terms demo`;
+const markdown = `terms`;
 
 export const metadata: Metadata = {
   title: `${SiteConfig.title} - Terms`,
