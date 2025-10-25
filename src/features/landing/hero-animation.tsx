@@ -129,43 +129,68 @@ const HeroAnimation = () => {
             transition={{ duration: 1, delay: 0.5 }}
           >
             {/* Title */}
-            <motion.h1
-              className="mb-6 text-4xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl xl:text-6xl"
+            <motion.div
+              className="mb-6 space-y-3"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <span className="text-3xl sm:text-2xl lg:text-4xl xl:text-5xl">Menuisier à St Jean d'Illac</span>
-              <br />
-              <span className="text-3xl sm:text-2xl lg:text-4xl xl:text-5xl">Fenêtres & Portes sur mesure</span>
-            </motion.h1>
+              {/* Badge localisation */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-green-500/20 px-4 py-2 backdrop-blur-sm">
+                <span className="text-lg">📍</span>
+                <span className="text-sm font-semibold text-green-400 sm:text-xs lg:text-base">
+                  Basé à St Jean d'Illac
+                </span>
+              </div>
 
-            {/* Subtitle */}
+              {/* Titre principal */}
+              <h1 className="text-4xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl xl:text-6xl">
+                <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text">
+                  Menuisier Expert
+                </span>
+                <span className="block text-3xl sm:text-2xl lg:text-4xl xl:text-5xl">
+                  <span className="text-green-400">Fenêtres</span> & <span className="text-green-400">Portes</span> sur mesure
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Description enrichie */}
             <motion.p
-              className="mb-4 text-lg font-medium text-white/90 sm:text-base lg:text-xl"
+              className="mb-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-sm lg:text-lg"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              Votre artisan menuisier en Gironde : St Jean d'Illac, Mérignac, Bordeaux et Cap Ferret
+              Artisan menuisier certifié depuis plus de 15 ans en Gironde. Nous créons et installons 
+              vos menuiseries sur mesure dans toute la région : St Jean d'Illac, Mérignac, Bordeaux, 
+              Cap Ferret et le Bassin d'Arcachon. Expertise reconnue en fenêtres PVC, aluminium, 
+              bois et portes d'entrée haut de gamme.
             </motion.p>
 
             {/* Benefits */}
             <motion.div
-              className="mb-8 flex flex-wrap gap-4 text-sm text-white/80 sm:text-xs lg:text-base"
+              className="mb-8 flex flex-wrap gap-3"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.75 }}
             >
-              <span className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Devis gratuit sous 48h
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Déplacement offert
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Garantie décennale
-              </span>
+              {[
+                { icon: "⚡", text: "Devis gratuit sous 48h" },
+                { icon: "🚗", text: "Déplacement offert" },
+                { icon: "✅", text: "Garantie décennale" }
+              ].map((benefit, idx) => (
+                <motion.div
+                  key={idx}
+                  className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-md"
+                  whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="text-lg">{benefit.icon}</span>
+                  <span className="text-sm font-medium text-white sm:text-xs lg:text-base">
+                    {benefit.text}
+                  </span>
+                </motion.div>
+              ))}
             </motion.div>
 
             {/* CTA Buttons Row */}
@@ -177,27 +202,42 @@ const HeroAnimation = () => {
             >
               <Link href="/fenetres">
                 <motion.button
-                  className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
+                  className="group relative overflow-hidden rounded-lg bg-green-500 px-8 py-4 font-semibold uppercase tracking-wider text-white shadow-2xl transition-all duration-300"
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+                    boxShadow: "0 25px 50px rgba(75, 180, 132, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Fenêtres
+                  <span className="relative z-10">Fenêtres</span>
+                  <div className="absolute inset-0 -z-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </motion.button>
               </Link>
 
               <Link href="/portes">
                 <motion.button
-                  className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
+                  className="group relative overflow-hidden rounded-lg border-2 border-white/30 bg-white/10 px-8 py-4 font-semibold uppercase tracking-wider text-white shadow-2xl backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+                    boxShadow: "0 25px 50px rgba(255,255,255,0.2)",
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Portes
+                </motion.button>
+              </Link>
+
+              <Link href="/contact">
+                <motion.button
+                  className="flex items-center gap-2 rounded-lg bg-white px-6 py-4 font-semibold text-gray-900 shadow-xl transition-all duration-300 hover:bg-gray-100"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span>📞</span>
+                  <span>Devis gratuit</span>
                 </motion.button>
               </Link>
             </motion.div>
