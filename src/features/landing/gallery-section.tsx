@@ -187,7 +187,7 @@ const ProjectCard = ({
         
         <div className="space-y-2 p-4">
           <h2 className="text-lg font-semibold">{project.title}</h2>
-          <h3 className="text-lg font-semibold">{project.subtitle}</h3>
+          <h3 className="text-sm font-medium text-muted-foreground">{project.subtitle}</h3>
           
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
@@ -231,24 +231,27 @@ const ProjectModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative w-full max-w-5xl overflow-hidden rounded-md bg-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-2 sm:p-4 overflow-y-auto">
+      <div className="relative w-full max-w-5xl my-auto overflow-hidden rounded-lg bg-white max-h-[95vh] flex flex-col">
+        {/* Bouton fermer - toujours accessible */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+          className="absolute right-2 top-2 sm:right-4 sm:top-4 z-20 rounded-full bg-black/70 p-2 text-white transition-colors hover:bg-black/90 shadow-lg"
+          aria-label="Fermer"
         >
           <X size={20} />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="flex flex-col md:grid md:grid-cols-2 overflow-y-auto">
           {/* Images avec navigation */}
-          <div className="relative">
-            <div className="relative h-96 md:h-[32rem] lg:h-[36rem]">
+          <div className="relative bg-gray-100 flex-shrink-0">
+            <div className="relative h-64 sm:h-80 md:h-[32rem] lg:h-[36rem]">
               <Image
                 src={project.images[currentImageIndex]}
                 alt={`${project.title} - Image ${currentImageIndex + 1}`}
                 fill
-                className="object-fit"
+                className="object-contain"
+                priority
               />
               
               {/* Navigation des images */}
@@ -256,20 +259,22 @@ const ProjectModal = ({
                 <>
                   <button
                     onClick={handlePrevious}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/70 p-2 text-white transition-colors hover:bg-black/90 shadow-lg z-10"
+                    aria-label="Image précédente"
                   >
-                    <ChevronLeft size={24} />
+                    <ChevronLeft size={20} />
                   </button>
                   
                   <button
                     onClick={handleNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/70 p-2 text-white transition-colors hover:bg-black/90 shadow-lg z-10"
+                    aria-label="Image suivante"
                   >
-                    <ChevronRight size={24} />
+                    <ChevronRight size={20} />
                   </button>
 
                   {/* Indicateur de position */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs text-white">
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-xs text-white shadow-lg">
                     {currentImageIndex + 1} / {project.images.length}
                   </div>
                 </>
@@ -277,11 +282,12 @@ const ProjectModal = ({
             </div>
           </div>
 
-          {/* Détails du projet */}
-          <div className="space-y-4 p-6">
+          {/* Détails du projet - scrollable */}
+          <div className="space-y-4 p-4 sm:p-6 overflow-y-auto">
             <div>
-              <h2 className="mb-2 text-2xl font-bold">{project.title}</h2>
-              <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground">
+              <h2 className="mb-2 text-xl sm:text-2xl font-bold pr-10">{project.title}</h2>
+              <h3 className="mb-3 text-base sm:text-lg font-medium text-muted-foreground">{project.subtitle}</h3>
+              <div className="mb-4 flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <MapPin size={16} />
                   {project.location}
@@ -294,20 +300,20 @@ const ProjectModal = ({
             </div>
             
             <div>
-              <h3 className="mb-2 font-semibold">Description du projet</h3>
-              <p className="leading-relaxed text-muted-foreground">
+              <h3 className="mb-2 font-semibold text-sm sm:text-base">Description du projet</h3>
+              <p className="leading-relaxed text-sm sm:text-base text-muted-foreground">
                 {project.description}
               </p>
             </div>
 
-             <div>
-              <h3 className="mb-2 font-semibold borter-t">informations</h3>
-              <p className="leading-relaxed text-muted-foreground">
+            <div className="pt-4 border-t">
+              <h3 className="mb-2 font-semibold text-sm sm:text-base">Informations</h3>
+              <p className="leading-relaxed text-sm sm:text-base text-muted-foreground">
                 {project.description1}
               </p>
             </div>
             
-            <div className="pt-4">
+            <div className="pt-4 sticky bottom-0 bg-white pb-2">
               <Button 
                 onClick={onClose}
                 className="w-full bg-green-500 text-white hover:bg-green-500/90"
