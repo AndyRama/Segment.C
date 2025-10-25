@@ -4,10 +4,13 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "@/lib/auth-client";
+import { Clock, Users, Award, CheckCircle } from "lucide-react";
 
 const HeroAnimation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { data: session } = useSession();
 
   const slides = [
     "/images/hero-fenetre.jpg",
@@ -118,77 +121,165 @@ const HeroAnimation = () => {
       </div>
 
       {/* Dark Overlay for text readability */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
 
       {/* Main Content */}
       <div className="relative z-10 flex h-full items-center">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <motion.div
-            className="max-w-3xl"
+            className="max-w-4xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             {/* Title */}
             <motion.h1
-              className="mb-8 text-4xl font-bold leading-tight text-white sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
+              className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <span className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
-                Une idée, une envie,
-              </span>
+              Une idée, une envie,
               <br />
-              <span className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
-                <span className="font-bold italic text-green-500">Segment.C</span> est une porte
-              </span>
+              <span className="font-bold italic text-green-500">Segment.C</span> est une porte
               <br />
-              <span className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
-                ouverte sur vos fenêtres
-              </span>
+              ouverte sur vos fenêtres
             </motion.h1>
 
-            {/* CTA Buttons Row */}
+            {/* Subtitle */}
+            <motion.p
+              className="mb-6 text-lg text-white/90 sm:text-xl md:text-2xl"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              Je suis <span className="font-semibold text-green-500">Rui De Carvalho</span>
+            </motion.p>
+
+            {/* Description */}
+            <motion.p
+              className="mb-8 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.75 }}
+            >
+              Votre spécialiste de confiance pour votre pose et rénovation de fenêtres sur mesure. 
+              J'accompagne les particuliers comme les professionnels dans tous leurs projets de 
+              menuiserie avec un savoir-faire artisanal et des finitions soignées.
+            </motion.p>
+
+            {/* Stats Grid */}
             <motion.div
-              className="mb-6 flex flex-wrap gap-4"
+              className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <Link href="/fenetres">
-                <motion.button
-                  className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Fenêtres
-                </motion.button>
-              </Link>
+              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
+                <Clock className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
+                <div>
+                  <div className="text-sm font-semibold text-white sm:text-base">15 ans d'expérience</div>
+                  <div className="text-xs text-white/70">d'expertise</div>
+                </div>
+              </div>
 
-              <Link href="/portes">
-                <motion.button
-                  className="rounded-md bg-white px-8 py-4 font-semibold uppercase tracking-wider text-black shadow-2xl transition-all duration-300 hover:bg-gray-100"
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Portes
-                </motion.button>
-              </Link>
+              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
+                <Users className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
+                <div>
+                  <div className="text-sm font-semibold text-white sm:text-base">500+ clients</div>
+                  <div className="text-xs text-white/70">satisfaits</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
+                <Award className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
+                <div>
+                  <div className="text-sm font-semibold text-white sm:text-base">Artisan certifié</div>
+                  <div className="text-xs text-white/70">Qualité garantie</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
+                <CheckCircle className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
+                <div>
+                  <div className="text-sm font-semibold text-white sm:text-base">Sur mesure</div>
+                  <div className="text-xs text-white/70">100% personnalisé</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-wrap gap-4"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              {session ? (
+                <>
+                  <Link href="/account/devis">
+                    <motion.button
+                      className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Demander un devis
+                    </motion.button>
+                  </Link>
+
+                  <Link href="/home/#réalisations">
+                    <motion.button
+                      className="rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 25px 50px rgba(34, 197, 94, 0.3)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Voir mes réalisations
+                    </motion.button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis">
+                    <motion.button
+                      className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Demander un devis
+                    </motion.button>
+                  </Link>
+
+                  <Link href="/#réalisations">
+                    <motion.button
+                      className="rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 25px 50px rgba(34, 197, 94, 0.3)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Voir mes réalisations
+                    </motion.button>
+                  </Link>
+                </>
+              )}
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Slide Indicators - Aligned at 40% instead of 50% */}
+      {/* Slide Indicators */}
       <motion.div
-        className="absolute bottom-8 left-[50%] z-20 flex -translate-x-1/2 gap-3 md:left-1/2 mt-0 md:mt-16"
+        className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.4 }}
@@ -199,8 +290,8 @@ const HeroAnimation = () => {
             onClick={() => goToSlide(index)}
             className={`transition-all duration-500 ${
               index === currentSlide
-                ? "h-2 w-12 bg-green-500"
-                : "size-2 bg-white/50 hover:bg-white/70"
+                ? "h-2 w-12 rounded-full bg-green-500"
+                : "size-2 rounded-full bg-white/50 hover:bg-white/70"
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -212,7 +303,7 @@ const HeroAnimation = () => {
       <AnimatePresence>
         {isTransitioning && (
           <motion.div
-            className="z-5 pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 z-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

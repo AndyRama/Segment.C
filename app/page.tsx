@@ -22,16 +22,16 @@ export default function HomePage() {
 
       <HeroAnimation />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
 
-      <AboutSection
+      {/* <AboutSection
         name="Rui De Carvalho"
         title="Une idée, une envie, Segment.C est une porte ouverte sur vos fenêtres"
         description="Votre spécialiste de confiance pour votre pose et rénovation de fenêtres sur mesure. J'accompagne les particuliers comme
                       les professionnels dans tous leurs projets de menuiserie avec un savoir-faire artisanal et des finitions soignées."
         image="/images/portrait-artisan.jpg"
         experience="15 ans d'expérience"
-      />
+      /> */}
 
       <SectionDivider />
 
