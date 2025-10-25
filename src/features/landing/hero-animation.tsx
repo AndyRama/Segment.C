@@ -134,7 +134,7 @@ const HeroAnimation = () => {
           >
             {/* Title */}
             <motion.h1
-              className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+              className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl mt-10"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -142,7 +142,7 @@ const HeroAnimation = () => {
               Une idée, une envie,
               <br />
               <span className="font-bold italic text-green-500">Segment.C</span> est une porte
-              <br />
+              <br className="hidden md:content"/>
               ouverte sur vos fenêtres
             </motion.h1>
 
@@ -170,7 +170,7 @@ const HeroAnimation = () => {
 
             {/* Stats Grid - 2 colonnes sur mobile, 4 sur desktop */}
             <motion.div
-              className="mb-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
+              className="mb-8 hidden md:grid md:grid-cols-2 gap-3 lg:grid-cols-4"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -232,7 +232,7 @@ const HeroAnimation = () => {
 
                   <Link href="/home/#réalisations">
                     <motion.button
-                      className="rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
+                      className="hidden md:content rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
                       whileHover={{
                         scale: 1.05,
                         boxShadow: "0 25px 50px rgba(34, 197, 94, 0.3)",
