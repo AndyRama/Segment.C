@@ -67,23 +67,28 @@ export function HeaderBase({ children }: PropsWithChildren) {
     [0, 0, 1],
   );
 
-  const topRoutes = [
-    { path: "/fenetres", label: "Fenêtre" },
-    { path: "/portes", label: "Porte" },
-    { path: "/baie", label: "Baie vitrée" },
-    { path: "/garage", label: "Porte garage " },
-    { 
-      path: "#",
-      label: "autres produits",
-      dropdown: [ 
-        { path: "/portails", label: "Portails" },
-        { path: "/#", label: "volet" },
-        { path: "/#", label: "Pergolas" },
-        { path: "/#", label: "Verandas" },
-      ]
-    },
-    { path: "/posts", label: "Actualités" },
-  ];
+const topRoutes = [
+  { path: "/home", label: "Accueil" },
+  { 
+    path: "#",
+    label: "Fenêtres",
+    dropdown: [ 
+      { path: "/fenetres", label: "Fenêtre" },
+      { path: "/baie", label: "Baie vitrée" },
+    ]
+  },
+  { 
+    path: "#",
+    label: "Portes",
+    dropdown: [ 
+      { path: "/portes", label: "Porte d'entrée" },
+      { path: "/garage", label: "Porte de garage " },
+    ]
+  },
+  { path: "/#", label: "Volet" },
+  { path: "/portails", label: "Portails" },
+  { path: "/posts", label: "Actualités" },
+];
 
   return (
     <motion.header
