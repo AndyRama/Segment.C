@@ -130,17 +130,43 @@ const HeroAnimation = () => {
           >
             {/* Title */}
             <motion.h1
-              className="mb-8 text-4xl font-bold leading-tight text-white sm:text-2xl lg:text-6xl xl:text-7xl"
+              className="mb-6 text-4xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl xl:text-6xl"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <span className="bold italic text-green-500">Segment.C</span>
+              <span className="text-3xl sm:text-2xl lg:text-4xl xl:text-5xl">Menuisier à St Jean d'Illac</span>
               <br />
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">Votre porte ouverte</span>
-              <br />
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">sur vos fenêtres</span>
+              <span className="text-3xl sm:text-2xl lg:text-4xl xl:text-5xl">Fenêtres & Portes sur mesure</span>
             </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              className="mb-4 text-lg font-medium text-white/90 sm:text-base lg:text-xl"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              Votre artisan menuisier en Gironde : St Jean d'Illac, Mérignac, Bordeaux et Cap Ferret
+            </motion.p>
+
+            {/* Benefits */}
+            <motion.div
+              className="mb-8 flex flex-wrap gap-4 text-sm text-white/80 sm:text-xs lg:text-base"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.75 }}
+            >
+              <span className="flex items-center gap-2">
+                <span className="text-green-500">✓</span> Devis gratuit sous 48h
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-500">✓</span> Déplacement offert
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-500">✓</span> Garantie décennale
+              </span>
+            </motion.div>
 
             {/* CTA Buttons Row */}
             <motion.div
