@@ -250,7 +250,7 @@ const ProjectModal = ({
                 src={project.images[currentImageIndex]}
                 alt={`${project.title} - Image ${currentImageIndex + 1}`}
                 fill
-                className="object-contain"
+                className="object-cover"
                 priority
               />
               

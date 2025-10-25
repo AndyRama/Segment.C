@@ -110,7 +110,8 @@ const HeroAnimation = () => {
             <Image
               src={slides[(currentSlide + 2) % slides.length]}
               alt="Background next"
-              className="size-full object-cover"
+              fill
+              className="object-cover"
             />
           </motion.div>
         )}
@@ -123,23 +124,29 @@ const HeroAnimation = () => {
       <div className="relative z-10 flex h-full items-center">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <motion.div
-            className="max-w-2xl"
+            className="max-w-3xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             {/* Title */}
             <motion.h1
-              className="mb-8 text-4xl font-bold leading-tight text-white sm:text-2xl lg:text-6xl xl:text-7xl"
+              className="mb-8 text-4xl font-bold leading-tight text-white sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <span className="bold italic text-green-500">Segment.C</span>
+              <span className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+                Une idée, une envie,
+              </span>
               <br />
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">Votre porte ouverte</span>
+              <span className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+                <span className="font-bold italic text-green-500">Segment.C</span> est une porte
+              </span>
               <br />
-              <span className="text-4xl sm:text-2xl lg:text-5xl xl:text-6xl">sur vos fenêtres</span>
+              <span className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+                ouverte sur vos fenêtres
+              </span>
             </motion.h1>
 
             {/* CTA Buttons Row */}
@@ -190,10 +197,11 @@ const HeroAnimation = () => {
           <motion.button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-500 ${index === currentSlide
+            className={`transition-all duration-500 ${
+              index === currentSlide
                 ? "h-2 w-12 bg-green-500"
                 : "size-2 bg-white/50 hover:bg-white/70"
-              }`}
+            }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
           />

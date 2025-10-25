@@ -69,14 +69,6 @@ export const Footer = () => {
                   >
                     Baie-vitrée
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/verandas"
-                  >
-                    Veranda
-                  </Typography>
                 </div>
               </div>           
 
@@ -127,14 +119,6 @@ export const Footer = () => {
                   >
                     Volets
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/pergolas"
-                  >
-                    Pergolas
-                  </Typography>
                 </div>
               </div>     
 
@@ -144,14 +128,6 @@ export const Footer = () => {
                   Site
                 </Typography>
                 <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/home"
-                  >
-                    Accueil
-                  </Typography>
                   <Typography
                     as={Link}
                     variant="muted"

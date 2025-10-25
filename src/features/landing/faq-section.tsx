@@ -1,5 +1,4 @@
 "use client";
-
 import { Typography } from "@/components/nowts/typography";
 import {
   Accordion,
@@ -35,7 +34,7 @@ export const FAQSection = (props: FeaturesPreviewProps) => {
           {props.faq.map((e, i) => {
             return (
               <AccordionItem value={`item-${i}`} key={i}>
-                <AccordionTrigger className="text-left text-lg">
+                <AccordionTrigger className="text-left text-lg cursor-pointer hover:text-primary transition-colors">
                   {e.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-base">
