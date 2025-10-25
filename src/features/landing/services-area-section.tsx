@@ -141,7 +141,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
         <Typography variant="h3" className="mb-8 text-center text-2xl font-semibold">
           Nos principales zones d'intervention
         </Typography>
-        <div className="grid gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {areas.slice(0, 4).map((area, index) => (
             <DetailedAreaCard key={area.name} area={area} index={index} />
           ))}
@@ -184,67 +184,68 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
       }}
       viewport={{ once: true }}
       className={cn(
-        "rounded-xl border p-6 transition-all duration-300 hover:shadow-lg",
+        "rounded-xl border p-5 transition-all duration-300 hover:shadow-lg",
         area.featured 
           ? "bg-gradient-to-br from-[#4bb484]/5 to-[#4bb484]/10 border-[#4bb484]/30" 
           : "bg-white hover:border-[#4bb484]/20"
       )}
     >
-      <div className="flex items-start gap-4">
-        <div className={cn(
-          "rounded-lg p-3",
-          area.featured ? "bg-[#4bb484]/20 text-[#4bb484]" : "bg-gray-100 text-gray-600"
-        )}>
-          {area.icon}
+      {/* Header avec icône et info */}
+      <div className="mb-4 flex items-start justify-between">
+        <div className="flex items-center gap-3">
+          <div className={cn(
+            "rounded-lg p-2.5",
+            area.featured ? "bg-[#4bb484]/20 text-[#4bb484]" : "bg-gray-100 text-gray-600"
+          )}>
+            {area.icon}
+          </div>
+          
+          <div>
+            <div className="flex items-center gap-2">
+              <Typography variant="p" className={cn(
+                "text-lg font-semibold",
+                area.featured && "text-[#4bb484]"
+              )}>
+                {area.name}
+              </Typography>
+              {area.featured && (
+                <span className="rounded-full bg-[#4bb484] px-2 py-0.5 text-[10px] font-medium text-white">
+                  🏠 Notre atelier
+                </span>
+              )}
+            </div>
+            <Typography variant="small" className="text-xs text-muted-foreground">
+              {area.description}
+            </Typography>
+          </div>
         </div>
         
-        <div className="flex-1">
-          <div className="mb-3 flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2">
-                <Typography variant="p" className={cn(
-                  "text-xl font-semibold",
-                  area.featured && "text-[#4bb484]"
-                )}>
-                  {area.name}
-                </Typography>
-                {area.featured && (
-                  <span className="rounded-full bg-[#4bb484] px-3 py-1 text-xs font-medium text-white">
-                    🏠 Notre atelier
-                  </span>
-                )}
-              </div>
-              <Typography variant="small" className="text-muted-foreground">
-                {area.description}
-              </Typography>
-            </div>
-            
-            <div className="text-right">
-              <div className="text-sm font-semibold text-[#4bb484]">{area.projects}</div>
-              <div className="text-xs text-muted-foreground">projets</div>
-            </div>
-          </div>
-
-          <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <MapPin size={14} />
-              {area.distance}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock size={14} />
-              ~{area.duration}
-            </span>
-          </div>
-
-          <div className="space-y-2">
-            {area.services.map((service, idx) => (
-              <div key={idx} className="flex items-start gap-2 text-sm">
-                <CheckCircle size={16} className="mt-0.5 flex-shrink-0 text-[#4bb484]" />
-                <span className="text-muted-foreground">{service}</span>
-              </div>
-            ))}
-          </div>
+        <div className="text-right">
+          <div className="text-base font-semibold text-[#4bb484]">{area.projects}</div>
+          <div className="text-[10px] text-muted-foreground">projets</div>
         </div>
+      </div>
+
+      {/* Distance et durée */}
+      <div className="mb-3 flex items-center gap-3 text-xs text-muted-foreground border-t border-b border-gray-100 py-2">
+        <span className="flex items-center gap-1">
+          <MapPin size={12} />
+          {area.distance}
+        </span>
+        <span className="flex items-center gap-1">
+          <Clock size={12} />
+          ~{area.duration}
+        </span>
+      </div>
+
+      {/* Services */}
+      <div className="space-y-1.5">
+        {area.services.map((service, idx) => (
+          <div key={idx} className="flex items-start gap-2 text-xs">
+            <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-[#4bb484]" />
+            <span className="text-muted-foreground leading-relaxed">{service}</span>
+          </div>
+        ))}
       </div>
     </motion.div>
   );
@@ -323,7 +324,7 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
     </div>
 
     <div className="rounded-lg border bg-gradient-to-br from-gray-50 to-white p-6">
-      <Typography variant="p" className="mb-4 font-semibold">
+      <Typography variant="h4" className="mb-4 font-semibold">
         Autres communes desservies
       </Typography>
       <div className="grid grid-cols-2 gap-3 text-sm">
@@ -355,7 +356,7 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
           <Car className="size-5 text-white" />
         </div>
         <div>
-          <Typography variant="p" className="mb-2 font-semibold">
+          <Typography variant="h4" className="mb-2 font-semibold">
             📞 Déplacement gratuit pour étude de votre projet
           </Typography>
           <Typography variant="small" className="text-muted-foreground">
