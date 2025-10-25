@@ -65,7 +65,7 @@ type CardGridProps = {
   initialVisibleCount?: number;
 };
 
-export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
+export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
   const allCards = [
     { title: "Fenêtres", image: "/images/hero-fenetre.jpg", link: "/fenetres" },
     { title: "Baie vitrée", image: "/images/baie/syal_7.jpg", link: "/baie" },

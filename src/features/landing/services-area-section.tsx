@@ -324,7 +324,7 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
     </div>
 
     <div className="rounded-lg border bg-gradient-to-br from-gray-50 to-white p-6">
-      <Typography variant="h4" className="mb-4 font-semibold">
+      <Typography variant="p" className="mb-4 font-semibold">
         Autres communes desservies
       </Typography>
       <div className="grid grid-cols-2 gap-3 text-sm">
@@ -356,8 +356,8 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
           <Car className="size-5 text-white" />
         </div>
         <div>
-          <Typography variant="h4" className="mb-2 font-semibold">
-            📞 Déplacement gratuit pour étude de votre projet
+          <Typography variant="p" className="mb-2 font-semibold">
+            Déplacement gratuit pour étude de votre projet
           </Typography>
           <Typography variant="small" className="text-muted-foreground">
             Nous nous déplaçons gratuitement dans un rayon de 70 km autour de St Jean d'Illac 
