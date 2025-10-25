@@ -49,6 +49,14 @@ const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
 
+// Fonction pour formater le matériau
+const formatMaterial = (material: string) => {
+  return material
+    .replace(/_/g, ' ')
+    .replace(/\baluminium\b/gi, 'alu')
+    .trim();
+};
+
 const PorteDetailPage = () => {
   const params = useParams();
   const router = useRouter();
@@ -110,10 +118,10 @@ const PorteDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white -mt-8 lg:-mt-12 ">
+    <div className="min-h-screen bg-white -mt-8 lg:-mt-12 overflow-x-hidden ">
       {/* Breadcrumb */}
       <div className="border-b bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm">
             <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
               Accueil
@@ -174,7 +182,7 @@ const PorteDetailPage = () => {
             <div className="flex flex-wrap gap-3">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
                 <Package size={16} />
-                {porte.material.replace('_', ' ')}
+                {formatMaterial(porte.material)}
               </span>
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border">
                 <DoorClosed size={16} />
@@ -200,26 +208,33 @@ const PorteDetailPage = () => {
                   {porte.name}
                 </Typography>
                 {porte.rating && (
-                  <div className="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-200">
-                    <Star size={16} className="fill-amber-400 text-amber-400" />
-                    <span className="text-sm font-semibold text-amber-700">{porte.rating}</span>
+                  <div className="flex items-center gap-1 bg-yellow-50 px-3 py-1 rounded-full border border-yellow-200">
+                    <Star size={16} className="fill-yellow-400 text-yellow-400" />
+                    <span className="text-sm font-bold text-gray-900">{porte.rating}</span>
                   </div>
                 )}
               </div>
               
+              <Typography variant="p" className="text-base text-gray-600 leading-relaxed">
+                {porte.description}
+              </Typography>
+
               {porte.seller && (
-                <p className="text-sm text-gray-600">
-                  Fabriqué par <span className="font-semibold text-primary">{porte.seller}</span>
-                </p>
+                <div className="mt-4 inline-block">
+                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    Fournisseur
+                  </span>
+                  <p className="text-base font-bold text-gray-900 mt-1">{porte.seller}</p>
+                </div>
               )}
             </div>
 
             {/* Onglets */}
             <div>
-              <div className="flex border-b mb-6">
+              <div className="flex border-b gap-1">
                 <button
                   onClick={() => setActiveTab('description')}
-                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+                  className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
                     activeTab === 'description'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -229,7 +244,7 @@ const PorteDetailPage = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab('caracteristiques')}
-                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+                  className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
                     activeTab === 'caracteristiques'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -239,7 +254,7 @@ const PorteDetailPage = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab('dimensions')}
-                  className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+                  className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
                     activeTab === 'dimensions'
                       ? 'border-primary text-primary'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -249,18 +264,22 @@ const PorteDetailPage = () => {
                 </button>
               </div>
 
-              {/* Contenu des onglets */}
-              <div className="space-y-6">
+              <div className="pt-6">
                 {activeTab === 'description' && (
-                  <div className="prose prose-sm max-w-none">
-                    <p className="text-gray-700 leading-relaxed">{porte.description}</p>
+                  <div className="prose prose-sm max-w-none text-gray-700">
+                    <p className="leading-relaxed">{porte.description}</p>
+                    <p className="mt-4 leading-relaxed">
+                      Cette porte allie performance thermique et esthétique moderne. 
+                      Conçue pour résister aux conditions climatiques les plus exigeantes, 
+                      elle garantit une isolation optimale et une sécurité renforcée.
+                    </p>
                   </div>
                 )}
 
                 {activeTab === 'caracteristiques' && (
-                  <div className="space-y-4">
-                    {/* Caractéristiques principales */}
-                    <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    {/* Points forts */}
+                    <div className="grid grid-cols-1 gap-3">
                       {porte.features.map((feature, index) => (
                         <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 border">
                           <CheckCircle2 size={18} className="text-green-600 mt-0.5 flex-shrink-0" />
