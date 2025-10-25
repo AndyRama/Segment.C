@@ -128,7 +128,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-12 max-w-4xl mx-auto text-center space-y-4"
+        className="mb-12 max-w-4xl mx-auto text-left md:text-center space-y-4"
       >
         <Typography variant="p" className="text-lg leading-relaxed">
           Artisan menuisier local depuis plus de 15 ans, <strong>Segment-C</strong> est votre spécialiste de la pose et rénovation de menuiseries sur mesure. 
@@ -184,12 +184,21 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
       }}
       viewport={{ once: true }}
       className={cn(
-        "rounded-xl border p-5 transition-all duration-300 hover:shadow-lg",
+        "relative rounded-xl border p-5 transition-all duration-300 hover:shadow-lg",
         area.featured 
           ? "bg-gradient-to-br from-[#4bb484]/5 to-[#4bb484]/10 border-[#4bb484]/30" 
           : "bg-white hover:border-[#4bb484]/20"
       )}
     >
+      {/* Badge "Notre atelier" positionné en haut à droite */}
+      {area.featured && (
+        <div className="absolute top-3 left-3 z-10">
+          <span className="rounded-full bg-[#4bb484] px-2.5 py-1 text-[10px] font-medium text-white shadow-sm">
+            🏠 Notre atelier
+          </span>
+        </div>
+      )}
+
       {/* Header avec icône et info */}
       <div className="mb-4 flex items-start justify-between">
         <div className="flex items-center gap-3">
@@ -201,19 +210,12 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
           </div>
           
           <div>
-            <div className="flex items-center gap-2">
-              <Typography variant="p" className={cn(
-                "text-lg font-semibold",
-                area.featured && "text-[#4bb484]"
-              )}>
-                {area.name}
-              </Typography>
-              {area.featured && (
-                <span className="rounded-full bg-[#4bb484] px-2 py-0.5 text-[10px] font-medium text-white">
-                  🏠 Notre atelier
-                </span>
-              )}
-            </div>
+            <Typography variant="p" className={cn(
+              "text-lg font-semibold",
+              area.featured && "text-[#4bb484]"
+            )}>
+              {area.name}
+            </Typography>
             <Typography variant="small" className="text-xs text-muted-foreground">
               {area.description}
             </Typography>

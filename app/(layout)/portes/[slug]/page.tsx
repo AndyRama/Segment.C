@@ -53,7 +53,7 @@ const createSlug = (name: string): string => {
 const formatMaterial = (material: string) => {
   return material
     .replace(/_/g, ' ')
-    .replace(/\baluminium\b/gi, 'alu')
+    .replace(/\baluminium\b/gi, 'ALU.')
     .trim();
 };
 
