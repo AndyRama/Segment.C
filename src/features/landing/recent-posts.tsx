@@ -73,12 +73,12 @@ export const RecentPosts = () => {
     },
     {
       attributes: {
-        title: 'Quel est le meilleur choix pour vos fenêtres ? Comparatif complet',
-        description: 'PVC, aluminium ou bois : quel matériau choisir pour vos fenêtres ? Notre guide détaillé compare les avantages, inconvénients, prix et performances énergétiques de chaque option pour vous aider à faire le bon choix selon votre projet.',
-        date: '2024-11-28',
-        coverUrl: '/images/fenetre1.jpg',
+        title: 'Guide complet pour choisir et installer des fenêtres au Cap Ferret en 2025',
+        description: 'Découvrez comment choisir les meilleures fenêtres pour votre maison au Cap Ferret - matériaux résistants aux embruns, vitrages adaptés, installation et entretien. Guide expert menuiserie maritime.',
+        date: '2025-01-22',
+        coverUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2970&auto=format&fit=crop',
       },
-      slug: '2024-11-28_Meilleur-choix-fenetres-comparatif-pvc-aluminium-bois',
+      slug: 'guide-complet-pour-choisir-et-installer-des-fenetres-au-cap-ferret-en-2025.mdx',
     },
     {
       attributes: {
