@@ -477,7 +477,7 @@ const PortesGrid = ({
   portes: Product[];
   onPorteClick: (porte: Product) => void;
 }) => (
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
     {portes.map((porte, index) => (
       <PorteCard
         key={porte.id}
@@ -594,6 +594,13 @@ const Pagination = ({
   );
 };
 
+const formatMaterial = (material: string) => {
+  return material
+    .replace(/_/g, ' ')
+    .replace(/\balu\b/gi, 'aluminium')
+    .trim();
+};
+
 const PorteCard = ({
   porte,
   index,
@@ -652,7 +659,7 @@ const PorteCard = ({
 
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
-              {porte.material.replace('_', ' ')}
+              {formatMaterial(porte.material)}
             </span>
             <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
               {porte.category.replace('PORTE_', '').replace('_', ' ')}

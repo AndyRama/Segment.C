@@ -35,7 +35,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <CardGrid initialVisibleCount={4} />
+      <CardGrid initialVisibleCount={6} />
 
       <SectionDivider />
 
