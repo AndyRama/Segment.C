@@ -168,42 +168,42 @@ const HeroAnimation = () => {
               menuiserie avec un savoir-faire artisanal et des finitions soignées.
             </motion.p>
 
-            {/* Stats Grid */}
+            {/* Stats Grid - 2 colonnes sur mobile, 4 sur desktop */}
             <motion.div
-              className="mb-8 grid grid-cols-3 gap-4"
+              className="mb-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
-                <Clock className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
-                <div>
-                  <div className="text-sm font-semibold text-white sm:text-base">15 ans d'expérience</div>
-                  <div className="text-xs text-white/70">d'expertise</div>
+            <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
+                <Clock className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
+                <div className="min-w-0">
+                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">15 ans</div>
+                  <div className="truncate text-[10px] text-white/70 sm:text-xs">d'expertise</div>
                 </div>
               </div>
 
-              {/* <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
-                <Users className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
-                <div>
-                  <div className="text-sm font-semibold text-white sm:text-base">500+ clients</div>
-                  <div className="text-xs text-white/70">satisfaits</div>
-                </div>
-              </div> */}
-
-              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
-                <Award className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
-                <div>
-                  <div className="text-sm font-semibold text-white sm:text-base">Artisan certifié</div>
-                  <div className="text-xs text-white/70">Qualité garantie</div>
+              <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
+                <Users className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
+                <div className="min-w-0">
+                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">500+ clients</div>
+                  <div className="truncate text-[10px] text-white/70 sm:text-xs">satisfaits</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
-                <CheckCircle className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
-                <div>
-                  <div className="text-sm font-semibold text-white sm:text-base">Sur mesure</div>
-                  <div className="text-xs text-white/70">100% personnalisé</div>
+              <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
+                <Award className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
+                <div className="min-w-0">
+                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">Certifié</div>
+                  <div className="truncate text-[10px] text-white/70 sm:text-xs">Qualité garantie</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
+                <CheckCircle className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
+                <div className="min-w-0">
+                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">Sur mesure</div>
+                  <div className="truncate text-[10px] text-white/70 sm:text-xs">100% personnalisé</div>
                 </div>
               </div>
             </motion.div>
