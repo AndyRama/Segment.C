@@ -125,7 +125,7 @@ const HeroAnimation = () => {
 
       {/* Main Content */}
       <div className="relative z-10 flex h-full items-center">
-        <div className="container mx-auto px-4 md:px-8 lg:px-16">
+        <div className="container mx-auto px-4 md:px-8 lg:px-6">
           <motion.div
             className="max-w-4xl"
             initial={{ opacity: 0 }}
@@ -170,7 +170,7 @@ const HeroAnimation = () => {
 
             {/* Stats Grid */}
             <motion.div
-              className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4"
+              className="mb-8 grid grid-cols-3 gap-4"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -183,13 +183,13 @@ const HeroAnimation = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
+              {/* <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
                 <Users className="size-5 flex-shrink-0 text-green-500 sm:size-6" />
                 <div>
                   <div className="text-sm font-semibold text-white sm:text-base">500+ clients</div>
                   <div className="text-xs text-white/70">satisfaits</div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3 backdrop-blur-sm">
                 <Award className="size-5 flex-shrink-0 text-green-500 sm:size-6" />

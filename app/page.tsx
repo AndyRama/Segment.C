@@ -4,7 +4,7 @@ import HeroAnimation from "@/features/landing/hero-animation";
 import { LandingHeader } from "@/features/landing/landing-header";
 import { ReviewGrid } from "@/features/landing/review/review-grid";
 import { SectionDivider } from "@/features/landing/section-divider";
-import { AboutSection } from "@/features/landing/about-section";
+// import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
 import { GallerySection } from "@/features/landing/gallery-section";
 import { ProcessSection } from "@/features/landing/process-section";
