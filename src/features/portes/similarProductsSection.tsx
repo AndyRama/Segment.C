@@ -29,6 +29,14 @@ const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
 
+// Fonction pour formater le matériau
+const formatMaterial = (material: string) => {
+  return material
+    .replace(/_/g, ' ')
+    .replace(/\baluminium\b/gi, 'alu')
+    .trim();
+};
+
 const SimilarProductCard = ({ product, index }: { product: Product; index: number }) => {
   const delay = index * 0.1;
 
@@ -87,7 +95,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
             {/* Tags matériau et catégorie */}
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800 font-medium">
-                {product.material.replace('_', ' ')}
+                {formatMaterial(product.material)}
               </span>
               <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800 font-medium">
                 {product.category.replace('PORTE_', '').replace('_', ' ')}
@@ -136,6 +144,7 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
           .slice(0, 20);
         
         setSimilarProducts(filtered);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_error) {
         // Error handled silently
       } finally {

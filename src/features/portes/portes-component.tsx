@@ -83,6 +83,7 @@ const PorteSection = ({ className }: PorteSectionProps) => {
         
         // Scroll to top when page changes
         window.scrollTo({ top: 50, behavior: 'smooth' });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_error) {
         // Error handled silently
       } finally {
@@ -597,7 +598,7 @@ const Pagination = ({
 const formatMaterial = (material: string) => {
   return material
     .replace(/_/g, ' ')
-    .replace(/\balu\b/gi, 'aluminium')
+    .replace(/\baluminium\b/gi, 'ALU.')
     .trim();
 };
 
