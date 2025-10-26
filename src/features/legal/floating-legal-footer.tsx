@@ -7,7 +7,7 @@ export const FloatingLegalFooter = () => {
   return (
     <>
       <GoogleReviewsWidget />
-      <div className="fixed right-2 bottom-2 flex items-center gap-2">
+      <div className="fixed right-4 bottom-2 flex items-center gap-2">
         <Link
           className="text-muted-foreground text-xs hover:underline"
           href="/legal/privacy"

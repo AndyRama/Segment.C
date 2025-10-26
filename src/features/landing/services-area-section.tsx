@@ -14,7 +14,9 @@ import {
   Home,
   Building2,
   Waves,
-  MapPinned
+  MapPinned,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 
 type ServiceAreaSectionProps = {
@@ -33,6 +35,8 @@ type AreaProps = {
 }
 
 export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
+  const [showAllAreas, setShowAllAreas] = React.useState(false);
+  
   const areas: AreaProps[] = [
     { 
       name: "St Jean d'Illac", 
@@ -48,6 +52,21 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
         "Baies vitrées coulissantes",
         "Vérandas et pergolas",
         "Intervention rapide pour tous vos projets"
+      ]
+    },
+    { 
+      name: "Cap Ferret", 
+      distance: "55 km", 
+      duration: "45 min", 
+      projects: 15,
+      icon: <Waves className="size-5" />,
+      description: "Bassin d'Arcachon",
+      services: [
+        "Fenêtres résistantes aux embruns",
+        "Baies vitrées grand format vue mer",
+        "Vérandas bioclimatiques",
+        "Portes-fenêtres coulissantes",
+        "Villas et résidences secondaires"
       ]
     },
     { 
@@ -81,21 +100,6 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       ]
     },
     { 
-      name: "Cap Ferret", 
-      distance: "55 km", 
-      duration: "45 min", 
-      projects: 15,
-      icon: <Waves className="size-5" />,
-      description: "Bassin d'Arcachon",
-      services: [
-        "Fenêtres résistantes aux embruns",
-        "Baies vitrées grand format vue mer",
-        "Vérandas bioclimatiques",
-        "Portes-fenêtres coulissantes",
-        "Villas et résidences secondaires"
-      ]
-    },
-    { 
       name: "Le Bouscat", 
       distance: "13 km", 
       duration: "18 min", 
@@ -119,6 +123,10 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
     }
   ];
 
+  // Affichage conditionnel des zones
+  const displayedAreas = showAllAreas ? areas : areas.slice(0, 2);
+  const hiddenAreasCount = areas.length - 2;
+
   return (
     <section className={cn("relative w-full max-w-7xl mx-auto px-4 lg:px-0 py-20", className)}>
       <ServiceAreaHeader />
@@ -131,7 +139,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
         className="mb-12 max-w-4xl mx-auto text-left md:text-center space-y-4"
       >
         <Typography variant="p" className="text-lg leading-relaxed">
-          Artisan menuisier local depuis plus de 15 ans, <strong>Segment-C</strong> est votre spécialiste de la pose et rénovation de menuiseries sur mesure. 
+          Artisan menuisier local depuis plus de 15 ans, <strong>Segment.C</strong> est votre spécialiste de la pose et rénovation de menuiseries sur mesure. 
           Nous accompagnons particuliers et professionnels sur l'ensemble du bassin d'Arcachon et la métropole bordelaise.
         </Typography>
       </motion.div>
@@ -142,10 +150,34 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
           Nos principales zones d'intervention
         </Typography>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {areas.slice(0, 4).map((area, index) => (
+          {displayedAreas.map((area, index) => (
             <DetailedAreaCard key={area.name} area={area} index={index} />
           ))}
         </div>
+
+        {/* Bouton "Voir plus / Voir moins" */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="mt-6 flex justify-center"
+        >
+          <button
+            onClick={() => setShowAllAreas(!showAllAreas)}
+            className="group flex items-center gap-2 rounded-lg border border-[#4bb484]/30 bg-white px-6 py-3 font-medium text-[#4bb484] transition-all hover:bg-[#4bb484]/5 hover:border-[#4bb484]/50"
+          >
+            {showAllAreas ? (
+              <>
+                <span>Voir moins</span>
+                <ChevronUp className="size-5 transition-transform group-hover:-translate-y-0.5" />
+              </>
+            ) : (
+              <>
+                <span>Voir plus de zones ({hiddenAreasCount})</span>
+                <ChevronDown className="size-5 transition-transform group-hover:translate-y-0.5" />
+              </>
+            )}
+          </button>
+        </motion.div>
       </div>
 
       {/* Section carte et liste complémentaire */}
@@ -192,7 +224,7 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
     >
       {/* Badge "Notre atelier" positionné en haut à droite */}
       {area.featured && (
-        <div className="absolute top-3 left-3 z-10">
+        <div className="absolute top-3 right-3 z-10">
           <span className="rounded-full bg-[#4bb484] px-2.5 py-1 text-[10px] font-medium text-white shadow-sm">
             🏠 Notre atelier
           </span>
