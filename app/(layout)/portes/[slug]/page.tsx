@@ -236,16 +236,12 @@ const formatMaterial = (material: string) => {
                 )}
               </div>
 
-              {/* <Typography variant="p" className="text-base text-gray-600 leading-relaxed">
-                {porte.description}
-              </Typography> */}
-
               {porte.seller && (
                 <div className="mt-4 inline-block">
                   <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                     Fournisseur
                   </span>
-                  <p className="text-base font-bold text-gray-900 mt-1">{porte.seller}</p>
+                  <p className="text-base font-bold text-green-900 mt-1">{porte.seller}</p>
                 </div>
               )}
             </div>
@@ -332,7 +328,7 @@ const formatMaterial = (material: string) => {
                           <p className="text-sm font-bold text-blue-900">A*3 E*3B</p>
                         </div>
 
-                        {/* <div className="p-4 bg-purple-50 border border-purple-200">
+                        <div className="p-4 bg-purple-50 border border-purple-200">
                           <div className="flex items-center gap-2 mb-2">
                             <Volume2 size={18} className="text-purple-600" />
                             <span className="text-xs font-semibold text-purple-900 uppercase tracking-wide">
@@ -350,61 +346,60 @@ const formatMaterial = (material: string) => {
                             </span>
                           </div>
                           <p className="text-sm font-bold text-green-900">V*C3</p>
-                        </div> */}
+                        </div>
                       </div>
                     </div>
                   </div>
                 )}
 
                 {activeTab === 'dimensions' && (
-                  <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-  {hauteur && (
-    <div className="p-4 bg-gray-50 border">
-      <div className="flex items-center gap-2 mb-2">
-        <Ruler size={18} className="text-gray-700" />
-        <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
-          Hauteur
-        </span>
-      </div>
-      <p className="text-sm font-bold text-gray-900">{hauteur}</p>
-    </div>
-  )}
-  
-  {largeur && (
-    <div className="p-4 bg-gray-50 border">
-      <div className="flex items-center gap-2 mb-2">
-        <Ruler size={18} className="text-gray-700" />
-        <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
-          Largeur
-        </span>
-      </div>
-      <p className="text-sm font-bold text-gray-900">{largeur}</p>
-    </div>
-  )}
-{/* </div> */}
-                      
-                      {porte.epaisseur && (
-                        <div className="p-4 bg-gray-50 border">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Package size={18} className="text-gray-700" />
-                            <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
-                              Épaisseur
-                            </span>
-                          </div>
-                          <p className="text-sm font-bold text-gray-900">{porte.epaisseur}</p>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    {hauteur && (
+                      <div className="p-4 bg-gray-50 border">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Ruler size={18} className="text-gray-700" />
+                          <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            Hauteur
+                          </span>
                         </div>
-                      )}
-                    </div>
-
-                    <div className="p-4 bg-blue-50 border border-blue-200 mt-4">
-                      <p className="text-sm text-blue-900">
-                        <strong>Sur mesure :</strong> Dimensions personnalisables selon vos besoins spécifiques.
-                        Contactez-nous pour plus d'informations.
-                      </p>
-                    </div>
+                        <p className="text-sm font-bold text-gray-900">{hauteur}</p>
+                      </div>
+                    )}
+                    
+                    {largeur && (
+                      <div className="p-4 bg-gray-50 border">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Ruler size={18} className="text-gray-700" />
+                          <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            Largeur
+                          </span>
+                        </div>
+                        <p className="text-sm font-bold text-gray-900">{largeur}</p>
+                      </div>
+                    )}
+                      
+                    {porte.epaisseur && (
+                      <div className="p-4 bg-gray-50 border">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Package size={18} className="text-gray-700" />
+                          <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            Épaisseur
+                          </span>
+                        </div>
+                        <p className="text-sm font-bold text-gray-900">{porte.epaisseur}</p>
+                      </div>
+                    )}
                   </div>
-                )}
+
+                  <div className="p-4 bg-blue-50 border border-blue-200 mt-4">
+                    <p className="text-sm text-blue-900">
+                      <strong>Sur mesure :</strong> Dimensions personnalisables selon vos besoins spécifiques.
+                      Contactez-nous pour plus d'informations.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -465,9 +460,6 @@ const formatMaterial = (material: string) => {
         </div>
       </div>
     </div>
-
-      {/* Section Les formes disponibles */ }
-  {/* <AvailableFormsSection /> */ }
 
   {/* Section avantages */ }
   <div className="bg-gray-50 border-y mt-16 py-12">
