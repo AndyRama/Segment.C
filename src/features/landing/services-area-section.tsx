@@ -123,8 +123,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
     }
   ];
 
-  // Affichage conditionnel des zones
-  const displayedAreas = showAllAreas ? areas : areas.slice(0, 2);
+  // Affichage conditionnel des zones (uniquement en mobile)
   const hiddenAreasCount = areas.length - 2;
 
   return (
@@ -139,7 +138,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
         className="mb-12 max-w-4xl mx-auto text-left md:text-center space-y-4"
       >
         <Typography variant="p" className="text-lg leading-relaxed">
-          Artisan menuisier local depuis plus de 15 ans, <strong>Segment.C</strong> est votre spécialiste de la pose et rénovation de menuiseries sur mesure. 
+          Artisan menuisier local depuis plus de 15 ans, <strong>Segment-C</strong> est votre spécialiste de la pose et rénovation de menuiseries sur mesure. 
           Nous accompagnons particuliers et professionnels sur l'ensemble du bassin d'Arcachon et la métropole bordelaise.
         </Typography>
       </motion.div>
@@ -149,35 +148,51 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
         <Typography variant="h3" className="mb-8 text-center text-2xl font-semibold">
           Nos principales zones d'intervention
         </Typography>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {displayedAreas.map((area, index) => (
+        
+        {/* Grille desktop : toutes les cartes affichées */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6">
+          {areas.map((area, index) => (
             <DetailedAreaCard key={area.name} area={area} index={index} />
           ))}
         </div>
 
-        {/* Bouton "Voir plus / Voir moins" */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mt-6 flex justify-center"
-        >
-          <button
-            onClick={() => setShowAllAreas(!showAllAreas)}
-            className="group flex items-center gap-2 rounded-lg border border-[#4bb484]/30 bg-white px-6 py-3 font-medium text-[#4bb484] transition-all hover:bg-[#4bb484]/5 hover:border-[#4bb484]/50"
+        {/* Grille mobile : 2 cartes + bouton voir plus */}
+        <div className="md:hidden">
+          <div className="grid grid-cols-1 gap-6">
+            {areas.slice(0, 2).map((area, index) => (
+              <DetailedAreaCard key={area.name} area={area} index={index} />
+            ))}
+            
+            {/* Cartes cachées affichées conditionnellement */}
+            {showAllAreas && areas.slice(2).map((area, index) => (
+              <DetailedAreaCard key={area.name} area={area} index={index + 2} />
+            ))}
+          </div>
+
+          {/* Bouton "Voir plus / Voir moins" - visible uniquement en mobile */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-6 flex justify-center"
           >
-            {showAllAreas ? (
-              <>
-                <span>Voir moins</span>
-                <ChevronUp className="size-5 transition-transform group-hover:-translate-y-0.5" />
-              </>
-            ) : (
-              <>
-                <span>Voir plus de zones ({hiddenAreasCount})</span>
-                <ChevronDown className="size-5 transition-transform group-hover:translate-y-0.5" />
-              </>
-            )}
-          </button>
-        </motion.div>
+            <button
+              onClick={() => setShowAllAreas(!showAllAreas)}
+              className="group flex items-center gap-2 rounded-lg border border-[#4bb484]/30 bg-white px-6 py-3 font-medium text-[#4bb484] transition-all hover:bg-[#4bb484]/5 hover:border-[#4bb484]/50"
+            >
+              {showAllAreas ? (
+                <>
+                  <span>Voir moins</span>
+                  <ChevronUp className="size-5 transition-transform group-hover:-translate-y-0.5" />
+                </>
+              ) : (
+                <>
+                  <span>Voir plus de zones ({hiddenAreasCount})</span>
+                  <ChevronDown className="size-5 transition-transform group-hover:translate-y-0.5" />
+                </>
+              )}
+            </button>
+          </motion.div>
+        </div>
       </div>
 
       {/* Section carte et liste complémentaire */}
