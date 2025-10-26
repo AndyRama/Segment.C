@@ -37,7 +37,7 @@ export default function GoogleReviewsWidget() {
       href={businessInfo.googleMapsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-6 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all duration-500 ease-in-out hover:shadow-xl z-40"
+      className="fixed bottom-10 right-4 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all duration-500 ease-in-out hover:shadow-xl z-40"
       aria-label="Voir les avis Google"
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}

@@ -45,7 +45,7 @@ export const Footer = () => {
             </div>
 
             {/* Navigation en colonnes - partie droite */}
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5 lg:gap-12">
+            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-5 md:gap-8 lg:gap-12">
               
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">
