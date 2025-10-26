@@ -318,14 +318,14 @@ const formatMaterial = (material: string) => {
                           </div>
                         )}
 
-                        <div className="p-4 bg-blue-50 border border-blue-200">
+                        <div className="p-4 bg-green-50 border border-green-200">
                           <div className="flex items-center gap-2 mb-2">
-                            <Droplets size={18} className="text-blue-600" />
-                            <span className="text-xs font-semibold text-blue-900 uppercase tracking-wide">
+                            <Droplets size={18} className="text-green-600" />
+                            <span className="text-xs font-semibold text-green-900 uppercase tracking-wide">
                               Étanchéité
                             </span>
                           </div>
-                          <p className="text-sm font-bold text-blue-900">A*3 E*3B</p>
+                          <p className="text-sm font-bold text-green-900">A*3 E*3B</p>
                         </div>
 
                         <div className="p-4 bg-purple-50 border border-purple-200">
@@ -354,7 +354,7 @@ const formatMaterial = (material: string) => {
 
                 {activeTab === 'dimensions' && (
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-3 gap-3">
                     {hauteur && (
                       <div className="p-4 bg-gray-50 border">
                         <div className="flex items-center gap-2 mb-2">
@@ -392,8 +392,8 @@ const formatMaterial = (material: string) => {
                     )}
                   </div>
 
-                  <div className="p-4 bg-blue-50 border border-blue-200 mt-4">
-                    <p className="text-sm text-blue-900">
+                  <div className="p-4 bg-green-50 border border-green-200 mt-4">
+                    <p className="text-sm text-green-900">
                       <strong>Sur mesure :</strong> Dimensions personnalisables selon vos besoins spécifiques.
                       Contactez-nous pour plus d'informations.
                     </p>
