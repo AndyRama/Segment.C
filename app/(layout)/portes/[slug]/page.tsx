@@ -340,12 +340,12 @@ const formatMaterial = (material: string) => {
 
                         <div className="p-4 bg-green-50 border border-green-200">
                           <div className="flex items-center gap-2 mb-2">
-                            <Wind size={18} className="text-green-600" />
-                            <span className="text-xs font-semibold text-green-900 uppercase tracking-wide">
+                            <Wind size={18} className="text-blue-600" />
+                            <span className="text-xs font-semibold text-blue-900 uppercase tracking-wide">
                               Résistance
                             </span>
                           </div>
-                          <p className="text-sm font-bold text-green-900">V*C3</p>
+                          <p className="text-sm font-bold text-blue-900">V*C3</p>
                         </div>
                       </div>
                     </div>
