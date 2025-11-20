@@ -7,7 +7,7 @@ export const generateMetadata = combineWithParentMetadata({
 });
 
 export default async function DevisPage() {
-  const user = await getRequiredUser();
+  const user = await getRequiredUser();:
 
   return (
     <>

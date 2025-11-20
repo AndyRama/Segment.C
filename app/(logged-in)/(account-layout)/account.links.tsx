@@ -76,14 +76,4 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       },
     ],
   },
-  {
-    title: "Témoignage",
-    links: [
-      {
-        href: "/account/#",
-        Icon: NotebookText  ,
-        label: "avis google",
-      },
-    ],
-  },
 ];
