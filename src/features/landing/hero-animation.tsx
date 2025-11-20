@@ -127,7 +127,7 @@ const HeroAnimation = () => {
       <div className="relative z-10 flex h-full items-center">
         <div className="container mx-auto px-4 md:px-8 lg:px-6">
           <motion.div
-            className="max-w-4xl"
+            className="max-w-3xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -141,20 +141,19 @@ const HeroAnimation = () => {
             >
               Une idée, une envie,
               <br />
-              <span className="font-bold italic text-green-500">Segment.C</span> est une porte
-              <br className="hidden md:content"/>
-              ouverte sur vos fenêtres
+              <span className="font-bold italic text-green-500">Segment C</span> est une
+              porte <br className="hidden md:content"/>ouverte sur vos fenêtres
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p
+            {/* <motion.p
               className="mb-6 text-lg text-white/90 sm:text-xl md:text-2xl"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
               Je suis <span className="font-semibold text-green-500">Rui De Carvalho</span>
-            </motion.p>
+            </motion.p> */}
 
             {/* Description */}
             <motion.p
@@ -169,7 +168,7 @@ const HeroAnimation = () => {
             </motion.p>
 
             {/* Stats Grid - 2 colonnes sur mobile, 4 sur desktop */}
-            <motion.div
+            {/* <motion.div
               className="mb-8 hidden md:grid md:grid-cols-2 gap-3 lg:grid-cols-4"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -206,7 +205,7 @@ const HeroAnimation = () => {
                   <div className="truncate text-[10px] text-white/70 sm:text-xs">100% personnalisé</div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* CTA Buttons */}
             <motion.div

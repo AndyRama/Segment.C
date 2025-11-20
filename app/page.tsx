@@ -154,11 +154,11 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <CTAImageSection />
+      <ServiceAreaSection />
 
       <SectionDivider />
 
-      <ServiceAreaSection />
+      <CTAImageSection />
 
       {/* <ProcessSection2/> */}
 
