@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
-import { Clock, Users, Award, CheckCircle } from "lucide-react";
+// import { Clock, Users, Award, CheckCircle } from "lucide-react";
 
 const HeroAnimation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

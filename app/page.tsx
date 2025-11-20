@@ -41,6 +41,8 @@ export default function HomePage() {
 
       <ProcessSection />
 
+      <CTAImageSection />
+
       <SectionDivider />
 
       <GallerySection />
@@ -153,13 +155,13 @@ export default function HomePage() {
       />
 
       <SectionDivider />
-
-      <ServiceAreaSection />
+      
+      <CTAImageSection />
 
       <SectionDivider />
 
-      <CTAImageSection />
-
+      <ServiceAreaSection />
+     
       {/* <ProcessSection2/> */}
 
       <Partenaire />
