@@ -47,6 +47,8 @@ export default function HomePage() {
 
       <GallerySection />
 
+      <Partenaire />
+
       <FAQSection
         faq={[
           {
@@ -163,8 +165,6 @@ export default function HomePage() {
       <ServiceAreaSection />
      
       {/* <ProcessSection2/> */}
-
-      <Partenaire />
 
       <SectionDivider />
 

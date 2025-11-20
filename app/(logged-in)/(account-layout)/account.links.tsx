@@ -42,11 +42,11 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       {
         href: "/account/produits",
         Icon: DoorOpen ,
-        label: "Commander un Produits",
+        label: "Catalogue",
       },
     ],
   },
-    {
+  {
     title: "Services",
     links: [
       {
@@ -57,7 +57,32 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       {
         href: "#",
         Icon: ShoppingCart,
-        label: "Mes achats",
+        label: "Mes commandes",
+      },
+    ],
+  },
+  {
+    title: "Rendez-vous",
+    links: [
+      {
+        href: "/account/rendez-vous/métrage",
+        Icon: NotebookText  ,
+        label: "Métrage",
+      },
+      {
+        href: "/account/rendez-vous/travaux",
+        Icon: ShoppingCart,
+        label: "Programmer mes travaux",
+      },
+    ],
+  },
+  {
+    title: "Témoignage",
+    links: [
+      {
+        href: "/account/#",
+        Icon: NotebookText  ,
+        label: "avis google",
       },
     ],
   },
