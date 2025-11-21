@@ -6,7 +6,7 @@ export const generateMetadata = combineWithParentMetadata({
   description: "Créer et suiver vos demandes de travaux",
 });
 
-export default async function DevisPage() {
+export default async function MetragePage() {
   // const user = await getRequiredUser();:
 
   return (
