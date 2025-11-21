@@ -1,5 +1,5 @@
 import type { NavigationGroup } from "@/features/navigation/navigation.type";
-import { AlertCircle, Mail, User2, ShoppingCart, NotebookPen , NotebookText , Home, Calendar, FileText, BookOpenText    } from "lucide-react";
+import { AlertCircle, Mail, User2, ShoppingCart, NotebookPen , NotebookText , Home, Calendar, FileText, BookOpenText , Files , FileCheckCorner  } from "lucide-react";
 
 export const getAccountNavigation = (): NavigationGroup[] => {
   return ACCOUNT_LINKS;
@@ -55,24 +55,29 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
         label: "Mes devis",
       },
       {
-        href: "#",
-        Icon: ShoppingCart,
-        label: "Mes commandes",
+        href: "/account/services/metrage",
+        Icon: FileText  ,
+        label: "Mesure technique",
       },
+      {
+        href: "/account/services/travaux",
+        Icon: Calendar,
+        label: "Réalisation",
+      }, 
     ],
   },
   {
-    title: "Rendez-vous",
+    title: "information",
     links: [
       {
-        href: "/account/rendez-vous/métrage",
-        Icon: FileText  ,
-        label: "Métrage",
+        href: "/account/information/commandes",
+        Icon: FileCheckCorner ,
+        label: "Mes commandes",
       },
       {
-        href: "/account/rendez-vous/travaux",
-        Icon: Calendar,
-        label: "Programmer mes travaux",
+        href: "/account/information/factures",
+        Icon: Files ,
+        label: "Mes factures",
       },
     ],
   },

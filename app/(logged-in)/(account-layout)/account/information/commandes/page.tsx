@@ -1,4 +1,3 @@
-// import { getRequiredUser } from "@/lib/auth/auth-user";
 import { combineWithParentMetadata } from "@/lib/metadata";
 
 export const generateMetadata = combineWithParentMetadata({
@@ -6,13 +5,12 @@ export const generateMetadata = combineWithParentMetadata({
   description: "Créer et suiver vos demandes de travaux",
 });
 
-export default async function TravauxPage() {
-  // const user = await getRequiredUser();
+export default async function CommandesPage() {
 
   return (
     <>
       <div className="mx-auto">
-        <h2>test page rdv travaux</h2>
+        <h2>Commande</h2>
       </div>
     </>
   );
