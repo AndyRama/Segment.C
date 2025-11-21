@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Typography } from "@/components/nowts/typography";
 import { SiteConfig } from "@/site-config";
 import { Layout, LayoutContent } from "@/features/page/layout";
-import { Mail, Home, Phone } from "lucide-react";
+import { Mail, Home, Phone, Earth  } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -21,6 +21,13 @@ export const Footer = () => {
               </div>
 
               <div className="flex flex-col gap-2 text-gray-600">
+                <div className="flex items-center gap-2">
+                  <Earth  className="size-4 text-gray-500" />
+                  <Typography variant="muted">
+                    Une portes ouvertes sur vos fênetres
+                  </Typography>
+                </div>
+
                 <div className="flex items-center gap-2">
                   <Home className="size-4 text-gray-500" />
                   <Typography variant="muted">
