@@ -22,7 +22,7 @@ export default function HomePage() {
 
       <HeroAnimation />
 
-      {/* <SectionDivider /> */}
+      <SectionDivider />
 
       <AboutSection
         name="Rui De Carvalho"
@@ -49,6 +49,8 @@ export default function HomePage() {
       <GallerySection />
 
       <Partenaire />
+
+      <SectionDivider />
 
       <FAQSection
         faq={[
@@ -158,6 +160,10 @@ export default function HomePage() {
       />
 
       <SectionDivider />
+
+      <RecentPosts />
+                
+      <SectionDivider />
       
       <CTAImageSection />
 
@@ -165,12 +171,6 @@ export default function HomePage() {
 
       <ServiceAreaSection />
      
-      {/* <ProcessSection2/> */}
-
-      <SectionDivider />
-
-      <RecentPosts />
-
       <SectionDivider />
 
       <Footer />
