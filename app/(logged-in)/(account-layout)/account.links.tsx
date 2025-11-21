@@ -1,5 +1,5 @@
 import type { NavigationGroup } from "@/features/navigation/navigation.type";
-import { AlertCircle, Mail, User2, ShoppingCart, NotebookPen , NotebookText , DoorOpen , Home  } from "lucide-react";
+import { AlertCircle, Mail, User2, ShoppingCart, NotebookPen , NotebookText , Home, Calendar, FileText, BookOpenText    } from "lucide-react";
 
 export const getAccountNavigation = (): NavigationGroup[] => {
   return ACCOUNT_LINKS;
@@ -41,7 +41,7 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       },
       {
         href: "/account/produits",
-        Icon: DoorOpen ,
+        Icon: BookOpenText  ,
         label: "Catalogue",
       },
     ],
@@ -66,12 +66,12 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     links: [
       {
         href: "/account/rendez-vous/métrage",
-        Icon: NotebookText  ,
+        Icon: FileText  ,
         label: "Métrage",
       },
       {
         href: "/account/rendez-vous/travaux",
-        Icon: ShoppingCart,
+        Icon: Calendar,
         label: "Programmer mes travaux",
       },
     ],
