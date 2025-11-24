@@ -225,9 +225,7 @@ export function HeaderBase() {
                               Mes Devis
                           </Link>
                       ) : (
-                          <QuoteRequestModule 
-                            className={buttonVariants({ size: "sm" })} 
-                          />
+                          <QuoteRequestModule/>
                       )}
                     </div>
 

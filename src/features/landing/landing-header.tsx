@@ -216,7 +216,7 @@ const topRoutes = [
                               Mes Devis
                           </Link>
                       ) : (
-                          <QuoteRequestModule/>
+                        <QuoteRequestModule/>
                       )}
                     </div>
 
