@@ -239,7 +239,7 @@ export function HeaderBase() {
                                 >
                                     Mes Devis
                                 </Link>
-                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                                <AuthButtonClient/>
                             </>
                         ) : (
                             <>
