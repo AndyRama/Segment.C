@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
+import QuoteRequestModule from "@/components/modules/quote-request-module"; 
+
 // import { Clock, Users, Award, CheckCircle } from "lucide-react";
 
 const HeroAnimation = () => {
@@ -45,9 +47,7 @@ const HeroAnimation = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-white">
-      {/* Double Image Background Container */}
       <div className="absolute inset-0 flex">
-        {/* Left Image - Blurred */}
         <motion.div
           className="relative h-full w-0 overflow-hidden md:w-1/2"
           animate={{
@@ -144,18 +144,7 @@ const HeroAnimation = () => {
               <span className="font-bold italic text-green-500">Segment C</span> est une
               porte <br className="hidden md:content"/>ouverte sur vos fenêtres
             </motion.h1>
-
-            {/* Subtitle */}
-            {/* <motion.p
-              className="mb-6 text-lg text-white/90 sm:text-xl md:text-2xl"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
-              Je suis <span className="font-semibold text-green-500">Rui De Carvalho</span>
-            </motion.p> */}
-
-            {/* Description */}
+            
             <motion.p
               className="mb-8 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg"
               initial={{ y: 30, opacity: 0 }}
@@ -167,46 +156,6 @@ const HeroAnimation = () => {
               menuiserie avec un savoir-faire artisanal et des finitions soignées.
             </motion.p>
 
-            {/* Stats Grid - 2 colonnes sur mobile, 4 sur desktop */}
-            {/* <motion.div
-              className="mb-8 hidden md:grid md:grid-cols-2 gap-3 lg:grid-cols-4"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-            <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
-                <Clock className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
-                <div className="min-w-0">
-                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">15 ans</div>
-                  <div className="truncate text-[10px] text-white/70 sm:text-xs">d'expertise</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
-                <Users className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
-                <div className="min-w-0">
-                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">500+ clients</div>
-                  <div className="truncate text-[10px] text-white/70 sm:text-xs">satisfaits</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
-                <Award className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
-                <div className="min-w-0">
-                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">Certifié</div>
-                  <div className="truncate text-[10px] text-white/70 sm:text-xs">Qualité garantie</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-lg bg-white/10 p-2.5 backdrop-blur-sm sm:gap-3 sm:p-3">
-                <CheckCircle className="size-4 flex-shrink-0 text-green-500 sm:size-5 lg:size-6" />
-                <div className="min-w-0">
-                  <div className="truncate text-xs font-semibold text-white sm:text-sm lg:text-base">Sur mesure</div>
-                  <div className="truncate text-[10px] text-white/70 sm:text-xs">100% personnalisé</div>
-                </div>
-              </div>
-            </motion.div> */}
-
             {/* CTA Buttons */}
             <motion.div
               className="flex flex-wrap gap-4"
@@ -214,49 +163,10 @@ const HeroAnimation = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.9 }}
             >
-              {session ? (
-                <>
-                  <Link href="/account/devis">
-                    <motion.button
-                      className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Demander un devis
-                    </motion.button>
-                  </Link>
-
-                  <Link href="/home/#réalisations">
-                    <motion.button
-                      className="hidden md:content rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: "0 25px 50px rgba(34, 197, 94, 0.3)",
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Voir mes réalisations
-                    </motion.button>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis">
-                    <motion.button
-                      className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Demander un devis
-                    </motion.button>
-                  </Link>
-
+                <QuoteRequestModule 
+                    className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
+                />
+                
                   <Link href="/#réalisations">
                     <motion.button
                       className="rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
@@ -269,8 +179,6 @@ const HeroAnimation = () => {
                       Voir mes réalisations
                     </motion.button>
                   </Link>
-                </>
-              )}
             </motion.div>
           </motion.div>
         </div>

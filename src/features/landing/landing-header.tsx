@@ -11,7 +11,7 @@ import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
-import QuoteRequestModule from "@/features/landing/quote-request-module"; 
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -161,23 +161,40 @@ const topRoutes = [
         </motion.nav>
 
         <nav className="flex items-center space-x-1">
-          {/* Version Desktop (lg:contents) */}
-          <div className="hidden lg:contents gap-2">
-            {/* Si l'utilisateur est connecté, on affiche le lien "Mes Devis" */}
-            {session && (
-              <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                Mes Devis
-              </Link>
+          {/* Version Desktop (lg:flex) */}
+          <div className="hidden items-center gap-2 lg:flex">
+              {session ? (
+              <>
+                {/* Loggé : Bouton Mes Devis */}
+                <Link 
+                    href="/account/devis/mes-devis" 
+                    className={buttonVariants({ size: "sm", variant: "secondary" })}
+                >
+                  Mes Devis
+                </Link>
+                {/* Loggé : Bouton Nouvelle Demande (Redirection) */}
+                <Link 
+                    href="/account/devis" // Redirige vers la page du formulaire
+                    className={buttonVariants({ size: "sm", className: "ml-2" })}
+                >
+                    Nouvelle Demande
+                </Link>
+                <AuthButtonClient />
+              </>
+            ) : (
+              <>
+                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
+                <Link 
+                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                    className={buttonVariants({ size: "sm" })}
+                >
+                    Demande de devis
+                </Link>
+                <AuthButtonClient />
+              </>
             )}
-            
-            {/* Le QuoteRequestModule est toujours affiché sur desktop */}
-            <div className="mr-4">
-              <QuoteRequestModule />
-            </div>
-            
-            {/* Le bouton d'Auth est toujours affiché */}
-            <AuthButtonClient />
           </div>
+
 
           {/* Version Mobile (Sheet) */}
           <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
@@ -208,30 +225,44 @@ const topRoutes = [
                     </motion.p>
                   </div>
                   <hr />
-                  <div className="flex flex-row items-center justify-around">
-                    {/* Logique mobile : affiche Mes Devis si connecté, sinon la Demande de devis */}
-                    <div className="mr-4">
-                      {session ? (
-                          <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm" })}>
-                              Mes Devis
-                          </Link>
-                      ) : (
-                        <QuoteRequestModule/>
-                      )}
-                    </div>
+                  
+                    {/* Logique des boutons mobile restaurée vers la redirection */}
+                  <div className="flex flex-row items-center justify-between gap-2">
+                        {session ? (
+                            <>
+                                {/* Loggé : Bouton Mes Devis */}
+                                <Link 
+                                    href="/account/devis/mes-devis" 
+                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
+                                >
+                                    Mes Devis
+                                </Link>
+                                {/* Loggé : Bouton Déconnexion */}
+                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                            </>
+                        ) : (
+                            <>
+                                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
+                                <Link 
+                                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
+                                >
+                                    Devis
+                                </Link>
+                                {/* Déloggé : Bouton Connexion */}
+                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                            </>
+                        )}
+                  </div>
 
-                    <AuthButtonClient />
-                    
-                    {/* Correction: ce Typography semble être mal placé dans le flux mobile */}
-                    {/* Je le déplace après le AuthButtonClient pour ne pas impacter le layout des boutons */}
-                    <Typography
+                  <Typography
                       variant="h3"
-                      className="text-left text-lg !leading-tight hidden" // Cacher si besoin de place
+                      className="text-left text-lg !leading-tight hidden"
                     >
                       Menu Principal
                     </Typography>
-                  </div>
-                  <hr />
+                  
+                    <hr />
                   {topRoutes.map((route) => (
                     route.dropdown ? (
                       <div key={route.path} className="flex flex-col gap-2">

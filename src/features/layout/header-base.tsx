@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Image from "next/image";
 import Link from "next/link";
@@ -19,11 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// --- Ajout des imports manquants pour la logique simplifiée ---
 import { AuthButtonClient } from "@/features/auth/auth-button-client"; 
-import QuoteRequestModule from "@/features/landing/quote-request-module"; 
-// -----------------------------------------------------------
-
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
@@ -172,20 +168,41 @@ export function HeaderBase() {
 
         {/* Boutons d'Action (Desktop & Mobile) */}
         <nav className="flex items-center space-x-1">
-          <div className="hidden lg:contents gap-2">
-            {session && (
-              <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                Mes Devis
-              </Link>
+          {/* Version Desktop */}
+          <div className="hidden items-center gap-2 lg:flex">
+            {session ? (
+              <>
+                {/* Loggé : Bouton Mes Devis (seconde priorité) */}
+                <Link 
+                    href="/account/devis/mes-devis" 
+                    className={buttonVariants({ size: "sm", variant: "secondary" })}
+                >
+                  Mes Devis
+                </Link>
+                {/* Loggé : Bouton Nouvelle Demande (Redirection) */}
+                <Link 
+                    href="/account/devis" 
+                    className={buttonVariants({ size: "sm", className: "ml-2" })}
+                >
+                    Nouvelle Demande
+                </Link>
+                <AuthButtonClient />
+              </>
+            ) : (
+              <>
+                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
+                <Link 
+                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                    className={buttonVariants({ size: "sm" })}
+                >
+                    Demande de devis
+                </Link>
+                <AuthButtonClient />
+              </>
             )}
-            
-            <div className="mr-4">
-             <QuoteRequestModule/>
-            </div>
-            
-            <AuthButtonClient />
           </div>
           
+          {/* Version Mobile (Sheet) */}
           <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
             <Sheet>
               <SheetTrigger>
@@ -216,29 +233,43 @@ export function HeaderBase() {
                   </div>
                   <hr />
 
-                  {/* Boutons Mobile */}
-                  <div className="flex flex-row items-center justify-around">
-                    {/* Logique mobile : affiche Mes Devis si connecté, sinon la Demande de devis */}
-                    <div className="mr-4">
-                      {session ? (
-                          <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm" })}>
-                              Mes Devis
-                          </Link>
-                      ) : (
-                          <QuoteRequestModule/>
-                      )}
-                    </div>
+                  {/* Boutons Mobile (Logique de redirection restaurée) */}
+                  <div className="flex flex-row items-center justify-between gap-2">
+                        {session ? (
+                            <>
+                                {/* Loggé : Bouton Mes Devis */}
+                                <Link 
+                                    href="/account/devis/mes-devis" 
+                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
+                                >
+                                    Mes Devis
+                                </Link>
+                                {/* Loggé : Bouton Déconnexion */}
+                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                            </>
+                        ) : (
+                            <>
+                                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
+                                <Link 
+                                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
+                                >
+                                    Devis
+                                </Link>
+                                {/* Déloggé : Bouton Connexion */}
+                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                            </>
+                        )}
+                  </div>
 
-                    <AuthButtonClient />
-
-                    <Typography
+                  <Typography
                       variant="h3"
-                      className="text-left text-lg !leading-tight hidden" // Masqué car peu pertinent pour le flux
+                      className="text-left text-lg !leading-tight hidden"
                     >
                       Menu Principal
                     </Typography>
-                  </div>
-                  <hr />
+                  
+                    <hr />
 
                   {/* Liens de Navigation Mobile */}
                   {topRoutes.map((route) =>
@@ -272,6 +303,7 @@ export function HeaderBase() {
                 </div>
               </SheetContent>
             </Sheet>
+            
           </div>
         </nav>
       </Layout>
