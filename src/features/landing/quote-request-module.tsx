@@ -3,11 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { X, Star, User, Mail, Phone, MessageSquare, Check, Briefcase, ChevronDown } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
-import { useRouter } from 'next/navigation'; // Ajout de useRouter pour la redirection
-// L'import de ContactForm pourrait être utilisé ici, mais je vais garder le formulaire inline pour la simplicité de la modale.
 
-// Configuration du webhook n8n
-// NOTE: Laissez l'URL vide pour l'exemple.
 const N8N_WEBHOOK_URL = "VOTRE_ENDPOINT_N8N_WEBHOOK_ICI"; 
 
 type FormData = {
@@ -19,22 +15,18 @@ type FormData = {
   company?: string;
 };
 
-// Interface pour les propriétés optionnelles passées au module (pour le style du bouton)
-interface QuoteRequestModuleProps {
+type QuoteRequestModuleProps = {
     className?: string;
-}
+};
 
-// Composant de bouton et modale pour la demande de devis
 export default function QuoteRequestModule({ className }: QuoteRequestModuleProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  
-  const router = useRouter(); // Utilisation de useRouter
-  
+    
   const [formData, setFormData] = useState<FormData>(() => ({
-    userType: 'particulier', // Changé à particulier par défaut pour une meilleure expérience utilisateur généraliste
+    userType: 'particulier', 
     name: '',
     email: '',
     phone: '',
@@ -44,13 +36,13 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
 
   const openModal = () => {
     setIsModalOpen(true);
-    setIsSuccess(false); // Réinitialiser l'état de succès à l'ouverture
+    setIsSuccess(false); 
     setIsError(false);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    // Optionnel: Réinitialiser le formulaire ici si besoin
+    
     setFormData({
         userType: 'particulier',
         name: '',
@@ -80,7 +72,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
         await new Promise(resolve => setTimeout(resolve, 1500)); 
 
         if (N8N_WEBHOOK_URL.includes("VOTRE_ENDPOINT_N8N_WEBHOOK_ICI")) {
-            console.warn("Utilisation de l'URL par défaut du webhook. La soumission est simulée.");
+
         } else {
             // Tentative d'envoi réel (décommenter pour usage réel)
             /*
@@ -99,29 +91,24 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
 
         setIsSuccess(true);
         
-        // Exigence utilisateur: Fermer la modale après le succès
         setTimeout(() => {
             closeModal();
-            // Optionnel: Rediriger l'utilisateur vers une page de confirmation
-            // router.push('/confirmation-devis'); 
-        }, 2000); // Laisse le message de succès affiché pendant 2 secondes
+        }, 2000);
         
     } catch (error) {
-        console.error("Erreur lors de l'envoi du devis:", error);
+
         setIsError(true);
-        // Ne pas fermer immédiatement en cas d'erreur pour que l'utilisateur puisse voir le message
+
     } finally {
         setIsSubmitting(false);
     }
-    // --- FIN SIMULATION D'APPEL API ---
   };
 
   return (
     <>
-      {/* 1. Bouton d'ouverture (Utilise les variants pour le style) */}
       <button
         onClick={openModal}
-        className={className || buttonVariants({ size: "default" })}
+        className={className ?? buttonVariants({ size: "default" })}
         aria-label="Ouvrir le formulaire de demande de devis"
       >
         <Star className="size-4 mr-2 fill-white" />
@@ -130,14 +117,12 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
 
       {/* 2. Modale (S'ouvre avec isModalOpen) */}
       {isModalOpen && (
-        // Conteneur de fond: Fixed, centré, flou gris (backdrop-blur-sm et bg-gray-900/70)
         <div 
             className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-900/70 backdrop-blur-sm transition-opacity duration-300"
-            onClick={closeModal} // Permet de fermer en cliquant en dehors
+            onClick={closeModal} 
             role="dialog"
             aria-modal="true"
         >
-          {/* Conteneur de la modale: Cliquable, centré, responsive, avec max-w */}
           <div 
             className="relative w-full mx-auto max-w-lg bg-white rounded-xl shadow-2xl transform transition-all duration-300 overflow-hidden"
             onClick={(e) => e.stopPropagation()} // Empêche la fermeture lors du clic interne
@@ -243,7 +228,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
                       className="w-full p-3 border border-gray-300 rounded-lg focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors" 
                       required 
                       onChange={handleInputChange} 
-                      value={formData.company || ''} 
+                      value={formData.company ?? ''} 
                     />
                   )}
 
