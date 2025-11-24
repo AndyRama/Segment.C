@@ -1,11 +1,11 @@
 "use client";
 
 import { Typography } from "@/components/nowts/typography";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+// import { buttonVariants } from "@/components/ui/button";
+// import Link from "next/link";
 import { SectionLayout } from "../section-layout";
 import { useSession } from "@/lib/auth-client";
-import QuoteRequestModule from "@/landing/quote-request-module";
+import QuoteRequestModule from "@/features/landing/quote-request-module";
 
 export const CTAImageSection = () => {
   const { data: session } = useSession();

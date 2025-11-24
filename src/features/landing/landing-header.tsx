@@ -11,7 +11,7 @@ import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
-import QuoteRequestModule from "@/landing/quote-request-module"; 
+import QuoteRequestModule from "@/features/landing/quote-request-module"; 
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -172,9 +172,7 @@ const topRoutes = [
             
             {/* Le QuoteRequestModule est toujours affiché sur desktop */}
             <div className="mr-4">
-              <QuoteRequestModule 
-                className={buttonVariants({ size: "sm" })} 
-              />
+              <QuoteRequestModule />
             </div>
             
             {/* Le bouton d'Auth est toujours affiché */}
@@ -218,7 +216,7 @@ const topRoutes = [
                               Mes Devis
                           </Link>
                       ) : (
-                          <QuoteRequestModule 
+                          <QuoteRequestModule
                             className={buttonVariants({ size: "sm" })} 
                           />
                       )}

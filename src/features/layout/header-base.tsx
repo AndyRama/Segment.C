@@ -21,7 +21,7 @@ import {
 
 // --- Ajout des imports manquants pour la logique simplifiée ---
 import { AuthButtonClient } from "@/features/auth/auth-button-client"; 
-import QuoteRequestModule from "@/landing/quote-request-module"; 
+import QuoteRequestModule from "@/features/landing/quote-request-module"; 
 // -----------------------------------------------------------
 
 
