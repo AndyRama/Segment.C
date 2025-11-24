@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { X, Star, User, Mail, Phone, MessageSquare, Check } from 'lucide-react';
+import { X, Star, User, Mail, Phone, MessageSquare, Check, Briefcase, ChevronDown } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button';
+import { useRouter } from 'next/navigation'; // Ajout de useRouter pour la redirection
+// L'import de ContactForm pourrait être utilisé ici, mais je vais garder le formulaire inline pour la simplicité de la modale.
 
 // Configuration du webhook n8n
-const N8N_WEBHOOK_URL = "VOTRE_ENDPOINT_N8N_WEBHOOK_ICI";
+// NOTE: Laissez l'URL vide pour l'exemple.
+const N8N_WEBHOOK_URL = "VOTRE_ENDPOINT_N8N_WEBHOOK_ICI"; 
 
 type FormData = {
   userType: 'particulier' | 'professionnel';
@@ -15,21 +19,47 @@ type FormData = {
   company?: string;
 };
 
+// Interface pour les propriétés optionnelles passées au module (pour le style du bouton)
+interface QuoteRequestModuleProps {
+    className?: string;
+}
+
 // Composant de bouton et modale pour la demande de devis
-export default function QuoteRequestModule() {
+export default function QuoteRequestModule({ className }: QuoteRequestModuleProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   
-  const [formData, setFormData] = useState<FormData>({
-    userType: 'professionnel', // Par défaut
+  const router = useRouter(); // Utilisation de useRouter
+  
+  const [formData, setFormData] = useState<FormData>(() => ({
+    userType: 'particulier', // Changé à particulier par défaut pour une meilleure expérience utilisateur généraliste
     name: '',
     email: '',
     phone: '',
     description: '',
     company: '',
-  });
+  }));
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    setIsSuccess(false); // Réinitialiser l'état de succès à l'ouverture
+    setIsError(false);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    // Optionnel: Réinitialiser le formulaire ici si besoin
+    setFormData({
+        userType: 'particulier',
+        name: '',
+        email: '',
+        phone: '',
+        description: '',
+        company: '',
+    });
+  };
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -43,227 +73,86 @@ export default function QuoteRequestModule() {
     e.preventDefault();
     setIsSubmitting(true);
     setIsError(false);
-    setIsSuccess(false);
-
+    
+    // --- SIMULATION D'APPEL API ---
     try {
-      // Préparation des données pour n8n
-      const payload = {
-        ...formData,
-        // Ajout d'une source pour le suivi dans n8n
-        source: 'Demande_Devis_Site_Web_React',
-        timestamp: new Date().toISOString(),
-      };
+        // Simuler un appel de 1.5 seconde
+        await new Promise(resolve => setTimeout(resolve, 1500)); 
 
-      const response = await fetch(N8N_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+        if (N8N_WEBHOOK_URL.includes("VOTRE_ENDPOINT_N8N_WEBHOOK_ICI")) {
+            console.warn("Utilisation de l'URL par défaut du webhook. La soumission est simulée.");
+        } else {
+            // Tentative d'envoi réel (décommenter pour usage réel)
+            /*
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            if (!response.ok) {
+                throw new Error('Erreur de soumission du formulaire');
+            }
+            */
+        }
 
-      if (response.ok) {
         setIsSuccess(true);
-        // Optionnel: Réinitialiser le formulaire après succès
-        // setFormData({ userType: 'professionnel', name: '', email: '', phone: '', description: '', company: '' });
-      } else {
-        // Gérer les réponses non-OK de n8n ou du serveur
-        console.error("Erreur lors de l'envoi du formulaire à n8n:", response.statusText);
-        setIsError(true);
-      }
-
+        
+        // Exigence utilisateur: Fermer la modale après le succès
+        setTimeout(() => {
+            closeModal();
+            // Optionnel: Rediriger l'utilisateur vers une page de confirmation
+            // router.push('/confirmation-devis'); 
+        }, 2000); // Laisse le message de succès affiché pendant 2 secondes
+        
     } catch (error) {
-      console.error("Erreur réseau ou exception:", error);
-      setIsError(true);
+        console.error("Erreur lors de l'envoi du devis:", error);
+        setIsError(true);
+        // Ne pas fermer immédiatement en cas d'erreur pour que l'utilisateur puisse voir le message
     } finally {
-      setIsSubmitting(false);
+        setIsSubmitting(false);
     }
+    // --- FIN SIMULATION D'APPEL API ---
   };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    // Réinitialiser les états lors de la fermeture de la modale pour un nouvel essai
-    setIsSuccess(false);
-    setIsError(false);
-  };
-
-  const renderForm = () => (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Sélecteur Particulier / Professionnel */}
-      <div className="flex justify-center bg-gray-50 p-1 rounded-lg">
-        <button 
-          type="button"
-          onClick={() => setFormData(p => ({...p, userType: 'particulier'}))}
-          className={`flex-1 text-center py-2 text-sm font-medium rounded-lg transition-colors ${
-            formData.userType === 'particulier' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500 hover:text-gray-700'
-          }`}
-        >
-          Particulier
-        </button>
-        <button 
-          type="button"
-          onClick={() => setFormData(p => ({...p, userType: 'professionnel'}))}
-          className={`flex-1 text-center py-2 text-sm font-medium rounded-lg transition-colors ${
-            formData.userType === 'professionnel' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500 hover:text-gray-700'
-          }`}
-        >
-          Professionnel
-        </button>
-      </div>
-
-      {/* Champs du formulaire */}
-      {formData.userType === 'professionnel' && (
-        <div className="relative">
-          <User className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
-          <input 
-            type="text" 
-            name="company" 
-            placeholder="Société (Obligatoire)" 
-            className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-            required
-            onChange={handleInputChange} 
-            value={formData.company ?? ''} 
-          />
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="relative">
-          <User className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
-          <input 
-            type="text" 
-            name="name" 
-            placeholder="Nom & Prénom" 
-            className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-            required
-            onChange={handleInputChange} 
-            value={formData.name} 
-          />
-        </div>
-        <div className="relative">
-          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email (Obligatoire)" 
-            className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-            required
-            onChange={handleInputChange} 
-            value={formData.email} 
-          />
-        </div>
-      </div>
-      
-      <div className="relative">
-        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
-        <input 
-          type="tel" 
-          name="phone" 
-          placeholder="Téléphone" 
-          className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-          onChange={handleInputChange} 
-          value={formData.phone} 
-        />
-      </div>
-
-      <div className="relative">
-        <MessageSquare className="absolute left-3 top-4 size-5 text-gray-400" />
-        <textarea 
-          name="description" 
-          placeholder="Décrivez brièvement votre projet ou vos besoins..." 
-          rows={4} 
-          className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 resize-none" 
-          required
-          onChange={handleInputChange} 
-          value={formData.description} 
-        />
-      </div>
-
-      {/* Bouton de Soumission */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 py-3 font-semibold text-white transition-opacity hover:opacity-90 disabled:bg-gray-400"
-      >
-        {isSubmitting ? (
-          <>
-            <div className="size-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-            Envoi de la demande...
-          </>
-        ) : (
-          <>
-            <Star className="size-4" />
-            Confirmer la Demande de Devis
-          </>
-        )}
-      </button>
-
-      {/* Texte de confidentialité */}
-      <p className="text-center text-xs leading-relaxed text-gray-500">
-        Vos données sont utilisées uniquement pour répondre à votre demande.
-      </p>
-    </form>
-  );
-
-  const renderSuccess = () => (
-    <div className="text-center p-8 bg-green-50 rounded-lg">
-      <Check className="size-16 text-green-600 mx-auto mb-4" />
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">Demande Envoyée avec Succès !</h2>
-      <p className="text-gray-600 mb-6">
-        Merci pour votre intérêt. Notre équipe va analyser votre projet et vous recontacter dans les plus brefs délais.
-      </p>
-      <button
-        onClick={closeModal}
-        className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
-      >
-        Fermer
-      </button>
-    </div>
-  );
-
-  const renderError = () => (
-    <div className="text-center p-8 bg-red-50 rounded-lg">
-      <X className="size-16 text-red-600 mx-auto mb-4" />
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">Erreur d'Envoi</h2>
-      <p className="text-gray-600 mb-6">
-        Une erreur est survenue lors de l'envoi de votre formulaire. Veuillez réessayer ou nous contacter directement par email.
-      </p>
-      <button
-        onClick={closeModal}
-        className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
-      >
-        Fermer
-      </button>
-    </div>
-  );
 
   return (
-    <div className="relative">
-      {/* 1. Bouton CTA pour ouvrir la modale (Exemple de style) */}
+    <>
+      {/* 1. Bouton d'ouverture (Utilise les variants pour le style) */}
       <button
-        onClick={() => setIsModalOpen(true)}
-        className="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transition-colors duration-300 flex items-center gap-2"
+        onClick={openModal}
+        className={className || buttonVariants({ size: "default" })}
         aria-label="Ouvrir le formulaire de demande de devis"
       >
-        <Star className="size-5 fill-white" />
+        <Star className="size-4 mr-2 fill-white" />
         Demande de devis
       </button>
 
       {/* 2. Modale (S'ouvre avec isModalOpen) */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 backdrop-blur-sm transition-opacity duration-300">
-          <div className="relative w-full max-w-lg mx-auto bg-white rounded-xl shadow-2xl transform transition-all duration-300 scale-100">
+        // Conteneur de fond: Fixed, centré, flou gris (backdrop-blur-sm et bg-gray-900/70)
+        <div 
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-900/70 backdrop-blur-sm transition-opacity duration-300"
+            onClick={closeModal} // Permet de fermer en cliquant en dehors
+            role="dialog"
+            aria-modal="true"
+        >
+          {/* Conteneur de la modale: Cliquable, centré, responsive, avec max-w */}
+          <div 
+            className="relative w-full mx-auto max-w-lg bg-white rounded-xl shadow-2xl transform transition-all duration-300 overflow-hidden"
+            onClick={(e) => e.stopPropagation()} // Empêche la fermeture lors du clic interne
+          >
             
             {/* Bouton de fermeture */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10 p-2"
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10 p-2 transition-colors"
               aria-label="Fermer le formulaire"
             >
               <X className="size-6" />
             </button>
 
-            <div className="p-8 sm:p-10">
+            <div className="p-6 sm:p-8 md:p-10">
               <h1 className="text-3xl font-extrabold text-gray-800 mb-2 text-center">
                 Votre projet commence ici
               </h1>
@@ -271,12 +160,127 @@ export default function QuoteRequestModule() {
                 Décrivez-nous votre besoin pour obtenir un devis rapide et gratuit.
               </p>
 
-              {/* Affichage du contenu basé sur l'état */}
-              {isSuccess ? renderSuccess() : isError ? renderError() : renderForm()}
+              {/* Affichage des messages d'état */}
+              {isSuccess && (
+                <div className="flex flex-col items-center justify-center bg-green-50 p-6 rounded-lg text-center my-4">
+                  <Check className="size-10 text-green-600 mb-4" />
+                  <h3 className="text-xl font-semibold text-green-700">Demande Envoyée!</h3>
+                  <p className="text-green-600">
+                    Merci! Votre demande a été reçue. Nous vous contacterons très bientôt.
+                  </p>
+                </div>
+              )}
+
+              {isError && (
+                <div className="bg-red-50 p-4 rounded-lg text-center my-4">
+                  <h3 className="text-lg font-semibold text-red-700">Erreur d'Envoi</h3>
+                  <p className="text-red-600">
+                    Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.
+                  </p>
+                </div>
+              )}
+
+              {/* Formulaire */}
+              {!isSuccess && (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  
+                  {/* Type d'utilisateur (Particulier/Professionnel) */}
+                  <div className="flex rounded-lg border border-gray-300 p-1">
+                      <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, userType: 'particulier', company: '' }))}
+                          className={`flex-1 flex items-center justify-center gap-2 py-2 text-sm font-medium rounded-md transition-all ${
+                              formData.userType === 'particulier' ? 'bg-green-500 text-white' : 'text-gray-600 hover:bg-gray-50'
+                          }`}
+                      >
+                          <User className="size-4" /> Particulier
+                      </button>
+                      <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, userType: 'professionnel' }))}
+                          className={`flex-1 flex items-center justify-center gap-2 py-2 text-sm font-medium rounded-md transition-all ${
+                              formData.userType === 'professionnel' ? 'bg-green-500 text-white' : 'text-gray-600 hover:bg-gray-50'
+                          }`}
+                      >
+                          <Briefcase className="size-4" /> Professionnel
+                      </button>
+                  </div>
+                  
+                  {/* Champs de base */}
+                  <input 
+                    type="text" 
+                    name="name"
+                    placeholder="Votre Nom Complet" 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors" 
+                    required 
+                    onChange={handleInputChange} 
+                    value={formData.name} 
+                  />
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Email (ex: contact@entreprise.com)" 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors" 
+                    required 
+                    onChange={handleInputChange} 
+                    value={formData.email} 
+                  />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    placeholder="Téléphone" 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors" 
+                    onChange={handleInputChange} 
+                    value={formData.phone} 
+                  />
+                  
+                  {/* Champ Société (pour les professionnels) */}
+                  {formData.userType === 'professionnel' && (
+                    <input 
+                      type="text" 
+                      name="company"
+                      placeholder="Nom de votre Société" 
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors" 
+                      required 
+                      onChange={handleInputChange} 
+                      value={formData.company || ''} 
+                    />
+                  )}
+
+                  <textarea 
+                    name="description"
+                    placeholder="Décrivez votre projet (ex: Remplacement de 5 fenêtres PVC...)" 
+                    rows={4} 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors resize-none" 
+                    required
+                    onChange={handleInputChange} 
+                    value={formData.description}
+                  ></textarea>
+                  
+                  {/* Bouton de Soumission */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full rounded-lg bg-green-500 px-4 py-3 font-semibold text-white transition-all duration-300 hover:bg-green-600 disabled:bg-gray-400 flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="size-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      "Confirmer la Demande de Devis"
+                    )}
+                  </button>
+                  <p className="text-center text-xs text-gray-500 mt-4">
+                    Vos données sont confidentielles. Nous les utilisons uniquement pour vous recontacter.
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
