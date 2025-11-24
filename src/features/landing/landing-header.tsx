@@ -237,8 +237,7 @@ const topRoutes = [
                                 >
                                     Mes Devis
                                 </Link>
-                                {/* Loggé : Bouton Déconnexion */}
-                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                                <AuthButtonClient/>
                             </>
                         ) : (
                             <>
@@ -249,8 +248,7 @@ const topRoutes = [
                                 >
                                     Devis
                                 </Link>
-                                {/* Déloggé : Bouton Connexion */}
-                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                                <AuthButtonClient/>
                             </>
                         )}
                   </div>
