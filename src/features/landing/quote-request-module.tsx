@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { X, Star, User, Mail, Phone, MessageSquare, Check, Briefcase, ChevronDown } from 'lucide-react';
+import { X, Star, User, Check, Briefcase } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 
 const N8N_WEBHOOK_URL = "VOTRE_ENDPOINT_N8N_WEBHOOK_ICI"; 
@@ -66,16 +66,15 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
     setIsSubmitting(true);
     setIsError(false);
     
-    // --- SIMULATION D'APPEL API ---
+    // --- GESTION DE L'APPEL API / SIMULATION ---
     try {
-        // Simuler un appel de 1.5 seconde
+        // Simuler un appel de 1.5 seconde pour une meilleure UX
         await new Promise(resolve => setTimeout(resolve, 1500)); 
 
-        if (N8N_WEBHOOK_URL.includes("VOTRE_ENDPOINT_N8N_WEBHOOK_ICI")) {
+        const isPlaceholder = N8N_WEBHOOK_URL.includes("VOTRE_ENDPOINT_N8N_WEBHOOK_ICI");
 
-        } else {
-            // Tentative d'envoi réel (décommenter pour usage réel)
-            
+        if (!isPlaceholder) {
+            // Tentative d'envoi réel
             const response = await fetch(N8N_WEBHOOK_URL, {
                 method: 'POST',
                 headers: {
@@ -86,17 +85,20 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
             if (!response.ok) {
                 throw new Error('Erreur de soumission du formulaire');
             }
-            
+        } else {
+            console.warn("ATTENTION: Le formulaire a été SIMULÉ. Veuillez remplacer 'VOTRE_ENDPOINT_N8N_WEBHOOK_ICI' par votre URL de webhook réelle pour l'envoi des données.");
         }
 
         setIsSuccess(true);
         
+        // Ferme la modale après 2 secondes de succès
         setTimeout(() => {
             closeModal();
         }, 2000);
         
     } catch (error) {
-
+        // Utilisation de la variable 'error' pour le débogage
+        console.error("Erreur de soumission du formulaire:", error);
         setIsError(true);
 
     } finally {
