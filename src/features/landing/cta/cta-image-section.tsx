@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { SectionLayout } from "../section-layout";
 import { useSession } from "@/lib/auth-client";
+import QuoteRequestModule from "@/landing/quote-request-module";
 
 export const CTAImageSection = () => {
   const { data: session } = useSession();
@@ -30,15 +31,9 @@ export const CTAImageSection = () => {
         <Typography className="text-center font-bold">
           Remplissez ce formulaire pour planifier notre premier échange et définir les contours de votre futur projet.
         </Typography>
-        { session ? (
-          <Link href="/account/devis" className={buttonVariants({ size: "lg" })}>
-            Demander un devis
-          </Link>
-        ) : (
-        <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "lg" })}>
-          Demande de devis
-        </Link>
-        )}
+
+        <QuoteRequestModule />
+
       </SectionLayout>
     </div>
   );

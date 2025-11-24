@@ -19,6 +19,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// --- Ajout des imports manquants pour la logique simplifiée ---
+import { AuthButtonClient } from "@/features/auth/auth-button-client"; 
+import QuoteRequestModule from "@/landing/quote-request-module"; 
+// -----------------------------------------------------------
+
+
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();
   const scrollYBounded = useMotionValue(0);
@@ -58,7 +64,30 @@ function useBoundedScroll(threshold: number) {
 const clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);
 
-export function HeaderBase({ children }: PropsWithChildren) {
+const topRoutes = [
+  { path: "/home", label: "Accueil" },
+  {
+    path: "#",
+    label: "Fenêtres",
+    dropdown: [
+      { path: "/fenetres", label: "Fenêtre" },
+      { path: "/baie", label: "Baie vitrée" },
+    ],
+  },
+  {
+    path: "#",
+    label: "Portes",
+    dropdown: [
+      { path: "/portes", label: "Porte d'entrée" },
+      { path: "/garage", label: "Porte de garage " },
+    ],
+  },
+  { path: "/#", label: "Volet" },
+  { path: "/portails", label: "Portails" },
+  { path: "/posts", label: "Actualités" },
+];
+
+export function HeaderBase() {
   const { data: session } = useSession();
   const { scrollYBoundedProgress } = useBoundedScroll(400);
   const scrollYBoundedProgressDelayed = useTransform(
@@ -67,45 +96,22 @@ export function HeaderBase({ children }: PropsWithChildren) {
     [0, 0, 1],
   );
 
-const topRoutes = [
-  { path: "/home", label: "Accueil" },
-  { 
-    path: "#",
-    label: "Fenêtres",
-    dropdown: [ 
-      { path: "/fenetres", label: "Fenêtre" },
-      { path: "/baie", label: "Baie vitrée" },
-    ]
-  },
-  { 
-    path: "#",
-    label: "Portes",
-    dropdown: [ 
-      { path: "/portes", label: "Porte d'entrée" },
-      { path: "/garage", label: "Porte de garage " },
-    ]
-  },
-  { path: "/#", label: "Volet" },
-  { path: "/portails", label: "Portails" },
-  { path: "/posts", label: "Actualités" },
-];
-
   return (
     <motion.header
       style={{
         height: useTransform(scrollYBoundedProgressDelayed, [0, 1], [70, 50]),
       }}
-      className="bg-muted/40 sticky top-0 z-50 flex h-14 items-center gap-4 border-b shadow backdrop-blur-md lg:h-[60px]"
+      className="fixed inset-x-0 z-50 flex h-20 w-screen shadow backdrop-blur-md"
     >
-      <Layout className="my-2">
-        <div className="flex items-center gap-2">
+      <Layout className="flex items-center justify-between">
+        <div className="flex items-center gap-1">
           <Image
             src={SiteConfig.appIcon}
             alt="logo enterprise Segment.C"
             width={32}
             height={32}
           />
-          <motion.div
+          <motion.p
             style={{
               scale: useTransform(
                 scrollYBoundedProgressDelayed,
@@ -113,90 +119,83 @@ const topRoutes = [
                 [1, 0.9],
               ),
             }}
-            className="flex origin-left items-center"
+            className="mt-[-1] flex origin-left items-center text-base font-bold text-green-500"
           >
-            <Link href="/" className="text-base font-bold text-green-500">
+            <Link href="/home" className="text-base font-bold text-green-500">
               {SiteConfig.title}
             </Link>
-          </motion.div>
+          </motion.p>
         </div>
 
-        <div className="flex flex-1 items-center justify-center space-x-4">
-          <motion.nav
-            style={{
-              opacity: useTransform(
-                scrollYBoundedProgressDelayed,
-                [0, 1],
-                [1, 0],
-              ),
-            }}
-            className="hidden origin-right items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
-          >
-            {topRoutes.map((route) =>
-              route.dropdown ? (
-                <DropdownMenu key={route.path}>
-                  <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
-                    {route.label}
-                    <ChevronDown className="size-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-48">
-                    {route.dropdown.map((item) => (
-                      <DropdownMenuItem key={item.path} asChild>
-                        <Link
-                          href={item.path}
-                          className="w-full cursor-pointer"
-                        >
-                          {item.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Link
-                  href={route.path}
-                  key={route.path}
-                  className="relative flex items-center transition-colors hover:text-green-500"
-                >
+        {/* Navigation Principale (Desktop) */}
+        <motion.nav
+          style={{
+            opacity: useTransform(
+              scrollYBoundedProgressDelayed,
+              [0, 1],
+              [1, 0],
+            ),
+          }}
+          className="hidden items-center gap-4 text-sm font-medium sm:gap-4 lg:flex"
+        >
+          {topRoutes.map((route) =>
+            route.dropdown ? (
+              <DropdownMenu key={route.path}>
+                <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
                   {route.label}
-                </Link>
-              ),
-            )}
-          </motion.nav>
-        </div>
-
-        <nav className="flex items-center space-x-1">
-          <div className="hidden lg:flex lg:items-center lg:space-x-1">
-            {session ? (
-              <>
-                <Link
-                  href="/account/devis/mes-devis"
-                  className={buttonVariants({ size: "sm", className: "mr-4" })}
-                >
-                  Mes Devis
-                </Link>
-                {children}
-              </>
+                  <ChevronDown className="size-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {route.dropdown.map((item) => (
+                    <DropdownMenuItem key={item.path} asChild>
+                      <Link
+                        href={item.path}
+                        className="w-full cursor-pointer"
+                      >
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
-              <>
-                <Link
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className={buttonVariants({ size: "sm", className: "mr-4" })}
-                >
-                  Demande de devis
-                </Link>
-                {children}
-              </>
-            )}
-          </div>
+              <Link
+                href={route.path}
+                key={route.path}
+                className="relative flex items-center transition-colors hover:text-green-500"
+              >
+                {route.label}
+              </Link>
+            ),
+          )}
+        </motion.nav>
 
-          <div className="z-20 flex items-center gap-2 lg:hidden">
+        {/* Boutons d'Action (Desktop & Mobile) */}
+        <nav className="flex items-center space-x-1">
+          <div className="hidden lg:contents gap-2">
+            {session && (
+              <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                Mes Devis
+              </Link>
+            )}
+            
+            <div className="mr-4">
+              <QuoteRequestModule 
+                className={buttonVariants({ size: "sm" })} 
+              />
+            </div>
+            
+            <AuthButtonClient />
+          </div>
+          
+          <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
             <Sheet>
               <SheetTrigger>
                 <Menu className="size-8" />
               </SheetTrigger>
               <SheetContent className="flex flex-col gap-4 p-4">
                 <div className="relative flex flex-col gap-4">
+                  {/* Header de la Sheet */}
                   <div className="flex flex-row gap-1">
                     <Image
                       src={SiteConfig.appIcon}
@@ -218,68 +217,57 @@ const topRoutes = [
                     </motion.p>
                   </div>
                   <hr />
+
+                  {/* Boutons Mobile */}
                   <div className="flex flex-row items-center justify-around">
-                    {session ? (
-                      <>
-                        <Link
-                          href="/account/devis/mes-devis"
-                          className={buttonVariants({
-                            size: "sm",
-                            className: "mr-4",
-                          })}
-                        >
-                          Mes devis
-                        </Link>
-                        {children}
-                      </>
-                    ) : (
-                      <>
-                        <Link
-                          href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                          className={buttonVariants({
-                            size: "sm",
-                            className: "mr-4",
-                          })}
-                        >
-                          Demande de devis
-                        </Link>
-                        {children}
-                      </>
-                    )}
+                    {/* Logique mobile : affiche Mes Devis si connecté, sinon la Demande de devis */}
+                    <div className="mr-4">
+                      {session ? (
+                          <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm" })}>
+                              Mes Devis
+                          </Link>
+                      ) : (
+                          <QuoteRequestModule 
+                            className={buttonVariants({ size: "sm" })} 
+                          />
+                      )}
+                    </div>
+
+                    <AuthButtonClient />
 
                     <Typography
                       variant="h3"
-                      className="text-left text-lg !leading-tight"
+                      className="text-left text-lg !leading-tight hidden" // Masqué car peu pertinent pour le flux
                     >
-                      Menu
+                      Menu Principal
                     </Typography>
                   </div>
                   <hr />
+
+                  {/* Liens de Navigation Mobile */}
                   {topRoutes.map((route) =>
                     route.dropdown ? (
-                      <DropdownMenu key={route.path}>
-                        <DropdownMenuTrigger className="relative flex items-center gap-1 transition-colors hover:text-green-500 focus:outline-none">
+                      <div key={route.path} className="flex flex-col gap-2">
+                        <span className="text-sm font-semibold text-green-500">
                           {route.label}
-                          <ChevronDown className="size-4" />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start" className="w-48">
+                        </span>
+                        <div className="pl-4 flex flex-col gap-2">
                           {route.dropdown.map((item) => (
-                            <DropdownMenuItem key={item.path} asChild>
-                              <Link
-                                href={item.path}
-                                className="w-full cursor-pointer"
-                              >
-                                {item.label}
-                              </Link>
-                            </DropdownMenuItem>
+                            <Link
+                              href={item.path}
+                              key={item.path}
+                              className="text-sm font-medium hover:text-green-500 transition-colors"
+                            >
+                              {item.label}
+                            </Link>
                           ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                        </div>
+                      </div>
                     ) : (
                       <Link
                         href={route.path}
                         key={route.path}
-                        className="relative flex items-center transition-colors hover:text-green-500"
+                        className="relative text-left text-sm font-medium hover:text-green-500 transition-colors"
                       >
                         {route.label}
                       </Link>

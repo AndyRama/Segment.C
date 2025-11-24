@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { Typography } from "@/components/nowts/typography";
 import { AuthButtonClient } from "../auth/auth-button-client";
 import { buttonVariants } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
+import QuoteRequestModule from "@/landing/quote-request-module"; 
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -160,24 +161,27 @@ const topRoutes = [
         </motion.nav>
 
         <nav className="flex items-center space-x-1">
+          {/* Version Desktop (lg:contents) */}
           <div className="hidden lg:contents gap-2">
-            {session ? (
-              <>
-                <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                  Mes Devis
-                </Link>
-                <AuthButtonClient />
-              </>
-            ) : (
-              <>
-                <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                  Demande de devis
-                </Link>
-                <AuthButtonClient />
-              </>
+            {/* Si l'utilisateur est connecté, on affiche le lien "Mes Devis" */}
+            {session && (
+              <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
+                Mes Devis
+              </Link>
             )}
+            
+            {/* Le QuoteRequestModule est toujours affiché sur desktop */}
+            <div className="mr-4">
+              <QuoteRequestModule 
+                className={buttonVariants({ size: "sm" })} 
+              />
+            </div>
+            
+            {/* Le bouton d'Auth est toujours affiché */}
+            <AuthButtonClient />
           </div>
 
+          {/* Version Mobile (Sheet) */}
           <div className="z-20 flex items-center gap-2 px-4 lg:hidden">
             <Sheet>
               <SheetTrigger>
@@ -207,24 +211,26 @@ const topRoutes = [
                   </div>
                   <hr />
                   <div className="flex flex-row items-center justify-around">
-                    {session ? (
-                      <>
-                        <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                          Devis
-                        </Link>
-                        <AuthButtonClient />
-                      </>
-                    ) : (
-                      <>
-                        <Link href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" className={buttonVariants({ size: "sm", className: "mr-4" })}>
-                          Devis
-                        </Link>
-                        <AuthButtonClient />
-                      </>
-                    )}
+                    {/* Logique mobile : affiche Mes Devis si connecté, sinon la Demande de devis */}
+                    <div className="mr-4">
+                      {session ? (
+                          <Link href="/account/devis/mes-devis" className={buttonVariants({ size: "sm" })}>
+                              Mes Devis
+                          </Link>
+                      ) : (
+                          <QuoteRequestModule 
+                            className={buttonVariants({ size: "sm" })} 
+                          />
+                      )}
+                    </div>
+
+                    <AuthButtonClient />
+                    
+                    {/* Correction: ce Typography semble être mal placé dans le flux mobile */}
+                    {/* Je le déplace après le AuthButtonClient pour ne pas impacter le layout des boutons */}
                     <Typography
                       variant="h3"
-                      className="text-left text-lg !leading-tight"
+                      className="text-left text-lg !leading-tight hidden" // Cacher si besoin de place
                     >
                       Menu Principal
                     </Typography>

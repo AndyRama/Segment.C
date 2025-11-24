@@ -38,14 +38,14 @@ export const Footer = () => {
                 <div className="flex items-center gap-2">
                   <Mail className="size-4 text-gray-500" />
                   <Typography variant="muted">
-                    Email: contact@segment-c.com
+                    Email: info.segment.c@gmail.com 
                   </Typography>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <Phone className="size-4 text-gray-500" />
                   <Typography variant="muted">
-                    Téléphone: 05 57 81 28 51
+                    Téléphone: 06 71 78 72 53
                   </Typography>
                 </div>
               </div>
