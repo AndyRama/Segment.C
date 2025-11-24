@@ -28,7 +28,7 @@ export const CTAImageSection = () => {
           Prêt à démarrer votre projet ?
         </Typography>
         <Typography className="text-center font-bold">
-          Lorem ipsum dolor sit amet consectetur
+          Remplissez ce formulaire pour planifier notre premier échange et définir les contours de votre futur projet.
         </Typography>
         { session ? (
           <Link href="/account/devis" className={buttonVariants({ size: "lg" })}>

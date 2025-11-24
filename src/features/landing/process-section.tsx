@@ -98,10 +98,10 @@ export const ProcessSection = ({ className }: ProcessSectionProps) => {
 const ProcessHeader = () => (
   <div className="mb-16 space-y-4 text-center">
     <Typography variant="h2" id="devis" className="text-3xl md:text-4xl xl:text-5xl">
-      Mon Processus
+      Les étapes de réalisations
     </Typography>
     <Typography variant="large" className="mx-auto max-w-4xl text-muted-foreground">
-      De votre idée à la réalisation, découvrez les 4 étapes de notre accompagnement personnalisé
+      De votre idée à la réalisation, découvrez les 4 étapes de notre accompagnement personnalisé pour concrétiser votre project.
     </Typography>
   </div>
 );
