@@ -122,7 +122,7 @@ export default function QuoteRequestModule() {
             className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
             required
             onChange={handleInputChange} 
-            value={formData.company || ''} 
+            value={formData.company ?? ''} 
           />
         </div>
       )}
@@ -242,7 +242,7 @@ export default function QuoteRequestModule() {
       {/* 1. Bouton CTA pour ouvrir la modale (Exemple de style) */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-orange-700 transition-colors duration-300 flex items-center gap-2"
+        className="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transition-colors duration-300 flex items-center gap-2"
         aria-label="Ouvrir le formulaire de demande de devis"
       >
         <Star className="size-5 fill-white" />
