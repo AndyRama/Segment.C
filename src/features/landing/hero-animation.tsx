@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
-import QuoteRequestModule from "@/components/modules/quote-request-module"; 
+import QuoteRequestModule from "@/features/landing/quote-request-module"; 
 
 // import { Clock, Users, Award, CheckCircle } from "lucide-react";
 
