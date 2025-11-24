@@ -75,7 +75,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
 
         } else {
             // Tentative d'envoi réel (décommenter pour usage réel)
-            /*
+            
             const response = await fetch(N8N_WEBHOOK_URL, {
                 method: 'POST',
                 headers: {
@@ -86,7 +86,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
             if (!response.ok) {
                 throw new Error('Erreur de soumission du formulaire');
             }
-            */
+            
         }
 
         setIsSuccess(true);
