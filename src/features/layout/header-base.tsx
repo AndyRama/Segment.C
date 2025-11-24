@@ -180,9 +180,7 @@ export function HeaderBase() {
             )}
             
             <div className="mr-4">
-              <QuoteRequestModule 
-                className={buttonVariants({ size: "sm" })} 
-              />
+             <QuoteRequestModule/>
             </div>
             
             <AuthButtonClient />

@@ -216,9 +216,7 @@ const topRoutes = [
                               Mes Devis
                           </Link>
                       ) : (
-                          <QuoteRequestModule
-                            className={buttonVariants({ size: "sm" })} 
-                          />
+                          <QuoteRequestModule/>
                       )}
                     </div>
 
