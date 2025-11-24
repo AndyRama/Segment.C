@@ -172,14 +172,12 @@ export function HeaderBase() {
           <div className="hidden items-center gap-2 lg:flex">
             {session ? (
               <>
-                {/* Loggé : Bouton Mes Devis (seconde priorité) */}
                 <Link 
                     href="/account/devis/mes-devis" 
                     className={buttonVariants({ size: "sm", variant: "secondary" })}
                 >
                   Mes Devis
                 </Link>
-                {/* Loggé : Bouton Nouvelle Demande (Redirection) */}
                 <Link 
                     href="/account/devis" 
                     className={buttonVariants({ size: "sm", className: "ml-2" })}
@@ -190,7 +188,6 @@ export function HeaderBase() {
               </>
             ) : (
               <>
-                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
                 <Link 
                     href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
                     className={buttonVariants({ size: "sm" })}
@@ -233,31 +230,26 @@ export function HeaderBase() {
                   </div>
                   <hr />
 
-                  {/* Boutons Mobile (Logique de redirection restaurée) */}
                   <div className="flex flex-row items-center justify-between gap-2">
                         {session ? (
                             <>
-                                {/* Loggé : Bouton Mes Devis */}
                                 <Link 
                                     href="/account/devis/mes-devis" 
                                     className={buttonVariants({ size: "sm", className: "flex-1" })}
                                 >
                                     Mes Devis
                                 </Link>
-                                {/* Loggé : Bouton Déconnexion */}
                                 <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
                             </>
                         ) : (
                             <>
-                                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
                                 <Link 
                                     href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
                                     className={buttonVariants({ size: "sm", className: "flex-1" })}
                                 >
                                     Devis
                                 </Link>
-                                {/* Déloggé : Bouton Connexion */}
-                                <AuthButtonClient className={buttonVariants({ size: "sm", variant: "outline", className: "flex-1" })} />
+                                <AuthButtonClient/>
                             </>
                         )}
                   </div>
