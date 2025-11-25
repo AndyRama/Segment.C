@@ -162,7 +162,7 @@ const ProcessStep = ({ step, index }: { step: StepProps; index: number }) => {
         </Typography>
 
         {/* Détails - toujours visibles sur mobile, en hover sur desktop */}
-        <div className="mt-4 opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
+        <div className="mt-4 opacity-100 transition-opacity duration-300">
           <div className="space-y-2 rounded-lg bg-green-50 p-4 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
             {step.details.map((detail, i) => (
               <div key={i} className="flex items-center gap-2 text-sm">
