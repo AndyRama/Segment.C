@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
+import QuoteRequestModule from "@/features/landing/quote-request-module"; 
 
 import { 
   MapPin, 
@@ -416,18 +417,11 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
       </div>
     </div>
 
-    <div
-      className="flex flex-wrap gap-4"
-    >
-      <QuoteRequestModule 
-        className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
-      />
+    <div>
+      <QuoteRequestModule/>
     </div>
   </motion.div>
-);
-
-
-      
+);      
 
 const ServiceGuarantees = () => (
   <motion.div
