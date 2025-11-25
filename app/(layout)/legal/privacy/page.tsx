@@ -173,7 +173,7 @@ const MentionsLegalesPage = () => {
             {/* Directeur de publication */}
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
               <Typography variant="h3" className="mb-2 text-lg font-semibold text-gray-900">
-                Directeur de la publication
+                Responsable des publications
               </Typography>
               <Typography variant="p" className="text-gray-700">
                 Monsieur Rui ARAUJO DECARVALHO
@@ -186,7 +186,7 @@ const MentionsLegalesPage = () => {
                 Conception et réalisation
               </Typography>
               <Typography variant="p" className="text-gray-700">
-                [Nom de l'agence web ou développeur]
+                Andy Ramaroson
               </Typography>
             </div>
           </div>
@@ -211,18 +211,18 @@ const MentionsLegalesPage = () => {
             </Typography>
             <div className="rounded-lg bg-gray-50 p-4">
               <Typography variant="p" className="text-gray-900">
-                <strong>[Nom de l'hébergeur]</strong><br />
+                <strong>Hostinger</strong><br />
                 Adresse : [Adresse de l'hébergeur]<br />
                 Téléphone : [Téléphone de l'hébergeur]<br />
                 Site web : [Site web de l'hébergeur]
               </Typography>
             </div>
-            <div className="mt-4 flex items-start gap-2 rounded-lg bg-blue-50 p-3">
+            {/* <div className="mt-4 flex items-start gap-2 rounded-lg bg-blue-50 p-3">
               <AlertCircle className="mt-0.5 size-5 flex-shrink-0 text-blue-600" />
               <Typography variant="p" className="text-sm text-blue-900">
                 Exemple : Vercel Inc., OVH, O2Switch, etc.
               </Typography>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -291,7 +291,7 @@ const MentionsLegalesPage = () => {
           </div>
           
           <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="mb-4 text-gray-700">
+            <Typography variant="p" className="mb-4 text-gray-700 mt-0">
               Pour la bonne gestion du site, l'éditeur pourra à tout moment :
             </Typography>
             <ul className="space-y-3">
@@ -400,7 +400,7 @@ const MentionsLegalesPage = () => {
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <ChevronRight className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                    <Typography variant="p" className="text-gray-700">{item}</Typography>
+                    <Typography variant="p" className="text-gray-700 mt-0">{item}</Typography>
                   </li>
                 ))}
               </ul>
