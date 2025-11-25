@@ -8,7 +8,7 @@ import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SimilarProductsSection from '@/features/baie/similarProductsSection';
-import AvailableFormsSection from '@/features/baie/availableFormsSection';
+import AvailableFormsMiniature from '@/features/window/availableFormsMiniature';*
 import {
   Star,
   Shield,
@@ -438,7 +438,7 @@ const FenetreDetailPage = () => {
       </div>
 
       {/* Section Les formes disponibles */}
-      <AvailableFormsSection />
+      <AvailableFormsMiniature />
 
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">
