@@ -8,11 +8,12 @@ import WhatsAppContactButton from '@/features/legal/whatsapp-btn';
 export const FloatingLegalFooter = () => {
   return (
     <>
-      {/* <div className="grid grid-col-2 gap-2"> */}
+      <div className="fixed right-4 bottom-16 flex flex-col sm:flex-row items-end sm:items-center gap-3 z-50">
         <GoogleReviewsWidget />
         <WhatsAppContactButton/>
-      {/* </div> */}
-      <div className="fixed right-4 bottom-2 flex items-center gap-2">
+      </div>
+
+      <div className="fixed right-4 bottom-2 flex items-center gap-2 z-40">
         <Link
           className="text-muted-foreground text-xs hover:underline"
           href="/legal/privacy"

@@ -161,7 +161,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <RecentPosts />
+      <ServiceAreaSection />
                 
       <SectionDivider />
       
@@ -169,7 +169,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ServiceAreaSection />
+      <RecentPosts />
      
       <SectionDivider />
 

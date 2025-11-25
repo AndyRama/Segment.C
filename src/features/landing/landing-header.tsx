@@ -173,23 +173,23 @@ const topRoutes = [
                   Mes Devis
                 </Link>
                 {/* Loggé : Bouton Nouvelle Demande (Redirection) */}
-                <Link 
+                {/* <Link 
                     href="/account/devis" // Redirige vers la page du formulaire
                     className={buttonVariants({ size: "sm", className: "ml-2" })}
                 >
                     Nouvelle Demande
-                </Link>
+                </Link> */}
                 <AuthButtonClient />
               </>
             ) : (
               <>
                 {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
-                <Link 
+                {/* <Link 
                     href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
                     className={buttonVariants({ size: "sm" })}
                 >
                     Demande de devis
-                </Link>
+                </Link> */}
                 <AuthButtonClient />
               </>
             )}
@@ -242,12 +242,12 @@ const topRoutes = [
                         ) : (
                             <>
                                 {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
-                                <Link 
+                                {/* <Link 
                                     href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
                                     className={buttonVariants({ size: "sm", className: "flex-1" })}
                                 >
                                     Devis
-                                </Link>
+                                </Link> */}
                                 <AuthButtonClient/>
                             </>
                         )}
@@ -257,7 +257,7 @@ const topRoutes = [
                       variant="h3"
                       className="text-left text-lg !leading-tight hidden"
                     >
-                      Menu Principal
+                      Menu 
                     </Typography>
                   
                     <hr />

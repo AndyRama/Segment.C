@@ -11,8 +11,8 @@ import { MessageSquare, Phone } from 'lucide-react'; // Utilisation de MessageSq
 // Configuration des informations WhatsApp
 const WHATSAPP_INFO = {
   phoneNumber: "+33 6 12 34 56 78", // Remplacer par votre numéro de téléphone (avec code pays)
-  defaultMessage: "Bonjour, je souhaiterais en savoir plus sur vos services AI.", // Message pré-rempli
-  whatsappLink: "https://wa.me/33612345678?text=Bonjour%2C%20je%20souhaiterais%20en%20savoir%20plus%20sur%20vos%20services%20AI." // Lien WA généré
+  defaultMessage: "Bonjour, je souhaiterais en savoir plus sur vos services pose de menuiserie.", // Message pré-rempli
+  whatsappLink: "https://wa.me/33612345678?text=Bonjour%2C%20je%20souhaiterais%20en%20savoir%20plus%20sur%20vos%20services%20Menuiseire." // Lien WA généré
 };
 
 export default function WhatsAppContactButton() {
