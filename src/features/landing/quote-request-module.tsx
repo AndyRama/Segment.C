@@ -114,7 +114,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
         aria-label="Ouvrir le formulaire de demande de devis"
       >
         <Star className="size-4 mr-2 fill-white" />
-        Demande de devis
+        <span>Demande de devis</span>
       </button>
 
       {/* 2. Modale (S'ouvre avec isModalOpen) */}
