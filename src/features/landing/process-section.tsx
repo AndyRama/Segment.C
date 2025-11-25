@@ -35,7 +35,7 @@ export const ProcessSection = ({ className }: ProcessSectionProps) => {
     {
       number: 1,
       title: "Devis gratuit",
-      description: "Je me déplaçe chez vous pour étudier votre projet. Pour une demande de devis gratuit, crée votre compte et remplissez le formulaire.",
+      description: "Je me déplaçe chez vous pour étudier votre projet. Pour une demande de devis gratuit, remplissez juste le formulaire.",
       icon: <Calculator className="size-8" />,
       duration: "1-2 jours",
       details: [
@@ -78,7 +78,7 @@ export const ProcessSection = ({ className }: ProcessSectionProps) => {
       icon: <CheckCircle className="size-8" />,
       duration: "1-3 jours",
       details: [
-        "Pose par nos équipes",
+        "Pose par moi et mon équipe",
         "Réglages et ajustements",
         "Nettoyage du chantier",
         "Garantie et SAV"
