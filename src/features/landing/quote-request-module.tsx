@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { X, Star, User, Check, Briefcase } from 'lucide-react';
+import { X, User, Check, Briefcase } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 
 const N8N_WEBHOOK_URL = "VOTRE_ENDPOINT_N8N_WEBHOOK_ICI"; 
@@ -113,8 +113,8 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
         className={className ?? buttonVariants({ size: "default" })}
         aria-label="Ouvrir le formulaire de demande de devis"
       >
-        <Star className="size-4 mr-2 fill-white" />
-        <span>Demande de devis</span>
+        {/* <Star className="size-4 mr-2 fill-white" /> */}
+        Demande de devis
       </button>
 
       {/* 2. Modale (S'ouvre avec isModalOpen) */}

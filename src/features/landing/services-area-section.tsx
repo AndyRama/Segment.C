@@ -41,7 +41,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
     { 
       name: "St Jean d'Illac", 
       distance: "0 km", 
-      duration: "0 min", 
+      duration: "5 min", 
       projects: 25,
       featured: true,
       icon: <Home className="size-5" />,
@@ -177,7 +177,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
           >
             <button
               onClick={() => setShowAllAreas(!showAllAreas)}
-              className="group flex items-center gap-2 rounded-lg border border-[#4bb484]/30 bg-white px-6 py-3 font-medium text-[#4bb484] transition-all hover:bg-[#4bb484]/5 hover:border-[#4bb484]/50"
+              className="group flex items-center gap-2 rounded-lg border border-[#19CE61]/30 bg-white px-6 py-3 font-medium text-[#19CE61] transition-all hover:bg-[#19CE61]/5 hover:border-[#19CE61]/50"
             >
               {showAllAreas ? (
                 <>
@@ -233,14 +233,14 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
       className={cn(
         "relative rounded-xl border p-5 transition-all duration-300 hover:shadow-lg",
         area.featured 
-          ? "bg-gradient-to-br from-[#4bb484]/5 to-[#4bb484]/10 border-[#4bb484]/30" 
-          : "bg-white hover:border-[#4bb484]/20"
+          ? "bg-gradient-to-br from-[#19CE61]/5 to-[#19CE61]/10 border-[#19CE61]/30" 
+          : "bg-white hover:border-[#19CE61]/20"
       )}
     >
       {/* Badge "Notre atelier" positionné en haut à droite */}
       {area.featured && (
         <div className="absolute top-3 right-3 z-10">
-          <span className="rounded-full bg-[#4bb484] px-2.5 py-1 text-[10px] font-medium text-white shadow-sm">
+          <span className="rounded-full bg-[#19CE61] px-2.5 py-1 text-[10px] font-medium text-white shadow-sm">
             🏠 Notre atelier
           </span>
         </div>
@@ -251,7 +251,7 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
         <div className="flex items-center gap-3">
           <div className={cn(
             "rounded-lg p-2.5",
-            area.featured ? "bg-[#4bb484]/20 text-[#4bb484]" : "bg-gray-100 text-gray-600"
+            area.featured ? "bg-[#19CE61]/20 text-[#19CE61]" : "bg-gray-100 text-gray-600"
           )}>
             {area.icon}
           </div>
@@ -259,7 +259,7 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
           <div>
             <Typography variant="p" className={cn(
               "text-lg font-semibold",
-              area.featured && "text-[#4bb484]"
+              area.featured && "text-[#19CE61]"
             )}>
               {area.name}
             </Typography>
@@ -270,7 +270,7 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
         </div>
         
         <div className="text-right">
-          <div className="text-base font-semibold text-[#4bb484]">{area.projects}</div>
+          <div className="text-base font-semibold text-[#19CE61]">{area.projects}</div>
           <div className="text-[10px] text-muted-foreground">projets</div>
         </div>
       </div>
@@ -291,7 +291,7 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
       <div className="space-y-1.5">
         {area.services.map((service, idx) => (
           <div key={idx} className="flex items-start gap-2 text-xs">
-            <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-[#4bb484]" />
+            <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-[#19CE61]" />
             <span className="text-muted-foreground leading-relaxed">{service}</span>
           </div>
         ))}
@@ -311,11 +311,11 @@ const ServiceAreaMap = () => (
     viewport={{ once: true }}
     className="relative"
   >
-    <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-[#4bb484]/5 to-[#4bb484]/10">
+    <div className="relative overflow-hidden rounded-xl border bg-gradient-to-br from-[#19CE61]/5 to-[#19CE61]/10">
       {/* Placeholder pour la carte */}
       <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-blue-50 to-green-50">
         <div className="space-y-4 text-center">
-          <Navigation className="mx-auto size-16 text-[#4bb484]" />
+          <Navigation className="mx-auto size-16 text-[#19CE61]" />
           <div>
             <Typography variant="h3" className="mb-2 text-xl font-semibold">
               Zone de St Jean d'Illac
@@ -332,7 +332,7 @@ const ServiceAreaMap = () => (
         <div className="absolute inset-x-4 bottom-4">
           <div className="space-y-2 rounded-lg bg-white/95 p-4 backdrop-blur-sm">
             <div className="flex items-center gap-2 text-sm font-medium">
-              <MapPin size={16} className="text-[#4bb484]" />
+              <MapPin size={16} className="text-[#19CE61]" />
               <span>Basé à St Jean d'Illac, Nouvelle-Aquitaine</span>
             </div>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
@@ -392,16 +392,16 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
           "Eysines"
         ].map((city) => (
           <div key={city} className="flex items-center gap-2">
-            <div className="size-1.5 rounded-full bg-[#4bb484]" />
+            <div className="size-1.5 rounded-full bg-[#19CE61]" />
             <span className="text-muted-foreground">{city}</span>
           </div>
         ))}
       </div>
     </div>
 
-    <div className="rounded-lg bg-[#4bb484]/5 p-6 border border-[#4bb484]/20">
+    <div className="rounded-lg bg-[#19CE61]/5 p-6 border border-[#19CE61]/20">
       <div className="flex items-start gap-3">
-        <div className="rounded-full bg-[#4bb484] p-2">
+        <div className="rounded-full bg-[#19CE61] p-2">
           <Car className="size-5 text-white" />
         </div>
         <div>
@@ -425,9 +425,9 @@ const ServiceGuarantees = () => (
     viewport={{ once: true }}
     className="mt-16"
   >
-    <div className="rounded-xl border bg-gradient-to-br from-[#4bb484]/5 to-white p-8">
+    <div className="rounded-xl border bg-gradient-to-br from-[#19CE61]/5 to-white p-8">
       <div className="mb-6 flex items-center gap-3">
-        <CheckCircle className="size-8 text-[#4bb484]" />
+        <CheckCircle className="size-8 text-[#19CE61]" />
         <Typography variant="h3" className="text-2xl font-semibold">
           Garanties incluses
         </Typography>
@@ -441,7 +441,7 @@ const ServiceGuarantees = () => (
           { label: "SAV de proximité", desc: "Suivi personnalisé" }
         ].map((guarantee, idx) => (
           <div key={idx} className="flex items-start gap-3 rounded-lg bg-white p-4">
-            <CheckCircle size={20} className="mt-0.5 flex-shrink-0 text-[#4bb484]" />
+            <CheckCircle size={20} className="mt-0.5 flex-shrink-0 text-[#19CE61]" />
             <div>
               <div className="font-semibold">{guarantee.label}</div>
               <div className="text-sm text-muted-foreground">{guarantee.desc}</div>
