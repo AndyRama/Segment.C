@@ -347,16 +347,6 @@ const ServiceAreaMap = () => (
             </div>
           </div>
         </div>
-        <motion.div
-          className="flex flex-wrap gap-4"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-        >
-          <QuoteRequestModule 
-            className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
-          />
-        </motion.div>
       </div>
     </div>
   </motion.div>
@@ -422,11 +412,22 @@ const AdditionalAreas = ({ areas }: { areas: AreaProps[] }) => (
             Nous nous déplaçons gratuitement dans un rayon de 70 km autour de St Jean d'Illac 
             pour tous vos projets de menuiserie, quelle que soit leur envergure.
           </Typography>
-        </div>
+        </div>        
       </div>
+    </div>
+
+    <div
+      className="flex flex-wrap gap-4"
+    >
+      <QuoteRequestModule 
+        className="rounded-md bg-black px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-black/80 sm:px-8 sm:py-4"
+      />
     </div>
   </motion.div>
 );
+
+
+      
 
 const ServiceGuarantees = () => (
   <motion.div
