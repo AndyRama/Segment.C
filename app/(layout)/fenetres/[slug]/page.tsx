@@ -8,7 +8,7 @@ import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SimilarProductsSection from '@/features/window/similarProductsSection';
-import AvailableFormsMiniature from '@/features/window/availableFormsMiniature';*
+import AvailableFormsMiniature from '@/features/window/availableFormsMiniature';
 import {
   Star,
   Shield,
