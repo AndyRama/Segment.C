@@ -9,6 +9,7 @@ import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
 import SimilarProductSection from "@/features/porte-garage/similar-product-section";
 import  AvailableFormsMiniature from "@/features/porte-garage/available-forms-miniature";
+
 import { 
   Star, 
   Shield, 
@@ -422,7 +423,7 @@ const GarageDetailPage = () => {
       </div>
 
       {/* Section Types de portes de garage */}
-      <GarageTypesSection />
+      <AvailableFormsMiniature />
 
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">
@@ -462,7 +463,7 @@ const GarageDetailPage = () => {
       </div>
 
       {/* Section Produits similaires */}
-      <SimilarGarageSection currentProduct={garage} />
+      <SimilarProductSection currentProduct={garage} />
     </div>
   );
 };

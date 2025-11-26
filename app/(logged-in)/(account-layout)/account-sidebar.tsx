@@ -21,6 +21,7 @@ import { getAccountNavigation } from "./account.links";
 import Link from "next/link";
 import Image from "next/image";
 
+
 export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
   const links: NavigationGroup[] = getAccountNavigation();
 
