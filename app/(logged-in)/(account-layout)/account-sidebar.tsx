@@ -19,6 +19,7 @@ import { ChevronDown } from "lucide-react";
 import { OrgsSelect } from "../../orgs/[orgSlug]/(navigation)/_navigation/orgs-select";
 import { getAccountNavigation } from "./account.links";
 import Link from "next/link";
+import Image from "next/image";
 
 export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
   const links: NavigationGroup[] = getAccountNavigation();
@@ -28,7 +29,13 @@ export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
       <SidebarHeader>
         <OrgsSelect orgs={userOrgs} />
         <Link href="/home">
-          <p className="text-center"> 
+         <Image
+            src={SiteConfig.appIcon}
+            alt="logo enterprise Segment.C"
+            width={32}
+            height={32}
+          />
+          <p className="text-center md:text-left"> 
             <span className="text-green-500 text-bold text-italic"> Segment.C </span>
             | Dashboard
           </p>

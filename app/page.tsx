@@ -36,10 +36,6 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <CardGrid initialVisibleCount={6} />
-
-      <SectionDivider />
-
       <ProcessSection />
 
       <CTAImageSection />
@@ -47,6 +43,12 @@ export default function HomePage() {
       <SectionDivider />
 
       <GallerySection />
+
+      <SectionDivider />
+
+      <CardGrid initialVisibleCount={6} />
+
+      <SectionDivider />
 
       <Partenaire />
 

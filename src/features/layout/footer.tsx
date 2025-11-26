@@ -93,6 +93,22 @@ export const Footer = () => {
                   >
                     Portes d'entrée
                   </Typography>
+                      <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Portes vitrée
+                  </Typography>
+                      <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Portes de service
+                  </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
@@ -107,7 +123,7 @@ export const Footer = () => {
               {/* Colonne autre */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  Autres
+                  Extèrieur
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -117,6 +133,14 @@ export const Footer = () => {
                     href="/portails"
                   >
                     Portails 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portails"
+                  >
+                    Pergolas 
                   </Typography>
                   <Typography
                     as={Link}
@@ -141,15 +165,15 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/posts"
                   >
-                    Blog
+                    Articles
                   </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/account"
+                    href="#"
                   >
-                    Mon compte
+                    Simulateur
                   </Typography>
                 </div>
               </div>

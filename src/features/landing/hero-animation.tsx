@@ -139,10 +139,10 @@ const HeroAnimation = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Une idée, une envie,
+              Menuiserie sur
               <br />
-              <span className="font-bold italic text-green-500">Segment C</span> est une
-              porte <br className="hidden md:content"/>ouverte sur vos fenêtres
+              <span className="font-bold italic text-green-500">Mesure Bordeaux</span>
+              <br className="hidden md:content"/>- Fenêtres, Portes & Volets
             </motion.h1>
             
             <motion.p
@@ -164,7 +164,7 @@ const HeroAnimation = () => {
               transition={{ duration: 0.8, delay: 0.9 }}
             >
                 <QuoteRequestModule 
-                  className="rounded-md border-2 border-green-500 bg-transparent px-6 py-3 font-semibold text-green-500 shadow-2xl transition-all duration-300 hover:bg-green-500 hover:text-white sm:px-8 sm:py-4"
+                  className="rounded-md border-2 border-black-500 bg-green-500 px-6 py-3 font-semibold shadow-2xl transition-all duration-300 hover:bg-transparent hover:text-green-500 sm:px-8 sm:py-4"
                 />
                   <Link href="/#réalisations">
                     <motion.button

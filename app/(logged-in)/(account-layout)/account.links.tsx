@@ -55,11 +55,6 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
         label: "Mes devis",
       },
       {
-        href: "/account/services/metrage",
-        Icon: FileText  ,
-        label: "Mesure technique",
-      },
-      {
         href: "/account/services/travaux",
         Icon: Calendar,
         label: "Réalisation",
@@ -69,11 +64,6 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
   {
     title: "information",
     links: [
-      {
-        href: "/account/information/commandes",
-        Icon: File ,
-        label: "Mes commandes",
-      },
       {
         href: "/account/information/factures",
         Icon: Files ,
