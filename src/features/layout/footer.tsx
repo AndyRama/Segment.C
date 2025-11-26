@@ -76,6 +76,14 @@ export const Footer = () => {
                   >
                     Baie-vitrée
                   </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/baie"
+                  >
+                    Volets 
+                  </Typography>
                 </div>
               </div>           
 
@@ -101,7 +109,7 @@ export const Footer = () => {
                   >
                     Portes vitrée
                   </Typography>
-                      <Typography
+                  <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
@@ -138,7 +146,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/portails"
+                    href="#"
                   >
                     Pergolas 
                   </Typography>
@@ -146,9 +154,9 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/volet"
+                    href="#"
                   >
-                    Volets
+                    Véranda
                   </Typography>
                 </div>
               </div>     
@@ -173,7 +181,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="#"
                   >
-                    Simulateur
+                    Garantie
                   </Typography>
                 </div>
               </div>
