@@ -393,6 +393,9 @@ const FenetreDetailPage = () => {
               </div>
             )}
 
+            {/* Section Les formes disponibles */}
+            <AvailableFormsMiniature />
+
             {/* CTA */}
             <div className="pt-6 border-t space-y-3">
               {session ? (
@@ -436,9 +439,6 @@ const FenetreDetailPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Section Les formes disponibles */}
-      <AvailableFormsMiniature />
 
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">

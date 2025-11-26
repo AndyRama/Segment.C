@@ -110,7 +110,7 @@ const SimilarGarageCard = ({ product, index }: { product: Product; index: number
   );
 };
 
-const SimilarGarageSection = ({ currentProduct }: { currentProduct: Product }) => {
+const SimilarProductSection = ({ currentProduct }: { currentProduct: Product }) => {
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -227,4 +227,4 @@ const SimilarGarageSection = ({ currentProduct }: { currentProduct: Product }) =
   );
 };
 
-export default SimilarGarageSection;
+export default SimilarProductSection;

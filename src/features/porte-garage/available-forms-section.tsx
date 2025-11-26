@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Check } from "lucide-react";
 
-const GarageTypesSection = () => {
+const AvailableFormsSection = () => {
   const [selectedType, setSelectedType] = useState("sectionnelle");
 
   const types = [
@@ -573,4 +573,4 @@ const GarageTypesSection = () => {
   );
 };
 
-export default GarageTypesSection;
+export default AvailableFormsSection;

@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
 import { Button, buttonVariants } from "@/components/ui/button";
-import SimilarGarageSection from "@/features/porte-garage/similarGarageSection";
-import GarageTypesSection from "@/features/porte-garage/garageTypesSection";
+import SimilarProductSection from "@/features/porte-garage/similar-product-section";
+import  AvailableFormsMiniature from "@/features/porte-garage/available-forms-miniature";
 import { 
   Star, 
   Shield, 
