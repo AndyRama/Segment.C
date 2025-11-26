@@ -20,7 +20,7 @@ import { OrgsSelect } from "../../orgs/[orgSlug]/(navigation)/_navigation/orgs-s
 import { getAccountNavigation } from "./account.links";
 import Link from "next/link";
 import Image from "next/image";
-
+import { SiteConfig } from "@/site-config";
 
 export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
   const links: NavigationGroup[] = getAccountNavigation();
