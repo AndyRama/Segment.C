@@ -24,15 +24,19 @@ import {
   martignasData,
   saintMedardData,
   eysinesData,
+  type VilleData,
 } from '@/features/villes/data';
 
 type VillePageProps = {
   slug: string;
 };
 
+// Type pour le mapping des villes (Record au lieu d'index signature)
+type VillesDataMap = Record<string, VilleData | undefined>;
+
 export const VilleDynamicPage = ({ slug }: VillePageProps) => {
   // Map des données par ville
-  const villesData = {
+  const villesData: VillesDataMap = {
     'saint-jean-d-illac': saintJeanDIllacData,
     'cap-ferret': capFerretData,
     'merignac': merignacData,
@@ -51,10 +55,17 @@ export const VilleDynamicPage = ({ slug }: VillePageProps) => {
     'eysines': eysinesData,
   };
 
-  const data = villesData[slug as keyof typeof villesData];
+  const data = villesData[slug];
 
   if (!data) {
-    return <div>Ville non trouvée</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Ville non trouvée</h1>
+          <p className="text-gray-600">La ville "{slug}" n'existe pas dans notre base de données.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
