@@ -181,7 +181,15 @@ export const Footer = () => {
                     className="hover:underline"
                     href="#"
                   >
-                    Garantie
+                    Partenaire
+                  </Typography>
+                      <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="#"
+                  >
+                    localisation
                   </Typography>
                 </div>
               </div>
