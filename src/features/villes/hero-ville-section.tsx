@@ -1,101 +1,199 @@
 import React from 'react';
-import Link from 'next/link';
-import { MapPin, Check, ArrowRight, Phone } from 'lucide-react';
-import type { HeroVilleSectionProps } from './types';
+import { HeroVilleSection } from '@/features/villes/hero-ville-section';
+import { ServiceVilleSection } from '@/features/villes/service-ville-section';
+import { ReviewGrid } from "@/features/landing/review/review-grid";
+import { SectionDivider } from "@/features/landing/section-divider";
+import { AboutSection } from "@/features/landing/about-section";
+import { GallerySection } from "@/features/landing/gallery-section";
+import { ServiceAreaSection } from "@/features/landing/services-area-section";
+import { FAQSection } from "@/features/landing/faq-section";
+import {
+  saintJeanDIllacData,
+  capFerretData,
+  merignacData,
+  bordeauxData,
+  bouscatData,
+  talenceData,
+  pessacData,
+  cestasData,
+  gradignanData,
+  arcachonData,
+  laTesteData,
+  andernosData,
+  biganosData,
+  martignasData,
+  saintMedardData,
+  eysinesData,
+  type VilleData,
+} from '@/features/villes/data';
 
-export const HeroVilleSection = ({
-  city,
-  department,
-  departmentNumber,
-  description,
-  phoneNumber,
-  benefits,
-  population,
-}: HeroVilleSectionProps) => {
-  return (
-    <section className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
-        
-        {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-          <div className="flex flex-wrap items-center gap-2">
-            <Link href="/" className="hover:text-blue-600 transition">
-              Accueil
-            </Link>
-            <span>/</span>
-            <Link href="/villes" className="hover:text-blue-600 transition">
-              Nos Villes
-            </Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">{city}</span>
-          </div>
-        </nav>
+type VillePageProps = {
+  slug: string;
+};
 
-        {/* Badge Location */}
-        <div className="inline-flex items-center rounded-full bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium mb-6">
-          <MapPin className="w-4 h-4 mr-2" />
-          {department} ({departmentNumber})
-        </div>
+// Type pour le mapping des villes
+type VillesDataMap = {
+  [key: string]: VilleData | undefined;
+};
 
-        {/* 2 COLONNES : Contenu gauche + Card droite */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          
-          {/* COLONNE GAUCHE - Contenu Hero */}
-          <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-              Menuisier à <span className="text-blue-600">{city}</span>
-            </h1>
-            
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {description}
-            </p>
+export const VilleDynamicPage = ({ slug }: VillePageProps) => {
+  // Map des données par ville
+  const villesData: VillesDataMap = {
+    'saint-jean-d-illac': saintJeanDIllacData,
+    'cap-ferret': capFerretData,
+    'merignac': merignacData,
+    'bordeaux': bordeauxData,
+    'le-bouscat': bouscatData,
+    'talence': talenceData,
+    'pessac': pessacData,
+    'cestas': cestasData,
+    'gradignan': gradignanData,
+    'arcachon': arcachonData,
+    'la-teste-de-buch': laTesteData,
+    'andernos-les-bains': andernosData,
+    'biganos': biganosData,
+    'martignas-sur-jalle': martignasData,
+    'saint-medard-en-jalles': saintMedardData,
+    'eysines': eysinesData,
+  };
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button 
-                onClick={() => {
-                  const formSection = document.getElementById('contact-form');
-                  formSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="flex items-center justify-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition"
-              >
-                Demander un devis gratuit
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </button>
-              <a 
-                href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                className="flex items-center justify-center bg-white border-2 border-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg hover:border-blue-500 transition"
-              >
-                <Phone className="w-4 h-4 mr-2 text-blue-600" />
-                {phoneNumber}
-              </a>
-            </div>
-          </div>
+  const data = villesData[slug];
 
-          {/* COLONNE DROITE - Card Pourquoi choisir */}
-          <div>
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">
-                Pourquoi choisir Segment C Menuiserie à {city} ?
-              </h2>
-              <ul className="space-y-4 mb-6">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="rounded-full bg-blue-100 p-1 mr-3 mt-0.5 flex-shrink-0">
-                      <Check className="w-4 h-4 text-blue-600" />
-                    </div>
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-4 border-t border-gray-200 flex justify-between items-center">
-                <span className="text-sm text-gray-600">Population</span>
-                <span className="text-lg font-bold text-gray-900">{population}</span>
-              </div>
-            </div>
-          </div>
-
+  if (!data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Ville non trouvée</h1>
+          <p className="text-gray-600">La ville "{slug}" n'existe pas dans notre base de données.</p>
         </div>
       </div>
-    </section>
+    );
+  }
+
+  return (
+    <div>
+      <HeroVilleSection {...data.hero} />
+
+      <AboutSection
+        name="Rui De Carvalho"
+        title="Une idée, une envie, Segment.C est une porte ouverte sur vos fenêtres"
+        description="Fenêtres sur mesure : Confiez votre projet à un artisan ! Particuliers et professionnels, bénéficiez d'un accompagnement
+                    complet pour votre pose et rénovation. Votre spécialiste de confiance allie expertise technique et finitions soignées pour
+                    un résultat durable et esthétique."
+        image="/images/portrait-artisan.jpg"
+        experience="15 ans d'expérience"
+      />
+      
+      <SectionDivider />
+
+      <ServiceVilleSection {...data.service} />
+
+      <SectionDivider />
+
+      <GallerySection />
+
+      <ReviewGrid
+        initialReviewsCount={6}
+        reviews={[
+          {
+            image: "https://i.pravatar.cc/300?u=marie1",
+            name: "Marc Dubois",
+            review:
+              "Rui a remplacé toutes nos fenêtres en Bois. Le travail est impeccable, les finitions parfaites et les délais respectés. Je recommande vivement Segment.c pour leur professionnalisme et leur écoute.",
+            role: "Propriétaire - Bordeaux",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=brut1",
+            name: "Alexandre - BRUT",
+            review:
+              "Segment.C a réalisé notre porte d'entrée sur mesure en bois massif avec vitrage sécurisé. Le résultat correspond parfaitement à l'identité brute de notre restaurant. Un travail de qualité qui allie esthétique et sécurité.",
+            role: "Chef & Propriétaire - BRUT Cuisine 1000°C",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=eva1",
+            name: "Équipe EVA Bordeaux",
+            review:
+              "Installation impeccable de notre grande baie vitrée coulissante. Rui a su comprendre nos besoins spécifiques pour un lieu high-tech accueillant du public. Travail professionnel et dans les délais.",
+            role: "Manager - EVA Esports Virtual Arenas",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=hestia1",
+            name: "David & Théo - HESTÏA",
+            review:
+              "Remplacement complet de notre porte d'entrée par Segment.C. Le résultat est au-delà de nos attentes : sécurisée, esthétique et parfaitement adaptée à notre street food grecque. Rui a été très pro et à l'écoute.",
+            role: "Co-gérants - Restaurant Hestïa",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=oakberry1",
+            name: "Manager Oakberry",
+            review:
+              "Construction d'une superbe véranda moderne en aluminium et verre par Segment.C. Parfait pour notre concept healthy et lumineux. Les clients adorent l'espace vitré qui apporte une ambiance zen.",
+            role: "Responsable - Oakberry Bordeaux",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=bouch1",
+            name: "Francis - Boucher",
+            review:
+              "Segment.C a réalisé notre devanture avec une magnifique baie vitrée. Elle met parfaitement en valeur nos produits tout en respectant toutes les normes d'hygiène. Un artisan sérieux et compétent.",
+            role: "Propriétaire - Boucherie Bordeaux",
+          },
+        ]}
+      />
+
+      <SectionDivider />
+
+      <FAQSection
+        faq={[
+          {
+            question: "Quels types de menuiseries proposez-vous ?",
+            answer:
+              "Segment.c est spécialisé dans la fabrication et l'installation de portes et fenêtres sur mesure. Nous proposons des menuiseries en PVC, aluminium et bois, adaptées à tous les styles architecturaux et budgets.",
+          },
+          {
+            question: "Proposez-vous un devis gratuit ?",
+            answer:
+              "Oui, nous nous déplaçons gratuitement à votre domicile pour étudier votre projet, prendre les mesures et vous proposer un devis détaillé sans engagement. Cette prestation est entièrement gratuite.",
+          },
+          {
+            question:
+              "Quels sont les délais de fabrication et d'installation ?",
+            answer:
+              "Après validation de votre commande, comptez 2 à 4 semaines pour la fabrication de vos menuiseries. L'installation est ensuite réalisée par nos équipes dans un délai de 1 à 3 jours selon la complexité du projet.",
+          },
+          {
+            question: "Vos menuiseries sont-elles garanties ?",
+            answer:
+              "Toutes nos menuiseries bénéficient d'une garantie fabricant et nous assurons un service après-vente complet. Nos produits respectent les normes en vigueur et offrent d'excellentes performances thermiques et acoustiques.",
+          },
+          {
+            question: "Dans quelles zones intervenez-vous ?",
+            answer:
+              "Nous intervenons principalement en Nouvelle-Aquitaine et dans les départements limitrophes. N'hésitez pas à nous contacter pour vérifier si votre zone géographique est couverte par nos services.",
+          },
+          {
+            question:
+              "Puis-je bénéficier d'aides financières pour mes travaux ?",
+            answer:
+              "Oui, selon votre situation, vous pouvez bénéficier de différentes aides : MaPrimeRénov', éco-PTZ, TVA réduite, aides locales. Nous vous accompagnons dans vos démarches et vous conseillons sur les dispositifs disponibles.",
+          },
+          {
+            question:
+              "Vos menuiseries sont-elles conformes aux normes thermiques ?",
+            answer:
+              "Absolument, toutes nos menuiseries respectent la réglementation thermique en vigueur (RT 2012/RE 2020). Nous proposons des produits haute performance énergétique qui contribuent à réduire vos factures de chauffage.",
+          },
+          {
+            question: "Comment se déroule une intervention chez moi ?",
+            answer:
+              "Notre processus comprend 4 étapes : 1) Devis gratuit à domicile, 2) Mesure technique et validation, 3) Fabrication en atelier, 4) Pose professionnelle avec finitions. Nous nous occupons de tout de A à Z.",
+          },
+        ]}
+      />
+
+      <SectionDivider />
+
+      <ServiceAreaSection />
+
+    </div>
   );
 };
