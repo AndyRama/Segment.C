@@ -24,7 +24,7 @@ import {
   martignasData,
   saintMedardData,
   eysinesData,
-} from './data';
+} from '@/features/villes/data';
 
 type VillePageProps = {
   slug: string;
