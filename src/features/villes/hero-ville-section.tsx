@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { MapPin, Check, ArrowRight, Phone } from 'lucide-react';
 import type { HeroVilleSectionProps } from './types';
 
@@ -18,13 +19,13 @@ export const HeroVilleSection = ({
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
           <div className="flex flex-wrap items-center gap-2">
-            <a href="/" className="hover:text-blue-600 transition">
+            <Link href="/" className="hover:text-blue-600 transition">
               Accueil
-            </a>
+            </Link>
             <span>/</span>
-            <a href="/villes" className="hover:text-blue-600 transition">
+            <Link href="/villes" className="hover:text-blue-600 transition">
               Nos Villes
-            </a>
+            </Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">{city}</span>
           </div>
