@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { Check, Send, Phone, Mail } from 'lucide-react';
@@ -18,6 +18,7 @@ export const ServiceVilleSection = ({
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    // eslint-disable-next-line no-console
     console.log('Form submitted:', Object.fromEntries(formData));
     alert('Votre demande a été envoyée ! Nous vous répondrons sous 24h.');
   };
