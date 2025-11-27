@@ -1,6 +1,6 @@
 // Export des composants
-export { HeroVilleSection } from './HeroVilleSection';
-export { ServiceVilleSection } from './ServiceVilleSection';
+export { HeroVilleSection } from './hero-ville-section';
+export { ServiceVilleSection } from './service-ville-section';
 
 // Export des types
 export type { 
