@@ -26,46 +26,52 @@ import {
   eysinesData,
   type VilleData,
 } from '@/features/villes/data';
+import { notFound } from 'next/navigation';
 
-type VillePageProps = {
-  slug: string;
-};
-
-// Type pour le mapping des villes (Record au lieu d'index signature)
+// Type pour le mapping des villes (Record avec undefined pour les slugs inconnus)
 type VillesDataMap = Record<string, VilleData | undefined>;
 
-export const VilleDynamicPage = ({ slug }: VillePageProps) => {
-  // Map des données par ville
-  const villesData: VillesDataMap = {
-    'saint-jean-d-illac': saintJeanDIllacData,
-    'cap-ferret': capFerretData,
-    'merignac': merignacData,
-    'bordeaux': bordeauxData,
-    'le-bouscat': bouscatData,
-    'talence': talenceData,
-    'pessac': pessacData,
-    'cestas': cestasData,
-    'gradignan': gradignanData,
-    'arcachon': arcachonData,
-    'la-teste-de-buch': laTesteData,
-    'andernos-les-bains': andernosData,
-    'biganos': biganosData,
-    'martignas-sur-jalle': martignasData,
-    'saint-medard-en-jalles': saintMedardData,
-    'eysines': eysinesData,
-  };
+// Map des données par ville
+const villesData: VillesDataMap = {
+  'saint-jean-d-illac': saintJeanDIllacData,
+  'cap-ferret': capFerretData,
+  'merignac': merignacData,
+  'bordeaux': bordeauxData,
+  'le-bouscat': bouscatData,
+  'talence': talenceData,
+  'pessac': pessacData,
+  'cestas': cestasData,
+  'gradignan': gradignanData,
+  'arcachon': arcachonData,
+  'la-teste-de-buch': laTesteData,
+  'andernos-les-bains': andernosData,
+  'biganos': biganosData,
+  'martignas-sur-jalle': martignasData,
+  'saint-medard-en-jalles': saintMedardData,
+  'eysines': eysinesData,
+};
 
+// Générer les params statiques pour Next.js
+export async function generateStaticParams() {
+  return Object.keys(villesData).map((slug) => ({
+    slug,
+  }));
+}
+
+// Props du composant page
+type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+// Composant Page pour Next.js App Router
+export default async function VillePage({ params }: PageProps) {
+  const { slug } = await params;
   const data = villesData[slug];
 
   if (!data) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Ville non trouvée</h1>
-          <p className="text-gray-600">La ville "{slug}" n'existe pas dans notre base de données.</p>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (
@@ -191,7 +197,23 @@ export const VilleDynamicPage = ({ slug }: VillePageProps) => {
       <SectionDivider />
 
       <ServiceAreaSection />
-
     </div>
   );
-};
+}
+
+// Metadata dynamique pour SEO
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const data = villesData[slug];
+
+  if (!data) {
+    return {
+      title: 'Ville non trouvée',
+    };
+  }
+
+  return {
+    title: `Menuisier à ${data.hero.city} (${data.hero.departmentNumber}) - Segment C Menuiserie`,
+    description: data.hero.description,
+  };
+}
