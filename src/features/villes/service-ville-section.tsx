@@ -46,13 +46,13 @@ export const ServiceVilleSection = ({
 
             {/* Badges 24h et 100% */}
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-blue-50 rounded-2xl p-6 text-center border border-blue-100">
-                <p className="text-5xl font-bold text-blue-600 mb-2">24h</p>
+              <div className="bg-green-50 rounded-2xl p-6 text-center border border-green-100">
+                <p className="text-5xl font-bold text-green-600 mb-2">24h</p>
                 <p className="text-sm font-semibold text-gray-900">Réponse garantie</p>
                 <p className="text-xs text-gray-600">Devis gratuit et rapide</p>
               </div>
-              <div className="bg-blue-50 rounded-2xl p-6 text-center border border-blue-100">
-                <p className="text-5xl font-bold text-blue-600 mb-2">100%</p>
+              <div className="bg-green-50 rounded-2xl p-6 text-center border border-green-100">
+                <p className="text-5xl font-bold text-green-600 mb-2">100%</p>
                 <p className="text-sm font-semibold text-gray-900">Satisfaction client</p>
                 <p className="text-xs text-gray-600">Travaux garantis</p>
               </div>
@@ -64,8 +64,8 @@ export const ServiceVilleSection = ({
               <ul className="space-y-4">
                 {services.map((item, index) => (
                   <li key={index} className="flex items-center">
-                    <div className="rounded-full bg-blue-500/20 p-1 mr-3 flex-shrink-0">
-                      <Check className="w-5 h-5 text-blue-400" />
+                    <div className="rounded-full bg-green-500/20 p-1 mr-3 flex-shrink-0">
+                      <Check className="w-5 h-5 text-green-400" />
                     </div>
                     <span>{item}</span>
                   </li>
@@ -99,7 +99,7 @@ export const ServiceVilleSection = ({
                       name="name"
                       placeholder="Votre nom"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                     />
                   </div>
                   <div>
@@ -112,7 +112,7 @@ export const ServiceVilleSection = ({
                       name="email"
                       placeholder="votre@email.fr"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                     />
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export const ServiceVilleSection = ({
                       name="phone"
                       placeholder="06 12 34 56 78"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                     />
                   </div>
                   <div>
@@ -139,7 +139,7 @@ export const ServiceVilleSection = ({
                       id="clientType"
                       name="clientType"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                     >
                       <option>Particulier</option>
                       <option>Professionnel</option>
@@ -157,13 +157,13 @@ export const ServiceVilleSection = ({
                     rows={5}
                     placeholder="Décrivez votre besoin en menuiserie..."
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none bg-white"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center bg-blue-600 text-white font-semibold py-4 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition"
+                  className="w-full flex items-center justify-center bg-green-600 text-white font-semibold py-4 px-6 rounded-lg shadow-lg hover:bg-green-700 transition"
                 >
                   <Send className="w-5 h-5 mr-2" />
                   Envoyer ma demande
@@ -177,7 +177,7 @@ export const ServiceVilleSection = ({
                 <img
                   src={founderImage}
                   alt={founderName}
-                  className="w-16 h-16 rounded-full border-2 border-blue-100 object-cover"
+                  className="w-16 h-16 rounded-full border-2 border-green-100 object-cover"
                   onError={(e) => {
                     e.currentTarget.src = 'https://placehold.co/80x80/8B4513/FFFFFF?text=SC';
                   }}
@@ -191,14 +191,14 @@ export const ServiceVilleSection = ({
                 <h4 className="font-bold text-gray-900">Contactez-nous directement</h4>
                 <a 
                   href={`tel:${founderPhone.replace(/\s/g, '')}`}
-                  className="flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                  className="flex items-center text-green-600 hover:text-green-700 font-medium"
                 >
                   <Phone className="w-5 h-5 mr-3" />
                   {founderPhone}
                 </a>
                 <a 
                   href={`mailto:${founderEmail}`}
-                  className="flex items-center text-blue-600 hover:text-blue-700 font-medium break-all"
+                  className="flex items-center text-green-600 hover:text-green-700 font-medium break-all"
                 >
                   <Mail className="w-5 h-5 mr-3" />
                   {founderEmail}
