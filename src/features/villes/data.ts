@@ -1,5 +1,8 @@
 import type { VilleData } from './types';
 
+// Re-export du type VilleData pour faciliter les imports
+export type { VilleData } from './types';
+
 // ========================================
 // SAINT-JEAN-D'ILLAC
 // ========================================
