@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { Check, Send, Phone, Mail } from 'lucide-react';
 import type { ServiceVilleSectionProps } from './types';
