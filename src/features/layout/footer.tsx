@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Typography } from "@/components/nowts/typography";
 import { SiteConfig } from "@/site-config";
 import { Layout, LayoutContent } from "@/features/page/layout";
-import { Mail, Home, Phone, Earth  } from "lucide-react";
+import { Mail, Home, Phone, Earth, Clock  } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -46,6 +46,13 @@ export const Footer = () => {
                   <Phone className="size-4 text-gray-500" />
                   <Typography variant="muted">
                     Téléphone: 06 71 78 72 53
+                  </Typography>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Clock className="size-4 text-gray-500" />
+                  <Typography variant="muted">
+                    Lun-Ven: 8h-20h | Sam: 8h-12h30
                   </Typography>
                 </div>
               </div>
