@@ -207,7 +207,7 @@ export default async function RoutePage(props: PageParams) {
                             )}
                             
                             <Typography 
-                              variant="h4" 
+                              variant="p" 
                               className="line-clamp-2 text-lg font-bold group-hover:text-primary transition-colors"
                             >
                               {post.attributes.title}
