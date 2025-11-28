@@ -36,7 +36,7 @@ export default async function RoutePage(props: PageParams) {
   // Séparer les articles : 1 hero + 3 featured + le reste recent
   const [heroPost, ...remainingPosts] = posts;
   const featuredPosts = remainingPosts.slice(0, 6);
-  const recentPosts = remainingPosts.slice(3);
+  const recentPosts = remainingPosts.slice(6);
 
   return (
     <>
