@@ -33,6 +33,7 @@ export default async function RoutePage(props: PageParams) {
   const tags = await getPostsTags();
   const posts = await getPosts();
   
+  // Séparer les articles : 1 hero + 3 featured + le reste recent
   const [heroPost, ...remainingPosts] = posts;
   const featuredPosts = remainingPosts.slice(0, 3);
   const recentPosts = remainingPosts.slice(3);
@@ -43,6 +44,7 @@ export default async function RoutePage(props: PageParams) {
         <LayoutTitle>Blog</LayoutTitle>
       </LayoutHeader>
       
+      {/* Tags */}
       <LayoutContent className="flex flex-wrap gap-2 mb-8">
         {tags.map((tag) => (
           <Link
@@ -70,7 +72,7 @@ export default async function RoutePage(props: PageParams) {
         </LayoutContent>
       ) : (
         <>
-          {/* Hero Article */}
+          {/* HERO ARTICLE - Grand article en haut */}
           <LayoutContent className="mb-16">
             <Link 
               href={`/posts/${heroPost.slug}`}
@@ -118,28 +120,20 @@ export default async function RoutePage(props: PageParams) {
               </article>
             </Link>
           </LayoutContent>
-
-          {/* TEST - à supprimer après */}
-          <LayoutContent className="mb-16">
-            <div className="bg-red-500 text-white p-8">
-              <h2>TEST - Featured Posts : {featuredPosts.length} articles</h2>
-              {featuredPosts.map(p => <p key={p.slug}>{p.attributes.title}</p>)}
-            </div>
-          </LayoutContent>
-
-          {/* Featured Posts */}
+          
+          {/* ARTICLES TENDANCE - 1 grand à gauche + 3 petits à droite */}
           {featuredPosts.length > 0 && (
             <LayoutContent className="mb-16">
               <div className="space-y-8">
                 <Typography variant="h2" className="text-2xl font-bold lg:text-3xl">
-                  Articles en vedette
+                  Articles tendance
                 </Typography>
                 
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {featuredPosts.map((post) => (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Grand article à gauche */}
+                  {featuredPosts[0] && (
                     <Link 
-                      key={post.slug}
-                      href={`/posts/${post.slug}`}
+                      href={`/posts/${featuredPosts[0].slug}`}
                       className="group block"
                     >
                       <article className="h-full space-y-4">
@@ -147,15 +141,15 @@ export default async function RoutePage(props: PageParams) {
                           <div
                             className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                             style={{
-                              backgroundImage: `url(${post.attributes.coverUrl})`,
+                              backgroundImage: `url(${featuredPosts[0].attributes.coverUrl})`,
                             }}
                           />
                         </div>
                         
                         <div className="flex items-center gap-2">
-                          {post.attributes.keywords[0] && (
+                          {featuredPosts[0].attributes.keywords[0] && (
                             <Badge variant="secondary" className="capitalize">
-                              {post.attributes.keywords[0]}
+                              {featuredPosts[0].attributes.keywords[0]}
                             </Badge>
                           )}
                         </div>
@@ -164,32 +158,82 @@ export default async function RoutePage(props: PageParams) {
                           variant="h3" 
                           className="line-clamp-2 text-2xl font-bold group-hover:text-primary transition-colors"
                         >
-                          {post.attributes.title}
+                          {featuredPosts[0].attributes.title}
                         </Typography>
                         
                         <Typography className="line-clamp-3 text-base text-muted-foreground">
-                          {post.attributes.description}
+                          {featuredPosts[0].attributes.description}
                         </Typography>
                         
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <div className="flex items-center gap-2">
                             <Calendar className="h-4 w-4" />
-                            <span>{formatDate(new Date(post.attributes.date))}</span>
+                            <span>{formatDate(new Date(featuredPosts[0].attributes.date))}</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <Clock className="h-4 w-4" />
-                            <span>{calculateReadingTime(post.content)} min</span>
+                            <span>{calculateReadingTime(featuredPosts[0].content)} min</span>
                           </div>
                         </div>
                       </article>
                     </Link>
-                  ))}
+                  )}
+                  
+                  {/* 3 petites cartes empilées à droite */}
+                  <div className="flex flex-col gap-6">
+                    {featuredPosts.slice(1, 4).map((post) => (
+                      <Link 
+                        key={post.slug}
+                        href={`/posts/${post.slug}`}
+                        className="group block"
+                      >
+                        <article className="flex gap-4">
+                          {/* Petite image */}
+                          <div className="relative w-32 h-32 flex-shrink-0 overflow-hidden rounded-lg">
+                            <div
+                              className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                              style={{
+                                backgroundImage: `url(${post.attributes.coverUrl})`,
+                              }}
+                            />
+                          </div>
+                          
+                          {/* Contenu */}
+                          <div className="flex-1 space-y-2">
+                            {post.attributes.keywords[0] && (
+                              <Badge variant="secondary" className="capitalize text-xs">
+                                {post.attributes.keywords[0]}
+                              </Badge>
+                            )}
+                            
+                            <Typography 
+                              variant="h4" 
+                              className="line-clamp-2 text-lg font-bold group-hover:text-primary transition-colors"
+                            >
+                              {post.attributes.title}
+                            </Typography>
+                            
+                            <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                              <div className="flex items-center gap-1">
+                                <Calendar className="h-3 w-3" />
+                                <span>{formatDate(new Date(post.attributes.date))}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Clock className="h-3 w-3" />
+                                <span>{calculateReadingTime(post.content)} min</span>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </LayoutContent>
           )}
 
-          {/* Recent Posts */}
+          {/* ARTICLES RÉCENTS - Grille */}
           {recentPosts.length > 0 && (
             <LayoutContent>
               <RecentPosts posts={recentPosts} />
