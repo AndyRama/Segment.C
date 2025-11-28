@@ -17,24 +17,20 @@ export function FeaturedPosts({ posts, title = "Articles en vedette" }: Featured
   }
 
   return (
-    <section className="space-y-8">
-      {/* Titre de la section */}
+    <section className="w-full space-y-8">
       <div>
         <Typography variant="h2" className="text-2xl font-bold lg:text-3xl">
           {title}
         </Typography>
       </div>
 
-      {/* Grille d'articles featured - 3 colonnes */}
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <Link 
-            key={post.slug}
-            href={`/posts/${post.slug}`}
-            className="group block"
-          >
-            <article className="h-full space-y-4">
-              {/* Image de couverture - plus grande */}
+          <article key={post.slug} className="h-full space-y-4">
+            <Link 
+              href={`/posts/${post.slug}`}
+              className="group block"
+            >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
                 <div
                   className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -44,7 +40,6 @@ export function FeaturedPosts({ posts, title = "Articles en vedette" }: Featured
                 />
               </div>
               
-              {/* Badges */}
               <div className="flex items-center gap-2">
                 {post.attributes.keywords[0] && (
                   <Badge variant="secondary" className="capitalize">
@@ -58,7 +53,6 @@ export function FeaturedPosts({ posts, title = "Articles en vedette" }: Featured
                 )}
               </div>
               
-              {/* Titre - plus grand */}
               <Typography 
                 variant="h3" 
                 className="line-clamp-2 text-2xl font-bold group-hover:text-primary transition-colors"
@@ -66,12 +60,10 @@ export function FeaturedPosts({ posts, title = "Articles en vedette" }: Featured
                 {post.attributes.title}
               </Typography>
               
-              {/* Description - plus visible */}
               <Typography className="line-clamp-3 text-base text-muted-foreground">
                 {post.attributes.description}
               </Typography>
               
-              {/* Métadonnées */}
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
@@ -82,8 +74,8 @@ export function FeaturedPosts({ posts, title = "Articles en vedette" }: Featured
                   <span>{calculateReadingTime(post.content)} min</span>
                 </div>
               </div>
-            </article>
-          </Link>
+            </Link>
+          </article>
         ))}
       </div>
     </section>
