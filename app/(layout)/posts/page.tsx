@@ -16,7 +16,6 @@ import Link from "next/link";
 import { formatDate } from "@/lib/format/date";
 import { calculateReadingTime } from "@/features/posts/calculate-reading-time";
 import { RecentPosts } from "@/features/posts/recent-posts";
-import { FeaturedPosts } from "@/features/posts/featured-posts";
 
 export const metadata: Metadata = {
   title: `Blog de ${SiteConfig.title}`,
@@ -34,7 +33,6 @@ export default async function RoutePage(props: PageParams) {
   const tags = await getPostsTags();
   const posts = await getPosts();
   
-  // Séparer les articles : 1 hero + 3 featured + le reste recent
   const [heroPost, ...remainingPosts] = posts;
   const featuredPosts = remainingPosts.slice(0, 3);
   const recentPosts = remainingPosts.slice(3);
@@ -72,33 +70,29 @@ export default async function RoutePage(props: PageParams) {
         </LayoutContent>
       ) : (
         <>
-          {/* Hero Article - Grand article en haut */}
+          {/* Hero Article */}
           <LayoutContent className="mb-16">
             <Link 
               href={`/posts/${heroPost.slug}`}
               className="group block overflow-hidden rounded-md"
             >
               <article className="relative">
-                {/* Image de couverture */}
                 <div className="relative aspect-[2/1] w-full overflow-hidden">
                   <div
-                    className="h-full w-full max-w-7xl  bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full max-w-7xl bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{
                       backgroundImage: `url(${heroPost.attributes.coverUrl})`,
                     }}
                   />
                 </div>
                 
-                {/* Contenu en dessous de l'image */}
                 <div className="mt-6 space-y-4">
-                  {/* Tag de catégorie */}
                   {heroPost.attributes.keywords[0] && (
                     <Badge variant="secondary" className="capitalize">
                       {heroPost.attributes.keywords[0]}
                     </Badge>
                   )}
                   
-                  {/* Titre */}
                   <Typography 
                     variant="h1" 
                     className="text-3xl font-bold group-hover:text-primary transition-colors lg:text-5xl"
@@ -106,12 +100,10 @@ export default async function RoutePage(props: PageParams) {
                     {heroPost.attributes.title}
                   </Typography>
                   
-                  {/* Description */}
                   <Typography className="text-base text-muted-foreground lg:text-lg">
                     {heroPost.attributes.description}
                   </Typography>
                   
-                  {/* Métadonnées */}
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
@@ -127,14 +119,69 @@ export default async function RoutePage(props: PageParams) {
             </Link>
           </LayoutContent>
 
-          {/* Featured Posts - Articles en vedette (3 colonnes) */}
+          {/* Featured Posts */}
           {featuredPosts.length > 0 && (
             <LayoutContent className="mb-16">
-              <FeaturedPosts posts={featuredPosts} />
+              <div className="space-y-8">
+                <Typography variant="h2" className="text-2xl font-bold lg:text-3xl">
+                  Articles en vedette
+                </Typography>
+                
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {featuredPosts.map((post) => (
+                    <Link 
+                      key={post.slug}
+                      href={`/posts/${post.slug}`}
+                      className="group block"
+                    >
+                      <article className="h-full space-y-4">
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+                          <div
+                            className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style={{
+                              backgroundImage: `url(${post.attributes.coverUrl})`,
+                            }}
+                          />
+                        </div>
+                        
+                        <div className="flex items-center gap-2">
+                          {post.attributes.keywords[0] && (
+                            <Badge variant="secondary" className="capitalize">
+                              {post.attributes.keywords[0]}
+                            </Badge>
+                          )}
+                        </div>
+                        
+                        <Typography 
+                          variant="h3" 
+                          className="line-clamp-2 text-2xl font-bold group-hover:text-primary transition-colors"
+                        >
+                          {post.attributes.title}
+                        </Typography>
+                        
+                        <Typography className="line-clamp-3 text-base text-muted-foreground">
+                          {post.attributes.description}
+                        </Typography>
+                        
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4" />
+                            <span>{formatDate(new Date(post.attributes.date))}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock className="h-4 w-4" />
+                            <span>{calculateReadingTime(post.content)} min</span>
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </LayoutContent>
           )}
 
-          {/* Recent Posts - Articles récents (grille) */}
+          {/* Recent Posts */}
           {recentPosts.length > 0 && (
             <LayoutContent>
               <RecentPosts posts={recentPosts} />
