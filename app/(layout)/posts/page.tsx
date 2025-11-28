@@ -119,6 +119,14 @@ export default async function RoutePage(props: PageParams) {
             </Link>
           </LayoutContent>
 
+          {/* TEST - à supprimer après */}
+          <LayoutContent className="mb-16">
+            <div className="bg-red-500 text-white p-8">
+              <h2>TEST - Featured Posts : {featuredPosts.length} articles</h2>
+              {featuredPosts.map(p => <p key={p.slug}>{p.attributes.title}</p>)}
+            </div>
+          </LayoutContent>
+
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
             <LayoutContent className="mb-16">
