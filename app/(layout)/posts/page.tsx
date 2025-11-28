@@ -34,14 +34,14 @@ export default async function RoutePage(props: PageParams) {
   const posts = await getPosts();
   
   // Séparer les articles : 1 hero + 3 featured + le reste recent
-  // const [heroPost, ...remainingPosts] = posts;
+  const [heroPost, ...remainingPosts] = posts;
   const featuredPosts = remainingPosts.slice(0, 7);
   const recentPosts = remainingPosts.slice(3);
 
   return (
     <Layout>
       <LayoutHeader>
-        <LayoutTitle>Blog</LayoutTitle>
+        <LayoutTitle> Articles tendance</LayoutTitle>
       </LayoutHeader>
       
       {/* Tags */}
@@ -72,15 +72,11 @@ export default async function RoutePage(props: PageParams) {
         </LayoutContent>
       ) : (
         <>
-
           {/* ARTICLES TENDANCE - 1 grand à gauche + 3 petits à droite */}
           {featuredPosts.length > 0 && (
             <LayoutContent className="mb-16">
               <div className="space-y-8">
-                <Typography variant="h2" className="text-2xl font-bold lg:text-3xl">
-                  Articles tendance
-                </Typography>
-                
+                             
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Grand article à gauche */}
                   {featuredPosts[0] && (
