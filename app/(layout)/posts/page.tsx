@@ -33,10 +33,9 @@ export default async function RoutePage(props: PageParams) {
   const tags = await getPostsTags();
   const posts = await getPosts();
   
-  // Séparer les articles : 1 hero + 3 featured + le reste recent
-  const [heroPost, ...remainingPosts] = posts;
-  const featuredPosts = remainingPosts.slice(0, 6);
-  const recentPosts = remainingPosts.slice(3);
+  // Séparer les articles : 6 featured (1 grand + 5 petits) + le reste recent
+  const featuredPosts = posts.slice(0, 6);
+  const recentPosts = posts.slice(6);
 
   return (
     <>
@@ -74,7 +73,7 @@ export default async function RoutePage(props: PageParams) {
           </LayoutContent>
         ) : (
           <>
-            {/* ARTICLES TENDANCE - 1 grand à gauche + 3 petits à droite */}
+            {/* ARTICLES TENDANCE - 1 grand à gauche + 5 petits à droite */}
             {featuredPosts.length > 0 && (
               <LayoutContent className="mb-16">
                 <div className="space-y-8">
@@ -131,7 +130,7 @@ export default async function RoutePage(props: PageParams) {
                     
                     {/* 5 petites cartes empilées à droite */}
                     <div className="flex flex-col gap-6">
-                      {featuredPosts.slice(1, 4).map((post) => (
+                      {featuredPosts.slice(1, 6).map((post) => (
                         <Link 
                           key={post.slug}
                           href={`/posts/${post.slug}`}
