@@ -40,7 +40,7 @@ export default async function RoutePage(props: PageParams) {
   return (
     <>
       <div className="mt-16"></div>
-      <Layout>
+      <Layout className="max-w-7xl mx-auto px-4 lg:px-6">
         <LayoutHeader>
           <LayoutTitle> Articles tendance</LayoutTitle>
         </LayoutHeader>
@@ -184,7 +184,7 @@ export default async function RoutePage(props: PageParams) {
 
             {/* ARTICLES RÉCENTS - Grille */}
             {recentPosts.length > 0 && (
-              <LayoutContent>
+              <LayoutContent className="max-w-7xl mx-auto">
                 <RecentPosts posts={recentPosts} />
               </LayoutContent>
             )}
