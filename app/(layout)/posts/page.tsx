@@ -35,7 +35,7 @@ export default async function RoutePage(props: PageParams) {
   
   // Séparer les articles : 1 hero + 3 featured + le reste recent
   const [heroPost, ...remainingPosts] = posts;
-  const featuredPosts = remainingPosts.slice(0, 6);
+  const featuredPosts = remainingPosts.slice(0, 3);
   const recentPosts = remainingPosts.slice(3);
 
   return (
@@ -131,17 +131,17 @@ export default async function RoutePage(props: PageParams) {
                     </Link>
                   )}
                   
-                  {/* 3 petites cartes empilées à droite */}
+                  {/* 3 GROSSES CARTES EMPILÉES À DROITE */}
                   <div className="flex flex-col gap-6">
-                    {featuredPosts.slice(1, 6).map((post) => (
+                    {featuredPosts.slice(1, 4).map((post) => (
                       <Link 
                         key={post.slug}
                         href={`/posts/${post.slug}`}
                         className="group block"
                       >
-                        <article className="flex gap-4">
-                          {/* Petite image */}
-                          <div className="relative w-32 h-32 flex-shrink-0 overflow-hidden rounded-lg">
+                        <article className="space-y-3">
+                          {/* Image plus grande */}
+                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
                             <div
                               className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                               style={{
@@ -150,19 +150,23 @@ export default async function RoutePage(props: PageParams) {
                             />
                           </div>
                           
-                          {/* Contenu */}
-                          <div className="flex-1 space-y-2">
+                          {/* Contenu en dessous */}
+                          <div className="space-y-2">
                             {post.attributes.keywords[0] && (
-                              <Badge variant="secondary" className="capitalize text-xs">
+                              <Badge variant="secondary" className="capitalize">
                                 {post.attributes.keywords[0]}
                               </Badge>
                             )}
                             
                             <Typography 
-                              variant="p" 
-                              className="line-clamp-2 text-lg font-bold group-hover:text-primary transition-colors"
+                              variant="h3" 
+                              className="line-clamp-2 text-xl font-bold group-hover:text-primary transition-colors"
                             >
                               {post.attributes.title}
+                            </Typography>
+                            
+                            <Typography className="line-clamp-2 text-sm text-muted-foreground">
+                              {post.attributes.description}
                             </Typography>
                             
                             <div className="flex items-center gap-3 text-xs text-muted-foreground">
