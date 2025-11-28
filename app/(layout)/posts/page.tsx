@@ -72,61 +72,13 @@ export default async function RoutePage(props: PageParams) {
         </LayoutContent>
       ) : (
         <>
-          {/* HERO ARTICLE - Grand article en haut */}
-          <LayoutContent className="mb-16">
-            <Link 
-              href={`/posts/${heroPost.slug}`}
-              className="group block overflow-hidden rounded-md"
-            >
-              <article className="relative">
-                <div className="relative aspect-[2/1] w-full overflow-hidden">
-                  <div
-                    className="h-full w-full max-w-7xl bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    style={{
-                      backgroundImage: `url(${heroPost.attributes.coverUrl})`,
-                    }}
-                  />
-                </div>
-                
-                <div className="mt-6 space-y-4">
-                  {heroPost.attributes.keywords[0] && (
-                    <Badge variant="secondary" className="capitalize">
-                      {heroPost.attributes.keywords[0]}
-                    </Badge>
-                  )}
-                  
-                  <Typography 
-                    variant="h1" 
-                    className="text-3xl font-bold group-hover:text-primary transition-colors lg:text-5xl"
-                  >
-                    {heroPost.attributes.title}
-                  </Typography>
-                  
-                  <Typography className="text-base text-muted-foreground lg:text-lg">
-                    {heroPost.attributes.description}
-                  </Typography>
-                  
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      <span>{formatDate(new Date(heroPost.attributes.date))}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4" />
-                      <span>{calculateReadingTime(heroPost.content)} min de lecture</span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </Link>
-          </LayoutContent>
-          
+                    
           {/* ARTICLES TENDANCE - 1 grand à gauche + 3 petits à droite */}
           {featuredPosts.length > 0 && (
             <LayoutContent className="mb-16">
               <div className="space-y-8">
                 <Typography variant="h2" className="text-2xl font-bold lg:text-3xl">
-                  Articles tendance
+                  Notre actualité
                 </Typography>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -181,7 +133,7 @@ export default async function RoutePage(props: PageParams) {
                   
                   {/* 3 petites cartes empilées à droite */}
                   <div className="flex flex-col gap-6">
-                    {featuredPosts.slice(1, 4).map((post) => (
+                    {featuredPosts.slice(1, 6).map((post) => (
                       <Link 
                         key={post.slug}
                         href={`/posts/${post.slug}`}
