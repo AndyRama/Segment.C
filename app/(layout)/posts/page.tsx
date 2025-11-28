@@ -76,7 +76,7 @@ export default async function RoutePage(props: PageParams) {
             {/* ARTICLES TENDANCE - 1 grand à gauche + 7 petits à droite */}
             {featuredPosts.length > 0 && (
               <LayoutContent className="mb-16">
-                <div className="space-y-8">
+                <div className="space-y-8 max-w-7xl mx-auto">
                               
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Grand article à gauche */}
