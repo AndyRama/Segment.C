@@ -36,7 +36,7 @@ export default async function RoutePage(props: PageParams) {
   // Séparer les articles : 1 hero + 3 featured + le reste recent
   const [heroPost, ...remainingPosts] = posts;
   const featuredPosts = remainingPosts.slice(0, 6);
-  const recentPosts = remainingPosts.slice(6);
+  const recentPosts = remainingPosts.slice(3);
 
   return (
     <>
@@ -129,7 +129,7 @@ export default async function RoutePage(props: PageParams) {
                       </Link>
                     )}
                     
-                    {/* 3 petites cartes empilées à droite */}
+                    {/* 5 petites cartes empilées à droite */}
                     <div className="flex flex-col gap-6">
                       {featuredPosts.slice(1, 4).map((post) => (
                         <Link 
