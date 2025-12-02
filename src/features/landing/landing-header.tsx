@@ -67,26 +67,45 @@ export function LandingHeader() {
     [0, 0, 1],
   );
 
+// const topRoutes = [
+//   { path: "/home", label: "Accueil" },
+//   { 
+//     path: "#",
+//     label: "Fenêtres",
+//     dropdown: [ 
+//       { path: "/fenetres", label: "Fenêtre" },
+//       { path: "/baie", label: "Baie vitrée" },
+//     ]
+//   },
+//   { 
+//     path: "#",
+//     label: "Portes",
+//     dropdown: [ 
+//       { path: "/portes", label: "Porte d'entrée" },
+//       { path: "/garage", label: "Porte de garage " },
+//     ]
+//   },
+//   { path: "/#", label: "Volet" },
+//   { path: "/portails", label: "Portails" },
+//   { path: "/posts", label: "Actualités" },
+// ];
+
 const topRoutes = [
   { path: "/home", label: "Accueil" },
   { 
     path: "#",
-    label: "Fenêtres",
+    label: "Catalogue",
     dropdown: [ 
       { path: "/fenetres", label: "Fenêtre" },
       { path: "/baie", label: "Baie vitrée" },
-    ]
-  },
-  { 
-    path: "#",
-    label: "Portes",
-    dropdown: [ 
       { path: "/portes", label: "Porte d'entrée" },
       { path: "/garage", label: "Porte de garage " },
+      { path: "/#", label: "Volet" },
+      { path: "/portails", label: "Portails" },
     ]
   },
-  { path: "/#", label: "Volet" },
-  { path: "/portails", label: "Portails" },
+  { path: "/villes", label: "Villes" },
+  { path: "/#", label: "Partenaires" },
   { path: "/posts", label: "Actualités" },
 ];
 
