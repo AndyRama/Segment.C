@@ -221,6 +221,12 @@ const topRoutes = [
                             <>
                                 {/* Loggé : Bouton Mes Devis */}
                                 <Link 
+                                    href="tel:0671787253" 
+                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
+                                >
+                                    06 71 78 72 53
+                                </Link>
+                                <Link 
                                     href="/account/devis/mes-devis" 
                                     className={buttonVariants({ size: "sm", className: "flex-1" })}
                                 >

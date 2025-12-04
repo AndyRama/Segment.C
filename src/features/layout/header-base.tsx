@@ -169,16 +169,16 @@ export function HeaderBase() {
             {session ? (
               <>
                 <Link 
+                    href="tel:0671787253" 
+                    className={buttonVariants({ size: "sm", className: "flex-1" })}
+                >
+                    06 71 78 72 53
+                </Link>
+                <Link 
                     href="/account/devis/mes-devis" 
                     className={buttonVariants({ size: "sm", variant: "secondary" })}
                 >
                   Mes Devis
-                </Link>
-                <Link 
-                    href="/account/devis" 
-                    className={buttonVariants({ size: "sm", className: "ml-2" })}
-                >
-                    Nouvelle Demande
                 </Link>
                 <AuthButtonClient />
               </>
@@ -254,7 +254,7 @@ export function HeaderBase() {
                       variant="h3"
                       className="text-left text-lg !leading-tight hidden"
                     >
-                      Menu Principal
+                      Menu
                     </Typography>
                   
                     <hr />
