@@ -93,7 +93,7 @@ export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
         <div className="w-full lg:w-10/12">
           <SectionHeader />
 
-          <div className="mx-auto mt-10 grid w-full grid-cols-1 gap-4 text-gray-500 md:grid-cols-2 md:grid-cols-4 md:gap-6">
+          <div className="mx-auto mt-10 grid w-full grid-cols-1 gap-4 text-gray-500 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
             {allCards.slice(0, visibleCount).map((card, index) => (
               <CardImage
                 key={index}
