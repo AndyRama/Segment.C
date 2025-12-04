@@ -1,4 +1,5 @@
 "use client";
+
 import { Typography } from "@/components/nowts/typography";
 import {
   Accordion,
@@ -19,6 +20,9 @@ type FeaturesPreviewProps = {
 };
 
 export const FAQSection = (props: FeaturesPreviewProps) => {
+  // Créer un tableau avec tous les items ouverts par défaut
+  const defaultOpenItems = props.faq.map((_, i) => `item-${i}`);
+
   return (
     <SectionLayout size="lg" className="flex px-2 md:px-4 max-lg:flex-col">
       <div className="flex-1 space-y-2">
@@ -30,7 +34,7 @@ export const FAQSection = (props: FeaturesPreviewProps) => {
         </Typography>
       </div>
       <div className="flex-1">
-        <Accordion type="single" collapsible>
+        <Accordion type="multiple" defaultValue={defaultOpenItems}>
           {props.faq.map((e, i) => {
             return (
               <AccordionItem value={`item-${i}`} key={i}>
