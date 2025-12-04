@@ -15,7 +15,7 @@ export const FloatingLegalFooter = () => {
       <div className="fixed right-4 bottom-2 flex items-center gap-2 z-40">
         <Link
           className="text-muted-foreground text-xs hover:underline"
-          href="/legal/mention-legal"
+          href="/legal/mentions-legales"
           >
           Mentions légals
         </Link>
