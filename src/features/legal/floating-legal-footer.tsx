@@ -4,7 +4,6 @@ import Link from "next/link";
 import GoogleReviewsWidget from '@/features/legal/google-reviews-widget';
 // import WhatsAppContactButton from '@/features/legal/whatsapp-btn';
 
-
 export const FloatingLegalFooter = () => {
   return (
     <>

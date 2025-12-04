@@ -39,7 +39,7 @@ const MentionsLegalesPage = () => {
             <Typography variant="h1" className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
               Mentions Légales
             </Typography>
-            <Typography variant="p" className="mx-auto max-w-2xl text-lg text-gray-600">
+            <Typography variant="p" className="mx-auto max-w-3xl text-lg text-gray-600">
               Toutes les informations légales concernant SEGMENT.C et l'utilisation de notre site internet
             </Typography>
           </div>
@@ -143,7 +143,7 @@ const MentionsLegalesPage = () => {
 
                 <div className="rounded-lg border border-green-200 bg-green-50 p-4">
                   <Typography variant="p" className="mb-1 text-sm font-medium text-green-700">Représentant légal</Typography>
-                  <Typography variant="p" className="font-semibold text-gray-900">Monsieur Rui ARAUJO DECARVALHO, Gérant</Typography>
+                  <Typography variant="p" className="font-semibold text-gray-900">Monsieur Rui ARAUJO DE CARVALHO, Gérant</Typography>
                 </div>
               </div>
             </div>
@@ -157,13 +157,13 @@ const MentionsLegalesPage = () => {
                 <div className="flex items-center gap-3">
                   <Phone className="size-5 flex-shrink-0 text-green-600" />
                   <Typography variant="p" className="text-gray-700">
-                    <span className="font-medium">Téléphone :</span> [Numéro de téléphone]
+                    <span className="font-medium mt-0">Téléphone :</span> [Numéro de téléphone]
                   </Typography>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="size-5 flex-shrink-0 text-green-600" />
                   <Typography variant="p" className="text-gray-700">
-                    <span className="font-medium">Email :</span>{' '}
+                    <span className="font-medium mt-0">Email :</span>{' '}
                     <Link href="mailto:contact@segment-c.com" className="text-green-600 hover:underline">
                       contact@segment-c.com
                     </Link>
@@ -178,7 +178,7 @@ const MentionsLegalesPage = () => {
                 Responsable des publications
               </Typography>
               <Typography variant="p" className="text-gray-700">
-                Monsieur Rui ARAUJO DECARVALHO
+                Monsieur Rui ARAUJO DE CARVALHO
               </Typography>
             </div>
 
@@ -214,9 +214,9 @@ const MentionsLegalesPage = () => {
             <div className="rounded-lg bg-gray-50 p-4">
               <Typography variant="p" className="text-gray-900">
                 <strong>Hostinger</strong><br />
-                Adresse : [Adresse de l'hébergeur]<br />
+                Adresse : 61 Lordou Vironos Street, 6023 Larnaca, Chypre<br />
                 Téléphone : [Téléphone de l'hébergeur]<br />
-                Site web : [Site web de l'hébergeur]
+                Site web : https://www.hostinger.fr
               </Typography>
             </div>
           </div>
@@ -298,7 +298,9 @@ const MentionsLegalesPage = () => {
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <ChevronRight className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                  <Typography variant="p" className="mt-0 text-gray-700">{item}</Typography>
+                  <Typography variant="p" className="mt-0 text-gray-700">
+                    <spa className="mt-0">{item}</spa>
+                  </Typography>
                 </li>
               ))}
             </ul>
