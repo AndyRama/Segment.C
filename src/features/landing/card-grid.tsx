@@ -31,10 +31,10 @@ export const CardImage = ({ title, image, index, link }: CardImageProps) => {
           alt={title}
           width={400}
           height={300}
-          className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-          <Typography variant="h3" className="text-white p-4">
+          <Typography variant="h3" className="text-white p-6">
             {title}
           </Typography>
         </div>
@@ -48,8 +48,8 @@ const SectionHeader = () => (
     <Typography variant="h2" className="mb-4">
       Nos gammes de produits
     </Typography>
-    <Typography variant="p" className="text-muted-foreground">
-      Découvrez notre gamme complète de menuiseries et solutions pour tout votre habitat.
+    <Typography variant="p" className="text-muted-foreground max-w-3xl mx-auto">
+      Découvrez notre gamme complète de menuiseries et solutions sur mesure pour votre habitat
     </Typography>
   </div>
 );
@@ -71,22 +71,15 @@ export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
   ];
 
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
-  const [showCatalogue, setShowCatalogue] = useState(false);
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => {
-      const newCount = Math.min(prev + 2, 8);
-      if (newCount === 8) {
-        setShowCatalogue(true);
-      }
-      return newCount;
-    });
+    setVisibleCount((prev) => Math.min(prev + 2, 8));
   };
 
   return (
     <Layout>
       <SectionHeader />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
         {allCards.slice(0, visibleCount).map((card, index) => (
           <CardImage
             key={card.title}
@@ -98,35 +91,25 @@ export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
         ))}
       </div>
       
-      <div className="flex justify-center gap-4">
-        {visibleCount < 8 && (
+      <div className="flex justify-end">
+        {visibleCount < 8 ? (
           <Button
             onClick={handleShowMore}
             variant="outline"
             size="lg"
-            className="mt-8"
           >
             + Plus d'informations
           </Button>
-        )}
-        
-        {showCatalogue && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
+        ) : (
+          <Button
+            asChild
+            variant="default"
+            size="lg"
           >
-            <Button
-              asChild
-              variant="default"
-              size="lg"
-              className="mt-8"
-            >
-              <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
-                Notre Catalogue
-              </Link>
-            </Button>
-          </motion.div>
+            <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
+              Notre Catalogue
+            </Link>
+          </Button>
         )}
       </div>
     </Layout>
