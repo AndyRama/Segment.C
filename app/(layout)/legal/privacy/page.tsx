@@ -4,27 +4,34 @@ import Link from 'next/link';
 import { Typography } from "@/components/nowts/typography";
 import { SectionLayout } from '@/features/landing/section-layout';
 import { 
-  Building2, 
+  Shield, 
+  Lock, 
+  Eye, 
   Mail, 
   Phone, 
   MapPin, 
-  Shield, 
-  Lock, 
+  UserCheck, 
   FileText, 
-  Scale, 
-  Cookie,
-  Camera,
-  UserCheck,
+  Database, 
+  Server, 
+  Clock, 
+  AlertCircle, 
+  CheckCircle, 
   ChevronRight,
-  AlertCircle
+  Users,
+  Settings,
+  Key,
+  Cookie,
+  Globe,
+  FileCheck
 } from 'lucide-react';
 
-const MentionsLegalesPage = () => {
+const termsPage = () => {
   return (
     <>
       <Head>
         <meta name="robots" content="noindex" />
-        <title>Mentions Légales - Segment.C</title>
+        <title>Politique de Confidentialité - Segment.C</title>
       </Head>
 
       {/* Hero Section */}
@@ -33,14 +40,17 @@ const MentionsLegalesPage = () => {
         <div className="relative mx-auto max-w-7xl px-4">
           <div className="text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-700">
-              <Scale className="size-4" />
-              Informations légales
+              <Shield className="size-4" />
+              Protection des données
             </div>
             <Typography variant="h1" className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
-              Mentions Légales
+              Politique de Confidentialité
             </Typography>
             <Typography variant="p" className="mx-auto max-w-2xl text-lg text-gray-600">
-              Toutes les informations légales concernant SEGMENT.C et l'utilisation de notre site internet
+              SEGMENT.C s'engage à protéger vos données personnelles et à respecter votre vie privée
+            </Typography>
+            <Typography variant="p" className="mt-4 text-sm text-gray-500">
+              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
             </Typography>
           </div>
         </div>
@@ -56,11 +66,11 @@ const MentionsLegalesPage = () => {
           </Typography>
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { title: "Informations légales", href: "#info-legales" },
-              { title: "Hébergement", href: "#hebergement" },
-              { title: "Propriété intellectuelle", href: "#propriete" },
-              { title: "Protection des données", href: "#donnees" },
-              { title: "Cookies", href: "#cookies" },
+              { title: "Responsable de traitement", href: "#responsable" },
+              { title: "Données collectées", href: "#donnees" },
+              { title: "Finalités", href: "#finalites" },
+              { title: "Sécurité", href: "#securite" },
+              { title: "Vos droits", href: "#droits" },
               { title: "Contact", href: "#contact" }
             ].map((item, idx) => (
               <a 
@@ -75,539 +85,715 @@ const MentionsLegalesPage = () => {
           </div>
         </div>
 
-        {/* ARTICLE 1 - Informations légales */}
-        <section id="info-legales" className="mb-12 scroll-mt-20">
+        {/* Introduction */}
+        <section className="mb-12">
+          <div className="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-white p-8 shadow-sm">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="rounded-lg bg-green-100 p-3">
+                <Shield className="size-6 text-green-700" />
+              </div>
+              <Typography variant="h2" className="text-2xl font-bold text-gray-900">
+                Notre Engagement
+              </Typography>
+            </div>
+            <div className="space-y-4 text-gray-700">
+              <Typography variant="p">
+                SEGMENT.C est particulièrement attentif à la protection de vos données personnelles. Concernant les données personnelles que vous nous confiez, nous vous informons de manière transparente sur notre politique en matière de protection des données personnelles.
+              </Typography>
+              <Typography variant="p">
+                SEGMENT.C s'engage à traiter vos données à caractère personnel conformément aux dispositions du <strong className="text-green-700">Règlement Général sur la Protection des Données 2016/679</strong> du Parlement européen et du Conseil du 27 avril 2016 (RGPD) et la <strong className="text-green-700">loi n°78-17 du 6 janvier 1978 modifiée</strong> relative à l'informatique, aux fichiers et aux libertés (loi « Informatique et Libertés »).
+              </Typography>
+              <div className="mt-4 flex items-start gap-2 rounded-lg bg-blue-50 p-4">
+                <AlertCircle className="mt-0.5 size-5 flex-shrink-0 text-blue-600" />
+                <Typography variant="p" className="text-sm text-blue-900">
+                  Toute information recueillie au travers du site internet www.segment-c.com et permettant de vous identifier, de manière directe ou indirecte, est considérée comme une donnée à caractère personnel et sera traitée conformément à cette politique.
+                </Typography>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Article 1 - Responsable de traitement */}
+        <section id="responsable" className="mb-12 scroll-mt-20">
           <div className="mb-6 flex items-center gap-3">
             <div className="rounded-lg bg-green-100 p-3">
-              <Building2 className="size-6 text-green-700" />
+              <Users className="size-6 text-green-700" />
             </div>
             <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Informations Légales
+              Responsable de Traitement
+            </Typography>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
+                Responsable de traitement
+              </Typography>
+              <Typography variant="p" className="mb-4 text-gray-700">
+                Le responsable de traitement des données collectées et traitées sur ce site internet est :
+              </Typography>
+              <div className="space-y-3 rounded-lg bg-green-50 p-4">
+                <Typography variant="p" className="font-semibold text-gray-900">SEGMENT.C</Typography>
+                <Typography variant="p" className="text-sm text-gray-700">
+                  Société à Responsabilité Limitée (SARL)
+                </Typography>
+                <div className="flex items-start gap-2">
+                  <MapPin className="mt-1 size-4 flex-shrink-0 text-green-600" />
+                  <Typography variant="p" className="text-sm text-gray-700">
+                    390 Allée de Saussets - 3 Hameau du Las<br />
+                    33127 SAINT-JEAN-D'ILLAC
+                  </Typography>
+                </div>
+                <div className="grid grid-cols-2 gap-2 pt-2">
+                  <div>
+                    <Typography variant="p" className="text-xs font-medium text-green-700">SIREN</Typography>
+                    <Typography variant="p" className="text-sm text-gray-900">891 100 919</Typography>
+                  </div>
+                  <div>
+                    <Typography variant="p" className="text-xs font-medium text-green-700">RCS</Typography>
+                    <Typography variant="p" className="text-sm text-gray-900">Bordeaux</Typography>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
+                Délégué à la Protection des Données (DPO)
+              </Typography>
+              <Typography variant="p" className="mb-4 text-gray-700">
+                SEGMENT.C a désigné un délégué à la protection des données que vous pouvez contacter :
+              </Typography>
+              <div className="space-y-3 rounded-lg bg-gray-50 p-4">
+                <div className="flex items-center gap-3">
+                  <Mail className="size-5 text-green-600" />
+                  <div>
+                    <Typography variant="p" className="text-xs font-medium text-gray-500">Email DPO</Typography>
+                    <Link href="mailto:dpo@segment-c.com" className="text-green-600 hover:underline">
+                      dpo@segment-c.com
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="my-8 border-t border-gray-200" />
+
+        {/* Article 2 - Données collectées */}
+        <section id="donnees" className="mb-12 scroll-mt-20">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="rounded-lg bg-green-100 p-3">
+              <Database className="size-6 text-green-700" />
+            </div>
+            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+              Données Personnelles Collectées
             </Typography>
           </div>
           
           <div className="space-y-6">
-            {/* Site */}
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
+                1. Données saisies et envoyées via les formulaires
+              </Typography>
+              <div className="grid gap-3 md:grid-cols-2">
+                {[
+                  "Civilité, nom, prénom",
+                  "Adresse postale",
+                  "Adresse email",
+                  "Numéro de téléphone",
+                  "Tranche horaire préférée",
+                  "Société et fonction",
+                  "Description du projet",
+                  "Message ou demande spécifique"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2 rounded-lg bg-green-50 p-3">
+                    <CheckCircle className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
+                    <Typography variant="p" className="text-sm text-gray-700">{item}</Typography>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
+                2. Données collectées automatiquement
+              </Typography>
+              <div className="grid gap-3 md:grid-cols-2">
+                {[
+                  { icon: Globe, text: "Adresse IP" },
+                  { icon: Settings, text: "Type de navigateur et OS" },
+                  { icon: Eye, text: "Pages visitées et durée" },
+                  { icon: ChevronRight, text: "Source de trafic" },
+                  { icon: Cookie, text: "Données des cookies" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3 rounded-lg bg-gray-50 p-3">
+                    <item.icon className="size-5 text-green-600" />
+                    <Typography variant="p" className="text-sm text-gray-700">{item.text}</Typography>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="my-8 border-t border-gray-200" />
+
+        {/* Article 3 - Finalités */}
+        <section id="finalites" className="mb-12 scroll-mt-20">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="rounded-lg bg-green-100 p-3">
+              <FileCheck className="size-6 text-green-700" />
+            </div>
+            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+              Finalités du Traitement
+            </Typography>
+          </div>
+          
+          <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+            <div className="overflow-x-auto">
+              <table className="min-w-full">
+                <thead className="bg-green-50">
+                  <tr>
+                    <th className="border-b border-green-200 px-4 py-3 text-left text-sm font-semibold text-green-900">
+                      Finalité du traitement
+                    </th>
+                    <th className="border-b border-green-200 px-4 py-3 text-left text-sm font-semibold text-green-900">
+                      Base juridique
+                    </th>
+                    <th className="border-b border-green-200 px-4 py-3 text-left text-sm font-semibold text-green-900">
+                      Données traitées
+                    </th>
+                    <th className="border-b border-green-200 px-4 py-3 text-left text-sm font-semibold text-green-900">
+                      Durée de conservation
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white">
+                  <tr className="hover:bg-gray-50">
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Gestion des demandes de contact via formulaire
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Intérêt légitime
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Civilité, nom, prénom, email, téléphone, adresse, message
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm">
+                      <div className="space-y-1">
+                        <div className="font-medium text-green-700">Clients : 3 ans</div>
+                        <div className="text-gray-600">Prospects : 3 ans</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="bg-green-50/30 hover:bg-green-50">
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Gestion des demandes de devis
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Exécution du contrat
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Civilité, nom, prénom, email, téléphone, détails projet
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm">
+                      <div className="space-y-1">
+                        <div className="font-medium text-green-700">Clients : 3 ans</div>
+                        <div className="text-gray-600">Prospects : 3 ans</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Prospection commerciale
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Intérêt légitime
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Nom, prénom, email, téléphone, historique
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm">
+                      <div className="space-y-1">
+                        <div className="font-medium text-green-700">Clients : 3 ans</div>
+                        <div className="text-gray-600">Prospects : 3 ans</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="bg-green-50/30 hover:bg-green-50">
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Gestion de la relation client
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Exécution du contrat
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Toutes données nécessaires
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm">
+                      <div className="font-medium text-green-700">Durée relation + 5 ans</div>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Mesure d'audience et statistiques
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Intérêt légitime
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm text-gray-700">
+                      Données navigation anonymisées, IP
+                    </td>
+                    <td className="border-b border-gray-200 px-4 py-3 text-sm">
+                      <div className="font-medium text-green-700">13 mois maximum</div>
+                    </td>
+                  </tr>
+                  <tr className="bg-green-50/30">
+                    <td className="px-4 py-3 text-sm text-gray-700">
+                      Enquêtes de satisfaction
+                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-700">
+                      Intérêt légitime
+                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-700">
+                      Nom, prénom, email, avis
+                    </td>
+                    <td className="px-4 py-3 text-sm">
+                      <div className="font-medium text-green-700">Durée publication</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <div className="my-8 border-t border-gray-200" />
+
+        {/* Article 4 - Destinataires */}
+        <section className="mb-12">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="rounded-lg bg-green-100 p-3">
+              <Users className="size-6 text-green-700" />
+            </div>
+            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+              Destinataires des Données
+            </Typography>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                title: "Personnel autorisé de SEGMENT.C",
+                icon: UserCheck,
+                items: [
+                  "Équipe commerciale",
+                  "Service client",
+                  "Direction"
+                ],
+                note: "Tous les employés valident un engagement de confidentialité"
+              },
+              {
+                title: "Sous-traitants",
+                icon: Server,
+                items: [
+                  "Hébergeur web",
+                  "Service emailing",
+                  "Outils d'analyse (Google Analytics)",
+                  "CRM"
+                ],
+                note: "Agissent uniquement sur instructions de SEGMENT.C"
+              },
+              {
+                title: "Partenaires commerciaux",
+                icon: Users,
+                items: [
+                  "Revendeurs locaux",
+                  "Installateurs partenaires"
+                ],
+                note: "Uniquement avec votre consentement préalable"
+              },
+              {
+                title: "Obligations légales",
+                icon: FileText,
+                items: [
+                  "Autorités judiciaires",
+                  "Administration fiscale"
+                ],
+                note: "Si requis par la loi ou procédure judiciaire"
+              }
+            ].map((section, idx) => (
+              <div key={idx} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-lg bg-green-100 p-2">
+                    <section.icon className="size-5 text-green-600" />
+                  </div>
+                  <Typography variant="h3" className="text-lg font-semibold text-gray-900">
+                    {section.title}
+                  </Typography>
+                </div>
+                <ul className="mb-4 space-y-2">
+                  {section.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <ChevronRight className="mt-0.5 size-4 flex-shrink-0 text-green-600" />
+                      <Typography variant="p" className="text-sm text-gray-700">{item}</Typography>
+                    </li>
+                  ))}
+                </ul>
+                <div className="rounded-lg bg-blue-50 p-3">
+                  <Typography variant="p" className="text-xs text-blue-900">
+                    {section.note}
+                  </Typography>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="my-8 border-t border-gray-200" />
+
+        {/* Article 5 - Transferts */}
+        <section className="mb-12">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="rounded-lg bg-green-100 p-3">
+              <Globe className="size-6 text-green-700" />
+            </div>
+            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+              Transferts de Données
+            </Typography>
+          </div>
+          
+          <div className="space-y-6">
+            <div className="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-white p-6 shadow-sm">
               <Typography variant="h3" className="mb-3 text-xl font-semibold text-green-700">
-                Site Internet
+                Localisation des données
               </Typography>
-              <Link href="https://www.segment-c.com" className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 hover:underline">
-                <span className="font-medium">www.segment-c.com</span>
-                <ChevronRight className="size-4" />
-              </Link>
-            </div>
-
-            {/* Éditeur */}
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
-                Éditeur du Site
+              <Typography variant="p" className="mb-3 text-gray-700">
+                Les serveurs d'hébergement du site sont exclusivement situés au sein de l'<strong className="text-green-700">Union Européenne</strong>.
               </Typography>
-              <Typography variant="p" className="mb-4 text-gray-700">
-                SEGMENT.C est une Société à Responsabilité Limitée (SARL) au capital social de [CAPITAL]
-              </Typography>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                  <div>
-                    <Typography variant="p" className="font-semibold text-gray-900">Siège social</Typography>
-                    <Typography variant="p" className="text-gray-700">
-                      390 Allée de Saussets - 3 Hameau du Las<br />
-                      33127 SAINT-JEAN-D'ILLAC<br />
-                      France
-                    </Typography>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 rounded-lg bg-green-50 p-4 md:grid-cols-2">
-                  <div>
-                    <Typography variant="p" className="mb-1 text-sm font-medium text-green-700">SIREN</Typography>
-                    <Typography variant="p" className="text-gray-900">891 100 919</Typography>
-                  </div>
-                  <div>
-                    <Typography variant="p" className="mb-1 text-sm font-medium text-green-700">Immatriculation</Typography>
-                    <Typography variant="p" className="text-gray-900">RCS de Bordeaux</Typography>
-                  </div>
-                  <div>
-                    <Typography variant="p" className="mb-1 text-sm font-medium text-green-700">N° TVA intracommunautaire</Typography>
-                    <Typography variant="p" className="text-gray-900">FR [XX] 891100919</Typography>
-                  </div>
-                  <div>
-                    <Typography variant="p" className="mb-1 text-sm font-medium text-green-700">Activité</Typography>
-                    <Typography variant="p" className="text-gray-900">Travaux de menuiserie bois et PVC</Typography>
-                  </div>
-                </div>
-
-                <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-                  <Typography variant="p" className="mb-1 text-sm font-medium text-green-700">Représentant légal</Typography>
-                  <Typography variant="p" className="font-semibold text-gray-900">Monsieur Rui ARAUJO DECARVALHO, Gérant</Typography>
-                </div>
+              <div className="flex items-start gap-2 rounded-lg bg-green-100 p-4">
+                <CheckCircle className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
+                <Typography variant="p" className="text-sm text-green-900">
+                  SEGMENT.C s'engage à ne procéder à <strong>aucun transfert de données à caractère personnel</strong> vers un État non membre de l'Union Européenne, sauf dans le respect des garanties appropriées prévues par le RGPD.
+                </Typography>
               </div>
             </div>
 
-            {/* Contact */}
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
-                Nous Contacter
+            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <Typography variant="h3" className="mb-3 text-xl font-semibold text-gray-900">
+                Cas particuliers
               </Typography>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Phone className="size-5 text-green-600" />
-                  <Typography variant="p" className="text-gray-700">
-                    <span className="font-medium">Téléphone :</span> [Numéro de téléphone]
-                  </Typography>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="size-5 text-green-600" />
-                  <Typography variant="p" className="text-gray-700">
-                    <span className="font-medium">Email :</span>{' '}
-                    <Link href="mailto:contact@segment-c.com" className="text-green-600 hover:underline">
-                      contact@segment-c.com
-                    </Link>
-                  </Typography>
-                </div>
+              <div className="flex items-start gap-2 rounded-lg bg-amber-50 p-4">
+                <AlertCircle className="mt-0.5 size-5 flex-shrink-0 text-amber-600" />
+                <Typography variant="p" className="text-sm text-gray-700">
+                  Certains outils tiers (comme Google Analytics) peuvent stocker des données aux États-Unis. Dans ce cas, ces transferts sont encadrés par des clauses contractuelles types approuvées par la Commission européenne.
+                </Typography>
               </div>
             </div>
-
-            {/* Directeur de publication */}
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-2 text-lg font-semibold text-gray-900">
-                Responsable des publications
-              </Typography>
-              <Typography variant="p" className="text-gray-700">
-                Monsieur Rui ARAUJO DECARVALHO
-              </Typography>
-            </div>
-
-            {/* Conception */}
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-2 text-lg font-semibold text-gray-900">
-                Conception et réalisation
-              </Typography>
-              <Typography variant="p" className="text-gray-700">
-                Andy Ramaroson
-              </Typography>
-            </div>
           </div>
         </section>
 
         <div className="my-8 border-t border-gray-200" />
 
-        {/* ARTICLE 2 - Hébergement */}
-        <section id="hebergement" className="mb-12 scroll-mt-20">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <Shield className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Hébergement
-            </Typography>
-          </div>
-          
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="mb-4 text-gray-700">
-              Le site www.segment-c.com est hébergé par :
-            </Typography>
-            <div className="rounded-lg bg-gray-50 p-4">
-              <Typography variant="p" className="text-gray-900">
-                <strong>Hostinger</strong><br />
-                Adresse : [Adresse de l'hébergeur]<br />
-                Téléphone : [Téléphone de l'hébergeur]<br />
-                Site web : [Site web de l'hébergeur]
-              </Typography>
-            </div>
-            {/* <div className="mt-4 flex items-start gap-2 rounded-lg bg-blue-50 p-3">
-              <AlertCircle className="mt-0.5 size-5 flex-shrink-0 text-blue-600" />
-              <Typography variant="p" className="text-sm text-blue-900">
-                Exemple : Vercel Inc., OVH, O2Switch, etc.
-              </Typography>
-            </div> */}
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 3 - Accès au site */}
-        <section className="mb-12">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <UserCheck className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Accès au Site
-            </Typography>
-          </div>
-          
-          <div className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="text-gray-700">
-              L'accès au site www.segment-c.com est accessible à tous les utilisateurs.
-            </Typography>
-            <Typography variant="p" className="text-gray-700">
-              L'accès au site et son utilisation sont réservés à un usage strictement personnel. Vous vous engagez à ne pas utiliser ce site et les informations ou données qui y figurent à des fins commerciales, politiques, publicitaires et pour toute forme de sollicitation commerciale non autorisée, notamment l'envoi de courriers électroniques non sollicités.
-            </Typography>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 4 - Propriété intellectuelle */}
-        <section id="propriete" className="mb-12 scroll-mt-20">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <FileText className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Propriété Intellectuelle
-            </Typography>
-          </div>
-          
-          <div className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="text-gray-700">
-              Tous les éléments présents sur le site www.segment-c.com, y compris les marques, photographies, textes, commentaires, illustrations, images animées ou non, séquences vidéo, sons, ainsi que toutes les applications informatiques qui pourraient être utilisées pour faire fonctionner ce site, sont protégés par les lois en vigueur au titre de la propriété intellectuelle.
-            </Typography>
-            <div className="rounded-lg bg-amber-50 p-4">
-              <Typography variant="p" className="text-gray-900">
-                <strong>Important :</strong> Ils sont la propriété pleine et entière de SEGMENT.C ou de ses partenaires. Toute reproduction, représentation, utilisation ou adaptation, sous quelque forme que ce soit, de tout ou partie de ces éléments, y compris les applications informatiques, sans l'accord préalable et écrit de SEGMENT.C, sont strictement interdites.
-              </Typography>
-            </div>
-            <Typography variant="p" className="text-gray-700">
-              Le fait pour SEGMENT.C de ne pas engager de procédure dès la prise de connaissance de ces utilisations non autorisées ne vaut pas acceptation desdites utilisations et renonciation aux poursuites.
-            </Typography>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 5 - Gestion du site */}
-        <section className="mb-12">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <Shield className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Gestion du Site
-            </Typography>
-          </div>
-          
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="mb-4 text-gray-700 mt-0">
-              Pour la bonne gestion du site, l'éditeur pourra à tout moment :
-            </Typography>
-            <ul className="space-y-3">
-              {[
-                "Suspendre, interrompre ou limiter l'accès à tout ou partie du site, réserver l'accès au site, ou à certaines parties du site, à une catégorie déterminée d'internautes",
-                "Supprimer toute information pouvant en perturber le fonctionnement ou entrant en contravention avec les lois nationales ou internationales",
-                "Suspendre le site afin de procéder à des mises à jour"
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <ChevronRight className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                  <Typography variant="p" className="text-gray-700">{item}</Typography>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 6 - Responsabilités */}
-        <section className="mb-12">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <Scale className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Responsabilités
-            </Typography>
-          </div>
-          
-          <div className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="text-gray-700">
-              La responsabilité de SEGMENT.C ne peut être engagée en cas de défaillance, panne, difficulté ou interruption de fonctionnement, empêchant l'accès au site ou à une de ses fonctionnalités.
-            </Typography>
-            <Typography variant="p" className="text-gray-700">
-              Le matériel de connexion au site que vous utilisez est sous votre entière responsabilité. Vous devez prendre toutes les mesures appropriées pour protéger votre matériel et vos propres données notamment d'attaques virales par Internet.
-            </Typography>
-            <Typography variant="p" className="text-gray-700">
-              SEGMENT.C ne pourra être tenu responsable en cas de poursuites judiciaires à votre encontre du fait de l'usage du site ou de tout service accessible via Internet, ou du fait du non-respect par vous des présentes conditions générales d'utilisation.
-            </Typography>
-            <Typography variant="p" className="text-gray-700">
-              SEGMENT.C n'est pas responsable des dommages causés à vous-même, à des tiers et/ou à votre équipement du fait de votre connexion ou de votre utilisation du site.
-            </Typography>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 7 - Liens hypertextes */}
-        <section className="mb-12">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <FileText className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Liens Hypertextes
-            </Typography>
-          </div>
-          
-          <div className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="text-gray-700">
-              La mise en place par vous de tous liens hypertextes vers tout ou partie du site est strictement interdite, sauf autorisation préalable et écrite de SEGMENT.C.
-            </Typography>
-            <Typography variant="p" className="text-gray-700">
-              SEGMENT.C peut fournir des liens vers d'autres sites. Ces sites sont indépendants et SEGMENT.C n'édite ni ne contrôle les sources et contenus de ces sites ou leurs liens avec d'autres sites.
-            </Typography>
-            <Typography variant="p" className="text-gray-700">
-              SEGMENT.C ne saurait être tenu pour responsable du contenu, des produits, des services, de la publicité ou de tous autres éléments de ces sites ainsi que pour tous les dommages ou pertes consécutifs à leur utilisation.
-            </Typography>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 8 - Protection des données personnelles */}
-        <section id="donnees" className="mb-12 scroll-mt-20">
+        {/* Article 6 - Sécurité */}
+        <section id="securite" className="mb-12 scroll-mt-20">
           <div className="mb-6 flex items-center gap-3">
             <div className="rounded-lg bg-green-100 p-3">
               <Lock className="size-6 text-green-700" />
             </div>
             <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Protection des Données Personnelles
+              Sécurité des Données Personnelles
             </Typography>
           </div>
           
-          <div className="space-y-6">
-            <div className="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-white p-6 shadow-sm">
-              <Typography variant="p" className="font-medium text-gray-900">
-                Les informations recueillies dans le cadre de l'utilisation du site www.segment-c.com sont destinées à SEGMENT.C, responsable de traitement.
-              </Typography>
-            </div>
+          <Typography variant="p" className="mb-6 text-gray-700">
+            SEGMENT.C met en œuvre toutes les mesures techniques et organisationnelles appropriées pour garantir un niveau de sécurité adapté aux risques :
+          </Typography>
 
-            {/* Collecte et utilisation */}
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
-                Collecte et utilisation des données
+              <Typography variant="h3" className="mb-4 flex items-center gap-2 text-xl font-semibold text-green-700">
+                <Key className="size-5" />
+                Mesures techniques
               </Typography>
-              <Typography variant="p" className="mb-4 text-gray-700">
-                Les données personnelles recueillies via le site sont principalement utilisées pour :
-              </Typography>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {[
-                  "La gestion des demandes de devis et de contact",
-                  "L'amélioration de nos services",
-                  "L'envoi d'informations commerciales (avec votre consentement)"
+                  { title: "Chiffrement HTTPS/TLS", desc: "Protocole sécurisé avec TLS 1.2+" },
+                  { title: "Certificat SSL", desc: "Échanges chiffrés entre navigateur et serveurs" },
+                  { title: "Serveurs sécurisés", desc: "Pare-feu et protection anti-DDoS" },
+                  { title: "Sauvegardes régulières", desc: "Copies quotidiennes des données" },
+                  { title: "Contrôle d'accès", desc: "Authentification forte et limitation" }
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <ChevronRight className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                    <Typography variant="p" className="text-gray-700 mt-0">{item}</Typography>
+                  <li key={idx} className="flex items-start gap-3 rounded-lg bg-green-50 p-3">
+                    <CheckCircle className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
+                    <div>
+                      <Typography variant="p" className="font-semibold text-gray-900">{item.title}</Typography>
+                      <Typography variant="p" className="text-sm text-gray-600">{item.desc}</Typography>
+                    </div>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Vos droits RGPD */}
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
-                Vos droits (RGPD)
+              <Typography variant="h3" className="mb-4 flex items-center gap-2 text-xl font-semibold text-green-700">
+                <Settings className="size-5" />
+                Mesures organisationnelles
               </Typography>
-              <Typography variant="p" className="mb-4 text-gray-700">
-                Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants concernant vos données personnelles :
-              </Typography>
-              <div className="grid gap-3 md:grid-cols-2">
+              <ul className="space-y-3">
                 {[
-                  { title: "Droit d'accès", desc: "Demander une copie de vos données personnelles" },
-                  { title: "Droit de rectification", desc: "Demander la correction de vos données" },
-                  { title: "Droit à l'effacement", desc: "Demander la suppression de vos données" },
-                  { title: "Droit à la limitation", desc: "Limiter l'utilisation de vos données" },
-                  { title: "Droit à la portabilité", desc: "Récupérer vos données dans un format structuré" },
-                  { title: "Droit d'opposition", desc: "Vous opposer au traitement de vos données" }
+                  "Formation du personnel à la protection des données",
+                  "Politique interne de confidentialité",
+                  "Processus de gestion des incidents",
+                  "Audits réguliers de sécurité"
                 ].map((item, idx) => (
-                  <div key={idx} className="rounded-lg bg-green-50 p-4">
-                    <Typography variant="p" className="mb-1 font-semibold text-green-900">
-                      {item.title}
-                    </Typography>
-                    <Typography variant="p" className="text-sm text-gray-700">
-                      {item.desc}
-                    </Typography>
-                  </div>
+                  <li key={idx} className="flex items-start gap-3 rounded-lg bg-gray-50 p-3">
+                    <CheckCircle className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
+                    <Typography variant="p" className="text-sm text-gray-700">{item}</Typography>
+                  </li>
                 ))}
-              </div>
-            </div>
-
-            {/* Exercer vos droits */}
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
-                Exercer vos droits
-              </Typography>
-              <Typography variant="p" className="mb-4 text-gray-700">
-                Pour exercer ces droits, vous pouvez nous contacter :
-              </Typography>
-              <div className="space-y-3 rounded-lg bg-gray-50 p-4">
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                  <div>
-                    <Typography variant="p" className="font-medium text-gray-900">Par email :</Typography>
-                    <Link href="mailto:contact@segment-c.com" className="text-green-600 hover:underline">
-                      contact@segment-c.com
-                    </Link>
-                    <Typography variant="p" className="text-sm text-gray-600">
-                      Objet : "Exercice de mes droits RGPD"
-                    </Typography>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 size-5 flex-shrink-0 text-green-600" />
-                  <div>
-                    <Typography variant="p" className="font-medium text-gray-900">Par courrier :</Typography>
-                    <Typography variant="p" className="text-gray-700">
-                      SEGMENT.C - 390 Allée de Saussets, 3 Hameau du Las, 33127 SAINT-JEAN-D'ILLAC
-                    </Typography>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 flex items-start gap-2 rounded-lg bg-blue-50 p-3">
-                <AlertCircle className="mt-0.5 size-5 flex-shrink-0 text-blue-600" />
-                <Typography variant="p" className="text-sm text-blue-900">
-                  Un email de confirmation vous sera envoyé. Nous nous engageons à répondre dans un délai maximum d'un mois.
+              </ul>
+              <div className="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 p-3">
+                <AlertCircle className="mt-0.5 size-5 flex-shrink-0 text-amber-600" />
+                <Typography variant="p" className="text-xs text-amber-900">
+                  Malgré ces mesures, aucun système n'est infaillible. En cas de violation de données, nous vous en informerons conformément au RGPD.
                 </Typography>
               </div>
-            </div>
-
-            {/* Sécurité */}
-            <div className="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-3 text-xl font-semibold text-green-700">
-                Sécurité des données
-              </Typography>
-              <Typography variant="p" className="text-gray-700">
-                SEGMENT.C s'engage à prendre toutes les mesures nécessaires pour préserver la sécurité et la confidentialité de vos données personnelles, et notamment empêcher qu'elles ne soient déformées, endommagées ou communiquées à des tiers non autorisés.
-              </Typography>
             </div>
           </div>
         </section>
 
         <div className="my-8 border-t border-gray-200" />
 
-        {/* ARTICLE 9 - Cookies */}
-        <section id="cookies" className="mb-12 scroll-mt-20">
+        {/* Article 7 - Vos droits */}
+        <section id="droits" className="mb-12 scroll-mt-20">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="rounded-lg bg-green-100 p-3">
+              <Shield className="size-6 text-green-700" />
+            </div>
+            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+              Vos Droits sur vos Données Personnelles
+            </Typography>
+          </div>
+          
+          <Typography variant="p" className="mb-6 text-gray-700">
+            Conformément aux dispositions du RGPD et de la loi Informatique et Libertés, vous disposez des droits suivants :
+          </Typography>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: Eye,
+                title: "Droit d'accès",
+                desc: "Obtenir la confirmation que vos données font l'objet d'un traitement et en obtenir une copie"
+              },
+              {
+                icon: FileCheck,
+                title: "Droit de rectification",
+                desc: "Obtenir la rectification de données inexactes ou compléter des données incomplètes"
+              },
+              {
+                icon: AlertCircle,
+                title: "Droit à l'effacement",
+                desc: "Obtenir la suppression de vos données personnelles dans certains cas"
+              },
+              {
+                icon: Lock,
+                title: "Droit à la limitation",
+                desc: "Demander le gel temporaire du traitement de vos données"
+              },
+              {
+                icon: Database,
+                title: "Droit à la portabilité",
+                desc: "Recevoir vos données dans un format structuré et les transmettre à un autre responsable"
+              },
+              {
+                icon: UserCheck,
+                title: "Droit d'opposition",
+                desc: "Vous opposer au traitement de vos données fondé sur l'intérêt légitime"
+              },
+              {
+                icon: Clock,
+                title: "Directives post-mortem",
+                desc: "Définir des directives relatives à vos données après votre décès"
+              },
+              {
+                icon: Settings,
+                title: "Retrait du consentement",
+                desc: "Retirer votre consentement à tout moment si le traitement est fondé dessus"
+              },
+              {
+                icon: FileText,
+                title: "Réclamation CNIL",
+                desc: "Adresser une réclamation à la CNIL si vos droits ne sont pas respectés"
+              }
+            ].map((right, idx) => (
+              <div key={idx} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="rounded-lg bg-green-100 p-2">
+                    <right.icon className="size-5 text-green-600" />
+                  </div>
+                  <Typography variant="h3" className="font-semibold text-gray-900">
+                    {right.title}
+                  </Typography>
+                </div>
+                <Typography variant="p" className="text-sm text-gray-700">
+                  {right.desc}
+                </Typography>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-xl border border-blue-200 bg-blue-50 p-6">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="mt-0.5 size-6 flex-shrink-0 text-blue-600" />
+              <div>
+                <Typography variant="h3" className="mb-2 font-semibold text-blue-900">
+                  Réclamation auprès de la CNIL
+                </Typography>
+                <Typography variant="p" className="mb-3 text-sm text-blue-900">
+                  Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL :
+                </Typography>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Globe className="size-4 text-blue-600" />
+                    <Link href="https://www.cnil.fr/fr/plaintes" className="text-sm font-medium text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">
+                      www.cnil.fr/fr/plaintes
+                    </Link>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <MapPin className="mt-0.5 size-4 flex-shrink-0 text-blue-600" />
+                    <Typography variant="p" className="text-sm text-blue-900">
+                      CNIL - 3 Place de Fontenoy - TSA 80715 - 75334 PARIS CEDEX 07
+                    </Typography>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="my-8 border-t border-gray-200" />
+
+        {/* Article 8 - Exercice des droits */}
+        <section className="mb-12">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="rounded-lg bg-green-100 p-3">
+              <Mail className="size-6 text-green-700" />
+            </div>
+            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
+              Modalités d'Exercice de vos Droits
+            </Typography>
+          </div>
+          
+          <div className="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-white p-8 shadow-sm">
+            <Typography variant="p" className="mb-6 text-gray-700">
+              Pour exercer l'un de vos droits, vous pouvez nous contacter :
+            </Typography>
+
+            <div className="mb-6 grid gap-4 md:grid-cols-2">
+              <div className="rounded-lg border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-3">
+                  <Mail className="size-5 text-green-600" />
+                  <Typography variant="h3" className="font-semibold text-gray-900">Par email</Typography>
+                </div>
+                <Link href="mailto:contact@segment-c.com" className="text-green-600 hover:underline">
+                  contact@segment-c.com
+                </Link>
+                <Typography variant="p" className="mt-1 text-sm text-gray-600">
+                  Objet : "Exercice de mes droits RGPD"
+                </Typography>
+              </div>
+
+              <div className="rounded-lg border border-gray-200 bg-white p-5">
+                <div className="mb-3 flex items-center gap-3">
+                  <MapPin className="size-5 text-green-600" />
+                  <Typography variant="h3" className="font-semibold text-gray-900">Par courrier</Typography>
+                </div>
+                <Typography variant="p" className="text-sm text-gray-700">
+                  SEGMENT.C<br />
+                  Service Protection des Données<br />
+                  390 Allée de Saussets<br />
+                  33127 SAINT-JEAN-D'ILLAC
+                </Typography>
+              </div>
+            </div>
+
+            <div className="mb-6 rounded-lg bg-white p-5">
+              <Typography variant="h3" className="mb-3 font-semibold text-gray-900">
+                Informations à fournir
+              </Typography>
+              <ul className="space-y-2">
+                {[
+                  "Une copie d'une pièce d'identité en cours de validité",
+                  "La précision du droit que vous souhaitez exercer",
+                  "Votre adresse email ou postale pour vous répondre"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <ChevronRight className="mt-0.5 size-4 flex-shrink-0 text-green-600" />
+                    <Typography variant="p" className="text-sm text-gray-700">{item}</Typography>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex items-start gap-3 rounded-lg bg-green-100 p-4">
+              <Clock className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
+              <div>
+                <Typography variant="p" className="font-semibold text-green-900">Délai de réponse</Typography>
+                <Typography variant="p" className="text-sm text-green-800">
+                  Nous nous engageons à vous répondre dans un délai maximum d'<strong>un mois</strong>. Ce délai peut être prolongé de deux mois en cas de demande complexe.
+                </Typography>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="my-8 border-t border-gray-200" />
+
+        {/* Article 9 - Cookies */}
+        <section className="mb-12">
           <div className="mb-6 flex items-center gap-3">
             <div className="rounded-lg bg-green-100 p-3">
               <Cookie className="size-6 text-green-700" />
             </div>
             <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Cookies
-            </Typography>
-          </div>
-          
-          <div className="space-y-6">
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="p" className="mb-4 text-gray-700">
-                Un cookie est un fichier déposé sur votre terminal lors de la visite d'un site web. Il a pour but de collecter des informations relatives à votre navigation et de vous adresser des services adaptés à votre terminal (ordinateur, mobile ou tablette).
-              </Typography>
-              <Typography variant="p" className="text-gray-700">
-                Le site www.segment-c.com peut collecter automatiquement des informations standards. Toutes les informations collectées indirectement ne seront utilisées que pour suivre le volume, le type et la configuration du trafic utilisant ce site, pour en développer la conception et l'agencement et à d'autres fins administratives et de planification.
-              </Typography>
-            </div>
-
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <Typography variant="h3" className="mb-4 text-xl font-semibold text-green-700">
-                Types de cookies utilisés
-              </Typography>
-              <div className="grid gap-3 md:grid-cols-3">
-                {[
-                  { title: "Cookies techniques", desc: "Nécessaires au fonctionnement du site" },
-                  { title: "Cookies analytiques", desc: "Pour mesurer l'audience du site" },
-                  { title: "Cookies publicitaires", desc: "Pour personnaliser la publicité" }
-                ].map((item, idx) => (
-                  <div key={idx} className="rounded-lg bg-green-50 p-4">
-                    <Typography variant="p" className="mb-2 font-semibold text-green-900">
-                      {item.title}
-                    </Typography>
-                    <Typography variant="p" className="text-sm text-gray-700">
-                      {item.desc}
-                    </Typography>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-xl border border-blue-200 bg-blue-50 p-6">
-              <Typography variant="p" className="text-gray-900">
-                Vous pouvez gérer vos préférences en matière de cookies lors de votre première navigation sur le site via le bandeau de gestion des cookies. Vous pouvez également paramétrer votre navigateur pour refuser les cookies. Les modalités sont précisées sur le site Internet de la Commission Nationale de l'Informatique et des Libertés (CNIL) :{' '}
-                <Link href="https://www.cnil.fr" className="font-medium text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">
-                  www.cnil.fr
-                </Link>
-              </Typography>
-            </div>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 10 - Photographies */}
-        <section className="mb-12">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <Camera className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Photographies et Représentation des Produits
+              Cookies et Technologies Similaires
             </Typography>
           </div>
           
           <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
             <Typography variant="p" className="text-gray-700">
-              Les photographies de produits et réalisations, accompagnant leur description, ne sont pas contractuelles et n'engagent pas SEGMENT.C. Dans un souci d'amélioration continue, nos modèles et réalisations peuvent être modifiés sans préavis.
+              Le site www.segment-c.com utilise des cookies et technologies similaires. Pour plus d'informations, consultez notre{' '}
+              <Link href="/politique-cookies" className="font-medium text-green-600 hover:underline">
+                Politique de Cookies
+              </Link>.
             </Typography>
           </div>
         </section>
 
         <div className="my-8 border-t border-gray-200" />
 
-        {/* ARTICLE 11 - Loi applicable */}
-        <section className="mb-12">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-lg bg-green-100 p-3">
-              <Scale className="size-6 text-green-700" />
-            </div>
-            <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Loi Applicable et Juridiction Compétente
-            </Typography>
-          </div>
-          
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <Typography variant="p" className="text-gray-700">
-              Les présentes mentions légales et conditions d'utilisation du site sont régies par la loi française. En cas de litige et à défaut d'accord amiable, le litige sera porté devant les tribunaux compétents du siège social de SEGMENT.C, conformément aux règles de compétence en vigueur.
-            </Typography>
-          </div>
-        </section>
-
-        <div className="my-8 border-t border-gray-200" />
-
-        {/* ARTICLE 12 - Crédits */}
+        {/* Article 10 - Modifications */}
         <section className="mb-12">
           <div className="mb-6 flex items-center gap-3">
             <div className="rounded-lg bg-green-100 p-3">
               <FileText className="size-6 text-green-700" />
             </div>
             <Typography variant="h2" className="text-3xl font-bold text-gray-900">
-              Crédits
+              Modifications de la Politique
             </Typography>
           </div>
           
-          <div className="space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <div>
-              <Typography variant="p" className="font-semibold text-gray-900">Conception et design web</Typography>
-              <Typography variant="p" className="text-gray-700">[Nom de l'agence ou du développeur]</Typography>
-            </div>
-            <div>
-              <Typography variant="p" className="font-semibold text-gray-900">Crédits photos</Typography>
-              <Typography variant="p" className="text-gray-700">© SEGMENT.C et/ou [source des photos]</Typography>
-            </div>
-            <div>
-              <Typography variant="p" className="font-semibold text-gray-900">Photographe</Typography>
-              <Typography variant="p" className="text-gray-700">[Nom du photographe si applicable]</Typography>
-            </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <Typography variant="p" className="mb-3 text-gray-700">
+              SEGMENT.C se réserve le droit de modifier cette politique à tout moment. En cas de modification substantielle, vous en serez informé par un avis sur le site ou par email si nous disposons de votre adresse.
+            </Typography>
+            <Typography variant="p" className="text-sm text-gray-600">
+              La date de dernière mise à jour est indiquée en haut de cette page.
+            </Typography>
           </div>
         </section>
 
@@ -618,20 +804,20 @@ const MentionsLegalesPage = () => {
           <div className="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 via-white to-green-50 p-8 shadow-sm">
             <div className="mb-6 text-center">
               <Typography variant="h2" className="mb-2 text-2xl font-bold text-gray-900">
-                Une Question ?
+                Des Questions ?
               </Typography>
               <Typography variant="p" className="text-gray-600">
-                Pour toute question concernant ces mentions légales ou le fonctionnement du site
+                Pour toute question concernant cette politique ou le traitement de vos données personnelles
               </Typography>
             </div>
             
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-4">
               <div className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow-sm">
                 <div className="mb-3 rounded-full bg-green-100 p-3">
                   <Mail className="size-6 text-green-600" />
                 </div>
-                <Typography variant="p" className="mb-2 font-semibold text-gray-900">Par email</Typography>
-                <Link href="mailto:contact@segment-c.com" className="text-green-600 hover:underline">
+                <Typography variant="p" className="mb-2 text-sm font-semibold text-gray-900">Email</Typography>
+                <Link href="mailto:contact@segment-c.com" className="text-sm text-green-600 hover:underline">
                   contact@segment-c.com
                 </Link>
               </div>
@@ -640,28 +826,38 @@ const MentionsLegalesPage = () => {
                 <div className="mb-3 rounded-full bg-green-100 p-3">
                   <Phone className="size-6 text-green-600" />
                 </div>
-                <Typography variant="p" className="mb-2 font-semibold text-gray-900">Par téléphone</Typography>
-                <Typography variant="p" className="text-gray-700">[Numéro de téléphone]</Typography>
+                <Typography variant="p" className="mb-2 text-sm font-semibold text-gray-900">Téléphone</Typography>
+                <Typography variant="p" className="text-sm text-gray-700">[Votre numéro]</Typography>
               </div>
               
               <div className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow-sm">
                 <div className="mb-3 rounded-full bg-green-100 p-3">
                   <MapPin className="size-6 text-green-600" />
                 </div>
-                <Typography variant="p" className="mb-2 font-semibold text-gray-900">Par courrier</Typography>
-                <Typography variant="p" className="text-sm text-gray-700">
+                <Typography variant="p" className="mb-2 text-sm font-semibold text-gray-900">Courrier</Typography>
+                <Typography variant="p" className="text-xs text-gray-700">
                   390 Allée de Saussets<br />
                   33127 SAINT-JEAN-D'ILLAC
                 </Typography>
+              </div>
+              
+              <div className="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow-sm">
+                <div className="mb-3 rounded-full bg-green-100 p-3">
+                  <Shield className="size-6 text-green-600" />
+                </div>
+                <Typography variant="p" className="mb-2 text-sm font-semibold text-gray-900">DPO</Typography>
+                <Link href="mailto:dpo@segment-c.com" className="text-sm text-green-600 hover:underline">
+                  dpo@segment-c.com
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="mt-12 rounded-xl bg-gray-50 p-6 text-center">
-          <Typography variant="p" className="text-sm text-gray-600">
-            Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+        <footer className="mt-12 rounded-xl bg-green-50 p-6 text-center">
+          <Typography variant="p" className="font-medium text-green-900">
+            SEGMENT.C s'engage à respecter la confidentialité et la sécurité de vos données personnelles.
           </Typography>
         </footer>
       </SectionLayout>
@@ -669,4 +865,4 @@ const MentionsLegalesPage = () => {
   );
 };
 
-export default MentionsLegalesPage;
+export default termsPage;

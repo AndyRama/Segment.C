@@ -16,15 +16,15 @@ export const FloatingLegalFooter = () => {
       <div className="fixed right-4 bottom-2 flex items-center gap-2 z-40">
         <Link
           className="text-muted-foreground text-xs hover:underline"
-          href="/legal/privacy"
+          href="/legal/mention-legal"
           >
-          Privacy
+          Mentions légals
         </Link>
         <Link
           className="text-muted-foreground text-xs hover:underline"
-          href="/legal/terms"
+          href="/legal/privacy"
           >
-          Terms
+          Privacy
         </Link>
         <Image src={SiteConfig.appIcon} width={12} height={12} alt="app icon" />
       </div>
