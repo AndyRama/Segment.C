@@ -37,6 +37,8 @@ export default function HomePage() {
       <SectionDivider />
 
       <ProcessSection />
+      
+      <SectionDivider />
 
       <CTAImageSection />
 

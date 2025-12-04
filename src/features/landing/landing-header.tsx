@@ -100,8 +100,8 @@ const topRoutes = [
       { path: "/baie", label: "Baie vitrée" },
       { path: "/portes", label: "Porte d'entrée" },
       { path: "/garage", label: "Porte de garage " },
-      { path: "/#", label: "Volet" },
       { path: "/portails", label: "Portails" },
+      { path: "/#", label: "Volet" },
     ]
   },
   { path: "/villes", label: "Villes" },
