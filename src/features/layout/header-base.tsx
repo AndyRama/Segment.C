@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { PropsWithChildren } from "react";
+// import type { PropsWithChildren } from "react";
 import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
@@ -62,25 +62,22 @@ const clamp = (number: number, min: number, max: number) =>
 
 const topRoutes = [
   { path: "/home", label: "Accueil" },
-  {
+  { 
     path: "#",
-    label: "Fenêtres",
-    dropdown: [
+    label: "Catalogue",
+    dropdown: [ 
       { path: "/fenetres", label: "Fenêtre" },
       { path: "/baie", label: "Baie vitrée" },
-    ],
-  },
-  {
-    path: "#",
-    label: "Portes",
-    dropdown: [
       { path: "/portes", label: "Porte d'entrée" },
       { path: "/garage", label: "Porte de garage " },
-    ],
+      { path: "/portails", label: "Portails" },
+      { path: "/#", label: "Volet" },
+    ]
   },
-  { path: "/#", label: "Volet" },
-  { path: "/portails", label: "Portails" },
+  { path: "/villes", label: "Villes" },
+  { path: "/#", label: "Partenaires" },
   { path: "/posts", label: "Actualités" },
+  { path: "/posts", label: "A propos de moi" },
 ];
 
 export function HeaderBase() {

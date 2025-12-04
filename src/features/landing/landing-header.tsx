@@ -107,6 +107,7 @@ const topRoutes = [
   { path: "/villes", label: "Villes" },
   { path: "/#", label: "Partenaires" },
   { path: "/posts", label: "Actualités" },
+  { path: "/posts", label: "A propos de moi" },
 ];
 
   return (

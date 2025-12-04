@@ -180,15 +180,15 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/posts"
                   >
-                    Articles
+                    Actualités
                   </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="#"
+                    href="/partenaire"
                   >
-                    Partenaire
+                    Partenaires
                   </Typography>
                       <Typography
                     as={Link}
@@ -196,7 +196,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/villes"
                   >
-                    localisation
+                    Villes
                   </Typography>
                 </div>
               </div>
