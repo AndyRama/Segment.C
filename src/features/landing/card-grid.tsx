@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -19,24 +18,32 @@ export type CardImageProps = {
 export const CardImage = ({ title, image, index, link }: CardImageProps) => {
   const delay = index * 0.05;
   return (
-    <Link href={link} target="_blank" rel="noopener noreferrer">
+    <Link href={link} className="block" target="_blank">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay }}
-        className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay,
+            duration: 0.9,
+          },
+        }}
+        viewport={{ once: true }}
+        className="group relative cursor-pointer overflow-hidden rounded-md"
       >
         <Image
           src={image}
           alt={title}
           width={400}
-          height={300}
-          className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+          height={400}
+          className="h-[400px] w-full object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-          <Typography variant="h3" className="text-white p-6">
+        <div className="absolute inset-0 bg-black/40 transition-all duration-300 group-hover:bg-black/50"></div>
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <h3 className="text-center text-2xl leading-tight font-bold text-white">
             {title}
-          </Typography>
+          </h3>
         </div>
       </motion.div>
     </Link>
@@ -44,12 +51,16 @@ export const CardImage = ({ title, image, index, link }: CardImageProps) => {
 };
 
 const SectionHeader = () => (
-  <div className="text-center mb-12">
-    <Typography variant="h2" className="mb-4">
+  <div className="mb-12 space-y-4 text-center">
+    <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
       Nos gammes de produits
     </Typography>
-    <Typography variant="p" className="text-muted-foreground max-w-3xl mx-auto">
-      Découvrez notre gamme complète de menuiseries et solutions sur mesure pour votre habitat
+    <Typography
+      variant="large"
+      className="text-muted-foreground mx-auto max-w-3xl"
+    >
+      Découvrez notre gamme complète de menuiseries et solutions sur mesure pour
+      votre habitat
     </Typography>
   </div>
 );
@@ -73,45 +84,45 @@ export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 2, 8));
+    setVisibleCount((prev) => Math.min(prev + 4, 8));
   };
 
   return (
     <Layout>
-      <SectionHeader />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-        {allCards.slice(0, visibleCount).map((card, index) => (
-          <CardImage
-            key={card.title}
-            title={card.title}
-            image={card.image}
-            index={index}
-            link={card.link}
-          />
-        ))}
+      <div className="mx-auto mb-2 justify-center rounded-r-md md:flex md:px-4">
+        <div className="w-full lg:w-10/12">
+          <SectionHeader />
+
+          <div className="mx-auto mt-10 grid w-full grid-cols-1 gap-4 text-gray-500 md:grid-cols-2 md:grid-cols-4 md:gap-6">
+            {allCards.slice(0, visibleCount).map((card, index) => (
+              <CardImage
+                key={index}
+                index={index}
+                title={card.title}
+                image={card.image}
+                link={card.link}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      
-      <div className="flex justify-end">
-        {visibleCount < 8 ? (
-          <Button
-            onClick={handleShowMore}
-            variant="outline"
-            size="lg"
-          >
-            + Plus d'informations
-          </Button>
-        ) : (
-          <Button
-            asChild
-            variant="default"
-            size="lg"
-          >
-            <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
-              Notre Catalogue
-            </Link>
-          </Button>
-        )}
-      </div>
+
+      {visibleCount < 8 ? (
+        <Button
+          onClick={handleShowMore}
+          variant="outline"
+          size="lg"
+          className="mt-8"
+        >
+          + Plus d'informations
+        </Button>
+      ) : (
+        <Button asChild variant="default" size="lg" className="mt-8">
+          <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
+            Notre Catalogue
+          </Link>
+        </Button>
+      )}
     </Layout>
   );
 };
