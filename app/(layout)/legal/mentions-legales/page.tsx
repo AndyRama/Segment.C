@@ -299,7 +299,7 @@ const MentionsLegalesPage = () => {
                 <li key={idx} className="flex items-start gap-3">
                   <ChevronRight className="mt-1 size-5 flex-shrink-0 text-green-600" />
                   <Typography variant="p" className="mt-0 text-gray-700">
-                    <spa className="mt-0">{item}</spa>
+                    <span className="mt-0">{item}</span>
                   </Typography>
                 </li>
               ))}
