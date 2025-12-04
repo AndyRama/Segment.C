@@ -48,63 +48,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <CardGrid initialVisibleCount={4} />
-
-      <SectionDivider />
-
-      <Partenaire />
-
-      <SectionDivider />
-
-      <FAQSection
-        faq={[
-          {
-            question: "Quels types de menuiseries proposez-vous ?",
-            answer:
-              "Segment.c est spécialisé dans la fabrication et l'installation de portes et fenêtres sur mesure. Nous proposons des menuiseries en PVC, aluminium et bois, adaptées à tous les styles architecturaux et budgets.",
-          },
-          {
-            question: "Proposez-vous un devis gratuit ?",
-            answer:
-              "Oui, nous nous déplaçons gratuitement à votre domicile pour étudier votre projet, prendre les mesures et vous proposer un devis détaillé sans engagement. Cette prestation est entièrement gratuite.",
-          },
-          {
-            question:
-              "Quels sont les délais de fabrication et d'installation ?",
-            answer:
-              "Après validation de votre commande, comptez 2 à 4 semaines pour la fabrication de vos menuiseries. L'installation est ensuite réalisée par nos équipes dans un délai de 1 à 3 jours selon la complexité du projet.",
-          },
-          {
-            question: "Vos menuiseries sont-elles garanties ?",
-            answer:
-              "Toutes nos menuiseries bénéficient d'une garantie fabricant et nous assurons un service après-vente complet. Nos produits respectent les normes en vigueur et offrent d'excellentes performances thermiques et acoustiques.",
-          },
-          {
-            question: "Dans quelles zones intervenez-vous ?",
-            answer:
-              "Nous intervenons principalement en Nouvelle-Aquitaine et dans les départements limitrophes. N'hésitez pas à nous contacter pour vérifier si votre zone géographique est couverte par nos services.",
-          },
-          {
-            question:
-              "Puis-je bénéficier d'aides financières pour mes travaux ?",
-            answer:
-              "Oui, selon votre situation, vous pouvez bénéficier de différentes aides : MaPrimeRénov', éco-PTZ, TVA réduite, aides locales. Nous vous accompagnons dans vos démarches et vous conseillons sur les dispositifs disponibles.",
-          },
-          {
-            question:
-              "Vos menuiseries sont-elles conformes aux normes thermiques ?",
-            answer:
-              "Absolument, toutes nos menuiseries respectent la réglementation thermique en vigueur (RT 2012/RE 2020). Nous proposons des produits haute performance énergétique qui contribuent à réduire vos factures de chauffage.",
-          },
-          {
-            question: "Comment se déroule une intervention chez moi ?",
-            answer:
-              "Notre processus comprend 4 étapes : 1) Devis gratuit à domicile, 2) Mesure technique et validation, 3) Fabrication en atelier, 4) Pose professionnelle avec finitions. Nous nous occupons de tout de A à Z.",
-          },
-        ]}
-      />
-
-      <ReviewGrid
+            <ReviewGrid
         initialReviewsCount={6}
         reviews={[
           // Avis généraux Segment.C
@@ -165,10 +109,68 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ServiceAreaSection />
-                
+      <CardGrid initialVisibleCount={4} />
+
       <SectionDivider />
+
+      <Partenaire />
       
+      <SectionDivider />
+
+      <FAQSection
+        faq={[
+          {
+            question: "Quels types de menuiseries proposez-vous ?",
+            answer:
+              "Segment.c est spécialisé dans la fabrication et l'installation de portes et fenêtres sur mesure. Nous proposons des menuiseries en PVC, aluminium et bois, adaptées à tous les styles architecturaux et budgets.",
+          },
+          {
+            question: "Proposez-vous un devis gratuit ?",
+            answer:
+              "Oui, nous nous déplaçons gratuitement à votre domicile pour étudier votre projet, prendre les mesures et vous proposer un devis détaillé sans engagement. Cette prestation est entièrement gratuite.",
+          },
+          {
+            question:
+              "Quels sont les délais de fabrication et d'installation ?",
+            answer:
+              "Après validation de votre commande, comptez 2 à 4 semaines pour la fabrication de vos menuiseries. L'installation est ensuite réalisée par nos équipes dans un délai de 1 à 3 jours selon la complexité du projet.",
+          },
+          {
+            question: "Vos menuiseries sont-elles garanties ?",
+            answer:
+              "Toutes nos menuiseries bénéficient d'une garantie fabricant et nous assurons un service après-vente complet. Nos produits respectent les normes en vigueur et offrent d'excellentes performances thermiques et acoustiques.",
+          },
+          {
+            question: "Dans quelles zones intervenez-vous ?",
+            answer:
+              "Nous intervenons principalement en Nouvelle-Aquitaine et dans les départements limitrophes. N'hésitez pas à nous contacter pour vérifier si votre zone géographique est couverte par nos services.",
+          },
+          {
+            question:
+              "Puis-je bénéficier d'aides financières pour mes travaux ?",
+            answer:
+              "Oui, selon votre situation, vous pouvez bénéficier de différentes aides : MaPrimeRénov', éco-PTZ, TVA réduite, aides locales. Nous vous accompagnons dans vos démarches et vous conseillons sur les dispositifs disponibles.",
+          },
+          {
+            question:
+              "Vos menuiseries sont-elles conformes aux normes thermiques ?",
+            answer:
+              "Absolument, toutes nos menuiseries respectent la réglementation thermique en vigueur (RT 2012/RE 2020). Nous proposons des produits haute performance énergétique qui contribuent à réduire vos factures de chauffage.",
+          },
+          {
+            question: "Comment se déroule une intervention chez moi ?",
+            answer:
+              "Notre processus comprend 4 étapes : 1) Devis gratuit à domicile, 2) Mesure technique et validation, 3) Fabrication en atelier, 4) Pose professionnelle avec finitions. Nous nous occupons de tout de A à Z.",
+          },
+        ]}
+      />
+
+      <SectionDivider />
+                
+      <ServiceAreaSection />
+
+      <SectionDivider />    
+
       <CTAImageSection />
 
       <SectionDivider />
