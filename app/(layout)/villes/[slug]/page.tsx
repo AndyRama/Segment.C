@@ -6,7 +6,7 @@ import { ReviewGrid } from "@/features/landing/review/review-grid";
 import { SectionDivider } from "@/features/landing/section-divider";
 import { AboutSection } from "@/features/landing/about-section";
 import { GallerySection } from "@/features/landing/gallery-section";
-import { ServiceAreaSection } from "@/features/landing/services-area-section";
+// import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { FAQSection } from "@/features/landing/faq-section";
 import {
   saintJeanDIllacData,
@@ -197,7 +197,7 @@ export default async function VillePage({ params }: PageProps) {
 
       <SectionDivider />
 
-      <ServiceAreaSection />
+      {/* <ServiceAreaSection /> */}
     </div>
   );
 }

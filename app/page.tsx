@@ -11,7 +11,19 @@ import { ProcessSection } from "@/features/landing/process-section";
 import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { Partenaire } from "@/features/landing/partenaire";
 import { RecentPosts } from "@/features/landing/recent-posts";
+import { ServiceVilleSection } from '@/features/villes/service-ville-section';
 import { Footer } from "@/features/layout/footer";
+import {
+  saintJeanDIllacData,
+  type VilleData,
+} from '@/features/villes/data';
+
+type VillesDataMap = Record<string, VilleData | undefined>;
+
+// Map des données par ville
+const villesData: VillesDataMap = {
+  'saint-jean-d-illac': saintJeanDIllacData,
+};
 
 export default function HomePage() {
   return (
@@ -40,7 +52,7 @@ export default function HomePage() {
       
       <SectionDivider />
 
-      <CTAImageSection />
+      <ServiceVilleSection {...saintJeanDIllacData.service} />
 
       <SectionDivider />
 
@@ -48,7 +60,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-            <ReviewGrid
+      <ReviewGrid
         initialReviewsCount={6}
         reviews={[
           // Avis généraux Segment.C
