@@ -69,7 +69,7 @@ type CardGridProps = {
   initialVisibleCount?: number;
 };
 
-export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
+export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
     { title: "Fenêtres", image: "/images/hero-fenetre.jpg", link: "/fenetres" },
     { title: "Baie vitrée", image: "/images/baie/syal_7.jpg", link: "/baie" },
@@ -104,25 +104,26 @@ export const CardGrid = ({ initialVisibleCount = 6 }: CardGridProps) => {
               />
             ))}
           </div>
+
+          <div className="flex justify-end mt-8">
+            {visibleCount < 8 ? (
+              <Button
+                onClick={handleShowMore}
+                variant="outline"
+                size="lg"
+              >
+                + Plus d'informations
+              </Button>
+            ) : (
+              <Button asChild variant="default" size="lg">
+                <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
+                  Notre Catalogue
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-
-      {visibleCount < 8 ? (
-        <Button
-          onClick={handleShowMore}
-          variant="outline"
-          size="lg"
-          className="mt-8"
-        >
-          + Plus d'informations
-        </Button>
-      ) : (
-        <Button asChild variant="default" size="lg" className="mt-8">
-          <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
-            Notre Catalogue
-          </Link>
-        </Button>
-      )}
     </Layout>
   );
 };
