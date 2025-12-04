@@ -15,6 +15,9 @@ export type HeroData = {
   population: string;
 };
 
+// Type pour HeroVilleSectionProps (utilisé par le composant)
+export type HeroVilleSectionProps = HeroData;
+
 // Type pour les données Service
 export type ServiceData = {
   city: string;
@@ -27,6 +30,9 @@ export type ServiceData = {
   founderEmail: string;
   founderImage: string;
 };
+
+// Type pour ServiceVilleSectionProps (utilisé par le composant)
+export type ServiceVilleSectionProps = ServiceData;
 
 // Type principal pour les données d'une ville
 export type VilleData = {
