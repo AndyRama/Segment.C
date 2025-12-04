@@ -4,6 +4,14 @@ export type AboutData = {
   description: string;
 };
 
+// Type pour les données HeroAnimation
+export type HeroAnimationData = {
+  title: string;
+  titleHighlight: string;
+  subtitle: string;
+  description: string;
+};
+
 // Type pour les données Hero
 export type HeroData = {
   city: string;
@@ -15,7 +23,7 @@ export type HeroData = {
   population: string;
 };
 
-// Type pour HeroVilleSectionProps
+// Type pour HeroVilleSectionProps (utilisé par le composant)
 export type HeroVilleSectionProps = HeroData;
 
 // Type pour les données Service
@@ -31,12 +39,13 @@ export type ServiceData = {
   founderImage: string;
 };
 
-// Type pour ServiceVilleSectionProps
+// Type pour ServiceVilleSectionProps (utilisé par le composant)
 export type ServiceVilleSectionProps = ServiceData;
 
 // Type principal pour les données d'une ville
 export type VilleData = {
   hero: HeroData;
+  heroAnimation: HeroAnimationData;
   about: AboutData;
   service: ServiceData;
 };

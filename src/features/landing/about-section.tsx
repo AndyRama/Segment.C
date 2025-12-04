@@ -52,13 +52,13 @@ const AboutContent = ({
 }) => (
   <div className="space-y-6">
     <div className="space-y-4">
-      <Typography variant="h2" className="text-3xl md:text-4xl xl:text-5xl">
+      <Typography variant="h3" className="text-3xl md:text-4xl xl:text-5xl">
         <span className="inline-block">
           {title}
         </span>
       </Typography>
       
-      <Typography variant="h3" className="text-xl font-medium text-primary md:text-2xl ">
+      <Typography variant="p" className="text-xl font-medium text-primary md:text-2xl ">
         Je suis <span className="text-green-500">{name}</span>
       </Typography>
       

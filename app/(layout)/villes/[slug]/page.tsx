@@ -27,6 +27,7 @@ import {
   type VilleData,
 } from '@/features/villes/data';
 import { notFound } from 'next/navigation';
+import HeroAnimation from '@/features/landing/hero-animation';
 
 // Type pour le mapping des villes (Record avec undefined pour les slugs inconnus)
 type VillesDataMap = Record<string, VilleData | undefined>;
@@ -76,7 +77,9 @@ export default async function VillePage({ params }: PageProps) {
 
   return (
     <div>
-      <HeroVilleSection {...data.hero} />
+      {/* <HeroVilleSection {...data.hero} /> */}
+
+      <HeroAnimation />
 
       <AboutSection
         name="Rui De Carvalho"
