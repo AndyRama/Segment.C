@@ -46,7 +46,7 @@ const villesList: VilleWithSlug[] = [
   { slug: 'biganos', data: biganosData },
   { slug: 'martignas-sur-jalle', data: martignasData },
   { slug: 'saint-medard-en-jalles', data: saintMedardData },
-  { slug: 'eysines', data: eysinesData },
+  // { slug: 'eysines', data: eysinesData },
 ];
 
 export default function VillesListPage() {

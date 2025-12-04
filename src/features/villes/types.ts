@@ -1,5 +1,11 @@
-// Types pour HeroVilleSection
-export type HeroVilleSectionProps = {
+// Type pour les données About
+export type AboutData = {
+  title: string;
+  description: string;
+};
+
+// Type pour les données Hero
+export type HeroData = {
   city: string;
   department: string;
   departmentNumber: string;
@@ -9,8 +15,8 @@ export type HeroVilleSectionProps = {
   population: string;
 };
 
-// Types pour ServiceVilleSection
-export type ServiceVilleSectionProps = {
+// Type pour les données Service
+export type ServiceData = {
   city: string;
   mainTitle: string;
   paragraphs: string[];
@@ -19,11 +25,12 @@ export type ServiceVilleSectionProps = {
   founderTitle: string;
   founderPhone: string;
   founderEmail: string;
-  founderImage?: string;
+  founderImage: string;
 };
 
-// Type pour les données complètes d'une ville
+// Type principal pour les données d'une ville
 export type VilleData = {
-  hero: HeroVilleSectionProps;
-  service: ServiceVilleSectionProps;
+  hero: HeroData;
+  about: AboutData;
+  service: ServiceData;
 };

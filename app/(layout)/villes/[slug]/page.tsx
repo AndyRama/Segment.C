@@ -80,10 +80,8 @@ export default async function VillePage({ params }: PageProps) {
 
       <AboutSection
         name="Rui De Carvalho"
-        title="Une idée, une envie, Segment.C est une porte ouverte sur vos fenêtres"
-        description="Fenêtres sur mesure : Confiez votre projet à un artisan ! Particuliers et professionnels, bénéficiez d'un accompagnement
-                    complet pour votre pose et rénovation. Votre spécialiste de confiance allie expertise technique et finitions soignées pour
-                    un résultat durable et esthétique."
+        title={data.about.title}
+        description={data.about.description}
         image="/images/portrait-artisan.jpg"
         experience="15 ans d'expérience"
       />
