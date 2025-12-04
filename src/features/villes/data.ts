@@ -28,8 +28,8 @@ export const saintJeanDIllacData: VilleData = {
     population: '8 500 habitants',
   },
   about: {
-    title: "Votre menuisier de confiance à Saint-Jean-d'Illac",
-    description: "Segment C Menuiserie intervient à Saint-Jean-d'Illac pour tous vos projets de menuiserie. Spécialiste des fenêtres sur mesure, portes et vérandas, nous accompagnons particuliers et professionnels avec expertise et professionnalisme. Notre connaissance du tissu local nous permet de répondre rapidement à vos besoins. Bénéficiez d'un service de proximité avec des finitions impeccables et un accompagnement personnalisé de A à Z.",
+    title: "Artisan menuisier local : 15 ans d'excellence à Saint-Jean-d'Illac",
+    description: "Installé au cœur de la métropole bordelaise, je mets mon expertise au service des habitants de Saint-Jean-d'Illac depuis plus de 15 ans. Chaque projet est unique : que vous rénoviez votre pavillon familial ou aménageiez votre local commercial, je vous accompagne avec un conseil personnalisé et des solutions sur mesure. Mon engagement ? Des fenêtres et portes qui allient performance énergétique et esthétique, posées avec le soin du travail bien fait.",
   },
   service: {
     city: 'Saint-Jean-d\'Illac',
@@ -73,8 +73,8 @@ export const capFerretData: VilleData = {
     population: '8 000 habitants',
   },
   about: {
-    title: "Menuiserie haut de gamme au Cap Ferret",
-    description: "Au Cap Ferret, Segment C Menuiserie propose des menuiseries d'exception résistantes aux conditions marines. Spécialiste des villas de prestige et résidences secondaires, nous créons des fenêtres, portes et vérandas qui subliment votre patrimoine balnéaire. Nos matériaux sont sélectionnés pour leur résistance aux embruns et notre savoir-faire préserve l'authenticité architecturale du Cap tout en optimisant votre confort.",
+    title: "Menuiseries marines : l'expertise du bassin au service de votre villa",
+    description: "Le Cap Ferret demande un savoir-faire particulier. Entre embruns salés et variations climatiques, vos menuiseries subissent des conditions extrêmes. Fort de 15 ans d'expérience sur le bassin, je sélectionne pour vous les meilleurs matériaux : bois exotiques traités, aluminium thermolaqué marine. Chaque intervention respecte l'âme architecturale du Cap tout en garantissant une durabilité exceptionnelle. Votre villa mérite ce qu'il y a de mieux.",
   },
   service: {
     city: 'Cap Ferret',
@@ -118,8 +118,8 @@ export const merignacData: VilleData = {
     population: '70 000 habitants',
   },
   about: {
-    title: "Votre expert menuiserie à Mérignac",
-    description: "Segment C Menuiserie accompagne les Mérignacais dans tous leurs projets de menuiserie, résidentiels comme commerciaux. Notre expertise couvre l'ensemble des quartiers de la ville, du centre historique aux nouveaux lotissements. Certifiés RGE, nous vous guidons dans vos travaux de rénovation énergétique et vous aidons à obtenir les aides financières disponibles. Qualité, réactivité et professionnalisme pour sublimer votre habitat ou votre commerce.",
+    title: "Particuliers et professionnels : un artisan RGE à votre écoute",
+    description: "À Mérignac, je suis votre interlocuteur unique pour tous vos projets de menuiserie. Propriétaires désireux de réduire leur facture énergétique, commerçants cherchant une vitrine moderne, bailleurs souhaitant valoriser leur patrimoine : ma certification RGE vous ouvre les portes des aides financières. Je maîtrise les spécificités de chaque quartier mérignacais et vous garantis une intervention rapide, des conseils avisés et un suivi personnalisé jusqu'à la pose finale.",
   },
   service: {
     city: 'Mérignac',
@@ -163,8 +163,8 @@ export const bordeauxData: VilleData = {
     population: '260 000 habitants',
   },
   about: {
-    title: "Menuiserie d'art et patrimoine à Bordeaux",
-    description: "Segment C Menuiserie préserve et magnifie le patrimoine architectural bordelais. Expert des contraintes ABF, nous intervenons sur immeubles en pierre de taille, échoppes typiques et appartements de caractère. Notre savoir-faire allie respect du patrimoine et performance énergétique moderne. Du Triangle d'Or aux Chartrons, de la Bastide à Caudéran, nous sublimez votre bien avec des menuiseries sur mesure qui honorent l'architecture bordelaise.",
+    title: "Patrimoine bordelais : quand tradition rime avec performance",
+    description: "Rénover dans Bordeaux, c'est naviguer entre contraintes ABF et exigences modernes. Je connais intimement ce défi : depuis 15 ans, j'interviens sur immeubles en pierre, échoppes centenaires et lofts contemporains. Mon expertise ? Vous proposer des menuiseries qui respectent scrupuleusement l'harmonie architecturale tout en divisant votre facture de chauffage. Fini les courants d'air, place au confort thermique et acoustique, sans dénaturer le charme de votre bien.",
   },
   service: {
     city: 'Bordeaux',
@@ -208,8 +208,8 @@ export const bouscatData: VilleData = {
     population: '24 000 habitants',
   },
   about: {
-    title: "Menuiseries d'exception au Bouscat",
-    description: "Au Bouscat, Segment C Menuiserie propose un service premium pour les belles demeures de la ville. Villas d'architecte, maisons de maître et résidences de prestige bénéficient de notre expertise haut de gamme. Nous accordons une attention particulière aux détails, aux finitions soignées et à l'isolation acoustique renforcée. Notre intervention discrète respecte votre quotidien tout en sublimant votre patrimoine avec des menuiseries d'exception.",
+    title: "Excellence et discrétion : menuiserie haut de gamme au Bouscat",
+    description: "Les belles demeures du Bouscat méritent une attention particulière. Je le sais : chaque détail compte. Matériaux nobles sélectionnés avec soin, finitions parfaites, isolation acoustique optimale pour préserver votre tranquillité. Mon intervention est toujours discrète, respectueuse de votre quotidien. Villas d'architecte ou maisons de maître, je mets mon exigence au service de votre projet pour créer des menuiseries qui subliment votre patrimoine et traversent le temps.",
   },
   service: {
     city: 'Le Bouscat',
@@ -253,8 +253,8 @@ export const talenceData: VilleData = {
     population: '43 000 habitants',
   },
   about: {
-    title: "Menuiserie pour tous à Talence",
-    description: "Segment C Menuiserie accompagne propriétaires et bailleurs à Talence dans tous leurs projets. Des maisons individuelles aux immeubles collectifs, des résidences étudiantes aux bâtiments universitaires, nous proposons des solutions adaptées à chaque budget. Notre expertise s'étend du centre historique au campus, du Forum aux nouveaux quartiers. Performance énergétique et rapport qualité-prix optimal pour tous vos travaux de menuiserie.",
+    title: "Propriétaires et bailleurs : des solutions adaptées à chaque budget",
+    description: "Talence est diverse, mes solutions le sont aussi. Vous êtes propriétaire et cherchez à améliorer votre confort ? Bailleur souhaitant valoriser votre patrimoine locatif ? Parent d'étudiant voulant sécuriser son logement ? J'ai la réponse. Pas de superflu, que l'essentiel : des menuiseries performantes, durables et esthétiques, à des tarifs honnêtes. Mon crédo : la qualité accessible, sans compromis sur les finitions ni sur les matériaux.",
   },
   service: {
     city: 'Talence',
@@ -298,8 +298,8 @@ export const pessacData: VilleData = {
     population: '65 000 habitants',
   },
   about: {
-    title: "Menuiserie éco-responsable à Pessac",
-    description: "Segment C Menuiserie accompagne Pessac dans son développement durable avec des menuiseries éco-responsables. Du patrimoine classé de la cité Frugès aux constructions contemporaines, nous relevons tous les défis architecturaux. Notre expertise technique allie performance énergétique et respect de l'environnement. Campus universitaire, zones d'activités et quartiers résidentiels bénéficient de nos solutions innovantes pour un habitat durable et confortable.",
+    title: "Innovation et durabilité : l'avenir de la menuiserie à Pessac",
+    description: "Pessac bouge, ma menuiserie aussi. Matériaux biosourcés, triple vitrage nouvelle génération, systèmes d'ouverture intelligents : j'intègre les innovations qui ont du sens. De la Cité Frugès classée aux écoquartiers modernes, je maîtrise tous les défis techniques. Votre projet mérite des solutions à la fois écologiques et performantes. Mon objectif : créer des menuiseries qui réduisent votre empreinte carbone tout en améliorant votre confort au quotidien.",
   },
   service: {
     city: 'Pessac',
@@ -343,8 +343,8 @@ export const cestasData: VilleData = {
     population: '18 000 habitants',
   },
   about: {
-    title: "Menuiserie en harmonie avec la nature à Cestas",
-    description: "Segment C Menuiserie sublime vos projets à Cestas en harmonie avec l'environnement forestier unique de la commune. Spécialistes des maisons individuelles en pleine nature, nous proposons des menuiseries bois qui s'intègrent naturellement au paysage. Grandes ouvertures vers la forêt, isolation renforcée et protections solaires adaptées optimisent votre confort. De Gazinet au Pont de l'Eyquem, nous accompagnons votre projet avec respect de la nature.",
+    title: "Vivre en lisière de forêt : menuiseries qui dialoguent avec la nature",
+    description: "À Cestas, la forêt est partout. Vos menuiseries doivent créer ce lien unique entre intérieur et extérieur. J'adore ces projets où les grandes baies vitrées ouvrent sur les pins, où le bois noble prolonge la nature à l'intérieur. Mais attention : qui dit proximité de forêt dit aussi humidité, insectes, variations thermiques. Je sélectionne des essences durables et des traitements adaptés. Résultat : des menuiseries belles, saines et pérennes qui magnifient votre cadre de vie forestier.",
   },
   service: {
     city: 'Cestas',
@@ -388,8 +388,8 @@ export const gradignanData: VilleData = {
     population: '25 000 habitants',
   },
   about: {
-    title: "Menuiseries design et durables à Gradignan",
-    description: "Segment C Menuiserie répond aux attentes des propriétaires de Gradignan avec des menuiseries haut de gamme alliant esthétisme et durabilité. Matériaux nobles, finitions soignées et intégration paysagère caractérisent notre approche. Bois certifiés et aluminium recyclable témoignent de notre engagement écologique. Du centre historique à Ornon, du Moulineau aux nouveaux quartiers, nous cultivons la proximité et l'excellence pour sublimer votre habitat dans cette ville verte.",
+    title: "Design et conscience écologique : le meilleur pour Gradignan",
+    description: "Gradignan la verte mérite des menuiseries à son image. Je crois qu'esthétisme et responsabilité ne sont pas incompatibles. Bois certifiés PEFC, aluminium 100% recyclable, finitions minérales sans COV : mes choix sont réfléchis. Mais pas question de sacrifier le design ! Lignes épurées, grandes surfaces vitrées, jeux de lumière : vos menuiseries seront aussi belles qu'écologiques. C'est ma vision du luxe moderne, celui qui respecte notre planète.",
   },
   service: {
     city: 'Gradignan',
@@ -433,8 +433,8 @@ export const arcachonData: VilleData = {
     population: '11 000 habitants',
   },
   about: {
-    title: "Préservation du patrimoine balnéaire à Arcachon",
-    description: "Segment C Menuiserie préserve et magnifie le patrimoine balnéaire d'Arcachon avec une expertise reconnue. Ville d'Hiver, Ville d'Été, Moulleau : nous maîtrisons les spécificités de chaque quartier. Nos menuiseries marines haute performance résistent aux embruns tout en respectant l'architecture exceptionnelle des villas. Bow-windows, oriels et vérandas vue bassin subliment votre patrimoine. Nous travaillons avec les copropriétés et architectes pour préserver l'harmonie de cette ville d'exception.",
+    title: "Villas d'exception : préserver l'âme balnéaire d'Arcachon",
+    description: "Les villas arcachonnaises sont des joyaux. Bow-windows, oriels, balcons ouvragés : chaque détail architectural raconte une histoire. Ma mission ? La préserver tout en vous apportant le confort moderne. Je travaille régulièrement avec les ABF pour restaurer ces merveilles en respectant scrupuleusement leur cachet. Mais j'intègre aussi les technologies actuelles : double vitrage phonique, menuiseries anti-effraction, résistance marine optimale. Votre villa traversera les décennies avec grâce.",
   },
   service: {
     city: 'Arcachon',
@@ -478,8 +478,8 @@ export const laTesteData: VilleData = {
     population: '28 000 habitants',
   },
   about: {
-    title: "Menuiserie polyvalente à La Teste-de-Buch",
-    description: "Segment C Menuiserie intervient sur l'ensemble du territoire de La Teste-de-Buch avec une expertise polyvalente. Du port ostréicole aux quartiers de Cazaux, du centre-ville à Pyla-sur-Mer, nous proposons des solutions adaptées à chaque environnement. Cabanes ostréicoles, villas vue dune, commerces touristiques ou habitations forestières : chaque projet bénéficie de notre savoir-faire sur mesure. Performance marine et confort résidentiel pour la plus grande commune de Gironde.",
+    title: "Du port à la dune : une expertise polyvalente pour La Teste",
+    description: "La Teste, c'est tout un territoire ! Des cabanes ostréicoles du port aux villas face à la dune, des pavillons de Cazaux aux commerces touristiques : chaque secteur a ses besoins spécifiques. Cette diversité fait ma richesse professionnelle. Je connais les contraintes marines, les défis de l'habitat permanent, les exigences du tertiaire. Quel que soit votre projet, j'ai l'expérience et les solutions techniques pour le mener à bien avec efficacité.",
   },
   service: {
     city: 'La Teste-de-Buch',
@@ -523,8 +523,8 @@ export const andernosData: VilleData = {
     population: '12 000 habitants',
   },
   about: {
-    title: "Menuiserie balnéaire à Andernos-les-Bains",
-    description: "Segment C Menuiserie intervient à Andernos-les-Bains pour résidences principales et maisons de vacances avec une expertise du climat du bassin. Nos menuiseries allient résistance marine et esthétique balnéaire. Bois exotiques, aluminium laqué et PVC renforcé garantissent longévité face aux conditions marines. Du centre historique aux quartiers en lisière de forêt, nous adaptons nos prestations à chaque environnement pour votre confort et votre plaisir.",
+    title: "Résidence secondaire ou permanente : le confort à l'année",
+    description: "Andernos attire pour sa douceur de vivre, son authenticité préservée. Que vous y viviez à l'année ou veniez y passer l'été, vos menuiseries doivent tenir face aux embruns et aux variations saisonnières. Je vous conseille en fonction de votre usage : sécurisation renforcée pour les résidences secondaires, isolation optimale pour le confort permanent. Bois exotiques imputrescibles, aluminium laqué garantie marine : vos fenêtres et portes garderont leur beauté saison après saison.",
   },
   service: {
     city: 'Andernos-les-Bains',
@@ -568,8 +568,8 @@ export const biganosData: VilleData = {
     population: '10 000 habitants',
   },
   about: {
-    title: "Menuiserie de proximité à Biganos",
-    description: "Segment C Menuiserie est votre partenaire de proximité à Biganos pour tous vos projets. Particuliers et professionnels bénéficient de notre réactivité et de notre expertise locale. Construction neuve, rénovation ou extension : nos menuiseries respectent les normes thermiques et acoustiques avec un excellent rapport qualité-prix. Du centre-bourg au port de Facture, nous couvrons l'ensemble de la commune avec professionnalisme et disponibilité.",
+    title: "Votre artisan de proximité : réactivité et transparence",
+    description: "À Biganos, je suis l'artisan du coin, celui qu'on recommande à ses voisins. Pourquoi ? Parce que je suis disponible, réactif, et que je dis les choses clairement. Pas de jargon technique inutile, pas de mauvaises surprises sur le devis. Je vous explique ce qui est nécessaire, ce qui est conseillé, ce qui peut attendre. Construction neuve ou rénovation, particulier ou professionnel : je m'adapte à votre projet et à votre budget avec la même rigueur.",
   },
   service: {
     city: 'Biganos',
@@ -613,8 +613,8 @@ export const martignasData: VilleData = {
     population: '7 500 habitants',
   },
   about: {
-    title: "Rénovation énergétique à Martignas-sur-Jalle",
-    description: "Segment C Menuiserie accompagne les propriétaires de Martignas-sur-Jalle dans leurs projets de rénovation énergétique et d'amélioration de l'habitat. Expertise technique et menuiseries haute performance garantissent installations durables et confort optimal. Spécialistes des maisons individuelles, nous optimisons votre isolation tout en réduisant vos factures énergétiques. Proximité, réactivité et qualité caractérisent notre intervention locale pour sublimer votre habitat.",
+    title: "Rénovation énergétique : économies réelles et confort immédiat",
+    description: "Vous en avez assez de chauffer l'extérieur ? Je vous comprends. À Martignas, beaucoup de maisons des années 70-80 sont de vraies passoires thermiques. La bonne nouvelle : avec des menuiseries modernes, les économies sont spectaculaires. Double ou triple vitrage selon l'orientation, rupture de pont thermique, poses en tunnel : je connais toutes les techniques pour maximiser vos gains. Résultat : moins 30% sur votre facture de chauffage, et un confort que vous ne soupçonniez pas.",
   },
   service: {
     city: 'Martignas-sur-Jalle',
@@ -658,8 +658,8 @@ export const saintMedardData: VilleData = {
     population: '30 000 habitants',
   },
   about: {
-    title: "Solutions complètes à Saint-Médard-en-Jalles",
-    description: "Segment C Menuiserie intervient à Saint-Médard-en-Jalles pour particuliers et professionnels avec une expertise complète. Des quartiers résidentiels historiques aux zones d'activités économiques, nous proposons des solutions adaptées à chaque bâtiment. Maisons individuelles, immeubles collectifs, commerces et bureaux bénéficient de nos menuiseries performantes. Du Burck au Jallais, de Corbiac au centre-ville, nous accompagnons le développement de cette ville dynamique.",
+    title: "Du logement familial au local professionnel : un seul interlocuteur",
+    description: "Saint-Médard grandit vite. Nouveaux quartiers, zones d'activités, réhabilitations : la ville bouge. Et moi avec elle ! Que vous soyez particulier en quête de confort ou professionnel cherchant une vitrine attractive, j'ai les compétences. Menuiseries certifiées coupe-feu pour les ERP, vitrages acoustiques pour les logements en zone bruyante, systèmes d'ouverture automatiques pour l'accessibilité : je maîtrise les normes et les solutions techniques pour chaque usage.",
   },
   service: {
     city: 'Saint-Médard-en-Jalles',
@@ -703,8 +703,8 @@ export const eysinesData: VilleData = {
     population: '23 000 habitants',
   },
   about: {
-    title: "Menuiserie moderne à Eysines",
-    description: "Segment C Menuiserie accompagne le développement d'Eysines avec des solutions contemporaines et performantes. Construction neuve, rénovation ou extension : notre connaissance des quartiers garantit des propositions parfaitement adaptées. Nous travaillons avec les nouvelles constructions et les rénovations des quartiers historiques. Du Vigean au Pin Franc, du centre aux nouveaux lotissements, notre expertise technique assure conformité aux normes et satisfaction client.",
+    title: "Construction neuve et rénovation : accompagnement sur mesure",
+    description: "Eysines se développe avec de beaux projets immobiliers. Vous construisez votre maison ? Je travaille en amont avec votre architecte pour intégrer les menuiseries dans la conception. Vous rénovez un pavillon existant ? J'analyse votre bâti pour proposer les solutions les plus pertinentes. Mon avantage : je connais les spécificités des différents quartiers eysinais, du Vigean historique aux nouveaux lotissements du Pin Franc. Une approche sur mesure pour un résultat optimal.",
   },
   service: {
     city: 'Eysines',

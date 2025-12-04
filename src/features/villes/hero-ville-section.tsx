@@ -44,7 +44,7 @@ export const HeroVilleSection = ({
           
           {/* COLONNE GAUCHE - Contenu Hero */}
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mt-4">
               Menuisier à <span className="text-green-600">{city}</span>
             </h1>
             
