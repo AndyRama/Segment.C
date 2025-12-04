@@ -74,10 +74,9 @@ const topRoutes = [
       { path: "/#", label: "Volet" },
     ]
   },
-  { path: "/villes", label: "Villes" },
-  { path: "/#", label: "Partenaires" },
+  { path: "/partenaire", label: "Partenaires" },
   { path: "/posts", label: "Actualités" },
-  { path: "/posts", label: "A propos de moi" },
+  { path: "/contact", label: "A propos de moi" },
 ];
 
 export function HeaderBase() {
@@ -186,10 +185,10 @@ export function HeaderBase() {
             ) : (
               <>
                 <Link 
-                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                    href="tel:0671787253" 
                     className={buttonVariants({ size: "sm" })}
                 >
-                    Demande de devis
+                    06 71 78 72 53
                 </Link>
                 <AuthButtonClient />
               </>
@@ -241,10 +240,10 @@ export function HeaderBase() {
                         ) : (
                             <>
                                 <Link 
-                                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                                    href="tel:0671787253" 
                                     className={buttonVariants({ size: "sm", className: "flex-1" })}
                                 >
-                                    Devis
+                                    06 71 78 72 53
                                 </Link>
                                 <AuthButtonClient/>
                             </>

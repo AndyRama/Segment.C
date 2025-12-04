@@ -81,10 +81,9 @@ const topRoutes = [
       { path: "/#", label: "Volet" },
     ]
   },
-  { path: "/villes", label: "Villes" },
-  { path: "/#", label: "Partenaires" },
+  { path: "/partenaire", label: "Partenaires" },
   { path: "/posts", label: "Actualités" },
-  { path: "/posts", label: "A propos de moi" },
+  { path: "/contact", label: "A propos de moi" },
 ];
 
   return (
@@ -169,24 +168,17 @@ const topRoutes = [
                 >
                   Mes Devis
                 </Link>
-                {/* Loggé : Bouton Nouvelle Demande (Redirection) */}
-                {/* <Link 
-                    href="/account/devis" // Redirige vers la page du formulaire
-                    className={buttonVariants({ size: "sm", className: "ml-2" })}
-                >
-                    Nouvelle Demande
-                </Link> */}
                 <AuthButtonClient />
               </>
             ) : (
               <>
-                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
-                {/* <Link 
-                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                {/* Déloggé : Bouton avec numéro de téléphone */}
+                <Link 
+                    href="tel:0671787253" 
                     className={buttonVariants({ size: "sm" })}
                 >
-                    Demande de devis
-                </Link> */}
+                    06 71 78 72 53
+                </Link>
                 <AuthButtonClient />
               </>
             )}
@@ -223,7 +215,7 @@ const topRoutes = [
                   </div>
                   <hr />
                   
-                    {/* Logique des boutons mobile restaurée vers la redirection */}
+                    {/* Logique des boutons mobile avec numéro de téléphone */}
                   <div className="flex flex-row items-center justify-between gap-2">
                         {session ? (
                             <>
@@ -238,13 +230,13 @@ const topRoutes = [
                             </>
                         ) : (
                             <>
-                                {/* Déloggé : Bouton Demande de devis (Redirection Connexion) */}
-                                {/* <Link 
-                                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis" 
+                                {/* Déloggé : Bouton avec numéro de téléphone */}
+                                <Link 
+                                    href="tel:0671787253" 
                                     className={buttonVariants({ size: "sm", className: "flex-1" })}
                                 >
-                                    Devis
-                                </Link> */}
+                                    06 71 78 72 53
+                                </Link>
                                 <AuthButtonClient/>
                             </>
                         )}
