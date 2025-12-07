@@ -3,10 +3,11 @@ import { SiteConfig } from "@/site-config";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
+// ✅ CHANGÉ: middleware → proxy
+export function proxy(request: NextRequest) {
   // Redirection simple sans getSessionCookie
   if (request.nextUrl.pathname === "/") {
-    // Vérifier le cookie manuellement
+    // ✅ CHANGÉ: backticks (`) → parenthèses ()
     const sessionCookie = request.cookies.get(`${SiteConfig.appId}.session_token`);
     
     if (sessionCookie) {
