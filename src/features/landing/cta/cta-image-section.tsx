@@ -30,13 +30,17 @@ export const CTAImageSection = () => {
           <Typography className="text-center text-lg font-medium max-w-2xl">
             Remplissez ce formulaire pour planifier notre premier échange et définir les contours de votre futur projet.
           </Typography>
+
+          <div>
+            <QuoteRequestModule/>
+          </div>
           
           {/* Bouton isolé avec z-index et pointer-events garantis */}
-          <div className="relative z-50 pointer-events-auto">
+          {/* <div className="relative z-50 pointer-events-auto">
             <QuoteRequestModule 
               className="rounded-md border-2 border-white bg-green-500 px-6 py-3 font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-green-600 hover:border-green-400 sm:px-8 sm:py-4 pointer-events-auto cursor-pointer"
             />
-          </div>
+          </div> */}
         </SectionLayout>
       </div>
       

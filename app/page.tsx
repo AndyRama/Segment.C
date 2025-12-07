@@ -60,6 +60,10 @@ export default function HomePage() {
 
       <SectionDivider />
 
+      <CardGrid initialVisibleCount={4} />
+
+      <SectionDivider />
+
       <ReviewGrid
         initialReviewsCount={6}
         reviews={[
@@ -118,12 +122,6 @@ export default function HomePage() {
           },
         ]}
       />
-
-      <SectionDivider />
-
-      <CardGrid initialVisibleCount={4} />
-
-      <SectionDivider />
 
       <Partenaire />
       

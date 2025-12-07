@@ -79,7 +79,7 @@ export const ServiceVilleSection = ({
           <div className="space-y-8">
             
             {/* Formulaire */}
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-md border border-gray-100">
+            <div id="devis" className="bg-gray-50 rounded-2xl p-8 shadow-md border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 Demandez votre devis gratuit
               </h3>

@@ -196,8 +196,6 @@ export default async function VillePage({ params }: PageProps) {
       />
 
       <SectionDivider />
-
-      {/* <ServiceAreaSection /> */}
     </div>
   );
 }
