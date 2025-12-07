@@ -114,7 +114,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
     { 
       name: "Talence", 
       distance: "18 km", 
-      duration: "22 min", 
+      duration: "23 min", 
       projects: 15,
       description: "Secteur universitaire",
       services: [
