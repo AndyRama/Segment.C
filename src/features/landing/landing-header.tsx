@@ -67,24 +67,33 @@ export function LandingHeader() {
     [0, 0, 1],
   );
 
-const topRoutes = [
-  { path: "/home", label: "Accueil" },
-  { 
-    path: "#",
-    label: "Catalogue",
-    dropdown: [ 
-      { path: "/fenetres", label: "Fenêtre" },
-      { path: "/baie", label: "Baie vitrée" },
-      { path: "/portes", label: "Porte d'entrée" },
-      { path: "/garage", label: "Porte de garage " },
-      { path: "/portails", label: "Portails" },
-      { path: "/#", label: "Volet" },
-    ]
-  },
-  { path: "/partenaire", label: "Partenaires" },
-  { path: "/posts", label: "Actualités" },
-  { path: "/contact", label: "A propos de moi" },
-];
+  const topRoutes = [
+    { path: "/home", label: "Accueil" },
+    {
+      path: "#",
+      label: "Catalogue",
+      dropdown: [
+        { path: "/fenetres", label: "Fenêtre" },
+        { path: "/baie", label: "Baie vitrée" },
+        { path: "/portes", label: "Porte d'entrée" },
+        { path: "/#", label: "Porte de garage " },
+        { path: "/#", label: "Portails" },
+        { path: "/#", label: "Volet" },
+      ]
+    },
+    {
+      path: "#",
+      label: "Patenaires",
+      dropdown: [
+        { path: "/#", label: "Sybaie" },
+        { path: "/#", label: "Swao" },
+        { path: "/#", label: "Proferm" },
+        { path: "/#", label: "C2r " },
+      ]
+    },
+    { path: "/posts", label: "Actualités" },
+    { path: "/contact", label: "A propos de moi" },
+  ];
 
   return (
     <motion.header
@@ -159,12 +168,12 @@ const topRoutes = [
         <nav className="flex items-center space-x-1">
           {/* Version Desktop (lg:flex) */}
           <div className="hidden items-center gap-2 lg:flex">
-              {session ? (
+            {session ? (
               <>
                 {/* Loggé : Bouton Mes Devis */}
-                <Link 
-                    href="/account/devis/mes-devis" 
-                    className={buttonVariants({ size: "sm", variant: "secondary" })}
+                <Link
+                  href="/account/devis/mes-devis"
+                  className={buttonVariants({ size: "sm", variant: "secondary" })}
                 >
                   Mes Devis
                 </Link>
@@ -173,11 +182,11 @@ const topRoutes = [
             ) : (
               <>
                 {/* Déloggé : Bouton avec numéro de téléphone */}
-                <Link 
-                    href="tel:0671787253" 
-                    className={buttonVariants({ size: "sm" })}
+                <Link
+                  href="tel:0671787253"
+                  className={buttonVariants({ size: "sm" })}
                 >
-                    06 71 78 72 53
+                  06 71 78 72 53
                 </Link>
                 <AuthButtonClient />
               </>
@@ -214,48 +223,48 @@ const topRoutes = [
                     </motion.p>
                   </div>
                   <hr />
-                  
-                    {/* Logique des boutons mobile avec numéro de téléphone */}
+
+                  {/* Logique des boutons mobile avec numéro de téléphone */}
                   <div className="flex flex-row items-center justify-between gap-2">
-                        {session ? (
-                            <>
-                                {/* Loggé : Bouton Mes Devis */}
-                                <Link 
-                                    href="tel:0671787253" 
-                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
-                                >
-                                    06 71 78 72 53
-                                </Link>
-                                <Link 
-                                    href="/account/devis/mes-devis" 
-                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
-                                >
-                                    Mes Devis
-                                </Link>
-                                <AuthButtonClient/>
-                            </>
-                        ) : (
-                            <>
-                                {/* Déloggé : Bouton avec numéro de téléphone */}
-                                <Link 
-                                    href="tel:0671787253" 
-                                    className={buttonVariants({ size: "sm", className: "flex-1" })}
-                                >
-                                    06 71 78 72 53
-                                </Link>
-                                <AuthButtonClient/>
-                            </>
-                        )}
+                    {session ? (
+                      <>
+                        {/* Loggé : Bouton Mes Devis */}
+                        <Link
+                          href="tel:0671787253"
+                          className={buttonVariants({ size: "sm", className: "flex-1" })}
+                        >
+                          06 71 78 72 53
+                        </Link>
+                        <Link
+                          href="/account/devis/mes-devis"
+                          className={buttonVariants({ size: "sm", className: "flex-1" })}
+                        >
+                          Mes Devis
+                        </Link>
+                        <AuthButtonClient />
+                      </>
+                    ) : (
+                      <>
+                        {/* Déloggé : Bouton avec numéro de téléphone */}
+                        <Link
+                          href="tel:0671787253"
+                          className={buttonVariants({ size: "sm", className: "flex-1" })}
+                        >
+                          06 71 78 72 53
+                        </Link>
+                        <AuthButtonClient />
+                      </>
+                    )}
                   </div>
 
                   <Typography
-                      variant="h3"
-                      className="text-left text-lg !leading-tight hidden"
-                    >
-                      Menu 
-                    </Typography>
-                  
-                    <hr />
+                    variant="h3"
+                    className="text-left text-lg !leading-tight hidden"
+                  >
+                    Menu
+                  </Typography>
+
+                  <hr />
                   {topRoutes.map((route) => (
                     route.dropdown ? (
                       <div key={route.path} className="flex flex-col gap-2">

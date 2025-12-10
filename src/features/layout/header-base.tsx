@@ -74,7 +74,16 @@ const topRoutes = [
       { path: "/#", label: "Volet" },
     ]
   },
-  { path: "/partenaire", label: "Partenaires" },
+  {
+    path: "#",
+    label: "Patenaires",
+    dropdown: [
+      { path: "/sybaie", label: "Sybaie" },
+      { path: "/swao", label: "Swao" },
+      { path: "/Proferm", label: "Proferm" },
+      { path: "/C2r", label: "C2r " },
+    ]
+  },
   { path: "/posts", label: "Actualités" },
   { path: "/contact", label: "A propos de moi" },
 ];
