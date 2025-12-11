@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Check, Sun, Snowflake, Shield, Zap, Maximize2, Droplets } from "lucide-react";
+import Link from "next/link";
 
 type PergolasPageProps = {
   className?: string;
@@ -34,18 +35,18 @@ export default function PergolasPage({ className }: PergolasPageProps) {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <a
+              <Link
                 href="#devis"
                 className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg"
               >
                 Demander un devis gratuit
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#modeles"
                 className="inline-flex items-center justify-center rounded-lg border-2 border-border px-8 py-4 text-base font-semibold transition-all hover:border-primary hover:bg-primary/5"
               >
                 Découvrir nos modèles
-              </a>
+              </Link>
             </div>
 
             {/* Key Features Pills */}
@@ -227,7 +228,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   </Typography>
 
                   <div className="space-y-4">
-                    <Typography variant="h4" className="text-lg font-semibold">
+                    <Typography variant="p" className="text-lg font-semibold">
                       Caractéristiques techniques :
                     </Typography>
                     <ul className="grid gap-3">
@@ -260,7 +261,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   </div>
 
                   <div className="rounded-2xl border bg-muted/50 p-8">
-                    <Typography variant="h4" className="mb-4 text-xl font-semibold">
+                    <Typography variant="p" className="mb-4 text-xl font-semibold">
                       Configuration personnalisable
                     </Typography>
                     <div className="space-y-4">
@@ -290,12 +291,12 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                       </div>
                     </div>
                     
-                    <a
+                    <Link
                       href="#devis"
                       className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                     >
                       Demander un devis
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </>
@@ -324,7 +325,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   </Typography>
 
                   <div className="space-y-4">
-                    <Typography variant="h4" className="text-lg font-semibold">
+                    <Typography variant="p" className="text-lg font-semibold">
                       Caractéristiques techniques :
                     </Typography>
                     <ul className="grid gap-3">
@@ -357,7 +358,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   </div>
 
                   <div className="rounded-2xl border bg-muted/50 p-8">
-                    <Typography variant="h4" className="mb-4 text-xl font-semibold">
+                    <Typography variant="p" className="mb-4 text-xl font-semibold">
                       Utilisations multiples
                     </Typography>
                     <div className="space-y-4">
@@ -384,12 +385,12 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                       </div>
                     </div>
                     
-                    <a
+                    <Link
                       href="#devis"
                       className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                     >
                       Demander un devis
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </>
@@ -424,7 +425,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-                  <Typography variant="h4" className="text-lg font-semibold text-white">
+                  <Typography variant="p" className="text-lg font-semibold text-white">
                     Projet {item}
                   </Typography>
                   <Typography variant="p" className="text-sm text-white/80">
@@ -501,18 +502,18 @@ export default function PergolasPage({ className }: PergolasPageProps) {
           </Typography>
           
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-background px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-background/90 hover:shadow-lg"
             >
               Demander un devis gratuit
-            </a>
-            <a
+            </Link>
+            <Link
               href="tel:+33556000000"
               className="inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/20 px-8 py-4 text-base font-semibold transition-all hover:border-primary-foreground/40 hover:bg-primary-foreground/10"
             >
               Appeler maintenant
-            </a>
+            </Link>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-6 text-left sm:grid-cols-3">
