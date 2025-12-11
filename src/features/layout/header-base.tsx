@@ -68,9 +68,10 @@ const topRoutes = [
     dropdown: [ 
       { path: "/fenetres", label: "Fenêtre" },
       { path: "/baie", label: "Baie vitrée" },
-      { path: "/portes", label: "Porte d'entrée" },
-      { path: "/garage", label: "Porte de garage " },
+      { path: "/portes", label: "Porte" },
+      { path: "/pergolas", label: "Pergolas" },
       { path: "/portails", label: "Portails" },
+      { path: "/garage", label: "Porte de garage " },
       { path: "/#", label: "Volet" },
     ]
   },

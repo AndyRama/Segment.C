@@ -108,7 +108,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* Benefits Section */}
-      <section className="relative bg-gradient-to-b from-emerald-50/50 to-white dark:from-emerald-950/10 dark:to-transparent py-20">
+      <section className="relative bg-emerald-50/30 dark:bg-emerald-950/5 py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-0">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
@@ -427,7 +427,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* Gallery Section */}
-      <section className="relative bg-gradient-to-b from-white to-emerald-50/30 dark:from-transparent dark:to-emerald-950/10 py-20">
+      <section className="relative bg-white dark:bg-transparent py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-0">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
@@ -539,7 +539,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section id="devis" className="relative bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 py-20 text-white overflow-hidden">
+      <section id="devis" className="relative bg-emerald-600 dark:bg-emerald-700 py-20 text-white overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
@@ -586,7 +586,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-b from-emerald-50/30 to-white dark:from-emerald-950/10 dark:to-transparent">
+      <section className="py-20 bg-emerald-50/30 dark:bg-emerald-950/5">
         <div className="mx-auto max-w-3xl px-4 lg:px-0">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
