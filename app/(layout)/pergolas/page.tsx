@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
-import { Check, Sun, Snowflake, Shield, Zap, Maximize2, Droplets } from "lucide-react";
+import { Check, Sun, Snowflake, Shield, Zap, Maximize2, Droplets, Leaf } from "lucide-react";
 import Link from "next/link";
 
 type PergolasPageProps = {
@@ -18,13 +18,24 @@ export default function PergolasPage({ className }: PergolasPageProps) {
     <div className={cn("w-full", className)}>
       {/* Hero Section */}
       <section className="relative mx-auto w-full max-w-7xl px-4 py-20 lg:px-0">
+        {/* Decorative Elements */}
+        <div className="absolute left-0 top-0 h-72 w-72 bg-emerald-500/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute right-0 bottom-0 h-96 w-96 bg-green-500/5 rounded-full blur-3xl -z-10" />
+        
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Content */}
           <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+              <Leaf className="h-4 w-4" />
+              Solution écologique & durable
+            </div>
+            
             <div className="space-y-4">
               <Typography variant="h1" className="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
                 Pergolas
-                <span className="block text-primary">Bioclimatiques</span>
+                <span className="block bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                  Bioclimatiques
+                </span>
               </Typography>
               
               <Typography variant="p" className="text-lg text-muted-foreground leading-relaxed">
@@ -37,13 +48,13 @@ export default function PergolasPage({ className }: PergolasPageProps) {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="#devis"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg"
+                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 px-8 py-4 text-base font-semibold text-white transition-all hover:from-emerald-700 hover:to-green-700 hover:shadow-lg hover:shadow-emerald-500/25"
               >
                 Demander un devis gratuit
               </Link>
               <Link
                 href="#modeles"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-border px-8 py-4 text-base font-semibold transition-all hover:border-primary hover:bg-primary/5"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-emerald-200 dark:border-emerald-800 px-8 py-4 text-base font-semibold text-emerald-700 dark:text-emerald-400 transition-all hover:border-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
               >
                 Découvrir nos modèles
               </Link>
@@ -51,16 +62,16 @@ export default function PergolasPage({ className }: PergolasPageProps) {
 
             {/* Key Features Pills */}
             <div className="flex flex-wrap gap-3 pt-4">
-              <div className="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium">
-                <Check className="h-4 w-4 text-primary" />
+              <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                <Check className="h-4 w-4" />
                 Fabrication française
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium">
-                <Check className="h-4 w-4 text-primary" />
+              <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                <Check className="h-4 w-4" />
                 Installation en Gironde
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium">
-                <Check className="h-4 w-4 text-primary" />
+              <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                <Check className="h-4 w-4" />
                 Garantie 10 ans
               </div>
             </div>
@@ -68,7 +79,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
 
           {/* Hero Image */}
           <div className="relative">
-            <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl lg:h-[600px]">
+            <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl lg:h-[600px] ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
               <Image
                 src="/images/pergolas.jpg"
                 alt="Pergola bioclimatique moderne en aluminium"
@@ -77,17 +88,17 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                 priority
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/30 to-transparent" />
             </div>
             
             {/* Floating Card */}
-            <div className="absolute -bottom-6 -left-6 rounded-xl bg-background p-6 shadow-xl border lg:p-8">
+            <div className="absolute -bottom-6 -left-6 rounded-xl bg-white dark:bg-slate-950 p-6 shadow-xl border-2 border-emerald-200 dark:border-emerald-800 lg:p-8">
               <div className="flex items-center gap-4">
-                <div className="rounded-full bg-primary/10 p-3">
-                  <Sun className="h-6 w-6 text-primary" />
+                <div className="rounded-full bg-gradient-to-br from-emerald-500 to-green-600 p-3">
+                  <Sun className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold">20+</div>
+                  <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">15+</div>
                   <div className="text-sm text-muted-foreground">Années d'expérience</div>
                 </div>
               </div>
@@ -97,9 +108,13 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-muted/50 py-20">
+      <section className="relative bg-gradient-to-b from-emerald-50/50 to-white dark:from-emerald-950/10 dark:to-transparent py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-0">
           <div className="mb-12 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+              <Leaf className="h-4 w-4" />
+              Avantages
+            </div>
             <Typography variant="h2" className="mb-4 text-4xl font-bold">
               Pourquoi choisir une pergola bioclimatique ?
             </Typography>
@@ -114,40 +129,49 @@ export default function PergolasPage({ className }: PergolasPageProps) {
               {
                 icon: Sun,
                 title: "Protection solaire optimale",
-                description: "Les lames orientables protègent vos baies vitrées des rayonnements solaires l'été, réduisant la chaleur intérieure jusqu'à 30%."
+                description: "Les lames orientables protègent vos baies vitrées des rayonnements solaires l'été, réduisant la chaleur intérieure jusqu'à 30%.",
+                color: "from-amber-500 to-orange-600"
               },
               {
                 icon: Snowflake,
                 title: "Confort en toutes saisons",
-                description: "En hiver, ouvrez les lames pour laisser passer les rayons du soleil et chauffer naturellement votre intérieur."
+                description: "En hiver, ouvrez les lames pour laisser passer les rayons du soleil et chauffer naturellement votre intérieur.",
+                color: "from-blue-500 to-cyan-600"
               },
               {
                 icon: Droplets,
                 title: "Étanchéité garantie",
-                description: "Profitez de votre terrasse même sous la pluie grâce à un système d'évacuation des eaux intégré et performant."
+                description: "Profitez de votre terrasse même sous la pluie grâce à un système d'évacuation des eaux intégré et performant.",
+                color: "from-blue-400 to-indigo-600"
               },
               {
                 icon: Zap,
                 title: "Économies d'énergie",
-                description: "Réduisez vos coûts de climatisation l'été et de chauffage l'hiver grâce à une régulation thermique naturelle."
+                description: "Réduisez vos coûts de climatisation l'été et de chauffage l'hiver grâce à une régulation thermique naturelle.",
+                color: "from-yellow-500 to-amber-600"
               },
               {
                 icon: Maximize2,
                 title: "Espace de vie supplémentaire",
-                description: "Agrandissez votre surface habitable avec un espace convivial utilisable toute l'année, sans permis de construire."
+                description: "Agrandissez votre surface habitable avec un espace convivial utilisable toute l'année, sans permis de construire.",
+                color: "from-emerald-500 to-green-600"
               },
               {
                 icon: Shield,
                 title: "Durabilité et résistance",
-                description: "Aluminium thermolaqué haute qualité, résistant aux UV et intempéries. Garantie 10 ans structure."
+                description: "Aluminium thermolaqué haute qualité, résistant aux UV et intempéries. Garantie 10 ans structure.",
+                color: "from-slate-500 to-gray-600"
               }
             ].map((benefit, index) => (
               <div
                 key={index}
-                className="group rounded-2xl border bg-background p-8 shadow-sm transition-all hover:border-primary hover:shadow-lg"
+                className="group relative rounded-2xl border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-slate-950 p-8 shadow-sm transition-all hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-xl hover:shadow-emerald-500/10"
               >
-                <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3 transition-all group-hover:bg-primary/20">
-                  <benefit.icon className="h-6 w-6 text-primary" />
+                <div className={cn(
+                  "mb-4 inline-flex rounded-xl bg-gradient-to-br p-3 transition-all group-hover:scale-110",
+                  benefit.color
+                )}>
+                  <benefit.icon className="h-6 w-6 text-white" />
                 </div>
                 <Typography variant="h3" className="mb-3 text-xl font-semibold">
                   {benefit.title}
@@ -165,6 +189,9 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       <section id="modeles" className="py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-0">
           <div className="mb-12 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+              Nos produits
+            </div>
             <Typography variant="h2" className="mb-4 text-4xl font-bold">
               Nos modèles de pergolas et carports
             </Typography>
@@ -175,14 +202,14 @@ export default function PergolasPage({ className }: PergolasPageProps) {
 
           {/* Tabs */}
           <div className="mb-12 flex justify-center">
-            <div className="inline-flex rounded-lg border bg-muted/50 p-1">
+            <div className="inline-flex rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20 p-1.5">
               <button
                 onClick={() => setActiveTab("bioclimatique")}
                 className={cn(
-                  "rounded-md px-8 py-3 text-base font-semibold transition-all",
+                  "rounded-lg px-8 py-3 text-base font-semibold transition-all",
                   activeTab === "bioclimatique"
-                    ? "bg-background shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/25"
+                    : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300"
                 )}
               >
                 Pergola Bioclimatique
@@ -190,10 +217,10 @@ export default function PergolasPage({ className }: PergolasPageProps) {
               <button
                 onClick={() => setActiveTab("carport")}
                 className={cn(
-                  "rounded-md px-8 py-3 text-base font-semibold transition-all",
+                  "rounded-lg px-8 py-3 text-base font-semibold transition-all",
                   activeTab === "carport"
-                    ? "bg-background shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/25"
+                    : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300"
                 )}
               >
                 Carport / Toit Fixe
@@ -207,7 +234,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
               <>
                 {/* Bioclimatique Content */}
                 <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl">
+                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
                     <Image
                       src="/images/pergola-bioclimatique.jpg"
                       alt="Pergola bioclimatique avec lames orientables"
@@ -216,7 +243,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                     />
                   </div>
                   
-                  <Typography variant="h3" className="text-2xl font-bold">
+                  <Typography variant="h3" className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
                     Pergola Bioclimatique à Lames Orientables
                   </Typography>
                   
@@ -228,7 +255,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   </Typography>
 
                   <div className="space-y-4">
-                    <Typography variant="p" className="text-lg font-semibold">
+                    <Typography variant="p" className="text-lg font-semibold text-emerald-700 dark:text-emerald-400">
                       Caractéristiques techniques :
                     </Typography>
                     <ul className="grid gap-3">
@@ -242,7 +269,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                         "Résistance au vent jusqu'à 130 km/h"
                       ].map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                          <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                           <span className="text-muted-foreground">{feature}</span>
                         </li>
                       ))}
@@ -251,7 +278,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl">
+                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
                     <Image
                       src="/images/pergola-bioclimatique-2.jpg"
                       alt="Détail lames orientables pergola"
@@ -260,13 +287,13 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                     />
                   </div>
 
-                  <div className="rounded-2xl border bg-muted/50 p-8">
-                    <Typography variant="p" className="mb-4 text-xl font-semibold">
+                  <div className="rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-br from-emerald-50/50 to-green-50/30 dark:from-emerald-950/30 dark:to-green-950/20 p-8">
+                    <Typography variant="p" className="mb-4 text-xl font-semibold text-emerald-700 dark:text-emerald-400">
                       Configuration personnalisable
                     </Typography>
                     <div className="space-y-4">
                       <div>
-                        <div className="mb-2 font-medium">Dimensions</div>
+                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Dimensions</div>
                         <div className="text-sm text-muted-foreground">
                           Sur mesure : de 3m x 3m à 7m x 7m par module
                           <br />
@@ -274,7 +301,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                         </div>
                       </div>
                       <div>
-                        <div className="mb-2 font-medium">Couleurs</div>
+                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Couleurs</div>
                         <div className="text-sm text-muted-foreground">
                           Thermolaquage : palette RAL complète
                           <br />
@@ -282,7 +309,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                         </div>
                       </div>
                       <div>
-                        <div className="mb-2 font-medium">Options</div>
+                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Options</div>
                         <div className="text-sm text-muted-foreground">
                           Éclairage LED intégré, stores latéraux ZIP, 
                           <br />
@@ -293,7 +320,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                     
                     <Link
                       href="#devis"
-                      className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                      className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 px-6 py-3 font-semibold text-white transition-all hover:from-emerald-700 hover:to-green-700 hover:shadow-lg"
                     >
                       Demander un devis
                     </Link>
@@ -304,7 +331,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
               <>
                 {/* Carport Content */}
                 <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl">
+                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
                     <Image
                       src="/images/carport.jpg"
                       alt="Carport aluminium toit fixe"
@@ -313,7 +340,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                     />
                   </div>
                   
-                  <Typography variant="h3" className="text-2xl font-bold">
+                  <Typography variant="h3" className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
                     Carport et Pergola à Toit Fixe
                   </Typography>
                   
@@ -325,7 +352,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   </Typography>
 
                   <div className="space-y-4">
-                    <Typography variant="p" className="text-lg font-semibold">
+                    <Typography variant="p" className="text-lg font-semibold text-emerald-700 dark:text-emerald-400">
                       Caractéristiques techniques :
                     </Typography>
                     <ul className="grid gap-3">
@@ -339,7 +366,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                         "Résistance optimale aux charges de neige"
                       ].map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                          <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                           <span className="text-muted-foreground">{feature}</span>
                         </li>
                       ))}
@@ -348,7 +375,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl">
+                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
                     <Image
                       src="/images/carport-2.jpg"
                       alt="Carport double pour deux véhicules"
@@ -357,27 +384,27 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                     />
                   </div>
 
-                  <div className="rounded-2xl border bg-muted/50 p-8">
-                    <Typography variant="p" className="mb-4 text-xl font-semibold">
+                  <div className="rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-br from-emerald-50/50 to-green-50/30 dark:from-emerald-950/30 dark:to-green-950/20 p-8">
+                    <Typography variant="p" className="mb-4 text-xl font-semibold text-emerald-700 dark:text-emerald-400">
                       Utilisations multiples
                     </Typography>
                     <div className="space-y-4">
                       <div>
-                        <div className="mb-2 font-medium">Protection véhicules</div>
+                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Protection véhicules</div>
                         <div className="text-sm text-muted-foreground">
                           Protégez votre voiture, moto ou vélo des intempéries, 
                           UV, gel et grêle toute l'année.
                         </div>
                       </div>
                       <div>
-                        <div className="mb-2 font-medium">Espace de vie extérieur</div>
+                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Espace de vie extérieur</div>
                         <div className="text-sm text-muted-foreground">
                           Créez un coin salon de jardin, une cuisine d'été 
                           ou un espace de stockage couvert et sécurisé.
                         </div>
                       </div>
                       <div>
-                        <div className="mb-2 font-medium">Extension de maison</div>
+                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Extension de maison</div>
                         <div className="text-sm text-muted-foreground">
                           Agrandissez votre espace habitable sans travaux 
                           lourds ni permis de construire.
@@ -387,7 +414,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                     
                     <Link
                       href="#devis"
-                      className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                      className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 px-6 py-3 font-semibold text-white transition-all hover:from-emerald-700 hover:to-green-700 hover:shadow-lg"
                     >
                       Demander un devis
                     </Link>
@@ -400,9 +427,12 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* Gallery Section */}
-      <section className="bg-muted/30 py-20">
+      <section className="relative bg-gradient-to-b from-white to-emerald-50/30 dark:from-transparent dark:to-emerald-950/10 py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-0">
           <div className="mb-12 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+              Portfolio
+            </div>
             <Typography variant="h2" className="mb-4 text-4xl font-bold">
               Nos réalisations en Gironde
             </Typography>
@@ -415,7 +445,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
               <div
                 key={item}
-                className="group relative h-[300px] overflow-hidden rounded-xl cursor-pointer"
+                className="group relative h-[300px] overflow-hidden rounded-xl cursor-pointer ring-1 ring-emerald-200/50 dark:ring-emerald-800/50 hover:ring-2 hover:ring-emerald-500 transition-all"
               >
                 <Image
                   src={`/images/realisation-${item}.jpg`}
@@ -423,7 +453,7 @@ export default function PergolasPage({ className }: PergolasPageProps) {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-emerald-900/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full transition-transform duration-300 group-hover:translate-y-0">
                   <Typography variant="p" className="text-lg font-semibold text-white">
                     Projet {item}
@@ -442,6 +472,9 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-0">
           <div className="mb-16 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+              Notre méthode
+            </div>
             <Typography variant="h2" className="mb-4 text-4xl font-bold">
               Notre accompagnement sur mesure
             </Typography>
@@ -455,34 +488,49 @@ export default function PergolasPage({ className }: PergolasPageProps) {
               {
                 step: "01",
                 title: "Consultation gratuite",
-                description: "Échange sur votre projet, vos besoins et vos contraintes. Visite sur site si nécessaire."
+                description: "Échange sur votre projet, vos besoins et vos contraintes. Visite sur site si nécessaire.",
+                color: "from-emerald-500 to-green-600"
               },
               {
                 step: "02",
                 title: "Étude technique",
-                description: "Prise de mesures précises, analyse de faisabilité et conception 3D de votre pergola."
+                description: "Prise de mesures précises, analyse de faisabilité et conception 3D de votre pergola.",
+                color: "from-green-500 to-teal-600"
               },
               {
                 step: "03",
                 title: "Devis détaillé",
-                description: "Proposition transparente avec options, délais et prix ferme. Sans engagement."
+                description: "Proposition transparente avec options, délais et prix ferme. Sans engagement.",
+                color: "from-teal-500 to-cyan-600"
               },
               {
                 step: "04",
                 title: "Installation",
-                description: "Pose professionnelle par nos équipes qualifiées. SAV et garantie 10 ans inclus."
+                description: "Pose professionnelle par nos équipes qualifiées. SAV et garantie 10 ans inclus.",
+                color: "from-cyan-500 to-blue-600"
               }
             ].map((step, index) => (
-              <div key={index} className="relative">
-                <div className="mb-4 text-6xl font-bold text-primary/20">{step.step}</div>
-                <Typography variant="h3" className="mb-3 text-xl font-semibold">
-                  {step.title}
-                </Typography>
-                <Typography variant="p" className="text-muted-foreground leading-relaxed">
-                  {step.description}
-                </Typography>
+              <div key={index} className="relative group">
+                <div className={cn(
+                  "absolute -inset-1 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-100 blur transition-opacity",
+                  step.color
+                )} />
+                <div className="relative rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-950 p-6 transition-all group-hover:border-transparent">
+                  <div className={cn(
+                    "mb-4 text-6xl font-bold bg-gradient-to-br bg-clip-text text-transparent",
+                    step.color
+                  )}>
+                    {step.step}
+                  </div>
+                  <Typography variant="h3" className="mb-3 text-xl font-semibold">
+                    {step.title}
+                  </Typography>
+                  <Typography variant="p" className="text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </Typography>
+                </div>
                 {index < 3 && (
-                  <div className="absolute -right-4 top-8 hidden h-0.5 w-8 bg-primary/30 lg:block" />
+                  <div className="absolute -right-4 top-1/2 hidden h-0.5 w-8 bg-gradient-to-r from-emerald-300 to-green-300 dark:from-emerald-700 dark:to-green-700 lg:block" />
                 )}
               </div>
             ))}
@@ -491,8 +539,12 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section id="devis" className="bg-primary py-20 text-primary-foreground">
-        <div className="mx-auto max-w-4xl px-4 text-center lg:px-0">
+      <section id="devis" className="relative bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 py-20 text-white overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
+        
+        <div className="relative mx-auto max-w-4xl px-4 text-center lg:px-0">
           <Typography variant="h2" className="mb-6 text-4xl font-bold md:text-5xl">
             Prêt à transformer votre terrasse ?
           </Typography>
@@ -504,28 +556,28 @@ export default function PergolasPage({ className }: PergolasPageProps) {
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-background px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-background/90 hover:shadow-lg"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-emerald-700 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Demander un devis gratuit
             </Link>
             <Link
-              href="tel:+33556000000"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-primary-foreground/20 px-8 py-4 text-base font-semibold transition-all hover:border-primary-foreground/40 hover:bg-primary-foreground/10"
+              href="tel:+33671787253"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-4 text-base font-semibold transition-all hover:border-white/50 hover:bg-white/10"
             >
-              Appeler maintenant
+              06 71 78 72 53
             </Link>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-6 text-left sm:grid-cols-3">
-            <div className="rounded-xl bg-primary-foreground/10 p-6">
+            <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
               <div className="mb-2 text-2xl font-bold">Gratuit</div>
               <div className="text-sm opacity-80">Devis et déplacement offerts</div>
             </div>
-            <div className="rounded-xl bg-primary-foreground/10 p-6">
+            <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
               <div className="mb-2 text-2xl font-bold">48h</div>
               <div className="text-sm opacity-80">Réponse sous 48h ouvrées</div>
             </div>
-            <div className="rounded-xl bg-primary-foreground/10 p-6">
+            <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
               <div className="mb-2 text-2xl font-bold">10 ans</div>
               <div className="text-sm opacity-80">Garantie structure incluse</div>
             </div>
@@ -534,9 +586,12 @@ export default function PergolasPage({ className }: PergolasPageProps) {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-b from-emerald-50/30 to-white dark:from-emerald-950/10 dark:to-transparent">
         <div className="mx-auto max-w-3xl px-4 lg:px-0">
           <div className="mb-12 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+              FAQ
+            </div>
             <Typography variant="h2" className="mb-4 text-4xl font-bold">
               Questions fréquentes
             </Typography>
@@ -567,13 +622,13 @@ export default function PergolasPage({ className }: PergolasPageProps) {
             ].map((faq, index) => (
               <details
                 key={index}
-                className="group rounded-xl border bg-background p-6 shadow-sm transition-all hover:border-primary"
+                className="group rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-950 p-6 shadow-sm transition-all hover:border-emerald-400 dark:hover:border-emerald-600 hover:shadow-lg"
               >
-                <summary className="flex cursor-pointer items-center justify-between font-semibold">
+                <summary className="flex cursor-pointer items-center justify-between font-semibold text-emerald-900 dark:text-emerald-100">
                   <span>{faq.question}</span>
                   <span className="ml-4 transition-transform group-open:rotate-180">
                     <svg
-                      className="h-5 w-5"
+                      className="h-5 w-5 text-emerald-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
