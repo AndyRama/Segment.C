@@ -1,7 +1,7 @@
 import { CTAImageSection } from "@/features/landing/cta/cta-image-section";
 import { FAQSection } from "@/features/landing/faq-section";
-import HeroAnimation from "@/features/landing/hero-animation";
-import { LandingHeader } from "@/features/landing/landing-header";
+// import HeroAnimation from "@/features/landing/hero-animation";
+// import { LandingHeader } from "@/features/landing/landing-header";
 import { ReviewGrid } from "@/features/landing/review/review-grid";
 import { SectionDivider } from "@/features/landing/section-divider";
 import { AboutSection } from "@/features/landing/about-section";
@@ -11,14 +11,14 @@ import { ProcessSection } from "@/features/landing/process-section";
 import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { Partenaire } from "@/features/landing/partenaire";
 import { RecentPosts } from "@/features/landing/recent-posts";
-import { Footer } from "@/features/layout/footer";
+// import { Footer } from "@/features/layout/footer";
 
 export default function PergolasPage() {
   return (
     <div className="bg-background text-foreground relative flex h-fit flex-col">
       <div className="mt-0 md:mt-16"></div>
 
-      <LandingHeader />
+      {/* <LandingHeader /> */}
 
       {/* Hero spécifique pergolas */}
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
@@ -351,9 +351,6 @@ export default function PergolasPage() {
       {/* Articles récents */}
       <RecentPosts />
 
-      <SectionDivider />
-
-      <Footer />
     </div>
   );
 }
