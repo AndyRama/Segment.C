@@ -1,658 +1,359 @@
-"use client";
+import { CTAImageSection } from "@/features/landing/cta/cta-image-section";
+import { FAQSection } from "@/features/landing/faq-section";
+import HeroAnimation from "@/features/landing/hero-animation";
+import { LandingHeader } from "@/features/landing/landing-header";
+import { ReviewGrid } from "@/features/landing/review/review-grid";
+import { SectionDivider } from "@/features/landing/section-divider";
+import { AboutSection } from "@/features/landing/about-section";
+import { CardGrid } from "@/features/landing/card-grid";
+import { GallerySection } from "@/features/landing/gallery-section";
+import { ProcessSection } from "@/features/landing/process-section";
+import { ServiceAreaSection } from "@/features/landing/services-area-section";
+import { Partenaire } from "@/features/landing/partenaire";
+import { RecentPosts } from "@/features/landing/recent-posts";
+import { Footer } from "@/features/layout/footer";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { Typography } from "@/components/nowts/typography";
-import { Check, Sun, Snowflake, Shield, Zap, Maximize2, Droplets, Leaf } from "lucide-react";
-import Link from "next/link";
-
-type PergolasPageProps = {
-  className?: string;
-};
-
-export default function PergolasPage({ className }: PergolasPageProps) {
-  const [activeTab, setActiveTab] = useState<"bioclimatique" | "carport">("bioclimatique");
-
+export default function PergolasPage() {
   return (
-    <div className={cn("w-full", className)}>
-      {/* Hero Section */}
-      <section className="relative mx-auto w-full max-w-7xl px-4 py-20 lg:px-0">
-        {/* Decorative Elements */}
-        <div className="absolute left-0 top-0 h-72 w-72 bg-emerald-500/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute right-0 bottom-0 h-96 w-96 bg-green-500/5 rounded-full blur-3xl -z-10" />
-        
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          {/* Content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-              <Leaf className="h-4 w-4" />
-              Solution écologique & durable
-            </div>
-            
-            <div className="space-y-4">
-              <Typography variant="h1" className="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
-                Pergolas
-                <span className="block bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                  Bioclimatiques
-                </span>
-              </Typography>
-              
-              <Typography variant="p" className="text-lg text-muted-foreground leading-relaxed">
-                Transformez votre espace extérieur avec nos pergolas sur mesure. 
-                Design moderne, qualité française et installation professionnelle pour 
-                profiter de votre terrasse en toutes saisons.
-              </Typography>
-            </div>
+    <div className="bg-background text-foreground relative flex h-fit flex-col">
+      <div className="mt-0 md:mt-16"></div>
 
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#devis"
-                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 px-8 py-4 text-base font-semibold text-white transition-all hover:from-emerald-700 hover:to-green-700 hover:shadow-lg hover:shadow-emerald-500/25"
-              >
-                Demander un devis gratuit
-              </Link>
-              <Link
-                href="#modeles"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-emerald-200 dark:border-emerald-800 px-8 py-4 text-base font-semibold text-emerald-700 dark:text-emerald-400 transition-all hover:border-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
-              >
-                Découvrir nos modèles
-              </Link>
-            </div>
+      <LandingHeader />
 
-            {/* Key Features Pills */}
-            <div className="flex flex-wrap gap-3 pt-4">
-              <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <Check className="h-4 w-4" />
-                Fabrication française
-              </div>
-              <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <Check className="h-4 w-4" />
-                Installation en Gironde
-              </div>
-              <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <Check className="h-4 w-4" />
-                Garantie 10 ans
-              </div>
+      {/* Hero spécifique pergolas */}
+      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/pergola-hero.jpg"
+            alt="Pergola moderne"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Pergolas sur Mesure en Nouvelle-Aquitaine
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            Créez votre espace extérieur idéal avec nos pergolas bioclimatiques, 
+            aluminium et bois de haute qualité
+          </p>
+          <button className="bg-primary text-primary-foreground px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
+            Demander un devis gratuit
+          </button>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Section À propos - Pergolas */}
+      <AboutSection
+        name="Rui De Carvalho"
+        title="Expert en Pergolas Sur Mesure depuis 15 ans"
+        description="Spécialiste de la conception et installation de pergolas en Nouvelle-Aquitaine, je mets mon expertise 
+                    au service de votre projet. Pergolas bioclimatiques, aluminium, bois ou mixtes : chaque réalisation 
+                    est pensée pour sublimer votre extérieur tout en offrant confort et durabilité. Un accompagnement 
+                    personnalisé du design à la pose finale."
+        image="/images/portrait-artisan.jpg"
+        experience="Plus de 200 pergolas installées"
+      />
+
+      <SectionDivider />
+
+      {/* Types de pergolas */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Nos Types de Pergolas
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/images/pergola-bioclimatique.jpg"
+              alt="Pergola bioclimatique"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-3">Pergola Bioclimatique</h3>
+              <p className="text-muted-foreground mb-4">
+                Lames orientables motorisées pour un contrôle optimal de la luminosité 
+                et de la ventilation. Le summum du confort extérieur.
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Lames aluminium orientables à 135°</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Motorisation et domotique</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Étanchéité parfaite</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Options: LED, capteurs pluie/vent</span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative">
-            <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl lg:h-[600px] ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
-              <Image
-                src="/images/pergolas.jpg"
-                alt="Pergola bioclimatique moderne en aluminium"
-                fill
-                className="object-cover"
-                priority
-              />
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/30 to-transparent" />
+          <div className="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/images/pergola-aluminium.jpg"
+              alt="Pergola aluminium"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-3">Pergola Aluminium</h3>
+              <p className="text-muted-foreground mb-4">
+                Structure moderne et épurée, résistante aux intempéries. 
+                Idéale pour un style contemporain avec un entretien minimal.
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Toiture fixe ou rétractable</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Sans entretien</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Large choix de coloris RAL</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Options: stores, éclairage, chauffage</span>
+                </li>
+              </ul>
             </div>
-            
-            {/* Floating Card */}
-            <div className="absolute -bottom-6 -left-6 rounded-xl bg-white dark:bg-slate-950 p-6 shadow-xl border-2 border-emerald-200 dark:border-emerald-800 lg:p-8">
-              <div className="flex items-center gap-4">
-                <div className="rounded-full bg-gradient-to-br from-emerald-500 to-green-600 p-3">
-                  <Sun className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">15+</div>
-                  <div className="text-sm text-muted-foreground">Années d'expérience</div>
-                </div>
-              </div>
+          </div>
+
+          <div className="bg-card rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/images/pergola-bois.jpg"
+              alt="Pergola bois"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-3">Pergola Bois</h3>
+              <p className="text-muted-foreground mb-4">
+                Charme authentique et naturel. Essence de bois noble pour une 
+                intégration harmonieuse dans votre jardin.
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Bois traité classe 4</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Pin, chêne, douglas</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Design traditionnel ou moderne</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">✓</span>
+                  <span>Options: toile, canisse, polycarbonate</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="relative bg-emerald-50/30 dark:bg-emerald-950/5 py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-0">
-          <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
-              <Leaf className="h-4 w-4" />
-              Avantages
+      <SectionDivider />
+
+      {/* Processus de réalisation */}
+      <ProcessSection />
+
+      <SectionDivider />
+
+      {/* Galerie de réalisations pergolas */}
+      <GallerySection />
+
+      <SectionDivider />
+
+      {/* Avantages des pergolas */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Pourquoi Choisir une Pergola Segment.C ?
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">🏗️</span>
             </div>
-            <Typography variant="h2" className="mb-4 text-4xl font-bold">
-              Pourquoi choisir une pergola bioclimatique ?
-            </Typography>
-            <Typography variant="p" className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Une solution innovante qui allie confort, design et économies d'énergie
-            </Typography>
+            <h3 className="font-bold text-lg mb-2">Sur Mesure</h3>
+            <p className="text-sm text-muted-foreground">
+              Chaque pergola est conçue selon vos dimensions et vos envies
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Benefit Cards */}
-            {[
-              {
-                icon: Sun,
-                title: "Protection solaire optimale",
-                description: "Les lames orientables protègent vos baies vitrées des rayonnements solaires l'été, réduisant la chaleur intérieure jusqu'à 30%.",
-                color: "from-amber-500 to-orange-600"
-              },
-              {
-                icon: Snowflake,
-                title: "Confort en toutes saisons",
-                description: "En hiver, ouvrez les lames pour laisser passer les rayons du soleil et chauffer naturellement votre intérieur.",
-                color: "from-blue-500 to-cyan-600"
-              },
-              {
-                icon: Droplets,
-                title: "Étanchéité garantie",
-                description: "Profitez de votre terrasse même sous la pluie grâce à un système d'évacuation des eaux intégré et performant.",
-                color: "from-blue-400 to-indigo-600"
-              },
-              {
-                icon: Zap,
-                title: "Économies d'énergie",
-                description: "Réduisez vos coûts de climatisation l'été et de chauffage l'hiver grâce à une régulation thermique naturelle.",
-                color: "from-yellow-500 to-amber-600"
-              },
-              {
-                icon: Maximize2,
-                title: "Espace de vie supplémentaire",
-                description: "Agrandissez votre surface habitable avec un espace convivial utilisable toute l'année, sans permis de construire.",
-                color: "from-emerald-500 to-green-600"
-              },
-              {
-                icon: Shield,
-                title: "Durabilité et résistance",
-                description: "Aluminium thermolaqué haute qualité, résistant aux UV et intempéries. Garantie 10 ans structure.",
-                color: "from-slate-500 to-gray-600"
-              }
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className="group relative rounded-2xl border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-slate-950 p-8 shadow-sm transition-all hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-xl hover:shadow-emerald-500/10"
-              >
-                <div className={cn(
-                  "mb-4 inline-flex rounded-xl bg-gradient-to-br p-3 transition-all group-hover:scale-110",
-                  benefit.color
-                )}>
-                  <benefit.icon className="h-6 w-6 text-white" />
-                </div>
-                <Typography variant="h3" className="mb-3 text-xl font-semibold">
-                  {benefit.title}
-                </Typography>
-                <Typography variant="p" className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </Typography>
-              </div>
-            ))}
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">⚡</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2">Installation Rapide</h3>
+            <p className="text-sm text-muted-foreground">
+              Pose professionnelle en 2 à 5 jours selon la complexité
+            </p>
+          </div>
+
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">💪</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2">Robustesse</h3>
+            <p className="text-sm text-muted-foreground">
+              Matériaux premium résistants aux UV, pluie et vent
+            </p>
+          </div>
+
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">🛡️</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2">Garantie 10 ans</h3>
+            <p className="text-sm text-muted-foreground">
+              Tranquillité assurée avec notre garantie décennale
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Models Section */}
-      <section id="modeles" className="py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-0">
-          <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
-              Nos produits
-            </div>
-            <Typography variant="h2" className="mb-4 text-4xl font-bold">
-              Nos modèles de pergolas et carports
-            </Typography>
-            <Typography variant="p" className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Solutions sur mesure adaptées à vos besoins et votre budget
-            </Typography>
-          </div>
+      <SectionDivider />
 
-          {/* Tabs */}
-          <div className="mb-12 flex justify-center">
-            <div className="inline-flex rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20 p-1.5">
-              <button
-                onClick={() => setActiveTab("bioclimatique")}
-                className={cn(
-                  "rounded-lg px-8 py-3 text-base font-semibold transition-all",
-                  activeTab === "bioclimatique"
-                    ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/25"
-                    : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300"
-                )}
-              >
-                Pergola Bioclimatique
-              </button>
-              <button
-                onClick={() => setActiveTab("carport")}
-                className={cn(
-                  "rounded-lg px-8 py-3 text-base font-semibold transition-all",
-                  activeTab === "carport"
-                    ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/25"
-                    : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300"
-                )}
-              >
-                Carport / Toit Fixe
-              </button>
-            </div>
-          </div>
+      {/* Avis clients pergolas */}
+      <ReviewGrid
+        initialReviewsCount={6}
+        reviews={[
+          {
+            image: "https://i.pravatar.cc/300?u=pergola1",
+            name: "Sophie Martin",
+            review:
+              "Pergola bioclimatique installée l'été dernier. Un vrai bonheur ! Les lames motorisées sont parfaites, on profite de la terrasse par tous les temps. Rui a été très professionnel du début à la fin.",
+            role: "Particulier - Bordeaux",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=pergola2",
+            name: "Jean-Pierre Dubois",
+            review:
+              "Magnifique pergola en aluminium installée dans notre jardin. La qualité est au rendez-vous et l'esthétique est top. Je recommande Segment.C sans hésitation !",
+            role: "Particulier - Mérignac",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=pergola3",
+            name: "Restaurant Le Jardin",
+            review:
+              "Nous avons fait installer une grande pergola bioclimatique pour notre terrasse. Nos clients adorent ! Elle nous permet d'accueillir plus de convives et d'étendre la saison. Excellent investissement.",
+            role: "Restaurateur - Arcachon",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=pergola4",
+            name: "Marie & Thomas",
+            review:
+              "Pergola en bois magnifique qui s'intègre parfaitement dans notre jardin. Le travail est soigné, les finitions impeccables. On profite enfin de notre extérieur toute l'année !",
+            role: "Particuliers - Saint-Jean-d'Illac",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=pergola5",
+            name: "Hôtel Les Pins",
+            review:
+              "Installation de 3 pergolas pour notre espace piscine. Travail sérieux, dans les délais et conforme au devis. Nos clients apprécient beaucoup ce nouvel espace ombragé.",
+            role: "Hôtelier - Lacanau",
+          },
+          {
+            image: "https://i.pravatar.cc/300?u=pergola6",
+            name: "Famille Rousseau",
+            review:
+              "Notre pergola aluminium avec stores latéraux est parfaite. Protection solaire optimale et design moderne. Rui a su nous conseiller pour faire les bons choix.",
+            role: "Particuliers - Pessac",
+          },
+        ]}
+      />
 
-          {/* Content */}
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            {activeTab === "bioclimatique" ? (
-              <>
-                {/* Bioclimatique Content */}
-                <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
-                    <Image
-                      src="/images/pergola-bioclimatique.jpg"
-                      alt="Pergola bioclimatique avec lames orientables"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  <Typography variant="h3" className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                    Pergola Bioclimatique à Lames Orientables
-                  </Typography>
-                  
-                  <Typography variant="p" className="text-muted-foreground leading-relaxed">
-                    La pergola bioclimatique est équipée de lames orientables qui vous permettent 
-                    de contrôler la luminosité et la ventilation selon vos envies. En été, fermez 
-                    les lames pour créer de l'ombre et de la fraîcheur. En hiver, ouvrez-les pour 
-                    profiter de la chaleur naturelle du soleil.
-                  </Typography>
+      <SectionDivider />
 
-                  <div className="space-y-4">
-                    <Typography variant="p" className="text-lg font-semibold text-emerald-700 dark:text-emerald-400">
-                      Caractéristiques techniques :
-                    </Typography>
-                    <ul className="grid gap-3">
-                      {[
-                        "Lames orientables motorisées (angle 0° à 135°)",
-                        "Structure en aluminium thermolaqué RAL au choix",
-                        "Système d'évacuation des eaux intégré",
-                        "Télécommande et/ou domotique compatible",
-                        "Options : LED, stores latéraux, chauffage infrarouge",
-                        "Dimensions sur mesure jusqu'à 7m x 7m par module",
-                        "Résistance au vent jusqu'à 130 km/h"
-                      ].map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+      {/* Services complémentaires */}
+      <CardGrid initialVisibleCount={4} />
 
-                <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
-                    <Image
-                      src="/images/pergola-bioclimatique-2.jpg"
-                      alt="Détail lames orientables pergola"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+      <SectionDivider />
 
-                  <div className="rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-br from-emerald-50/50 to-green-50/30 dark:from-emerald-950/30 dark:to-green-950/20 p-8">
-                    <Typography variant="p" className="mb-4 text-xl font-semibold text-emerald-700 dark:text-emerald-400">
-                      Configuration personnalisable
-                    </Typography>
-                    <div className="space-y-4">
-                      <div>
-                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Dimensions</div>
-                        <div className="text-sm text-muted-foreground">
-                          Sur mesure : de 3m x 3m à 7m x 7m par module
-                          <br />
-                          Modules assemblables pour grandes surfaces
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Couleurs</div>
-                        <div className="text-sm text-muted-foreground">
-                          Thermolaquage : palette RAL complète
-                          <br />
-                          Finitions : mat, satiné, texturé
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Options</div>
-                        <div className="text-sm text-muted-foreground">
-                          Éclairage LED intégré, stores latéraux ZIP, 
-                          <br />
-                          chauffage infrarouge, capteurs météo
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <Link
-                      href="#devis"
-                      className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 px-6 py-3 font-semibold text-white transition-all hover:from-emerald-700 hover:to-green-700 hover:shadow-lg"
-                    >
-                      Demander un devis
-                    </Link>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                {/* Carport Content */}
-                <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
-                    <Image
-                      src="/images/carport.jpg"
-                      alt="Carport aluminium toit fixe"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  <Typography variant="h3" className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                    Carport et Pergola à Toit Fixe
-                  </Typography>
-                  
-                  <Typography variant="p" className="text-muted-foreground leading-relaxed">
-                    Le carport offre une protection permanente contre les intempéries. Idéal pour 
-                    abriter votre véhicule, votre salon de jardin ou créer un espace couvert pour 
-                    votre cuisine d'été. Structure identique à la pergola bioclimatique avec une 
-                    toiture fixe isolée.
-                  </Typography>
+      {/* FAQ Pergolas */}
+      <FAQSection
+        faq={[
+          {
+            question: "Quelle est la différence entre une pergola bioclimatique et une pergola classique ?",
+            answer:
+              "La pergola bioclimatique possède des lames orientables motorisées qui permettent de contrôler la luminosité, l'aération et l'étanchéité. Une pergola classique a une toiture fixe (aluminium, bois, polycarbonate). La bioclimatique offre plus de confort et de modularité.",
+          },
+          {
+            question: "Faut-il un permis de construire pour installer une pergola ?",
+            answer:
+              "Cela dépend de la surface. Moins de 5m² : pas de démarche. Entre 5 et 20m² : déclaration préalable de travaux. Plus de 20m² : permis de construire. Nous vous accompagnons dans vos démarches administratives.",
+          },
+          {
+            question: "Quel est le prix d'une pergola sur mesure ?",
+            answer:
+              "Le prix varie selon le type (bois, aluminium, bioclimatique), les dimensions et les options. Comptez de 3000€ pour une pergola bois basique à 15000€+ pour une grande pergola bioclimatique haut de gamme. Nous établissons un devis gratuit personnalisé.",
+          },
+          {
+            question: "Quel entretien pour ma pergola ?",
+            answer:
+              "Pergola aluminium : nettoyage à l'eau savonneuse 1-2 fois/an. Pergola bois : lasure tous les 2-3 ans. Pergola bioclimatique : vérification mécanique annuelle recommandée. Toutes nos pergolas sont conçues pour un entretien minimal.",
+          },
+          {
+            question: "Quels sont les délais de fabrication et installation ?",
+            answer:
+              "Après validation du devis et des plans : 3 à 6 semaines de fabrication selon le modèle. Installation en 2 à 5 jours selon la complexité. Nous planifions ensemble les dates qui vous conviennent.",
+          },
+          {
+            question: "Peut-on fermer une pergola avec des vitrages ?",
+            answer:
+              "Oui ! Nous proposons des options de fermeture : vitrages coulissants, stores verticaux, parois amovibles. Cela permet de transformer votre pergola en véritable pièce à vivre supplémentaire, utilisable toute l'année.",
+          },
+          {
+            question: "La pergola résiste-t-elle au vent et à la pluie ?",
+            answer:
+              "Absolument. Nos pergolas sont dimensionnées pour résister aux vents forts (jusqu'à 150 km/h selon les modèles) et sont parfaitement étanches. Les pergolas bioclimatiques évacuent l'eau de pluie par les montants.",
+          },
+          {
+            question: "Proposez-vous des options de motorisation et domotique ?",
+            answer:
+              "Oui, pour les pergolas bioclimatiques : motorisation des lames, éclairage LED intégré, capteurs de pluie et vent, chauffage infrarouge, stores latéraux motorisés. Contrôle via télécommande ou smartphone.",
+          },
+        ]}
+      />
 
-                  <div className="space-y-4">
-                    <Typography variant="p" className="text-lg font-semibold text-emerald-700 dark:text-emerald-400">
-                      Caractéristiques techniques :
-                    </Typography>
-                    <ul className="grid gap-3">
-                      {[
-                        "Panneaux sandwich isolés (40mm d'épaisseur)",
-                        "Structure en aluminium thermolaqué",
-                        "Isolation thermique et phonique renforcée",
-                        "Gouttières intégrées avec évacuation",
-                        "Options : éclairage LED, bardage latéral",
-                        "Dimensions sur mesure adaptées à vos besoins",
-                        "Résistance optimale aux charges de neige"
-                      ].map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+      <SectionDivider />
 
-                <div className="space-y-6">
-                  <div className="relative h-[400px] overflow-hidden rounded-2xl ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
-                    <Image
-                      src="/images/carport-2.jpg"
-                      alt="Carport double pour deux véhicules"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+      {/* Zone d'intervention */}
+      <ServiceAreaSection />
 
-                  <div className="rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-br from-emerald-50/50 to-green-50/30 dark:from-emerald-950/30 dark:to-green-950/20 p-8">
-                    <Typography variant="p" className="mb-4 text-xl font-semibold text-emerald-700 dark:text-emerald-400">
-                      Utilisations multiples
-                    </Typography>
-                    <div className="space-y-4">
-                      <div>
-                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Protection véhicules</div>
-                        <div className="text-sm text-muted-foreground">
-                          Protégez votre voiture, moto ou vélo des intempéries, 
-                          UV, gel et grêle toute l'année.
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Espace de vie extérieur</div>
-                        <div className="text-sm text-muted-foreground">
-                          Créez un coin salon de jardin, une cuisine d'été 
-                          ou un espace de stockage couvert et sécurisé.
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mb-2 font-medium text-emerald-700 dark:text-emerald-400">Extension de maison</div>
-                        <div className="text-sm text-muted-foreground">
-                          Agrandissez votre espace habitable sans travaux 
-                          lourds ni permis de construire.
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <Link
-                      href="#devis"
-                      className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-green-600 px-6 py-3 font-semibold text-white transition-all hover:from-emerald-700 hover:to-green-700 hover:shadow-lg"
-                    >
-                      Demander un devis
-                    </Link>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
+      <SectionDivider />
 
-      {/* Gallery Section */}
-      <section className="relative bg-white dark:bg-transparent py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-0">
-          <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
-              Portfolio
-            </div>
-            <Typography variant="h2" className="mb-4 text-4xl font-bold">
-              Nos réalisations en Gironde
-            </Typography>
-            <Typography variant="p" className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Découvrez quelques-unes de nos installations récentes
-            </Typography>
-          </div>
+      {/* Partenaires */}
+      <Partenaire />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-              <div
-                key={item}
-                className="group relative h-[300px] overflow-hidden rounded-xl cursor-pointer ring-1 ring-emerald-200/50 dark:ring-emerald-800/50 hover:ring-2 hover:ring-emerald-500 transition-all"
-              >
-                <Image
-                  src={`/images/realisation-${item}.jpg`}
-                  alt={`Réalisation pergola ${item}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-emerald-900/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full transition-transform duration-300 group-hover:translate-y-0">
-                  <Typography variant="p" className="text-lg font-semibold text-white">
-                    Projet {item}
-                  </Typography>
-                  <Typography variant="p" className="text-sm text-white/80">
-                    Bordeaux Métropole
-                  </Typography>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SectionDivider />
 
-      {/* Process Section */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-0">
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
-              Notre méthode
-            </div>
-            <Typography variant="h2" className="mb-4 text-4xl font-bold">
-              Notre accompagnement sur mesure
-            </Typography>
-            <Typography variant="p" className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              De l'étude de votre projet à l'installation finale, Segment-C vous accompagne à chaque étape
-            </Typography>
-          </div>
+      {/* CTA Final */}
+      <CTAImageSection />
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                step: "01",
-                title: "Consultation gratuite",
-                description: "Échange sur votre projet, vos besoins et vos contraintes. Visite sur site si nécessaire.",
-                color: "from-emerald-500 to-green-600"
-              },
-              {
-                step: "02",
-                title: "Étude technique",
-                description: "Prise de mesures précises, analyse de faisabilité et conception 3D de votre pergola.",
-                color: "from-green-500 to-teal-600"
-              },
-              {
-                step: "03",
-                title: "Devis détaillé",
-                description: "Proposition transparente avec options, délais et prix ferme. Sans engagement.",
-                color: "from-teal-500 to-cyan-600"
-              },
-              {
-                step: "04",
-                title: "Installation",
-                description: "Pose professionnelle par nos équipes qualifiées. SAV et garantie 10 ans inclus.",
-                color: "from-cyan-500 to-blue-600"
-              }
-            ].map((step, index) => (
-              <div key={index} className="relative group">
-                <div className={cn(
-                  "absolute -inset-1 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-100 blur transition-opacity",
-                  step.color
-                )} />
-                <div className="relative rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-950 p-6 transition-all group-hover:border-transparent">
-                  <div className={cn(
-                    "mb-4 text-6xl font-bold bg-gradient-to-br bg-clip-text text-transparent",
-                    step.color
-                  )}>
-                    {step.step}
-                  </div>
-                  <Typography variant="h3" className="mb-3 text-xl font-semibold">
-                    {step.title}
-                  </Typography>
-                  <Typography variant="p" className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </Typography>
-                </div>
-                {index < 3 && (
-                  <div className="absolute -right-4 top-1/2 hidden h-0.5 w-8 bg-gradient-to-r from-emerald-300 to-green-300 dark:from-emerald-700 dark:to-green-700 lg:block" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SectionDivider />
 
-      {/* CTA Section */}
-      <section id="devis" className="relative bg-emerald-600 dark:bg-emerald-700 py-20 text-white overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
-        
-        <div className="relative mx-auto max-w-4xl px-4 text-center lg:px-0">
-          <Typography variant="h2" className="mb-6 text-4xl font-bold md:text-5xl">
-            Prêt à transformer votre terrasse ?
-          </Typography>
-          <Typography variant="p" className="mb-8 text-xl opacity-90">
-            Contactez-nous pour un devis gratuit et sans engagement. 
-            Nos experts sont à votre écoute pour concrétiser votre projet.
-          </Typography>
-          
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-emerald-700 transition-all hover:bg-gray-50 hover:shadow-xl"
-            >
-              Demander un devis gratuit
-            </Link>
-            <Link
-              href="tel:+33671787253"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-4 text-base font-semibold transition-all hover:border-white/50 hover:bg-white/10"
-            >
-              06 71 78 72 53
-            </Link>
-          </div>
+      {/* Articles récents */}
+      <RecentPosts />
 
-          <div className="mt-12 grid grid-cols-1 gap-6 text-left sm:grid-cols-3">
-            <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
-              <div className="mb-2 text-2xl font-bold">Gratuit</div>
-              <div className="text-sm opacity-80">Devis et déplacement offerts</div>
-            </div>
-            <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
-              <div className="mb-2 text-2xl font-bold">48h</div>
-              <div className="text-sm opacity-80">Réponse sous 48h ouvrées</div>
-            </div>
-            <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
-              <div className="mb-2 text-2xl font-bold">10 ans</div>
-              <div className="text-sm opacity-80">Garantie structure incluse</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SectionDivider />
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-emerald-50/30 dark:bg-emerald-950/5">
-        <div className="mx-auto max-w-3xl px-4 lg:px-0">
-          <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
-              FAQ
-            </div>
-            <Typography variant="h2" className="mb-4 text-4xl font-bold">
-              Questions fréquentes
-            </Typography>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                question: "Ai-je besoin d'un permis de construire pour une pergola ?",
-                answer: "Pour une pergola de moins de 20m², une simple déclaration préalable de travaux suffit. Au-delà de 20m², un permis de construire est nécessaire. Nous vous accompagnons dans ces démarches administratives."
-              },
-              {
-                question: "Quel est le délai d'installation ?",
-                answer: "Le délai moyen est de 4 à 6 semaines entre la signature du devis et l'installation. L'installation elle-même prend généralement 2 à 3 jours selon la complexité du projet."
-              },
-              {
-                question: "Les pergolas résistent-elles aux intempéries ?",
-                answer: "Oui, nos pergolas sont conçues pour résister aux vents jusqu'à 130 km/h et aux charges de neige importantes. L'aluminium thermolaqué garantit une résistance optimale à la corrosion et aux UV."
-              },
-              {
-                question: "Peut-on motoriser les lames orientables ?",
-                answer: "Oui, toutes nos pergolas bioclimatiques sont équipées d'un système de motorisation des lames. Vous pouvez les contrôler via télécommande ou les intégrer à votre système domotique existant."
-              },
-              {
-                question: "Quelle est la garantie sur les pergolas ?",
-                answer: "Nous offrons une garantie de 10 ans sur la structure aluminium et 2 ans sur les motorisations et composants électriques. Un SAV réactif est disponible durant toute la durée de vie de votre installation."
-              }
-            ].map((faq, index) => (
-              <details
-                key={index}
-                className="group rounded-xl border-2 border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-950 p-6 shadow-sm transition-all hover:border-emerald-400 dark:hover:border-emerald-600 hover:shadow-lg"
-              >
-                <summary className="flex cursor-pointer items-center justify-between font-semibold text-emerald-900 dark:text-emerald-100">
-                  <span>{faq.question}</span>
-                  <span className="ml-4 transition-transform group-open:rotate-180">
-                    <svg
-                      className="h-5 w-5 text-emerald-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <Typography
-                  variant="p"
-                  className="mt-4 text-muted-foreground leading-relaxed"
-                >
-                  {faq.answer}
-                </Typography>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 }
