@@ -79,7 +79,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/partenaire"
+                    href="/partenaire/swao"
                   >
                     swao
                   </Typography>
@@ -87,7 +87,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="/partenaire/proferm"
                   >
                     Proferm
                   </Typography>
@@ -95,7 +95,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="/partenaire/c2r"
                   >
                     C2r
                   </Typography>
@@ -103,7 +103,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="/partenaire/orial"
                   >
                     Orial
                   </Typography>

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-// import Image from 'next/image';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { 
@@ -14,52 +13,53 @@ import {
   Factory,
   Target,
   Users,
-  Sparkles
+  Sparkles,
+  Leaf,
+  TrendingUp
 } from 'lucide-react';
 
-export default function SybaiePage() {
+export default function C2RPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          {/* Contenu gauche */}
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-2">
-              <Award className="size-5 text-green-600" />
-              <Typography variant="p" className="text-sm font-medium text-green-700">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2">
+              <Award className="size-5 text-orange-600" />
+              <Typography variant="p" className="text-sm font-medium text-orange-700">
                 Partenaire Premium
               </Typography>
             </div>
 
             <Typography variant="h1" className="text-4xl font-bold text-gray-900 lg:text-5xl">
-              SYbaie
+              C2R
             </Typography>
             
-            <Typography variant="h2" className="text-2xl font-semibold text-green-600">
-              La communauté des artisans menuisiers
+            <Typography variant="h2" className="text-2xl font-semibold text-orange-600">
+              +75 ans de savoir-faire français
             </Typography>
 
             <Typography variant="p" className="text-lg leading-relaxed text-gray-700">
-              SYbaie, du Groupe Millet, est bien plus qu'un fabricant de menuiseries. 
-              C'est une véritable communauté dédiée aux artisans menuisiers qui placent 
-              la qualité, l'innovation et le savoir-faire au cœur de leur métier.
+              C2R est un fabricant français de menuiseries et fermetures sur-mesure établi depuis 
+              plus de 75 ans. Avec 2 sites de fabrication, plus de 200 collaborateurs et un chiffre 
+              d'affaires de 40 millions d'euros, C2R est un acteur majeur de la menuiserie française.
             </Typography>
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="https://www.sybaie.pro/"
+                href="https://menuiserie-c2r.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg"
               >
-                Visiter le site SYbaie
+                Visiter le site C2R
                 <ExternalLink className="size-5" />
               </Link>
               
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-orange-600 bg-white px-6 py-3 font-semibold text-orange-600 transition-all hover:bg-orange-50"
               >
                 Nous contacter
                 <ArrowRight className="size-5" />
@@ -67,65 +67,95 @@ export default function SybaiePage() {
             </div>
           </div>
 
-          {/* Image droite */}
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <img
-                src="https://placehold.co/600x400/FFFFFF/10b981?text=SYbaie"
-                alt="SYbaie - Fenêtres et portes"
+                src="https://placehold.co/600x400/FFFFFF/ea580c?text=C2R"
+                alt="C2R - Menuiseries"
                 className="h-full w-full object-cover"
               />
             </div>
-            {/* Badge flottant */}
-            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
+            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-orange-500 to-amber-600 p-6 shadow-xl">
               <Factory className="mb-2 size-8 text-white" />
               <Typography variant="p" className="text-sm font-bold text-white">
-                Groupe Millet
+                French Fab
               </Typography>
             </div>
           </div>
         </div>
       </SectionLayout>
 
-      {/* Section Valeurs */}
+      {/* Chiffres clés */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
-            Les valeurs SYbaie
+            C2R en chiffres
+          </Typography>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
+          {[
+            { number: '+75 ans', label: 'de savoir-faire & d\'expertise' },
+            { number: '2', label: 'sites de fabrication' },
+            { number: '+2000', label: 'clients' },
+            { number: '40M€', label: 'de chiffre d\'affaires' },
+            { number: '+200', label: 'collaborateurs' },
+            { number: '+104K', label: 'produits fabriqués/an' }
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:border-orange-300 hover:shadow-lg"
+            >
+              <Typography variant="h3" className="mb-2 text-3xl font-bold text-orange-600">
+                {stat.number}
+              </Typography>
+              <Typography variant="p" className="text-sm text-gray-600">
+                {stat.label}
+              </Typography>
+            </div>
+          ))}
+        </div>
+      </SectionLayout>
+
+      {/* Section Valeurs */}
+      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+        <div className="mb-12 text-center">
+          <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
+            Les engagements C2R
           </Typography>
           <Typography variant="p" className="mx-auto max-w-2xl text-lg text-gray-600">
-            Une démarche centrée sur l'artisan menuisier et la satisfaction client
+            RSE, environnement, social et qualité
           </Typography>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: <Target className="size-8 text-green-600" />,
-              title: 'Innovation',
-              description: 'Des produits innovants qui facilitent votre travail et se démarquent sur le terrain'
+              icon: <Leaf className="size-8 text-orange-600" />,
+              title: 'Démarche RSE',
+              description: 'Label LUCIE 26000 et Coq Vert pour une entreprise responsable'
             },
             {
-              icon: <Award className="size-8 text-green-600" />,
+              icon: <Target className="size-8 text-orange-600" />,
+              title: 'Environnement',
+              description: 'Adhésion Valobat, recyclage et éco-contribution REP PMCB'
+            },
+            {
+              icon: <Users className="size-8 text-orange-600" />,
+              title: 'Social',
+              description: 'Égalité H/F 88/100 et engagement envers les collaborateurs'
+            },
+            {
+              icon: <Award className="size-8 text-orange-600" />,
               title: 'Qualité',
-              description: 'Des menuiseries conçues avec les meilleurs matériaux et finitions'
-            },
-            {
-              icon: <Users className="size-8 text-green-600" />,
-              title: 'Communauté',
-              description: '100% menuisiers - Une marque créée par et pour les artisans'
-            },
-            {
-              icon: <Sparkles className="size-8 text-green-600" />,
-              title: 'Savoir-faire',
-              description: 'L\'expertise de l\'artisan au cœur de chaque projet'
+              description: 'Certifications SQS, RGE, VEMCROS, PEFC, C3A, Qualimarine'
             }
           ].map((value, index) => (
             <div
               key={index}
-              className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-xl"
+              className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-orange-200 hover:shadow-xl"
             >
-              <div className="mb-4 inline-flex rounded-xl bg-green-50 p-3 transition-colors group-hover:bg-green-100">
+              <div className="mb-4 inline-flex rounded-xl bg-orange-50 p-3 transition-colors group-hover:bg-orange-100">
                 {value.icon}
               </div>
               <Typography variant="h3" className="mb-3 text-xl font-bold text-gray-900">
@@ -140,52 +170,52 @@ export default function SybaiePage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className="py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Une gamme complète de produits
           </Typography>
           <Typography variant="p" className="mx-auto max-w-2xl text-lg text-gray-600">
-            Des solutions pour tous vos projets de menuiseries
+            Menuiseries, fermetures et maison connectée
           </Typography>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              category: 'Fenêtres',
-              products: ['Fenêtres ALU & Mixte', 'Fenêtres PVC', 'Fenêtres Bois'],
+              category: 'Menuiseries',
+              products: ['Fenêtres aluminium', 'Baies vitrées coulissantes', 'Portes-fenêtres', 'Sur-mesure'],
               icon: '🪟'
             },
             {
-              category: 'Portes d\'entrée',
-              products: ['Portes ALU', 'Portes PVC', 'Grand Vitrage'],
-              icon: '🚪'
-            },
-            {
-              category: 'Coulissants',
-              products: ['Baies vitrées ALU', 'Coulissants muraux', 'Galandage'],
-              icon: '🏠'
-            },
-            {
-              category: 'Stores intégrés',
-              products: ['Stores vénitiens', 'Stores plissés', 'Motorisation'],
-              icon: '🪟'
-            },
-            {
-              category: 'Volets roulants',
-              products: ['Volets ALU', 'Motorisation', 'Connectés'],
+              category: 'Volets & Persiennes',
+              products: ['Volets battants', 'Volets coulissants', 'Volets roulants', 'Motorisation solaire'],
               icon: '🎚️'
             },
             {
-              category: 'Vitrages',
-              products: ['Double vitrage', 'Triple vitrage', 'Acoustique'],
-              icon: '💎'
+              category: 'Portes d\'entrée',
+              products: ['Aluminium', 'PVC', 'Contemporaines', 'Design exclusif'],
+              icon: '🚪'
+            },
+            {
+              category: 'Portes de garage',
+              products: ['Sectionnelles', 'Enroulables', 'Portes de service', 'Motorisées'],
+              icon: '🏠'
+            },
+            {
+              category: 'Moustiquaires',
+              products: ['Fixes', 'Coulissantes', 'Enroulables', 'Sur-mesure'],
+              icon: '🪰'
+            },
+            {
+              category: 'Maison connectée',
+              products: ['Domotique SOMFY', 'Contrôle à distance', 'Motorisation intelligente', 'Application mobile'],
+              icon: '📱'
             }
           ].map((item, index) => (
             <div
               key={index}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
+              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
                 <span className="text-3xl">{item.icon}</span>
@@ -196,7 +226,7 @@ export default function SybaiePage() {
               <ul className="space-y-2">
                 {item.products.map((product, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
+                    <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-orange-600" />
                     <Typography variant="p" className="text-sm text-gray-700">
                       {product}
                     </Typography>
@@ -208,37 +238,37 @@ export default function SybaiePage() {
         </div>
       </SectionLayout>
 
-      {/* Section Pourquoi SYbaie */}
-      <SectionLayout size="lg" variant="default" className="py-16">
+      {/* Section Pourquoi C2R */}
+      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">
-              Pourquoi Segment C a choisi SYbaie ?
+              Pourquoi Segment C a choisi C2R ?
             </Typography>
             
             <div className="space-y-6">
               {[
                 {
-                  title: 'Qualité de fabrication irréprochable',
-                  description: 'Des menuiseries fabriquées en France par le Groupe Millet, garantissant performance et durabilité'
+                  title: 'Expérience de +75 ans',
+                  description: 'Un savoir-faire éprouvé et une expertise reconnue dans la menuiserie française'
                 },
                 {
-                  title: 'Innovation constante',
-                  description: 'Des produits comme siMple (dormant invisible) ou les coulissants muraux qui font la différence'
+                  title: 'Membre French Fab',
+                  description: 'Fier représentant du mouvement French Fab pour valoriser l\'industrie française'
                 },
                 {
-                  title: 'Support dédié aux artisans',
-                  description: 'Une vraie communauté avec formations, accompagnement technique et outils professionnels'
+                  title: 'Engagement environnemental fort',
+                  description: 'Labels Coq Vert, LUCIE 26000 et adhésion Valobat pour le recyclage'
                 },
                 {
-                  title: 'Engagement environnemental',
-                  description: 'Respect de la RE2020 et mise en place d\'une éco-contribution pour le recyclage'
+                  title: 'Innovation continue',
+                  description: 'Nouveaux produits comme le volet coulissant motorisé solaire'
                 }
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-green-100">
-                      <CheckCircle2 className="size-6 text-green-600" />
+                    <div className="flex size-10 items-center justify-center rounded-full bg-orange-100">
+                      <CheckCircle2 className="size-6 text-orange-600" />
                     </div>
                   </div>
                   <div>
@@ -254,9 +284,9 @@ export default function SybaiePage() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 p-8">
+          <div className="rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 p-8">
             <div className="mb-6">
-              <Building2 className="mb-4 size-12 text-green-600" />
+              <Building2 className="mb-4 size-12 text-orange-600" />
               <Typography variant="h3" className="mb-4 text-2xl font-bold text-gray-900">
                 Une collaboration de confiance
               </Typography>
@@ -265,37 +295,37 @@ export default function SybaiePage() {
             <div className="space-y-4">
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  🏭 Groupe Millet
+                  🏭 2 sites de fabrication
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Leader français de la menuiserie
+                  Miramont de Guyenne (47)
                 </Typography>
               </div>
               
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  🇫🇷 Fabrication française
+                  🇫🇷 French Fab
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Qualité et traçabilité garanties
+                  Industrie française d'excellence
                 </Typography>
               </div>
               
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  ♻️ Éco-responsable
+                  ♻️ Label LUCIE 26000
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Engagement pour l'environnement
+                  Démarche RSE certifiée
                 </Typography>
               </div>
 
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  👥 100% Menuisiers
+                  🌱 Coq Vert
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  La seule marque créée par et pour les artisans
+                  Engagement environnemental
                 </Typography>
               </div>
             </div>
@@ -305,18 +335,18 @@ export default function SybaiePage() {
 
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-green-600 to-emerald-700 p-12 text-center shadow-2xl">
+        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-orange-600 to-amber-700 p-12 text-center shadow-2xl">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-white lg:text-4xl">
-            Découvrez nos réalisations avec SYbaie
+            Découvrez nos réalisations avec C2R
           </Typography>
-          <Typography variant="p" className="mb-8 text-lg text-green-50">
-            Segment C est fier de travailler avec SYbaie pour vous offrir des menuiseries d'exception
+          <Typography variant="p" className="mb-8 text-lg text-orange-50">
+            Segment C est fier de travailler avec C2R pour vous offrir des menuiseries durables et responsables
           </Typography>
           
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/realisations"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-orange-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Voir nos réalisations
               <ArrowRight className="size-5" />
@@ -324,7 +354,7 @@ export default function SybaiePage() {
             
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-orange-600"
             >
               Demander un devis
               <ArrowRight className="size-5" />

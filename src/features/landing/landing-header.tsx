@@ -86,14 +86,15 @@ export function LandingHeader() {
       path: "#",
       label: "Patenaires",
       dropdown: [
-        { path: "/#", label: "Sybaie" },
-        { path: "/#", label: "Swao" },
-        { path: "/#", label: "Proferm" },
-        { path: "/#", label: "C2r " },
+        { path: "/partenaire/sybaie", label: "Sybaie" },
+        { path: "/partenaire/swao", label: "Swao" },
+        { path: "/partenaire/proferm", label: "Proferm" },
+        { path: "/partenaire/c2r", label: "C2r " },
+        { path: "/partenaire/orial", label: "Orial" },
       ]
     },
     { path: "/posts", label: "Actualités" },
-    { path: "/contact", label: "A propos de moi" },
+    { path: "/contact", label: "Contact" },
   ];
 
   return (

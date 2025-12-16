@@ -71,7 +71,7 @@ const topRoutes = [
       { path: "/portes", label: "Porte" },
       { path: "/pergolas", label: "Pergolas" },
       { path: "/portails", label: "Portails" },
-      { path: "/garage", label: "Porte de garage " },
+      { path: "/garage", label: "Porte de garage" },
       { path: "/#", label: "Volet" },
     ]
   },
@@ -79,10 +79,12 @@ const topRoutes = [
     path: "#",
     label: "Patenaires",
     dropdown: [
-      { path: "/sybaie", label: "Sybaie" },
-      { path: "/swao", label: "Swao" },
-      { path: "/Proferm", label: "Proferm" },
-      { path: "/C2r", label: "C2r " },
+      { path: "/partenaire/sybaie", label: "Sybaie" },
+      { path: "/partenaire/swao", label: "Swao" },
+      { path: "/partenaire/proferm", label: "Proferm" },
+      { path: "/partenaire/c2r", label: "C2r " },
+      { path: "/partenaire/orial", label: "Orial" },
+
     ]
   },
   { path: "/posts", label: "Actualités" },
