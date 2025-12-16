@@ -87,7 +87,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/baie"
+                    href="/#"
                   >
                     Volets 
                   </Typography>
@@ -171,6 +171,53 @@ export const Footer = () => {
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
+                  Partenaires
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/#"
+                  >
+                    Sybaie
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire"
+                  >
+                    swao
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/#"
+                  >
+                    Proferm
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/#"
+                  >
+                    C2r
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/#"
+                  >
+                    Orial
+                  </Typography>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
                   Site
                 </Typography>
                 <div className="flex flex-col gap-2">
@@ -188,7 +235,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/partenaire"
                   >
-                    Partenaires
+                    Contact
                   </Typography>
                       <Typography
                     as={Link}
