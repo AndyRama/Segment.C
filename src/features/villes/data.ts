@@ -18,7 +18,7 @@ export const saintJeanDIllacData: VilleData = {
     department: "Gironde",
     departmentNumber: "33",
     description:
-      "Saint-Jean-d'Illac, commune dynamique de Bordeaux Métropole, allie charme rural et proximité urbaine. Segment C Menuiserie intervient rapidement pour tous vos travaux de menuiserie, des pavillons résidentiels aux projets commerciaux.",
+      "St-Jean-d'Illac, commune dynamique de Bordeaux Métropole, allie charme rural et proximité urbaine. Segment C Menuiserie intervient rapidement pour tous vos travaux de menuiserie, des pavillons résidentiels aux projets commerciaux.",
     phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention rapide à Saint-Jean-d'Illac",
@@ -30,7 +30,7 @@ export const saintJeanDIllacData: VilleData = {
   },
   heroAnimation: {
     title: "Menuiserie sur Mesure",
-    titleHighlight: "St-Jean-d'Illac",
+    titleHighlight: "Saint-Jean-d'Illac",
     subtitle: "Fenêtres, Portes & Volets",
     description:
       "Votre artisan menuisier local pour tous vos projets à St-Jean-d'Illac. J'accompagne les particuliers comme les professionnels avec un savoir-faire artisanal de 15 ans et des finitions soignées. Devis gratuit sous 24h.",
@@ -42,7 +42,7 @@ export const saintJeanDIllacData: VilleData = {
   },
   service: {
     city: "St-Jean-d'Illac",
-    mainTitle: "Service de menuiserie professionnelle à Saint-Jean-d'Illac",
+    mainTitle: "Service de menuiserie professionnelle à St-Jean-d'Illac",
     paragraphs: [
       "Segment C Menuiserie est votre partenaire privilégié à St-Jean-d'Illac. Notre connaissance du tissu local et des spécificités architecturales nous permet de vous proposer des solutions parfaitement adaptées à votre projet.",
       "Spécialisés dans les menuiseries pour maisons individuelles et locaux commerciaux, nous intervenons sur tous types de projets : rénovation énergétique, création d'extensions, aménagements sur mesure.",
