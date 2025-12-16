@@ -11,13 +11,13 @@ import {
   CheckCircle2, 
   ArrowRight,
   Factory,
-  Target,
-  Sparkles,
-  Palette,
-  Shield
+  TrendingUp,
+  ShieldCheck,
+  Layers,
+  Home
 } from 'lucide-react';
 
-export default function ProfermPage() {
+export default function OrialPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -32,27 +32,27 @@ export default function ProfermPage() {
             </div>
 
             <Typography variant="h1" className="text-4xl font-bold text-gray-900 lg:text-5xl">
-              PROFERM
+              ORIAL
             </Typography>
             
             <Typography variant="h2" className="text-2xl font-semibold text-green-600">
-              Menuiseries sur mesure haut de gamme
+              Concepteur et fabricant français en aluminium
             </Typography>
 
             <Typography variant="p" className="text-lg leading-relaxed text-gray-700">
-              Depuis 2006, PROFERM conçoit et fabrique en France des menuiseries sur mesure 
-              innovantes et haut de gamme. Basé à Douvrin dans le Pas-de-Calais, PROFERM est 
-              reconnu comme l'un des 5 meilleurs fabricants français de menuiseries selon le CSTB.
+              Depuis près de 20 ans dans le Nord de la France, Orial est une entreprise de taille 
+              industrielle spécialisée dans la conception et la fabrication de solutions en aluminium 
+              pour l'habitat. Une centaine de collaborateurs passionnés vous accompagnent à chaque étape.
             </Typography>
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="https://proferm.net/"
+                href="https://orial.tm.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
               >
-                Visiter le site PROFERM
+                Visiter le site ORIAL
                 <ExternalLink className="size-5" />
               </Link>
               
@@ -69,15 +69,15 @@ export default function ProfermPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <img
-                src="https://placehold.co/600x400/FFFFFF/10b981?text=PROFERM"
-                alt="PROFERM - Menuiseries"
+                src="https://placehold.co/600x400/FFFFFF/10b981?text=ORIAL"
+                alt="ORIAL - Solutions aluminium"
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
               <Factory className="mb-2 size-8 text-white" />
               <Typography variant="p" className="text-sm font-bold text-white">
-                Top 5 France
+                Hauts-de-France
               </Typography>
             </div>
           </div>
@@ -88,34 +88,34 @@ export default function ProfermPage() {
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
-            L'excellence PROFERM
+            Le savoir-faire ORIAL
           </Typography>
           <Typography variant="p" className="mx-auto max-w-2xl text-lg text-gray-600">
-            Innovation, qualité et savoir-faire français
+            De l'artisanat à l'industrie, innovation et expertise
           </Typography>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: <Target className="size-8 text-green-600" />,
-              title: 'Innovation',
-              description: 'TEXTURAL®, un matériau exclusif innovant et personnalisable à l\'infini'
+              icon: <Factory className="size-8 text-green-600" />,
+              title: 'Taille industrielle',
+              description: 'Une entreprise moderne avec 100+ collaborateurs passionnés dans les Hauts-de-France'
+            },
+            {
+              icon: <TrendingUp className="size-8 text-green-600" />,
+              title: 'De la conception à la livraison',
+              description: 'Maîtrise complète du processus de fabrication de produits aluminium'
+            },
+            {
+              icon: <ShieldCheck className="size-8 text-green-600" />,
+              title: 'Conformité aux normes',
+              description: 'Produits innovants, fiables, esthétiques et durables certifiés'
             },
             {
               icon: <Award className="size-8 text-green-600" />,
-              title: 'Top 5 France',
-              description: 'L\'un des 5 meilleurs fabricants français selon le CSTB'
-            },
-            {
-              icon: <Palette className="size-8 text-green-600" />,
-              title: 'Sur-mesure',
-              description: 'Cintrage interne, ferronnerie d\'art et cabines de laquage propres'
-            },
-            {
-              icon: <Shield className="size-8 text-green-600" />,
-              title: 'Qualité',
-              description: 'Matériaux premium : PVC Greenline® et aluminium bas carbone Technal®'
+              title: 'Expertise reconnue',
+              description: 'Membre SNFA et référencé sur FenetreAlu.com depuis 1921'
             }
           ].map((value, index) => (
             <div
@@ -140,38 +140,44 @@ export default function ProfermPage() {
       <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
-            Nos 4 gammes exclusives
+            Nos solutions en aluminium pour l'habitat
           </Typography>
           <Typography variant="p" className="mx-auto max-w-2xl text-lg text-gray-600">
-            PVC, Aluminium, Hybride et TEXTURAL®
+            Des produits sur mesure pour tous vos projets
           </Typography>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              category: 'PERFORM - PVC',
-              products: ['PERFORM70 - Excellent rapport qualité/prix', 'PERFORM76 - Hautes performances', 'PVC Greenline® sans plomb ni cadmium', 'Entièrement recyclable'],
-              icon: '🪟',
-              color: 'green'
+              category: 'Pergolas bioclimatiques',
+              products: ['Lames orientables', 'Adaptable toute l\'année', 'Tous budgets', 'Design élégant'],
+              icon: '🏡'
             },
             {
-              category: 'LUMINE - Aluminium',
-              products: ['Design épuré et moderne', 'Aluminium bas carbone Technal®', '75% d\'aluminium recyclé', 'Grandes dimensions possibles'],
-              icon: '✨',
-              color: 'green'
+              category: 'Carports',
+              products: ['Protection véhicule', 'Tous styles d\'habitat', 'Élégant et durable', 'Sur-mesure'],
+              icon: '🚗'
             },
             {
-              category: 'HYBRIDE - PVC/ALU',
-              products: ['Intérieur PVC / Extérieur ALU', 'Meilleur des deux matériaux', 'Isolation optimale', 'Esthétique premium'],
-              icon: '💎',
-              color: 'green'
+              category: 'Garde-corps',
+              products: ['Design contemporain', 'Protection optimale', 'Extérieur & intérieur', 'Conformes aux normes'],
+              icon: '🛡️'
             },
             {
-              category: 'TEXTURAL® - Exclusif',
-              products: ['Matériau innovant breveté', 'Personnalisation illimitée', 'Textures et couleurs uniques', 'Design d\'exception'],
-              icon: '🎨',
-              color: 'green'
+              category: 'Escaliers',
+              products: ['Esthétisme et fonctionnalité', 'Classique au contemporain', 'Sur-mesure', 'Oriastep'],
+              icon: '📐'
+            },
+            {
+              category: 'Mains courantes',
+              products: ['Soutien fiable', 'Design soigné', 'Ergonomie optimale', 'Tous coloris RAL'],
+              icon: '✋'
+            },
+            {
+              category: 'Barrières de piscine',
+              products: ['Sécurité maximale', 'Design préservé', 'Conformes NF', 'Esthétique soignée'],
+              icon: '🏊'
             }
           ].map((item, index) => (
             <div
@@ -198,50 +204,46 @@ export default function ProfermPage() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl border-2 border-green-200 bg-green-50 p-6">
-          <div className="flex items-start gap-4">
-            <div className="rounded-lg bg-green-100 p-3">
-              <Sparkles className="size-8 text-green-600" />
-            </div>
-            <div>
-              <Typography variant="h3" className="mb-2 text-xl font-bold text-gray-900">
-                TEXTURAL® - Notre innovation exclusive
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-3 rounded-2xl border-2 border-green-200 bg-green-50 px-8 py-4">
+            <Layers className="size-6 text-green-600" />
+            <div className="text-left">
+              <Typography variant="h3" className="font-bold text-gray-900">
+                Nos marques dédiées
               </Typography>
-              <Typography variant="p" className="leading-relaxed text-gray-700">
-                TEXTURAL® est un matériau révolutionnaire développé par PROFERM qui offre des possibilités 
-                de personnalisation infinies. Inspiré des plus grands courants artistiques, il permet de créer 
-                des menuiseries uniques qui rehaussent le style de votre entrée.
+              <Typography variant="p" className="text-sm text-gray-600">
+                Oriabal • Oriasun • Oriastep
               </Typography>
             </div>
           </div>
         </div>
       </SectionLayout>
 
-      {/* Section Pourquoi PROFERM */}
+      {/* Section Pourquoi ORIAL */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">
-              Pourquoi Segment C a choisi PROFERM ?
+              Pourquoi Segment C a choisi ORIAL ?
             </Typography>
             
             <div className="space-y-6">
               {[
                 {
-                  title: 'Excellence reconnue',
-                  description: 'Top 5 des fabricants français selon le CSTB avec labels Origine France Garantie'
+                  title: 'Fabrication 100% française',
+                  description: 'Située à Hirson dans les Hauts-de-France depuis près de 20 ans avec 100+ collaborateurs'
                 },
                 {
-                  title: 'Maîtrise complète',
-                  description: 'Cintrage, ferronnerie et laquage réalisés en interne pour une qualité maximale'
+                  title: 'Maîtrise industrielle complète',
+                  description: 'De la conception à la livraison, contrôle total du processus de fabrication'
                 },
                 {
-                  title: 'Engagement environnemental',
-                  description: 'PVC recyclable Greenline®, aluminium bas carbone et adhésion Valobat'
+                  title: 'Expertise et innovation',
+                  description: 'Produits aluminium innovants, fiables et durables conformes aux normes en vigueur'
                 },
                 {
-                  title: 'Sur-mesure premium',
-                  description: 'Personnalisation totale : dimensions, couleurs, textures et finitions exclusives'
+                  title: 'Accompagnement sur-mesure',
+                  description: 'Équipes passionnées qui étudient vos projets avec soin et professionnalisme'
                 }
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
@@ -274,37 +276,37 @@ export default function ProfermPage() {
             <div className="space-y-4">
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  🏭 Fabrication Douvrin (62)
+                  🏭 Hirson (02)
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Usine moderne dans le Pas-de-Calais
+                  Fabrication dans les Hauts-de-France
                 </Typography>
               </div>
               
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  🇫🇷 Origine France Garantie
+                  👥 100+ collaborateurs
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Production locale certifiée
+                  Équipes passionnées et expertes
                 </Typography>
               </div>
               
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  ♻️ Éco-responsable
+                  🏆 Membre SNFA
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Matériaux recyclés et recyclables
+                  Syndicat National de la Fermeture et de l'Aluminium
                 </Typography>
               </div>
 
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
-                  🎨 TEXTURAL® Exclusif
+                  ✨ 3 marques dédiées
                 </Typography>
                 <Typography variant="p" className="text-sm text-gray-600">
-                  Innovation brevetée PROFERM
+                  Oriabal • Oriasun • Oriastep
                 </Typography>
               </div>
             </div>
@@ -312,14 +314,31 @@ export default function ProfermPage() {
         </div>
       </SectionLayout>
 
+      {/* Section Citation */}
+      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-6 inline-flex rounded-full bg-green-100 p-4">
+            <Home className="size-12 text-green-600" />
+          </div>
+          <Typography variant="h2" className="mb-6 text-2xl font-bold italic text-gray-900 lg:text-3xl">
+            "La vraie richesse d'une entreprise, ce sont les femmes et les hommes qui la font vivre."
+          </Typography>
+          <Typography variant="p" className="text-lg text-gray-600">
+            Derrière chaque projet, des équipes engagées, expertes et à l'écoute vous accompagnent 
+            à chaque étape, de la conception à la pose. Chez Orial, innovation, qualité et savoir-faire 
+            sont au cœur de nos valeurs.
+          </Typography>
+        </div>
+      </SectionLayout>
+
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-green-600 to-emerald-700 p-12 text-center shadow-2xl">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-white lg:text-4xl">
-            Découvrez nos réalisations avec PROFERM
+            Découvrez nos réalisations avec ORIAL
           </Typography>
           <Typography variant="p" className="mb-8 text-lg text-green-50">
-            Segment C est fier de travailler avec PROFERM pour vous offrir des menuiseries d'exception
+            Segment C est fier de travailler avec ORIAL pour vous offrir des solutions en aluminium d'exception
           </Typography>
           
           <div className="flex flex-wrap justify-center gap-4">

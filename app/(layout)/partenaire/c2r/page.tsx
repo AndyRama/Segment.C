@@ -11,10 +11,9 @@ import {
   CheckCircle2, 
   ArrowRight,
   Factory,
-  TrendingUp,
-  ShieldCheck,
-  Leaf,
-  History
+  Target,
+  Users,
+  Leaf
 } from 'lucide-react';
 
 export default function C2RPage() {
@@ -135,12 +134,12 @@ export default function C2RPage() {
               description: 'Label LUCIE 26000 et Coq Vert pour une entreprise responsable'
             },
             {
-              icon: <TrendingUp className="size-8 text-green-600" />,
+              icon: <Target className="size-8 text-green-600" />,
               title: 'Environnement',
               description: 'Adhésion Valobat, recyclage et éco-contribution REP PMCB'
             },
             {
-              icon: <ShieldCheck className="size-8 text-green-600" />,
+              icon: <Users className="size-8 text-green-600" />,
               title: 'Social',
               description: 'Égalité H/F 88/100 et engagement envers les collaborateurs'
             },

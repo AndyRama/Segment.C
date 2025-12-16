@@ -11,9 +11,9 @@ import {
   CheckCircle2, 
   ArrowRight,
   Factory,
-  ShieldCheck,
-  Smartphone,
-  Eye
+  Users,
+  Sparkles,
+  Lightbulb
 } from 'lucide-react';
 
 export default function SwaoPage() {
@@ -97,7 +97,7 @@ export default function SwaoPage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: <Smartphone className="size-8 text-green-600" />,
+              icon: <Lightbulb className="size-8 text-green-600" />,
               title: 'Innovation',
               description: 'Produits connectés avec I-Secure et solutions domotiques pour la maison du futur'
             },
@@ -107,12 +107,12 @@ export default function SwaoPage() {
               description: 'Fabrication 100% française sur 6 sites spécialisés à travers le territoire'
             },
             {
-              icon: <ShieldCheck className="size-8 text-green-600" />,
+              icon: <Users className="size-8 text-green-600" />,
               title: 'Accompagnement',
               description: 'Service client réactif et support technique à chaque étape de votre projet'
             },
             {
-              icon: <Eye className="size-8 text-green-600" />,
+              icon: <Sparkles className="size-8 text-green-600" />,
               title: 'Design',
               description: 'Ouvrant discret avec profilés fins pour un maximum de luminosité et d\'esthétisme'
             }
