@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { MapPin, ArrowRight, Users, Phone, Mail } from 'lucide-react';
+import { MapPin, ArrowRight, Users } from 'lucide-react';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import {
@@ -21,7 +21,6 @@ import {
   biganosData,
   martignasData,
   saintMedardData,
-  // eysinesData,
   type VilleData,
 } from '@/features/villes/data';
 
@@ -48,12 +47,10 @@ const villesList: VilleWithSlug[] = [
   { slug: 'biganos', data: biganosData },
   { slug: 'martignas-sur-jalle', data: martignasData },
   { slug: 'saint-medard-en-jalles', data: saintMedardData },
-  // { slug: 'eysines', data: eysinesData },
 ];
 
 export default function VillesListPage() {
   return (
-    {/* Grid des villes */}
     <SectionLayout size="lg" variant="default" className="py-16">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {villesList.map(({ slug, data }) => (
@@ -122,7 +119,7 @@ export default function VillesListPage() {
               {/* CTA */}
               <div className="border-t border-gray-100 pt-4">
                 <div className="flex items-center justify-between text-green-600 transition-colors group-hover:text-green-700">
-                  <Typography variant="p" className="text-sm font-semibold text-green-600 group-hover:text-green-700">
+                  <Typography variant="p" className="text-sm font-semibold">
                     Découvrir nos services
                   </Typography>
                   <ArrowRight className="size-5 flex-shrink-0 transition-transform group-hover:translate-x-1" />
