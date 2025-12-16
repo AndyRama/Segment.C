@@ -14,12 +14,12 @@ export type AboutData = {
 // ========================================
 export const saintJeanDIllacData: VilleData = {
   hero: {
-    city: "Saint-Jean-d'Illac",
+    city: "St-Jean-d'Illac",
     department: "Gironde",
     departmentNumber: "33",
     description:
       "Saint-Jean-d'Illac, commune dynamique de Bordeaux Métropole, allie charme rural et proximité urbaine. Segment C Menuiserie intervient rapidement pour tous vos travaux de menuiserie, des pavillons résidentiels aux projets commerciaux.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention rapide à Saint-Jean-d'Illac",
       "Expertise en menuiserie résidentielle",
@@ -30,21 +30,21 @@ export const saintJeanDIllacData: VilleData = {
   },
   heroAnimation: {
     title: "Menuiserie sur Mesure",
-    titleHighlight: "Saint-Jean-d'Illac",
+    titleHighlight: "St-Jean-d'Illac",
     subtitle: "Fenêtres, Portes & Volets",
     description:
-      "Votre artisan menuisier local pour tous vos projets à Saint-Jean-d'Illac. J'accompagne les particuliers comme les professionnels avec un savoir-faire artisanal de 15 ans et des finitions soignées. Devis gratuit sous 24h.",
+      "Votre artisan menuisier local pour tous vos projets à St-Jean-d'Illac. J'accompagne les particuliers comme les professionnels avec un savoir-faire artisanal de 15 ans et des finitions soignées. Devis gratuit sous 24h.",
   },
   about: {
     title: "15 ans d'excellence en menuiserie : artisan passionné et certifié",
     description:
-      "Installé au cœur de la métropole bordelaise, je mets mon expertise au service des habitants de Saint-Jean-d'Illac depuis plus de 15 ans. Chaque projet est unique : que vous rénoviez votre pavillon familial ou aménageiez votre local commercial, je vous accompagne avec un conseil personnalisé et des solutions sur mesure. Mon engagement ? Des fenêtres et portes qui allient performance énergétique et esthétique, posées avec le soin du travail bien fait.",
+      "Installé au cœur de la métropole bordelaise, je mets mon expertise au service des habitants de St-Jean-d'Illac depuis plus de 15 ans. Chaque projet est unique : que vous rénoviez votre pavillon familial ou aménageiez votre local commercial, je vous accompagne avec un conseil personnalisé et des solutions sur mesure. Mon engagement ? Des fenêtres et portes qui allient performance énergétique et esthétique, posées avec le soin du travail bien fait.",
   },
   service: {
-    city: "Saint-Jean-d'Illac",
+    city: "St-Jean-d'Illac",
     mainTitle: "Service de menuiserie professionnelle à Saint-Jean-d'Illac",
     paragraphs: [
-      "Segment C Menuiserie est votre partenaire privilégié à Saint-Jean-d'Illac. Notre connaissance du tissu local et des spécificités architecturales nous permet de vous proposer des solutions parfaitement adaptées à votre projet.",
+      "Segment C Menuiserie est votre partenaire privilégié à St-Jean-d'Illac. Notre connaissance du tissu local et des spécificités architecturales nous permet de vous proposer des solutions parfaitement adaptées à votre projet.",
       "Spécialisés dans les menuiseries pour maisons individuelles et locaux commerciaux, nous intervenons sur tous types de projets : rénovation énergétique, création d'extensions, aménagements sur mesure.",
       "Notre atelier local garantit des délais rapides et une disponibilité optimale pour le suivi de votre chantier.",
     ],
@@ -56,10 +56,10 @@ export const saintJeanDIllacData: VilleData = {
       "Agencement intérieur personnalisé",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -73,7 +73,7 @@ export const capFerretData: VilleData = {
     departmentNumber: "33",
     description:
       "Cap Ferret, presqu'île emblématique du bassin d'Arcachon, mérite des menuiseries à la hauteur de son charme unique. Segment C Menuiserie intervient pour préserver et sublimer l'architecture typique des villas du Cap.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention sur tout le Cap Ferret",
       "Menuiseries adaptées au climat marin",
@@ -112,10 +112,10 @@ export const capFerretData: VilleData = {
       "Aménagements extérieurs (terrasses, pergolas)",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -129,7 +129,7 @@ export const merignacData: VilleData = {
     departmentNumber: "33",
     description:
       "Mérignac, deuxième ville de la métropole bordelaise, offre un cadre de vie dynamique entre quartiers résidentiels et zones d'activités. Segment C Menuiserie accompagne particuliers et professionnels dans tous leurs projets de menuiserie.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention rapide sur Mérignac",
       "Service résidentiel et commercial",
@@ -166,10 +166,10 @@ export const merignacData: VilleData = {
       "Agencement de bureaux",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -183,7 +183,7 @@ export const bordeauxData: VilleData = {
     departmentNumber: "33",
     description:
       "Bordeaux, capitale mondiale du vin et ville au patrimoine UNESCO, exige des menuiseries à la hauteur de son architecture exceptionnelle. Segment C Menuiserie allie tradition et modernité pour sublimer votre patrimoine.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Expert du patrimoine bordelais",
       "Menuiseries sur mesure",
@@ -220,10 +220,10 @@ export const bordeauxData: VilleData = {
       "Agencement d'échoppes",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -237,7 +237,7 @@ export const bouscatData: VilleData = {
     departmentNumber: "33",
     description:
       "Le Bouscat, ville résidentielle recherchée de la métropole bordelaise, séduit par son cadre de vie privilégié. Segment C Menuiserie répond aux attentes élevées des propriétaires avec des menuiseries haut de gamme.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Service premium au Bouscat",
       "Menuiseries haut de gamme",
@@ -274,10 +274,10 @@ export const bouscatData: VilleData = {
       "Isolation acoustique renforcée",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -291,7 +291,7 @@ export const talenceData: VilleData = {
     departmentNumber: "33",
     description:
       "Talence, ville universitaire et résidentielle au sud de Bordeaux, bénéficie d'un patrimoine architectural varié. Segment C Menuiserie intervient pour tous vos projets, de la rénovation à la construction neuve.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention sur Talence et campus",
       "Menuiseries adaptées au bâti ancien",
@@ -328,10 +328,10 @@ export const talenceData: VilleData = {
       "Isolation thermique et acoustique",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -345,7 +345,7 @@ export const pessacData: VilleData = {
     departmentNumber: "33",
     description:
       "Pessac, troisième ville de la métropole bordelaise, conjugue modernité et tradition viticole. Segment C Menuiserie accompagne l'essor de cette ville dynamique avec des menuiseries innovantes et performantes.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Expert menuiserie à Pessac",
       "Solutions pour cités Le Corbusier",
@@ -383,10 +383,10 @@ export const pessacData: VilleData = {
       "Solutions triple vitrage",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -400,7 +400,7 @@ export const cestasData: VilleData = {
     departmentNumber: "33",
     description:
       "Cestas, plus grande commune de la métropole bordelaise, offre un cadre de vie privilégié en lisière de forêt. Segment C Menuiserie intervient pour sublimer vos projets résidentiels dans cet environnement naturel exceptionnel.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention sur tout Cestas",
       "Menuiseries adaptées à l'environnement forestier",
@@ -437,10 +437,10 @@ export const cestasData: VilleData = {
       "Aménagements extérieurs",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -454,7 +454,7 @@ export const gradignanData: VilleData = {
     departmentNumber: "33",
     description:
       "Gradignan, ville verte au sud de Bordeaux, séduit par son cadre de vie préservé. Segment C Menuiserie propose des menuiseries haut de gamme en harmonie avec le caractère résidentiel de la commune.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Service premium à Gradignan",
       "Menuiseries design et écologiques",
@@ -492,10 +492,10 @@ export const gradignanData: VilleData = {
       "Claustra et brise-soleil",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -509,7 +509,7 @@ export const arcachonData: VilleData = {
     departmentNumber: "33",
     description:
       "Arcachon, perle du bassin éponyme, célèbre pour ses villas et sa dune du Pilat, mérite des menuiseries exceptionnelles. Segment C Menuiserie préserve et magnifie l'architecture balnéaire arcachonnaise.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Expert des villas arcachonnaises",
       "Menuiseries résistantes aux embruns",
@@ -547,10 +547,10 @@ export const arcachonData: VilleData = {
       "Volets persiennés traditionnels",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -564,7 +564,7 @@ export const laTesteData: VilleData = {
     departmentNumber: "33",
     description:
       "La Teste-de-Buch, plus grande commune de Gironde, s'étend du bassin d'Arcachon à la forêt landaise. Segment C Menuiserie accompagne le développement de cette ville dynamique avec des solutions adaptées à chaque quartier.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention sur toute La Teste",
       "Menuiseries adaptées au climat local",
@@ -602,10 +602,10 @@ export const laTesteData: VilleData = {
       "Menuiseries mixtes bois/alu",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -619,7 +619,7 @@ export const andernosData: VilleData = {
     departmentNumber: "33",
     description:
       "Andernos-les-Bains, station balnéaire familiale sur la rive nord du bassin, charme par son authenticité. Segment C Menuiserie propose des menuiseries adaptées au caractère balnéaire et forestier de la commune.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Expert menuiserie bassin d'Arcachon",
       "Solutions pour maisons de vacances",
@@ -656,10 +656,10 @@ export const andernosData: VilleData = {
       "Aménagements de terrasses",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -673,7 +673,7 @@ export const biganosData: VilleData = {
     departmentNumber: "33",
     description:
       "Biganos, porte d'entrée du bassin d'Arcachon, conjugue tradition ostréicole et développement résidentiel. Segment C Menuiserie accompagne l'essor de cette commune avec des menuiseries performantes et durables.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention rapide à Biganos",
       "Menuiseries résidentielles",
@@ -710,10 +710,10 @@ export const biganosData: VilleData = {
       "Agencement commercial",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -727,7 +727,7 @@ export const martignasData: VilleData = {
     departmentNumber: "33",
     description:
       "Martignas-sur-Jalle, commune résidentielle de la métropole bordelaise, offre un cadre de vie agréable. Segment C Menuiserie intervient pour tous vos projets de menuiserie avec expertise et professionnalisme.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Service local à Martignas",
       "Menuiseries haute performance",
@@ -764,10 +764,10 @@ export const martignasData: VilleData = {
       "Agencement intérieur",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -781,7 +781,7 @@ export const saintMedardData: VilleData = {
     departmentNumber: "33",
     description:
       "Saint-Médard-en-Jalles, ville dynamique au nord-ouest de Bordeaux, conjugue zones résidentielles et pôles d'activités. Segment C Menuiserie accompagne son développement avec des solutions innovantes et durables.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Intervention sur Saint-Médard",
       "Solutions résidentielles et tertiaires",
@@ -819,10 +819,10 @@ export const saintMedardData: VilleData = {
       "Portes coupe-feu",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
 
@@ -836,7 +836,7 @@ export const eysinesData: VilleData = {
     departmentNumber: "33",
     description:
       "Eysines, commune en plein essor au nord-ouest de Bordeaux, offre un cadre de vie privilégié. Segment C Menuiserie accompagne les habitants d'Eysines dans tous leurs projets de menuiserie avec professionnalisme.",
-    phoneNumber: "05 56 12 34 56",
+    phoneNumber: "06 71 78 72 53",
     benefits: [
       "Expert menuiserie à Eysines",
       "Solutions contemporaines",
@@ -874,9 +874,9 @@ export const eysinesData: VilleData = {
       "Menuiseries mixtes",
     ],
     founderName: "Rui De Carvalho",
-    founderTitle: "Fondateur Segment C Menuiserie",
-    founderPhone: "05 56 12 34 56",
-    founderEmail: "contact@segmentc-menuiserie.fr",
-    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=RC",
+    founderTitle: "Fondateur de Segment.C",
+    founderPhone: "06 71 78 72 53",
+    founderEmail: "info-segment.c@gmail.com",
+    founderImage: "https://placehold.co/80x80/8B4513/FFFFFF?text=SC",
   },
 };
