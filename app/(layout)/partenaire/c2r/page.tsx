@@ -11,11 +11,10 @@ import {
   CheckCircle2, 
   ArrowRight,
   Factory,
-  Target,
-  Users,
-  Sparkles,
+  TrendingUp,
+  ShieldCheck,
   Leaf,
-  TrendingUp
+  History
 } from 'lucide-react';
 
 export default function C2RPage() {
@@ -25,9 +24,9 @@ export default function C2RPage() {
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2">
-              <Award className="size-5 text-orange-600" />
-              <Typography variant="p" className="text-sm font-medium text-orange-700">
+            <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-2">
+              <Award className="size-5 text-green-600" />
+              <Typography variant="p" className="text-sm font-medium text-green-700">
                 Partenaire Premium
               </Typography>
             </div>
@@ -36,7 +35,7 @@ export default function C2RPage() {
               C2R
             </Typography>
             
-            <Typography variant="h2" className="text-2xl font-semibold text-orange-600">
+            <Typography variant="h2" className="text-2xl font-semibold text-green-600">
               +75 ans de savoir-faire français
             </Typography>
 
@@ -51,7 +50,7 @@ export default function C2RPage() {
                 href="https://menuiserie-c2r.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
               >
                 Visiter le site C2R
                 <ExternalLink className="size-5" />
@@ -59,7 +58,7 @@ export default function C2RPage() {
               
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-orange-600 bg-white px-6 py-3 font-semibold text-orange-600 transition-all hover:bg-orange-50"
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
               >
                 Nous contacter
                 <ArrowRight className="size-5" />
@@ -70,12 +69,12 @@ export default function C2RPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <img
-                src="https://placehold.co/600x400/FFFFFF/ea580c?text=C2R"
+                src="https://placehold.co/600x400/FFFFFF/10b981?text=C2R"
                 alt="C2R - Menuiseries"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-orange-500 to-amber-600 p-6 shadow-xl">
+            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
               <Factory className="mb-2 size-8 text-white" />
               <Typography variant="p" className="text-sm font-bold text-white">
                 French Fab
@@ -104,9 +103,9 @@ export default function C2RPage() {
           ].map((stat, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:border-orange-300 hover:shadow-lg"
+              className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
             >
-              <Typography variant="h3" className="mb-2 text-3xl font-bold text-orange-600">
+              <Typography variant="h3" className="mb-2 text-3xl font-bold text-green-600">
                 {stat.number}
               </Typography>
               <Typography variant="p" className="text-sm text-gray-600">
@@ -131,31 +130,31 @@ export default function C2RPage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: <Leaf className="size-8 text-orange-600" />,
+              icon: <Leaf className="size-8 text-green-600" />,
               title: 'Démarche RSE',
               description: 'Label LUCIE 26000 et Coq Vert pour une entreprise responsable'
             },
             {
-              icon: <Target className="size-8 text-orange-600" />,
+              icon: <TrendingUp className="size-8 text-green-600" />,
               title: 'Environnement',
               description: 'Adhésion Valobat, recyclage et éco-contribution REP PMCB'
             },
             {
-              icon: <Users className="size-8 text-orange-600" />,
+              icon: <ShieldCheck className="size-8 text-green-600" />,
               title: 'Social',
               description: 'Égalité H/F 88/100 et engagement envers les collaborateurs'
             },
             {
-              icon: <Award className="size-8 text-orange-600" />,
+              icon: <Award className="size-8 text-green-600" />,
               title: 'Qualité',
               description: 'Certifications SQS, RGE, VEMCROS, PEFC, C3A, Qualimarine'
             }
           ].map((value, index) => (
             <div
               key={index}
-              className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-orange-200 hover:shadow-xl"
+              className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-xl"
             >
-              <div className="mb-4 inline-flex rounded-xl bg-orange-50 p-3 transition-colors group-hover:bg-orange-100">
+              <div className="mb-4 inline-flex rounded-xl bg-green-50 p-3 transition-colors group-hover:bg-green-100">
                 {value.icon}
               </div>
               <Typography variant="h3" className="mb-3 text-xl font-bold text-gray-900">
@@ -215,7 +214,7 @@ export default function C2RPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-300 hover:shadow-lg"
+              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
                 <span className="text-3xl">{item.icon}</span>
@@ -226,7 +225,7 @@ export default function C2RPage() {
               <ul className="space-y-2">
                 {item.products.map((product, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-orange-600" />
+                    <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
                     <Typography variant="p" className="text-sm text-gray-700">
                       {product}
                     </Typography>
@@ -267,8 +266,8 @@ export default function C2RPage() {
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-orange-100">
-                      <CheckCircle2 className="size-6 text-orange-600" />
+                    <div className="flex size-10 items-center justify-center rounded-full bg-green-100">
+                      <CheckCircle2 className="size-6 text-green-600" />
                     </div>
                   </div>
                   <div>
@@ -284,9 +283,9 @@ export default function C2RPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 p-8">
+          <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 p-8">
             <div className="mb-6">
-              <Building2 className="mb-4 size-12 text-orange-600" />
+              <Building2 className="mb-4 size-12 text-green-600" />
               <Typography variant="h3" className="mb-4 text-2xl font-bold text-gray-900">
                 Une collaboration de confiance
               </Typography>
@@ -335,18 +334,18 @@ export default function C2RPage() {
 
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-orange-600 to-amber-700 p-12 text-center shadow-2xl">
+        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-green-600 to-emerald-700 p-12 text-center shadow-2xl">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-white lg:text-4xl">
             Découvrez nos réalisations avec C2R
           </Typography>
-          <Typography variant="p" className="mb-8 text-lg text-orange-50">
+          <Typography variant="p" className="mb-8 text-lg text-green-50">
             Segment C est fier de travailler avec C2R pour vous offrir des menuiseries durables et responsables
           </Typography>
           
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/realisations"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-orange-600 transition-all hover:bg-gray-50 hover:shadow-xl"
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Voir nos réalisations
               <ArrowRight className="size-5" />
@@ -354,7 +353,7 @@ export default function C2RPage() {
             
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-orange-600"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
             >
               Demander un devis
               <ArrowRight className="size-5" />

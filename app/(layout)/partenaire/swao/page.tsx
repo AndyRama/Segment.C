@@ -11,11 +11,9 @@ import {
   CheckCircle2, 
   ArrowRight,
   Factory,
-  Target,
-  Users,
-  Sparkles,
-  Lightbulb,
-  Shield
+  ShieldCheck,
+  Smartphone,
+  Eye
 } from 'lucide-react';
 
 export default function SwaoPage() {
@@ -25,9 +23,9 @@ export default function SwaoPage() {
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2">
-              <Award className="size-5 text-blue-600" />
-              <Typography variant="p" className="text-sm font-medium text-blue-700">
+            <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-2">
+              <Award className="size-5 text-green-600" />
+              <Typography variant="p" className="text-sm font-medium text-green-700">
                 Partenaire Premium
               </Typography>
             </div>
@@ -36,7 +34,7 @@ export default function SwaoPage() {
               SWAO
             </Typography>
             
-            <Typography variant="h2" className="text-2xl font-semibold text-blue-600">
+            <Typography variant="h2" className="text-2xl font-semibold text-green-600">
               La liberté de tout choisir
             </Typography>
 
@@ -51,7 +49,7 @@ export default function SwaoPage() {
                 href="https://www.swao.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
               >
                 Visiter le site SWAO
                 <ExternalLink className="size-5" />
@@ -59,7 +57,7 @@ export default function SwaoPage() {
               
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-blue-600 bg-white px-6 py-3 font-semibold text-blue-600 transition-all hover:bg-blue-50"
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
               >
                 Nous contacter
                 <ArrowRight className="size-5" />
@@ -70,12 +68,12 @@ export default function SwaoPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <img
-                src="https://placehold.co/600x400/FFFFFF/2563eb?text=SWAO"
+                src="https://placehold.co/600x400/FFFFFF/10b981?text=SWAO"
                 alt="SWAO - Menuiseries"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-blue-500 to-indigo-600 p-6 shadow-xl">
+            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
               <Factory className="mb-2 size-8 text-white" />
               <Typography variant="p" className="text-sm font-bold text-white">
                 Groupe CETIH
@@ -99,31 +97,31 @@ export default function SwaoPage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: <Lightbulb className="size-8 text-blue-600" />,
+              icon: <Smartphone className="size-8 text-green-600" />,
               title: 'Innovation',
               description: 'Produits connectés avec I-Secure et solutions domotiques pour la maison du futur'
             },
             {
-              icon: <Award className="size-8 text-blue-600" />,
+              icon: <Award className="size-8 text-green-600" />,
               title: 'Origine France Garantie',
               description: 'Fabrication 100% française sur 6 sites spécialisés à travers le territoire'
             },
             {
-              icon: <Users className="size-8 text-blue-600" />,
+              icon: <ShieldCheck className="size-8 text-green-600" />,
               title: 'Accompagnement',
               description: 'Service client réactif et support technique à chaque étape de votre projet'
             },
             {
-              icon: <Sparkles className="size-8 text-blue-600" />,
+              icon: <Eye className="size-8 text-green-600" />,
               title: 'Design',
               description: 'Ouvrant discret avec profilés fins pour un maximum de luminosité et d\'esthétisme'
             }
           ].map((value, index) => (
             <div
               key={index}
-              className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
+              className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-xl"
             >
-              <div className="mb-4 inline-flex rounded-xl bg-blue-50 p-3 transition-colors group-hover:bg-blue-100">
+              <div className="mb-4 inline-flex rounded-xl bg-green-50 p-3 transition-colors group-hover:bg-green-100">
                 {value.icon}
               </div>
               <Typography variant="h3" className="mb-3 text-xl font-bold text-gray-900">
@@ -183,7 +181,7 @@ export default function SwaoPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-300 hover:shadow-lg"
+              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
                 <span className="text-3xl">{item.icon}</span>
@@ -194,7 +192,7 @@ export default function SwaoPage() {
               <ul className="space-y-2">
                 {item.products.map((product, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-blue-600" />
+                    <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
                     <Typography variant="p" className="text-sm text-gray-700">
                       {product}
                     </Typography>
@@ -235,8 +233,8 @@ export default function SwaoPage() {
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-blue-100">
-                      <CheckCircle2 className="size-6 text-blue-600" />
+                    <div className="flex size-10 items-center justify-center rounded-full bg-green-100">
+                      <CheckCircle2 className="size-6 text-green-600" />
                     </div>
                   </div>
                   <div>
@@ -252,9 +250,9 @@ export default function SwaoPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
+          <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 p-8">
             <div className="mb-6">
-              <Building2 className="mb-4 size-12 text-blue-600" />
+              <Building2 className="mb-4 size-12 text-green-600" />
               <Typography variant="h3" className="mb-4 text-2xl font-bold text-gray-900">
                 Une collaboration de confiance
               </Typography>
@@ -303,18 +301,18 @@ export default function SwaoPage() {
 
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 p-12 text-center shadow-2xl">
+        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-green-600 to-emerald-700 p-12 text-center shadow-2xl">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-white lg:text-4xl">
             Découvrez nos réalisations avec SWAO
           </Typography>
-          <Typography variant="p" className="mb-8 text-lg text-blue-50">
+          <Typography variant="p" className="mb-8 text-lg text-green-50">
             Segment C est fier de travailler avec SWAO pour vous offrir des menuiseries innovantes et connectées
           </Typography>
           
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/realisations"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-blue-600 transition-all hover:bg-gray-50 hover:shadow-xl"
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Voir nos réalisations
               <ArrowRight className="size-5" />
@@ -322,7 +320,7 @@ export default function SwaoPage() {
             
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-blue-600"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
             >
               Demander un devis
               <ArrowRight className="size-5" />

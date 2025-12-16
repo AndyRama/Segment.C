@@ -12,9 +12,9 @@ import {
   CheckCircle2, 
   ArrowRight,
   Factory,
-  Target,
-  Users,
-  Sparkles
+  TrendingUp,
+  ShieldCheck,
+  Hammer
 } from 'lucide-react';
 
 export default function SybaiePage() {
@@ -101,22 +101,22 @@ export default function SybaiePage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: <Target className="size-8 text-green-600" />,
+              icon: <TrendingUp className="size-8 text-green-600" />,
               title: 'Innovation',
               description: 'Des produits innovants qui facilitent votre travail et se démarquent sur le terrain'
             },
             {
-              icon: <Award className="size-8 text-green-600" />,
+              icon: <ShieldCheck className="size-8 text-green-600" />,
               title: 'Qualité',
               description: 'Des menuiseries conçues avec les meilleurs matériaux et finitions'
             },
             {
-              icon: <Users className="size-8 text-green-600" />,
+              icon: <Hammer className="size-8 text-green-600" />,
               title: 'Communauté',
               description: '100% menuisiers - Une marque créée par et pour les artisans'
             },
             {
-              icon: <Sparkles className="size-8 text-green-600" />,
+              icon: <Award className="size-8 text-green-600" />,
               title: 'Savoir-faire',
               description: 'L\'expertise de l\'artisan au cœur de chaque projet'
             }
