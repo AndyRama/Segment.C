@@ -71,7 +71,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/#"
+                    href="/partenaire/sybaie"
                   >
                     Sybaie
                   </Typography>
