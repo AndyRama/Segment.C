@@ -60,113 +60,6 @@ export const Footer = () => {
 
             {/* Navigation en colonnes - partie droite */}
             <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-5 md:gap-8 lg:gap-12">
-              
-              {/* Colonne fenêtre */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Nos fenêtres
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/fenetres"
-                  >
-                    Fenêtres 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/baie"
-                  >
-                    Baie-vitrée
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/#"
-                  >
-                    Volets 
-                  </Typography>
-                </div>
-              </div>           
-
-              {/* Colonne portes */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Nos portes
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
-                    Portes d'entrée
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
-                    Portes vitrée
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
-                    Portes de service
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/garage"
-                  >
-                    Portes de garage
-                  </Typography>
-                </div>
-              </div>    
-
-              {/* Colonne autre */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Extèrieur
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portails"
-                  >
-                    Portails 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="#"
-                  >
-                    Pergolas 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="#"
-                  >
-                    Véranda
-                  </Typography>
-                </div>
-              </div>     
 
               {/* Colonne Partenaires */}
               <div className="flex flex-col gap-3">
@@ -216,6 +109,113 @@ export const Footer = () => {
                   </Typography>
                 </div>
               </div>
+              
+              {/* Colonne fenêtre */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Nos fenêtres
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/fenetres"
+                  >
+                    Fenêtres 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/baie"
+                  >
+                    Baie-vitrée
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/#"
+                  >
+                    Volets 
+                  </Typography>
+                </div>
+              </div>           
+
+              {/* Colonne portes */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Nos portes
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Entrée
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Vitrée
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Service
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/garage"
+                  >
+                    Garage
+                  </Typography>
+                </div>
+              </div>    
+
+              {/* Colonne autre */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Extèrieur
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portails"
+                  >
+                    Portails 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="#"
+                  >
+                    Pergolas 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="#"
+                  >
+                    Véranda
+                  </Typography>
+                </div>
+              </div>     
 
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">
@@ -235,7 +235,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/partenaire"
+                    href="/contact"
                   >
                     Contact
                   </Typography>

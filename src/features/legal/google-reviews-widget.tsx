@@ -17,7 +17,7 @@ export default function GoogleReviewsWidget() {
   const businessInfo: BusinessInfo = {
     name: "Segment.C",
     rating: 4.5,
-    totalReviews: 12,
+    totalReviews: 4,
     googleMapsUrl: "https://www.google.com/maps/place/Segment.C/@44.801618,-0.8412295,17z/data=!3m1!4b1!4m6!3m5!1s0x4801c5cb2a2491b5:0xa4ae917a44c55653!8m2!3d44.8016142!4d-0.8386546!16s%2Fg%2F11mw7sj0n6",
     address: "St Jean d'Illac, France"
   };
@@ -37,7 +37,7 @@ export default function GoogleReviewsWidget() {
       href={businessInfo.googleMapsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-10 right-4 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all duration-500 ease-in-out hover:shadow-xl z-40"
+      className="fixed bottom-8 right-4 bg-white hover:bg-gray-50 shadow-lg rounded-full p-4 flex items-center gap-3 transition-all duration-500 ease-in-out hover:shadow-xl z-40"
       aria-label="Voir les avis Google"
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
