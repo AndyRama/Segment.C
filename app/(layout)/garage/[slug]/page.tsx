@@ -208,12 +208,12 @@ const GarageDetailPage = () => {
             </div>
 
             {/* Prix */}
-            <div className="py-4 border-y">
+            {/* <div className="py-4 border-y">
               <Typography variant="h2" className="text-2xl lg:text-3xl font-bold text-primary">
                 {garage.priceRange}
               </Typography>
               <p className="text-sm text-gray-600 mt-1">Prix indicatif TTC</p>
-            </div>
+            </div> */}
 
             {/* Onglets */}
             <div>
@@ -378,6 +378,9 @@ const GarageDetailPage = () => {
               </div>
             )}
 
+            {/* Section Types de portes de garage */}
+            <AvailableFormsMiniature />
+
             {/* CTA */}
             <div className="pt-6 border-t space-y-3">
               {session ? (
@@ -421,9 +424,6 @@ const GarageDetailPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Section Types de portes de garage */}
-      <AvailableFormsMiniature />
 
       {/* Section avantages */}
       <div className="bg-gray-50 border-y mt-16 py-12">

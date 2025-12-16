@@ -655,7 +655,7 @@ const GarageCard = ({
             {garage.description}
           </p>
 
-          <span className="font-semibold text-primary">{garage.priceRange}</span>
+          {/* <span className="font-semibold text-primary">{garage.priceRange}</span> */}
           <div className="flex items-right justify-end pt-2">
             <Link href={`/garage/${createSlug(garage.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">
