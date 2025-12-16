@@ -147,9 +147,9 @@ const HeroAnimation = ({
             >
               {title}
               <br />
-              <span className="font-bold italic text-green-500">{titleHighlight}</span>
+              <span className="font-bold italic text-green-500">{titleHighlight} -</span>
               <br className="hidden md:content"/>
-              {subtitle && `- ${subtitle}`}
+              {subtitle && `${subtitle}`}
             </motion.h1>
             
             <motion.p
