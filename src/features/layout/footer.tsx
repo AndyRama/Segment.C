@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Typography } from "@/components/nowts/typography";
 import { SiteConfig } from "@/site-config";
 import { Layout, LayoutContent } from "@/features/page/layout";
-import { Mail, Home, Phone, Earth, Clock  } from "lucide-react";
+import { Mail, Home, Phone, Earth, Clock } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -22,7 +22,7 @@ export const Footer = () => {
 
               <div className="flex flex-col gap-2 text-gray-600">
                 <div className="flex items-center gap-2">
-                  <Earth  className="size-4 text-gray-500" />
+                  <Earth className="size-4 text-gray-500" />
                   <Typography variant="muted">
                     Une portes ouvertes sur vos fênetres
                   </Typography>
@@ -108,7 +108,7 @@ export const Footer = () => {
                   >
                     Portes d'entrée
                   </Typography>
-                      <Typography
+                  <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
@@ -168,7 +168,7 @@ export const Footer = () => {
                 </div>
               </div>     
 
-              {/* Colonne Site */}
+              {/* Colonne Partenaires */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
                   Partenaires
@@ -215,8 +215,10 @@ export const Footer = () => {
                     Orial
                   </Typography>
                 </div>
+              </div>
 
-                <div className="flex flex-col gap-3">
+              {/* Colonne Site */}
+              <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
                   Site
                 </Typography>
@@ -237,7 +239,7 @@ export const Footer = () => {
                   >
                     Contact
                   </Typography>
-                      <Typography
+                  <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
