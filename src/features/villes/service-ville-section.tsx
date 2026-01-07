@@ -1,8 +1,350 @@
 'use client';
 
-import React from 'react';
-import { Check, Send, Phone, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Send, Phone, Mail, User, MessageSquare, Star } from 'lucide-react';
 import type { ServiceVilleSectionProps } from './types';
+
+// Composant de formulaire inline
+const ContactFormInline = () => {
+  const [userType, setUserType] = useState<'particulier' | 'professionnel'>('particulier');
+  const [formData, setFormData] = useState({
+    // Champs communs
+    name: '',
+    email: '',
+    phone: '',
+    description: '',
+    // Champs particuliers
+    projectType: 'Test 1',
+    // Champs professionnels
+    company: '',
+    companySize: '1-10 employés',
+    sector: 'Test 1',
+    position: ''
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    
+    // Préparer les données pour l'envoi
+    const dataToSend = {
+      clientType: userType,
+      nomComplet: formData.name,
+      email: formData.email,
+      telephone: formData.phone,
+      descriptionProjet: formData.description,
+      // Champs conditionnels selon le type
+      ...(userType === 'particulier' 
+        ? { typeProjet: formData.projectType }
+        : {
+            nomContact: formData.name,
+            nomEntreprise: formData.company,
+            fonction: formData.position,
+            secteurActivite: formData.sector,
+            tailleEntreprise: formData.companySize
+          }
+      )
+    };
+
+    // eslint-disable-next-line no-console
+    console.log('Form submitted:', dataToSend);
+    
+    // Simuler l'envoi
+    setTimeout(() => {
+      setIsSubmitted(false);
+      alert('Votre demande a été envoyée ! Nous vous répondrons sous 24h.');
+      // Réinitialiser le formulaire
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        description: '',
+        projectType: 'Test 1',
+        company: '',
+        companySize: '1-10 employés',
+        sector: 'Test 1',
+        position: ''
+      });
+    }, 2000);
+  };
+
+  const particularProjectTypes = [
+    'Test 1',
+    'Test 2',
+    'Test 3',
+    'Test 4',
+    'Test 5',
+    'Autre'
+  ];
+
+  const companySizes = [
+    '1-10 employés',
+    '11-50 employés',
+    '51-200 employés',
+    '201-1000 employés',
+    '1000+ employés'
+  ];
+
+  const sectors = [
+    'Test 1',
+    'Test 2',
+    'Test 3',
+    'Test 4',
+    'Test 5',
+    'Test 6',
+    'Test 7',
+    'Autre'
+  ];
+
+  return (
+    <div className="space-y-4">
+      {/* Header with Toggle */}
+      <div className="flex items-center justify-center mb-6">
+        <div className="flex rounded-lg bg-gray-200 p-1">
+          <button
+            type="button"
+            onClick={() => setUserType('particulier')}
+            className={`rounded-md px-4 py-2 text-sm font-medium transition-all ${
+              userType === 'particulier'
+                ? 'bg-green-600 text-white shadow-sm'
+                : 'text-gray-600 hover:text-gray-800'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <div className={`size-2 rounded-full ${userType === 'particulier' ? 'bg-white' : 'bg-green-600'}`}></div>
+              Particulier
+            </div>
+          </button>
+          <button
+            type="button"
+            onClick={() => setUserType('professionnel')}
+            className={`rounded-md px-4 py-2 text-sm font-medium transition-all ${
+              userType === 'professionnel'
+                ? 'bg-green-600 text-white shadow-sm'
+                : 'text-gray-600 hover:text-gray-800'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <div className={`size-2 rounded-full ${userType === 'professionnel' ? 'bg-white' : 'bg-green-600'}`}></div>
+              Professionnel
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* Nom complet / Contact */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            {userType === 'particulier' ? 'Nom complet *' : 'Nom du contact *'}
+          </label>
+          <div className="relative">
+            <User className="absolute left-3 top-3 size-4 text-gray-400" />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder={userType === 'particulier' ? 'Nom Prénom' : 'Nom du responsable'}
+              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+              required
+            />
+          </div>
+        </div>
+        
+        {/* Email */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            Email *
+          </label>
+          <div className="relative">
+            <Mail className="absolute left-3 top-3 size-4 text-gray-400" />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder={userType === 'particulier' ? 'contact@email.com' : 'contact@entreprise.com'}
+              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Entreprise (Pro uniquement) */}
+      {userType === 'professionnel' && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              Nom de l'entreprise *
+            </label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleInputChange}
+              placeholder="Nom de votre entreprise"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+              required
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              Votre fonction
+            </label>
+            <input
+              type="text"
+              name="position"
+              value={formData.position}
+              onChange={handleInputChange}
+              placeholder="Directeur, Manager..."
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Téléphone et Type/Secteur */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            Téléphone
+          </label>
+          <div className="relative">
+            <Phone className="absolute left-3 top-3 size-4 text-gray-400" />
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="06 12 34 56 78"
+              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+            />
+          </div>
+        </div>
+
+        {/* Type de projet (Particulier) ou Secteur (Pro) */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            {userType === 'particulier' ? 'Type de projet *' : 'Secteur d\'activité *'}
+          </label>
+          <select
+            name={userType === 'particulier' ? 'projectType' : 'sector'}
+            value={userType === 'particulier' ? formData.projectType : formData.sector}
+            onChange={handleInputChange}
+            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+            required
+          >
+            {(userType === 'particulier' ? particularProjectTypes : sectors).map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Taille entreprise (Pro uniquement) */}
+      {userType === 'professionnel' && (
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            Taille de l'entreprise *
+          </label>
+          <select
+            name="companySize"
+            value={formData.companySize}
+            onChange={handleInputChange}
+            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+            required
+          >
+            {companySizes.map((size) => (
+              <option key={size} value={size}>{size}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {/* Description du projet */}
+      <div>
+        <label className="mb-1 block text-sm font-medium text-gray-700">
+          Description du projet *
+        </label>
+        <div className="relative">
+          <MessageSquare className="absolute left-3 top-3 size-4 text-gray-400" />
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            placeholder="Décrivez votre projet en détail : objectifs, budget approximatif, délais souhaités..."
+            rows={4}
+            className="w-full resize-none rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+            required
+          />
+        </div>
+      </div>
+
+      {/* Garanties incluses */}
+      <div className="rounded-lg border border-green-100 bg-green-50 p-4">
+        <div className="mb-3 flex items-center gap-2">
+          <Check className="size-4 text-green-600" />
+          <span className="text-sm font-medium text-green-700">Garanties incluses :</span>
+        </div>
+        <ul className="space-y-1.5 text-sm text-green-600">
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
+            <span>Devis détaillé gratuit sous 24h</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
+            <span>Accompagnement et suivi personnalisé</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
+            <span>Résultats mesurables et plans adaptés</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
+            <span>Garantie de qualité et respect des délais</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Submit Button */}
+      <button
+        type="button"
+        onClick={handleSubmit}
+        disabled={isSubmitted}
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:bg-green-700 disabled:bg-green-400"
+      >
+        {isSubmitted ? (
+          <>
+            <div className="size-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+            Envoi en cours...
+          </>
+        ) : (
+          <>
+            <Send className="size-4" />
+            Envoyer ma demande
+          </>
+        )}
+      </button>
+
+      {/* Footer text */}
+      <p className="text-center text-xs leading-relaxed text-gray-500">
+        En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe pour votre projet.
+      </p>
+    </div>
+  );
+};
 
 export const ServiceVilleSection = ({
   city,
@@ -15,14 +357,6 @@ export const ServiceVilleSection = ({
   founderEmail,
   founderImage = 'https://placehold.co/80x80/8B4513/FFFFFF?text=SC',
 }: ServiceVilleSectionProps) => {
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log('Form submitted:', Object.fromEntries(formData));
-    alert('Votre demande a été envoyée ! Nous vous répondrons sous 24h.');
-  };
-
   return (
     <section className="bg-white py-16" id="contact-form">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,88 +421,7 @@ export const ServiceVilleSection = ({
                 Remplissez le formulaire ci-dessous, nous vous répondons sous 24h
               </p>
 
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Nom complet <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Votre nom"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="votre@email.fr"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Téléphone <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="06 12 34 56 78"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="clientType" className="block text-sm font-medium text-gray-700 mb-1">
-                      Type de client <span className="text-red-500">*</span>
-                    </label>
-                    <select 
-                      id="clientType"
-                      name="clientType"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                    >
-                      <option>Particulier</option>
-                      <option>Professionnel</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Décrivez votre besoin en menuiserie..."
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none bg-white"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center bg-green-600 text-white font-semibold py-4 px-6 rounded-lg shadow-lg hover:bg-green-700 transition"
-                >
-                  <Send className="w-5 h-5 mr-2" />
-                  Envoyer ma demande
-                </button>
-              </form>
+              <ContactFormInline />
             </div>
 
             {/* Card Contact */}

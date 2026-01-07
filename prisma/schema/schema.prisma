@@ -125,8 +125,8 @@ model Devis {
   status           String   @default("nouveau") // "nouveau", "en_cours", "traite", "refuse"
   
   // Relations - CRUCIAL : Chaque devis appartient à UN utilisateur
-  userId           String
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           String?
+  user             User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   // Relation Many-to-Many avec les produits
   products         DevisProduct[]
