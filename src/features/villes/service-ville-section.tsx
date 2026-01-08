@@ -129,7 +129,7 @@ const ContactFormInline = () => {
         
         if (result.success) {
           // Succès - afficher message et réinitialiser
-          alert('✅ ' + result.message);
+          alert(`✅ ${result.message}`);
           
           // Réinitialiser le formulaire
           setFormData({
@@ -149,7 +149,7 @@ const ContactFormInline = () => {
             companySize: '',
           });
         } else {
-          alert('❌ ' + result.message);
+          alert(`❌ ${result.message}`);
         }
       } catch (error) {
         // eslint-disable-next-line no-console
