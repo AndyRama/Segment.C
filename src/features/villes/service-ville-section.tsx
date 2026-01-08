@@ -167,7 +167,6 @@ const ContactFormInline = () => {
     { value: 'porte', label: 'Porte d\'entrée' },
     { value: 'baie-vitree', label: 'Baie vitrée' },
     { value: 'volets', label: 'Volets' },
-    { value: 'persiennes', label: 'Persiennes' },
     { value: 'pergolas', label: 'Pergolas' },
     { value: 'veranda', label: 'Véranda' },
     { value: 'menuiserie', label: 'Menuiserie' },
@@ -216,7 +215,7 @@ const ContactFormInline = () => {
           >
             <div className="flex items-center gap-2">
               <div className={`size-2 rounded-full ${userType === 'particulier' ? 'bg-white' : 'bg-green-600'}`}></div>
-              👤 Particulier
+                Particulier
             </div>
           </button>
           <button
@@ -231,7 +230,7 @@ const ContactFormInline = () => {
           >
             <div className="flex items-center gap-2">
               <div className={`size-2 rounded-full ${userType === 'professionnel' ? 'bg-white' : 'bg-green-600'}`}></div>
-              🏢 Professionnel
+                Professionnel
             </div>
           </button>
         </div>
@@ -298,6 +297,7 @@ const ContactFormInline = () => {
                   className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
                   disabled={isPending}
                 />
+                {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
               </div>
             </div>
 
@@ -740,7 +740,7 @@ export const ServiceVilleSection = ({
                   alt={founderName}
                   className="w-16 h-16 rounded-full border-2 border-green-100 object-cover"
                   onError={(e) => {
-                    e.currentTarget.src = 'https://placehold.co/80x80/8B4513/FFFFFF?text=SC';
+                    e.currentTarget.src = 'https://placehold.co/80x80/8B4513/FFFFFF?text=S.C';
                   }}
                 />
                 <div>
