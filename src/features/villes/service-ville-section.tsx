@@ -112,17 +112,17 @@ const ContactFormInline = () => {
           typeProjet: formData.projectType || undefined,
           
           // Champs construction (particuliers)
-          typeConstruction: formData.typeConstruction as "je_fais_construire" | "je_construis_moi_meme" | undefined,
-          typeBatiment: formData.typeBatiment as "maison" | "autre" | undefined,
-          natureTravaux: formData.natureTravaux as "construction" | "renovation" | undefined,
-          besoinsRGE: formData.besoinsRGE as "oui" | "non" | "ne_sait_pas" | undefined,
+          typeConstruction: (formData.typeConstruction || undefined) as "je_fais_construire" | "je_construis_moi_meme" | undefined,
+          typeBatiment: (formData.typeBatiment || undefined) as "maison" | "autre" | undefined,
+          natureTravaux: (formData.natureTravaux || undefined) as "construction" | "renovation" | undefined,
+          besoinsRGE: (formData.besoinsRGE || undefined) as "oui" | "non" | "ne_sait_pas" | undefined,
           
           // Champs professionnels
-          nomContact: userType === 'professionnel' ? (formData.name.trim() || undefined) : undefined,
-         nomEntreprise: userType === 'professionnel' ? (formData.company.trim() || undefined) : undefined,
-         fonction: userType === 'professionnel' ? (formData.position.trim() || undefined) : undefined,
-         secteurActivite: userType === 'professionnel' ? (formData.sector.trim() || undefined) : undefined,
-         tailleEntreprise: userType === 'professionnel' ? (formData.companySize.trim() || undefined) : undefined,
+          nomContact: userType === 'professionnel' ? formData.name : undefined,
+          nomEntreprise: userType === 'professionnel' ? formData.company : undefined,
+          fonction: userType === 'professionnel' ? (formData.position || undefined) : undefined,
+          secteurActivite: userType === 'professionnel' ? formData.sector : undefined,
+          tailleEntreprise: userType === 'professionnel' ? (formData.companySize || undefined) : undefined,
         };
 
         const result = await createPublicDevisAction(dataToSend);
