@@ -1,28 +1,39 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Check, Send, Phone, Mail, User, MessageSquare, Star } from 'lucide-react';
+import React, { useState, useTransition } from 'react';
+import { Check, Send, Phone, Mail, User, MessageSquare, Building2, Briefcase, Users } from 'lucide-react';
+import { createPublicDevisAction } from './public-devis.actions';
 import type { ServiceVilleSectionProps } from './types';
 
-// Composant de formulaire inline
+// Composant de formulaire complet avec connexion BDD
 const ContactFormInline = () => {
   const [userType, setUserType] = useState<'particulier' | 'professionnel'>('particulier');
+  const [isPending, startTransition] = useTransition();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
   const [formData, setFormData] = useState({
     // Champs communs
     name: '',
     email: '',
     phone: '',
     description: '',
+    
     // Champs particuliers
-    projectType: 'Test 1',
+    projectType: '',
+    typeConstruction: '',
+    typeBatiment: '',
+    natureTravaux: '',
+    besoinsRGE: '',
+    
     // Champs professionnels
+    contactName: '',
     company: '',
-    companySize: '1-10 employés',
-    sector: 'Test 1',
-    position: ''
+    position: '',
+    sector: '',
+    companySize: '',
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -30,80 +41,162 @@ const ContactFormInline = () => {
       ...prev,
       [name]: value
     }));
+    // Effacer l'erreur du champ modifié
+    if (errors[name]) {
+      setErrors(prev => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { [name]: _, ...rest } = prev;
+        return rest;
+      });
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    // Validation commune
+    if (!formData.name.trim()) {
+      newErrors.name = 'Le nom est requis';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'L\'email est requis';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Email invalide';
+    }
+    if (!formData.description.trim() || formData.description.length < 10) {
+      newErrors.description = 'La description doit contenir au moins 10 caractères';
+    }
+
+    // Validation particulier
+    if (userType === 'particulier') {
+      if (!formData.projectType) {
+        newErrors.projectType = 'Le type de projet est requis';
+      }
+    }
+
+    // Validation professionnel
+    if (userType === 'professionnel') {
+      if (!formData.company.trim()) {
+        newErrors.company = 'Le nom de l\'entreprise est requis';
+      }
+      if (!formData.sector) {
+        newErrors.sector = 'Le secteur d\'activité est requis';
+      }
+      if (!formData.projectType) {
+        newErrors.projectType = 'Le type de projet est requis';
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
     
-    // Préparer les données pour l'envoi
-    const dataToSend = {
-      clientType: userType,
-      nomComplet: formData.name,
-      email: formData.email,
-      telephone: formData.phone,
-      descriptionProjet: formData.description,
-      // Champs conditionnels selon le type
-      ...(userType === 'particulier' 
-        ? { typeProjet: formData.projectType }
-        : {
-            nomContact: formData.name,
-            nomEntreprise: formData.company,
-            fonction: formData.position,
-            secteurActivite: formData.sector,
-            tailleEntreprise: formData.companySize
-          }
-      )
-    };
+    if (!validateForm()) {
+      return;
+    }
 
-    // eslint-disable-next-line no-console
-    console.log('Form submitted:', dataToSend);
-    
-    // Simuler l'envoi
-    setTimeout(() => {
-      setIsSubmitted(false);
-      alert('Votre demande a été envoyée ! Nous vous répondrons sous 24h.');
-      // Réinitialiser le formulaire
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        description: '',
-        projectType: 'Test 1',
-        company: '',
-        companySize: '1-10 employés',
-        sector: 'Test 1',
-        position: ''
-      });
-    }, 2000);
+    startTransition(async () => {
+      setIsSubmitted(true);
+      
+      try {
+        // Préparer les données selon le schéma DevisFormType
+        const dataToSend = {
+          clientType: userType,
+          nomComplet: formData.name,
+          email: formData.email,
+          telephone: formData.phone || undefined,
+          descriptionProjet: formData.description,
+          typeProjet: formData.projectType || undefined,
+          
+          // Champs construction (particuliers)
+          typeConstruction: formData.typeConstruction as "je_fais_construire" | "je_construis_moi_meme" | undefined,
+          typeBatiment: formData.typeBatiment as "maison" | "autre" | undefined,
+          natureTravaux: formData.natureTravaux as "construction" | "renovation" | undefined,
+          besoinsRGE: formData.besoinsRGE as "oui" | "non" | "ne_sait_pas" | undefined,
+          
+          // Champs professionnels
+          nomContact: userType === 'professionnel' ? formData.name : undefined,
+          nomEntreprise: formData.company || undefined,
+          fonction: formData.position || undefined,
+          secteurActivite: formData.sector || undefined,
+          tailleEntreprise: formData.companySize || undefined,
+        };
+
+        const result = await createPublicDevisAction(dataToSend);
+        
+        if (result.success) {
+          // Succès - afficher message et réinitialiser
+          alert('✅ ' + result.message);
+          
+          // Réinitialiser le formulaire
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            description: '',
+            projectType: '',
+            typeConstruction: '',
+            typeBatiment: '',
+            natureTravaux: '',
+            besoinsRGE: '',
+            contactName: '',
+            company: '',
+            position: '',
+            sector: '',
+            companySize: '',
+          });
+        } else {
+          alert('❌ ' + result.message);
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Erreur lors de l\'envoi:', error);
+        alert('Une erreur est survenue. Veuillez réessayer.');
+      } finally {
+        setIsSubmitted(false);
+      }
+    });
   };
 
-  const particularProjectTypes = [
-    'Test 1',
-    'Test 2',
-    'Test 3',
-    'Test 4',
-    'Test 5',
-    'Autre'
-  ];
-
-  const companySizes = [
-    '1-10 employés',
-    '11-50 employés',
-    '51-200 employés',
-    '201-1000 employés',
-    '1000+ employés'
+  // Options de sélection
+  const projectTypes = [
+    { value: 'fenetre', label: 'Fenêtre' },
+    { value: 'porte', label: 'Porte d\'entrée' },
+    { value: 'baie-vitree', label: 'Baie vitrée' },
+    { value: 'volets', label: 'Volets' },
+    { value: 'persiennes', label: 'Persiennes' },
+    { value: 'pergolas', label: 'Pergolas' },
+    { value: 'veranda', label: 'Véranda' },
+    { value: 'menuiserie', label: 'Menuiserie' },
+    { value: 'autre', label: 'Autre' },
   ];
 
   const sectors = [
-    'Test 1',
-    'Test 2',
-    'Test 3',
-    'Test 4',
-    'Test 5',
-    'Test 6',
-    'Test 7',
-    'Autre'
+    { value: 'hotellerie-restauration', label: 'Hôtellerie & Restauration' },
+    { value: 'commerce-retail', label: 'Commerce & Retail' },
+    { value: 'bureaux-tertiaire', label: 'Bureaux & Tertiaire' },
+    { value: 'sante-medical', label: 'Santé & Médical' },
+    { value: 'industrie-logistique', label: 'Industrie & Logistique' },
+    { value: 'immobilier-syndic', label: 'Immobilier & Syndics' },
+    { value: 'education-formation', label: 'Éducation & Formation' },
+    { value: 'sport-loisirs', label: 'Sport & Loisirs' },
+    { value: 'services-publics', label: 'Services Publics' },
+    { value: 'artisanat-local', label: 'Artisanat & Commerce Local' },
+    { value: 'banque-assurance', label: 'Banque & Assurance' },
+    { value: 'transport-automobile', label: 'Transport & Automobile' },
+    { value: 'agriculture-cooperative', label: 'Agriculture & Coopératives' },
+    { value: 'technologie-startup', label: 'Technologie & Startups' },
+    { value: 'autre', label: 'Autre secteur' },
+  ];
+
+  const companySizes = [
+    { value: '1-10', label: '1-10 employés' },
+    { value: '11-50', label: '11-50 employés' },
+    { value: '51-200', label: '51-200 employés' },
+    { value: '200+', label: '200+ employés' },
   ];
 
   return (
@@ -114,6 +207,7 @@ const ContactFormInline = () => {
           <button
             type="button"
             onClick={() => setUserType('particulier')}
+            disabled={isPending}
             className={`rounded-md px-4 py-2 text-sm font-medium transition-all ${
               userType === 'particulier'
                 ? 'bg-green-600 text-white shadow-sm'
@@ -122,12 +216,13 @@ const ContactFormInline = () => {
           >
             <div className="flex items-center gap-2">
               <div className={`size-2 rounded-full ${userType === 'particulier' ? 'bg-white' : 'bg-green-600'}`}></div>
-              Particulier
+              👤 Particulier
             </div>
           </button>
           <button
             type="button"
             onClick={() => setUserType('professionnel')}
+            disabled={isPending}
             className={`rounded-md px-4 py-2 text-sm font-medium transition-all ${
               userType === 'professionnel'
                 ? 'bg-green-600 text-white shadow-sm'
@@ -136,144 +231,356 @@ const ContactFormInline = () => {
           >
             <div className="flex items-center gap-2">
               <div className={`size-2 rounded-full ${userType === 'professionnel' ? 'bg-white' : 'bg-green-600'}`}></div>
-              Professionnel
+              🏢 Professionnel
             </div>
           </button>
         </div>
       </div>
 
-      {/* Nom complet / Contact */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
-            {userType === 'particulier' ? 'Nom complet *' : 'Nom du contact *'}
-          </label>
-          <div className="relative">
-            <User className="absolute left-3 top-3 size-4 text-gray-400" />
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder={userType === 'particulier' ? 'Nom Prénom' : 'Nom du responsable'}
-              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
-              required
-            />
+      {/* ========== FORMULAIRE PARTICULIER ========== */}
+      {userType === 'particulier' && (
+        <>
+          {/* Nom et Email */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Nom complet *
+              </label>
+              <div className="relative">
+                <User className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Nom Prénom"
+                  className={`w-full rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'} py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white`}
+                  disabled={isPending}
+                />
+                {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
+              </div>
+            </div>
+            
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Email *
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="contact@email.com"
+                  className={`w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white`}
+                  disabled={isPending}
+                />
+                {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+              </div>
+            </div>
           </div>
-        </div>
-        
-        {/* Email */}
-        <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
-            Email *
-          </label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-3 size-4 text-gray-400" />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder={userType === 'particulier' ? 'contact@email.com' : 'contact@entreprise.com'}
-              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
-              required
-            />
-          </div>
-        </div>
-      </div>
 
-      {/* Entreprise (Pro uniquement) */}
-      {userType === 'professionnel' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
-              Nom de l'entreprise *
-            </label>
-            <input
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleInputChange}
-              placeholder="Nom de votre entreprise"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
-              required
-            />
+          {/* Téléphone et Type de projet */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Téléphone
+              </label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="06 12 34 56 78"
+                  className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+                  disabled={isPending}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Type de projet *
+              </label>
+              <select
+                name="projectType"
+                value={formData.projectType}
+                onChange={handleInputChange}
+                className={`w-full rounded-lg border ${errors.projectType ? 'border-red-500' : 'border-gray-300'} bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500`}
+                disabled={isPending}
+              >
+                <option value="">Sélectionnez un type</option>
+                {projectTypes.map((type) => (
+                  <option key={type.value} value={type.value}>{type.label}</option>
+                ))}
+              </select>
+              {errors.projectType && <p className="mt-1 text-xs text-red-600">{errors.projectType}</p>}
+            </div>
           </div>
-          <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
-              Votre fonction
-            </label>
-            <input
-              type="text"
-              name="position"
-              value={formData.position}
-              onChange={handleInputChange}
-              placeholder="Directeur, Manager..."
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
-            />
-          </div>
-        </div>
+
+          {/* Section Projet de construction (optionnelle pour particuliers) */}
+          {formData.projectType && (
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200 space-y-3">
+              <h4 className="text-sm font-semibold text-green-800 mb-3">
+                📋 Informations complémentaires (optionnel)
+              </h4>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-gray-700">
+                    Type de construction
+                  </label>
+                  <select
+                    name="typeConstruction"
+                    value={formData.typeConstruction}
+                    onChange={handleInputChange}
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+                    disabled={isPending}
+                  >
+                    <option value="">Non spécifié</option>
+                    <option value="je_fais_construire">Je fais construire</option>
+                    <option value="je_construis_moi_meme">Je construis moi-même</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-gray-700">
+                    Type de bâtiment
+                  </label>
+                  <select
+                    name="typeBatiment"
+                    value={formData.typeBatiment}
+                    onChange={handleInputChange}
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+                    disabled={isPending}
+                  >
+                    <option value="">Non spécifié</option>
+                    <option value="maison">Maison</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-gray-700">
+                    Nature des travaux
+                  </label>
+                  <select
+                    name="natureTravaux"
+                    value={formData.natureTravaux}
+                    onChange={handleInputChange}
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+                    disabled={isPending}
+                  >
+                    <option value="">Non spécifié</option>
+                    <option value="construction">Construction</option>
+                    <option value="renovation">Rénovation</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-gray-700">
+                    Besoin de certification RGE ?
+                  </label>
+                  <select
+                    name="besoinsRGE"
+                    value={formData.besoinsRGE}
+                    onChange={handleInputChange}
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+                    disabled={isPending}
+                  >
+                    <option value="">Non spécifié</option>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                    <option value="ne_sait_pas">Je ne sais pas</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="bg-green-100 p-3 rounded border border-green-300 mt-3">
+                <p className="text-xs text-green-800">
+                  ℹ️ <strong>Certification RGE :</strong> Indispensable pour bénéficier des aides à la rénovation énergétique (MaPrimeRénov', CEE, etc.)
+                </p>
+              </div>
+            </div>
+          )}
+        </>
       )}
 
-      {/* Téléphone et Type/Secteur */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
-            Téléphone
-          </label>
-          <div className="relative">
-            <Phone className="absolute left-3 top-3 size-4 text-gray-400" />
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              placeholder="06 12 34 56 78"
-              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
-            />
-          </div>
-        </div>
-
-        {/* Type de projet (Particulier) ou Secteur (Pro) */}
-        <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
-            {userType === 'particulier' ? 'Type de projet *' : 'Secteur d\'activité *'}
-          </label>
-          <select
-            name={userType === 'particulier' ? 'projectType' : 'sector'}
-            value={userType === 'particulier' ? formData.projectType : formData.sector}
-            onChange={handleInputChange}
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
-            required
-          >
-            {(userType === 'particulier' ? particularProjectTypes : sectors).map((option) => (
-              <option key={option} value={option}>{option}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Taille entreprise (Pro uniquement) */}
+      {/* ========== FORMULAIRE PROFESSIONNEL ========== */}
       {userType === 'professionnel' && (
-        <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
-            Taille de l'entreprise *
-          </label>
-          <select
-            name="companySize"
-            value={formData.companySize}
-            onChange={handleInputChange}
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
-            required
-          >
-            {companySizes.map((size) => (
-              <option key={size} value={size}>{size}</option>
-            ))}
-          </select>
-        </div>
+        <>
+          {/* Nom du contact et Email */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Nom du contact *
+              </label>
+              <div className="relative">
+                <User className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Nom du responsable"
+                  className={`w-full rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'} py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white`}
+                  disabled={isPending}
+                />
+                {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
+              </div>
+            </div>
+            
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Email *
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="contact@entreprise.com"
+                  className={`w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white`}
+                  disabled={isPending}
+                />
+                {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+              </div>
+            </div>
+          </div>
+
+          {/* Entreprise et Fonction */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Nom de l'entreprise *
+              </label>
+              <div className="relative">
+                <Building2 className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="Nom de votre entreprise"
+                  className={`w-full rounded-lg border ${errors.company ? 'border-red-500' : 'border-gray-300'} py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white`}
+                  disabled={isPending}
+                />
+                {errors.company && <p className="mt-1 text-xs text-red-600">{errors.company}</p>}
+              </div>
+            </div>
+            
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Votre fonction
+              </label>
+              <div className="relative">
+                <Briefcase className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="text"
+                  name="position"
+                  value={formData.position}
+                  onChange={handleInputChange}
+                  placeholder="Directeur, Manager..."
+                  className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+                  disabled={isPending}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Téléphone et Type de projet */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Téléphone
+              </label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-3 size-4 text-gray-400" />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="06 12 34 56 78"
+                  className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
+                  disabled={isPending}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Type de projet *
+              </label>
+              <select
+                name="projectType"
+                value={formData.projectType}
+                onChange={handleInputChange}
+                className={`w-full rounded-lg border ${errors.projectType ? 'border-red-500' : 'border-gray-300'} bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500`}
+                disabled={isPending}
+              >
+                <option value="">Sélectionnez un type</option>
+                {projectTypes.map((type) => (
+                  <option key={type.value} value={type.value}>{type.label}</option>
+                ))}
+              </select>
+              {errors.projectType && <p className="mt-1 text-xs text-red-600">{errors.projectType}</p>}
+            </div>
+          </div>
+
+          {/* Secteur d'activité et Taille entreprise */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Secteur d'activité *
+              </label>
+              <select
+                name="sector"
+                value={formData.sector}
+                onChange={handleInputChange}
+                className={`w-full rounded-lg border ${errors.sector ? 'border-red-500' : 'border-gray-300'} bg-white px-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500`}
+                disabled={isPending}
+              >
+                <option value="">Sélectionnez un secteur</option>
+                {sectors.map((sector) => (
+                  <option key={sector.value} value={sector.value}>{sector.label}</option>
+                ))}
+              </select>
+              {errors.sector && <p className="mt-1 text-xs text-red-600">{errors.sector}</p>}
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Taille de l'entreprise
+              </label>
+              <div className="relative">
+                <Users className="absolute left-3 top-3 size-4 text-gray-400" />
+                <select
+                  name="companySize"
+                  value={formData.companySize}
+                  onChange={handleInputChange}
+                  className="w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 py-2.5 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500"
+                  disabled={isPending}
+                >
+                  <option value="">Sélectionnez la taille</option>
+                  {companySizes.map((size) => (
+                    <option key={size.value} value={size.value}>{size.label}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+        </>
       )}
 
-      {/* Description du projet */}
+      {/* Description du projet (commun) */}
       <div>
         <label className="mb-1 block text-sm font-medium text-gray-700">
           Description du projet *
@@ -286,9 +593,10 @@ const ContactFormInline = () => {
             onChange={handleInputChange}
             placeholder="Décrivez votre projet en détail : objectifs, budget approximatif, délais souhaités..."
             rows={4}
-            className="w-full resize-none rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white"
-            required
+            className={`w-full resize-none rounded-lg border ${errors.description ? 'border-red-500' : 'border-gray-300'} py-2.5 pl-10 pr-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-green-500 bg-white`}
+            disabled={isPending}
           />
+          {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
         </div>
       </div>
 
@@ -322,10 +630,10 @@ const ContactFormInline = () => {
       <button
         type="button"
         onClick={handleSubmit}
-        disabled={isSubmitted}
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:bg-green-700 disabled:bg-green-400"
+        disabled={isPending || isSubmitted}
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:bg-green-700 disabled:bg-green-400 disabled:cursor-not-allowed"
       >
-        {isSubmitted ? (
+        {isPending || isSubmitted ? (
           <>
             <div className="size-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
             Envoi en cours...
@@ -333,7 +641,7 @@ const ContactFormInline = () => {
         ) : (
           <>
             <Send className="size-4" />
-            Envoyer ma demande
+            ⭐ Envoyer ma demande de devis
           </>
         )}
       </button>

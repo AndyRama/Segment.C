@@ -126,7 +126,7 @@ model Devis {
   
   // Relations - CRUCIAL : Chaque devis appartient à UN utilisateur
   userId           String?
-  user             User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user             User?     @relation(fields: [userId], references: [id])
   
   // Relation Many-to-Many avec les produits
   products         DevisProduct[]
