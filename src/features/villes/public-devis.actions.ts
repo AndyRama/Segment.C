@@ -169,7 +169,7 @@ function createEmailTemplate(data: {
           
           <div class="info-row">
             <span class="label">Type de projet :</span>
-            <span class="value">${data.typeProjet || 'Non spécifié'}</span>
+            <span class="value">${data.typeProjet ?? 'Non spécifié'}</span>
           </div>
         </div>
 
