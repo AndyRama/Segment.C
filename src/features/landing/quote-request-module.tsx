@@ -252,7 +252,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
                   >
                     <div className="flex items-center gap-2">
                       <div className={`size-2 rounded-full ${userType === 'particulier' ? 'bg-white' : 'bg-green-600'}`}></div>
-                        Particulier
+                      👤 Particulier
                     </div>
                   </button>
                   <button
@@ -267,7 +267,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
                   >
                     <div className="flex items-center gap-2">
                       <div className={`size-2 rounded-full ${userType === 'professionnel' ? 'bg-white' : 'bg-green-600'}`}></div>
-                        Professionnel
+                      🏢 Professionnel
                     </div>
                   </button>
                 </div>
