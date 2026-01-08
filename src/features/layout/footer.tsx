@@ -81,7 +81,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/partenaire/swao"
                   >
-                    swao
+                    Swao
                   </Typography>
                   <Typography
                     as={Link}

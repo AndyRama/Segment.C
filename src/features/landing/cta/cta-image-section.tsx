@@ -2,7 +2,7 @@
 
 import { Typography } from "@/components/nowts/typography";
 import { SectionLayout } from "../section-layout";
-import QuoteRequestModule from "@/features/landing/quote-request-module-updated";
+import QuoteRequestModule from "@/features/landing/quote-request-module";
 
 export const CTAImageSection = () => {
   return (
