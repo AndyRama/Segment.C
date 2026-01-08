@@ -169,7 +169,7 @@ function createEmailTemplate(data: {
           
           <div class="info-row">
             <span class="label">Type de projet :</span>
-            <span class="value">${data.typeProjet ?? 'Non spécifié'}</span>
+            <span class="value">${data.typeProjet || 'Non spécifié'}</span>
           </div>
         </div>
 
@@ -245,7 +245,7 @@ export async function createPublicDevisAction(data: DevisFormType) {
         nomEntreprise: validatedData.nomEntreprise ?? null,
         email: validatedData.email,
         telephone: validatedData.telephone ?? null,
-        typeProjet: validatedData.typeProjet,
+        typeProjet: validatedData.typeProjet ?? null,
         descriptionProjet: validatedData.descriptionProjet,
         dashboardUrl: dashboardUrl,
       });
