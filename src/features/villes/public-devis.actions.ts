@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { DevisFormSchema, type DevisFormType } from "./devis.schema";
 import { sendEmail } from "@/lib/mail/send-email";
-import NouveauDevisEmail from "../../../../../emails/nouveau-devis-email";
+import NouveauDevisEmail from "./../../../../emails/nouveau-devis-email";
 
 /**
  * Action publique pour créer un devis sans authentification
