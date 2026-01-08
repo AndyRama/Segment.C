@@ -118,11 +118,11 @@ const ContactFormInline = () => {
           besoinsRGE: formData.besoinsRGE as "oui" | "non" | "ne_sait_pas" | undefined,
           
           // Champs professionnels
-          nomContact: userType === 'professionnel' ? formData.name : undefined,
-          nomEntreprise: formData.company || undefined,
-          fonction: formData.position || undefined,
-          secteurActivite: formData.sector || undefined,
-          tailleEntreprise: formData.companySize || undefined,
+          nomContact: userType === 'professionnel' ? (formData.name.trim() || undefined) : undefined,
+         nomEntreprise: userType === 'professionnel' ? (formData.company.trim() || undefined) : undefined,
+         fonction: userType === 'professionnel' ? (formData.position.trim() || undefined) : undefined,
+         secteurActivite: userType === 'professionnel' ? (formData.sector.trim() || undefined) : undefined,
+         tailleEntreprise: userType === 'professionnel' ? (formData.companySize.trim() || undefined) : undefined,
         };
 
         const result = await createPublicDevisAction(dataToSend);
