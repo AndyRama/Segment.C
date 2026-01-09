@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 // import Image from 'next/image';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { VideoSection } from '@/features/landing/video-section';
-import { QuoteRequestModal } from '@/features/landing/quote-request-modal';
 import { 
   ExternalLink, 
   Award, 
@@ -20,8 +19,6 @@ import {
 } from 'lucide-react';
 
 export default function SybaiePage() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -61,13 +58,13 @@ export default function SybaiePage() {
                 <ExternalLink className="size-5" />
               </Link>
               
-              <button
-                onClick={() => setIsQuoteModalOpen(true)}
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
               >
-                Demander un devis
+                Nous contacter
                 <ArrowRight className="size-5" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -327,22 +324,16 @@ export default function SybaiePage() {
               <ArrowRight className="size-5" />
             </Link>
             
-            <button
-              onClick={() => setIsQuoteModalOpen(true)}
+            <Link
+              href="/#"
               className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
             >
               Demander un devis
               <ArrowRight className="size-5" />
-            </button>
+            </Link>
           </div>
         </div>
       </SectionLayout>
-
-      {/* Modal de demande de devis */}
-      <QuoteRequestModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-      />
     </div>
   );
 }
