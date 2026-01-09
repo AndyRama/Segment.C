@@ -212,13 +212,13 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
 
       {isModalOpen && (
         <div 
-          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-gray-900/70 backdrop-blur-sm transition-opacity duration-300"
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-gray-900/70 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto"
           onClick={closeModal} 
           role="dialog"
           aria-modal="true"
         >
           <div 
-            className="relative w-full mx-auto max-w-2xl bg-white rounded-xl shadow-2xl transform transition-all duration-300 overflow-hidden max-h-[90vh] flex flex-col"
+            className="relative w-full mx-auto max-w-2xl bg-white rounded-xl shadow-2xl transform transition-all duration-300 my-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -229,7 +229,7 @@ export default function QuoteRequestModule({ className }: QuoteRequestModuleProp
               <X className="size-6" />
             </button>
 
-            <div className="p-6 overflow-y-auto">
+            <div className="p-6">
               <h1 className="text-2xl font-extrabold text-gray-800 mb-2 text-center">
                 Demandez votre devis gratuit
               </h1>

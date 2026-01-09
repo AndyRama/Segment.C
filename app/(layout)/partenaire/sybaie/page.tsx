@@ -71,7 +71,7 @@ export default function SybaiePage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <VideoSection
-                videoUrl="/videos/sybaie.mp4"
+                videoUrl="/videos/demo.mp4"
                 title=""
                 description=""
                 className=""
