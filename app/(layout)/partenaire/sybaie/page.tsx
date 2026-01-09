@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-// import Image from 'next/image';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { VideoSection } from '@/features/landing/video-section';
