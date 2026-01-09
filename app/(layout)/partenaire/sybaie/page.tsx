@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 // import Image from 'next/image';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
+import { VideoSection } from '@/features/landing/video-section';
+import { QuoteRequestModal } from '@/features/landing/quote-request-modal';
 import { 
   ExternalLink, 
   Award, 
@@ -18,6 +20,8 @@ import {
 } from 'lucide-react';
 
 export default function SybaiePage() {
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -57,23 +61,24 @@ export default function SybaiePage() {
                 <ExternalLink className="size-5" />
               </Link>
               
-              <Link
-                href="/contact"
+              <button
+                onClick={() => setIsQuoteModalOpen(true)}
                 className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
               >
-                Nous contacter
+                Demander un devis
                 <ArrowRight className="size-5" />
-              </Link>
+              </button>
             </div>
           </div>
 
-          {/* Image droite */}
+          {/* Vidéo à droite */}
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-              <img
-                src="https://placehold.co/600x400/FFFFFF/10b981?text=SYbaie"
-                alt="SYbaie - Fenêtres et portes"
-                className="h-full w-full object-cover"
+              <VideoSection
+                videoUrl="/videos/sybaie.mp4"
+                title=""
+                description=""
+                className=""
               />
             </div>
             {/* Badge flottant */}
@@ -322,16 +327,22 @@ export default function SybaiePage() {
               <ArrowRight className="size-5" />
             </Link>
             
-            <Link
-              href="/contact"
+            <button
+              onClick={() => setIsQuoteModalOpen(true)}
               className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
             >
               Demander un devis
               <ArrowRight className="size-5" />
-            </Link>
+            </button>
           </div>
         </div>
       </SectionLayout>
+
+      {/* Modal de demande de devis */}
+      <QuoteRequestModal
+        isOpen={isQuoteModalOpen}
+        onClose={() => setIsQuoteModalOpen(false)}
+      />
     </div>
   );
 }
