@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { createSlug } from '@/lib/product-slug-utils';  // ✅ Import depuis le fichier centralisé
 
 type Product = {
   id: string;
@@ -23,10 +24,6 @@ type Product = {
   seller?: string;
   isPopular?: boolean;
   isNew?: boolean;
-};
-
-const createSlug = (name: string): string => {
-  return name.toLowerCase().replace(/\s+/g, '-');
 };
 
 // Fonction pour formater le matériau
@@ -51,6 +48,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
       viewport={{ once: true }}
       className="flex-shrink-0 w-72 group"
     >
+      {/* ✅ Utilise createSlug pour générer le lien */}
       <Link href={`/portes/${createSlug(product.name)}`}>
         <div className="relative overflow-hidden rounded-md bg-white shadow-md transition-all duration-300 hover:shadow-xl">
           {/* Badges */}
@@ -106,11 +104,6 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
             <p className="line-clamp-2 text-sm text-gray-600">
               {product.description}
             </p>
-
-            {/* Prix */}
-            {/* <div className="pt-2 border-t">
-              <span className="font-bold text-lg text-gray-900">{product.priceRange}</span>
-            </div> */}
           </div>
         </div>
       </Link>
@@ -187,8 +180,8 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
     <div className="bg-white py-12">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 border-l-4pl-4">
-            Dans le même catégorie
+          <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-primary pl-4">
+            Dans la même catégorie
           </h2>
           <div className="flex gap-2">
             <button
@@ -218,6 +211,13 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
           ))}
         </div>
       </div>
+      
+      {/* Style pour cacher la scrollbar */}
+      <style jsx>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };

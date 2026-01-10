@@ -37,8 +37,9 @@ type PorteSectionProps = {
 const ALLOWED_CATEGORIES = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
 const LIMIT = 40;
 
-// Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
+  // Cette fonction doit générer exactement le même slug que dans seed.ts
+  // Pour correspondre à: id: `porte-${porte.name.toLowerCase().replace(/\s+/g, "-")}`
   return name.toLowerCase().replace(/\s+/g, '-');
 };
 
