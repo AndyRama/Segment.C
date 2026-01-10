@@ -238,13 +238,13 @@ const PorteDetailPage = () => {
             <div>
               <Typography variant="h1" className="text-3xl md:text-4xl font-bold mb-3">
                 {porte.name}
-                <div className="flex items-center gap-1.5 mb-4">
-                  <Star size={20} className="fill-yellow-400 text-yellow-400" />
-                  <span className="text-lg font-semibold">{porte.rating}</span>
-                </div>
               </Typography>
-              
-
+             
+              <div className="flex items-center gap-1.5 mb-4">
+                <Star size={20} className="fill-yellow-400 text-yellow-400" />
+                <span className="text-lg font-semibold">{porte.rating}</span>
+              </div>
+             
               <Typography variant="small" className="text-gray-600 uppercase tracking-wide mb-2">
                 Fournisseur
               </Typography>
