@@ -44,21 +44,30 @@ type Product = {
   isNew?: boolean;
 };
 
-// ✅ CORRECTION : Fonction pour convertir slug → ID base de données
+// ✅ CORRECTION PRINCIPALE: Fonction pour convertir slug → ID base de données
 const slugToPorteId = (slug: string): string => {
   return `porte-${slug}`;
 };
 
 const parseDimensions = (dimensions: string) => {
+  // Split par ", " pour séparer H: et L:
   const parts = dimensions.split(', ');
+  
+  // Extraire hauteur (commence par "H:")
   const hauteurPart = parts.find(d => d.trim().startsWith('H:'));
   const hauteur = hauteurPart ? hauteurPart.replace('H:', '').trim() : '';
+  
+  // Extraire largeur (commence par "L:")
   const largeurPart = parts.find(d => d.trim().startsWith('L:'));
   const largeur = largeurPart ? largeurPart.replace('L:', '').trim() : '';
   
-  return { hauteur, largeur };
+  return {
+    hauteur,
+    largeur
+  };
 };
 
+// Fonction pour formater le matériau
 const formatMaterial = (material: string) => {
   return material
     .replace(/_/g, ' ')
@@ -75,6 +84,7 @@ const PorteDetailPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'description' | 'caracteristiques' | 'dimensions'>('description');
 
+  // Parser les dimensions si disponibles
   const { hauteur, largeur } = porte?.dimensions ? parseDimensions(porte.dimensions) : { hauteur: '', largeur: '' };
 
   useEffect(() => {
@@ -82,10 +92,7 @@ const PorteDetailPage = () => {
       try {
         setLoading(true);
         
-        // ✅ SOLUTION : Récupérer TOUTES les portes (pas de limite)
-        console.log('🔍 Recherche de la porte avec slug:', params.slug);
-        
-        // Augmenter la limite pour récupérer toutes les portes
+        // ✅ CORRECTION: Récupérer toutes les portes avec limite augmentée
         const response = await fetch('/api/products?type=PORTE&limit=200');
         
         if (!response.ok) {
@@ -93,30 +100,24 @@ const PorteDetailPage = () => {
         }
 
         const data = await response.json();
-        console.log('📦 Nombre de produits reçus:', data.products?.length);
         
-        // Filtrer pour ne garder QUE les portes (pas les fenêtres)
+        // ✅ Filtrer pour ne garder QUE les portes
         const ALLOWED_CATEGORIES = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
         const portesOnly = data.products.filter((p: Product) => 
           ALLOWED_CATEGORIES.includes(p.category)
         );
-        console.log('🚪 Nombre de portes filtrées:', portesOnly.length);
         
         // ✅ Convertir le slug en ID et chercher dans les résultats
         const productId = slugToPorteId(params.slug as string);
-        console.log('🔍 ID recherché:', productId);
-        
         const foundPorte = portesOnly.find((p: Product) => p.id === productId);
 
         if (!foundPorte) {
-          console.log('❌ Porte non trouvée. IDs de portes disponibles:', portesOnly.slice(0, 10).map((p: Product) => p.id));
           setError("Porte non trouvée");
         } else {
-          console.log('✅ Porte trouvée:', foundPorte.name);
           setPorte(foundPorte);
         }
       } catch (err) {
-        console.error('❌ Erreur lors du chargement:', err);
+        console.error('Error fetching product:', err);
         setError("Erreur lors du chargement du produit");
       } finally {
         setLoading(false);
@@ -304,6 +305,7 @@ const PorteDetailPage = () => {
                     {porte.description}
                   </Typography>
                   
+                  {/* Performance Indicators */}
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
                       <Thermometer className="text-blue-600" size={24} />
@@ -333,6 +335,7 @@ const PorteDetailPage = () => {
 
               {activeTab === 'caracteristiques' && (
                 <div className="space-y-4">
+                  {/* Technical Specs Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
                       <Shield className="text-green-600 flex-shrink-0" size={20} />
@@ -383,6 +386,7 @@ const PorteDetailPage = () => {
                     </div>
                   </div>
 
+                  {/* Features List */}
                   {porte.features.length > 0 && (
                     <div className="pt-4">
                       <Typography variant="p" className="font-semibold mb-3">
