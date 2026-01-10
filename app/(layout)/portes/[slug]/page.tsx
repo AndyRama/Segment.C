@@ -230,12 +230,12 @@ const PorteDetailPage = () => {
             <div>
               <Typography variant="h1" className="text-3xl md:text-4xl font-bold mb-3">
                 {porte.name}
+                <div className="flex items-center gap-1.5 mb-4">
+                  <Star size={20} className="fill-yellow-400 text-yellow-400" />
+                  <span className="text-lg font-semibold">{porte.rating}</span>
+                </div>
               </Typography>
               
-              <div className="flex items-center gap-1.5 mb-4">
-                <Star size={20} className="fill-yellow-400 text-yellow-400" />
-                <span className="text-lg font-semibold">{porte.rating}</span>
-              </div>
 
               <Typography variant="small" className="text-gray-600 uppercase tracking-wide mb-2">
                 Fournisseur
@@ -291,7 +291,7 @@ const PorteDetailPage = () => {
             </div>
 
             {/* Tab Content */}
-            <div className="min-h-[200px]">
+            <div className="min-h-[50px]">
               {activeTab === 'description' && (
                 <div className="space-y-4">
                   <Typography className="text-gray-700 leading-relaxed">
