@@ -82,10 +82,11 @@ const PorteDetailPage = () => {
       try {
         setLoading(true);
         
-        // ✅ SOLUTION SIMPLE : Utiliser l'API existante
+        // ✅ SOLUTION : Récupérer TOUTES les portes (pas de limite)
         console.log('🔍 Recherche de la porte avec slug:', params.slug);
         
-        const response = await fetch('/api/products?type=PORTE');
+        // Augmenter la limite pour récupérer toutes les portes
+        const response = await fetch('/api/products?type=PORTE&limit=200');
         
         if (!response.ok) {
           throw new Error('Failed to fetch products');
@@ -94,14 +95,21 @@ const PorteDetailPage = () => {
         const data = await response.json();
         console.log('📦 Nombre de produits reçus:', data.products?.length);
         
+        // Filtrer pour ne garder QUE les portes (pas les fenêtres)
+        const ALLOWED_CATEGORIES = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
+        const portesOnly = data.products.filter((p: Product) => 
+          ALLOWED_CATEGORIES.includes(p.category)
+        );
+        console.log('🚪 Nombre de portes filtrées:', portesOnly.length);
+        
         // ✅ Convertir le slug en ID et chercher dans les résultats
         const productId = slugToPorteId(params.slug as string);
         console.log('🔍 ID recherché:', productId);
         
-        const foundPorte = data.products.find((p: Product) => p.id === productId);
+        const foundPorte = portesOnly.find((p: Product) => p.id === productId);
 
         if (!foundPorte) {
-          console.log('❌ Porte non trouvée. IDs disponibles:', data.products.slice(0, 5).map((p: Product) => p.id));
+          console.log('❌ Porte non trouvée. IDs de portes disponibles:', portesOnly.slice(0, 10).map((p: Product) => p.id));
           setError("Porte non trouvée");
         } else {
           console.log('✅ Porte trouvée:', foundPorte.name);
