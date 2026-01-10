@@ -719,19 +719,6 @@ export const ServiceVilleSection = ({
 
           {/* COLONNE DROITE - Formulaire + Contact */}
           <div className="space-y-8">
-            
-            {/* Formulaire */}
-            <div id="devis" className="bg-gray-50 rounded-2xl p-8 shadow-md border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Demandez votre devis gratuit
-              </h3>
-              <p className="text-sm text-gray-600 mb-6">
-                Remplissez le formulaire ci-dessous, nous vous répondons sous 24h
-              </p>
-
-              <ContactFormInline />
-            </div>
-
             {/* Card Contact */}
             <div className="bg-white rounded-2xl p-6 border border-gray-100">
               <div className="flex items-center space-x-4 mb-6">
@@ -766,6 +753,18 @@ export const ServiceVilleSection = ({
                 </a>
               </div>
             </div>
+
+            {/* Formulaire */}
+            <div id="devis" className="bg-gray-50 rounded-2xl p-8 shadow-md border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Demandez votre devis gratuit
+              </h3>
+              <p className="text-sm text-gray-600 mb-6">
+                Remplissez le formulaire ci-dessous, nous vous répondons sous 24h
+              </p>
+
+              <ContactFormInline />
+            </div>         
 
           </div>
 
