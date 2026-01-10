@@ -144,6 +144,14 @@ const PorteDetailPage = () => {
       <div className="border-b bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm py-4">
+          {/* Back Button */}
+            <Link
+              href="/portes"
+              className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors mb-6"
+            >
+              <ArrowLeft size={16} />
+              Retour
+            </Link>
             <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
               Accueil
             </Link>
@@ -160,13 +168,13 @@ const PorteDetailPage = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
-        <Link
+        {/* <Link
           href="/portes"
           className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors mb-6"
         >
           <ArrowLeft size={16} />
           Retour
-        </Link>
+        </Link> */}
 
         {/* Product Details Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -444,13 +452,11 @@ const PorteDetailPage = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col gap-3 pt-4">
+            <div className="flex gap-3 pt-4">
               <Button className="w-full" size="lg">
                 Demander un devis gratuit
               </Button>
-              <Button variant="outline" size="lg" className="w-full">
-                Ajouter au panier
-              </Button>
+    
             </div>
           </div>
         </div>
