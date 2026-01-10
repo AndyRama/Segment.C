@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Typography } from "@/components/nowts/typography";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import SimilarProductsSection from '@/features/portes/similarProductsSection';
 import AvailableFormsMiniature from '@/features/portes/availableFormsMiniature';
 import {
@@ -20,9 +20,6 @@ import {
   Package,
   Ruler,
   CheckCircle2,
-  Droplets,
-  Wind,
-  DoorClosed
 } from "lucide-react";
 
 type Product = {
@@ -44,30 +41,21 @@ type Product = {
   isNew?: boolean;
 };
 
-// ✅ CORRECTION PRINCIPALE: Fonction pour convertir slug → ID base de données
+// ✅ Fonction pour convertir slug → ID base de données
 const slugToPorteId = (slug: string): string => {
   return `porte-${slug}`;
 };
 
 const parseDimensions = (dimensions: string) => {
-  // Split par ", " pour séparer H: et L:
   const parts = dimensions.split(', ');
-  
-  // Extraire hauteur (commence par "H:")
   const hauteurPart = parts.find(d => d.trim().startsWith('H:'));
   const hauteur = hauteurPart ? hauteurPart.replace('H:', '').trim() : '';
-  
-  // Extraire largeur (commence par "L:")
   const largeurPart = parts.find(d => d.trim().startsWith('L:'));
   const largeur = largeurPart ? largeurPart.replace('L:', '').trim() : '';
   
-  return {
-    hauteur,
-    largeur
-  };
+  return { hauteur, largeur };
 };
 
-// Fonction pour formater le matériau
 const formatMaterial = (material: string) => {
   return material
     .replace(/_/g, ' ')
@@ -84,7 +72,6 @@ const PorteDetailPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'description' | 'caracteristiques' | 'dimensions'>('description');
 
-  // Parser les dimensions si disponibles
   const { hauteur, largeur } = porte?.dimensions ? parseDimensions(porte.dimensions) : { hauteur: '', largeur: '' };
 
   useEffect(() => {
@@ -178,7 +165,7 @@ const PorteDetailPage = () => {
           className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors mb-6"
         >
           <ArrowLeft size={16} />
-          Retour à la liste
+          Retour
         </Link>
 
         {/* Product Details Grid */}
@@ -208,6 +195,33 @@ const PorteDetailPage = () => {
                 )}
               </div>
             </div>
+
+            {/* Material & Type Badges */}
+            <div className="flex items-center gap-3 text-sm">
+              <div className="flex items-center gap-2 px-3 py-2 bg-white border rounded-lg">
+                <Package size={18} />
+                <span className="font-medium uppercase">{formatMaterial(porte.material)}</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2 bg-white border rounded-lg">
+                <Home size={18} />
+                <span className="font-medium uppercase">
+                  {porte.category.replace('PORTE_', '').replace('_', ' ')}
+                </span>
+              </div>
+            </div>
+
+            {/* Trust Badge */}
+            <div className="bg-white border rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Shield size={18} className="text-primary" />
+                <Typography variant="small" className="font-semibold">
+                  Garantie fabricant incluse
+                </Typography>
+              </div>
+              <Typography variant="small" className="text-gray-600">
+                Fabrication française • Installation professionnelle • SAV réactif
+              </Typography>
+            </div>
           </div>
 
           {/* Right Column - Details */}
@@ -218,48 +232,27 @@ const PorteDetailPage = () => {
                 {porte.name}
               </Typography>
               
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-1.5">
-                  <Star size={20} className="fill-yellow-400 text-yellow-400" />
-                  <span className="text-lg font-semibold">{porte.rating}</span>
-                  <span className="text-sm text-gray-600">/5</span>
-                </div>
-                <span className="text-gray-300">•</span>
-                <span className="text-sm text-gray-600 font-medium">{porte.seller}</span>
+              <div className="flex items-center gap-1.5 mb-4">
+                <Star size={20} className="fill-yellow-400 text-yellow-400" />
+                <span className="text-lg font-semibold">{porte.rating}</span>
               </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-blue-100 text-blue-800 px-3 py-1.5 rounded-full text-sm font-medium">
-                  {formatMaterial(porte.material)}
-                </span>
-                <span className="bg-green-100 text-green-800 px-3 py-1.5 rounded-full text-sm font-medium">
-                  {porte.category.replace('PORTE_', '').replace('_', ' ')}
-                </span>
-              </div>
-            </div>
-
-            {/* Price */}
-            <div className="bg-gray-50 rounded-lg p-4 border">
-              <Typography variant="small" className="text-gray-600 mb-1">
-                Fourchette de prix
+              <Typography variant="small" className="text-gray-600 uppercase tracking-wide mb-2">
+                Fournisseur
               </Typography>
-              <Typography variant="h3" className="text-2xl font-bold text-primary">
-                {porte.priceRange}
-              </Typography>
-              <Typography variant="small" className="text-gray-500 mt-1">
-                Prix indicatif, devis gratuit sur demande
+              <Typography variant="p" className="text-lg font-semibold text-primary">
+                {porte.seller}
               </Typography>
             </div>
 
             {/* Tabs */}
             <div className="border-b">
-              <div className="flex gap-6">
+              <div className="flex gap-8">
                 <button
                   onClick={() => setActiveTab('description')}
                   className={`pb-3 text-sm font-medium transition-colors relative ${
                     activeTab === 'description'
-                      ? 'text-primary'
+                      ? 'text-gray-900'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -272,7 +265,7 @@ const PorteDetailPage = () => {
                   onClick={() => setActiveTab('caracteristiques')}
                   className={`pb-3 text-sm font-medium transition-colors relative ${
                     activeTab === 'caracteristiques'
-                      ? 'text-primary'
+                      ? 'text-gray-900'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -285,7 +278,7 @@ const PorteDetailPage = () => {
                   onClick={() => setActiveTab('dimensions')}
                   className={`pb-3 text-sm font-medium transition-colors relative ${
                     activeTab === 'dimensions'
-                      ? 'text-primary'
+                      ? 'text-gray-900'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -304,98 +297,18 @@ const PorteDetailPage = () => {
                   <Typography className="text-gray-700 leading-relaxed">
                     {porte.description}
                   </Typography>
-                  
-                  {/* Performance Indicators */}
-                  <div className="grid grid-cols-2 gap-4 pt-4">
-                    <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                      <Thermometer className="text-blue-600" size={24} />
-                      <div>
-                        <Typography variant="small" className="text-gray-600">
-                          Performance
-                        </Typography>
-                        <Typography variant="small" className="font-semibold">
-                          {porte.performance}
-                        </Typography>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-                      <Package className="text-purple-600" size={24} />
-                      <div>
-                        <Typography variant="small" className="text-gray-600">
-                          Épaisseur
-                        </Typography>
-                        <Typography variant="small" className="font-semibold">
-                          {porte.epaisseur}
-                        </Typography>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               )}
 
               {activeTab === 'caracteristiques' && (
-                <div className="space-y-4">
-                  {/* Technical Specs Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                      <Shield className="text-green-600 flex-shrink-0" size={20} />
-                      <div>
-                        <Typography variant="small" className="font-semibold mb-1">
-                          Sécurité
-                        </Typography>
-                        <Typography variant="small" className="text-gray-600">
-                          Serrure multipoints incluse
-                        </Typography>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                      <Thermometer className="text-blue-600 flex-shrink-0" size={20} />
-                      <div>
-                        <Typography variant="small" className="font-semibold mb-1">
-                          Isolation thermique
-                        </Typography>
-                        <Typography variant="small" className="text-gray-600">
-                          {porte.performance}
-                        </Typography>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                      <Volume2 className="text-orange-600 flex-shrink-0" size={20} />
-                      <div>
-                        <Typography variant="small" className="font-semibold mb-1">
-                          Isolation phonique
-                        </Typography>
-                        <Typography variant="small" className="text-gray-600">
-                          Optimale
-                        </Typography>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                      <Home className="text-purple-600 flex-shrink-0" size={20} />
-                      <div>
-                        <Typography variant="small" className="font-semibold mb-1">
-                          Fabrication
-                        </Typography>
-                        <Typography variant="small" className="text-gray-600">
-                          Made in France
-                        </Typography>
-                      </div>
-                    </div>
-                  </div>
-
+                <div className="space-y-6">
                   {/* Features List */}
                   {porte.features.length > 0 && (
-                    <div className="pt-4">
-                      <Typography variant="p" className="font-semibold mb-3">
-                        Points forts
-                      </Typography>
-                      <ul className="space-y-2">
+                    <div>
+                      <ul className="space-y-3">
                         {porte.features.map((feature, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <CheckCircle2 size={18} className="text-green-600 flex-shrink-0 mt-0.5" />
+                          <li key={index} className="flex items-start gap-3">
+                            <CheckCircle2 size={20} className="text-primary flex-shrink-0 mt-0.5" />
                             <Typography variant="small" className="text-gray-700">
                               {feature}
                             </Typography>
@@ -404,32 +317,94 @@ const PorteDetailPage = () => {
                       </ul>
                     </div>
                   )}
+
+                  {/* Technical Performance */}
+                  <div>
+                    <Typography variant="p" className="font-semibold mb-4">
+                      Performances techniques
+                    </Typography>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Thermometer className="text-orange-600" size={18} />
+                          <Typography variant="small" className="font-semibold uppercase text-xs text-orange-900">
+                            Thermique
+                          </Typography>
+                        </div>
+                        <Typography variant="p" className="font-bold text-orange-900">
+                          {porte.performance}
+                        </Typography>
+                      </div>
+
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Package className="text-green-600" size={18} />
+                          <Typography variant="small" className="font-semibold uppercase text-xs text-green-900">
+                            Étanchéité
+                          </Typography>
+                        </div>
+                        <Typography variant="p" className="font-bold text-green-900">
+                          A*3 E*3B
+                        </Typography>
+                      </div>
+
+                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Volume2 className="text-purple-600" size={18} />
+                          <Typography variant="small" className="font-semibold uppercase text-xs text-purple-900">
+                            Acoustique
+                          </Typography>
+                        </div>
+                        <Typography variant="p" className="font-bold text-purple-900">
+                          29dB
+                        </Typography>
+                      </div>
+
+                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Shield className="text-blue-600" size={18} />
+                          <Typography variant="small" className="font-semibold uppercase text-xs text-blue-900">
+                            Résistance
+                          </Typography>
+                        </div>
+                        <Typography variant="p" className="font-bold text-blue-900">
+                          V*C3
+                        </Typography>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {activeTab === 'dimensions' && (
                 <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Ruler className="text-blue-600" size={20} />
-                        <Typography variant="small" className="font-semibold">
-                          Dimensions standard
-                        </Typography>
-                      </div>
-                      <Typography variant="small" className="text-gray-700">
-                        {porte.dimensions}
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                      <Ruler className="mx-auto mb-2 text-gray-600" size={24} />
+                      <Typography variant="small" className="font-semibold mb-1 uppercase text-xs text-gray-600">
+                        Hauteur
+                      </Typography>
+                      <Typography variant="p" className="font-bold">
+                        {hauteur || '2000-2250mm'}
                       </Typography>
                     </div>
 
-                    <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Package className="text-purple-600" size={20} />
-                        <Typography variant="small" className="font-semibold">
-                          Épaisseur
-                        </Typography>
-                      </div>
-                      <Typography variant="small" className="text-gray-700">
+                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                      <Ruler className="mx-auto mb-2 text-gray-600" size={24} />
+                      <Typography variant="small" className="font-semibold mb-1 uppercase text-xs text-gray-600">
+                        Largeur
+                      </Typography>
+                      <Typography variant="p" className="font-bold">
+                        {largeur || '800-1000mm'}
+                      </Typography>
+                    </div>
+
+                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                      <Package className="mx-auto mb-2 text-gray-600" size={24} />
+                      <Typography variant="small" className="font-semibold mb-1 uppercase text-xs text-gray-600">
+                        Épaisseur
+                      </Typography>
+                      <Typography variant="p" className="font-bold">
                         {porte.epaisseur}
                       </Typography>
                     </div>
@@ -437,7 +412,7 @@ const PorteDetailPage = () => {
 
                   <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <Typography variant="small" className="text-blue-900">
-                      <strong>💡 Sur mesure :</strong> Toutes nos portes peuvent être fabriquées sur mesure selon vos dimensions spécifiques. Contactez-nous pour un devis personnalisé.
+                      <strong>💡 Sur mesure :</strong> Dimensions personnalisables selon vos besoins spécifiques. Contactez-nous pour plus d'informations.
                     </Typography>
                   </div>
                 </div>
@@ -447,14 +422,14 @@ const PorteDetailPage = () => {
             {/* Colors */}
             {porte.colors.length > 0 && (
               <div className="pt-4 border-t">
-                <Typography variant="p" className="font-semibold mb-3">
+                <Typography variant="p" className="font-semibold mb-3 uppercase text-sm">
                   Couleurs disponibles
                 </Typography>
                 <div className="flex flex-wrap gap-2">
                   {porte.colors.map((color, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1.5 bg-white border-2 border-gray-200 rounded-lg text-sm font-medium hover:border-primary transition-colors"
+                      className="px-3 py-2 bg-white border-2 border-gray-200 rounded-lg text-sm hover:border-primary transition-colors"
                     >
                       {color}
                     </span>
@@ -469,45 +444,45 @@ const PorteDetailPage = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Button className="flex-1" size="lg">
+            <div className="flex flex-col gap-3 pt-4">
+              <Button className="w-full" size="lg">
                 Demander un devis gratuit
               </Button>
-              <Button variant="outline" size="lg" className="flex-1">
-                Nous contacter
+              <Button variant="outline" size="lg" className="w-full">
+                Ajouter au panier
               </Button>
             </div>
+          </div>
+        </div>
 
-            {/* Trust Badges */}
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t">
-              <div className="text-center">
-                <Shield className="mx-auto mb-2 text-green-600" size={24} />
-                <Typography variant="small" className="font-medium">
-                  Garantie
-                </Typography>
-                <Typography variant="small" className="text-gray-600 text-xs">
-                  10 ans
-                </Typography>
-              </div>
-              <div className="text-center">
-                <Home className="mx-auto mb-2 text-blue-600" size={24} />
-                <Typography variant="small" className="font-medium">
-                  Made in
-                </Typography>
-                <Typography variant="small" className="text-gray-600 text-xs">
-                  France
-                </Typography>
-              </div>
-              <div className="text-center">
-                <Lock className="mx-auto mb-2 text-orange-600" size={24} />
-                <Typography variant="small" className="font-medium">
-                  Sécurité
-                </Typography>
-                <Typography variant="small" className="text-gray-600 text-xs">
-                  Renforcée
-                </Typography>
-              </div>
-            </div>
+        {/* Trust Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-12 border-t">
+          <div className="text-center">
+            <Home className="mx-auto mb-3 text-primary" size={32} />
+            <Typography variant="p" className="font-semibold mb-2">
+              Made in France
+            </Typography>
+            <Typography variant="small" className="text-gray-600">
+              Fabrication française avec des matériaux de première qualité
+            </Typography>
+          </div>
+          <div className="text-center">
+            <Ruler className="mx-auto mb-3 text-primary" size={32} />
+            <Typography variant="p" className="font-semibold mb-2">
+              Sur mesure
+            </Typography>
+            <Typography variant="small" className="text-gray-600">
+              Dimensions personnalisables adaptées à votre projet
+            </Typography>
+          </div>
+          <div className="text-center">
+            <Lock className="mx-auto mb-3 text-primary" size={32} />
+            <Typography variant="p" className="font-semibold mb-2">
+              Sécurité maximale
+            </Typography>
+            <Typography variant="small" className="text-gray-600">
+              Serrures multipoints et protection anti-effraction
+            </Typography>
           </div>
         </div>
       </div>
