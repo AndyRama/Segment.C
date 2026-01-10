@@ -44,30 +44,21 @@ type Product = {
   isNew?: boolean;
 };
 
-// ✅ CORRECTION PRINCIPALE: Fonction pour convertir slug → ID base de données
+// ✅ CORRECTION : Fonction pour convertir slug → ID base de données
 const slugToPorteId = (slug: string): string => {
   return `porte-${slug}`;
 };
 
 const parseDimensions = (dimensions: string) => {
-  // Split par ", " pour séparer H: et L:
   const parts = dimensions.split(', ');
-  
-  // Extraire hauteur (commence par "H:")
   const hauteurPart = parts.find(d => d.trim().startsWith('H:'));
   const hauteur = hauteurPart ? hauteurPart.replace('H:', '').trim() : '';
-  
-  // Extraire largeur (commence par "L:")
   const largeurPart = parts.find(d => d.trim().startsWith('L:'));
   const largeur = largeurPart ? largeurPart.replace('L:', '').trim() : '';
   
-  return {
-    hauteur,
-    largeur
-  };
+  return { hauteur, largeur };
 };
 
-// Fonction pour formater le matériau
 const formatMaterial = (material: string) => {
   return material
     .replace(/_/g, ' ')
@@ -84,7 +75,6 @@ const PorteDetailPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'description' | 'caracteristiques' | 'dimensions'>('description');
 
-  // Parser les dimensions si disponibles
   const { hauteur, largeur } = porte?.dimensions ? parseDimensions(porte.dimensions) : { hauteur: '', largeur: '' };
 
   useEffect(() => {
@@ -92,25 +82,33 @@ const PorteDetailPage = () => {
       try {
         setLoading(true);
         
-        // ✅ CORRECTION: Convertir le slug en ID de base de données
-        const productId = slugToPorteId(params.slug as string);
+        // ✅ SOLUTION SIMPLE : Utiliser l'API existante
+        console.log('🔍 Recherche de la porte avec slug:', params.slug);
         
-        // ✅ CORRECTION: Récupérer directement le produit par son ID
-        const response = await fetch(`/api/products/${productId}`);
+        const response = await fetch('/api/products?type=PORTE');
         
         if (!response.ok) {
-          if (response.status === 404) {
-            setError("Porte non trouvée");
-          } else {
-            throw new Error('Failed to fetch product');
-          }
-          return;
+          throw new Error('Failed to fetch products');
         }
 
         const data = await response.json();
-        setPorte(data);
+        console.log('📦 Nombre de produits reçus:', data.products?.length);
+        
+        // ✅ Convertir le slug en ID et chercher dans les résultats
+        const productId = slugToPorteId(params.slug as string);
+        console.log('🔍 ID recherché:', productId);
+        
+        const foundPorte = data.products.find((p: Product) => p.id === productId);
+
+        if (!foundPorte) {
+          console.log('❌ Porte non trouvée. IDs disponibles:', data.products.slice(0, 5).map((p: Product) => p.id));
+          setError("Porte non trouvée");
+        } else {
+          console.log('✅ Porte trouvée:', foundPorte.name);
+          setPorte(foundPorte);
+        }
       } catch (err) {
-        console.error('Error fetching product:', err);
+        console.error('❌ Erreur lors du chargement:', err);
         setError("Erreur lors du chargement du produit");
       } finally {
         setLoading(false);
@@ -298,7 +296,6 @@ const PorteDetailPage = () => {
                     {porte.description}
                   </Typography>
                   
-                  {/* Performance Indicators */}
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
                       <Thermometer className="text-blue-600" size={24} />
@@ -328,7 +325,6 @@ const PorteDetailPage = () => {
 
               {activeTab === 'caracteristiques' && (
                 <div className="space-y-4">
-                  {/* Technical Specs Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
                       <Shield className="text-green-600 flex-shrink-0" size={20} />
@@ -379,7 +375,6 @@ const PorteDetailPage = () => {
                     </div>
                   </div>
 
-                  {/* Features List */}
                   {porte.features.length > 0 && (
                     <div className="pt-4">
                       <Typography variant="p" className="font-semibold mb-3">
