@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
+import { useSession } from "@/lib/auth-client";
 import { 
   ExternalLink, 
   Award, 
@@ -18,6 +19,8 @@ import {
 } from 'lucide-react';
 
 export default function OrialPage() {
+  const { data: session } = useSession();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -56,13 +59,23 @@ export default function OrialPage() {
                 <ExternalLink className="size-5" />
               </Link>
               
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
-              >
-                Nous contacter
-                <ArrowRight className="size-5" />
-              </Link>
+              {session ? (
+                <Link
+                  href="/account/devis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                >
+                  Nous contacter
+                  <ArrowRight className="size-5" />
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                >
+                  Nous contacter
+                  <ArrowRight className="size-5" />
+                </Link>
+              )}
             </div>
           </div>
 
@@ -341,7 +354,7 @@ export default function OrialPage() {
             Segment C est fier de travailler avec ORIAL pour vous offrir des solutions en aluminium d'exception
           </Typography>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/realisations"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
@@ -350,13 +363,23 @@ export default function OrialPage() {
               <ArrowRight className="size-5" />
             </Link>
             
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
-            >
-              Demander un devis
-              <ArrowRight className="size-5" />
-            </Link>
+            {session ? (
+              <Link
+                href="/account/devis"
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
+              >
+                Demander un devis
+                <ArrowRight className="size-5" />
+              </Link>
+            ) : (
+              <Link
+                href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
+              >
+                Demander un devis
+                <ArrowRight className="size-5" />
+              </Link>
+            )}
           </div>
         </div>
       </SectionLayout>
