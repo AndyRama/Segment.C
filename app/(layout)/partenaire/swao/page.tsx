@@ -95,12 +95,6 @@ export default function SwaoPage() {
                 className="h-full w-full object-cover"
               />
             </div>
-            {/* <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
-              <Factory className="mb-2 size-8 text-white" />
-              <Typography variant="p" className="text-sm font-bold text-white">
-                Groupe CETIH
-              </Typography>
-            </div> */}
           </div>
         </div>
       </SectionLayout>

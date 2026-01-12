@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
-import { buttonVariants } from '@/components/ui/button';
 import { useSession } from "@/lib/auth-client";
 import { 
   ExternalLink, 
@@ -63,22 +62,18 @@ export default function ProfermPage() {
               {session ? (
                 <Link
                   href="/account/devis"
-                  className={buttonVariants({
-                    size: "default",
-                    className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
-                  })}
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Demander un devis gratuit
+                  Nous contacter
+                  <ArrowRight className="size-5" />
                 </Link>
               ) : (
                 <Link
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className={buttonVariants({
-                    size: "default",
-                    className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
-                  })}
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Demander un devis gratuit
+                  Nous contacter
+                  <ArrowRight className="size-5" />
                 </Link>
               )}
             </div>
@@ -92,12 +87,6 @@ export default function ProfermPage() {
                 className="h-full w-full object-cover"
               />
             </div>
-            {/* <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
-              <Factory className="mb-2 size-8 text-white" />
-              <Typography variant="p" className="text-sm font-bold text-white">
-                Top 5 France
-              </Typography>
-            </div> */}
           </div>
         </div>
       </SectionLayout>
@@ -352,22 +341,18 @@ export default function ProfermPage() {
             {session ? (
               <Link
                 href="/account/devis"
-                className={buttonVariants({
-                  size: "lg",
-                  className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
-                })}
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
               >
-                Demander un devis gratuit
+                Demander un devis
+                <ArrowRight className="size-5" />
               </Link>
             ) : (
               <Link
                 href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                className={buttonVariants({
-                  size: "lg",
-                  className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
-                })}
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
               >
-                Demander un devis gratuit
+                Demander un devis
+                <ArrowRight className="size-5" />
               </Link>
             )}
           </div>
