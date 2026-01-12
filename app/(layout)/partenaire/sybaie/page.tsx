@@ -5,19 +5,22 @@ import Link from 'next/link';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { VideoSection } from '@/features/landing/video-section';
+import { buttonVariants } from '@/components/ui/button';
+import { useSession } from "@/lib/auth-client";
 import { 
   ExternalLink, 
   Award, 
   Building2, 
   CheckCircle2, 
   ArrowRight,
-  Factory,
   Target,
   Users,
   Sparkles
 } from 'lucide-react';
 
 export default function SybaiePage() {
+  const { data: session } = useSession();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -298,7 +301,7 @@ export default function SybaiePage() {
         </div>
       </SectionLayout>
 
-      {/* CTA Final */}
+     {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-green-600 to-emerald-700 p-12 text-center shadow-2xl">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-white lg:text-4xl">
@@ -308,22 +311,36 @@ export default function SybaiePage() {
             Segment C est fier de travailler avec SYbaie pour vous offrir des menuiseries d'exception
           </Typography>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/realisations"
+              href="/#realisations"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-              Voir nos réalisations
+              Notre catalogue
               <ArrowRight className="size-5" />
             </Link>
             
-            <Link
-              href="/#"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
-            >
-              Demander un devis
-              <ArrowRight className="size-5" />
-            </Link>
+            {session ? (
+              <Link
+                href="/account/devis"
+                className={buttonVariants({
+                  size: "lg",
+                  className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
+                })}
+              >
+                Demander un devis gratuit
+              </Link>
+            ) : (
+              <Link
+                href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                className={buttonVariants({
+                  size: "lg",
+                  className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
+                })}
+              >
+                Demander un devis gratuit
+              </Link>
+            )}
           </div>
         </div>
       </SectionLayout>

@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
+import Image from "next/image";
+
 import { 
   ExternalLink, 
   Award, 
@@ -67,8 +69,8 @@ export default function SwaoPage() {
 
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-              <img
-                src="https://placehold.co/600x400/FFFFFF/10b981?text=SWAO"
+              <Image
+                src="/images/swao.png "
                 alt="SWAO - Menuiseries"
                 className="h-full w-full object-cover"
               />
