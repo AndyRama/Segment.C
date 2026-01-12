@@ -60,13 +60,27 @@ export default function SybaiePage() {
                 <ExternalLink className="size-5" />
               </Link>
               
-              <Link
-                href="#"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
-              >
-                Nous contacter
-                <ArrowRight className="size-5" />
-              </Link>
+              {session ? (
+                <Link
+                  href="/account/devis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
+                  })}
+                >
+                  Demander un devis gratuit
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className={buttonVariants({
+                    size: "default",
+                    className: "bg-green-800 hover:bg-green-900 text-white font-semibold"
+                  })}
+                >
+                  Demander un devis gratuit
+                </Link>
+              )}
             </div>
           </div>
 
@@ -80,7 +94,6 @@ export default function SybaiePage() {
                 className=""
               />
             </div>
-          
           </div>
         </div>
       </SectionLayout>
@@ -301,7 +314,7 @@ export default function SybaiePage() {
         </div>
       </SectionLayout>
 
-     {/* CTA Final */}
+      {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-green-600 to-emerald-700 p-12 text-center shadow-2xl">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-white lg:text-4xl">
