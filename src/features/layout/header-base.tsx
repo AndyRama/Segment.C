@@ -69,10 +69,10 @@ const topRoutes = [
       { path: "/fenetres", label: "Fenêtre" },
       { path: "/baie", label: "Baie vitrée" },
       { path: "/portes", label: "Porte" },
-      { path: "/pergolas", label: "Pergolas" },
-      { path: "/portails", label: "Portails" },
-      { path: "/garage", label: "Porte de garage" },
-      { path: "/#", label: "Volet" },
+      // { path: "/pergolas", label: "Pergolas" },
+      // { path: "/portails", label: "Portails" },
+      // { path: "/garage", label: "Porte de garage" },
+      // { path: "/#", label: "Volet" },
     ]
   },
   {
@@ -88,7 +88,7 @@ const topRoutes = [
     ]
   },
   { path: "/posts", label: "Actualités" },
-  { path: "/contact", label: "A propos de moi" },
+  { path: "/contact", label: "Contact" },
 ];
 
 export function HeaderBase() {

@@ -71,15 +71,15 @@ export function LandingHeader() {
     { path: "/home", label: "Accueil" },
     {
       path: "#",
-      label: "Catalogue",
+      label: "Catégories",
       dropdown: [
         { path: "/fenetres", label: "Fenêtre" },
         { path: "/baie", label: "Baie vitrée" },
         { path: "/portes", label: "Porte" },
-        { path: "/pergolas", label: "Pergolas" },
-        { path: "/portails", label: "Portails" },
-        { path: "/#", label: "Porte de garage " },
-        { path: "/#", label: "Volet" },
+        // { path: "/pergolas", label: "Pergolas" },
+        // { path: "/portails", label: "Portails" },
+        // { path: "/#", label: "Porte de garage " },
+        // { path: "/#", label: "Volet" },
       ]
     },
     {

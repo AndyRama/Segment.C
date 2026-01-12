@@ -58,7 +58,7 @@ export default function SybaiePage() {
               </Link>
               
               <Link
-                href="/contact"
+                href="#"
                 className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
               >
                 Nous contacter
@@ -77,13 +77,7 @@ export default function SybaiePage() {
                 className=""
               />
             </div>
-            {/* Badge flottant */}
-            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
-              <Factory className="mb-2 size-8 text-white" />
-              <Typography variant="p" className="text-sm font-bold text-white">
-                Groupe Millet
-              </Typography>
-            </div>
+          
           </div>
         </div>
       </SectionLayout>
