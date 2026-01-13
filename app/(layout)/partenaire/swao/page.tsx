@@ -83,12 +83,9 @@ export default function SwaoPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <Image
-                src="/images/swao-placeholder.jpg"
+                src="/images/swao-hero.jpg"
                 alt="SWAO - Menuiseries"
                 className="h-full w-full object-cover"
-                width={600}
-                height={400}
-                priority
               />
             </div>
           </div>
