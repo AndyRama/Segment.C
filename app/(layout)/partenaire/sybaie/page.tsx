@@ -7,6 +7,7 @@ import { SectionLayout } from '@/features/landing/section-layout';
 import { VideoSection } from '@/features/landing/video-section';
 import { useSession } from "@/lib/auth-client";
 import Image from 'next/image';
+import { ProcessSection } from "@/features/landing/process-section";
 
 import { 
   ExternalLink, 
@@ -223,6 +224,9 @@ export default function SybaiePage() {
           className="mt-20 mb-30"
         />
       </SectionLayout>
+
+      {/* Section Process */}
+      <ProcessSection />
 
       {/* Section Pourquoi SYbaie */}
       <SectionLayout size="lg" variant="default" className="py-16">

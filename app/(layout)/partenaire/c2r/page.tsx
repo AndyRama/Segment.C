@@ -6,6 +6,8 @@ import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { useSession } from "@/lib/auth-client";
 import Image from "next/image";
+import { ProcessSection } from '@/features/partenaire/c2r/process-section';
+
 import { 
   ExternalLink, 
   Award, 
@@ -337,6 +339,8 @@ export default function C2RPage() {
           </div>
         </div>
       </SectionLayout>
+
+      <ProcessSection />
 
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">

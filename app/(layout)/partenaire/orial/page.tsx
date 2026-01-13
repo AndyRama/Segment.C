@@ -6,6 +6,7 @@ import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { useSession } from "@/lib/auth-client";
 import Image from "next/image";
+import { ProcessSection } from "@/features/landing/process-section";
 
 import { 
   ExternalLink, 
@@ -322,6 +323,9 @@ export default function OrialPage() {
           </div>
         </div>
       </SectionLayout>
+
+      {/* Section Process */}
+      <ProcessSection />
 
       {/* Section Citation */}
       <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
