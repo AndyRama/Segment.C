@@ -84,7 +84,7 @@ export default function OrialPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <Image
-                src="/images/C2r-placeholder.png"
+                src="/images/orial-placeholder.png"
                 alt="Orial - Menuiseries"
                 className="h-full w-full object-cover"
               />
@@ -355,7 +355,7 @@ export default function OrialPage() {
               href="/#"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-               Voir notre brochure
+               Catalogue
               <ArrowRight className="size-5" />
             </Link>
             

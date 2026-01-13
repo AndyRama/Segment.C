@@ -85,7 +85,7 @@ export default function SybaiePage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <Image
-                src="/images/porte4.jpg"
+                src="/images/menuiseries-bois-1024x640.jpg"
                 alt="SYbaie - Menuiseries - porte d'entrée"
                 className="h-full w-full object-cover"
               />
@@ -215,6 +215,15 @@ export default function SybaiePage() {
         </div>
       </SectionLayout>
 
+      <SectionLayout>
+        <VideoSection
+          videoUrl="/videos/demo.mp4"
+          title="Présentation d'un de nos produits"
+          description=""
+          className="mt-20 mb-30"
+        />
+      </SectionLayout>
+
       {/* Section Pourquoi SYbaie */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -260,15 +269,6 @@ export default function SybaiePage() {
               ))}
             </div>
           </div>
-
-          <SectionLayout>
-            <VideoSection
-              videoUrl="/videos/demo.mp4"
-              title="Présentation d'un de nos produits"
-              description=""
-              className="mt-20 mb-30"
-            />
-          </SectionLayout>
 
           <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 p-8">
             <div className="mb-6">
