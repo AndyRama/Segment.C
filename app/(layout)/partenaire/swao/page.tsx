@@ -86,6 +86,9 @@ export default function SwaoPage() {
                 src="/images/swao-placeholder.jpg"
                 alt="SWAO - Menuiseries"
                 className="h-full w-full object-cover"
+                whidth={600}
+                height={400}
+                priority
               />
             </div>
           </div>

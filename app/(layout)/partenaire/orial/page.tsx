@@ -324,9 +324,6 @@ export default function OrialPage() {
         </div>
       </SectionLayout>
 
-      {/* Section Process */}
-      <ProcessSection />
-
       {/* Section Citation */}
       <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
         <div className="mx-auto max-w-4xl text-center">
@@ -343,6 +340,9 @@ export default function OrialPage() {
           </Typography>
         </div>
       </SectionLayout>
+
+      {/* Section Process */}
+      <ProcessSection />
 
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
