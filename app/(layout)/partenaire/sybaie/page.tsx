@@ -81,12 +81,12 @@ export default function SybaiePage() {
             </div>
           </div>
 
-          {/* Vidéo à droite */}
+          {/* Image à droite */}
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <Image
-                src="/images/swao.png"
-                alt="SWAO - Menuiseries"
+                src="/images/porte4.jpg"
+                alt="SYbaie - Menuiseries - porte d'entrée"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -261,6 +261,15 @@ export default function SybaiePage() {
             </div>
           </div>
 
+          <SectionLayout>
+            <VideoSection
+              videoUrl="/videos/demo.mp4"
+              title="Présentation d'un de nos produits"
+              description=""
+              className="mt-20 mb-30"
+            />
+          </SectionLayout>
+
           <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 p-8">
             <div className="mb-6">
               <Building2 className="mb-4 size-12 text-green-600" />
@@ -322,7 +331,8 @@ export default function SybaiePage() {
           
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/#"
+              href="/pdf/sybaie.pdf"
+              target='_blank'
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Catalogue
@@ -348,14 +358,6 @@ export default function SybaiePage() {
             )}
           </div>
         </div>
-      </SectionLayout>
-      <SectionLayout>
-        <VideoSection
-          videoUrl="/videos/demo.mp4"
-          title="Présentation d'un de nos produits"
-          description=""
-          className="mt-20 mb-30"
-        />
       </SectionLayout>
     </div>
   );
