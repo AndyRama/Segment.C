@@ -60,56 +60,7 @@ export const Footer = () => {
 
             {/* Navigation en colonnes - partie droite */}
             <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-5 md:gap-8 lg:gap-12">
-
-              {/* Colonne Partenaires */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Partenaires
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/sybaie"
-                  >
-                    Sybaie
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/swao"
-                  >
-                    Swao
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/proferm"
-                  >
-                    Proferm
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/c2r"
-                  >
-                    C2r
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/orial"
-                  >
-                    Orial
-                  </Typography>
-                </div>
-              </div>
-              
+             
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
@@ -216,6 +167,55 @@ export const Footer = () => {
                   </Typography>
                 </div>
               </div>     
+
+               {/* Colonne Partenaires */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Partenaires
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/sybaie"
+                  >
+                    Sybaie
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/swao"
+                  >
+                    Swao
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/proferm"
+                  >
+                    Proferm
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/c2r"
+                  >
+                    C2r
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/orial"
+                  >
+                    Orial
+                  </Typography>
+                </div>
+              </div>
 
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">

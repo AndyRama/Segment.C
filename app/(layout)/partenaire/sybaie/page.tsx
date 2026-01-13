@@ -225,9 +225,6 @@ export default function SybaiePage() {
         />
       </SectionLayout>
 
-      {/* Section Process */}
-      <ProcessSection />
-
       {/* Section Pourquoi SYbaie */}
       <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -322,6 +319,9 @@ export default function SybaiePage() {
           </div>
         </div>
       </SectionLayout>
+
+      {/* Section Process */}
+      <ProcessSection />
 
       {/* CTA Final */}
       <SectionLayout size="lg" variant="default" className="py-16">
