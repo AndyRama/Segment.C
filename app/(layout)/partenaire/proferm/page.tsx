@@ -83,7 +83,7 @@ export default function ProfermPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <Image
-                src="/images/C2r-placeholder.png"
+                src="/images/FIXE_HIVER_HD.png"
                 alt="PROFERM - Menuiseries"
                 className="h-full w-full object-cover"
               />
