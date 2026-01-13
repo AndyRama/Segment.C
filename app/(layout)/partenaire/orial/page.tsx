@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { useSession } from "@/lib/auth-client";
+import Image from "next/image";
+
 import { 
   ExternalLink, 
   Award, 
@@ -64,7 +66,7 @@ export default function OrialPage() {
                   href="/account/devis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               ) : (
@@ -72,7 +74,7 @@ export default function OrialPage() {
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               )}
@@ -81,17 +83,11 @@ export default function OrialPage() {
 
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-              <img
-                src="https://placehold.co/600x400/FFFFFF/10b981?text=ORIAL"
-                alt="ORIAL - Solutions aluminium"
+              <Image
+                src="/images/C2r-placeholder.png"
+                alt="Orial - Menuiseries"
                 className="h-full w-full object-cover"
               />
-            </div>
-            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
-              <Factory className="mb-2 size-8 text-white" />
-              <Typography variant="p" className="text-sm font-bold text-white">
-                Hauts-de-France
-              </Typography>
             </div>
           </div>
         </div>
@@ -356,10 +352,10 @@ export default function OrialPage() {
           
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/realisations"
+              href="/#"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-              Voir nos réalisations
+               Voir notre brochure
               <ArrowRight className="size-5" />
             </Link>
             
