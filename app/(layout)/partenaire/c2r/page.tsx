@@ -354,17 +354,27 @@ export default function C2RPage() {
               target='_blank'
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-              Voir notre brochure
-              <ArrowRight className="size-5" />
+              Catalogue
+              <ExternalLink className="size-5" />
             </Link>
             
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-white bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
-            >
-              Demander un devis
-              <ArrowRight className="size-5" />
-            </Link>
+            {session ? (
+                <Link
+                  href="/account/devis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                >
+                  Demander un devis
+                  <ArrowRight className="size-5" />
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                >
+                  Demander un devis
+                  <ArrowRight className="size-5" />
+                </Link>
+              )}
           </div>
         </div>
       </SectionLayout>

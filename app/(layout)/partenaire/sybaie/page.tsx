@@ -336,7 +336,7 @@ export default function SybaiePage() {
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Catalogue
-              <ArrowRight className="size-5" />
+              <ExternalLink className="size-5" />
             </Link>
             
             {session ? (

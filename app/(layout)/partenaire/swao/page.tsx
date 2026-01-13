@@ -64,7 +64,7 @@ export default function SwaoPage() {
                   href="/account/devis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               ) : (
@@ -72,7 +72,7 @@ export default function SwaoPage() {
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               )}
@@ -82,7 +82,7 @@ export default function SwaoPage() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
               <Image
-                src="/images/swao-palceholder.jpg"
+                src="/images/swao-placeholder.jpg"
                 alt="SWAO - Menuiseries"
                 className="h-full w-full object-cover"
               />
@@ -324,7 +324,7 @@ export default function SwaoPage() {
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
               Catalogue
-              <ArrowRight className="size-5" />
+              <ExternalLink className="size-5" />
             </Link>
             
             {session ? (
