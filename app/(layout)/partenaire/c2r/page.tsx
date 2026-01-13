@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
+import { useSession } from "@/lib/auth-client";
+import Image from "next/image";
 import { 
   ExternalLink, 
   Award, 
@@ -55,30 +57,40 @@ export default function C2RPage() {
                 <ExternalLink className="size-5" />
               </Link>
               
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
-              >
-                Nous contacter
-                <ArrowRight className="size-5" />
-              </Link>
+             {session ? (
+                <Link
+                  href="/account/devis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                >
+                  Nous contacter
+                  <ArrowRight className="size-5" />
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                >
+                  Nous contacter
+                  <ArrowRight className="size-5" />
+                </Link>
+              )}
             </div>
           </div>
 
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-              <img
+              <Image
                 src="https://placehold.co/600x400/FFFFFF/10b981?text=C2R"
                 alt="C2R - Menuiseries"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
+            {/* <div className="absolute -bottom-6 -right-6 rounded-2xl border-4 border-white bg-gradient-to-br from-green-500 to-emerald-600 p-6 shadow-xl">
               <Factory className="mb-2 size-8 text-white" />
               <Typography variant="p" className="text-sm font-bold text-white">
                 French Fab
               </Typography>
-            </div>
+            </div> */}
           </div>
         </div>
       </SectionLayout>

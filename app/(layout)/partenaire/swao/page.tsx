@@ -13,7 +13,6 @@ import {
   Building2, 
   CheckCircle2, 
   ArrowRight,
-  Factory,
   Users,
   Sparkles,
   Lightbulb
@@ -85,8 +84,6 @@ export default function SwaoPage() {
               <Image
                 src="/images/swao.png"
                 alt="SWAO - Menuiseries"
-                width={600}
-                height={400}
                 className="h-full w-full object-cover"
               />
             </div>

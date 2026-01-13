@@ -11,7 +11,6 @@ import {
   Building2, 
   CheckCircle2, 
   ArrowRight,
-  Factory,
   Target,
   Sparkles,
   Palette,
@@ -64,7 +63,7 @@ export default function ProfermPage() {
                   href="/account/devis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               ) : (
@@ -72,7 +71,7 @@ export default function ProfermPage() {
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               )}
