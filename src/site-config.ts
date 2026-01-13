@@ -7,7 +7,7 @@ export const SiteConfig = {
   appIcon: "/images/icon.png",
   company: {
     name: "Segment.C",
-    address: "390 all de saussets ,3 hameau 33127 -St Jean d'Illac",
+    address: "390 all de saussets, 3 hameau 33127 St Jean d'Illac",
   },
   brand: {
     primary: "#4bb484",
