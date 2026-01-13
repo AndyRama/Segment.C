@@ -332,11 +332,11 @@ export default function ProfermPage() {
           
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/#"
+              href="/pdf/proferm.pdf"
               target="_blank"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-               Voir notre brochure
+               Catalogue
               <ArrowRight className="size-5" />
             </Link>
             

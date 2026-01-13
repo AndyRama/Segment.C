@@ -319,10 +319,11 @@ export default function SwaoPage() {
           
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/realisations"
+              href="/pdf/swao.pdf"
+              target="_blank"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-              Voir nos réalisations
+              Catalogue
               <ArrowRight className="size-5" />
             </Link>
             

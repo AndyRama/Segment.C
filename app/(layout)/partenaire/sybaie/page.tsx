@@ -6,6 +6,8 @@ import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { VideoSection } from '@/features/landing/video-section';
 import { useSession } from "@/lib/auth-client";
+import Image from 'next/image';
+
 import { 
   ExternalLink, 
   Award, 
@@ -64,7 +66,7 @@ export default function SybaiePage() {
                   href="/account/devis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               ) : (
@@ -72,7 +74,7 @@ export default function SybaiePage() {
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                 >
-                  Nous contacter
+                  Demander un devis
                   <ArrowRight className="size-5" />
                 </Link>
               )}
@@ -82,11 +84,10 @@ export default function SybaiePage() {
           {/* Vidéo à droite */}
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-              <VideoSection
-                videoUrl="/videos/demo.mp4"
-                title=""
-                description=""
-                className=""
+              <Image
+                src="/images/swao.png"
+                alt="SWAO - Menuiseries"
+                className="h-full w-full object-cover"
               />
             </div>
           </div>
@@ -321,10 +322,10 @@ export default function SybaiePage() {
           
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/#realisations"
+              href="/#"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-              Notre catalogue
+              Catalogue
               <ArrowRight className="size-5" />
             </Link>
             
@@ -347,6 +348,14 @@ export default function SybaiePage() {
             )}
           </div>
         </div>
+      </SectionLayout>
+      <SectionLayout>
+        <VideoSection
+          videoUrl="/videos/demo.mp4"
+          title="Présentation d'un de nos produits"
+          description=""
+          className="mt-20 mb-30"
+        />
       </SectionLayout>
     </div>
   );
