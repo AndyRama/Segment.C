@@ -6,7 +6,7 @@ import { Typography } from '@/components/nowts/typography';
 import { SectionLayout } from '@/features/landing/section-layout';
 import { useSession } from "@/lib/auth-client";
 import Image from "next/image";
-import { ProcessSection } from '@/features/partenaire/c2r/process-section';
+import { ProcessSection } from "@/features/landing/process-section";
 
 import { 
   ExternalLink, 
