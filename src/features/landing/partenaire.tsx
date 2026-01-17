@@ -77,32 +77,35 @@ export const Partenaire: React.FC<PartenaireProps> = ({ className = '' }) => {
       <div className="lg:ml-30 my-10 ml-0 md:ml-20">
         <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 xl:grid-cols-5">
           {PartenaireContent.logos.map((item, index) => (
-            <motion.Link
+            <Link
               key={item.id}
-              href={item.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                  delay: index * 0.2,
-                  duration: 0.2,
-                },
-              }}
-              whileHover={{ y: -10, transition: { duration: 0.1 } }}
-              viewport={{ once: true }}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative z-[2] mx-auto bg-cover bg-center cursor-pointer"
             >
-              <Image
-                src={item.logo}
-                width={90}
-                height={90}
-                alt={`logo${item.id}`}
-                className="rounded-md"
-              />
-            </motion.Link>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: index * 0.2,
+                    duration: 0.2,
+                  },
+                }}
+                whileHover={{ y: -10, transition: { duration: 0.1 } }}
+                viewport={{ once: true }}
+              >
+                <Image
+                  src={item.logo}
+                  width={90}
+                  height={90}
+                  alt={`logo${item.id}`}
+                  className="rounded-md"
+                />
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
