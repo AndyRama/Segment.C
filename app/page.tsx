@@ -48,11 +48,11 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <ProcessSection />
+      <ServiceVilleSection {...saintJeanDIllacData.service} />
       
       <SectionDivider />
 
-      <ServiceVilleSection {...saintJeanDIllacData.service} />
+      <ProcessSection />
 
       <SectionDivider />
 

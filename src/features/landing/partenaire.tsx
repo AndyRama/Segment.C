@@ -8,14 +8,16 @@ import logo2 from './../../../public/images/orial.png';
 import logo3 from './../../../public/images/c2r.png';
 import logo4 from './../../../public/images/swao.png';
 import logo5 from './../../../public/images/proferm-logo.jpg';
+import Link from "next/link";
 
 type LogoItem = {
-  id: number
-  logo: StaticImageData
+  id: number;
+  logo: StaticImageData;
+  link: string; 
 }
 
 type PartenaireProps = {
-  className?: string
+  className?: string;
 }
 
 const PartenaireContent = {
@@ -25,11 +27,11 @@ const PartenaireContent = {
     description: '',
   },
   logos: [
-    { logo: logo1, id: 1 },
-    { logo: logo2, id: 2 },
-    { logo: logo3, id: 3 },
-    { logo: logo4, id: 4 },
-    { logo: logo5, id: 5 },
+    { logo: logo1, id: 1, link: 'https://www.segment-c.com/partenaire/sybaie' }, 
+    { logo: logo2, id: 2, link: 'https://www.segment-c.com/partenaire/orial' },
+    { logo: logo3, id: 3, link: 'https://www.segment-c.com/partenaire/c2r' },
+    { logo: logo4, id: 4, link: 'https://www.segment-c.com/partenaire/swao' },
+    { logo: logo5, id: 5, link: 'https://www.segment-c.com/partenaire/proferm' },
   ] as LogoItem[],
 };
 
@@ -75,8 +77,11 @@ export const Partenaire: React.FC<PartenaireProps> = ({ className = '' }) => {
       <div className="lg:ml-30 my-10 ml-0 md:ml-20">
         <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 xl:grid-cols-5">
           {PartenaireContent.logos.map((item, index) => (
-            <motion.div
+            <motion.Link
               key={item.id}
+              href={item.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{
                 opacity: 1,
@@ -88,7 +93,7 @@ export const Partenaire: React.FC<PartenaireProps> = ({ className = '' }) => {
               }}
               whileHover={{ y: -10, transition: { duration: 0.1 } }}
               viewport={{ once: true }}
-              className="relative z-[2] mx-auto bg-cover bg-center"
+              className="relative z-[2] mx-auto bg-cover bg-center cursor-pointer"
             >
               <Image
                 src={item.logo}
@@ -97,7 +102,7 @@ export const Partenaire: React.FC<PartenaireProps> = ({ className = '' }) => {
                 alt={`logo${item.id}`}
                 className="rounded-md"
               />
-            </motion.div>
+            </motion.Link>
           ))}
         </div>
       </div>

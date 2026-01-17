@@ -57,7 +57,7 @@ const SectionHeader = () => (
     </Typography>
     <Typography
       variant="large"
-      className="text-muted-foreground mx-auto max-w-3xl"
+      className="text-muted-foreground mx-auto max-w-4xl"
     >
       Découvrez notre gamme complète de menuiseries et solutions sur mesure pour
       votre habitat
@@ -116,8 +116,8 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
               </Button>
             ) : (
               <Button asChild variant="default" size="lg">
-                <Link href="/catalogue" target="_blank" rel="noopener noreferrer">
-                  Notre Catalogue
+                <Link href="#" target="_blank" rel="noopener noreferrer">
+                  - D'informations
                 </Link>
               </Button>
             )}
