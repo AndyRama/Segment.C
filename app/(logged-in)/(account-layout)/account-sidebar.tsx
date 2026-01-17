@@ -16,11 +16,11 @@ import type { NavigationGroup } from "@/features/navigation/navigation.type";
 import { SidebarUserButton } from "@/features/sidebar/sidebar-user-button";
 import type { AuthOrganization } from "@/lib/auth/auth-type";
 import { ChevronDown } from "lucide-react";
-import { OrgsSelect } from "../../orgs/[orgSlug]/(navigation)/_navigation/orgs-select";
+// import { OrgsSelect } from "../../orgs/[orgSlug]/(navigation)/_navigation/orgs-select";
 import { getAccountNavigation } from "./account.links";
-import Link from "next/link";
-import Image from "next/image";
-import { SiteConfig } from "@/site-config";
+// import Link from "next/link";
+// import Image from "next/image";
+// import { SiteConfig } from "@/site-config";
 
 export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
   const links: NavigationGroup[] = getAccountNavigation();
@@ -28,15 +28,15 @@ export function AccountSidebar({ userOrgs }: { userOrgs: AuthOrganization[] }) {
   return (
     <Sidebar variant="inset">
       <SidebarHeader>
-        <OrgsSelect orgs={userOrgs} />
-        <Link href="/home">
-         <Image
+        {/* <OrgsSelect orgs={userOrgs} /> */}
+        {/* <Link href="/home">
+          <Image
             src={SiteConfig.appIcon}
             alt="logo enterprise Segment.C"
             width={24}
             height={24}
           />
-        </Link>
+        </Link> */}
         <p className="text-center md:text-left"> 
           <span className="text-green-500 text-bold text-italic"> Segment.C </span>
           | Dashboard

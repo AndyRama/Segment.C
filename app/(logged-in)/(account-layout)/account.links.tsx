@@ -30,11 +30,6 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     title: "Menu",
     links: [
       {
-        href: "/home",
-        Icon: Home,
-        label: "Home ",
-      },
-      {
         href: "/account/devis",
         Icon: NotebookPen  ,
         label: "Créer un Devis",
