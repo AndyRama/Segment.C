@@ -170,7 +170,7 @@ export default function HomePage() {
           {
             question: "Comment se déroule une intervention chez moi ?",
             answer:
-              "Notre processus comprend 4 étapes : 1) Devis gratuit à domicile, 2) Mesure technique et validation, 3) Fabrication en atelier, 4) Pose professionnelle avec finitions. Nous nous occupons de tout de A à Z.",
+              "Notre processus comprend 4 étapes : 1) Devis gratuit , 2) Mesure technique et validation, 3) Fabrication - Réception en atelier, 4) Pose professionnelle avec finitions. Nous nous occupons de tout de A à Z.",
           },
         ]}
       />

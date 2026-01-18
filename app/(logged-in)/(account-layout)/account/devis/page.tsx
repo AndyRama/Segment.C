@@ -15,12 +15,12 @@ export default async function DevisPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-4xl mx-auto">
-      <div className="text-center">
+      {/* <div className="text-center">
         <h1 className="text-2xl font-bold mb-2">Nouveau devis</h1>
         <p className="text-gray-600">
           Créez votre demande de devis personnalisée
         </p>
-      </div>
+      </div> */}
 
       <div className="flex justify-end mb-4">
         <Button asChild variant="outline">
