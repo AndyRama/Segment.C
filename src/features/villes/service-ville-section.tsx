@@ -609,7 +609,7 @@ const ContactFormInline = () => {
         <ul className="space-y-1.5 text-sm text-green-600">
           <li className="flex items-start gap-2">
             <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
-            <span>Devis détaillé gratuit sous 24h</span>
+            <span>Devis détaillé gratuit sous 48h</span>
           </li>
           <li className="flex items-start gap-2">
             <Check className="mt-0.5 size-3 shrink-0 text-green-500" />
@@ -689,7 +689,7 @@ export const ServiceVilleSection = ({
             {/* Badges 24h et 100% */}
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-green-50 rounded-2xl p-6 text-center border border-green-100">
-                <p className="text-5xl font-bold text-green-600 mb-2">24h</p>
+                <p className="text-5xl font-bold text-green-600 mb-2">48h</p>
                 <p className="text-sm font-semibold text-gray-900">Réponse garantie</p>
                 <p className="text-xs text-gray-600">Devis gratuit et rapide</p>
               </div>

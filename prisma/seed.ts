@@ -2474,6 +2474,32 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
+  {
+  name: "Modèle 093-0",
+  category: "PORTE_ENTRER",
+  material: "ALUMINIUM",
+  seller: "C2R",
+  description: "Porte d'entrée aluminium Collection Conceptuel à fort vitrage avec rainures, inserts inox et vitrage",
+  priceRange: "Sur devis",
+  rating: 4.8,
+  dimensions: "Standard et sur-mesure disponibles",
+  epaisseur: "81mm",
+  performance: "Up jusqu'à 0,44 W/(m².K)",
+  image: "images/portes/Modele_093-0.jpg",
+  colors: ["213 coloris disponibles"],
+  features: [
+    "Quincaillerie 5 points de condamnation",
+    "Poignée et rosette inox",
+    "Serrure à crochet 5 points",
+    "Paumelles intensives inox (140 kg/vantail)",
+    "Triple vitrage SP10/4/SP10 FE Argon",
+    "Sécurité P5A (EN356)",
+    "Seuil Alu 20mm PMR"
+  ],
+  isPopular: false,
+  isNew: false,
+  isActive: true,
+},
 
   //Porte de garage
   {
