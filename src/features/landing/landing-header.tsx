@@ -73,9 +73,9 @@ export function LandingHeader() {
       path: "#",
       label: "Catégories",
       dropdown: [
-        { path: "/fenetres", label: "Fenêtre" },
+        { path: "/fenetres", label: "Fenêtres" },
         { path: "/baie", label: "Baie vitrée" },
-        { path: "/portes", label: "Porte" },
+        { path: "/portes", label: "Portes" },
         // { path: "/pergolas", label: "Pergolas" },
         // { path: "/portails", label: "Portails" },
         // { path: "/#", label: "Porte de garage " },
@@ -84,7 +84,7 @@ export function LandingHeader() {
     },
     {
       path: "#",
-      label: "Patenaires",
+      label: "Partenaires",
       dropdown: [
         { path: "/partenaire/sybaie", label: "Sybaie" },
         { path: "/partenaire/swao", label: "Swao" },
@@ -94,7 +94,7 @@ export function LandingHeader() {
       ]
     },
     { path: "/posts", label: "Actualités" },
-    { path: "/contact", label: "Contact" },
+    // { path: "/contact", label: "Contact" },
   ];
 
   return (
