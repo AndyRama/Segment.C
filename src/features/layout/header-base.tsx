@@ -66,9 +66,9 @@ const topRoutes = [
     path: "#",
     label: "Catalogue",
     dropdown: [ 
-      { path: "/fenetres", label: "Fenêtre" },
+      { path: "/fenetres", label: "Fenêtres" },
       { path: "/baie", label: "Baie vitrée" },
-      { path: "/portes", label: "Porte" },
+      { path: "/portes", label: "Portes" },
       // { path: "/pergolas", label: "Pergolas" },
       // { path: "/portails", label: "Portails" },
       // { path: "/garage", label: "Porte de garage" },
@@ -88,7 +88,7 @@ const topRoutes = [
     ]
   },
   { path: "/posts", label: "Actualités" },
-  { path: "/contact", label: "Contact" },
+  // { path: "/contact", label: "Contact" },
 ];
 
 export function HeaderBase() {
