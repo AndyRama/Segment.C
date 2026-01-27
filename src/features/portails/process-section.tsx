@@ -17,8 +17,8 @@ const processSteps = [
   },
   {
     step: "03",
-    title: "Fabrication",
-    description: "Fabrication sur mesure de votre portail ou clôture selon vos spécifications exactes.",
+    title: "Commande",
+    description: "Commande de votre portail ou clôture selon vos spécifications exactes.",
     color: "from-green-500 to-green-600"
   },
   {

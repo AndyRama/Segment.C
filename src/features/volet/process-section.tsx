@@ -17,8 +17,8 @@ const processSteps = [
   },
   {
     step: "03",
-    title: "Fabrication",
-    description: "Fabrication française sur mesure de vos volets dans nos ateliers. Contrôle qualité rigoureux à chaque étape.",
+    title: "Commande",
+    description: "Commande de vos volets dans chez notre fournisseur partenaire selon vos spécifications exactes.",
     color: "from-green-500 to-green-600"
   },
   {

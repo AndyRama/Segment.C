@@ -17,8 +17,8 @@ const processSteps = [
   },
   {
     step: "03",
-    title: "Fabrication",
-    description: "Fabrication sur mesure en France de votre pergola selon vos spécifications. Contrôle qualité à chaque étape de production.",
+    title: "Commande",
+    description: "Commande en France de votre pergola selon vos spécifications. Contrôle qualité à chaque étape de production.",
     color: "from-green-500 to-green-600"
   },
   {
