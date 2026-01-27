@@ -60,7 +60,7 @@ export function VoletsRoulantsContent() {
     <>
       <div className="col-span-full mb-8">
         <div className="text-center">
-          <Typography variant="h3" className="mb-4 text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <Typography variant="h3" className="mb-4 text-3xl font-bold bg-gradient-to-r from-green-600 to-green-600 bg-clip-text text-transparent">
             Nos Volets Roulants
           </Typography>
           <Typography variant="p" className="mx-auto max-w-3xl text-muted-foreground leading-relaxed">
@@ -74,7 +74,7 @@ export function VoletsRoulantsContent() {
       {roulantsModels.map((model, index) => (
         <div
           key={index}
-          className="group relative rounded-2xl border-2 border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-xl hover:shadow-blue-500/10"
+          className="group relative rounded-2xl border-2 border-green-200 dark:border-green-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-green-400 dark:hover:border-green-600 hover:shadow-xl hover:shadow-green-500/10"
         >
           <div className="relative h-48 overflow-hidden">
             <Image
@@ -83,7 +83,7 @@ export function VoletsRoulantsContent() {
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-900/90 to-transparent" />
             <div className="absolute bottom-4 left-4">
               <Typography variant="h3" className="text-2xl font-bold text-white mb-1">
                 {model.name}
@@ -98,7 +98,7 @@ export function VoletsRoulantsContent() {
             <ul className="space-y-3">
               {model.features.map((feature, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <Check className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-muted-foreground">{feature}</span>
                 </li>
               ))}
@@ -108,47 +108,47 @@ export function VoletsRoulantsContent() {
       ))}
 
       {/* Additional Info */}
-      <div className="col-span-full mt-8 rounded-2xl border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50/50 to-indigo-50/30 dark:from-blue-950/30 dark:to-indigo-950/20 p-8">
+      <div className="col-span-full mt-8 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-green-50/30 dark:from-green-950/30 dark:to-green-950/20 p-8">
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <Typography variant="p" className="mb-4 text-xl font-bold text-blue-700 dark:text-blue-400">
+            <Typography variant="p" className="mb-4 text-xl font-bold text-green-700 dark:text-green-400">
               Matériaux disponibles
             </Typography>
             <ul className="space-y-2">
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">Aluminium extrudé (standard)</span>
               </li>
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">PVC haute résistance</span>
               </li>
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">Bois Pin d'Oregon traité classe 3A</span>
               </li>
             </ul>
           </div>
           
           <div>
-            <Typography variant="p" className="mb-4 text-xl font-bold text-blue-700 dark:text-blue-400">
+            <Typography variant="p" className="mb-4 text-xl font-bold text-green-700 dark:text-green-400">
               Options de motorisation
             </Typography>
             <ul className="space-y-2">
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">Moteur filaire classique</span>
               </li>
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">Moteur radio io/RTS</span>
               </li>
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">Moteur solaire autonome</span>
               </li>
               <li className="flex items-center gap-3">
-                <Check className="h-4 w-4 text-blue-600" />
+                <Check className="h-4 w-4 text-green-600" />
                 <span className="text-sm">Manœuvre de secours intégrée</span>
               </li>
             </ul>
@@ -158,7 +158,7 @@ export function VoletsRoulantsContent() {
         <div className="mt-6 text-center">
           <Link
             href="#devis"
-            className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg"
+            className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-600 to-green-600 px-6 py-3 font-semibold text-white transition-all hover:from-green-700 hover:to-green-700 hover:shadow-lg"
           >
             Demander un devis personnalisé
           </Link>

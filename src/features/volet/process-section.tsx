@@ -7,7 +7,7 @@ const processSteps = [
     step: "01",
     title: "Visite & mesures",
     description: "Déplacement gratuit à votre domicile pour relever les dimensions exactes et analyser la configuration de vos ouvertures.",
-    color: "from-blue-500 to-indigo-600"
+    color: "from-green-500 to-indigo-600"
   },
   {
     step: "02",
@@ -31,10 +31,10 @@ const processSteps = [
 
 export function ProcessSection() {
   return (
-    <section className="bg-blue-50/30 dark:bg-blue-950/5 py-20">
+    <section className="bg-green-50/30 dark:bg-green-950/5 py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-0">
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-100 dark:bg-blue-950/50 px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 dark:bg-green-950/50 px-4 py-2 text-sm font-medium text-green-700 dark:text-green-400">
             Notre méthode
           </div>
           <Typography variant="h2" className="mb-4 text-4xl font-bold">
@@ -56,18 +56,18 @@ export function ProcessSection() {
         </div>
 
         {/* Timeline Info */}
-        <div className="mt-12 rounded-2xl border-2 border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-950 p-8">
+        <div className="mt-12 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-white dark:bg-slate-950 p-8">
           <div className="grid md:grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">48h</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">48h</div>
               <div className="text-sm text-muted-foreground">Délai de réponse pour votre devis</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">2-3 semaines</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">2-3 semaines</div>
               <div className="text-sm text-muted-foreground">Fabrication sur mesure en France</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">1-2 jours</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">1-2 jours</div>
               <div className="text-sm text-muted-foreground">Installation professionnelle</div>
             </div>
           </div>
