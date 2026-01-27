@@ -8,31 +8,31 @@ const benefits = [
     icon: Shield,
     title: "Sécurité renforcée",
     description: "Protégez votre famille et vos biens avec des portails robustes et des systèmes de verrouillage haute sécurité.",
-    color: "from-blue-500 to-indigo-600"
+    color: "from-green-500 to-green-600"
   },
   {
     icon: Lock,
     title: "Motorisation intelligente",
     description: "Contrôlez l'accès à distance avec nos systèmes de motorisation connectés et sécurisés.",
-    color: "from-purple-500 to-pink-600"
+    color: "from-green-500 to-green-600"
   },
   {
     icon: Home,
     title: "Valorisation de l'habitat",
     description: "Augmentez la valeur de votre propriété avec un portail design qui sublime votre entrée.",
-    color: "from-amber-500 to-orange-600"
+    color: "from-green-500 to-green-600"
   },
   {
     icon: Zap,
     title: "Installation rapide",
     description: "Pose professionnelle en 1 à 2 jours avec mise en service complète et formation incluse.",
-    color: "from-yellow-500 to-amber-600"
+    color: "from-green-500 to-green-600"
   },
   {
     icon: Maximize2,
     title: "Sur mesure",
     description: "Dimensions, matériaux, couleurs et design personnalisés selon vos contraintes et envies.",
-    color: "from-emerald-500 to-green-600"
+    color: "from-green-500 to-green-600"
   },
   {
     icon: Wrench,

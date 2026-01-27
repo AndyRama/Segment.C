@@ -7,25 +7,25 @@ const processSteps = [
     step: "01",
     title: "Visite & conseils",
     description: "Déplacement gratuit chez vous pour étudier votre projet et vous conseiller sur les meilleures solutions.",
-    color: "from-emerald-500 to-green-600"
+    color: "from-green-500 to-green-600"
   },
   {
     step: "02",
     title: "Devis personnalisé",
     description: "Proposition détaillée avec plans, options et tarifs. Pas de frais cachés, tout est transparent.",
-    color: "from-green-500 to-teal-600"
+    color: "from-green-500 to-green-600"
   },
   {
     step: "03",
     title: "Fabrication",
     description: "Fabrication sur mesure de votre portail ou clôture selon vos spécifications exactes.",
-    color: "from-teal-500 to-cyan-600"
+    color: "from-green-500 to-green-600"
   },
   {
     step: "04",
     title: "Installation",
     description: "Pose professionnelle par nos équipes. Mise en service complète et formation à l'utilisation.",
-    color: "from-cyan-500 to-blue-600"
+    color: "from-green-500 to-green-600"
   }
 ];
 
