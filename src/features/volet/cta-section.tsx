@@ -19,7 +19,7 @@ const ctaStats = [
 
 export function CTASection() {
   return (
-    <section id="devis" className="relative bg-blue-600 dark:bg-blue-700 py-20 text-white overflow-hidden">
+    <section id="devis" className="relative bg-green-600 dark:bg-green-700 py-20 text-white overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
@@ -36,7 +36,7 @@ export function CTASection() {
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-blue-700 transition-all hover:bg-gray-50 hover:shadow-xl"
+            className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-green-700 transition-all hover:bg-gray-50 hover:shadow-xl"
           >
             Demander un devis gratuit
           </Link>

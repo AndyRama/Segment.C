@@ -60,7 +60,7 @@ export function FAQSection() {
         </div>
 
         {/* Additional Help */}
-        <div className="mt-12 text-center rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-green-50/30 dark:from-green-950/30 dark:to-green-950/20 p-8">
+        {/* <div className="mt-12 text-center rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-green-50/30 dark:from-green-950/30 dark:to-green-950/20 p-8">
           <Typography variant="h3" className="mb-3 text-xl font-semibold">
             Une autre question ?
           </Typography>
@@ -73,7 +73,7 @@ export function FAQSection() {
           >
             Nous contacter
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

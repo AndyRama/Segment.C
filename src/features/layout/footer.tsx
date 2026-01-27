@@ -153,7 +153,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="#"
+                    href="/pergolas"
                   >
                     Pergolas 
                   </Typography>

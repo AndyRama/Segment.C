@@ -43,7 +43,7 @@ export function FAQSection() {
     <section className="py-20">
       <div className="mx-auto max-w-3xl px-4 lg:px-0">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-100 dark:bg-blue-950/50 px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 dark:bg-green-950/50 px-4 py-2 text-sm font-medium text-green-700 dark:text-green-400">
             FAQ
           </div>
           <Typography variant="h2" className="mb-4 text-4xl font-bold">
@@ -61,7 +61,7 @@ export function FAQSection() {
         </div>
 
         {/* Additional Help */}
-        <div className="mt-12 text-center rounded-2xl border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50/50 to-indigo-50/30 dark:from-blue-950/30 dark:to-indigo-950/20 p-8">
+        {/* <div className="mt-12 text-center rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-green-50/30 dark:from-green-950/30 dark:to-green-950/20 p-8">
           <Typography variant="h3" className="mb-3 text-xl font-semibold">
             Une autre question ?
           </Typography>
@@ -70,11 +70,11 @@ export function FAQSection() {
           </Typography>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg"
+            className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-600 to-green-600 px-6 py-3 font-semibold text-white transition-all hover:from-green-700 hover:to-green-700 hover:shadow-lg"
           >
             Nous contacter
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
