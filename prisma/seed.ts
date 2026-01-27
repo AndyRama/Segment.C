@@ -2475,7 +2475,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-  name: "Modèle 093-0",
+  name: "MODELE-093",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -2485,7 +2485,7 @@ const portesData: PorteData[] = [
   dimensions: "Standard et sur-mesure disponibles",
   epaisseur: "81mm",
   performance: "Up jusqu'à 0,44 W/(m².K)",
-  image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400",
+  image: "images/portes/modele-093.jpg",
   colors: ["213 coloris disponibles"],
   features: [
     "Quincaillerie 5 points de condamnation",
