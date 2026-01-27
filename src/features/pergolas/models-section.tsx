@@ -14,7 +14,7 @@ const models = [
       "Éclairage LED RGB intégré",
       "Fixation autoportante ou murale"
     ],
-    image: "/images/pergola-noumea.jpg",
+    image: "/images/Noumea.png",
     price: "9 900€",
     link: "https://oriasun.fr/pergola-noumea/",
     highlighted: true
@@ -30,7 +30,7 @@ const models = [
       "Résistance aux UV et intempéries",
       "Garantie fabricant 10 ans"
     ],
-    image: "/images/pergola-panama.jpg",
+    image: "/images/Panama.jpg",
     price: "8 500€",
     link: "https://oriasun.fr/pergola-panama/"
   },
@@ -45,7 +45,7 @@ const models = [
       "Options: stores, éclairage, chauffage",
       "Installation rapide en 2-3 jours"
     ],
-    image: "/images/pergola-castille.jpg",
+    image: "/images/Castille.jpg",
     price: "4 900€",
     link: "https://oriasun.fr/pergola-toit-fixe-castille/"
   }

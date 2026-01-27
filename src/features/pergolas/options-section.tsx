@@ -41,7 +41,7 @@ export function OptionsSection() {
     <section className="relative bg-white dark:bg-transparent py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-0">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-100 dark:bg-amber-950/50 px-4 py-2 text-sm font-medium text-amber-700 dark:text-amber-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 dark:bg-green-950/50 px-4 py-2 text-sm font-medium text-green-700 dark:text-green-400">
             Personnalisation
           </div>
           <Typography variant="h2" className="mb-4 text-4xl font-bold">
@@ -56,7 +56,7 @@ export function OptionsSection() {
           {options.map((option, index) => (
             <div
               key={index}
-              className="group rounded-2xl border-2 border-amber-200 dark:border-amber-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-amber-400 dark:hover:border-amber-600 hover:shadow-xl"
+              className="group rounded-2xl border-2 border-green-200 dark:border-green-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-green-400 dark:hover:border-green-600 hover:shadow-xl"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -65,7 +65,7 @@ export function OptionsSection() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-amber-900/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent" />
                 <Typography variant="h3" className="absolute bottom-4 left-4 text-xl font-bold text-white">
                   {option.category}
                 </Typography>
@@ -75,7 +75,7 @@ export function OptionsSection() {
                 <ul className="space-y-3">
                   {option.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-muted-foreground">{item}</span>
                     </li>
                   ))}
@@ -86,7 +86,7 @@ export function OptionsSection() {
         </div>
 
         {/* Color Options */}
-        <div className="mt-12 rounded-2xl border-2 border-amber-200 dark:border-amber-800 bg-gradient-to-br from-amber-50/50 to-orange-50/30 dark:from-amber-950/30 dark:to-orange-950/20 p-8">
+        <div className="mt-12 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-orange-50/30 dark:from-green-950/30 dark:to-orange-950/20 p-8">
           <div className="text-center mb-6">
             <Typography variant="h3" className="mb-2 text-2xl font-bold">
               Plus de 200 couleurs RAL disponibles
@@ -107,12 +107,12 @@ export function OptionsSection() {
               { name: "Bleu", color: "bg-blue-600" },
               { name: "Rouge", color: "bg-red-600" }
             ].map((colorOption) => (
-              <div key={colorOption.name} className="flex items-center gap-2 bg-white dark:bg-slate-950 rounded-lg px-4 py-2 border border-amber-200 dark:border-amber-800">
+              <div key={colorOption.name} className="flex items-center gap-2 bg-white dark:bg-slate-950 rounded-lg px-4 py-2 border border-green-200 dark:border-green-800">
                 <div className={`w-6 h-6 rounded-full ${colorOption.color}`} />
                 <span className="text-sm font-medium">{colorOption.name}</span>
               </div>
             ))}
-            <div className="flex items-center gap-2 bg-white dark:bg-slate-950 rounded-lg px-4 py-2 border border-amber-200 dark:border-amber-800">
+            <div className="flex items-center gap-2 bg-white dark:bg-slate-950 rounded-lg px-4 py-2 border border-green-200 dark:border-green-800">
               <span className="text-sm font-medium">+ 190 autres couleurs</span>
             </div>
           </div>
