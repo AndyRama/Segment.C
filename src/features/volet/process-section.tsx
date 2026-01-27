@@ -7,25 +7,25 @@ const processSteps = [
     step: "01",
     title: "Visite & mesures",
     description: "Déplacement gratuit à votre domicile pour relever les dimensions exactes et analyser la configuration de vos ouvertures.",
-    color: "from-green-500 to-indigo-600"
+    color: "from-green-500 to-green-600"
   },
   {
     step: "02",
     title: "Devis personnalisé",
     description: "Proposition détaillée avec choix des modèles, matériaux, coloris et options. Tarif transparent sans frais cachés.",
-    color: "from-indigo-500 to-purple-600"
+    color: "from-green-500 to-green-600"
   },
   {
     step: "03",
     title: "Fabrication",
     description: "Fabrication française sur mesure de vos volets dans nos ateliers. Contrôle qualité rigoureux à chaque étape.",
-    color: "from-purple-500 to-pink-600"
+    color: "from-green-500 to-green-600"
   },
   {
     step: "04",
     title: "Installation",
     description: "Pose professionnelle en 1 à 2 jours. Mise en service complète et vérification du bon fonctionnement.",
-    color: "from-pink-500 to-red-600"
+    color: "from-green-500 to-green-600"
   }
 ];
 
