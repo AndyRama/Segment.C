@@ -69,15 +69,16 @@ const topRoutes = [
       { path: "/fenetres", label: "Fenêtres" },
       { path: "/baie", label: "Baie vitrée" },
       { path: "/portes", label: "Portes" },
-      // { path: "/pergolas", label: "Pergolas" },
-      // { path: "/portails", label: "Portails" },
+      { path: "/pergolas", label: "Pergolas" },
+      { path: "/portails", label: "Portails" },
+      { path: "/volet", label: "Volets" },
       // { path: "/garage", label: "Porte de garage" },
-      // { path: "/#", label: "Volet" },
+      // { path: "/veranda", label: "veranda" },
     ]
   },
   {
     path: "#",
-    label: "Patenaires",
+    label: "Partenaires",
     dropdown: [
       { path: "/partenaire/sybaie", label: "Sybaie" },
       { path: "/partenaire/swao", label: "Swao" },
