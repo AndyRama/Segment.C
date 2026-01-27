@@ -55,7 +55,7 @@ export function GallerySection() {
         {/* Gallery CTA */}
         <div className="mt-12 text-center">
           <Typography variant="p" className="mb-6 text-muted-foreground">
-            Plus de 200 pergolas installées en Gironde et Nouvelle-Aquitaine
+            Plus de 30 pergolas installées en Gironde et Nouvelle-Aquitaine
           </Typography>
           <button className="inline-flex items-center justify-center rounded-lg border-2 border-green-200 dark:border-green-800 px-8 py-3 text-base font-semibold text-green-700 dark:text-green-400 transition-all hover:border-green-600 hover:bg-green-50 dark:hover:bg-green-950/30">
             Voir toutes nos réalisations

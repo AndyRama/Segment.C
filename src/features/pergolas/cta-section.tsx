@@ -19,12 +19,12 @@ const ctaStats = [
 
 export function CTASection() {
   return (
-    <section id="devis" className="relative bg-amber-600 dark:bg-amber-700 py-20 text-white overflow-hidden">
+    <section id="devis" className="relative bg-green-600 dark:bg-green-700 py-20 text-white overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 h-96 w-96 bg-white/5 rounded-full blur-3xl" />
       
-      <div className="relative mx-auto max-w-4xl px-4 text-center lg:px-0">
+      <div className="relative mx-auto max-w-5xl px-4 text-center lg:px-0">
         <Typography variant="h2" className="mb-6 text-4xl font-bold md:text-5xl">
           Prêt à créer votre espace extérieur idéal ?
         </Typography>
@@ -36,7 +36,7 @@ export function CTASection() {
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-amber-700 transition-all hover:bg-gray-50 hover:shadow-xl"
+            className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-base font-semibold text-green-700 transition-all hover:bg-gray-50 hover:shadow-xl"
           >
             Demander un devis gratuit
           </Link>
