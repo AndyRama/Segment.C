@@ -9,7 +9,7 @@ export function HeroSection() {
     <section className="relative mx-auto w-full max-w-7xl px-4 py-20 lg:px-0">
       {/* Decorative Elements */}
       <div className="absolute left-0 top-0 h-72 w-72 bg-green-500/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute right-0 bottom-0 h-96 w-96 bg-indigo-500/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute right-0 bottom-0 h-96 w-96 bg-green-700/5 rounded-full blur-3xl -z-10" />
       
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
         {/* Content */}
@@ -22,7 +22,7 @@ export function HeroSection() {
           <div className="space-y-4">
             <Typography variant="h1" className="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
               Volets Roulants
-              <span className="block bg-gradient-to-r from-green-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent">
                 & Battants
               </span>
             </Typography>
@@ -37,7 +37,7 @@ export function HeroSection() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="#devis"
-              className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-600 to-indigo-600 px-8 py-4 text-base font-semibold text-white transition-all hover:from-green-700 hover:to-indigo-700 hover:shadow-lg hover:shadow-green-500/25"
+              className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-600 to-green-800 px-8 py-4 text-base font-semibold text-white transition-all hover:from-green-700 hover:to-green-700 hover:shadow-lg hover:shadow-green-500/25"
             >
               Demander un devis gratuit
             </Link>
@@ -80,7 +80,7 @@ export function HeroSection() {
           {/* Floating Card */}
           <div className="absolute -bottom-6 -left-6 rounded-xl bg-white dark:bg-slate-950 p-6 shadow-xl border-2 border-green-200 dark:border-green-800 lg:p-8">
             <div className="flex items-center gap-4">
-              <div className="rounded-full bg-gradient-to-br from-green-500 to-indigo-600 p-3">
+              <div className="rounded-full bg-gradient-to-br from-green-500 to-green-700 p-3">
                 <Award className="h-6 w-6 text-white" />
               </div>
               <div>

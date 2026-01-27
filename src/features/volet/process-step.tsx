@@ -32,7 +32,7 @@ export function ProcessStep({ step, title, description, color, showConnector = f
         </Typography>
       </div>
       {showConnector && (
-        <div className="absolute -right-4 top-1/2 hidden h-0.5 w-8 bg-gradient-to-r from-green-300 to-indigo-300 dark:from-green-700 dark:to-indigo-700 lg:block" />
+        <div className="absolute -right-4 top-1/2 hidden h-0.5 w-8 bg-gradient-to-r from-green-300 to-green-500 dark:from-green-700 dark:to-green-800 lg:block" />
       )}
     </div>
   );

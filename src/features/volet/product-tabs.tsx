@@ -15,7 +15,7 @@ export function ProductTabs({ activeTab, onTabChange }: ProductTabsProps) {
           className={cn(
             "rounded-lg px-8 py-3 text-base font-semibold transition-all",
             activeTab === "roulants"
-              ? "bg-gradient-to-r from-green-600 to-indigo-600 text-white shadow-lg shadow-green-500/25"
+              ? "bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg shadow-green-500/25"
               : "text-green-700 dark:text-green-400 hover:text-green-900 dark:hover:text-green-300"
           )}
         >
@@ -26,7 +26,7 @@ export function ProductTabs({ activeTab, onTabChange }: ProductTabsProps) {
           className={cn(
             "rounded-lg px-8 py-3 text-base font-semibold transition-all",
             activeTab === "battants"
-              ? "bg-gradient-to-r from-green-600 to-indigo-600 text-white shadow-lg shadow-green-500/25"
+              ? "bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg shadow-green-500/25"
               : "text-green-700 dark:text-green-400 hover:text-green-900 dark:hover:text-green-300"
           )}
         >

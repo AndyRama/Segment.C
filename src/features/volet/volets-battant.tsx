@@ -96,7 +96,7 @@ export function VoletsBattantsContent() {
       {battantsTypes.map((model, index) => (
         <div
           key={index}
-          className="group relative rounded-2xl border-2 border-green-200 dark:border-green-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-green-400 dark:hover:border-green-600 hover:shadow-xl hover:shadow-blue-500/10"
+          className="group relative rounded-2xl border-2 border-green-200 dark:border-green-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-green-400 dark:hover:border-green-600 hover:shadow-xl hover:shadow-green-500/10"
         >
           <div className="relative h-48 overflow-hidden">
             <Image
@@ -105,7 +105,7 @@ export function VoletsBattantsContent() {
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-900/90 to-transparent" />
             <div className="absolute bottom-4 left-4">
               <Typography variant="h3" className="text-2xl font-bold text-white mb-1">
                 {model.name}
