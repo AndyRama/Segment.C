@@ -56,7 +56,7 @@ export function ModelsSection() {
     <section id="modeles" className="py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-0">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-100 dark:bg-amber-950/50 px-4 py-2 text-sm font-medium text-amber-700 dark:text-amber-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 dark:bg-green-950/50 px-4 py-2 text-sm font-medium text-green-700 dark:text-green-400">
             Nos modèles
           </div>
           <Typography variant="h2" className="mb-4 text-4xl font-bold">
@@ -74,7 +74,7 @@ export function ModelsSection() {
         </div>
 
         {/* Additional Info */}
-        <div className="mt-12 rounded-2xl border-2 border-amber-200 dark:border-amber-800 bg-gradient-to-br from-amber-50/50 to-orange-50/30 dark:from-amber-950/30 dark:to-orange-950/20 p-8 text-center">
+        <div className="mt-12 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-orange-50/30 dark:from-green-950/30 dark:to-orange-950/20 p-8 text-center">
           <Typography variant="h3" className="mb-4 text-2xl font-bold">
             Besoin d'un modèle personnalisé ?
           </Typography>
@@ -83,13 +83,13 @@ export function ModelsSection() {
             Contactez-nous pour un projet sur mesure.
           </Typography>
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-950 px-6 py-3 text-sm font-medium border border-amber-200 dark:border-amber-800">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-950 px-6 py-3 text-sm font-medium border border-green-200 dark:border-green-800">
               ✓ Dimensions personnalisables
             </div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-950 px-6 py-3 text-sm font-medium border border-amber-200 dark:border-amber-800">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-950 px-6 py-3 text-sm font-medium border border-green-200 dark:border-green-800">
               ✓ 30+ coloris RAL disponibles
             </div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-950 px-6 py-3 text-sm font-medium border border-amber-200 dark:border-amber-800">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-950 px-6 py-3 text-sm font-medium border border-green-200 dark:border-green-800">
               ✓ Options modulables
             </div>
           </div>

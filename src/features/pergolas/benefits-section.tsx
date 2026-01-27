@@ -8,31 +8,31 @@ const benefits = [
     icon: Sun,
     title: "Confort bioclimatique",
     description: "Contrôlez luminosité et ventilation grâce aux lames orientables. Profitez de votre terrasse par tous les temps.",
-    color: "from-amber-500 to-orange-600"
+    color: "from-emerald-500 to-green-600"
   },
   {
     icon: Thermometer,
     title: "Température idéale",
     description: "Régulation naturelle de la chaleur. Fraîcheur en été, protection en hiver pour un confort optimal.",
-    color: "from-red-500 to-pink-600"
+    color: "from-emerald-500 to-green-600"
   },
   {
     icon: Shield,
     title: "Protection totale",
     description: "Étanchéité parfaite contre la pluie. Résistance au vent jusqu'à 150 km/h. Structure renforcée et durable.",
-    color: "from-blue-500 to-indigo-600"
+    color: "from-emerald-500 to-green-600"
   },
   {
     icon: Zap,
     title: "Motorisation intelligente",
     description: "Contrôle à distance via télécommande ou smartphone. Capteurs automatiques pluie et vent inclus.",
-    color: "from-purple-500 to-violet-600"
+    color: "from-emerald-500 to-green-600"
   },
   {
     icon: Maximize2,
     title: "Sur mesure",
     description: "Dimensions, couleurs et options personnalisées. Intégration parfaite à votre architecture existante.",
-    color: "from-green-500 to-teal-600"
+    color:"from-emerald-500 to-green-600"
   },
   {
     icon: Leaf,
@@ -44,10 +44,10 @@ const benefits = [
 
 export function BenefitsSection() {
   return (
-    <section className="relative bg-amber-50/30 dark:bg-amber-950/5 py-20">
+    <section className="relative bg-green-50/30 dark:bg-green-950/5 py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-0">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-100 dark:bg-amber-950/50 px-4 py-2 text-sm font-medium text-amber-700 dark:text-amber-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 dark:bg-green-950/50 px-4 py-2 text-sm font-medium text-green-700 dark:text-green-400">
             <Sun className="h-4 w-4" />
             Avantages
           </div>
