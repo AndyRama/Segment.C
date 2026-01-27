@@ -1,45 +1,48 @@
 import React from "react";
 import Image from "next/image";
 import { Typography } from "@/components/nowts/typography";
-import { Check } from "lucide-react";
 
-type MaterialCardProps = {
-  name: string;
-  description: string;
-  features: string[];
-  image: string;
-};
-
-export function MaterialCard({ name, description, features, image }: MaterialCardProps) {
+export function GallerySection() {
   return (
-    <div className="group rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-950 overflow-hidden transition-all hover:border-emerald-400 dark:hover:border-emerald-600 hover:shadow-xl">
-      <div className="relative h-48 overflow-hidden">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 to-transparent" />
-        <Typography variant="h3" className="absolute bottom-4 left-4 text-2xl font-bold text-white">
-          {name}
-        </Typography>
-      </div>
-      
-      <div className="p-6 space-y-4">
-        <Typography variant="p" className="text-sm text-muted-foreground leading-relaxed">
-          {description}
-        </Typography>
-        
-        <div className="grid grid-cols-2 gap-2">
-          {features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-2 text-xs">
-              <Check className="h-3 w-3 text-emerald-600 flex-shrink-0" />
-              <span className="text-muted-foreground">{feature}</span>
+    <section className="py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-0">
+        <div className="mb-12 text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+            Portfolio
+          </div>
+          <Typography variant="h2" className="mb-4 text-4xl font-bold">
+            Nos réalisations en Gironde
+          </Typography>
+          <Typography variant="p" className="mx-auto max-w-2xl text-lg text-muted-foreground">
+            Découvrez quelques-unes de nos installations récentes
+          </Typography>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <div
+              key={item}
+              className="group relative h-[350px] overflow-hidden rounded-xl cursor-pointer ring-1 ring-emerald-200/50 dark:ring-emerald-800/50 hover:ring-2 hover:ring-emerald-500 transition-all"
+            >
+              <Image
+                src={`/images/portail-realisation-${item}.jpg`}
+                alt={`Réalisation portail ${item}`}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-emerald-900/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                <Typography variant="p" className="text-lg font-semibold text-white">
+                  {item % 2 === 0 ? "Portail coulissant" : "Portail battant"}
+                </Typography>
+                <Typography variant="p" className="text-sm text-white/80">
+                  Bordeaux • {2024 - (item % 2)}
+                </Typography>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

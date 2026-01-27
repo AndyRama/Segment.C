@@ -2,16 +2,16 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import {
-  HeroSection,
-  BenefitsSection,
-  ModelsSection,
-  MaterialsSection,
-  GallerySection,
-  ProcessSection,
-  CTASection,
-  FAQSection,
-} from "@/features/portails";
+
+import {HeroSection} from "@/features/portails/hero";
+import {BenefitsSection} from "@/features/portails/benefits-section";
+import {ModelsSection} from "@/features/portails/models-section";
+import {ProcessSection} from "@/features/portails/process-section";
+import {GallerySection} from "@/features/portails/gallery-section";
+import {CTASection} from "@/features/portails/cta-section";
+import {FAQSection} from "@/features/portails/faq-section";
+import {MaterialsSection} from "@/features/portails/materials-section";
+
 
 type PortailsPageProps = {
   className?: string;
