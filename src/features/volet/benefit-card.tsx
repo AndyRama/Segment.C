@@ -12,7 +12,7 @@ type BenefitCardProps = {
 
 export function BenefitCard({ icon: Icon, title, description, color }: BenefitCardProps) {
   return (
-    <div className="group relative rounded-2xl border border-blue-100 dark:border-blue-900 bg-white dark:bg-slate-950 p-8 shadow-sm transition-all hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-xl hover:shadow-blue-500/10">
+    <div className="group relative rounded-2xl border border-green-100 dark:border-green-900 bg-white dark:bg-slate-950 p-8 shadow-sm transition-all hover:border-green-300 dark:hover:border-green-700 hover:shadow-xl hover:shadow-green-500/10">
       <div className={cn(
         "mb-4 inline-flex rounded-xl bg-gradient-to-br p-3 transition-all group-hover:scale-110",
         color

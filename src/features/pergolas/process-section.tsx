@@ -25,7 +25,7 @@ const processSteps = [
     step: "04",
     title: "Installation",
     description: "Pose professionnelle en 2 à 5 jours. Mise en service complète, formation à l'utilisation et garantie 10 ans.",
-    color: "from-green-500 to-purple-600"
+    color: "from-green-500 to-green-600"
   }
 ];
 
