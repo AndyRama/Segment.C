@@ -66,7 +66,7 @@ export function ModelCard({
         </ul>
 
         {/* Price */}
-        <div className="pt-4 border-t border-green-100 dark:border-green-900">
+        {/* <div className="pt-4 border-t border-green-100 dark:border-green-900">
           <Typography variant="p" className="text-sm text-muted-foreground mb-2">
             À partir de
           </Typography>
@@ -76,7 +76,7 @@ export function ModelCard({
             </Typography>
             <span className="text-sm text-muted-foreground">TTC</span>
           </div>
-        </div>
+        </div> */}
 
         {/* CTA Buttons */}
         <div className="flex gap-3 pt-4">
@@ -86,14 +86,14 @@ export function ModelCard({
           >
             Demander un devis
           </Link>
-          <Link
+          <ExternalLink className="h-4 w-4" />
+          {/* <Link
             href={link}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-lg border-2 border-green-200 dark:border-green-800 px-4 py-3 text-sm font-semibold text-green-700 dark:text-green-400 transition-all hover:border-green-600 hover:bg-green-50 dark:hover:bg-green-950/30"
           >
-            <ExternalLink className="h-4 w-4" />
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

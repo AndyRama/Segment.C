@@ -11,8 +11,8 @@ const processSteps = [
   },
   {
     step: "02",
-    title: "Conception 3D",
-    description: "Création d'un plan 3D personnalisé avec visualisation réaliste de votre future pergola. Devis détaillé avec toutes les options.",
+    title: "Projection",
+    description: "Création à partir de votre photo et du model de votre pergola pour visualiser le rendu final dans votre environnement.",
     color: "from-green-500 to-green-600"
   },
   {
