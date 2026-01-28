@@ -9,11 +9,11 @@ import { useSession } from "@/lib/auth-client";
 import Image from 'next/image';
 import { ProcessSection } from "@/features/landing/process-section";
 
-import { 
-  ExternalLink, 
-  Award, 
-  Building2, 
-  CheckCircle2, 
+import {
+  ExternalLink,
+  Award,
+  Building2,
+  CheckCircle2,
   ArrowRight,
   Target,
   Users,
@@ -40,45 +40,45 @@ export default function SybaiePage() {
             <Typography variant="h1" className="text-4xl font-bold text-gray-900 lg:text-5xl">
               SYbaie
             </Typography>
-            
+
             <Typography variant="h2" className="text-2xl font-semibold text-green-600">
               La communauté des artisans menuisiers
             </Typography>
 
             <Typography variant="p" className="text-lg leading-relaxed text-gray-700">
-              SYbaie, du Groupe Millet, est bien plus qu'un fabricant de menuiseries. 
-              C'est une véritable communauté dédiée aux artisans menuisiers qui placent 
+              SYbaie, du Groupe Millet, est bien plus qu'un fabricant de menuiseries.
+              C'est une véritable communauté dédiée aux artisans menuisiers qui placent
               la qualité, l'innovation et le savoir-faire au cœur de leur métier.
             </Typography>
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="https://www.sybaie.pro/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                 className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
               >
-                Visiter le site SYbaie
-                <ExternalLink className="size-5" />
+                Demander un devis
+                <ArrowRight className="size-5" />
               </Link>
-              
-              {session ? (
-                <Link
-                  href="/account/devis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
-                >
-                  Demander un devis
-                  <ArrowRight className="size-5" />
-                </Link>
-              ) : (
-                <Link
-                  href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
-                >
-                  Demander un devis
-                  <ArrowRight className="size-5" />
-                </Link>
-              )}
+
+              {session ?
+                (
+                  <Link
+                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                    className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
+                  >
+                    Demander un devis
+                    <ArrowRight className="size-5" />
+                  </Link>
+
+                ) : (
+                  <Link
+                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                    className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  >
+                    Demander un devis
+                    <ArrowRight className="size-5" />
+                  </Link>
+                )}
             </div>
           </div>
 
@@ -232,7 +232,7 @@ export default function SybaiePage() {
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">
               Pourquoi Segment C a choisi SYbaie ?
             </Typography>
-            
+
             <div className="space-y-6">
               {[
                 {
@@ -278,7 +278,7 @@ export default function SybaiePage() {
                 Une collaboration de confiance
               </Typography>
             </div>
-            
+
             <div className="space-y-4">
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
@@ -288,7 +288,7 @@ export default function SybaiePage() {
                   Leader français de la menuiserie
                 </Typography>
               </div>
-              
+
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
                   🇫🇷 Fabrication française
@@ -297,7 +297,7 @@ export default function SybaiePage() {
                   Qualité et traçabilité garanties
                 </Typography>
               </div>
-              
+
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
                   ♻️ Éco-responsable
@@ -332,7 +332,7 @@ export default function SybaiePage() {
           <Typography variant="p" className="mb-8 text-lg text-green-50">
             Segment C est fier de travailler avec SYbaie pour vous offrir des menuiseries d'exception
           </Typography>
-          
+
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/pdf/sybaie.pdf"
@@ -342,7 +342,7 @@ export default function SybaiePage() {
               Catalogue
               <ExternalLink className="size-5" />
             </Link>
-            
+
             {session ? (
               <Link
                 href="/account/devis"

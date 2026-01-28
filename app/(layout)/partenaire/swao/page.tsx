@@ -50,16 +50,14 @@ export default function SwaoPage() {
             </Typography>
 
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="https://www.swao.fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
-              >
-                Visiter le site SWAO
-                <ExternalLink className="size-5" />
-              </Link>
-              
+                  {/* <Link
+                  href="/account/devis"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                > 
+                  Demander un devis
+                  <ArrowRight className="size-5" />
+                </Link> */}
+               
               {session ? (
                 <Link
                   href="/account/devis"
