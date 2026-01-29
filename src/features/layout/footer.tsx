@@ -59,7 +59,7 @@ export const Footer = () => {
             </div>
 
             {/* Navigation en colonnes - partie droite */}
-            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-5 md:gap-8 lg:gap-12">
+            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-6 md:gap-8 lg:gap-12">
              
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">
@@ -243,7 +243,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/partenaire/proferm"
+                    href="/merignac"
                   >
                     Mérignac
                   </Typography>
@@ -251,9 +251,9 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/merignac"
+                    href="/andernos-les-bains"
                   >
-                    Cap ferret
+                    Andernos
                   </Typography>
                   <Typography
                     as={Link}
@@ -261,7 +261,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/cap-ferret"
                   >
-                    Orial
+                    Cap ferret
                   </Typography>
                 </div>
               </div>
