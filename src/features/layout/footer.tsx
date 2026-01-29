@@ -294,7 +294,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/villes"
                   >
-                    Villes
+                    Autres Villes
                   </Typography>
                 </div>
               </div>
