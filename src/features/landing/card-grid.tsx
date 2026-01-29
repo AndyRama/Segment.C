@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -76,15 +77,15 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
     { title: "Portes", image: "/images/porte3.jpg", link: "/portes" },
     { title: "Volets", image: "/images/volet.jpg", link: "/volet" },
     { title: "Portails", image: "/images/portails.jpg", link: "/portails" },
-    { title: "Portes-garage", image: "/images/garage.jpg", link: "/garage" },
+    // { title: "Portes-garage", image: "/images/garage.jpg", link: "/garage" },
     { title: "Pergolas", image: "/images/pergolas1.jpg", link: "/pergolas" },
-    { title: "Vérandas", image: "/images/veranda2.jpg", link: "/verandas" },
+    // { title: "Vérandas", image: "/images/veranda2.jpg", link: "/verandas" },
   ];
 
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 4, 8));
+    setVisibleCount((prev) => Math.min(prev + 3, 6));
   };
 
   return (
@@ -93,7 +94,7 @@ export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
         <div className="w-full lg:w-10/12">
           <SectionHeader />
 
-          <div className="mx-auto mt-10 grid w-full grid-cols-1 gap-4 text-gray-500 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
+          <div className="mx-auto mt-10 grid w-full grid-cols-1 gap-4 text-gray-500 md:grid-cols-2 lg:grid-cols-3 md:gap-6">
             {allCards.slice(0, visibleCount).map((card, index) => (
               <CardImage
                 key={index}
