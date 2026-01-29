@@ -6,8 +6,12 @@ import { ReviewGrid } from "@/features/landing/review/review-grid";
 import { SectionDivider } from "@/features/landing/section-divider";
 import { AboutSection } from "@/features/landing/about-section";
 import { GallerySection } from "@/features/landing/gallery-section";
-// import { ServiceAreaSection } from "@/features/landing/services-area-section";
+import { ProcessSection } from "@/features/landing/process-section";
+import { CardGrid } from "@/features/landing/card-grid";
+import { Partenaire } from "@/features/landing/partenaire";
+import { RecentPosts } from "@/features/landing/recent-posts";
 import { FAQSection } from "@/features/landing/faq-section";
+import { CTAImageSection } from "@/features/landing/cta/cta-image-section";
 import {
   saintJeanDIllacData,
   capFerretData,
@@ -95,7 +99,15 @@ export default async function VillePage({ params }: PageProps) {
 
       <SectionDivider />
 
+      <ProcessSection />
+
+      <SectionDivider />
+
       <GallerySection />
+
+      <CardGrid initialVisibleCount={4} />
+
+      <Partenaire />
 
       <ReviewGrid
         initialReviewsCount={6}
@@ -194,6 +206,13 @@ export default async function VillePage({ params }: PageProps) {
           },
         ]}
       />
+      <SectionDivider />    
+
+      <CTAImageSection />
+
+      <SectionDivider />
+
+      <RecentPosts />
 
       <SectionDivider />
     </div>
