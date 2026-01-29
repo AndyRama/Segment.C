@@ -142,7 +142,7 @@ const PorteDetailPage = () => {
     <div className="min-h-screen bg-white -mt-8 lg:-mt-12 overflow-x-hidden">
       {/* Breadcrumb */}
       <div className="border-b bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 md:mt-16">
           <div className="flex items-center gap-2 text-sm py-4">
           {/* Back Button */}
             <Link

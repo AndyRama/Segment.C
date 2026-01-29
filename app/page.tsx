@@ -60,7 +60,7 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <CardGrid initialVisibleCount={4} />
+      <CardGrid initialVisibleCount={3} />
 
       <Partenaire />
 

@@ -101,7 +101,7 @@ export default async function VillePage({ params }: PageProps) {
 
       <GallerySection />
 
-			<CardGrid initialVisibleCount={4} />
+			<CardGrid initialVisibleCount={3} />
 
       <Partenaire />
 
