@@ -217,6 +217,55 @@ export const Footer = () => {
                 </div>
               </div>
 
+              {/* Colonne Zone d'intervention */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Villes
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/bordeaux"
+                  >
+                    Bordeaux
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/saint-jean-d-illac"
+                  >
+                    St Jean d'Illac
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/proferm"
+                  >
+                    Mérignac
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/merignac"
+                  >
+                    Cap ferret
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/cap-ferret"
+                  >
+                    Orial
+                  </Typography>
+                </div>
+              </div>
+
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
