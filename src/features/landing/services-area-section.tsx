@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import QuoteRequestModule from "@/features/landing/quote-request-module"; 
+import Link from "next/link";
 
 import { 
   MapPin, 
@@ -17,7 +18,8 @@ import {
   Waves,
   MapPinned,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  ArrowRight
 } from "lucide-react";
 
 type ServiceAreaSectionProps = {
@@ -33,6 +35,7 @@ type AreaProps = {
   icon?: React.ReactNode;
   description: string;
   services: string[];
+  slug: string; 
 }
 
 export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
@@ -47,6 +50,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       featured: true,
       icon: <Home className="size-5" />,
       description: "Notre atelier principal",
+      slug: "saint-jean-d-illac",
       services: [
         "Installation de fenêtres PVC, bois et aluminium",
         "Portes d'entrée sur mesure",
@@ -62,6 +66,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       projects: 15,
       icon: <Waves className="size-5" />,
       description: "Bassin d'Arcachon",
+      slug: "cap-ferret",
       services: [
         "Fenêtres résistantes aux embruns",
         "Baies vitrées grand format vue mer",
@@ -77,6 +82,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       projects: 22,
       icon: <Building2 className="size-5" />,
       description: "Particuliers et professionnels",
+      slug: "merignac",
       services: [
         "Pose de fenêtres double vitrage",
         "Rénovation de devantures commerciales",
@@ -92,6 +98,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       projects: 18,
       icon: <MapPinned className="size-5" />,
       description: "Centre et quartiers",
+      slug: "bordeaux",
       services: [
         "Rénovation menuiseries dans l'ancien",
         "Remplacement fenêtres cachet historique",
@@ -106,6 +113,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       duration: "18 min", 
       projects: 9,
       description: "Zone résidentielle",
+      slug: "le-bouscat",
       services: [
         "Menuiseries résidentielles",
         "Rénovation et neuf"
@@ -117,6 +125,7 @@ export const ServiceAreaSection = ({ className }: ServiceAreaSectionProps) => {
       duration: "22 min", 
       projects: 15,
       description: "Secteur universitaire",
+      slug: "talence",
       services: [
         "Projets résidentiels",
         "Menuiseries sur mesure"
@@ -223,81 +232,90 @@ const DetailedAreaCard = ({ area, index }: { area: AreaProps; index: number }) =
   const delay = index * 0.1;
   
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        transition: { delay, duration: 0.5 }
-      }}
-      viewport={{ once: true }}
-      className={cn(
-        "relative rounded-xl border p-5 transition-all duration-300 hover:shadow-lg",
-        area.featured 
-          ? "bg-gradient-to-br from-[#19CE61]/5 to-[#19CE61]/10 border-[#19CE61]/30" 
-          : "bg-white hover:border-[#19CE61]/20"
-      )}
-    >
-      {/* Badge "Notre atelier" positionné en haut à droite */}
-      {area.featured && (
-        <div className="absolute top-3 right-3 z-10">
-          <span className="rounded-full bg-[#19CE61] px-2.5 py-1 text-[10px] font-medium text-white shadow-sm">
-            🏠 Notre atelier
-          </span>
-        </div>
-      )}
+    <Link href={`/${area.slug}`} className="block group">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { delay, duration: 0.5 }
+        }}
+        viewport={{ once: true }}
+        className={cn(
+          "relative rounded-xl border p-5 transition-all duration-300 hover:shadow-lg",
+          area.featured 
+            ? "bg-gradient-to-br from-[#19CE61]/5 to-[#19CE61]/10 border-[#19CE61]/30 hover:border-[#19CE61]/50" 
+            : "bg-white hover:border-[#19CE61]/20"
+        )}
+      >
+        {/* Badge "Notre atelier" positionné en haut à droite */}
+        {area.featured && (
+          <div className="absolute top-3 right-3 z-10">
+            <span className="rounded-full bg-[#19CE61] px-2.5 py-1 text-[10px] font-medium text-white shadow-sm">
+              🏠 Notre atelier
+            </span>
+          </div>
+        )}
 
-      {/* Header avec icône et info */}
-      <div className="mb-4 flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <div className={cn(
-            "rounded-lg p-2.5",
-            area.featured ? "bg-[#19CE61]/20 text-[#19CE61]" : "bg-gray-100 text-gray-600"
-          )}>
-            {area.icon}
+        {/* Header avec icône et info */}
+        <div className="mb-4 flex items-start justify-between">
+          <div className="flex items-center gap-3">
+            <div className={cn(
+              "rounded-lg p-2.5 transition-colors",
+              area.featured ? "bg-[#19CE61]/20 text-[#19CE61] group-hover:bg-[#19CE61]/30" : "bg-gray-100 text-gray-600 group-hover:bg-[#19CE61]/10 group-hover:text-[#19CE61]"
+            )}>
+              {area.icon}
+            </div>
+            
+            <div>
+              <Typography variant="p" className={cn(
+                "text-lg font-semibold transition-colors",
+                area.featured && "text-[#19CE61]",
+                !area.featured && "group-hover:text-[#19CE61]"
+              )}>
+                {area.name}
+              </Typography>
+              <Typography variant="small" className="text-xs text-muted-foreground">
+                {area.description}
+              </Typography>
+            </div>
           </div>
           
-          <div>
-            <Typography variant="p" className={cn(
-              "text-lg font-semibold",
-              area.featured && "text-[#19CE61]"
-            )}>
-              {area.name}
-            </Typography>
-            <Typography variant="small" className="text-xs text-muted-foreground">
-              {area.description}
-            </Typography>
+          <div className="text-right">
+            <div className="text-base font-semibold text-[#19CE61]">{area.projects}</div>
+            <div className="text-[10px] text-muted-foreground">projets</div>
           </div>
         </div>
-        
-        <div className="text-right">
-          <div className="text-base font-semibold text-[#19CE61]">{area.projects}</div>
-          <div className="text-[10px] text-muted-foreground">projets</div>
+
+        {/* Distance et durée */}
+        <div className="mb-3 flex items-center gap-3 text-xs text-muted-foreground border-t border-b border-gray-100 py-2">
+          <span className="flex items-center gap-1">
+            <MapPin size={12} />
+            {area.distance}
+          </span>
+          <span className="flex items-center gap-1">
+            <Clock size={12} />
+            ~{area.duration}
+          </span>
         </div>
-      </div>
 
-      {/* Distance et durée */}
-      <div className="mb-3 flex items-center gap-3 text-xs text-muted-foreground border-t border-b border-gray-100 py-2">
-        <span className="flex items-center gap-1">
-          <MapPin size={12} />
-          {area.distance}
-        </span>
-        <span className="flex items-center gap-1">
-          <Clock size={12} />
-          ~{area.duration}
-        </span>
-      </div>
+        {/* Services */}
+        <div className="space-y-1.5 mb-4">
+          {area.services.map((service, idx) => (
+            <div key={idx} className="flex items-start gap-2 text-xs">
+              <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-[#19CE61]" />
+              <span className="text-muted-foreground leading-relaxed">{service}</span>
+            </div>
+          ))}
+        </div>
 
-      {/* Services */}
-      <div className="space-y-1.5">
-        {area.services.map((service, idx) => (
-          <div key={idx} className="flex items-start gap-2 text-xs">
-            <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-[#19CE61]" />
-            <span className="text-muted-foreground leading-relaxed">{service}</span>
-          </div>
-        ))}
-      </div>
-    </motion.div>
+        {/* Bouton "En savoir plus" */}
+        <div className="flex items-center justify-end gap-2 text-sm font-medium text-[#19CE61] transition-all group-hover:gap-3">
+          <span>En savoir plus</span>
+          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+        </div>
+      </motion.div>
+    </Link>
   );
 };
 

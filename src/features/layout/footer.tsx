@@ -83,14 +83,14 @@ export const Footer = () => {
                   >
                     Baie-vitrée
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/volet"
                   >
                     Volets 
-                  </Typography>
+                  </Typography> */}
                 </div>
               </div>           
 
@@ -124,14 +124,14 @@ export const Footer = () => {
                   >
                     Service
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/garage"
                   >
                     Garage
-                  </Typography>
+                  </Typography> */}
                 </div>
               </div>    
 
@@ -141,6 +141,14 @@ export const Footer = () => {
                   Extèrieur
                 </Typography>
                 <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/volet"
+                  >
+                    Volet
+                  </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
@@ -156,14 +164,6 @@ export const Footer = () => {
                     href="/pergolas"
                   >
                     Pergolas 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="#"
-                  >
-                    Véranda
                   </Typography>
                 </div>
               </div>     
@@ -280,14 +280,14 @@ export const Footer = () => {
                   >
                     Actualités
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/contact"
                   >
                     Contact
-                  </Typography>
+                  </Typography> */}
                   <Typography
                     as={Link}
                     variant="muted"
