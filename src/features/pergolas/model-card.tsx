@@ -85,15 +85,8 @@ export function ModelCard({
             className="flex-1 inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-700 px-4 py-3 text-sm font-semibold text-white transition-all hover:from-green-700 hover:to-orange-700 hover:shadow-lg"
           >
             Demander un devis
+            <ExternalLink className="h-4 w-4" />
           </Link>
-          <ExternalLink className="h-4 w-4" />
-          {/* <Link
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-lg border-2 border-green-200 dark:border-green-800 px-4 py-3 text-sm font-semibold text-green-700 dark:text-green-400 transition-all hover:border-green-600 hover:bg-green-50 dark:hover:bg-green-950/30"
-          >
-          </Link> */}
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ export default function VillesListPage() {
         {villesList.map(({ slug, data }) => (
           <Link
             key={slug}
-            href={`/villes/${slug}`}
+            href={`/${slug}`}
             className="group transform overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-green-200 hover:shadow-2xl"
           >
             {/* Header de la card */}
