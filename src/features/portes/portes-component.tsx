@@ -35,7 +35,7 @@ type PorteSectionProps = {
 
 // Constantes en dehors du composant
 const ALLOWED_CATEGORIES = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
-const LIMIT = 200;
+const LIMIT = 400;
 
 const createSlug = (name: string): string => {
   // Fonction doit générer exactement le même slug que dans seed.ts

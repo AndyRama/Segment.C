@@ -186,7 +186,7 @@ const PorteDetailPage = () => {
                   src={porte.image}
                   alt={porte.name}
                   fill
-                  className="object-cover rounded-md"
+                  className="object-contain p-8"
                   priority
                 />
               </div>
