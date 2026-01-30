@@ -19,6 +19,7 @@ import {
   Users,
   Sparkles
 } from 'lucide-react';
+import { link } from 'node:fs';
 
 export default function SybaiePage() {
   const { data: session } = useSession();
@@ -52,14 +53,6 @@ export default function SybaiePage() {
             </Typography>
 
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
-              >
-                Demander un devis
-                <ArrowRight className="size-5" />
-              </Link>
-
               {session ?
                 (
                   <Link
@@ -72,7 +65,7 @@ export default function SybaiePage() {
 
                 ) : (
                   <Link
-                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                    href="/account/devis"
                     className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                   >
                     Demander un devis
@@ -148,7 +141,7 @@ export default function SybaiePage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Une gamme complète de produits
@@ -158,41 +151,48 @@ export default function SybaiePage() {
           </Typography>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             {
               category: 'Fenêtres',
               products: ['Fenêtres ALU & Mixte', 'Fenêtres PVC', 'Fenêtres Bois'],
-              icon: '🪟'
+              icon: '🪟',
+              link: '/fenetres'
             },
             {
               category: 'Portes d\'entrée',
               products: ['Portes ALU', 'Portes PVC', 'Grand Vitrage'],
-              icon: '🚪'
+              icon: '🚪',
+              link: '/portes'
             },
             {
               category: 'Coulissants',
               products: ['Baies vitrées ALU', 'Coulissants muraux', 'Galandage'],
-              icon: '🏠'
+              icon: '🏠',
+              link: '/baie'
             },
             {
               category: 'Stores intégrés',
               products: ['Stores vénitiens', 'Stores plissés', 'Motorisation'],
-              icon: '🪟'
+              icon: '🪟',
+              link: '/volet'
             },
             {
               category: 'Volets roulants',
               products: ['Volets ALU', 'Motorisation', 'Connectés'],
-              icon: '🎚️'
+              icon: '🎚️',
+              link: '/volet'
             },
             {
               category: 'Vitrages',
               products: ['Double vitrage', 'Triple vitrage', 'Acoustique'],
-              icon: '💎'
+              icon: '💎',
+              link: '/#'
             }
           ].map((item, index) => (
-            <div
+            <Link
               key={index}
+              href={item.link}
               className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
@@ -211,7 +211,7 @@ export default function SybaiePage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Link>
           ))}
         </div>
       </SectionLayout>

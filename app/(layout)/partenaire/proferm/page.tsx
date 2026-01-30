@@ -51,20 +51,10 @@ export default function ProfermPage() {
             </Typography>
 
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="https://proferm.net/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
-              >
-                Visiter le site PROFERM
-                <ExternalLink className="size-5" />
-              </Link>
-              
-              {session ? (
+               {session ? (
                 <Link
                   href="/account/devis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 bg-green-500 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -72,7 +62,7 @@ export default function ProfermPage() {
               ) : (
                 <Link
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 bg-green-500 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
