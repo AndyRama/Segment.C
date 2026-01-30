@@ -146,7 +146,7 @@ export default function ProfermPage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Nos 4 gammes exclusives
@@ -156,7 +156,7 @@ export default function ProfermPage() {
           </Typography>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {[
             {
               category: 'PERFORM - PVC',
@@ -207,7 +207,7 @@ export default function ProfermPage() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl border-2 border-green-200 bg-green-50 p-6">
+        <div className="max-w-7xl mx-auto mt-8 rounded-xl border-2 border-green-200 bg-green-50 p-6">
           <div className="flex items-start gap-4">
             <div className="rounded-lg bg-green-100 p-3">
               <Sparkles className="size-8 text-green-600" />
