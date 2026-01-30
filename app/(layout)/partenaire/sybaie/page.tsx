@@ -209,12 +209,12 @@ export default function SybaiePage() {
         </div>
       </SectionLayout>
 
-      <SectionLayout>
+      <SectionLayout className="max-w-8xl bg-gray-50 py-16">
         <VideoSection
           videoUrl="/videos/demo.mp4"
           title="Présentation d'un de nos produits"
           description=""
-          className="mt-20 mb-30 max-w-8xl bg-gray-50 py-16"
+          className="mt-20 mb-30"
         />
       </SectionLayout>
 
