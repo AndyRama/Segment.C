@@ -60,146 +60,6 @@ export const Footer = () => {
 
             {/* Navigation en colonnes - partie droite */}
             <div className="grid grid-cols-2 gap-1 sm:grid-cols-4 md:grid-cols-8 md:gap-8 lg:gap-12">
-             
-              {/* Colonne fenêtre */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Nos fenêtres
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/fenetres"
-                  >
-                    Fenêtres 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/baie"
-                  >
-                    Baie-vitrée
-                  </Typography>
-                </div>
-              </div>           
-
-              {/* Colonne portes */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Nos portes
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
-                    Entrée
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
-                    Vitrée
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portes"
-                  >
-                    Service
-                  </Typography>
-                </div>
-              </div>    
-
-              {/* Colonne autre */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Extèrieur
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/volet"
-                  >
-                    Volet
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/portails"
-                  >
-                    Portails 
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/pergolas"
-                  >
-                    Pergolas 
-                  </Typography>
-                </div>
-              </div>     
-
-               {/* Colonne Partenaires */}
-              <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
-                  Partenaires
-                </Typography>
-                <div className="flex flex-col gap-2">
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/sybaie"
-                  >
-                    Sybaie
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/swao"
-                  >
-                    Swao
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/proferm"
-                  >
-                    Proferm
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/c2r"
-                  >
-                    C2r
-                  </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/partenaire/orial"
-                  >
-                    Orial
-                  </Typography>
-                </div>
-              </div>
 
               {/* Colonne Zone d'intervention */}
               <div className="flex flex-col gap-3">
@@ -339,6 +199,146 @@ export const Footer = () => {
                   </Typography>
                 </div>
               </div>
+             
+              {/* Colonne fenêtre */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Nos fenêtres
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/fenetres"
+                  >
+                    Fenêtres 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/baie"
+                  >
+                    Baie-vitrée
+                  </Typography>
+                </div>
+              </div>           
+
+              {/* Colonne portes */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Nos portes
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Entrée
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Vitrée
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portes"
+                  >
+                    Service
+                  </Typography>
+                </div>
+              </div>    
+
+              {/* Colonne autre */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Extèrieur
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/volet"
+                  >
+                    Volet
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/portails"
+                  >
+                    Portails 
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/pergolas"
+                  >
+                    Pergolas 
+                  </Typography>
+                </div>
+              </div>     
+
+               {/* Colonne Partenaires */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  Partenaires
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/sybaie"
+                  >
+                    Sybaie
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/swao"
+                  >
+                    Swao
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/proferm"
+                  >
+                    Proferm
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/c2r"
+                  >
+                    C2r
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/partenaire/orial"
+                  >
+                    Orial
+                  </Typography>
+                </div>
+              </div>            
 
               {/* Colonne Site */}
               <div className="flex flex-col gap-3">
