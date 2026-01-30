@@ -59,7 +59,7 @@ export const Footer = () => {
             </div>
 
             {/* Navigation en colonnes - partie droite */}
-            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-6 md:gap-8 lg:gap-12">
+            <div className="grid grid-cols-2 gap-1 sm:grid-cols-4 md:grid-cols-8 md:gap-8 lg:gap-12">
              
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">
@@ -83,14 +83,6 @@ export const Footer = () => {
                   >
                     Baie-vitrée
                   </Typography>
-                  {/* <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/volet"
-                  >
-                    Volets 
-                  </Typography> */}
                 </div>
               </div>           
 
@@ -124,14 +116,6 @@ export const Footer = () => {
                   >
                     Service
                   </Typography>
-                  {/* <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/garage"
-                  >
-                    Garage
-                  </Typography> */}
                 </div>
               </div>    
 
@@ -262,6 +246,96 @@ export const Footer = () => {
                     href="/cap-ferret"
                   >
                     Cap ferret
+                  </Typography>
+                </div>
+              </div>
+
+               {/* Colonne Zone d'intervention */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  {/* Villes */}
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/le-bouscat"
+                  >
+                    Le Bouscat
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/talence"
+                  >
+                    Talence
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/cestas"
+                  >
+                    Cestas
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/gradignan"
+                  >
+                    Gradignan
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/arcachon"
+                  >
+                    Arcachon
+                  </Typography>
+                </div>
+              </div>
+
+               {/* Colonne Zone d'intervention */}
+              <div className="flex flex-col gap-3">
+                <Typography variant="large" className="font-medium">
+                  {/* Villes */}
+                </Typography>
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/biganos"
+                  >
+                    Biganos
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/martignas-sur-jalle"
+                  >
+                    Marignas sur Jalle
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/saint-medard-en-jalles"
+                  >
+                    St Médard en Jalles
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/pessac"
+                  >
+                    Pessac
                   </Typography>
                 </div>
               </div>

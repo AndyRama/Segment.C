@@ -165,19 +165,19 @@ export default function OrialPage() {
               category: 'Carports',
               products: ['Protection véhicule', 'Tous styles d\'habitat', 'Élégant et durable', 'Sur-mesure'],
               icon: '🚗',
-              link: '/#'
+              link: ''
             },
             {
               category: 'Garde-corps',
               products: ['Design contemporain', 'Protection optimale', 'Extérieur & intérieur', 'Conformes aux normes'],
               icon: '🛡️',
-              link: '/#'
+              link: ''
             },
             {
               category: 'Escaliers',
               products: ['Esthétisme et fonctionnalité', 'Classique au contemporain', 'Sur-mesure', 'Oriastep'],
               icon: '📐',
-              link: '/#'
+              link: ''
             },
           ].map((item, index) => (
             <Link
