@@ -19,7 +19,6 @@ import {
   Users,
   Sparkles
 } from 'lucide-react';
-import { link } from 'node:fs';
 
 export default function SybaiePage() {
   const { data: session } = useSession();

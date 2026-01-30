@@ -51,21 +51,11 @@ export default function OrialPage() {
               pour l'habitat. Une centaine de collaborateurs passionnés vous accompagnent à chaque étape.
             </Typography>
 
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="https://orial.tm.fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
-              >
-                Visiter le site ORIAL
-                <ExternalLink className="size-5" />
-              </Link>
-              
+            <div className="flex flex-wrap gap-4">              
               {session ? (
                 <Link
                   href="/account/devis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -73,7 +63,7 @@ export default function OrialPage() {
               ) : (
                 <Link
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -147,7 +137,7 @@ export default function OrialPage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Nos solutions en aluminium pour l'habitat
@@ -157,41 +147,41 @@ export default function OrialPage() {
           </Typography>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2">
           {[
             {
               category: 'Pergolas bioclimatiques',
               products: ['Lames orientables', 'Adaptable toute l\'année', 'Tous budgets', 'Design élégant'],
-              icon: '🏡'
+              icon: '🏡',
+              link:'/pergola'
+            },
+            {
+              category: 'Menuiseries',
+              products: ['Fenêtres', 'Portes-fenêtres', 'Baies coulissantes', 'Portes d\'entrée'],
+              icon: '🪟',
+              link:'/fentres'
             },
             {
               category: 'Carports',
               products: ['Protection véhicule', 'Tous styles d\'habitat', 'Élégant et durable', 'Sur-mesure'],
-              icon: '🚗'
+              icon: '🚗',
+              link:''
             },
             {
               category: 'Garde-corps',
               products: ['Design contemporain', 'Protection optimale', 'Extérieur & intérieur', 'Conformes aux normes'],
-              icon: '🛡️'
+              icon: '🛡️',
+              link:''
             },
             {
               category: 'Escaliers',
               products: ['Esthétisme et fonctionnalité', 'Classique au contemporain', 'Sur-mesure', 'Oriastep'],
               icon: '📐'
             },
-            {
-              category: 'Mains courantes',
-              products: ['Soutien fiable', 'Design soigné', 'Ergonomie optimale', 'Tous coloris RAL'],
-              icon: '✋'
-            },
-            {
-              category: 'Barrières de piscine',
-              products: ['Sécurité maximale', 'Design préservé', 'Conformes NF', 'Esthétique soignée'],
-              icon: '🏊'
-            }
           ].map((item, index) => (
-            <div
+            <Link
               key={index}
+              href={item.link}
               className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
@@ -210,7 +200,7 @@ export default function OrialPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -325,7 +315,7 @@ export default function OrialPage() {
       </SectionLayout>
 
       {/* Section Citation */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default">
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex rounded-full bg-green-100 p-4">
             <Home className="size-12 text-green-600" />
