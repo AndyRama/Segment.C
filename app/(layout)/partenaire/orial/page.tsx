@@ -85,7 +85,7 @@ export default function OrialPage() {
       </SectionLayout>
 
       {/* Section Valeurs */}
-      <SectionLayout size="lg" variant="default" className="py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Le savoir-faire ORIAL
@@ -95,7 +95,7 @@ export default function OrialPage() {
           </Typography>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
               icon: <Factory className="size-8 text-green-600" />,
@@ -137,7 +137,7 @@ export default function OrialPage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className="py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Nos solutions en aluminium pour l'habitat
@@ -147,31 +147,19 @@ export default function OrialPage() {
           </Typography>
         </div>
 
-        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
           {[
             {
               category: 'Pergolas bioclimatiques',
               products: ['Lames orientables', 'Adaptable toute l\'année', 'Tous budgets', 'Design élégant'],
               icon: '🏡',
-              link: '/pergola'
+              link: '/pergolas'
             },
             {
               category: 'Menuiseries',
               products: ['Fenêtres', 'Portes-fenêtres', 'Baies coulissantes', 'Portes d\'entrée'],
               icon: '🪟',
-              link: '/fentres'
-            },
-            {
-              category: 'Carports',
-              products: ['Protection véhicule', 'Tous styles d\'habitat', 'Élégant et durable', 'Sur-mesure'],
-              icon: '🚗',
-              link: ''
-            },
-            {
-              category: 'Garde-corps',
-              products: ['Design contemporain', 'Protection optimale', 'Extérieur & intérieur', 'Conformes aux normes'],
-              icon: '🛡️',
-              link: ''
+              link: '/fenetres'
             },
             {
               category: 'Escaliers',
@@ -221,8 +209,8 @@ export default function OrialPage() {
       </SectionLayout>
 
       {/* Section Pourquoi ORIAL */}
-      <SectionLayout size="lg" variant="default" className="py-16">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">
               Pourquoi Segment C a choisi ORIAL ?

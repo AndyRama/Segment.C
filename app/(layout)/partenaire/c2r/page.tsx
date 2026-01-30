@@ -84,14 +84,14 @@ export default function C2RPage() {
       </SectionLayout>
 
       {/* Chiffres clés */}
-      <SectionLayout size="lg" variant="default" className="py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             C2R en chiffres
           </Typography>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
+        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-3 lg:grid-cols-6">
           {[
             { number: '+75 ans', label: 'de savoir-faire & d\'expertise' },
             { number: '2', label: 'sites de fabrication' },
@@ -168,7 +168,7 @@ export default function C2RPage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="max-w-8xlbg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Une gamme complète de produits
@@ -232,7 +232,7 @@ export default function C2RPage() {
       </SectionLayout>
 
       {/* Section Pourquoi C2R */}
-      <SectionLayout size="lg" variant="default">
+      <SectionLayout size="lg" variant="default" className="py-16">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">
