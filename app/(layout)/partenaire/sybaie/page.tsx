@@ -56,7 +56,7 @@ export default function SybaiePage() {
               {session ?
                 (
                   <Link
-                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                    href="/account/devis"
                     className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
                   >
                     Demander un devis
@@ -65,7 +65,7 @@ export default function SybaiePage() {
 
                 ) : (
                   <Link
-                    href="/account/devis"
+                    href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                     className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
                   >
                     Demander un devis
@@ -183,12 +183,6 @@ export default function SybaiePage() {
               icon: '🎚️',
               link: '/volet'
             },
-            {
-              category: 'Vitrages',
-              products: ['Double vitrage', 'Triple vitrage', 'Acoustique'],
-              icon: '💎',
-              link: '/#'
-            }
           ].map((item, index) => (
             <Link
               key={index}

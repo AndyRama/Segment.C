@@ -18,6 +18,7 @@ import {
   Users,
   Leaf
 } from 'lucide-react';
+import { link } from 'node:fs';
 
 export default function C2RPage() {
   const { data: session } = useSession();
@@ -50,20 +51,10 @@ export default function C2RPage() {
             </Typography>
 
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="https://menuiserie-c2r.fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
-              >
-                Visiter le site C2R
-                <ExternalLink className="size-5" />
-              </Link>
-              
              {session ? (
                 <Link
                   href="/account/devis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -71,7 +62,7 @@ export default function C2RPage() {
               ) : (
                 <Link
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-white px-6 py-3 font-semibold text-green-600 transition-all hover:bg-green-50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700 hover:shadow-lg"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -125,7 +116,7 @@ export default function C2RPage() {
       </SectionLayout>
 
       {/* Section Valeurs */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Les engagements C2R
@@ -177,7 +168,7 @@ export default function C2RPage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xlbg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Une gamme complète de produits
@@ -187,41 +178,36 @@ export default function C2RPage() {
           </Typography>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2 ">
           {[
             {
               category: 'Menuiseries',
               products: ['Fenêtres aluminium', 'Baies vitrées coulissantes', 'Portes-fenêtres', 'Sur-mesure'],
-              icon: '🪟'
+              icon: '🪟',
+              link: '/fenetres'
             },
             {
               category: 'Volets & Persiennes',
               products: ['Volets battants', 'Volets coulissants', 'Volets roulants', 'Motorisation solaire'],
-              icon: '🎚️'
+              icon: '🎚️',
+              link: '/volet'
             },
             {
               category: 'Portes d\'entrée',
               products: ['Aluminium', 'PVC', 'Contemporaines', 'Design exclusif'],
-              icon: '🚪'
+              icon: '🚪',
+              link: '/portes'
             },
             {
               category: 'Portes de garage',
               products: ['Sectionnelles', 'Enroulables', 'Portes de service', 'Motorisées'],
-              icon: '🏠'
+              icon: '🏠',
+              link: ''
             },
-            {
-              category: 'Moustiquaires',
-              products: ['Fixes', 'Coulissantes', 'Enroulables', 'Sur-mesure'],
-              icon: '🪰'
-            },
-            {
-              category: 'Maison connectée',
-              products: ['Domotique SOMFY', 'Contrôle à distance', 'Motorisation intelligente', 'Application mobile'],
-              icon: '📱'
-            }
           ].map((item, index) => (
-            <div
+            <Link
               key={index}
+              href={item.link}
               className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-3">
@@ -240,13 +226,13 @@ export default function C2RPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Link>
           ))}
         </div>
       </SectionLayout>
 
       {/* Section Pourquoi C2R */}
-      <SectionLayout size="lg" variant="default" className="bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">

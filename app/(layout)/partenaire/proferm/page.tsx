@@ -54,7 +54,7 @@ export default function ProfermPage() {
                {session ? (
                 <Link
                   href="/account/devis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 bg-green-500 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -62,7 +62,7 @@ export default function ProfermPage() {
               ) : (
                 <Link
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 bg-green-500 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />

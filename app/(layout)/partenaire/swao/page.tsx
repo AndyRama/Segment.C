@@ -53,7 +53,7 @@ export default function SwaoPage() {
               {session ? (
                 <Link
                   href="/account/devis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-white"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -61,7 +61,7 @@ export default function SwaoPage() {
               ) : (
                 <Link
                   href="/auth/signin?callbackUrl=%2Faccount%2Fdevis"
-                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-white"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-green-600 bg-green-600 px-6 py-3 font-semibold text-white transition-all hover:bg-green-700"
                 >
                   Demander un devis
                   <ArrowRight className="size-5" />
@@ -156,19 +156,19 @@ export default function SwaoPage() {
             {
               category: 'Fenêtres Aluminium',
               products: ['OptimoALU', 'Ouvrant discret®', 'Grandes dimensions'],
-              icon: '✨',
+              icon: '🪟',
               link: '/fenetre'
             },
             {
               category: 'Fenêtres Bois & Mixte',
               products: ['Bignon - Recouvrement', 'À l\'ancienne', 'Mixte Bois/Aluminium'],
-              icon: '🌳',
+              icon: '🪟',
               link: '/fenetre'
             },
             {
               category: 'Coulissants',
               products: ['Baies PVC & ALU', 'Galandage', 'Poignée Easy 2'],
-              icon: '🏠',
+              icon: '🪟',
               link: '/baie'
             },
             {
@@ -177,12 +177,12 @@ export default function SwaoPage() {
               icon: '🚪',
               link: '/portes'
             },
-            {
-              category: 'Maison connectée',
-              products: ['Capteur I-Secure®', 'Domotique TYDOM', 'Amy® sun'],
-              icon: '📱',
-              link: '/#'
-            }
+            // {
+            //   category: 'Maison connectée',
+            //   products: ['Capteur I-Secure®', 'Domotique TYDOM', 'Amy® sun'],
+            //   icon: '📱',
+            //   link: '/#'
+            // }
             ].map((item, index) => (
               <Link
                 key={index}
