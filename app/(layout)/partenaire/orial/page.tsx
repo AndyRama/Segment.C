@@ -8,11 +8,11 @@ import { useSession } from "@/lib/auth-client";
 import Image from "next/image";
 import { ProcessSection } from "@/features/landing/process-section";
 
-import { 
-  ExternalLink, 
-  Award, 
-  Building2, 
-  CheckCircle2, 
+import {
+  ExternalLink,
+  Award,
+  Building2,
+  CheckCircle2,
   ArrowRight,
   Factory,
   TrendingUp,
@@ -40,18 +40,18 @@ export default function OrialPage() {
             <Typography variant="h1" className="text-4xl font-bold text-gray-900 lg:text-5xl">
               ORIAL
             </Typography>
-            
+
             <Typography variant="h2" className="text-2xl font-semibold text-green-600">
               Concepteur et fabricant français en aluminium
             </Typography>
 
             <Typography variant="p" className="text-lg leading-relaxed text-gray-700">
-              Depuis près de 20 ans dans le Nord de la France, Orial est une entreprise de taille 
-              industrielle spécialisée dans la conception et la fabrication de solutions en aluminium 
+              Depuis près de 20 ans dans le Nord de la France, Orial est une entreprise de taille
+              industrielle spécialisée dans la conception et la fabrication de solutions en aluminium
               pour l'habitat. Une centaine de collaborateurs passionnés vous accompagnent à chaque étape.
             </Typography>
 
-            <div className="flex flex-wrap gap-4">              
+            <div className="flex flex-wrap gap-4">
               {session ? (
                 <Link
                   href="/account/devis"
@@ -153,36 +153,37 @@ export default function OrialPage() {
               category: 'Pergolas bioclimatiques',
               products: ['Lames orientables', 'Adaptable toute l\'année', 'Tous budgets', 'Design élégant'],
               icon: '🏡',
-              link:'/pergola'
+              link: '/pergola'
             },
             {
               category: 'Menuiseries',
               products: ['Fenêtres', 'Portes-fenêtres', 'Baies coulissantes', 'Portes d\'entrée'],
               icon: '🪟',
-              link:'/fentres'
+              link: '/fentres'
             },
             {
               category: 'Carports',
               products: ['Protection véhicule', 'Tous styles d\'habitat', 'Élégant et durable', 'Sur-mesure'],
               icon: '🚗',
-              link:''
+              link: '/#'
             },
             {
               category: 'Garde-corps',
               products: ['Design contemporain', 'Protection optimale', 'Extérieur & intérieur', 'Conformes aux normes'],
               icon: '🛡️',
-              link:''
+              link: '/#'
             },
             {
               category: 'Escaliers',
               products: ['Esthétisme et fonctionnalité', 'Classique au contemporain', 'Sur-mesure', 'Oriastep'],
-              icon: '📐'
+              icon: '📐',
+              link: '/#'
             },
           ].map((item, index) => (
             <Link
               key={index}
               href={item.link}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg"
+              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-green-300 hover:shadow-lg block"
             >
               <div className="mb-4 flex items-center gap-3">
                 <span className="text-3xl">{item.icon}</span>
@@ -226,7 +227,7 @@ export default function OrialPage() {
             <Typography variant="h2" className="mb-6 text-3xl font-bold text-gray-900">
               Pourquoi Segment C a choisi ORIAL ?
             </Typography>
-            
+
             <div className="space-y-6">
               {[
                 {
@@ -272,7 +273,7 @@ export default function OrialPage() {
                 Une collaboration de confiance
               </Typography>
             </div>
-            
+
             <div className="space-y-4">
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
@@ -282,7 +283,7 @@ export default function OrialPage() {
                   Fabrication dans les Hauts-de-France
                 </Typography>
               </div>
-              
+
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
                   👥 100+ collaborateurs
@@ -291,7 +292,7 @@ export default function OrialPage() {
                   Équipes passionnées et expertes
                 </Typography>
               </div>
-              
+
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <Typography variant="p" className="font-semibold text-gray-900">
                   🏆 Membre SNFA
@@ -324,8 +325,8 @@ export default function OrialPage() {
             "La vraie richesse d'une entreprise, ce sont les femmes et les hommes qui la font vivre."
           </Typography>
           <Typography variant="p" className="text-lg text-gray-600">
-            Derrière chaque projet, des équipes engagées, expertes et à l'écoute vous accompagnent 
-            à chaque étape, de la conception à la pose. Chez Orial, innovation, qualité et savoir-faire 
+            Derrière chaque projet, des équipes engagées, expertes et à l'écoute vous accompagnent
+            à chaque étape, de la conception à la pose. Chez Orial, innovation, qualité et savoir-faire
             sont au cœur de nos valeurs.
           </Typography>
         </div>
@@ -343,16 +344,16 @@ export default function OrialPage() {
           <Typography variant="p" className="mb-8 text-lg text-green-50">
             Segment C est fier de travailler avec ORIAL pour vous offrir des solutions en aluminium d'exception
           </Typography>
-          
+
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/#"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-green-600 transition-all hover:bg-gray-50 hover:shadow-xl"
             >
-               Catalogue
+              Catalogue
               <ExternalLink className="size-5" />
             </Link>
-            
+
             {session ? (
               <Link
                 href="/account/devis"
