@@ -95,7 +95,7 @@ export function LandingHeader() {
       ]
     },
     { path: "/posts", label: "Actualités" },
-    // { path: "/contact", label: "Contact" },
+    { path: "/#footer", label: "Contact" },
   ];
 
   return (

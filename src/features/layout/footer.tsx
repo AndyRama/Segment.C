@@ -7,7 +7,7 @@ import { Mail, Home, Phone, Earth, Clock } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="border border-border bg-card">
+    <footer id="footer" className="border border-border bg-card">
       <Layout className="py-8">
         <LayoutContent>
           <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
@@ -253,7 +253,7 @@ export const Footer = () => {
                {/* Colonne Zone d'intervention */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  {/* Villes */}
+                  Villes
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -302,7 +302,7 @@ export const Footer = () => {
                {/* Colonne Zone d'intervention */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  {/* Villes */}
+                  Villes
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -319,7 +319,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/martignas-sur-jalle"
                   >
-                    Marignas sur Jalle
+                    Martignas 
                   </Typography>
                   <Typography
                     as={Link}
@@ -327,7 +327,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="/saint-medard-en-jalles"
                   >
-                    St Médard en Jalles
+                    St Médard 
                   </Typography>
                   <Typography
                     as={Link}
@@ -354,21 +354,21 @@ export const Footer = () => {
                   >
                     Actualités
                   </Typography>
-                  {/* <Typography
+                  <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/contact"
+                    href="/account"
                   >
-                    Contact
-                  </Typography> */}
+                    Utilisateur
+                  </Typography>
                   <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/villes"
                   >
-                    Autres Villes
+                    Villes
                   </Typography>
                 </div>
               </div>

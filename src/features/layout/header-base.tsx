@@ -89,7 +89,7 @@ const topRoutes = [
     ]
   },
   { path: "/posts", label: "Actualités" },
-  // { path: "/contact", label: "Contact" },
+  { path: "/#footer", label: "Contact" },
 ];
 
 export function HeaderBase() {
