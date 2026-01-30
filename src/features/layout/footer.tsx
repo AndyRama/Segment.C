@@ -252,7 +252,7 @@ export const Footer = () => {
 
                {/* Colonne Zone d'intervention */}
               <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
+                <Typography variant="large" className="font-medium text-white">
                   Villes
                 </Typography>
                 <div className="flex flex-col gap-2">
@@ -301,7 +301,7 @@ export const Footer = () => {
 
                {/* Colonne Zone d'intervention */}
               <div className="flex flex-col gap-3">
-                <Typography variant="large" className="font-medium">
+                <Typography variant="large" className="font-medium text-white">
                   Villes
                 </Typography>
                 <div className="flex flex-col gap-2">
