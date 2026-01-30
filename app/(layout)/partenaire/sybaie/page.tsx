@@ -88,7 +88,7 @@ export default function SybaiePage() {
       </SectionLayout>
 
       {/* Section Valeurs */}
-      <SectionLayout size="lg" variant="default" className="py-16">
+      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Les valeurs SYbaie
@@ -98,7 +98,7 @@ export default function SybaiePage() {
           </Typography>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
               icon: <Target className="size-8 text-green-600" />,
@@ -140,7 +140,7 @@ export default function SybaiePage() {
       </SectionLayout>
 
       {/* Section Gamme de Produits */}
-      <SectionLayout size="lg" variant="default" className="max-w-8xl bg-gray-50 py-16">
+      <SectionLayout size="lg" variant="default" className=" py-16">
         <div className="mb-12 text-center">
           <Typography variant="h2" className="mb-4 text-3xl font-bold text-gray-900">
             Une gamme complète de produits
@@ -150,7 +150,7 @@ export default function SybaiePage() {
           </Typography>
         </div>
 
-        <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             {
               category: 'Fenêtres',
@@ -214,7 +214,7 @@ export default function SybaiePage() {
           videoUrl="/videos/demo.mp4"
           title="Présentation d'un de nos produits"
           description=""
-          className="mt-20 mb-30"
+          className="mt-20 mb-30 max-w-8xl bg-gray-50 py-16"
         />
       </SectionLayout>
 
