@@ -21,7 +21,6 @@ import {
   Ruler,
   CheckCircle2,
   Droplets,
-  Wind,
 } from "lucide-react";
 
 type Product = {
