@@ -3,12 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'standalone',
   
-  outputFileTracingExcludes: {
-    '*': [
-      './public/images/**/*',
-      './public/videos/**/*',
-    ],
-  },
+  // outputFileTracingExcludes: {
+  //   '*': [
+  //     './public/images/**/*',
+  //     './public/videos/**/*',
+  //   ],
+  // },
   
   experimental: {
     authInterrupts: true,
