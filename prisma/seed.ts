@@ -4292,7 +4292,9 @@ async function main() {
             id: nanoid(11),
             name: orgName,
             slug: orgSlug,
-            logo: faker.image     createdAt: faker.date.past(),
+            logo: faker.image.url(),
+            email: faker.internet.email(),
+            createdAt: faker.date.past(),
           },
         })
         .then((org) => {
