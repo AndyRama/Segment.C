@@ -34,6 +34,12 @@ const formatMaterial = (material: string) => {
     .trim();
 };
 
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/')) return imagePath;
+  return `/${imagePath}`;
+};
+
 const SimilarProductCard = ({ product, index }: { product: Product; index: number }) => {
   const delay = index * 0.1;
 
@@ -68,7 +74,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
           {/* Image */}
           <div className="relative h-64 bg-gray-50">
             <Image
-              src={product.image}
+              src={normalizeImagePath(porte.image)}
               alt={product.name}
               fill
               className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
