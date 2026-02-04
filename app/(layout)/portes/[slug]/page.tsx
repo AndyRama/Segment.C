@@ -42,6 +42,15 @@ type Product = {
   isNew?: boolean;
 };
 
+// ✅ AJOUT: Fonction pour normaliser les chemins d'images
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  // Si le chemin commence déjà par /, le retourner tel quel
+  if (imagePath.startsWith('/')) return imagePath;
+  // Sinon, ajouter / au début pour en faire un chemin absolu
+  return `/${imagePath}`;
+};
+
 // ✅ Fonction pour convertir slug → ID base de données
 const slugToPorteId = (slug: string): string => {
   return `porte-${slug}`;
@@ -182,7 +191,7 @@ const PorteDetailPage = () => {
             <div className="relative bg-gray-50 rounded-sm overflow-hidden border">
               <div className="relative h-[500px] lg:h-[650px]">
                 <Image
-                  src={porte.image}
+                  src={normalizeImagePath(porte.image)}
                   alt={porte.name}
                   fill
                   className="object-contain p-8"

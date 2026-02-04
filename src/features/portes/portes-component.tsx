@@ -42,6 +42,12 @@ const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
 
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/')) return imagePath;
+  return `/${imagePath}`;
+};
+
 const PorteSection = ({ className }: PorteSectionProps) => {
   const router = useRouter();
   const [portes, setPortes] = useState<Product[]>([]);
@@ -641,7 +647,7 @@ const PorteCard = ({
 
         <div className="relative h-64">
           <Image
-            src={porte.image}
+            src={normalizeImagePath(porte.image)}
             alt={porte.name}
             fill
             className="object-contain transition-transform duration-300 group-hover:scale-105"
