@@ -59,7 +59,7 @@ export const Footer = () => {
             </div>
 
             {/* Navigation en colonnes - partie droite */}
-            <div className="grid grid-cols-2 gap-1 sm:grid-cols-4 md:grid-cols-8 md:gap-8 lg:gap-12">
+            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-7 md:gap-8 lg:gap-12">
 
               {/* Colonne Zone d'intervention */}
               <div className="flex flex-col gap-3">
@@ -160,7 +160,7 @@ export const Footer = () => {
               </div>
 
                {/* Colonne Zone d'intervention */}
-              <div className="flex flex-col gap-3">
+              {/* <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium text-white">
                   Villes
                 </Typography>
@@ -198,7 +198,7 @@ export const Footer = () => {
                     Pessac
                   </Typography>
                 </div>
-              </div>
+              </div> */}
              
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">

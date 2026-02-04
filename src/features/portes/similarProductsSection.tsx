@@ -74,7 +74,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
           {/* Image */}
           <div className="relative h-64 bg-gray-50">
             <Image
-              src={normalizeImagePath(porte.image)}
+              src={normalizeImagePath(product.image)}
               alt={product.name}
               fill
               className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
