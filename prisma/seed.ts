@@ -2485,7 +2485,7 @@ const portesData: PorteData[] = [
   dimensions: "Standard et sur-mesure disponibles",
   epaisseur: "81mm",
   performance: "Up jusqu'à 0,44 W/(m².K)",
-  image: "images/portes/modele-93.jpg",
+  image: "images/portes/modele.jpg",
   colors: ["213 coloris disponibles"],
   features: [
     "Quincaillerie 5 points de condamnation",
