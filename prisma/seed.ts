@@ -63,7 +63,7 @@ const portesData: PorteData[] = [
     dimensions: "H: 2000-2250mm, L: 800-1000mm",
     epaisseur: "48mm",
     performance: "1.4 W/(m².K)",
-    image: "images/portes/ablette.jpg",
+    image: "/images/portes/ablette.jpg",
     colors: ["Gris 7016", "Blanc", "Bronze", "Noir"],
     features: ["Triple vitrage feuilleté", "Petits bois plombs", "Performance thermique", "Style traditionnel"],
     isPopular: false,
