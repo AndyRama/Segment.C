@@ -3514,7 +3514,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 079-2",
+  name: "Modèle 079",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3544,7 +3544,7 @@ const portesData: PorteData[] = [
   dimensions: "Standard et sur-mesure disponibles",
   epaisseur: "81mm",
   performance: "Up jusqu'à 0,44 W/(m².K)",
-  image: "/images/portes/zamora-4320.jpg",
+  image: "/images/portes/zamora.png",
   colors: ["RAL 7039"],
   features: [
     "Rainurage",
@@ -3844,7 +3844,7 @@ const portesData: PorteData[] = [
   dimensions: "Standard et sur-mesure disponibles",
   epaisseur: "81mm",
   performance: "Up jusqu'à 0,44 W/(m².K)",
-  image: "/images/portes/almanza-3080.jpg",
+  image: "/images/portes/almanza.jpg",
   colors: ["RAL 1004"],
   features: [
     "Triple vitrage feuilleté",
