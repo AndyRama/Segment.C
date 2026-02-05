@@ -4149,7 +4149,7 @@ const portesData: PorteData[] = [
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
-    description: "Charme subtil et authenticité. Cette porte moulurée aux proportions harmonieuses apporte une touche de distinction classique à votre façade."
+    description: "Charme subtil et authenticité. Cette porte moulurée aux proportions harmonieuses apporte une touche de distinction classique à votre façade.",
     priceRange: "Sur devis",
     rating: 4.7,
     dimensions: "Sur-mesure",
