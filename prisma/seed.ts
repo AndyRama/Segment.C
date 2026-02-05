@@ -2754,7 +2754,7 @@ const portesData: PorteData[] = [
   dimensions: "Standard et sur-mesure disponibles",
   epaisseur: "28-32mm",
   performance: "Up jusqu'à 1,33 W/(m².K)",
-  image: "/images/portes/octavia-35.jpg",
+  image: "/images/portes/octavia-35.png",
   colors: ["RAL 9010"],
   features: [
     "Vitrage feuilleté",
