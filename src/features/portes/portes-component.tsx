@@ -490,7 +490,6 @@ const PortesGrid = ({
         key={porte.id}
         porte={porte}
         index={index}
-        target="_blank"
         onClick={() => onPorteClick(porte)}
       />
     ))}
@@ -682,7 +681,7 @@ const PorteCard = ({
           </p>
 
           <div className="flex items-right justify-end pt-2">
-            <Link href={`/portes/${createSlug(porte.name)}`} onClick={(e) => { e.stopPropagation(); }}>
+            <Link target="_blank" href={`/portes/${createSlug(porte.name)}`} onClick={(e) => { e.stopPropagation(); }}>
               <Button size="sm" variant="outline" className="text-xs">
                 Voir détails
               </Button>
