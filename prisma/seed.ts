@@ -3995,7 +3995,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4019,7 +4018,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4043,7 +4041,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4067,7 +4064,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4091,7 +4087,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4115,7 +4110,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4139,7 +4133,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4163,7 +4156,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4187,7 +4179,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4211,7 +4202,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4235,7 +4225,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4262,7 +4251,6 @@ const portesData: PorteData[] = [
       "3 paumelles alu 120kg",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail", "Semi-fixe répétant", "Semi-fixe vitré"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4286,7 +4274,6 @@ const portesData: PorteData[] = [
       "Design moulurée",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4309,7 +4296,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4332,7 +4318,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4355,7 +4340,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4378,7 +4362,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4401,7 +4384,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4424,7 +4406,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4447,7 +4428,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4470,7 +4450,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4493,7 +4472,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4516,7 +4494,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4539,7 +4516,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4562,7 +4538,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4585,7 +4560,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4608,7 +4582,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4634,7 +4607,6 @@ const portesData: PorteData[] = [
       "Seuil PMR 20mm",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail", "Semi-fixe répétant"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4657,7 +4629,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4680,7 +4651,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4703,7 +4673,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4726,7 +4695,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4749,7 +4717,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4772,7 +4739,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4795,7 +4761,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4818,7 +4783,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4841,7 +4805,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4864,7 +4827,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4887,7 +4849,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4910,7 +4871,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4933,7 +4893,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4956,7 +4915,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4979,7 +4937,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -4987,7 +4944,7 @@ const portesData: PorteData[] = [
   // GAMME SYBAIE DAY
   {
     name: "Day 1",
-    category: "PORTE_VIRAGE",
+    category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     description: "Vitrages généreusement dimensionnés pour une lumière naturelle douce et chaleureuse. Transformez votre entrée en espace baigné de clarté tout au long de la journée.",
@@ -5005,7 +4962,6 @@ const portesData: PorteData[] = [
       "Seuil PMR 20mm",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail", "Semi-fixe répétant"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5028,7 +4984,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5051,7 +5006,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5074,7 +5028,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5097,7 +5050,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5120,7 +5072,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5143,7 +5094,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5166,7 +5116,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5189,7 +5138,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5212,7 +5160,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5235,7 +5182,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5258,7 +5204,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5281,7 +5226,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5304,7 +5248,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5327,7 +5270,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
@@ -5350,7 +5292,6 @@ const portesData: PorteData[] = [
       "Triple vitrage",
       "Garantie 10 ans"
     ],
-    features: ["1 vantail"],
     isPopular: false,
     isNew: false,
     isActive: true,
