@@ -2592,7 +2592,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Célia 6",
+  name: "Celia 6",
   category: "PORTE_ENTRER",
   material: "PVC",
   seller: "C2R",
