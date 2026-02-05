@@ -2474,6 +2474,8 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
+
+  // Porte C2r 75 modèle différents
   {
   name: "MODELE",
   category: "PORTE_ENTRER",
