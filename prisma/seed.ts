@@ -2833,7 +2833,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 108-0",
+  name: "Modele 108-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -2855,7 +2855,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 109-0",
+  name: "Modele 109-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -2878,7 +2878,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 360-0",
+  name: "Modele 360-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -2900,7 +2900,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 090-0",
+  name: "Modele 090-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -2920,7 +2920,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 118-0",
+  name: "Modele 118-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3075,7 +3075,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 367-0",
+  name: "Modele 367-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3097,7 +3097,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 001-0",
+  name: "Modele 001-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3118,7 +3118,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 015-0",
+  name: "Modele 015-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3139,7 +3139,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 060-0",
+  name: "Modele 060-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3160,7 +3160,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 590-0",
+  name: "Modele 590-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3181,7 +3181,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 038-0",
+  name: "Modele 038-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3202,7 +3202,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 120-0",
+  name: "Modele 120-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3265,7 +3265,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 366-0",
+  name: "Modele 366-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3287,7 +3287,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 110-0",
+  name: "Modele 110-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3307,7 +3307,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 062-0",
+  name: "Modele 062-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3351,7 +3351,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 063-0",
+  name: "Modele 063-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3372,7 +3372,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 094-0",
+  name: "Modele 094-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3414,7 +3414,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 364-0",
+  name: "Modele 364-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3435,7 +3435,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 406-0",
+  name: "Modele 406-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3456,7 +3456,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 343-0",
+  name: "Modele 343-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3476,7 +3476,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 086-0",
+  name: "Modele 086-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3496,7 +3496,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 540-2",
+  name: "Modele 540-2",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3516,7 +3516,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 079",
+  name: "Modele 079",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3579,7 +3579,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 374-0",
+  name: "Modele 374-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3601,7 +3601,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 353-0",
+  name: "Modele 353-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3729,7 +3729,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 562-0",
+  name: "Modele 562-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3750,7 +3750,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 355-0",
+  name: "Modele 355-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3793,7 +3793,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 361-0",
+  name: "Modele 361-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3859,7 +3859,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 568-0",
+  name: "Modele 568-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3902,7 +3902,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 088-0",
+  name: "Modele 088-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3924,7 +3924,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 368-0",
+  name: "Modele 368-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
@@ -3946,7 +3946,7 @@ const portesData: PorteData[] = [
   isActive: true,
 },
 {
-  name: "Modèle 371-0",
+  name: "Modele 371-0",
   category: "PORTE_ENTRER",
   material: "ALUMINIUM",
   seller: "C2R",
