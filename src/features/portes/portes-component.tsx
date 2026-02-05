@@ -490,6 +490,7 @@ const PortesGrid = ({
         key={porte.id}
         porte={porte}
         index={index}
+        target="_blank"
         onClick={() => onPorteClick(porte)}
       />
     ))}
