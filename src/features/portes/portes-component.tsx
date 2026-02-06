@@ -627,66 +627,69 @@ const PorteCard = ({
       }}
       viewport={{ once: true }}
       className="group cursor-pointer"
-      onClick={onClick}
     >
-      <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-        <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
-          {porte.isNew && (
-            <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
-              Nouveau
-            </span>
-          )}
-          {porte.isPopular && (
-            <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
-              Populaire
-            </span>
-          )}
-        </div>
+      <Link 
+        href={`/portes/${createSlug(porte.name)}`} 
+        target="_blank"
+        className="block"
+      >
+        <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-xl">
+          <div className="absolute left-3 top-3 z-10 flex flex-row gap-1">
+            {porte.isNew && (
+              <span className="rounded-full bg-green-500 px-2 py-1 text-xs font-medium text-white">
+                Nouveau
+              </span>
+            )}
+            {porte.isPopular && (
+              <span className="rounded-full bg-orange-500 px-2 py-1 text-xs font-medium text-white">
+                Populaire
+              </span>
+            )}
+          </div>
 
-        <div className="relative h-64">
-          <Image
-            src={normalizeImagePath(porte.image)}
-            alt={porte.name}
-            fill
-            className="object-contain transition-transform duration-300 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20 group-hover:scale-105" />
-        </div>
+          <div className="relative h-64">
+            <Image
+              src={normalizeImagePath(porte.image)}
+              alt={porte.name}
+              fill
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20 group-hover:scale-105" />
+          </div>
 
-        <div className="space-y-3 p-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">{porte.name}</h3>
-            <div className="flex items-center gap-1">
-              <Star size={14} className="fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">{porte.rating}</span>
+          <div className="space-y-3 p-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold">{porte.name}</h3>
+              <div className="flex items-center gap-1">
+                <Star size={14} className="fill-yellow-400 text-yellow-400" />
+                <span className="text-sm font-medium">{porte.rating}</span>
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
-              {formatMaterial(porte.material)}
-            </span>
-            <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
-              {porte.category.replace('PORTE_', '').replace('_', ' ')}
-            </span>
-            <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
-              {porte.seller}
-            </span>
-          </div>
+            <div className="flex flex-wrap gap-2 text-xs">
+              <span className="rounded-full bg-blue-100 px-2 py-1 capitalize text-blue-800">
+                {formatMaterial(porte.material)}
+              </span>
+              <span className="rounded-full bg-green-100 px-2 py-1 capitalize text-green-800">
+                {porte.category.replace('PORTE_', '').replace('_', ' ')}
+              </span>
+              <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
+                {porte.seller}
+              </span>
+            </div>
 
-          <p className="line-clamp-2 text-sm text-muted-foreground">
-            {porte.description}
-          </p>
+            <p className="line-clamp-2 text-sm text-muted-foreground">
+              {porte.description}
+            </p>
 
-          <div className="flex items-right justify-end pt-2">
-            <Link target="_blank" href={`/portes/${createSlug(porte.name)}`} onClick={(e) => { e.stopPropagation(); }}>
+            <div className="flex items-right justify-end pt-2">
               <Button size="sm" variant="outline" className="text-xs">
                 Voir détails
               </Button>
-            </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 };
