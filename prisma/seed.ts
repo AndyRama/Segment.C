@@ -2719,7 +2719,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/iona-156.jpg",
+    image: "/images/portes/c2r/iona-156.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2980,7 +2980,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/k069.jpg",
+    image: "/images/portes/c2r/k069.png",
     colors: ["8 coloris disponibles"],
     features: [
       "Vitrage feuilleté SP10/14/4 FE Argon",
@@ -3662,7 +3662,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/julie-3800.jpg",
+    image: "/images/portes/c2r/julie-3800.png",
     colors: ["RAL 7016"],
     features: [
       "Triple vitrage feuilleté",
@@ -3704,7 +3704,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/ines-3680.jpg",
+    image: "/images/portes/c2r/ines-3680.png",
     colors: ["RAL 7036"],
     features: [
       "Triple vitrage feuilleté",
