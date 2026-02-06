@@ -42,7 +42,7 @@ type Product = {
   isNew?: boolean;
 };
 
-// ✅ AJOUT: Fonction pour normaliser les chemins d'images
+// ✅ Fonction pour normaliser les chemins d'images
 const normalizeImagePath = (imagePath: string): string => {
   if (!imagePath) return '';
   // Si le chemin commence déjà par /, le retourner tel quel
@@ -188,7 +188,7 @@ const PorteDetailPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Colonne gauche - Image */}
           <div className="space-y-6">
-            <div className="relative bg-gray-50 rounded-sm overflow-hidden border">
+            <div className="relative bg-green-50 rounded-sm overflow-hidden border">
               <div className="relative h-[500px] lg:h-[650px]">
                 <Image
                   src={normalizeImagePath(porte.image)}
@@ -218,18 +218,18 @@ const PorteDetailPage = () => {
 
             {/* Material & Type Badges */}
             <div className="flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-gray-900 text-sm font-medium border rounded-md">
                 <Package size={16} />
                 {formatMaterial(porte.material)}
               </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 text-sm font-medium border rounded-md">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-gray-900 text-sm font-medium border rounded-md">
                 <Home size={16} />
                 {getCategoryLabel(porte.category)}
               </span>
             </div>
 
             {/* Trust Badge */}
-            <div className="flex items-start gap-3 p-4 bg-gray-50 border rounded-md">
+            <div className="flex items-start gap-3 p-4 bg-green-50 border rounded-md">
               <Shield size={20} className="text-gray-700 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-gray-700">
                 <p className="font-semibold mb-1">Garantie fabricant incluse</p>
@@ -406,8 +406,8 @@ const PorteDetailPage = () => {
                       </div>
                     </div>
 
-                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-md">
-                      <p className="text-sm text-blue-900">
+                    <div className="p-4 bg-blue-50 border border-green-200 rounded-md">
+                      <p className="text-sm text-green-900">
                         <strong>💡 Sur mesure :</strong> Dimensions personnalisables selon vos besoins spécifiques. Contactez-nous pour plus d'informations.
                       </p>
                     </div>
@@ -435,7 +435,6 @@ const PorteDetailPage = () => {
               </div>
             )}
 
-            {/* Available Forms */}
             <AvailableFormsMiniature />
 
             {/* CTA Buttons */}
