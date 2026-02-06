@@ -2917,7 +2917,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/modele-090-0.jpg",
+    image: "/images/portes/c2r/modele-90-0.jpg",
     colors: ["RAL 7044"],
     features: [
       "Triple vitrage feuilleté"
@@ -3379,7 +3379,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "Modele 094-0",
+    name: "Modele 94-0",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "C2R",
@@ -3389,7 +3389,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/modele-094-0.jpg",
+    image: "/images/portes/c2r/modele-94-0.jpg",
     colors: ["RAL 7042"],
     features: [
       "Triple vitrage feuilleté",
@@ -3483,7 +3483,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "Modele 086-0",
+    name: "Modele 86-0",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "C2R",
@@ -3493,7 +3493,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/modele-086-0.jpg",
+    image: "/images/portes/c2r/modele-86-0.jpg",
     colors: ["RAL 7012"],
     features: [
       "Triple vitrage feuilleté"
@@ -3523,7 +3523,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "Modele 079",
+    name: "Modele 79-2",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "C2R",
@@ -3533,7 +3533,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/modele-079-2.jpg",
+    image: "/images/portes/c2r/modele-79-2.jpg",
     colors: ["RAL 1013"],
     features: [
       "Triple vitrage feuilleté"
@@ -3909,7 +3909,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "Modele 088-0",
+    name: "Modele 88-0",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "C2R",
@@ -3919,7 +3919,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/modele-088-0.jpg",
+    image: "/images/portes/c2r/modele-88-0.jpg",
     colors: ["RAL 7036"],
     features: [
       "Triple vitrage feuilleté",
@@ -3974,7 +3974,8 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // Données des portes Sybaie 80
+  
+  // Données des portes Sybaie 96
   // GAMME SYBAIE CLASSIC MOULUREE
   {
     name: "Milano",
@@ -5365,7 +5366,7 @@ const portesData: PorteData[] = [
   // GAMME SYBAIE I-DAY
 
   {
-    name: "I.DAY 1",
+    name: "I.Day 1",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5390,7 +5391,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 2",
+    name: "I.Day 2",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SYBAIE",
@@ -5413,7 +5414,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 3",
+    name: "I.Day 3",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5436,7 +5437,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 4",
+    name: "I.Day 4",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5459,7 +5460,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 5",
+    name: "I.Day 5",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SYBAIE",
@@ -5482,7 +5483,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 6",
+    name: "I.Day 6",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5505,7 +5506,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 7",
+    name: "I.Day 7",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5528,7 +5529,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 8",
+    name: "I.Day 8",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SYBAIE",
@@ -5551,7 +5552,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 9",
+    name: "I.Day 9",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5574,7 +5575,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 11",
+    name: "I.Day 11",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SYBAIE",
@@ -5597,7 +5598,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 12",
+    name: "I.Day 12",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5620,7 +5621,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 14",
+    name: "I.Day 14",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SYBAIE",
@@ -5643,7 +5644,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 15",
+    name: "I.Day 15",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5666,7 +5667,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 16",
+    name: "I.Day 16",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5689,7 +5690,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 20",
+    name: "I.Day 20",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -5712,7 +5713,7 @@ const portesData: PorteData[] = [
     isActive: true,
   },
   {
-    name: "I.DAY 21",
+    name: "I.Day 21",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -6091,10 +6092,6 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-
-  //GAMME portes I DAY
-
-   //GAMME portes CLASSIC
 
   //Porte de garage
   {
