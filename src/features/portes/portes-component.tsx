@@ -339,7 +339,7 @@ const PorteHeader = () => (
         Notre sélection de portes
       </Typography>
       <Typography variant="large" className="mx-auto max-w-3xl text-muted-foreground">
-        Découvrez notre sélection de + de 115 portes d'entrée.
+        Découvrez notre sélection de + de 307 portes différentes.
         Fabriquées en France, sur mesure, dans 5 matériaux : aluminium, acier, PVC, bois et mixte.
         Styles contemporains, classiques ou traditionnels pour tous vos projets.
       </Typography>

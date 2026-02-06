@@ -256,7 +256,7 @@ const PorteDetailPage = () => {
 
               {porte.seller && (
                 <p className="text-sm text-gray-600">
-                  Fabriqué par <span className="font-semibold text-primary">{porte.seller}</span>
+                  Fabriqué par <span className="font-semibold text-green-500">{porte.seller}</span>
                 </p>
               )}
             </div>
@@ -268,7 +268,7 @@ const PorteDetailPage = () => {
                   onClick={() => setActiveTab('description')}
                   className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer truncate ${
                     activeTab === 'description'
-                      ? 'border-primary text-primary'
+                      ? 'border-green-500 text-green-500'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -278,7 +278,7 @@ const PorteDetailPage = () => {
                   onClick={() => setActiveTab('caracteristiques')}
                   className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer truncate ${
                     activeTab === 'caracteristiques'
-                      ? 'border-primary text-primary'
+                      ? 'border-green-500 text-green-500'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -288,7 +288,7 @@ const PorteDetailPage = () => {
                   onClick={() => setActiveTab('dimensions')}
                   className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 cursor-pointer truncate ${
                     activeTab === 'dimensions'
-                      ? 'border-primary text-primary'
+                      ? 'border-green-500 text-green-500'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
@@ -370,7 +370,7 @@ const PorteDetailPage = () => {
 
                 {activeTab === 'dimensions' && (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-3 gap-4">
                       <div className="p-4 bg-gray-50 border rounded-md">
                         <div className="flex items-center gap-2 mb-2">
                           <Ruler size={18} className="text-gray-700" />

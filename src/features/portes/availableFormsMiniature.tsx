@@ -96,13 +96,13 @@ const AvailableFormsMiniature = () => {
           <button
             key={form.id}
             onClick={() => setSelectedForm(form.id)}
-            className={`relative p-3 bg-white border transition-all hover:border-primary ${
-              selectedForm === form.id ? 'border-primary shadow-md' : 'border-gray-200'
+            className={`relative p-3 bg-white border transition-all hover:border-green-500 ${
+              selectedForm === form.id ? 'border-green-500 shadow-md' : 'border-gray-200'
             }`}
             title={form.name}
           >
             {selectedForm === form.id && (
-              <div className="absolute top-1 right-1 bg-primary text-white rounded-full p-0.5">
+              <div className="absolute top-1 right-1 bg-green-500 text-white rounded-full p-0.5">
                 <Check size={12} />
               </div>
             )}
@@ -115,7 +115,7 @@ const AvailableFormsMiniature = () => {
       </div>
 
       <p className="text-xs text-gray-600 mt-3 flex items-start gap-2">
-        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full mt-1 flex-shrink-0"></span>
+        <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mt-1 flex-shrink-0"></span>
         <span>Configuration personnalisée disponible sur demande</span>
       </p>
     </div>

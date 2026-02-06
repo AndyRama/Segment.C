@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { createSlug } from '@/lib/product-slug-utils';  // ✅ Import depuis le fichier centralisé
+import { createSlug } from '@/lib/product-slug-utils';
 
 type Product = {
   id: string;
@@ -126,7 +126,7 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
       try {
         setLoading(true);
         const params = new URLSearchParams({
-          limit: '20',
+          limit: '30',
           offset: '0',
           type: 'PORTE',
           category: currentProduct.category,
@@ -140,7 +140,7 @@ const SimilarProductsSection = ({ currentProduct }: { currentProduct: Product })
         // Filtrer pour exclure le produit actuel et limiter à 20 produits
         const filtered = data.products
           .filter((p: Product) => p.id !== currentProduct.id)
-          .slice(0, 20);
+          .slice(0, 30);
         
         setSimilarProducts(filtered);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
