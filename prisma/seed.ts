@@ -2521,7 +2521,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/gispana-125.jpg",
+    image: "/images/portes/c2r/gispana-125.png",
     colors: ["RAL 7004", "213 coloris disponibles"],
     features: [
       "Triple vitrage feuilleté",
@@ -2543,7 +2543,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/granada-17l.jpg",
+    image: "/images/portes/c2r/granada-17l.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté SP10/14/4 FE Argon",
@@ -2631,7 +2631,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/eva-14.jpg",
+    image: "/images/portes/c2r/eva-14.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2675,7 +2675,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/eva-15.jpg",
+    image: "/images/portes/c2r/eva-15.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2697,7 +2697,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/gothica-54.jpg",
+    image: "/images/portes/c2r/gothica-54.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -3045,7 +3045,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/galicia-19.jpg",
+    image: "/images/portes/c2r/galicia-19.png",
     colors: ["RAL 7047", "213 coloris disponibles"],
     features: [
       "Triple vitrage feuilleté",
