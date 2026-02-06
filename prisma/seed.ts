@@ -3597,7 +3597,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/romane-4180.jpg",
+    image: "/images/portes/c2r/romane-4180.png",
     colors: ["RAL 7036"],
     features: [
       "Rainurage",
