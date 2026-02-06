@@ -2565,7 +2565,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/cintra-159.jpg",
+    image: "/images/portes/c2r/cintra-159.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2587,7 +2587,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/corsa-26l.jpg",
+    image: "/images/portes/c2r/corsa-26l.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2609,7 +2609,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/celia-6.jpg",
+    image: "/images/portes/c2r/celia-6.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2653,7 +2653,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/agatha-173.jpg",
+    image: "/images/portes/c2r/agatha-173.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2741,7 +2741,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/amira-153.jpg",
+    image: "/images/portes/c2r/amira-153.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2785,7 +2785,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/elisa-62.jpg",
+    image: "/images/portes/c2r/elisa-62.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -2807,7 +2807,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/avila-138.jpg",
+    image: "/images/portes/c2r/avila-138.png",
     colors: ["RAL 9010"],
     features: [
       "Porte pleine",
@@ -3024,7 +3024,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/emilia-115.jpg",
+    image: "/images/portes/c2r/emilia-115.png",
     colors: ["RAL 7016", "213 coloris disponibles"],
     features: [
       "Triple vitrage feuilleté",
@@ -3066,7 +3066,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/carissa-5.jpg",
+    image: "/images/portes/c2r/carissa-5.png",
     colors: ["213 coloris disponibles"],
     features: [
       "Quincaillerie 5 points de condamnation",
@@ -3239,7 +3239,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/emma-3600.jpg",
+    image: "/images/portes/c2r/emma-3600.png",
     colors: ["RAL 4008"],
     features: [
       "Triple vitrage feuilleté",
@@ -3410,7 +3410,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/capucine-3380.jpg",
+    image: "/images/portes/c2r/capucine-3380.png",
     colors: ["RAL 7039"],
     features: [
       "Triple vitrage feuilleté",
@@ -3640,7 +3640,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/clarisse-3500.jpg",
+    image: "/images/portes/c2r/clarisse-3500.png",
     colors: ["RAL 7044"],
     features: [
       "Triple vitrage feuilleté",
@@ -3788,7 +3788,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/annie-3200.jpg",
+    image: "/images/portes/c2r/annie-3200.png",
     colors: ["RAL 1019"],
     features: [
       "Triple vitrage feuilleté",
@@ -3832,7 +3832,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/candice-3360.jpg",
+    image: "/images/portes/c2r/candice-3360.png",
     colors: ["RAL 9005"],
     features: [
       "Triple vitrage feuilleté",
@@ -3853,7 +3853,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/almanza.jpg",
+    image: "/images/portes/c2r/almanza.png",
     colors: ["RAL 1004"],
     features: [
       "Triple vitrage feuilleté",
@@ -3897,7 +3897,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/edith-3540.jpg",
+    image: "/images/portes/c2r/edith-3540.png",
     colors: ["RAL 5007"],
     features: [
       "Triple vitrage feuilleté",
