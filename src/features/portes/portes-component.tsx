@@ -115,7 +115,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     { key: "ACIER", label: "Acier" },
     { key: "PVC", label: "PVC" },
     { key: "BOIS", label: "Bois" },
-    { key: "MIXTE", label: "Mixte" },
   ];
 
   const sellerFilters = [
@@ -123,7 +122,6 @@ const PorteSection = ({ className }: PorteSectionProps) => {
     { key: "SYBAIE", label: "Sy Baie" },
     { key: "C2R", label: "C2r" },
     { key: "SWAO", label: "Swao" },
-    { key: "PROFERM", label: "Proferm" },
   ];
 
   const handleFilterChange = (filterType: string, value: string) => {
@@ -273,7 +271,7 @@ const MobileFiltersModal = ({
             <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
               Matériaux
             </Typography>
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-2">
               {materialFilters.map((filter) => (
                 <button
                   key={filter.key}
