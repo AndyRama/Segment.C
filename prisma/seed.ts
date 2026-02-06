@@ -2828,7 +2828,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/marbella-150.jpg",
+    image: "/images/portes/c2r/marbella-150.png",
     colors: ["RAL 9010"],
     features: [
       "Vitrage feuilleté",
@@ -3260,7 +3260,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/lola-3880.jpg",
+    image: "/images/portes/c2r/lola-3880.png",
     colors: ["RAL 4008"],
     features: [
       "Triple vitrage feuilleté",
@@ -3725,7 +3725,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "81mm",
     performance: "Up jusqu'à 0,44 W/(m².K)",
-    image: "/images/portes/c2r/mathilde-4020.jpg",
+    image: "/images/portes/c2r/mathilde-4020.png",
     colors: ["RAL 7042"],
     features: [
       "Triple vitrage feuilleté",
