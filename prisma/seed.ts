@@ -2971,7 +2971,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "K069",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "C2R",
     description: "Porte d'entrée PVC Collection Lumineux SAND avec vitrage sablé",
@@ -2993,7 +2993,7 @@ const portesData: PorteData[] = [
   },
   {
     name: "K076",
-    category: "PORTE_ENTRER",
+    category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "C2R",
     description: "Porte d'entrée PVC Collection Lumineux SAND avec vitrage sablé",
@@ -3002,7 +3002,7 @@ const portesData: PorteData[] = [
     dimensions: "Standard et sur-mesure disponibles",
     epaisseur: "28-32mm",
     performance: "Up jusqu'à 1,33 W/(m².K)",
-    image: "/images/portes/c2r/k076.jpg",
+    image: "/images/portes/c2r/k076.png",
     colors: ["8 coloris disponibles"],
     features: [
       "Vitrage feuilleté SP10/14/4 FE Argon",
