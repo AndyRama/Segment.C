@@ -362,14 +362,6 @@ export const Footer = () => {
                   >
                     Utilisateur
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/villes"
-                  >
-                    Villes
-                  </Typography>
                 </div>
               </div>
             </div>
