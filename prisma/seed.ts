@@ -6199,7 +6199,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.2 W/(m².K)",
   //   ouverture: "OSCILLO_BATTANT",
-  //   image: "images/fenetres/swao/swao-othentic-alu.jpg",
+  //   image: "images/fenetre/swao/swao-othentic-alu.jpg",
   //   colors: ["Blanc 9016 Satiné", "Gris 7016 Texture", "Noir 2100 Texture", "RAL illimité"],
   //   features: [
   //     "2 esthétiques intérieures : galbée en standard et droite en option",
@@ -6226,7 +6226,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.2 W/(m².K)",
   //   ouverture: "BATTANT",
-  //   image: "images/fenetres/swao/swao-discret-alu.jpg",
+  //   image: "images/fenetre/swao/swao-discret-alu.jpg",
   //   colors: ["Blanc 9016 Satiné", "Gris 9007 Texture", "RAL illimité"],
   //   features: [
   //     "Design discret et contemporain",
@@ -6254,7 +6254,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.1 W/(m².K)",
   //   ouverture: "OSCILLO_BATTANT",
-  //   image: "images/fenetres/swao/swao-ultimo-pvc.jpg",
+  //   image: "images/fenetre/swao/swao-ultimo-pvc.jpg",
   //   colors: ["Blanc 9016 Satiné", "Gris 7039 Satiné", "Gris 7016 Satiné", "RAL illimité", "Plus de 20 teintes plaxées"],
   //   features: [
   //     "Nouvelle génération de fenêtre PVC",
@@ -6284,7 +6284,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.2 W/(m².K)",
   //   ouverture: "BATTANT",
-  //   image: "images/fenetres/swao/swao-optimopvc.jpg",
+  //   image: "images/fenetre/swao/swao-optimopvc.jpg",
   //   colors: ["Blanc 9016 Satiné", "Gris 7030 Satiné", "RAL illimité"],
   //   features: [
   //     "Style traditionnel",
@@ -6310,7 +6310,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.2 W/(m².K)",
   //   ouverture: "OSCILLO_BATTANT",
-  //   image: "images/fenetres/swao/swao-unopvc.jpg",
+  //   image: "images/fenetre/swao/swao-unopvc.jpg",
   //   colors: ["Blanc 9016 Satiné", "RAL limité"],
   //   features: [
   //     "Design contemporain",
@@ -6338,7 +6338,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.3 W/(m².K)",
   //   ouverture: "BATTANT",
-  //   image: "images/fenetres/swao/swao-bois-br.jpg",
+  //   image: "images/fenetre/swao/swao-bois-br.jpg",
   //   colors: ["Chêne naturel", "Pin", "Lasure tons bois"],
   //   features: [
   //     "Bois massif à recouvrement",
@@ -6364,7 +6364,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "DOUBLE",
   //   uw: "1.4 W/(m².K)",
   //   ouverture: "BATTANT",
-  //   image: "images/fenetres/swao/swao-bois-ma.jpg",
+  //   image: "images/fenetre/swao/swao-bois-ma.jpg",
   //   colors: ["Blanc 9016 Satiné", "Chêne", "Pin naturel"],
   //   features: [
   //     "Style traditionnel à l'ancienne",
@@ -6392,7 +6392,7 @@ const fenetresData: FenetreData[] = [
   //   vitrage: "TRIPLE",
   //   uw: "0.8 W/(m².K)",
   //   ouverture: "OSCILLO_BATTANT",
-  //   image: "images/fenetres/swao/swao-mixte-bois-alu.jpg",
+  //   image: "images/fenetre/swao/swao-mixte-bois-alu.jpg",
   //   colors: ["Chêne intérieur", "Blanc 9016 extérieur", "Anthracite extérieur", "RAL illimité extérieur"],
   //   features: [
   //     "Bois noble à l'intérieur",
@@ -6422,7 +6422,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(3).jpg",
+    image: "images/fenetre/simple-invisible(3).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6459,7 +6459,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(1).jpg",
+    image: "images/fenetre/simple-invisible(1).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6493,7 +6493,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "OSCILLO_BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(11).jpg",
+    image: "images/fenetre/simple-invisible(11).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6528,7 +6528,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "OSCILLO_BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(10).jpg",
+    image: "images/fenetre/simple-invisible(10).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6562,7 +6562,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(9).jpg",
+    image: "images/fenetre/simple-invisible(9).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6596,7 +6596,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(4).jpg",
+    image: "images/fenetre/simple-invisible(4).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6630,7 +6630,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "FIXE",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(6).jpg",
+    image: "images/fenetre/simple-invisible(6).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6663,7 +6663,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/sybaie/invisible/simple-invisible(2).jpg",
+    image: "images/fenetre/simple-invisible(2).jpg",
     colors: [
       "RAL 7016 Gris anthracite givré",
       "RAL 9016 Blanc brillant/mat",
