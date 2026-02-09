@@ -6415,7 +6415,7 @@ const fenetresData: FenetreData[] = [
   // // SYBAIE - FENETRE GAMME ALU SIMPLE DORMANT INVISIBLE 8 
 
   {
-    name: "siMple Dormant Invisible OF2",
+    name: "Simple Dormant Invisible OF2",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
@@ -6452,14 +6452,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - OF3",
+    name: "Simple Dormant Invisible OF3",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-invisible(1).jpg",
+    image: "images/fenetre/simple-dormant-invisible-of3.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6486,14 +6486,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - OB1",
+    name: "Simple Dormant Invisible OB1",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "OSCILLO_BATTANT",
-    image: "images/fenetre/simple-invisible(11).jpg",
+    image: "images/fenetre/simple-dormant-invisible-ob1.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6521,14 +6521,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - OB2",
+    name: "Simple Dormant Invisible OB2",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "OSCILLO_BATTANT",
-    image: "images/fenetre/simple-invisible(10).jpg",
+    image: "images/fenetre/simple-dormant-invisible-ob2.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6545,7 +6545,7 @@ const fenetresData: FenetreData[] = [
       "Ouvrant acier soudé",
       "Haute rigidité"
     ],
-    description: "Fenêtre 2 vantaux oscillo-battant siMple dormant invisible, combinant confort d'aération et design contemporain.",
+    description: "Fenêtre 2 vantaux oscillo-battant Simple Dormant invisible, combinant confort d'aération et design contemporain.",
     priceRange: "1900€ - 2900€",
     rating: 4.8,
     dimensions: "H: 1000-2350mm, L: 1200-2400mm",
@@ -6555,14 +6555,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - PF1S",
+    name: "Simple Dormant Invisible PF1S",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-invisible(9).jpg",
+    image: "images/fenetre/simple-dormant-invisible-pf15.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6579,7 +6579,7 @@ const fenetresData: FenetreData[] = [
       "Charnières invisibles",
       "Poignée laquée couleur"
     ],
-    description: "Porte-fenêtre 1 vantail siMple dormant invisible avec soubassement, pour un accès extérieur élégant et discret.",
+    description: "Porte-fenêtre 1 vantail Simple Dormant invisible avec soubassement, pour un accès extérieur élégant et discret.",
     priceRange: "1600€ - 2500€",
     rating: 4.7,
     dimensions: "H: 2000-2700mm, L: 800-1200mm",
@@ -6589,14 +6589,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - PF2S",
+    name: "Simple Dormant Invisible PF2S",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-invisible(4).jpg",
+    image: "images/fenetre/simple-dormant-invisible-pf2s.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6613,7 +6613,7 @@ const fenetresData: FenetreData[] = [
       "Hauteur jusqu'à 2,70m",
       "Charnières invisibles"
     ],
-    description: "Porte-fenêtre 2 vantaux siMple dormant invisible avec soubassement, offrant une large ouverture vers l'extérieur.",
+    description: "Porte-fenêtre 2 vantaux Simple Dormant invisible avec soubassement, offrant une large ouverture vers l'extérieur.",
     priceRange: "2400€ - 3600€",
     rating: 4.8,
     dimensions: "H: 2000-2700mm, L: 1400-2400mm",
@@ -6623,14 +6623,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - Châssis Fixe",
+    name: "Simple Dormant Invisible - Châssis Fixe",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "FIXE",
-    image: "images/fenetre/simple-invisible(6).jpg",
+    image: "images/fenetre/simple-dormant-invisible-cf.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6646,7 +6646,7 @@ const fenetresData: FenetreData[] = [
       "Design minimaliste",
       "Grandes dimensions possibles"
     ],
-    description: "Châssis fixe siMple dormant invisible, pour une luminosité maximale avec des profilés ultra-fins et un design minimaliste.",
+    description: "Châssis fixe Simple Dormant invisible, pour une luminosité maximale avec des profilés ultra-fins et un design minimaliste.",
     priceRange: "900€ - 1500€",
     rating: 4.6,
     dimensions: "H: 1000-2350mm, L: 800-2000mm",
@@ -6656,14 +6656,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "siMple Dormant Invisible - OF2 + Allège",
+    name: "Simple Dormant Invisible OF2 + Allège",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-invisible(2).jpg",
+    image: "images/fenetre/simple-dormant-invisible-of2-a.jpg",
     colors: [
       "RAL 7016 Gris anthracite givré",
       "RAL 9016 Blanc brillant/mat",
@@ -6680,7 +6680,7 @@ const fenetresData: FenetreData[] = [
       "Battement central 60mm",
       "Design contemporain"
     ],
-    description: "Fenêtre 2 vantaux siMple dormant invisible avec allège, pour une composition architecturale élégante et moderne.",
+    description: "Fenêtre 2 vantaux Simple Dormant invisible avec allège, pour une composition architecturale élégante et moderne.",
     priceRange: "2200€ - 3200€",
     rating: 4.7,
     dimensions: "H: 1400-2350mm, L: 1200-2400mm",
