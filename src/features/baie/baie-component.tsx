@@ -140,12 +140,6 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     router.push(`/baie/${slug}`);
   };
 
-  const normalizeImagePath = (imagePath: string): string => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('/')) return imagePath;
-    return `/${imagePath}`;
-  };
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -670,6 +664,12 @@ const FenetreCard = ({
   const getCategoryLabel = (category: string) => {
     if (category === 'BAIE_VITREE') return 'Baie vitrée';
     return category;
+  };
+
+  const normalizeImagePath = (imagePath: string): string => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('/')) return imagePath;
+    return `/${imagePath}`;
   };
 
   return (
