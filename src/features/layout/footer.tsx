@@ -107,6 +107,14 @@ export const Footer = () => {
                   >
                     Cap ferret
                   </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/pessac"
+                  >
+                    Pessac
+                  </Typography>
                 </div>
               </div>
 
@@ -156,6 +164,14 @@ export const Footer = () => {
                   >
                     Arcachon
                   </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/martignas-sur-jalle"
+                  >
+                    Martignas 
+                  </Typography>
                 </div>
               </div>
 
@@ -173,14 +189,7 @@ export const Footer = () => {
                   >
                     Biganos
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/martignas-sur-jalle"
-                  >
-                    Martignas 
-                  </Typography>
+             
                   <Typography
                     as={Link}
                     variant="muted"
@@ -189,21 +198,14 @@ export const Footer = () => {
                   >
                     St Médard 
                   </Typography>
-                  <Typography
-                    as={Link}
-                    variant="muted"
-                    className="hover:underline"
-                    href="/pessac"
-                  >
-                    Pessac
-                  </Typography>
+             
                 </div>
               </div> */}
              
               {/* Colonne fenêtre */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  Nos fenêtres
+                  Fenêtres
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -228,7 +230,7 @@ export const Footer = () => {
               {/* Colonne portes */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
-                  Nos portes
+                  Portes
                 </Typography>
                 <div className="flex flex-col gap-2">
                   <Typography
@@ -361,6 +363,14 @@ export const Footer = () => {
                     href="/account"
                   >
                     Utilisateur
+                  </Typography>
+                  <Typography
+                    as={Link}
+                    variant="muted"
+                    className="hover:underline"
+                    href="/account"
+                  >
+                    xxxxxxxx
                   </Typography>
                 </div>
               </div>

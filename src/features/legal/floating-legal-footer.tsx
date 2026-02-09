@@ -2,7 +2,7 @@ import { SiteConfig } from "@/site-config";
 import Image from "next/image";
 import Link from "next/link";
 import GoogleReviewsWidget from '@/features/legal/google-reviews-widget';
-import WhatsAppContactButton from '@/features/legal/whatsapp-btn';
+// import WhatsAppContactButton from '@/features/legal/whatsapp-btn';
 
 export const FloatingLegalFooter = () => {
   return (
@@ -25,7 +25,7 @@ export const FloatingLegalFooter = () => {
           Privacy
         </Link>
         <Image src={SiteConfig.appIcon} width={12} height={12} alt="app icon" />
-        <WhatsAppContactButton/>
+        {/* <WhatsAppContactButton/> */}
       </div>
     </>
   );
