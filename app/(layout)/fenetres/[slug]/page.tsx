@@ -150,7 +150,7 @@ const FenetreDetailPage = () => {
             <div className="relative bg-gray-50 rounded-sm overflow-hidden border">
               <div className="relative h-[500px] lg:h-[650px]">
                 <Image
-                  src={fenetre.image}
+                  src={normalizeImagePath(fenetre.image)}
                   alt={fenetre.name}
                   fill
                   className="object-cover rounded-md"
