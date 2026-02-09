@@ -6422,7 +6422,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(3).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(3).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6459,7 +6459,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(1).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(1).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6493,7 +6493,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "OSCILLO_BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(11).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(11).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6528,7 +6528,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "OSCILLO_BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(10).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(10).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6562,7 +6562,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(9).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(9).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6596,7 +6596,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(4).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(4).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6630,7 +6630,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "FIXE",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(6).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(6).jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6663,7 +6663,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetres/sybaie/invisible/simple-invisible(2).jpg",
+    image: "images/fenetre/sybaie/invisible/simple-invisible(2).jpg",
     colors: [
       "RAL 7016 Gris anthracite givré",
       "RAL 9016 Blanc brillant/mat",
