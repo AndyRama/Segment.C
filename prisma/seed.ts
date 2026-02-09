@@ -6415,14 +6415,14 @@ const fenetresData: FenetreData[] = [
   // // SYBAIE - FENETRE GAMME ALU SIMPLE DORMANT INVISIBLE 8 
 
   {
-    name: "siMple Dormant Invisible - OF2",
+    name: "siMple Dormant Invisible OF2",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-invisible(3).jpg",
+    image: "images/fenetre/simple-dormant-invisible-of2.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
