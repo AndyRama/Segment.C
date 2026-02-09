@@ -48,6 +48,12 @@ const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
 
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/')) return imagePath;
+  return `/${imagePath}`;
+};
+
 const getCategoryLabel = (category: string) => {
   if (category === 'FENETRE') return 'Fenêtre';
   if (category === 'BAIE_VITREE') return 'Baie vitrée';
