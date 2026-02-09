@@ -24,7 +24,7 @@ export const Footer = () => {
                 <div className="flex items-center gap-2">
                   <Earth className="size-4 text-gray-500" />
                   <Typography variant="muted">
-                    Une portes ouvertes sur vos fênetres
+                    Une porte ouverte sur vos fênetres
                   </Typography>
                 </div>
 
@@ -107,14 +107,14 @@ export const Footer = () => {
                   >
                     Cap ferret
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/pessac"
                   >
                     Pessac
-                  </Typography>
+                  </Typography> */}
                 </div>
               </div>
 
@@ -164,14 +164,14 @@ export const Footer = () => {
                   >
                     Arcachon
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     as={Link}
                     variant="muted"
                     className="hover:underline"
                     href="/martignas-sur-jalle"
                   >
                     Martignas 
-                  </Typography>
+                  </Typography> */}
                 </div>
               </div>
 

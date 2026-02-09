@@ -8,7 +8,7 @@ import { AboutSection } from "@/features/landing/about-section";
 import { CardGrid } from "@/features/landing/card-grid";
 import { GallerySection } from "@/features/landing/gallery-section";
 import { ProcessSection } from "@/features/landing/process-section";
-import { ServiceAreaSection } from "@/features/landing/services-area-section";
+// import { ServiceAreaSection } from "@/features/landing/services-area-section";
 import { Partenaire } from "@/features/landing/partenaire";
 import { RecentPosts } from "@/features/landing/recent-posts";
 import { ServiceVilleSection } from '@/features/villes/service-ville-section';
@@ -61,8 +61,6 @@ export default function HomePage() {
       <SectionDivider />
 
       <CardGrid initialVisibleCount={3} />
-
-      <Partenaire />
 
       <SectionDivider />
 
@@ -126,6 +124,10 @@ export default function HomePage() {
       />
       
       <SectionDivider />
+      
+      <Partenaire />
+
+      <SectionDivider />
 
       <FAQSection
         faq={[
@@ -175,9 +177,9 @@ export default function HomePage() {
         ]}
       />
 
-      <SectionDivider />
+      {/* <SectionDivider /> */}
                 
-      <ServiceAreaSection />
+      {/* <ServiceAreaSection /> */}
 
       <SectionDivider />    
 

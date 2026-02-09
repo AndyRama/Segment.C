@@ -164,7 +164,7 @@ const HeroAnimation = () => {
               transition={{ duration: 0.8, delay: 0.9 }}
             >
                 <QuoteRequestModule 
-                  className="rounded-md border-2 border-black-500 bg-green-500 px-6 py-3 font-semibold shadow-2xl transition-all duration-300 hover:bg-transparent hover:text-green-500 sm:px-8 sm:py-4"
+                  className="rounded-md border-2 border-black bg-green-500 px-6 py-3 font-semibold shadow-2xl transition-all duration-300 hover:bg-transparent hover:text-green-500 sm:px-8 sm:py-4"
                 />
                   <Link href="/#réalisations">
                     <motion.button

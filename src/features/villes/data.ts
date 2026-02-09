@@ -58,7 +58,6 @@ export const saintJeanDIllacData: VilleData = {
       "Fenêtres oscillo-battantes",
       "Portes-fenêtres à galandage",
       "Volets persiennés aluminium",
-      "Pergolas bioclimatiques à lames orientables",
     ],
     founderName: "Rui De Carvalho",
     founderTitle: "Fondateur de Segment.C",
