@@ -19,8 +19,6 @@ export function ModelCard({
   description, 
   features, 
   image, 
-  price, 
-  link,
   highlighted = false 
 }: ModelCardProps) {
   return (
@@ -65,24 +63,11 @@ export function ModelCard({
           ))}
         </ul>
 
-        {/* Price */}
-        {/* <div className="pt-4 border-t border-green-100 dark:border-green-900">
-          <Typography variant="p" className="text-sm text-muted-foreground mb-2">
-            À partir de
-          </Typography>
-          <div className="flex items-baseline gap-2">
-            <Typography variant="h3" className="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
-              {price}
-            </Typography>
-            <span className="text-sm text-muted-foreground">TTC</span>
-          </div>
-        </div> */}
-
         {/* CTA Buttons */}
         <div className="flex gap-3 pt-4">
           <Link
             href="#devis"
-            className="flex-1 inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-700 px-4 py-3 text-sm font-semibold text-white transition-all hover:from-green-700 hover:to-orange-700 hover:shadow-lg"
+            className="flex-1 inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-700 px-4 py-3 text-sm font-semibold text-white transition-all hover:from-green-700 hover:to-green-700 hover:shadow-lg"
           >
             Demander un devis
             <ExternalLink className="h-4 w-4" />

@@ -359,7 +359,7 @@ const PorteHeader = () => (
     <div className="relative">
       <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
-          src="/images/porte4.jpg"
+          src="/images/porte3.jpg"
           alt="Porte d'entrée moderne avec végétation"
           fill
           className="object-cover"

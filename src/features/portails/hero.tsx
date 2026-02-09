@@ -67,8 +67,8 @@ export function HeroSection() {
         <div className="relative">
           <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl lg:h-[600px] ring-1 ring-emerald-200/50 dark:ring-emerald-800/50">
             <Image
-              src="/images/portail-moderne.jpg"
-              alt="Portail moderne en aluminium"
+              src="/images/portails.jpg"
+              alt="Portail en aluminium"
               fill
               className="object-cover"
               priority

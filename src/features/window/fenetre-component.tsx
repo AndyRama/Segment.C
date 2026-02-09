@@ -398,7 +398,7 @@ const FenetreHeader = () => (
     <div className="relative">
       <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
         <Image
-          src="/images/syal_7.jpg"
+          src="/images/hero-fenetre.jpg"
           alt="Fenêtre moderne avec vue sur extérieur"
           fill
           className="object-cover"
