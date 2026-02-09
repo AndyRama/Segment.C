@@ -53,7 +53,7 @@ type FenetreData = {
 const portesData: PorteData[] = [
    // 1. ABLETTE
   {
-    name: "ABLETTE",
+    name: "Ablette",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -72,7 +72,7 @@ const portesData: PorteData[] = [
   },
   // 2. AGOUTI
   {
-    name: "AGOUTI",
+    name: "Agouti",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -91,7 +91,7 @@ const portesData: PorteData[] = [
   },
   // 3. ALESIA 60
   {
-    name: "ALESIA 60",
+    name: "Alesia 60",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -110,7 +110,7 @@ const portesData: PorteData[] = [
   },
   // 4. ALIÉNOR 80
   {
-    name: "ALIÉNOR 80",
+    name: "Aliénor 80",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -129,7 +129,7 @@ const portesData: PorteData[] = [
   },
   // 5. ANCOLIE
   {
-    name: "ANCOLIE",
+    name: "Ancolie",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -148,7 +148,7 @@ const portesData: PorteData[] = [
   },
   // 6. ANEMONE
   {
-    name: "ANEMONE",
+    name: "Anemone",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -167,7 +167,7 @@ const portesData: PorteData[] = [
   },
   // 7. APOLLINE 80
   {
-    name: "APOLLINE 80",
+    name: "Apolline 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -186,7 +186,7 @@ const portesData: PorteData[] = [
   },
   // 8. ARCACHON
   {
-    name: "ARCACHON",
+    name: "Arcachon",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SWAO",
@@ -205,7 +205,7 @@ const portesData: PorteData[] = [
   },
   // 9. ARGENS
   {
-    name: "ARGENS",
+    name: "Argens",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SWAO",
@@ -224,7 +224,7 @@ const portesData: PorteData[] = [
   },
   // 10. ARIANE 80
   {
-    name: "ARIANE 80",
+    name: "Ariane 80",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -243,7 +243,7 @@ const portesData: PorteData[] = [
   },
   // 11. ARUS
   {
-    name: "ARUS",
+    name: "Arus",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -262,7 +262,7 @@ const portesData: PorteData[] = [
   },
   // 12. ASTEN-19
   {
-    name: "ASTEN-19",
+    name: "Asten 19",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -281,7 +281,7 @@ const portesData: PorteData[] = [
   },
   // 13. AURORA
   {
-    name: "AURORA",
+    name: "Aurora",
     category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
@@ -300,7 +300,7 @@ const portesData: PorteData[] = [
   },
   // 14. BALISTE-NOVA
   {
-    name: "BALISTE-NOVA",
+    name: "Baliste-nova",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -319,7 +319,7 @@ const portesData: PorteData[] = [
   },
   // 15. BANABA
   {
-    name: "BANABA",
+    name: "Banaba",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -338,7 +338,7 @@ const portesData: PorteData[] = [
   },
   // 16. BARDANE 1
   {
-    name: "BARDANE 1",
+    name: "Bardane 1",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -357,7 +357,7 @@ const portesData: PorteData[] = [
   },
   // 17. BARDANE 2
   {
-    name: "BARDANE 2",
+    name: "Bardane 2",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -376,7 +376,7 @@ const portesData: PorteData[] = [
   },
   // 18. BARDANE 3
   {
-    name: "BARDANE 3",
+    name: "Bardane 3",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -395,7 +395,7 @@ const portesData: PorteData[] = [
   },
   // 19. BEAUSSET
   {
-    name: "BEAUSSET",
+    name: "Beausset",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SWAO",
@@ -414,7 +414,7 @@ const portesData: PorteData[] = [
   },
   // 20. BELAIR
   {
-    name: "BELAIR",
+    name: "Belair",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -433,7 +433,7 @@ const portesData: PorteData[] = [
   },
   // 21. BELLIS
   {
-    name: "BELLIS",
+    name: "Bellis",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -452,7 +452,7 @@ const portesData: PorteData[] = [
   },
   // 22. BLENNIE 80
   {
-    name: "BLENNIE 80",
+    name: "Blennie 80",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -471,7 +471,7 @@ const portesData: PorteData[] = [
   },
   // 23. BLENNIE MIXTE
   {
-    name: "BLENNIE MIXTE",
+    name: "Blennie MIXTE",
     category: "PORTE_VITRAGE",
     material: "MIXTE",
     seller: "SWAO",
@@ -490,7 +490,7 @@ const portesData: PorteData[] = [
   },
   // 24. BOTIA
   {
-    name: "BOTIA",
+    name: "Botia",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -509,7 +509,7 @@ const portesData: PorteData[] = [
   },
   // 25. BUKA
   {
-    name: "BUKA",
+    name: "Buka",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -529,7 +529,7 @@ const portesData: PorteData[] = [
 
   // 26. CADIX
   {
-    name: "CADIX",
+    name: "Cadix",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -548,7 +548,7 @@ const portesData: PorteData[] = [
   },
   // 27. CALGARY
   {
-    name: "CALGARY",
+    name: "Calgary",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -567,7 +567,7 @@ const portesData: PorteData[] = [
   },
   // 28. CAPARIS
   {
-    name: "CAPARIS",
+    name: "Caparis",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -586,7 +586,7 @@ const portesData: PorteData[] = [
   },
   // 29. CAPARIS SV1
   {
-    name: "CAPARIS SV1",
+    name: "Caparis SV1",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -605,7 +605,7 @@ const portesData: PorteData[] = [
   },
   // 30. CARASSIN
   {
-    name: "CARASSIN",
+    name: "Carassin",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -622,11 +622,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 31-50 suivent le même modèle...
-
   // 31. CARVI
   {
-    name: "CARVI",
+    name: "Carvi",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -645,7 +643,7 @@ const portesData: PorteData[] = [
   },
   // 32. CARVI-B
   {
-    name: "CARVI-B",
+    name: "Carvi-B",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -664,7 +662,7 @@ const portesData: PorteData[] = [
   },
   // 33. CATANE
   {
-    name: "CATANE",
+    name: "Catane",
     category: "PORTE_VITRAGE",
     material: "ACIER",
     seller: "SWAO",
@@ -683,7 +681,7 @@ const portesData: PorteData[] = [
   },
   // 34. CEDRE
   {
-    name: "CEDRE",
+    name: "Cedre",
     category: "PORTE_VITRAGE",
     material: "PVC",
     seller: "SWAO",
@@ -702,7 +700,7 @@ const portesData: PorteData[] = [
   },
   // 35. CHASSY
   {
-    name: "CHASSY",
+    name: "Chassy",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SWAO",
@@ -721,7 +719,7 @@ const portesData: PorteData[] = [
   },
   // 36. CLARESSE
   {
-    name: "CLARESSE",
+    name: "Claresse",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -740,7 +738,7 @@ const portesData: PorteData[] = [
   },
   // 37. CLARESSE-NOVA
   {
-    name: "CLARESSE-NOVA",
+    name: "Claresse-Nova",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -759,7 +757,7 @@ const portesData: PorteData[] = [
   },
   // 38. COPAL 60
   {
-    name: "COPAL 60",
+    name: "Copal 60",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -778,7 +776,7 @@ const portesData: PorteData[] = [
   },
   // 39. CORAIL
   {
-    name: "CORAIL",
+    name: "Corail",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -797,7 +795,7 @@ const portesData: PorteData[] = [
   },
   // 40. CORAIL-NOVA
   {
-    name: "CORAIL-NOVA",
+    name: "Corail-Nova",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -816,7 +814,7 @@ const portesData: PorteData[] = [
   },
   // 41. COSY 80
   {
-    name: "COSY 80",
+    name: "Cosy 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -835,7 +833,7 @@ const portesData: PorteData[] = [
   },
   // 42. COSY MIXTE
   {
-    name: "COSY MIXTE",
+    name: "Cosy Mixte",
     category: "PORTE_ENTRER",
     material: "MIXTE",
     seller: "SWAO",
@@ -854,7 +852,7 @@ const portesData: PorteData[] = [
   },
   // 43. CRAZY 80
   {
-    name: "CRAZY 80",
+    name: "Crazy 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -873,7 +871,7 @@ const portesData: PorteData[] = [
   },
   // 44. CYCLONE
   {
-    name: "CYCLONE",
+    name: "Cyclone",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -892,7 +890,7 @@ const portesData: PorteData[] = [
   },
   // 45. DADDY
   {
-    name: "DADDY",
+    name: "Daddy",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -911,7 +909,7 @@ const portesData: PorteData[] = [
   },
   // 46. DIVINOX 80
   {
-    name: "DIVINOX 80",
+    name: "Divinox 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -930,7 +928,7 @@ const portesData: PorteData[] = [
   },
   // 47. DIVONA 60
   {
-    name: "DIVONA 60",
+    name: "Divona 60",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -949,7 +947,7 @@ const portesData: PorteData[] = [
   },
   // 48. DORMELLE 80
   {
-    name: "DORMELLE 80",
+    name: "Dormelle 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -968,7 +966,7 @@ const portesData: PorteData[] = [
   },
   // 49. DRABA
   {
-    name: "DRABA",
+    name: "Draba",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -987,7 +985,7 @@ const portesData: PorteData[] = [
   },
   // 50. ELBOT 80
   {
-    name: "ELBOT 80",
+    name: "Elbot 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -1006,7 +1004,7 @@ const portesData: PorteData[] = [
   },
   // 51. ELME
   {
-    name: "ELME",
+    name: "Elme",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -1025,7 +1023,7 @@ const portesData: PorteData[] = [
   },
   // 52. ENNA-19
   {
-    name: "ENNA-19",
+    name: "Enna-19",
     category: "PORTE_ENTRER",
     material: "ACIER",
     seller: "SWAO",
@@ -1044,7 +1042,7 @@ const portesData: PorteData[] = [
   },
   // 53. EOLE
   {
-    name: "EOLE",
+    name: "Eole",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -1063,7 +1061,7 @@ const portesData: PorteData[] = [
   },
   // 54. EVENOS
   {
-    name: "EVENOS",
+    name: "Evenos",
     category: "PORTE_ENTRER",
     material: "BOIS",
     seller: "SWAO",
@@ -1082,7 +1080,7 @@ const portesData: PorteData[] = [
   },
   // 55. FANTAZY 80
   {
-    name: "FANTAZY 80",
+    name: "Fantazy 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -1099,10 +1097,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 56-80 
   // 56. FLORA
   {
-    name: "FLORA",
+    name: "Flora",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -1121,7 +1118,7 @@ const portesData: PorteData[] = [
   },
   // 57. FOLIS
   {
-    name: "FOLIS",
+    name: "Folis",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -1140,7 +1137,7 @@ const portesData: PorteData[] = [
   },
   // 58. GALIUM
   {
-    name: "GALIUM",
+    name: "Galium",
     category: "PORTE_ENTRER",
     material: "PVC",
     seller: "SWAO",
@@ -1157,9 +1154,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 58. GALIUM
+  // 59. GAVI 60
   {
-    name: "GAVI 60",
+    name: "Gavi 60",
     category: "PORTE_VITRAGE",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -1176,9 +1173,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 58. GALIUM
+  // 60. GIRELLE
   {
-    name: "GIRELLE 80",
+    name: "Girelle 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -1195,9 +1192,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 58. GALIUM
+  // 61. GLOSSY
   {
-    name: "GLOSSY 80",
+    name: "Glossy 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",
@@ -1214,9 +1211,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 58. GALIUM
+  // 62. GALIUM
   {
-    name: "GLOSSY MIXTE",
+    name: "Glossy Mixte",
     category: "PORTE_ENTRER",
     material: "MIXTE",
     seller: "SWAO",
@@ -1233,7 +1230,7 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 58. GALIUM
+  // 63. HIRONDELLE 1
   {
     name: "HIRONDELLE 1",
     category: "PORTE_VITRAGE",
@@ -1252,7 +1249,7 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-  // 58. GALIUM
+  // 64. HIRONDELLE 2
   {
     name: "HIRONDELLE 2",
     category: "PORTE_VITRAGE",
@@ -1271,6 +1268,7 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
+	// 65. HIRONDELLE 3
   {
     name: "HIRONDELLE 3",
     category: "PORTE_VITRAGE",
@@ -1289,8 +1287,9 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
+	// 65. HOBBINOX 3
   {
-    name: "HOBBINOX 80",
+    name: "Hobbinox 80",
     category: "PORTE_ENTRER",
     material: "ALUMINIUM",
     seller: "SWAO",

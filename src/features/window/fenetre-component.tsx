@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/nowts/typography";
 import { Button } from "@/components/ui/button";
-import { X, Star, Shield, Home, Thermometer, Sun, Eye, Filter } from "lucide-react";
+import { X, Star, Home, Thermometer, Sun, Eye, Filter } from "lucide-react";
 
 type Product = {
   id: string;
@@ -40,6 +40,12 @@ const LIMIT = 40;
 // Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
+};
+
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/')) return imagePath;
+  return `/${imagePath}`;
 };
 
 const FenetreSection = ({ className }: FenetreSectionProps) => {
@@ -696,10 +702,10 @@ const FenetreCard = ({
 
         <div className="relative h-64">
           <Image
-            src={fenetre.image}
+            src={normalizeImagePath(fenetre.image)}
             alt={fenetre.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
         </div>
