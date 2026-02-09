@@ -48,6 +48,12 @@ const createSlug = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
 
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/')) return imagePath;
+  return `/${imagePath}`;
+};
+
 const getCategoryLabel = (category: string) => {
   if (category === 'BAIE_VITREE') return 'Baie vitrée';
   return category;
@@ -149,7 +155,7 @@ const FenetreDetailPage = () => {
             <div className="relative bg-gray-50 rounded-sm overflow-hidden border">
               <div className="relative h-[500px] lg:h-[650px]">
                 <Image
-                  src={fenetre.image}
+                  src={normalizeImagePath(fenetre.image)}
                   alt={fenetre.name}
                   fill
                   className="object-cover rounded-md"

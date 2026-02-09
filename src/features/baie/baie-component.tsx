@@ -140,6 +140,12 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     router.push(`/baie/${slug}`);
   };
 
+  const normalizeImagePath = (imagePath: string): string => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('/')) return imagePath;
+    return `/${imagePath}`;
+  };
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -694,7 +700,7 @@ const FenetreCard = ({
 
         <div className="relative h-64">
           <Image
-            src={fenetre.image}
+            src={normalizeImagePath(fenetre.image)}
             alt={fenetre.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"

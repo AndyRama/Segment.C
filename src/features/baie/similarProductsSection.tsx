@@ -34,6 +34,12 @@ const getCategoryLabel = (category: string) => {
   return category;
 };
 
+const normalizeImagePath = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/')) return imagePath;
+  return `/${imagePath}`;
+};
+
 const SimilarProductCard = ({ product, index }: { product: Product; index: number }) => {
   const delay = index * 0.1;
 
@@ -67,7 +73,7 @@ const SimilarProductCard = ({ product, index }: { product: Product; index: numbe
           {/* Image */}
           <div className="relative h-64 bg-gray-50">
             <Image
-              src={product.image}
+              src={normalizeImagePath(product.image)}
               alt={product.name}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
