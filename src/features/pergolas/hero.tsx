@@ -67,7 +67,7 @@ export function HeroSection() {
         <div className="relative">
           <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl lg:h-[600px] ring-1 ring-green-200/50 dark:ring-green-800/50">
             <Image
-              src="/images/orial-placeholder.png"
+              src="/images/pergolas1.jpg"
               alt="Pergola bioclimatique moderne"
               fill
               className="object-cover"

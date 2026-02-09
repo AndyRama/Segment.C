@@ -9,7 +9,6 @@ export const FloatingLegalFooter = () => {
     <>
       <div className="fixed right-4 bottom-16 flex flex-col items-end gap-3 z-50">
         <GoogleReviewsWidget />
-        <WhatsAppContactButton/>
       </div>
 
       <div className="fixed right-4 bottom-2 flex items-center gap-2 z-40">
@@ -26,6 +25,7 @@ export const FloatingLegalFooter = () => {
           Privacy
         </Link>
         <Image src={SiteConfig.appIcon} width={12} height={12} alt="app icon" />
+        <WhatsAppContactButton/>
       </div>
     </>
   );
