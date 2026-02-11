@@ -40,3 +40,9 @@ src/generated
 
 # CI artifacts
 /ci-artifacts
+
+# Script Data fenetre swao
+
+scrape-all-swao-windows.js
+swao_all_windows.json
+swao_windows_images.json
