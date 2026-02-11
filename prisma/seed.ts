@@ -6562,7 +6562,7 @@ const fenetresData: FenetreData[] = [
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-dormant-invisible-pf15.jpg",
+    image: "images/fenetre/simple-dormant-invisible-pf1s.jpg",
     colors: [
       "RAL 9016 Blanc brillant/mat",
       "RAL 7016 Gris anthracite givré",
@@ -6579,7 +6579,7 @@ const fenetresData: FenetreData[] = [
       "Charnières invisibles",
       "Poignée laquée couleur"
     ],
-    description: "Porte-fenêtre 1 vantail Simple Dormant invisible avec soubassement, pour un accès extérieur élégant et discret.",
+    description: "fenêtre 1 vantail Simple Dormant invisible avec soubassement, pour un accès extérieur élégant et discret.",
     priceRange: "1600€ - 2500€",
     rating: 4.7,
     dimensions: "H: 2000-2700mm, L: 800-1200mm",
@@ -6656,14 +6656,14 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "Simple Dormant Invisible OF2 Allège",
+    name: "Simple Dormant Invisible OF2 Allege",
     category: "FENETRE",
     material: "ALUMINIUM",
     seller: "SYBAIE",
     vitrage: "DOUBLE",
     uw: "1.2 W/(m².K)",
     ouverture: "BATTANT",
-    image: "images/fenetre/simple-dormant-invisible-of2-allège.jpg",
+    image: "images/fenetre/simple-dormant-invisible-of2-allege.jpg",
     colors: [
       "RAL 7016 Gris anthracite givré",
       "RAL 9016 Blanc brillant/mat",
@@ -6735,7 +6735,7 @@ const fenetresData: FenetreData[] = [
   isActive: true,
 },
 {
-  name: "Bois à recouvrement BR",
+  name: "Bois a recouvrement BR",
   category: "FENETRE",
   material: "BOIS",
   seller: "SWAO",
@@ -6772,7 +6772,7 @@ const fenetresData: FenetreData[] = [
   isActive: true,
 },
 {
-  name: "Menuiserie à l'ancienne MA",
+  name: "Menuiserie a l ancienne MA",
   category: "FENETRE",
   material: "MIXTE",
   seller: "SWAO",
