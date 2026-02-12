@@ -35,7 +35,7 @@ type FenetreSectionProps = {
 
 // Constantes en dehors du composant
 const ALLOWED_CATEGORIES = ["FENETRE"];
-const LIMIT = 40;
+const LIMIT = 400;
 
 // Fonction simple pour créer un slug : minuscules + tirets entre les mots
 const createSlug = (name: string): string => {
