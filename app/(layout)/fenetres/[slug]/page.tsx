@@ -44,10 +44,6 @@ type Product = {
   isNew?: boolean;
 };
 
-const createSlug = (name: string): string => {
-  return name.toLowerCase().replace(/\s+/g, '-');
-};
-
 const normalizeImagePath = (imagePath: string): string => {
   if (!imagePath) return '';
   if (imagePath.startsWith('/')) return imagePath;
@@ -73,30 +69,28 @@ const FenetreDetailPage = () => {
     const fetchFenetre = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/products?type=FENETRE');
-        if (!response.ok) throw new Error('Failed to fetch products');
-
-        const data = await response.json();
-        const foundFenetre = data.products.find((p: Product) =>
-          createSlug(p.name) === params.slug
-        );
-
-        if (!foundFenetre) {
-          setError("Fenêtre non trouvée");
-        } else {
-          setFenetre(foundFenetre);
-        }
-      } catch {
-        setError("Erreur lors du chargement du produit");
-      } finally {
+        const response = await fetch(`/api/products/${params.slug}`);
+      
+      if (!response.ok) {
+        setError("Fenêtre non trouvée");
         setLoading(false);
+        return;
       }
-    };
+      
+      const fenetre = await response.json();
+      setFenetre(fenetre);
 
-    if (params.slug) {
-      void fetchFenetre();
+    } catch {
+      setError("Erreur lors du chargement du produit");
+    } finally {
+      setLoading(false);
     }
-  }, [params.slug]);
+  };
+
+  if (params.slug) {
+    void fetchFenetre();
+  }
+}, [params.slug]);
 
   if (loading) {
     return (
