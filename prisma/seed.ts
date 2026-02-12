@@ -6789,7 +6789,7 @@ const fenetresData: FenetreData[] = [
   isActive: true,
 },
 {
-  name: "Menuiserie a l ancienne MA",
+  name: "Ancienne Menuiserie",
   category: "FENETRE",
   material: "MIXTE",
   seller: "SWAO",
@@ -6800,7 +6800,7 @@ const fenetresData: FenetreData[] = [
   // performanceAEV: "A*4 E*9A ",
   // performanceResistance: "V*A3",
   // performanceAcoustique: "38dB",
-  image: "images/fenetre/menuiserie-a-l-ancienne-ma.jpg",
+  image: "images/fenetre/ancienne-menuiserie.jpg",
   colors: ["Blanc 9016 Satiné", "Chêne", "Bois exotique", "RAL illimité (lasure ou peinture)", "Plus de 200 couleurs nuancier Naboco"],
   features: [
     "Assemblage traditionnel à double enfourchement",
@@ -6855,7 +6855,7 @@ const fenetresData: FenetreData[] = [
   isActive: true,
 },
 {
-  name: "Ouvrant discret",
+  name: "Fentre ouvrant discret",
   category: "FENETRE",
   material: "ALUMINIUM",
   seller: "SWAO",
@@ -6867,7 +6867,7 @@ const fenetresData: FenetreData[] = [
   // performanceAEV: "A*4 E*9A ",
   // performanceResistance: "V*A3",
   // performanceAcoustique: "38dB",
-  image: "images/fenetre/swao/ouvrant-discret.jpg",
+  image: "images/fenetre/swao/fenetre-ouvrant-discret.jpg",
   colors: ["Blanc 9016 Satiné", "Gris 9007 Texturé", "Gris 7016 Texturé", "Noir 2100 Texturé", "Rouge 3004 Texturé", "RAL illimité en mono ou bi-coloration"],
   features: [
     "Ouvrant discret® - profil central réduit",
