@@ -6789,7 +6789,7 @@ const fenetresData: FenetreData[] = [
   isActive: true,
 },
 {
-  name: "Ancienne Menuiserie",
+  name: "Ancienne menuiserie",
   category: "FENETRE",
   material: "MIXTE",
   seller: "SWAO",

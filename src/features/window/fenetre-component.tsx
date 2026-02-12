@@ -133,7 +133,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "SYBAIE", label: "Sy Baie" },
     { key: "C2R", label: "C2R" },
     { key: "SWAO", label: "SWAO" },
-    { key: "PROFERM", label: "Proferm" },
+    // { key: "PROFERM", label: "Proferm" },
   ];
 
   const handleFilterChange = (filterType: string, value: string) => {
