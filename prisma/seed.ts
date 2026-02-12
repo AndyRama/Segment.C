@@ -6595,7 +6595,7 @@ const fenetresData: FenetreData[] = [
     isActive: true,
   },
   {
-    name: "Mixte Bois Aluminium",
+    name: "baie Mixte Bois Aluminium",
     category: "FENETRE",
     material: "BOIS_ALUMINIUM",
     seller: "SWAO",
@@ -6607,7 +6607,7 @@ const fenetresData: FenetreData[] = [
     // performanceAEV: "A*4 E*9A ",
     // performanceResistance: "V*A3",
     // performanceAcoustique: "38dB",
-    image: "images/fenetre/mixte-bois-aluminium.webp",
+    image: "images/fenetre/baie-mixte-bois-aluminium.webp",
     colors: ["Chêne", "Bois exotique", "Résineux (intérieur)", "RAL illimité (extérieur aluminium)"],
     features: [
       "Chaleur du bois à l'intérieur",
