@@ -6741,7 +6741,7 @@ const fenetresData: FenetreData[] = [
   // performanceAEV: "A*4 E*9A ",
   // performanceResistance: "V*A3",
   // performanceAcoustique: "38dB",
-  image: "images/fenetre/swao/ouvrant-o-thentic-aluminium.jpg",
+  image: "images/fenetre/ouvrant-o-thentic-aluminium.jpg",
   colors: ["Blanc 9016 Satiné", "Gris 7016 Texturé", "Noir 2100 Texturé", "RAL illimité en mono ou bi-coloration"],
   features: [
     "Ouvrant 80mm pour performances thermiques optimales",
@@ -6771,7 +6771,7 @@ const fenetresData: FenetreData[] = [
   // performanceAEV: "A*4 E*9A ",
   // performanceResistance: "V*A3",
   // performanceAcoustique: "38dB",
-  image: "images/fenetre/swao/bois-a-recouvrement-br.jpg",
+  image: "images/fenetre/bois-a-recouvrement-br.jpg",
   colors: ["Chêne", "Bois exotique", "Résineux", "RAL illimité (lasure ou peinture)", "Plus de 200 couleurs nuancier Naboco"],
   features: [
     "Assemblage traditionnel à double enfourchement",
@@ -6829,7 +6829,7 @@ const fenetresData: FenetreData[] = [
   // performanceAEV: "A*4 E*9A ",
   // performanceResistance: "V*A3",
   // performanceAcoustique: "38dB",
-  image: "images/fenetre/swao/mixte-bois-aluminium.webp",
+  image: "images/fenetre/mixte-bois-aluminium.webp",
   colors: ["Chêne", "Bois exotique", "Résineux (intérieur)", "RAL illimité (extérieur aluminium)"],
   features: [
     "Chaleur du bois à l'intérieur",
@@ -6867,7 +6867,7 @@ const fenetresData: FenetreData[] = [
   // performanceAEV: "A*4 E*9A ",
   // performanceResistance: "V*A3",
   // performanceAcoustique: "38dB",
-  image: "images/fenetre/swao/fenetre-ouvrant-discret.jpg",
+  image: "images/fenetre/fenetre-ouvrant-discret.jpg",
   colors: ["Blanc 9016 Satiné", "Gris 9007 Texturé", "Gris 7016 Texturé", "Noir 2100 Texturé", "Rouge 3004 Texturé", "RAL illimité en mono ou bi-coloration"],
   features: [
     "Ouvrant discret® - profil central réduit",
