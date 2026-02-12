@@ -6705,7 +6705,7 @@ const fenetresData: FenetreData[] = [
 
   // SWAO - FENÊTRES STYLE BOIS ALU PVC 12
 {
-  name: "Ouvrant O thentic aluminium",
+  name: "Ouvrant Othentic aluminium",
   category: "FENETRE",
   material: "ALUMINIUM",
   seller: "SWAO",
@@ -6714,7 +6714,7 @@ const fenetresData: FenetreData[] = [
   rating: 4.6,
   dimensions: "H: Variable, L: Variable",
   performance: "Uw jusqu'à 1,2 W/(m².K)",
-  image: "images/fenetre/swao/ouvrant-o-thentic-aluminium.jpg",
+  image: "images/fenetre/swao/ouvrant-othentic-aluminium.jpg",
   colors: ["Blanc 9016 Satiné", "Gris 7016 Texturé", "Noir 2100 Texturé", "RAL illimité en mono ou bi-coloration"],
   features: [
     "Ouvrant 80mm pour performances thermiques optimales",
