@@ -84,7 +84,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         //   ALLOWED_CATEGORIES.includes(product.category)
         // );
         
-        // setFenetres(filteredProducts);
+        setFenetres(data.products);
         setTotal(data.total);
         
         // Scroll to top when page changes
