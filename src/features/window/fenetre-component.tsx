@@ -70,10 +70,8 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         const params = new URLSearchParams({
           limit: LIMIT.toString(),
           offset: offset.toString(),
-          type: 'FENETRE',
-          ...(filters.category !== 'all' && { category: filters.category }),
+          category: 'FENETRE',
           ...(filters.material !== 'all' && { material: filters.material }),
-          ...(filters.openingType !== 'all' && { openingType: filters.openingType }),
           ...(filters.seller !== 'all' && { seller: filters.seller }),
         });
 
@@ -82,9 +80,9 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         
         const data = await response.json();
         
-        const filteredProducts = data.products.filter((product: Product) => 
-          ALLOWED_CATEGORIES.includes(product.category)
-        );
+        // const filteredProducts = data.products.filter((product: Product) => 
+        //   ALLOWED_CATEGORIES.includes(product.category)
+        // );
         
         setFenetres(filteredProducts);
         setTotal(data.total);

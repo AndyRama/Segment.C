@@ -73,7 +73,7 @@ const FenetreDetailPage = () => {
     const fetchFenetre = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/products?type=FENETRE');
+        const response = await fetch('/api/products?category=FENETRE');
         if (!response.ok) throw new Error('Failed to fetch products');
 
         const data = await response.json();
