@@ -1268,7 +1268,7 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-	// 65. HIRONDELLE 3
+  // 65. HIRONDELLE 3
   {
     name: "HIRONDELLE 3",
     category: "PORTE_VITRAGE",
@@ -1287,7 +1287,7 @@ const portesData: PorteData[] = [
     isNew: false,
     isActive: true,
   },
-	// 65. HOBBINOX 3
+  // 65. HOBBINOX 3
   {
     name: "Hobbinox 80",
     category: "PORTE_ENTRER",
@@ -6190,8 +6190,7 @@ const portesData: PorteData[] = [
 ];
 
 const fenetresData: FenetreData[] = [
-  // // SYBAIE - FENETRE GAMME ALU SIMPLE DORMANT INVISIBLE 8 
-
+  // SYBAIE - FENETRE GAMME ALU SIMPLE DORMANT INVISIBLE 7
   {
     name: "Simple Dormant Invisible OF2",
     category: "FENETRE",
@@ -6418,42 +6417,42 @@ const fenetresData: FenetreData[] = [
     isNew: true,
     isActive: true,
   },
-  {
-    name: "Simple Dormant Invisible Châssis Fixe",
-    category: "FENETRE",
-    material: "ALUMINIUM",
-    seller: "SYBAIE",
-    vitrage: "DOUBLE",
-    uw: "1.2 W/(m².K)",
-    ouverture: "FIXE",
-    image: "images/fenetre/simple-dormant-invisible-chassis-fixe.jpg",
-    colors: [
-      "RAL 9016 Blanc brillant/mat",
-      "RAL 7016 Gris anthracite givré",
-      "RAL 9005 Noir profond",
-      "RAL illimité"
-    ],
-    features: [
-      "Châssis fixe",
-      "Dormant invisible",
-      "Maximum de luminosité",
-      "Profilés ultra-fins de 60mm",
-      "Ouvrant acier",
-      "Design minimaliste",
-      "Grandes dimensions possibles"
-    ],
-    description: "Châssis fixe Simple Dormant invisible, pour une luminosité maximale avec des profilés ultra-fins et un design minimaliste.",
-    priceRange: "900€ - 1500€",
-    rating: 4.6,
-    dimensions: "H: 1000-2350mm, L: 800-2000mm",
-    performance: "1.2 W/(m².K)",
-    // performanceAEV: "A*4 E*9A ",
-    // performanceResistance: "V*A3",
-    // performanceAcoustique: "38dB",
-    isPopular: false,
-    isNew: true,
-    isActive: true,
-  },
+  // {
+  //   name: "Simple Dormant Invisible Châssis Fixe",
+  //   category: "FENETRE",
+  //   material: "ALUMINIUM",
+  //   seller: "SYBAIE",
+  //   vitrage: "DOUBLE",
+  //   uw: "1.2 W/(m².K)",
+  //   ouverture: "FIXE",
+  //   image: "images/fenetre/simple-dormant-invisible-chassis-fixe.jpg",
+  //   colors: [
+  //     "RAL 9016 Blanc brillant/mat",
+  //     "RAL 7016 Gris anthracite givré",
+  //     "RAL 9005 Noir profond",
+  //     "RAL illimité"
+  //   ],
+  //   features: [
+  //     "Châssis fixe",
+  //     "Dormant invisible",
+  //     "Maximum de luminosité",
+  //     "Profilés ultra-fins de 60mm",
+  //     "Ouvrant acier",
+  //     "Design minimaliste",
+  //     "Grandes dimensions possibles"
+  //   ],
+  //   description: "Châssis fixe Simple Dormant invisible, pour une luminosité maximale avec des profilés ultra-fins et un design minimaliste.",
+  //   priceRange: "900€ - 1500€",
+  //   rating: 4.6,
+  //   dimensions: "H: 1000-2350mm, L: 800-2000mm",
+  //   performance: "1.2 W/(m².K)",
+  //   // performanceAEV: "A*4 E*9A ",
+  //   // performanceResistance: "V*A3",
+  //   // performanceAcoustique: "38dB",
+  //   isPopular: false,
+  //   isNew: true,
+  //   isActive: true,
+  // },
   {
     name: "Simple Dormant Invisible OF2 Allege",
     category: "FENETRE",
@@ -6505,7 +6504,7 @@ const fenetresData: FenetreData[] = [
   // SYBAIE - FENÊTRES BOIS SYLE VERSAILLES 6 photos
 
 
-  // SWAO - FENÊTRES STYLE BOIS ALU PVC 12
+  // SWAO - FENÊTRES STYLE BOIS ALU PVC 8
   {
     name: "Ouvrant O thentic aluminium",
     category: "FENETRE",

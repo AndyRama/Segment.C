@@ -89,6 +89,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
         
         // Scroll to top when page changes
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_error) {
         // Error handled silently
       } finally {
@@ -208,7 +209,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
       <MobileFiltersModal
         isOpen={showMobileFilters}
         onClose={() => setShowMobileFilters(false)}
-        categoryFilters={categoryFilters}
+        // categoryFilters={categoryFilters}
         materialFilters={materialFilters}
         sellerFilters={sellerFilters}
         openingTypeFilters={openingTypeFilters}
@@ -225,7 +226,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
 const MobileFiltersModal = ({
   isOpen,
   onClose,
-  categoryFilters,
+  // categoryFilters,
   materialFilters,
   sellerFilters,
   openingTypeFilters,
@@ -234,7 +235,7 @@ const MobileFiltersModal = ({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  categoryFilters: { key: string; label: string }[];
+  // categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
   sellerFilters: { key: string; label: string }[];
   openingTypeFilters: { key: string; label: string }[];
@@ -261,16 +262,16 @@ const MobileFiltersModal = ({
         <div className="p-4 space-y-6">
           <div>
             <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-              Catégorie
+              Fournisseur
             </Typography>
             <div className="space-y-2">
-              {categoryFilters.map((filter) => (
+              {sellerFilters.map((filter) => (
                 <button
                   key={filter.key}
-                  onClick={() => onFilterChange("category", filter.key)}
+                  onClick={() => onFilterChange("seller", filter.key)}
                   className={cn(
                     "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
-                    activeFilters.category === filter.key
+                    activeFilters.seller === filter.key
                       ? "bg-primary text-white font-medium"
                       : "bg-gray-50 hover:bg-gray-100"
                   )}
@@ -325,33 +326,11 @@ const MobileFiltersModal = ({
             </div>
           </div>
 
-          <div className="border-t pt-4">
-            <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-              Fournisseur
-            </Typography>
-            <div className="space-y-2">
-              {sellerFilters.map((filter) => (
-                <button
-                  key={filter.key}
-                  onClick={() => onFilterChange("seller", filter.key)}
-                  className={cn(
-                    "w-full text-left px-4 py-3 rounded-lg text-sm transition-colors",
-                    activeFilters.seller === filter.key
-                      ? "bg-primary text-white font-medium"
-                      : "bg-gray-50 hover:bg-gray-100"
-                  )}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all' || activeFilters.openingType !== 'all') && (
             <Button
               variant="outline"
               onClick={() => {
-                onFilterChange('category', 'all');
+                // onFilterChange('category', 'all');
                 onFilterChange('material', 'all');
                 onFilterChange('seller', 'all');
                 onFilterChange('openingType', 'all');
@@ -408,14 +387,14 @@ const FenetreHeader = () => (
 );
 
 const FenetresFiltersSidebar = ({
-  categoryFilters,
+  // categoryFilters,
   materialFilters,
   sellerFilters,
   openingTypeFilters,
   activeFilters,
   onFilterChange,
 }: {
-  categoryFilters: { key: string; label: string }[];
+  // categoryFilters: { key: string; label: string }[];
   materialFilters: { key: string; label: string }[];
   sellerFilters: { key: string; label: string }[];
   openingTypeFilters: { key: string; label: string }[];
@@ -430,7 +409,7 @@ const FenetresFiltersSidebar = ({
     </div>
 
     <div className="space-y-4">
-      <div>
+      {/* <div>
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
           Catégorie
         </Typography>
@@ -450,6 +429,28 @@ const FenetresFiltersSidebar = ({
             </button>
           ))}
         </div>
+      </div> */}
+
+      <div className="border-t pt-4">
+        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+          Fournisseur
+        </Typography>
+        <div className="space-y-2">
+          {sellerFilters.map((filter) => (
+            <button
+              key={filter.key}
+              onClick={() => onFilterChange("seller", filter.key)}
+              className={cn(
+                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                activeFilters.seller === filter.key
+                  ? "bg-primary text-white font-medium"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div> 
       </div>
 
       <div className="border-t pt-4">
@@ -494,30 +495,7 @@ const FenetresFiltersSidebar = ({
             </button>
           ))}
         </div>
-      </div>   
-
-
-      <div className="border-t pt-4">
-        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-          Fournisseur
-        </Typography>
-        <div className="space-y-2">
-          {sellerFilters.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => onFilterChange("seller", filter.key)}
-              className={cn(
-                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                activeFilters.seller === filter.key
-                  ? "bg-primary text-white font-medium"
-                  : "hover:bg-gray-100"
-              )}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div> 
-      </div> 
+      </div>
     </div>
 
     {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all' || activeFilters.openingType !== 'all') && (
@@ -525,7 +503,7 @@ const FenetresFiltersSidebar = ({
         variant="outline"
         size="sm"
         onClick={() => {
-          onFilterChange('category', 'all');
+          // onFilterChange('category', 'all');
           onFilterChange('material', 'all');
           onFilterChange('openingType', 'all');
           onFilterChange('seller', 'all');
