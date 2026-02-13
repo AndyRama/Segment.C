@@ -6681,7 +6681,7 @@ const fenetresData: FenetreData[] = [
      // performanceAEV: "A*4 E*7A ",
     // performanceResistance: "V*A3",
     // performanceAcoustique: "33dB",
-    image: "images/fenetres/ultimo-pvc.jpg",
+    image: "images/fenetre/ultimo-pvc.jpg",
     colors: [
       "Blanc 9016 satiné",
       "Gris 7039 satiné",
@@ -6717,7 +6717,7 @@ const fenetresData: FenetreData[] = [
     // performanceAEV: "A*4 E*7A",
     // performanceResistance: "V*A3",
     // performanceAcoustique: "33(-1;-5)dB",
-    image: "images/fenetres/optimo-pvc.jpg",
+    image: "images/fenetre/optimo-pvc.jpg",
     colors: [
       "Blanc 9016 satiné",
       "Gris 7030 satiné",
@@ -6753,7 +6753,7 @@ const fenetresData: FenetreData[] = [
     // performanceAEV: "A*4 E*7A",
     // performanceResistance: "V*A3",
     // performanceAcoustique: "33(-1;-5)dB",
-    image: "images/fenetres/uno-pvc.jpg",
+    image: "images/fenetre/uno-pvc.jpg",
     colors: ["Blanc 9016 satiné"],
     features: [
       "Choix du design de parclose : galbée ou moulurée",
