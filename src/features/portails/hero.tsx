@@ -84,7 +84,7 @@ export function HeroSection() {
                 <Award className="h-6 w-6 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">500+</div>
+                <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">30+</div>
                 <div className="text-sm text-muted-foreground">Installations réalisées</div>
               </div>
             </div>

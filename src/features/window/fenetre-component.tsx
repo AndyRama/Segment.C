@@ -33,8 +33,6 @@ type FenetreSectionProps = {
   className?: string;
 }
 
-// Constantes en dehors du composant
-const ALLOWED_CATEGORIES = ["FENETRE"];
 const LIMIT = 400;
 
 // Fonction simple pour créer un slug : minuscules + tirets entre les mots
@@ -77,18 +75,15 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
 
         const response = await fetch(`/api/products?${params}`);
         if (!response.ok) throw new Error('Failed to fetch fenetres');
-        
+
         const data = await response.json();
-        
-        // const filteredProducts = data.products.filter((product: Product) => 
-        //   ALLOWED_CATEGORIES.includes(product.category)
-        // );
-        
+
         setFenetres(data.products);
         setTotal(data.total);
-        
+
         // Scroll to top when page changes
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_error) {
         // Error handled silently
       } finally {
@@ -113,7 +108,7 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "BOIS_ALUMINIUM", label: "Bois-Aluminium" },
     { key: "MIXTE", label: "Mixte" },
   ];
-  
+
   const openingTypeFilters = [
     { key: "all", label: "Tous types d'ouverture" },
     { key: "BATTANT", label: "Battant" },
@@ -131,7 +126,6 @@ const FenetreSection = ({ className }: FenetreSectionProps) => {
     { key: "SYBAIE", label: "Sy Baie" },
     { key: "C2R", label: "C2R" },
     { key: "SWAO", label: "SWAO" },
-    // { key: "PROFERM", label: "Proferm" },
   ];
 
   const handleFilterChange = (filterType: string, value: string) => {
@@ -454,16 +448,16 @@ const FenetresFiltersSidebar = ({
 
       <div className="border-t pt-4">
         <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-          Type d'ouverture
+          Fournisseur
         </Typography>
         <div className="space-y-2">
-          {openingTypeFilters.map((filter) => (
+          {sellerFilters.map((filter) => (
             <button
               key={filter.key}
-              onClick={() => onFilterChange("openingType", filter.key)}
+              onClick={() => onFilterChange("seller", filter.key)}
               className={cn(
                 "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                activeFilters.openingType === filter.key
+                activeFilters.seller === filter.key
                   ? "bg-primary text-white font-medium"
                   : "hover:bg-gray-100"
               )}
@@ -494,30 +488,29 @@ const FenetresFiltersSidebar = ({
             </button>
           ))}
         </div>
-      </div>   
+      </div>
+    </div>
 
-
-      <div className="border-t pt-4">
-        <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
-          Fournisseur
-        </Typography>
-        <div className="space-y-2">
-          {sellerFilters.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => onFilterChange("seller", filter.key)}
-              className={cn(
-                "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                activeFilters.seller === filter.key
-                  ? "bg-primary text-white font-medium"
-                  : "hover:bg-gray-100"
-              )}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div> 
-      </div> 
+    <div className="border-t pt-4">
+      <Typography variant="small" className="font-medium mb-3 text-muted-foreground">
+        Type d'ouverture
+      </Typography>
+      <div className="space-y-2">
+        {openingTypeFilters.map((filter) => (
+          <button
+            key={filter.key}
+            onClick={() => onFilterChange("openingType", filter.key)}
+            className={cn(
+              "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+              activeFilters.openingType === filter.key
+                ? "bg-primary text-white font-medium"
+                : "hover:bg-gray-100"
+            )}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
     </div>
 
     {(activeFilters.category !== 'all' || activeFilters.material !== 'all' || activeFilters.seller !== 'all' || activeFilters.openingType !== 'all') && (
@@ -724,7 +717,7 @@ const FenetreCard = ({
             <span className="rounded-full bg-green-100 px-2 py-1 text-green-800">
               {getCategoryLabel(fenetre.category)}
             </span>
-             <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
+            <span className="rounded-full bg-purple-100 px-2 py-1 capitalize text-purple-800">
               {fenetre.seller}
             </span>
           </div>

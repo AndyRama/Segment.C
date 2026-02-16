@@ -19,7 +19,7 @@ const materials = [
     name: "Bois composite",
     description: "Aspect naturel du bois sans les contraintes d'entretien. Matériau écologique et résistant aux intempéries.",
     features: ["Aspect naturel", "Écologique", "Peu d'entretien", "Isolation"],
-    image: "/images/materiau-bois.jpg"
+    image: "/images/portail-coulissant.jpg"
   }
 ];
 
