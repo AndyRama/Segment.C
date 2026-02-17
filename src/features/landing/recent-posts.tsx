@@ -64,39 +64,39 @@ export const RecentPosts = () => {
   const posts: Post[] = [
     {
       attributes: {
-        title: 'Guide complet pour choisir et installer une pergola bioclimatique en 2025',
-        description: "Découvrez tout ce qu'il faut savoir sur les pergolas bioclimatiques - fonctionnement, avantages, prix, installation et entretien. Guide expert pour faire le bon choix.",
-        date: '2024-12-01',
-        coverUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2970&auto=format&fit=crop',
+        title: 'Baie Vitrée Coulissante vs a Galandage laquelle installer chez vous en Gironde ?',
+        description: "Baie vitree coulissante ou a galandage ? Deux systemes, deux philosophies. Segment.C compare pour vous prix, encombrement, isolation, pose et usage au quotidien pour vous aider a faire le bon choix en Gironde.",
+        date: '2026-01-17',
+        coverUrl: '/images/baie/syal_7.jpg',
       },
-      slug: 'Comment-entretenir-votre-pergola-guide-complet-bois-aluminium',
+      slug: 'baie-vitree-coulissante-vs-a-galandage-laquelle-installer-chez-vous-en-gironde',
     },
     {
       attributes: {
-        title: 'Guide complet pour choisir et installer des fenêtres au Cap Ferret en 2025',
-        description: 'Découvrez comment choisir les meilleures fenêtres pour votre maison au Cap Ferret - matériaux résistants aux embruns, vitrages adaptés, installation et entretien. Guide expert menuiserie maritime.',
-        date: '2025-01-22',
-        coverUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2970&auto=format&fit=crop',
+        title: 'Fenêtres resistantes aux embruns votre guide pour votre maison sur le Bassin d Arcachon',
+        description: "Embruns, humidite saline, vents atlantiques... le Bassin d'Arcachon est l'un des environnements les plus agressifs pour vos menuiseries. Segment.C vous guide pour choisir des fenetres vraiment adaptees au bord de mer - materiaux, traitements, classements et conseils d'entretien.",
+        date: '2026-02-14',
+        coverUrl: '/images/fenetre/sydeal_9.jpg',
       },
-      slug: 'guide-complet-pour-choisir-et-installer-des-fenetres-au-cap-ferret-en-2025.mdx',
+      slug: 'fenetres-resistantes-aux-embruns-votre-guide-pour-votre-maison-sur-le-bassin-d-arcachon',
     },
     {
       attributes: {
-        title: 'Comment améliorer la luminosité d\'une pièce avec des baies vitrées',
-        description: 'Transformez vos espaces sombres en pièces lumineuses grâce aux baies vitrées. Découvrez nos conseils d\'aménagement, les différents types d\'ouvertures, les aspects techniques et réglementaires pour maximiser la lumière naturelle chez vous.',
-        date: '2024-11-25',
-        coverUrl: '/images/fenetre2.jpg',
+        title: 'Quel materiau choisir pour vos fenêtres à Bordeaux ?',
+        description: "PVC, bois ou aluminium ? Découvrez le comparatif complet des matériaux de fenêtres adapté au contexte bordelais, le prix, isolation, la durée de vie et  aides disponibles. Guide rédigé par Segment.C, artisan menuisier à St-Jean-d'Illac.",
+        date: '2026-01-05',
+        coverUrl: '/images/fenetre6.jpg',
       },
-      slug: '2024-11-25_Ameliorer-luminosite-piece-baies-vitrees-conseils',
+      slug: 'quel-materiau-choisir-pour-vos-fenêtres-à-bordeaux',
     },
     {
       attributes: {
-        title: 'Qu\'est-ce qu\'une pergola bioclimatique ? Tout savoir sur cette innovation',
-        description: 'Découvrez la pergola bioclimatique, l\'innovation qui révolutionne les espaces extérieurs. Fonctionnement des lames orientables, avantages, prix, installation et conseils pour choisir le modèle adapté à vos besoins et votre région.',
-        date: '2024-11-22',
-        coverUrl: '/images/veranda.jpg',
+        title: 'Tout comprendre sur l isolation thermique de vos menuiseries sw et uw',
+        description: 'Uw, Sw, Ug, psi... les indices de performance thermique des fenetres sont souvent incompris. Segment.C vous explique tout sur la signification, valeurs cibles, impact sur vos aides et comment lire votre devis comme un expert.',
+        date: '2026-01-13',
+        coverUrl: '/images/fenetre/simple-dormant-invisible-ob1.jpg',
       },
-      slug: '2024-11-22_Pergola-bioclimatique-definition-avantages-fonctionnement',
+      slug: 'tout-comprendre-sur-l-isolation-thermique-de-vos-menuiseries-sw-et-uw',
     },
   ];
 
