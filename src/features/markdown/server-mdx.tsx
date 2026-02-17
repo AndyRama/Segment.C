@@ -1,35 +1,28 @@
 import { cn } from "@/lib/utils";
-import { MDXRemote } from "next-mdx-remote-client/rsc";
-import { rehypePlugins, remarkPlugins } from "./markdown.config";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrismPlus from "rehype-prism-plus";
 
 type ServerMdxProps = {
   source: string;
   className?: string;
 };
 
-// * If you want to add custom component, such as an "EmailForm", you can add it to the MdxComponent object.
-const MdxComponent = {} satisfies Record<string, React.ComponentType>;
-
 export const ServerMdx = (props: ServerMdxProps) => {
   return (
     <div className={cn("prose dark:prose-invert", props.className)}>
-      <RenderMdx {...props} />
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[
+          [rehypePrismPlus, { ignoreMissing: true }],
+          rehypeSlug,
+          rehypeAutolinkHeadings,
+        ]}
+      >
+        {props.source}
+      </ReactMarkdown>
     </div>
-  );
-};
-
-const RenderMdx = (props: ServerMdxProps) => {
-  return (
-    <MDXRemote
-      source={props.source}
-      components={MdxComponent}
-      options={{
-        mdxOptions: {
-          remarkPlugins: remarkPlugins,
-          rehypePlugins: rehypePlugins,
-          format: "mdx",
-        },
-      }}
-    />
   );
 };
