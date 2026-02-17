@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { Callout } from "@/components/ui/callout";
 import { CompareTable } from '@/components/ui/compare-table';
@@ -16,13 +14,15 @@ type ServerMdxProps = {
   className?: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const MdxComponents: Record<string, React.ComponentType<any>> = {
+const MdxComponents = {
   Callout,
   CompareTable,
   PriceCard,
   CTABlock,
-};
+
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+} satisfies Record<string, React.ComponentType<any>>;
 
 export const ServerMdx = (props: ServerMdxProps) => {
   return (
