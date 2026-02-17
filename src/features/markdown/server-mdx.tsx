@@ -14,14 +14,13 @@ type ServerMdxProps = {
   className?: string;
 };
 
-const MdxComponents = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MdxComponents: Record<string, React.ComponentType<any>> = {
   Callout,
   CompareTable,
   PriceCard,
   CTABlock,
-
-
-} satisfies Record<string, React.ComponentType<any>>;
+};
 
 export const ServerMdx = (props: ServerMdxProps) => {
   return (
