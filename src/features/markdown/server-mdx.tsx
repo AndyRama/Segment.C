@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Callout } from "@/components/ui/callout";
 import { CompareTable } from '@/components/ui/compare-table';
