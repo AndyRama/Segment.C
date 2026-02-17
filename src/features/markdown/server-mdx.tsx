@@ -3,6 +3,7 @@ import { Callout } from "@/components/ui/callout";
 import { CompareTable } from '@/components/ui/compare-table';
 import { PriceCard } from '@/components/ui/price-card';
 import { CTABlock } from '@/components/ui/cta-block';
+import { FormulaBlock } from '@/components/ui/formula-block';
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
@@ -19,6 +20,7 @@ const MdxComponents = {
   CompareTable,
   PriceCard,
   CTABlock,
+  FormulaBlock,
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } satisfies Record<string, React.ComponentType<any>>;
 
