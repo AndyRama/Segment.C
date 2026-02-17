@@ -1,3 +1,4 @@
+import { slugify } from "@/lib/slugify";
 import type { PageParams } from "@/types/next";
 import fm from "front-matter";
 import fs from "fs/promises";
@@ -55,7 +56,7 @@ export const getPosts = async (tags?: string[]) => {
     }
 
     posts.push({
-      slug: fileName.replace(".mdx", ""),
+      slug: slugify(fileName.replace(".mdx", "")),
       content: matter.body,
       attributes: {
         ...result.data,

@@ -19,8 +19,6 @@ const MdxComponents = {
   CompareTable,
   PriceCard,
   CTABlock,
-
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } satisfies Record<string, React.ComponentType<any>>;
 
