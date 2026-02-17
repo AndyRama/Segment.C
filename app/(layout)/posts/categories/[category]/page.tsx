@@ -20,10 +20,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const params = await props.params;
   return {
-    title: `${SiteConfig.title}'s Blog about ${params.category}`,
+    title: `${SiteConfig.title}' | article à propos ${params.category}`,
     description: SiteConfig.description,
     openGraph: {
-      title: `${SiteConfig.title}'s Blog about ${params.category}`,
+      title: `${SiteConfig.title}'| article à propos ${params.category}`,
       description: SiteConfig.description,
       url: `https://codeline.app/posts/categories/${params.category}`,
       type: "article",
@@ -43,7 +43,7 @@ export default async function RoutePage(props: CategoryParams) {
   return (
     <Layout>
       <LayoutHeader>
-        <LayoutTitle>Blog post about {params.category}</LayoutTitle>
+        <LayoutTitle>Article de blog pour les {params.category}</LayoutTitle>
       </LayoutHeader>
       <LayoutContent className="flex flex-wrap gap-2">
         {tags.map((tag) => (
@@ -64,9 +64,9 @@ export default async function RoutePage(props: CategoryParams) {
         <LayoutContent className="flex flex-col items-center justify-center">
           <div className="flex flex-col items-center rounded-lg border-2 border-dashed p-4 lg:gap-6 lg:p-8">
             <FileQuestion />
-            <Typography variant="h2">No posts found</Typography>
+            <Typography variant="h2">Pas de post trouver</Typography>
             <Link className={buttonVariants({ variant: "link" })} href="/posts">
-              View all posts
+              Voir tous les articles
             </Link>
           </div>
         </LayoutContent>
