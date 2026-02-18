@@ -370,7 +370,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="https://segment-c.com/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   >
-                    Demande de devis
+                    Devis
                   </Typography>
                 </div>
               </div>
