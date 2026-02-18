@@ -368,9 +368,9 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/account"
+                    href="https://segment-c.com/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   >
-                    xxxxxxxx
+                    Demande de devis
                   </Typography>
                 </div>
               </div>
