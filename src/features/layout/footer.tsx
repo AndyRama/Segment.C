@@ -202,7 +202,7 @@ export const Footer = () => {
                 </div>
               </div>
              
-              {/* Colonne fenêtre */}
+              {/* Colonne produits principals */}
               <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
                   Nos produits
@@ -236,7 +236,7 @@ export const Footer = () => {
               </div>           
 
               {/* Colonne portes */}
-              <div className="flex flex-col gap-3">
+              {/* <div className="flex flex-col gap-3">
                 <Typography variant="large" className="font-medium">
                   Portes
                 </Typography>
@@ -266,7 +266,7 @@ export const Footer = () => {
                     Service
                   </Typography>
                 </div>
-              </div>    
+              </div>     */}
 
               {/* Colonne autre */}
               <div className="flex flex-col gap-3">
