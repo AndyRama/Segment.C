@@ -6,11 +6,11 @@ import { ServerMdx } from "@/features/markdown/server-mdx";
 import {
   Layout,
   LayoutContent,
-  LayoutDescription,
-  LayoutHeader,
-  LayoutTitle,
+  // LayoutDescription,
+  // LayoutHeader,
+  // LayoutTitle,
 } from "@/features/page/layout";
-import { calculateReadingTime } from "@/features/posts/calculate-reading-time";
+// import { calculateReadingTime } from "@/features/posts/calculate-reading-time";
 import type { PostParams } from "@/features/posts/post-manager";
 import { getCurrentPost, getPosts } from "@/features/posts/post-manager";
 import { formatDate } from "@/lib/format/date";
@@ -68,7 +68,7 @@ export default async function RoutePage(props: PostParams) {
 
         {/* 2. Titre */}
         <div className="mt-8 flex flex-col items-center text-center">
-          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight lg:text-7xl">
+          <h1 className="max-w-6xl text-4xl font-extrabold tracking-tight lg:text-5xl">
             {post.attributes.title}
           </h1>
 
