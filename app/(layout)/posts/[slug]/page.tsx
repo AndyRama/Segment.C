@@ -7,7 +7,7 @@ import {
   Layout,
   LayoutContent,
   // LayoutDescription,
-  LayoutHeader,
+  // LayoutHeader,
   // LayoutTitle,
 } from "@/features/page/layout";
 // import { calculateReadingTime } from "@/features/posts/calculate-reading-time";
@@ -60,13 +60,12 @@ export default async function RoutePage(props: PostParams) {
 
   return (
     <Layout>
-      <LayoutHeader>
-        {/* 1. Bouton Retour */}
-        <Link className={buttonVariants({ variant: "link" })} href="/posts">
-          <ArrowLeft size={14} className="mr-2" /> Retour
-        </Link>
-      </LayoutHeader>
       <LayoutContent className="max-w-7xl mx-auto py-6">
+      {/* 1. Bouton Retour */}
+        <Link className={buttonVariants({ variant: "link" })} href="/posts">
+          <ArrowLeft size={14} className="mr-2" />Retour
+        </Link>
+
         {/* 2. Titre */}
         <div className="mt-8 flex flex-col items-center text-center">
           <h1 className="max-w-6xl text-4xl font-extrabold tracking-tight lg:text-5xl">
@@ -75,7 +74,7 @@ export default async function RoutePage(props: PostParams) {
 
           {/* 3. Infos (Date & Auteur) */}
           <div className="mt-6 text-sm text-muted-foreground">
-            {formatDate(new Date(post.attributes.date))} · Created by{" "}
+            {formatDate(new Date(post.attributes.date))} · Crée par {" "}
             <Link href={SiteConfig.team.website} className="text-green-500 hover:underline">
               {SiteConfig.team.name}
             </Link>
@@ -113,7 +112,7 @@ export default async function RoutePage(props: PostParams) {
         {/* 6. Contenu Article */}
         <div className="max-w-4xl mx-auto">
           <ServerMdx
-            className="prose prose-invert prose-green max-w-none text-black"
+            className="prose prose-invert prose-strong:text-gray-300 max-w-none text-black"
             source={post.content}
           />
         </div>
