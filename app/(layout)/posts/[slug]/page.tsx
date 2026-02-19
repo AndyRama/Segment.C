@@ -26,17 +26,11 @@ export const dynamic = "force-static";
 export async function generateMetadata(props: PostParams): Promise<Metadata> {
   const params = await props.params;
   const post = await getCurrentPost(params.slug);
-
   if (!post) return notFound();
 
   return {
     title: post.attributes.title,
     description: post.attributes.description,
-    keywords: post.attributes.keywords,
-    authors: {
-      name: SiteConfig.team.name,
-      url: SiteConfig.team.website,
-    },
     openGraph: {
       title: post.attributes.title,
       description: post.attributes.description,
@@ -48,9 +42,7 @@ export async function generateMetadata(props: PostParams): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const posts = await getPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function RoutePage(props: PostParams) {
@@ -59,11 +51,7 @@ export default async function RoutePage(props: PostParams) {
 
   if (!post) return notFound();
 
-  // Sécurité Draft
-  if (
-    post.attributes.status === "draft" &&
-    process.env.VERCEL_ENV === "production"
-  ) {
+  if (post.attributes.status === "draft" && process.env.VERCEL_ENV === "production") {
     logger.warn(`Post "${post.attributes.title}" is a draft`);
     return notFound();
   }
@@ -72,77 +60,62 @@ export default async function RoutePage(props: PostParams) {
 
   return (
     <Layout>
-      {/* Section 1 : Fil d'ariane et Titre Intro */}
-      <LayoutContent className="max-w-4xl mx-auto py-8">
+      <LayoutContent className="max-w-7xl mx-auto py-6">
+        {/* 1. Bouton Retour */}
         <Link className={buttonVariants({ variant: "link" })} href="/posts">
-          <ArrowLeft size={16} className="mr-2" /> Retour
+          <ArrowLeft size={14} className="mr-2" /> Retour
         </Link>
 
-        <div className="mt-8 text-center">
-          <LayoutTitle className="text-3xl font-bold lg:text-5xl xl:text-6xl">
+        {/* 2. Titre */}
+        <div className="mt-8 flex flex-col items-center text-center">
+          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight lg:text-6xl text-white">
             {post.attributes.title}
-          </LayoutTitle>
+          </h1>
 
-          <LayoutDescription className="mt-4">
-            {formatDate(new Date(post.attributes.date))} · Par{" "}
-            <Typography variant="link" as={Link} href={SiteConfig.team.website}>
+          {/* 3. Infos (Date & Auteur) */}
+          <div className="mt-6 text-sm text-muted-foreground">
+            {formatDate(new Date(post.attributes.date))} · Created by{" "}
+            <Link href={SiteConfig.team.website} className="text-orange-500 hover:underline">
               {SiteConfig.team.name}
-            </Typography>
-          </LayoutDescription>
+            </Link>
+          </div>
 
-          {/* Tags */}
-          <div className="mt-6 flex flex-wrap justify-center gap-2">
-            {postTags.length > 0 ? (
-              postTags.map((tag: string) => (
+          {/* 4. Tags avec séparateur | */}
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-3">
+            {postTags.map((tag: string, index: number) => (
+              <div key={tag} className="flex items-center">
                 <Link
-                  key={tag}
                   href={{ pathname: `/posts`, query: { tag: tag } }}
+                  className="px-3 py-1 rounded-full border border-orange-500/50 text-xs font-medium hover:bg-orange-500/10 transition-colors"
                 >
-                  <Badge
-                    variant="outline"
-                    className="hover:bg-orange-500 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {tag}
-                  </Badge>
+                  {tag}
                 </Link>
-              ))
-            ) : (
-              <Typography variant="muted">Aucune catégorie</Typography>
-            )}
+                {index < postTags.length - 1 && (
+                  <span className="ml-3 text-muted-foreground/30">|</span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
-      </LayoutContent>
 
-      {/* Section 2 : Hero Image (LayoutHeader) */}
-      <div className="px-4">
-        <LayoutHeader
-          style={{
-            backgroundImage: `url(${post.attributes.coverUrl})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-          className="overflow-hidden rounded-xl mx-auto max-w-6xl min-h-[300px] flex items-end"
-        >
-          <div className="w-full bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
-            {post.attributes.status === "draft" && (
-              <Badge className="mb-4" variant="secondary">
-                Brouillon
-              </Badge>
-            )}
-            <p className="text-sm opacity-90">
-              {calculateReadingTime(post.content)} min de lecture
-            </p>
-          </div>
-        </LayoutHeader>
-      </div>
+        {/* 5. Grosse Image (Hero) */}
+        <div className="mt-12 w-full overflow-hidden rounded-xl border border-white/10 bg-muted">
+           <img 
+            src={post.attributes.coverUrl} 
+            alt={post.attributes.title}
+            className="w-full aspect-video object-cover"
+          />
+        </div>
 
-      <Separator className="my-12 max-w-4xl mx-auto" />
+        <Separator className="my-12 opacity-20" />
 
-      {/* Section 3 : Contenu MDX */}
-      <LayoutContent className="max-w-4xl mx-auto">
-        <article className="prose prose-neutral dark:prose-invert lg:prose-lg xl:prose-xl max-w-none mb-20">
-          <ServerMdx source={post.content} />
-        </article>
+        {/* 6. Contenu Article */}
+        <div className="max-w-4xl mx-auto">
+          <ServerMdx
+            className="prose prose-invert prose-orange max-w-none"
+            source={post.content}
+          />
+        </div>
       </LayoutContent>
     </Layout>
   );
