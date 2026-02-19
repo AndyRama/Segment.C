@@ -7,7 +7,7 @@ import {
   Layout,
   LayoutContent,
   // LayoutDescription,
-  // LayoutHeader,
+  LayoutHeader,
   // LayoutTitle,
 } from "@/features/page/layout";
 // import { calculateReadingTime } from "@/features/posts/calculate-reading-time";
@@ -60,12 +60,13 @@ export default async function RoutePage(props: PostParams) {
 
   return (
     <Layout>
-      <LayoutContent className="max-w-7xl mx-auto py-6">
+      <LayoutHeader>
         {/* 1. Bouton Retour */}
         <Link className={buttonVariants({ variant: "link" })} href="/posts">
           <ArrowLeft size={14} className="mr-2" /> Retour
         </Link>
-
+      </LayoutHeader>
+      <LayoutContent className="max-w-7xl mx-auto py-6">
         {/* 2. Titre */}
         <div className="mt-8 flex flex-col items-center text-center">
           <h1 className="max-w-6xl text-4xl font-extrabold tracking-tight lg:text-5xl">
@@ -99,11 +100,11 @@ export default async function RoutePage(props: PostParams) {
         </div>
 
         {/* 5. Grosse Image (Hero) */}
-        <div className="mt-12 w-full overflow-hidden rounded-xl border border-white/10 bg-muted">
+        <div className="mt-12 w-full overflow-hidden rounded-md border border-white/10 bg-muted">
            <img 
             src={post.attributes.coverUrl} 
             alt={post.attributes.title}
-            className="w-full aspect-video object-cover"
+            className="w-full aspect-video object-unset"
           />
         </div>
 
@@ -112,7 +113,7 @@ export default async function RoutePage(props: PostParams) {
         {/* 6. Contenu Article */}
         <div className="max-w-4xl mx-auto">
           <ServerMdx
-            className="prose prose-invert prose-green max-w-none"
+            className="prose prose-invert prose-green max-w-none text-black"
             source={post.content}
           />
         </div>
