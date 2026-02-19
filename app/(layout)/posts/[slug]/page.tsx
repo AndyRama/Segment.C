@@ -68,14 +68,14 @@ export default async function RoutePage(props: PostParams) {
 
         {/* 2. Titre */}
         <div className="mt-8 flex flex-col items-center text-center">
-          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight lg:text-6xl text-white">
+          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight lg:text-7xl">
             {post.attributes.title}
           </h1>
 
           {/* 3. Infos (Date & Auteur) */}
           <div className="mt-6 text-sm text-muted-foreground">
             {formatDate(new Date(post.attributes.date))} · Created by{" "}
-            <Link href={SiteConfig.team.website} className="text-orange-500 hover:underline">
+            <Link href={SiteConfig.team.website} className="text-green-500 hover:underline">
               {SiteConfig.team.name}
             </Link>
           </div>
@@ -86,7 +86,7 @@ export default async function RoutePage(props: PostParams) {
               <div key={tag} className="flex items-center">
                 <Link
                   href={{ pathname: `/posts`, query: { tag: tag } }}
-                  className="px-3 py-1 rounded-full border border-orange-500/50 text-xs font-medium hover:bg-orange-500/10 transition-colors"
+                  className="px-3 py-1 rounded-full border border-green-500/50 text-xs font-medium hover:bg-green-500/10 transition-colors"
                 >
                   {tag}
                 </Link>
@@ -112,7 +112,7 @@ export default async function RoutePage(props: PostParams) {
         {/* 6. Contenu Article */}
         <div className="max-w-4xl mx-auto">
           <ServerMdx
-            className="prose prose-invert prose-orange max-w-none"
+            className="prose prose-invert prose-green max-w-none"
             source={post.content}
           />
         </div>
