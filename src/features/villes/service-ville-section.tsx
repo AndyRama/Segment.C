@@ -641,7 +641,7 @@ const ContactFormInline = () => {
         ) : (
           <>
             <Send className="size-4" />
-            ⭐ Envoyer ma demande de devis
+            Envoyer ma demande de devis
           </>
         )}
       </button>
