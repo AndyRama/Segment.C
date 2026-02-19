@@ -41,7 +41,7 @@ export default async function RoutePage(props: CategoryParams) {
   const posts = await getPosts([params.category]);
 
   return (
-    <Layout>
+    <Layout className="max-w-7xl mx-auto">
       <LayoutHeader>
         <LayoutTitle className="mt-16">Article de blog concernant {params.category}</LayoutTitle>
       </LayoutHeader>
@@ -71,7 +71,7 @@ export default async function RoutePage(props: CategoryParams) {
           </div>
         </LayoutContent>
       ) : (
-        <LayoutContent className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-col-4">
+        <LayoutContent className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}
