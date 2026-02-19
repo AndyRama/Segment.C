@@ -43,7 +43,7 @@ export default async function RoutePage(props: CategoryParams) {
   return (
     <Layout>
       <LayoutHeader>
-        <LayoutTitle>Article de blog pour les {params.category}</LayoutTitle>
+        <LayoutTitle className="mt-16">Article de blog concernant {params.category}</LayoutTitle>
       </LayoutHeader>
       <LayoutContent className="flex flex-wrap gap-2">
         {tags.map((tag) => (
@@ -71,7 +71,7 @@ export default async function RoutePage(props: CategoryParams) {
           </div>
         </LayoutContent>
       ) : (
-        <LayoutContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <LayoutContent className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-col-4">
           {posts.map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}
