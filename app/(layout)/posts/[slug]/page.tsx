@@ -112,10 +112,9 @@ export default async function RoutePage(props: PostParams) {
         {/* 6. Contenu Article */}
         <div className="max-w-4xl mx-auto">
           <ServerMdx
-            className="prose prose-invert
-            prose-strong:text-black max-w-none text-black
-            prose-th:text-green-500 prose-th:bg-white/5 prose-th:p-4
-            prose-td:p-4 prose-td:text-black"            
+            className="prose prose-invert prose-strong:text-black max-w-none
+            text-black prose-th:text-green-500 prose-th:bg-white/5 prose-th:p-4
+            prose-td:p-4 prose-td:text-black prose-h2:text-black prose-h3:text-black"            
             source={post.content}
           />
         </div>
