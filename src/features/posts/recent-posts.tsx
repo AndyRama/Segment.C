@@ -26,7 +26,7 @@ export function RecentPosts({ posts, title = "Articles récents" }: RecentPostsP
       </div>
 
       {/* Grille d'articles */}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {posts.map((post) => (
           <Link 
             key={post.slug}
