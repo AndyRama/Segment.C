@@ -56,7 +56,7 @@ export default async function RoutePage(props: PostParams) {
     return notFound();
   }
 
-  const postTags = post.attributes.keywords || [];
+  const postTags = post.attributes.keywords;
 
   return (
     <Layout>
