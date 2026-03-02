@@ -12,6 +12,7 @@ import QuoteRequestModule from "@/features/landing/quote-request-module";
 const HeroAnimation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: session } = useSession();
 
   const slides = [

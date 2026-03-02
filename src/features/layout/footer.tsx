@@ -24,7 +24,7 @@ export const Footer = () => {
                 <div className="flex items-center gap-2">
                   <Earth className="size-4 text-gray-500" />
                   <Typography variant="muted">
-                    Une porte ouverte sur vos fênetres
+                    Artisan menuisier sur mesure à St-Jean-d'Illac. Fenêtres, portes, baies vitrées & volets en Gironde.
                   </Typography>
                 </div>
 
@@ -376,7 +376,7 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="https://segment-c.com/auth/signin?callbackUrl=%2Faccount%2Fdevis"
+                    href="/plan-du-site"
                   >
                     Plan du site
                   </Typography>
