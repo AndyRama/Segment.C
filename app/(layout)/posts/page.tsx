@@ -42,7 +42,7 @@ export default async function RoutePage(props: PageParams) {
       <div className="mt-16"></div>
       <Layout className="max-w-7xl mx-auto px-4 lg:px-6">
         <LayoutHeader>
-          <LayoutTitle> Articles tendance</LayoutTitle>
+          <LayoutTitle> Articles tendances</LayoutTitle>
         </LayoutHeader>
         
         {/* Tags */}

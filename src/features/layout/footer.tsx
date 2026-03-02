@@ -52,7 +52,7 @@ export const Footer = () => {
                 <div className="flex items-center gap-2">
                   <Clock className="size-4 text-gray-500" />
                   <Typography variant="muted">
-                    Lun-Ven: 8h-20h | Sam: 8h-12h30
+                    Lun-Ven: 8h30 - 18h | Sam: 8h30 - 12h30
                   </Typography>
                 </div>
               </div>
@@ -368,9 +368,9 @@ export const Footer = () => {
                     as={Link}
                     variant="muted"
                     className="hover:underline"
-                    href="/account"
+                    href="https://segment-c.com/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   >
-                    Utilisateur
+                    Devis
                   </Typography>
                   <Typography
                     as={Link}
@@ -378,7 +378,7 @@ export const Footer = () => {
                     className="hover:underline"
                     href="https://segment-c.com/auth/signin?callbackUrl=%2Faccount%2Fdevis"
                   >
-                    Devis
+                    Plan du site
                   </Typography>
                 </div>
               </div>
