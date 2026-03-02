@@ -142,7 +142,7 @@ const HeroAnimation = () => {
             >
               Menuiserie sur
               <br />
-              <span className="font-bold italic text-green-500">mesure Bordeaux</span>
+              <span className="font-bold italic text-green-500">mesure Bordeaux -</span>
               <br className="hidden md:content"/>Fenêtres, Portes & Volets
             </motion.h1>
             
