@@ -6,7 +6,7 @@ import {
   LayoutHeader,
   LayoutTitle,
 } from "@/features/page/layout";
-import { hasPermission } from "@/lib/auth/auth-org";
+// import { hasPermission } from "@/lib/auth/auth-org";
 import type { PageParams } from "@/types/next";
 import Link from "next/link";
 import InformationCards from "./information-cards";
@@ -25,16 +25,14 @@ export default async function RoutePage(
         <LayoutTitle>Dashboard</LayoutTitle>
       </LayoutHeader>
       <LayoutActions>
-        {(await hasPermission({
-          member: ["create"],
-        })) ? (
-          <Link
-            href={`/orgs/${params.orgSlug}/settings/members`}
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Invite member
-          </Link>
-        ) : null}
+
+        <Link 
+          href="https://docs.google.com/spreadsheets/d/1jUHgkaWQPNGZ87FPYpu56Js5__9jEphcNMpWxgYTjmc/edit?usp=sharing"
+          target="_blank"
+          className={buttonVariants({ variant: "outline" })}
+        >
+          Planning Articles 2026
+        </Link>  
       </LayoutActions>
       <LayoutContent className="flex flex-col gap-4 lg:gap-8">
         <InformationCards />
