@@ -8,9 +8,12 @@ import {
   LayoutContent,
   LayoutHeader,
   LayoutTitle,
+  LayoutActions, 
 } from "@/features/page/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Clock, CheckCircle2, XCircle, Inbox } from "lucide-react";
+import { Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const statusConfig: Record<string, {
   label: string;
@@ -63,6 +66,14 @@ export default async function DevisPage() {
       <LayoutHeader>
         <LayoutTitle>Mes demandes</LayoutTitle>
       </LayoutHeader>
+      <LayoutActions>
+        <Button asChild>
+          <Link href="/account/devis/new" className="flex items-center gap-2">
+            <Plus className="h-4 w-4" />
+            Nouveau devis
+          </Link>
+        </Button>
+      </LayoutActions>
       <LayoutContent className="flex flex-col gap-4">
         {devisList.length === 0 ? (
           <div className="text-center py-16 text-muted-foreground">

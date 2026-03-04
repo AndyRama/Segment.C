@@ -45,7 +45,7 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     title: "Services",
     links: [
       {
-        href: "/account/devis/mes-devis",
+        href: "/account/devis",
         Icon: NotebookText  ,
         label: "Mes devis",
       },
