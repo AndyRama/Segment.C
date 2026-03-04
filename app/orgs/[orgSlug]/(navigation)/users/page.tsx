@@ -27,12 +27,35 @@ export const generateMetadata = combineWithParentMetadata({
   description: "Manage users",
 });
 
+const statusDevisColor: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
+  nouveau: "default",
+  en_cours: "outline",
+  traite: "secondary",
+  refuse: "destructive",
+};
+
+const statusDevisLabel: Record<string, string> = {
+  nouveau: "Nouveau",
+  en_cours: "En cours",
+  traite: "Traité",
+  refuse: "Refusé",
+};
+
 export default async function RoutePage(props: PageParams) {
   const users = await prisma.user.findMany({
     orderBy: { createdAt: "desc" },
     include: {
       members: {
         include: { organization: true },
+      },
+      devis: {
+        orderBy: { createdAt: "desc" },
+        select: {
+          id: true,
+          status: true,
+          nomComplet: true,
+          createdAt: true,
+        },
       },
     },
   });
@@ -61,7 +84,6 @@ export default async function RoutePage(props: PageParams) {
         )}
       </LayoutActions>
       <LayoutContent className="flex flex-col gap-4 lg:gap-6">
-        {/* Compteur */}
         <p className="text-sm text-muted-foreground">
           {users.length} utilisateur{users.length > 1 ? "s" : ""} au total
         </p>
@@ -75,6 +97,8 @@ export default async function RoutePage(props: PageParams) {
                 <TableHead>Organisation</TableHead>
                 <TableHead>Rôle</TableHead>
                 <TableHead>Email vérifié</TableHead>
+                <TableHead>Devis</TableHead>
+                <TableHead>Dernier devis</TableHead>
                 <TableHead>Créé le</TableHead>
               </TableRow>
             </TableHeader>
@@ -82,7 +106,7 @@ export default async function RoutePage(props: PageParams) {
               {users.length === 0 ? (
                 <TableRow>
                   <TableCell
-                    colSpan={6}
+                    colSpan={8}
                     className="text-center text-muted-foreground py-10"
                   >
                     Aucun utilisateur trouvé.
@@ -90,8 +114,9 @@ export default async function RoutePage(props: PageParams) {
                 </TableRow>
               ) : (
                 users.map((user) => {
-                  // Un user peut être membre de plusieurs orgs — on prend la première
                   const firstMember = user.members[0];
+                  const totalDevis = user.devis.length;
+                  const lastDevis = user.devis[0]; // déjà trié par createdAt desc
 
                   return (
                     <TableRow key={user.id}>
@@ -123,7 +148,7 @@ export default async function RoutePage(props: PageParams) {
                         )}
                       </TableCell>
 
-                      {/* Rôle dans l'org */}
+                      {/* Rôle */}
                       <TableCell>
                         {firstMember?.role ? (
                           <Badge variant="outline" className="capitalize">
@@ -136,16 +161,37 @@ export default async function RoutePage(props: PageParams) {
 
                       {/* Email vérifié */}
                       <TableCell>
-                        <Badge
-                          variant={
-                            user.emailVerified ? "default" : "secondary"
-                          }
-                        >
+                        <Badge variant={user.emailVerified ? "default" : "secondary"}>
                           {user.emailVerified ? "Vérifié" : "En attente"}
                         </Badge>
                       </TableCell>
 
-                      {/* Date création */}
+                      {/* Nombre de devis */}
+                      <TableCell>
+                        {totalDevis > 0 ? (
+                          <span className="font-medium">{totalDevis}</span>
+                        ) : (
+                          <span className="text-muted-foreground">0</span>
+                        )}
+                      </TableCell>
+
+                      {/* Statut du dernier devis */}
+                      <TableCell>
+                        {lastDevis ? (
+                          <div className="flex flex-col gap-1">
+                            <Badge variant={statusDevisColor[lastDevis.status] ?? "outline"}>
+                              {statusDevisLabel[lastDevis.status] ?? lastDevis.status}
+                            </Badge>
+                            <span className="text-xs text-muted-foreground">
+                              {new Date(lastDevis.createdAt).toLocaleDateString("fr-FR")}
+                            </span>
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
+                      </TableCell>
+
+                      {/* Date création user */}
                       <TableCell className="text-muted-foreground">
                         {new Date(user.createdAt).toLocaleDateString("fr-FR")}
                       </TableCell>
