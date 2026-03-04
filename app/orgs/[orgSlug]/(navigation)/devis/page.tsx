@@ -113,7 +113,7 @@ export default async function RoutePage(props: PageParams<{ orgSlug: string }>) 
                     </TableCell>
                     <TableCell className="text-right">
                       <Button asChild variant="ghost" size="sm">
-                        <Link href={`/orgs/${params.orgSlug}/users/devis/${d.id}`}>
+                        <Link href={`/orgs/${params.orgSlug}/devis/${d.id}`}>
                           Voir
                         </Link>
                       </Button>
