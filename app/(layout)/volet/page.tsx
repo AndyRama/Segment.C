@@ -2,17 +2,6 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-// import {
-//   HeroSection,
-//   BenefitsSection,
-//   ModelsSection,
-//   MaterialsSection,
-//   ProcessSection,
-//   GallerySection,
-//   CTASection,
-//   FAQSection,
-// } from "@/components/volets";
-
 import {HeroSection} from "@/features/volet/hero";
 import {BenefitsSection} from "@/features/volet/benefits-section";
 import {ModelsSection} from "@/features/volet/models-section";

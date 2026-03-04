@@ -19,14 +19,9 @@ datasource db {
 enum ProductCategory {
   PORTE
   FENETRE
-  PORTE_GARAGE
   PORTE_ENTRER
   BAIE_VITREE
   PORTE_VITRAGE
-  VERANDA
-  PERGOLA
-  PORTAIL
-  VOLET
 }
 
 enum ProductMaterial {
@@ -61,21 +56,6 @@ enum OpeningType {
   PIVOTANTE
   PROJECTION
   COULISSANTE_GALANDAGE
-}
-
-enum RoofType {
-  VERRE
-  TUILE
-  POLYCARBONATE
-  MIXTE
-  BIOCLIMATIQUE
-  OPAQUE
-  TOILE
-  OUVERTE
-  FIXE
-  CANISSE
-  CLAIRE_VOIE
-  MODULAIRE
 }
 
 // ============================================
@@ -130,6 +110,7 @@ model Devis {
   
   // Relation Many-to-Many avec les produits
   products         DevisProduct[]
+  timeline    DevisTimeline[]
 
   // Index pour optimiser les requêtes par utilisateur
   @@index([userId])
@@ -152,10 +133,6 @@ model Product {
   vitrage     VitragType?
   ouverture   OpeningType?
   uw          String?         // Coefficient thermique
-  
-  // Spécifique aux vérandas et pergolas
-  toiture     RoofType?
-  surface     String?
   
   // Informations commerciales
   priceRange  String
@@ -215,4 +192,22 @@ model DevisProduct {
   @@index([devisId])
   @@index([productId])
   @@map("devis_products")
+}
+
+// Model DevisTimeline — ajoute dans model Devis 
+model DevisTimeline {
+  id          String    @id @default(cuid())
+  devisId     String
+  devis       Devis     @relation(fields: [devisId], references: [id], onDelete: Cascade)
+
+  etape       String
+  completedAt DateTime?
+  note        String?   @db.Text
+  completedBy String?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([devisId])
+  @@map("devis_timeline")
 }
