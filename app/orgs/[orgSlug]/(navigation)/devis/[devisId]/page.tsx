@@ -252,7 +252,6 @@ export default async function RoutePage(
                                     name="note"
                                     placeholder="Note optionnelle..."
                                     className="flex-1 text-xs border rounded px-2 py-1 bg-background focus:outline-none focus:ring-1 focus:ring-emerald-400"
-                                    onClick={(e) => e.stopPropagation()}
                                   />
                                 </div>
                               )}
