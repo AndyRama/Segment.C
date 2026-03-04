@@ -97,12 +97,6 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         roles: ["admin"],
       },
       {
-        href: `${ORGANIZATION_PATH}/#`,
-        Icon: NotebookPen ,
-        label: "Devis tracking",
-        roles: ["admin"],
-      },
-      {
         href: `${ORGANIZATION_PATH}/produits`,
         Icon: DoorOpen,
         label: "Produits",
@@ -111,12 +105,35 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
     ],
   },
   {
-    title: "Services",
+    title: "Agents I.A",
     links: [
       {
         href: `${ORGANIZATION_PATH}/#`,
         Icon: FolderInput ,
-        label: "Agent Reviews",
+        label: "Devis Relance",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/#`,
+        Icon: FolderInput ,
+        label: "Reviews",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/#`,
+        Icon: FolderInput ,
+        label: "Email",
+        roles: ["admin"],
+      },
+    ],
+  },
+  {
+    title: "Marketing",
+    links: [
+      {
+        href: `${ORGANIZATION_PATH}/#`,
+        Icon: FolderInput ,
+        label: "Marketing",
         roles: ["admin"],
       },
     ],
