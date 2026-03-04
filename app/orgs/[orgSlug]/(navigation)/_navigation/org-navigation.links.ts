@@ -97,6 +97,12 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         roles: ["admin"],
       },
       {
+        href: `${ORGANIZATION_PATH}/#`,
+        Icon: NotebookPen ,
+        label: "Devis tracking",
+        roles: ["admin"],
+      },
+      {
         href: `${ORGANIZATION_PATH}/produits`,
         Icon: DoorOpen,
         label: "Produits",
@@ -106,12 +112,11 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
   },
   {
     title: "Services",
-    // defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
     links: [
       {
         href: `${ORGANIZATION_PATH}/#`,
         Icon: FolderInput ,
-        label: "Archive",
+        label: "Agent Reviews",
         roles: ["admin"],
       },
     ],
