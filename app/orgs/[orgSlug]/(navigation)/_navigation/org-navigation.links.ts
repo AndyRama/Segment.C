@@ -96,6 +96,12 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         label: "Devis",
         roles: ["admin"],
       },
+      {
+        href: `${ORGANIZATION_PATH}/produits`,
+        Icon: NotebookPen,
+        label: "Produits",
+        roles: ["admin"],
+      },
     ],
   },
   {
