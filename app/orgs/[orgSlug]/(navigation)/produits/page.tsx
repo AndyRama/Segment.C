@@ -33,7 +33,6 @@ const ALLOWED_CATEGORIES: ProductCategory[] = [
   "PORTE_ENTRER",
   "PORTE_VITRAGE",
   "BAIE_VITREE",
-  "PORTE_GARAGE",
 ];
 
 const categoryLabel: Record<string, string> = {
@@ -42,7 +41,6 @@ const categoryLabel: Record<string, string> = {
   PORTE_ENTRER: "Porte d'entrée",
   PORTE_VITRAGE: "Porte vitrée",
   BAIE_VITREE: "Baie vitrée",
-  PORTE_GARAGE: "Porte de garage",
 };
 
 // Couleurs par matériau — inspirées du design public
@@ -60,7 +58,6 @@ const sellerStyles: Record<string, { bg: string; text: string; dot: string }> = 
   SWAO:    { bg: "bg-orange-50",  text: "text-orange-600",  dot: "bg-orange-400" },
   SYBAIE:  { bg: "bg-green-50",   text: "text-green-700",   dot: "bg-green-500" },
   C2R:     { bg: "bg-blue-50",    text: "text-blue-700",    dot: "bg-blue-500" },
-  PROFERM: { bg: "bg-rose-50",    text: "text-rose-700",    dot: "bg-rose-400" },
   AUTRE:   { bg: "bg-gray-50",    text: "text-gray-600",    dot: "bg-gray-400" },
 };
 
@@ -76,7 +73,6 @@ const sellerFilterTabs = [
   { label: "SWAO", value: "SWAO" },
   { label: "SYBAIE", value: "SYBAIE" },
   { label: "C2R", value: "C2R" },
-  { label: "PROFERM", value: "PROFERM" },
 ];
 
 export default async function RoutePage(
