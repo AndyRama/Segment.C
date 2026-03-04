@@ -85,7 +85,7 @@ export default async function RoutePage(
 
   let whereCategories: ProductCategory[] = ALLOWED_CATEGORIES;
   if (categoryFilter === "PORTE") {
-    whereCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE", "PORTE_GARAGE"];
+    whereCategories = ["PORTE", "PORTE_ENTRER", "PORTE_VITRAGE"];
   } else if (categoryFilter === "FENETRE") {
     whereCategories = ["FENETRE"];
   } else if (categoryFilter === "BAIE_VITREE") {

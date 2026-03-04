@@ -98,7 +98,7 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
       },
       {
         href: `${ORGANIZATION_PATH}/produits`,
-        Icon: NotebookPen,
+        Icon: DoorOpen,
         label: "Produits",
         roles: ["admin"],
       },
@@ -108,18 +108,6 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
     title: "Services",
     // defaultOpenStartPath: `${ORGANIZATION_PATH}/settings`,
     links: [
-      {
-        href: `${ORGANIZATION_PATH}/#`,
-        Icon: DoorOpen,
-        label: "Mes produits",
-        roles: ["admin"],
-      },
-      {
-        href: `${ORGANIZATION_PATH}/#`,
-        Icon: NotebookPen,
-        label: "Demande de devis",
-        roles: ["admin"],
-      },
       {
         href: `${ORGANIZATION_PATH}/#`,
         Icon: FolderInput ,
