@@ -4,8 +4,8 @@ import { getRequiredUser } from "@/lib/auth/auth-user";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { DevisFormSchema, type DevisFormType } from "./devis.schema";
-import { sendEmail } from "./../../../../../src/lib/mail/send-email";
-import NouveauDevisEmail from "./../../../../../emails/nouveau-devis-email";
+import { sendEmail } from "./../../../../../../src/lib/mail/send-email";
+import NouveauDevisEmail from "./../../../../../../emails/nouveau-devis-email";
 
 export async function createDevisAction(data: DevisFormType) {
   try {
