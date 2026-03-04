@@ -101,12 +101,23 @@ export default async function RoutePage(
       </LayoutHeader>
 
       <LayoutActions className="flex gap-2">
+        {/* Sauvegarder vert (submit du form édition via form attribute) */}
+        <Button
+            type="submit"
+            form="edit-product-form"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+            size="sm"
+        >
+            Sauvegarder
+        </Button>
+
+        {/* Supprimer */}
         <form action={deleteProduct}>
-          <Button type="submit" variant="destructive" size="sm">
+            <Button type="submit" variant="destructive" size="sm">
             Supprimer
-          </Button>
+            </Button>
         </form>
-      </LayoutActions>
+        </LayoutActions>
 
       <LayoutContent className="flex flex-col gap-6">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -230,7 +241,7 @@ export default async function RoutePage(
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={updateProduct} className="flex flex-col gap-6">
+            <form id="edit-product-form" action={updateProduct} className="flex flex-col gap-6">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {/* Nom */}
                 <div className="flex flex-col gap-2">
@@ -333,12 +344,6 @@ export default async function RoutePage(
                   defaultValue={product.description}
                   rows={4}
                 />
-              </div>
-
-              <div className="flex justify-end">
-                <Button type="submit" variant="default">
-                  Sauvegarder
-                </Button>
               </div>
             </form>
           </CardContent>
