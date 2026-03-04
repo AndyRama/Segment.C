@@ -21,6 +21,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { prisma } from "@/lib/prisma";
+import { Settings } from "lucide-react";
+import Link from "next/link";
 
 export const generateMetadata = combineWithParentMetadata({
   title: "Users",
@@ -41,7 +43,9 @@ const statusDevisLabel: Record<string, string> = {
   refuse: "Refusé",
 };
 
-export default async function RoutePage(props: PageParams) {
+export default async function RoutePage(props: PageParams<{ orgSlug: string }>) {
+  const params = await props.params;
+
   const users = await prisma.user.findMany({
     orderBy: { createdAt: "desc" },
     include: {
@@ -100,13 +104,14 @@ export default async function RoutePage(props: PageParams) {
                 <TableHead>Devis</TableHead>
                 <TableHead>Dernier devis</TableHead>
                 <TableHead>Créé le</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {users.length === 0 ? (
                 <TableRow>
                   <TableCell
-                    colSpan={8}
+                    colSpan={9}
                     className="text-center text-muted-foreground py-10"
                   >
                     Aucun utilisateur trouvé.
@@ -116,7 +121,7 @@ export default async function RoutePage(props: PageParams) {
                 users.map((user) => {
                   const firstMember = user.members[0];
                   const totalDevis = user.devis.length;
-                  const lastDevis = user.devis[0]; // déjà trié par createdAt desc
+                  const lastDevis = user.devis[0];
 
                   return (
                     <TableRow key={user.id}>
@@ -194,6 +199,18 @@ export default async function RoutePage(props: PageParams) {
                       {/* Date création user */}
                       <TableCell className="text-muted-foreground">
                         {new Date(user.createdAt).toLocaleDateString("fr-FR")}
+                      </TableCell>
+
+                      {/* Actions */}
+                      <TableCell className="text-right">
+                        <Button asChild variant="ghost" size="icon">
+                          <Link
+                            href={`/orgs/${params.orgSlug}/devis?userId=${user.id}`}
+                            title="Voir les devis"
+                          >
+                            <Settings className="h-4 w-4" />
+                          </Link>
+                        </Button>
                       </TableCell>
                     </TableRow>
                   );
