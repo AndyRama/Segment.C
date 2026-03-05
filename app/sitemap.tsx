@@ -5,24 +5,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();
   return [
     {
-      url: "https://codeline.app",
+      url: "https://segment-c.com",
       lastModified: new Date(),
       changeFrequency: "monthly",
     },
     {
-      url: "https://codeline.app/login",
+      url: "https://segment-c.com/login",
       lastModified: new Date(),
       changeFrequency: "monthly",
     },
     {
-      url: "https://codeline.app/home",
+      url: "https://segment-c.com/home",
       lastModified: new Date(),
       changeFrequency: "monthly",
     },
     ...posts.map(
       (post) =>
         ({
-          url: `https://codeline.app/posts/${post.slug}`,
+          url: `https://segment-c.com/posts/${post.slug}`,
           lastModified: new Date(post.attributes.date),
           changeFrequency: "monthly",
         }) as const,
