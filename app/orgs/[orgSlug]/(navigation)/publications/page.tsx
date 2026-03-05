@@ -24,7 +24,7 @@ import type { PageParams } from "@/types/next";
 
 // Planning statique des 52 articles
 const PLANNING = [
-  { semaine: "S1",  publie: true,  theme: "Matériaux",            titre: "Quel matériau choisir pour vos fenêtres à Bordeaux ?",                                 		   							   intention: "Transactionnelle" },
+  { semaine: "S1",  publie: true,  theme: "Matériaux",            titre: "Quel materiau choisir pour vos fenêtres à Bordeaux ?",                                 		   							   intention: "Transactionnelle" },
   { semaine: "S2",  publie: true,  theme: "Performance",          titre: "Tout comprendre sur l isolation thermique de vos menuiseries sw et uw",                      						      intention: "Éducationnel" },
   { semaine: "S3",  publie: true,  theme: "Type (Baie)",          titre: "Baie Vitrée Coulissante vs. à Galandage : Laquelle installer chez vous en Gironde ?",                         intention: "Comparatif/Achat" },
   { semaine: "S4",  publie: true,  theme: "Local (Climat)",       titre: "Fenêtres resistantes aux embruns votre guide pour votre maison sur le Bassin d Arcachon",                     intention: "Locale/Spécifique" },
