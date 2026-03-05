@@ -9,6 +9,7 @@ import {
   TriangleAlert,
   User,
   // CreditCard,
+  BookOpen,
   NotebookPen,
   DoorOpen,
 } from "lucide-react";
@@ -105,6 +106,23 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
     ],
   },
   {
+    title: "Marketing",
+    links: [
+      {
+        href: `${ORGANIZATION_PATH}/publications`,
+        Icon: BookOpen ,
+        label: "Article",
+        roles: ["admin"],
+      },
+      {
+        href: `${ORGANIZATION_PATH}/#`,
+        Icon: FolderInput ,
+        label: "Marketing",
+        roles: ["admin"],
+      },
+    ],
+  },
+  {
     title: "Agents I.A",
     links: [
       {
@@ -123,17 +141,6 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
         href: `${ORGANIZATION_PATH}/#`,
         Icon: FolderInput ,
         label: "Email",
-        roles: ["admin"],
-      },
-    ],
-  },
-  {
-    title: "Marketing",
-    links: [
-      {
-        href: `${ORGANIZATION_PATH}/#`,
-        Icon: FolderInput ,
-        label: "Marketing",
         roles: ["admin"],
       },
     ],

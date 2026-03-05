@@ -27,12 +27,12 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     ],
   },
   {
-    title: "Menu",
+    title: "Services",
     links: [
       {
-        href: "/account/devis",
+        href: "/account/devis/new",
         Icon: NotebookPen  ,
-        label: "Créer un Devis",
+        label: "Demande de Devis",
       },
       {
         href: "/account/produits",
@@ -42,26 +42,16 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
     ],
   },
   {
-    title: "Services",
+    title: "informations",
     links: [
       {
         href: "/account/devis",
-        Icon: NotebookText  ,
-        label: "Mes devis",
-      },
+        Icon: Files  ,
+        label: "Suivi de mes devis",
+      },  
       {
-        href: "/account/services/travaux",
-        Icon: Calendar,
-        label: "Réalisation",
-      }, 
-    ],
-  },
-  {
-    title: "information",
-    links: [
-      {
-        href: "/account/information/factures",
-        Icon: Files ,
+        href: "#",
+        Icon: FileText, ,
         label: "Mes factures",
       },
     ],
