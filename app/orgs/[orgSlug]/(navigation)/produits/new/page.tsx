@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { ImageFormItem } from "@/features/products/image-form-item";
+import { ImageFormItem } from "@/features/images/image-form-item";
 import { createProductAction } from "./create-product.action";
 import { isActionSuccessful } from "@/lib/actions/actions-utils";
 
