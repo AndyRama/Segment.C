@@ -35,12 +35,12 @@ const chartData = [
   },
   {
     category: "fenetre",
-    count: 15,
+    count: 14,
     fill: "var(--color-fenetre)",
   },
   {
     category: "baie_vitree",
-    count: 4,
+    count: 1,
     fill: "var(--color-baie_vitree)",
   },
 ];

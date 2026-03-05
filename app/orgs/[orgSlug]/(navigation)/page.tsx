@@ -9,7 +9,7 @@ import {
 import type { PageParams } from "@/types/next";
 import Link from "next/link";
 import InformationCards from "./information-cards";
-import { ProductsCategoryDonut } from "@/features/products/products-category-donut";
+import { ProductsCategoryDonut } from "./products-category-donut";
 
 export default async function RoutePage(
   props: PageParams<{
