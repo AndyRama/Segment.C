@@ -4,11 +4,33 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { ImageFormItem } from "@/features/images/image-form-item";
+import Link from "next/link";
+import { ImageFormItem } from "@/features/products/image-form-item";
 import { createProductAction } from "./create-product.action";
 import { isActionSuccessful } from "@/lib/actions/actions-utils";
+import {
+  Layout,
+  LayoutContent,
+  LayoutHeader,
+  LayoutTitle,
+} from "@/features/page/layout";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
+import { ArrowLeft } from "lucide-react";
 
-// ── Types mirrored from the Prisma schema / seed ──────────────────────────────
+// ── Types ────────────────────────────────────────────────────────────────────
 
 type ProductCategory = "PORTE_ENTRER" | "PORTE_VITRAGE" | "FENETRE" | "BAIE_VITREE";
 type ProductMaterial = "ACIER" | "ALUMINIUM" | "BOIS" | "PVC" | "MIXTE" | "BOIS_ALUMINIUM";
@@ -23,7 +45,6 @@ type OpeningType =
   | "FIXE";
 
 interface ProductFormData {
-  // common
   name: string;
   category: ProductCategory | "";
   material: ProductMaterial | "";
@@ -39,13 +60,13 @@ interface ProductFormData {
   isPopular: boolean;
   isNew: boolean;
   isActive: boolean;
-  // porte-only
   epaisseur?: string;
-  // fenetre-only
   vitrage?: VitragType | "";
   uw?: string;
   ouverture?: OpeningType | "";
 }
+
+// ── Constants ─────────────────────────────────────────────────────────────────
 
 const CATEGORIES: { value: ProductCategory; label: string }[] = [
   { value: "PORTE_ENTRER", label: "Porte d'entrée" },
@@ -84,229 +105,6 @@ const OPENINGS: { value: OpeningType; label: string }[] = [
   { value: "FIXE", label: "Fixe" },
 ];
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-const isFenetre = (cat: string) => cat === "FENETRE" || cat === "BAIE_VITREE";
-const isPorte = (cat: string) => cat === "PORTE_ENTRER" || cat === "PORTE_VITRAGE";
-
-// ── Sub-components ────────────────────────────────────────────────────────────
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3 mt-8 first:mt-0">
-      {children}
-    </h2>
-  );
-}
-
-function Field({
-  label,
-  required,
-  children,
-  hint,
-}: {
-  label: string;
-  required?: boolean;
-  children: React.ReactNode;
-  hint?: string;
-}) {
-  return (
-    <div className="flex flex-col gap-1">
-      <label className="text-sm font-medium text-zinc-200">
-        {label}
-        {required && <span className="ml-0.5 text-rose-400">*</span>}
-      </label>
-      {children}
-      {hint && <p className="text-xs text-zinc-500">{hint}</p>}
-    </div>
-  );
-}
-
-function Input({
-  value,
-  onChange,
-  placeholder,
-  type = "text",
-  step,
-  min,
-  max,
-}: {
-  value: string | number;
-  onChange: (v: string) => void;
-  placeholder?: string;
-  type?: string;
-  step?: string;
-  min?: number;
-  max?: number;
-}) {
-  return (
-    <input
-      type={type}
-      step={step}
-      min={min}
-      max={max}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-800/60 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-sky-500/60 transition"
-    />
-  );
-}
-
-function Textarea({
-  value,
-  onChange,
-  placeholder,
-  rows = 3,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  placeholder?: string;
-  rows?: number;
-}) {
-  return (
-    <textarea
-      rows={rows}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-800/60 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-sky-500/60 transition resize-none"
-    />
-  );
-}
-
-function Select<T extends string>({
-  value,
-  onChange,
-  options,
-  placeholder,
-}: {
-  value: T | "";
-  onChange: (v: T) => void;
-  options: { value: T; label: string }[];
-  placeholder?: string;
-}) {
-  return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value as T)}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-800/60 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/60 transition appearance-none"
-    >
-      {placeholder && (
-        <option value="" disabled>
-          {placeholder}
-        </option>
-      )}
-      {options.map((o) => (
-        <option key={o.value} value={o.value}>
-          {o.label}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function Toggle({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: boolean;
-  onChange: (v: boolean) => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={() => onChange(!value)}
-      className="flex items-center gap-2 text-sm text-zinc-300 select-none"
-    >
-      <span
-        className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${value ? "bg-sky-500" : "bg-zinc-700"}`}
-      >
-        <span
-          className={`inline-block h-3.5 w-3.5 translate-x-0.5 transform rounded-full bg-white shadow transition-transform ${value ? "translate-x-4" : ""}`}
-        />
-      </span>
-      {label}
-    </button>
-  );
-}
-
-// List editor (colors / features)
-function ListEditor({
-  label,
-  values,
-  onChange,
-  placeholder,
-}: {
-  label: string;
-  values: string[];
-  onChange: (v: string[]) => void;
-  placeholder?: string;
-}) {
-  const [input, setInput] = useState("");
-
-  const add = () => {
-    const trimmed = input.trim();
-    if (!trimmed) return;
-    onChange([...values, trimmed]);
-    setInput("");
-  };
-
-  const remove = (i: number) => {
-    onChange(values.filter((_, idx) => idx !== i));
-  };
-
-  return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium text-zinc-200">{label}</label>
-      <div className="flex gap-2">
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              add();
-            }
-          }}
-          placeholder={placeholder ?? "Ajouter…"}
-          className="flex-1 rounded-lg border border-zinc-700 bg-zinc-800/60 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-sky-500/60 transition"
-        />
-        <button
-          type="button"
-          onClick={add}
-          className="rounded-lg border border-sky-500/40 bg-sky-500/10 px-3 py-2 text-sm text-sky-400 hover:bg-sky-500/20 transition"
-        >
-          +
-        </button>
-      </div>
-      {values.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
-          {values.map((v, i) => (
-            <span
-              key={i}
-              className="flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-0.5 text-xs text-zinc-300"
-            >
-              {v}
-              <button
-                type="button"
-                onClick={() => remove(i)}
-                className="ml-0.5 text-zinc-500 hover:text-rose-400 transition"
-              >
-                ×
-              </button>
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Main page ─────────────────────────────────────────────────────────────────
-
 const DEFAULT_FORM: ProductFormData = {
   name: "",
   category: "",
@@ -329,12 +127,94 @@ const DEFAULT_FORM: ProductFormData = {
   ouverture: "",
 };
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+const isFenetre = (cat: string) => cat === "FENETRE" || cat === "BAIE_VITREE";
+const isPorte = (cat: string) => cat === "PORTE_ENTRER" || cat === "PORTE_VITRAGE";
+
+// ── List editor (couleurs / caractéristiques) ─────────────────────────────────
+
+function ListEditor({
+  label,
+  values,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  values: string[];
+  onChange: (v: string[]) => void;
+  placeholder?: string;
+}) {
+  const [input, setInput] = useState("");
+
+  const add = () => {
+    const trimmed = input.trim();
+    if (!trimmed) return;
+    onChange([...values, trimmed]);
+    setInput("");
+  };
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Label>{label}</Label>
+      <div className="flex gap-2">
+        <Input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              add();
+            }
+          }}
+          placeholder={placeholder ?? "Ajouter puis Entrée…"}
+          className="flex-1"
+        />
+        <Button type="button" variant="outline" onClick={add}>
+          +
+        </Button>
+      </div>
+      {values.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {values.map((v, i) => (
+            <Badge key={i} variant="secondary" className="gap-1">
+              {v}
+              <button
+                type="button"
+                onClick={() => onChange(values.filter((_, idx) => idx !== i))}
+                className="ml-0.5 text-muted-foreground hover:text-destructive transition"
+              >
+                ×
+              </button>
+            </Badge>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Section title ─────────────────────────────────────────────────────────────
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mt-6 mb-1 first:mt-0">
+      {children}
+    </p>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+
 export default function NewProductPage() {
   const [form, setForm] = useState<ProductFormData>(DEFAULT_FORM);
   const router = useRouter();
 
   const set = <K extends keyof ProductFormData>(key: K, value: ProductFormData[K]) =>
     setForm((prev) => ({ ...prev, [key]: value }));
+
+  const fenetre = isFenetre(form.category);
+  const porte = isPorte(form.category);
 
   const saveMutation = useMutation({
     mutationFn: async (data: ProductFormData) => {
@@ -344,10 +224,12 @@ export default function NewProductPage() {
         material: data.material as Exclude<typeof data.material, "">,
         seller: data.seller as Exclude<typeof data.seller, "">,
         epaisseur: data.epaisseur || undefined,
-        vitrage: data.vitrage ? (data.vitrage as "SIMPLE" | "DOUBLE" | "TRIPLE") : undefined,
+        vitrage: data.vitrage
+          ? (data.vitrage as VitragType)
+          : undefined,
         uw: data.uw || undefined,
         ouverture: data.ouverture
-          ? (data.ouverture as "BATTANT" | "OSCILLO_BATTANT" | "COULISSANTE" | "COULISSANTE_GALANDAGE" | "PLIANTE" | "FIXE")
+          ? (data.ouverture as OpeningType)
           : undefined,
       });
 
@@ -362,7 +244,7 @@ export default function NewProductPage() {
       router.push(`/admin/produits/${product?.id}`);
     },
     onError: (err: Error) => {
-      toast.error(err.message ?? "Erreur lors de la création du produit");
+      toast.error(err.message ?? "Erreur lors de la création");
     },
   });
 
@@ -375,299 +257,367 @@ export default function NewProductPage() {
     saveMutation.mutate(form);
   };
 
-  const fenetre = isFenetre(form.category);
-  const porte = isPorte(form.category);
-
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      {/* Header */}
-      <div className="border-b border-zinc-800 bg-zinc-900/60 px-6 py-4">
-        <div className="mx-auto max-w-5xl flex items-center justify-between">
-          <div>
-            <p className="text-xs text-zinc-500 mb-0.5">
-              Admin / Produits
-            </p>
-            <h1 className="text-xl font-semibold text-zinc-100">
-              Nouveau produit
-            </h1>
-          </div>
-          <div className="flex gap-2">
-            <a
-              href="/admin/produits"
-              className="rounded-lg border border-zinc-700 px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 transition"
-            >
-              Annuler
-            </a>
-            <button
-              form="product-form"
-              type="submit"
-              disabled={saveMutation.isPending}
-              className="rounded-lg bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-500 disabled:opacity-50 transition"
-            >
-              {saveMutation.isPending ? "Enregistrement…" : "Enregistrer"}
-            </button>
-          </div>
+    <Layout size="lg">
+      <LayoutHeader>
+        <div className="flex items-center gap-3">
+          <Button asChild variant="ghost" size="icon">
+            <Link href="/admin/produits">
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
+          </Button>
+          <LayoutTitle>Nouveau produit</LayoutTitle>
         </div>
-      </div>
+      </LayoutHeader>
 
-      {/* Body */}
-      <form
-        id="product-form"
-        onSubmit={handleSubmit}
-        className="mx-auto max-w-5xl px-6 py-8"
-      >
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* ── Left column (main info) ── */}
-          <div className="lg:col-span-2 space-y-5">
-            {/* Identification */}
-            <SectionTitle>Identification</SectionTitle>
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="Nom du modèle" required>
-                <Input
-                  value={form.name}
-                  onChange={(v) => set("name", v)}
-                  placeholder="ex. Ablette, Trio 1…"
-                />
-              </Field>
-              <Field label="Vendeur" required>
-                <Select
-                  value={form.seller}
-                  onChange={(v) => set("seller", v)}
-                  options={SELLERS}
-                  placeholder="Choisir…"
-                />
-              </Field>
-            </div>
+      <LayoutContent>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="Catégorie" required>
-                <Select
-                  value={form.category}
-                  onChange={(v) => set("category", v)}
-                  options={CATEGORIES}
-                  placeholder="Choisir…"
-                />
-              </Field>
-              <Field label="Matériau" required>
-                <Select
-                  value={form.material}
-                  onChange={(v) => set("material", v)}
-                  options={MATERIALS}
-                  placeholder="Choisir…"
-                />
-              </Field>
-            </div>
+            {/* ── Colonne principale ── */}
+            <div className="lg:col-span-2 flex flex-col gap-4">
 
-            <Field label="Description">
-              <Textarea
-                value={form.description}
-                onChange={(v) => set("description", v)}
-                placeholder="Description du produit…"
-                rows={4}
-              />
-            </Field>
-
-            {/* Tarif & specs */}
-            <SectionTitle>Tarif & spécifications</SectionTitle>
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="Fourchette de prix" hint="ex. 1400€ - 1700€ ou Sur devis">
-                <Input
-                  value={form.priceRange}
-                  onChange={(v) => set("priceRange", v)}
-                  placeholder="1400€ - 1700€"
-                />
-              </Field>
-              <Field label="Note" hint="Entre 0 et 5">
-                <Input
-                  type="number"
-                  step="0.1"
-                  min={0}
-                  max={5}
-                  value={form.rating}
-                  onChange={(v) => set("rating", parseFloat(v))}
-                />
-              </Field>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="Dimensions" hint="ex. H: 2000-2250mm, L: 800-1000mm">
-                <Input
-                  value={form.dimensions}
-                  onChange={(v) => set("dimensions", v)}
-                  placeholder="H: …, L: …"
-                />
-              </Field>
-              <Field label="Performance thermique" hint="ex. 1.4 W/(m².K)">
-                <Input
-                  value={form.performance}
-                  onChange={(v) => set("performance", v)}
-                  placeholder="1.4 W/(m².K)"
-                />
-              </Field>
-            </div>
-
-            {/* Porte-specific */}
-            {porte && (
-              <>
-                <SectionTitle>Spécifications porte</SectionTitle>
-                <Field label="Épaisseur" hint="ex. 48mm, 60mm, 80mm">
-                  <Input
-                    value={form.epaisseur ?? ""}
-                    onChange={(v) => set("epaisseur", v)}
-                    placeholder="48mm"
-                  />
-                </Field>
-              </>
-            )}
-
-            {/* Fenêtre-specific */}
-            {fenetre && (
-              <>
-                <SectionTitle>Spécifications fenêtre / baie</SectionTitle>
-                <div className="grid grid-cols-3 gap-4">
-                  <Field label="Type de vitrage">
-                    <Select
-                      value={form.vitrage ?? ""}
-                      onChange={(v) => set("vitrage", v)}
-                      options={VITRAGES}
-                      placeholder="Choisir…"
-                    />
-                  </Field>
-                  <Field label="Uw" hint="ex. 1.2 W/(m².K)">
-                    <Input
-                      value={form.uw ?? ""}
-                      onChange={(v) => set("uw", v)}
-                      placeholder="1.2 W/(m².K)"
-                    />
-                  </Field>
-                  <Field label="Type d'ouverture">
-                    <Select
-                      value={form.ouverture ?? ""}
-                      onChange={(v) => set("ouverture", v)}
-                      options={OPENINGS}
-                      placeholder="Choisir…"
-                    />
-                  </Field>
-                </div>
-              </>
-            )}
-
-            {/* Colors & features */}
-            <SectionTitle>Couleurs & caractéristiques</SectionTitle>
-            <ListEditor
-              label="Couleurs disponibles"
-              values={form.colors}
-              onChange={(v) => set("colors", v)}
-              placeholder="ex. Gris 7016, Blanc, Anthracite…"
-            />
-            <ListEditor
-              label="Caractéristiques"
-              values={form.features}
-              onChange={(v) => set("features", v)}
-              placeholder="ex. Triple vitrage feuilleté…"
-            />
-          </div>
-
-          {/* ── Right column (image + flags) ── */}
-          <div className="space-y-6">
-            <SectionTitle>Image produit</SectionTitle>
-            <div className="flex flex-col items-center gap-3">
-              <ImageFormItem
-                imageUrl={form.image}
-                onChange={(url) => set("image", url)}
-                className="h-52 w-full"
-              />
-              <p className="text-center text-xs text-zinc-500">
-                Glissez une image ou cliquez pour sélectionner
-                <br />
-                PNG / JPG – max 1 Mo
-              </p>
-              {form.image && (
-                <p className="w-full break-all rounded bg-zinc-800 px-2 py-1 text-xs text-zinc-400 font-mono">
-                  {form.image}
-                </p>
-              )}
-            </div>
-
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 space-y-3">
-              <SectionTitle>Statut & mise en avant</SectionTitle>
-              <Toggle
-                label="Produit actif"
-                value={form.isActive}
-                onChange={(v) => set("isActive", v)}
-              />
-              <Toggle
-                label="Produit populaire"
-                value={form.isPopular}
-                onChange={(v) => set("isPopular", v)}
-              />
-              <Toggle
-                label="Nouveau produit"
-                value={form.isNew}
-                onChange={(v) => set("isNew", v)}
-              />
-            </div>
-
-            {/* Preview card */}
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden">
-              <div className="h-36 bg-zinc-800 relative">
-                {form.image ? (
-                  <img
-                    src={form.image}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-contain p-2"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-zinc-600 text-xs">
-                    Aperçu
+              {/* Identification */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Identification</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <Label>
+                        Nom du modèle <span className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        value={form.name}
+                        onChange={(e) => set("name", e.target.value)}
+                        placeholder="ex. Ablette, Trio 1…"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <Label>
+                        Vendeur <span className="text-destructive">*</span>
+                      </Label>
+                      <Select
+                        value={form.seller}
+                        onValueChange={(v) => set("seller", v as ProductSeller)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choisir…" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {SELLERS.map((s) => (
+                            <SelectItem key={s.value} value={s.value}>
+                              {s.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
-                )}
-                <div className="absolute top-2 right-2 flex gap-1">
-                  {form.isNew && (
-                    <span className="rounded-full bg-emerald-500/20 border border-emerald-500/40 px-1.5 py-0.5 text-[10px] text-emerald-400">
-                      Nouveau
-                    </span>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <Label>
+                        Catégorie <span className="text-destructive">*</span>
+                      </Label>
+                      <Select
+                        value={form.category}
+                        onValueChange={(v) => set("category", v as ProductCategory)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choisir…" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {CATEGORIES.map((c) => (
+                            <SelectItem key={c.value} value={c.value}>
+                              {c.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <Label>
+                        Matériau <span className="text-destructive">*</span>
+                      </Label>
+                      <Select
+                        value={form.material}
+                        onValueChange={(v) => set("material", v as ProductMaterial)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choisir…" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {MATERIALS.map((m) => (
+                            <SelectItem key={m.value} value={m.value}>
+                              {m.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <Label>Description</Label>
+                    <Textarea
+                      value={form.description}
+                      onChange={(e) => set("description", e.target.value)}
+                      placeholder="Description du produit…"
+                      rows={4}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tarif & specs */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Tarif & spécifications</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <Label>Fourchette de prix</Label>
+                      <Input
+                        value={form.priceRange}
+                        onChange={(e) => set("priceRange", e.target.value)}
+                        placeholder="1400€ - 1700€ ou Sur devis"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <Label>Note (0 à 5)</Label>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        min={0}
+                        max={5}
+                        value={form.rating}
+                        onChange={(e) => set("rating", parseFloat(e.target.value))}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <Label>Dimensions</Label>
+                      <Input
+                        value={form.dimensions}
+                        onChange={(e) => set("dimensions", e.target.value)}
+                        placeholder="H: 2000-2250mm, L: 800-1000mm"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <Label>Performance thermique</Label>
+                      <Input
+                        value={form.performance}
+                        onChange={(e) => set("performance", e.target.value)}
+                        placeholder="1.4 W/(m².K)"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Porte */}
+                  {porte && (
+                    <div className="flex flex-col gap-1.5">
+                      <Label>Épaisseur</Label>
+                      <Input
+                        value={form.epaisseur ?? ""}
+                        onChange={(e) => set("epaisseur", e.target.value)}
+                        placeholder="48mm, 60mm, 80mm…"
+                      />
+                    </div>
                   )}
-                  {form.isPopular && (
-                    <span className="rounded-full bg-amber-500/20 border border-amber-500/40 px-1.5 py-0.5 text-[10px] text-amber-400">
-                      Populaire
-                    </span>
+
+                  {/* Fenêtre / Baie */}
+                  {fenetre && (
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <Label>Type de vitrage</Label>
+                        <Select
+                          value={form.vitrage ?? ""}
+                          onValueChange={(v) => set("vitrage", v as VitragType)}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Choisir…" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {VITRAGES.map((v) => (
+                              <SelectItem key={v.value} value={v.value}>
+                                {v.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <Label>Uw</Label>
+                        <Input
+                          value={form.uw ?? ""}
+                          onChange={(e) => set("uw", e.target.value)}
+                          placeholder="1.2 W/(m².K)"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <Label>Type d'ouverture</Label>
+                        <Select
+                          value={form.ouverture ?? ""}
+                          onValueChange={(v) => set("ouverture", v as OpeningType)}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Choisir…" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {OPENINGS.map((o) => (
+                              <SelectItem key={o.value} value={o.value}>
+                                {o.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
                   )}
+                </CardContent>
+              </Card>
+
+              {/* Couleurs & caractéristiques */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Couleurs & caractéristiques</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                  <ListEditor
+                    label="Couleurs disponibles"
+                    values={form.colors}
+                    onChange={(v) => set("colors", v)}
+                    placeholder="ex. Gris 7016, Blanc, Anthracite…"
+                  />
+                  <ListEditor
+                    label="Caractéristiques"
+                    values={form.features}
+                    onChange={(v) => set("features", v)}
+                    placeholder="ex. Triple vitrage feuilleté…"
+                  />
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* ── Colonne droite ── */}
+            <div className="flex flex-col gap-4">
+
+              {/* Image */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Image produit</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-3">
+                  <ImageFormItem
+                    imageUrl={form.image}
+                    onChange={(url) => set("image", url)}
+                    className="h-48 w-full"
+                  />
+                  <p className="text-center text-xs text-muted-foreground">
+                    Glissez une image ou cliquez pour sélectionner
+                    <br />
+                    PNG / JPG – max 1 Mo
+                  </p>
+                  {form.image && (
+                    <p className="break-all rounded bg-muted px-2 py-1 text-xs text-muted-foreground font-mono">
+                      {form.image}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Statut */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Statut & mise en avant</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="isActive">Produit actif</Label>
+                    <Switch
+                      id="isActive"
+                      checked={form.isActive}
+                      onCheckedChange={(v) => set("isActive", v)}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="isPopular">Populaire</Label>
+                    <Switch
+                      id="isPopular"
+                      checked={form.isPopular}
+                      onCheckedChange={(v) => set("isPopular", v)}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="isNew">Nouveau</Label>
+                    <Switch
+                      id="isNew"
+                      checked={form.isNew}
+                      onCheckedChange={(v) => set("isNew", v)}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Aperçu carte */}
+              <Card className="overflow-hidden">
+                <div className="h-32 bg-muted relative">
+                  {form.image ? (
+                    <img
+                      src={form.image}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-contain p-2"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-xs text-muted-foreground">
+                      Aperçu
+                    </div>
+                  )}
+                  <div className="absolute top-2 right-2 flex gap-1">
+                    {form.isNew && (
+                      <Badge variant="secondary" className="text-[10px] px-1.5">
+                        Nouveau
+                      </Badge>
+                    )}
+                    {form.isPopular && (
+                      <Badge className="text-[10px] px-1.5 bg-amber-100 text-amber-700 border-amber-200">
+                        Populaire
+                      </Badge>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="p-3 space-y-0.5">
-                <p className="text-sm font-semibold text-zinc-100 truncate">
-                  {form.name || "Nom du produit"}
-                </p>
-                <p className="text-xs text-zinc-500">
-                  {form.seller || "—"} ·{" "}
-                  {MATERIALS.find((m) => m.value === form.material)?.label || "—"}
-                </p>
-                <p className="text-xs font-medium text-sky-400">
-                  {form.priceRange || "Prix non défini"}
-                </p>
-              </div>
+                <CardContent className="p-3 flex flex-col gap-0.5">
+                  <p className="text-sm font-semibold truncate">
+                    {form.name || "Nom du produit"}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {form.seller || "—"} ·{" "}
+                    {MATERIALS.find((m) => m.value === form.material)?.label || "—"}
+                  </p>
+                  <p className="text-xs font-medium text-emerald-600">
+                    {form.priceRange || "Prix non défini"}
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
-        </div>
 
-        {/* Bottom submit bar (mobile) */}
-        <div className="mt-10 flex justify-end gap-2 lg:hidden">
-          <a
-            href="/admin/produits"
-            className="rounded-lg border border-zinc-700 px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 transition"
-          >
-            Annuler
-          </a>
-          <button
-            type="submit"
-            disabled={saveMutation.isPending}
-            className="rounded-lg bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-500 disabled:opacity-50 transition"
-          >
-            {saveMutation.isPending ? "Enregistrement…" : "Enregistrer"}
-          </button>
-        </div>
-      </form>
-    </div>
+          {/* ── Boutons en bas ── */}
+          <div className="flex justify-end gap-2 border-t pt-4">
+            <Button asChild variant="outline">
+              <Link href="/admin/produits">Annuler</Link>
+            </Button>
+            <Button type="submit" disabled={saveMutation.isPending}>
+              {saveMutation.isPending ? "Enregistrement…" : "Enregistrer"}
+            </Button>
+          </div>
+        </form>
+      </LayoutContent>
+    </Layout>
   );
 }
