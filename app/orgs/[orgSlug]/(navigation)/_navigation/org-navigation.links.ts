@@ -94,13 +94,13 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
       {
         href: `${ORGANIZATION_PATH}/devis`,
         Icon: NotebookPen,
-        label: "Devis",
+        label: "Listes devis",
         roles: ["admin"],
       },
       {
         href: `${ORGANIZATION_PATH}/produits`,
         Icon: DoorOpen,
-        label: "Produits",
+        label: "Listes Produits",
         roles: ["admin"],
       },
     ],
@@ -111,13 +111,13 @@ export const ORGANIZATION_LINKS: NavigationGroup[] = [
       {
         href: `${ORGANIZATION_PATH}/publications`,
         Icon: BookOpen ,
-        label: "Article",
+        label: "Publications",
         roles: ["admin"],
       },
       {
-        href: `${ORGANIZATION_PATH}/#`,
-        Icon: FolderInput ,
-        label: "Marketing",
+        href: `${ORGANIZATION_PATH}/produits/new`,
+        Icon: NotebookPen ,
+        label: "Création produit",
         roles: ["admin"],
       },
     ],

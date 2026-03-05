@@ -9,6 +9,7 @@ import {
 import type { PageParams } from "@/types/next";
 import Link from "next/link";
 import InformationCards from "./information-cards";
+import { ProductsCategoryDonut } from "@/features/products/products-category-donut";
 
 export default async function RoutePage(
   props: PageParams<{
@@ -34,6 +35,7 @@ export default async function RoutePage(
       </LayoutActions>
       <LayoutContent className="flex flex-col gap-4 lg:gap-8">
         <InformationCards />
+        <ProductsCategoryDonut />
       </LayoutContent>
     </Layout>
   );

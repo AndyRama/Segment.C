@@ -43,11 +43,6 @@ const categoryLabel: Record<string, string> = {
   PORTE_ENTRER: "Porte d'entrée",
   PORTE_VITRAGE: "Porte vitrée",
   BAIE_VITREE: "Baie vitrée",
-  PORTE_GARAGE: "Porte de garage",
-  PERGOLA: "Pergola",
-  VERANDA: "Véranda",
-  PORTAIL: "Portail",
-  VOLET: "Volet",
 };
 
 export default async function RoutePage(

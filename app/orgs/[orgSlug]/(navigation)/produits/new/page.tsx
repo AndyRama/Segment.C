@@ -608,7 +608,7 @@ export default function NewProductPage() {
           </div>
 
           {/* ── Boutons en bas ── */}
-          <div className="flex justify-end gap-2 border-t pt-4">
+          <div className="flex justify-start gap-2 border-t pt-4">
             <Button asChild variant="outline">
               <Link href="/admin/produits">Annuler</Link>
             </Button>
