@@ -1,4 +1,4 @@
-import { getPost } from "@/features/posts/post-manager";
+import { getPosts } from "@/features/posts/post-manager";
 import { notFound } from "next/navigation";
 import {
   Layout,
@@ -20,7 +20,8 @@ export default async function PublicationDetailPage(
   props: PageParams<{ orgSlug: string; slug: string }>
 ) {
   const params = await props.params;
-  const post = await getPost(params.slug);
+  const posts = await getPosts();
+  const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) notFound();
 

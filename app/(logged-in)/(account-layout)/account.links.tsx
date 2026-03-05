@@ -51,7 +51,7 @@ const ACCOUNT_LINKS: NavigationGroup[] = [
       },  
       {
         href: "#",
-        Icon: FileText, ,
+        Icon: FileText, 
         label: "Mes factures",
       },
     ],
