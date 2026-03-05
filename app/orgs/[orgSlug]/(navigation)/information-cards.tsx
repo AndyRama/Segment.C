@@ -7,11 +7,11 @@ export default function InformationCards() {
     <div className="flex w-full items-start gap-4 max-lg:flex-col lg:gap-8">
       <Card className="w-full flex-1">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total likes</CardTitle>
+          <CardTitle className="text-sm font-medium">Total Users</CardTitle>
           <Heart className="text-muted-foreground size-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">12'032</div>
+          <div className="text-2xl font-bold">10</div>
           <p className="text-muted-foreground text-xs">
             +12.5% from last month
           </p>
@@ -19,31 +19,31 @@ export default function InformationCards() {
       </Card>
       <Card className="w-full flex-1">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Threads</CardTitle>
+          <CardTitle className="text-sm font-medium">Total Devis</CardTitle>
           <MessageCircle className="text-muted-foreground size-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">124</div>
-          <p className="text-muted-foreground text-xs">-2.5% from last month</p>
+          <div className="text-2xl font-bold">24</div>
+          <p className="text-muted-foreground text-xs">+2.5% from last month</p>
         </CardContent>
       </Card>
       <Card className="w-full flex-1">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">New subscribers</CardTitle>
+          <CardTitle className="text-sm font-medium">Total Articles SEO</CardTitle>
           <User2 className="text-muted-foreground size-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">+1288</div>
-          <p className="text-muted-foreground text-xs">+5.2% from last month</p>
+          <div className="text-2xl font-bold">11</div>
+          <p className="text-muted-foreground text-xs">+5% from last month</p>
         </CardContent>
       </Card>
       <Card className="w-full flex-1">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Impressions</CardTitle>
+          <CardTitle className="text-sm font-medium">Totals produits</CardTitle>
           <Activity className="text-muted-foreground size-4" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">120'011</div>
+          <div className="text-2xl font-bold">310</div>
           <p className="text-muted-foreground text-xs">-2.5% from last month</p>
         </CardContent>
       </Card>
