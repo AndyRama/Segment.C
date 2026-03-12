@@ -35,7 +35,7 @@ const PLANNING = [
   { semaine: "S9",  publie: true,  theme: "Tendance",             titre: "Les couleurs tendance pour les cadres de fenêtres en 2026 - architecture bordelaise",            				      intention: "Inspiration" },
   { semaine: "S10", publie: true,  theme: "Entretien",            titre: "Guide d entretien pour les fenêtres ALU et PVC, 5 gestes pour une longevite maximale",           		          intention: "Entretien" },
   { semaine: "S11", publie: true,  theme: "Type (Ouvrant)",       titre: "Fenêtre Oscillo-Battante ou à Soufflet ? Comparatif des systèmes d'ouverture.",                    	          intention: "Information" },
-  { semaine: "S12", publie: false, theme: "Isolation",            titre: "Comment le simple changement de vos fenêtres peut réduire votre facture de chauffage de 20%.",                intention: "Bénéfice/Achat" },
+  { semaine: "S12", publie: true,  theme: "Isolation",            titre: "Comment le simple changement de vos fenêtres peut réduire votre facture de chauffage.",                       intention: "Bénéfice/Achat" },
   { semaine: "S13", publie: false, theme: "Résumé T1",            titre: "Les 10 questions à poser à votre menuisier avant de signer un devis de fenêtres.",                            intention: "Récapitulatif" },
   { semaine: "S14", publie: false, theme: "Portes d'Entrée",      titre: "Les 5 critères essentiels pour choisir une porte d'entrée blindée et sécurisée.",                  	          intention: "Achat/Sécurité" },
   { semaine: "S15", publie: false, theme: "Matériaux (Porte)",    titre: "Quel matériau pour votre porte d'entrée : PVC, Bois, Acier ou Aluminium ?",                       	          intention: "Comparatif" },
