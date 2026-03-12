@@ -8,7 +8,7 @@ export const CTAImageSection = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(images/camion.jpg)`, 
+        backgroundImage: `url(images/camion.webp)`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
