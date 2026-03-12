@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://eu-central.storage.cloudconvert.com/tasks/767943df-2e76-4df6-b100-4154f00d44c1/COULISSANT_AUTOMNE_HD.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20260312%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20260312T135642Z&X-Amz-Expires=86400&X-Amz-Signature=a2e2c1a986ddcda26ef7cf83e4a468bdd81e42f71b1853c16ea7713efe79fa74&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22COULISSANT_AUTOMNE_HD.webp%22&response-content-type=image%2Fwebp&x-id=GetObject

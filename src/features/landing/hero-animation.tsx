@@ -16,8 +16,8 @@ const HeroAnimation = () => {
   const { data: session } = useSession();
 
   const slides = [
-    "/images/hero-fenetre.jpg",
-    "/images/COULISSANT_AUTOMNE_HD.png",
+    "/images/hero-fenetre.webp",
+    "/images/COULISSANT_AUTOMNE_HD.webp",
     "/images/opera.jpg",
     "/images/fenetre5.jpg",
     "/images/beaulieu-sybaie.jpg",

@@ -72,8 +72,8 @@ type CardGridProps = {
 
 export const CardGrid = ({ initialVisibleCount = 4 }: CardGridProps) => {
   const allCards = [
-    { title: "Fenêtres", image: "/images/hero-fenetre.jpg", link: "/fenetres" },
-    { title: "Baie vitrée", image: "/images/baie/syal_7.jpg", link: "/baie" },
+    { title: "Fenêtres", image: "/images/hero-fenetre.webp", link: "/fenetres" },
+    { title: "Baie vitrée", image: "/images/syal_7.webp", link: "/baie" },
     { title: "Portes", image: "/images/porte3.jpg", link: "/portes" },
     { title: "Volets", image: "/images/volet.webp", link: "/volet" },
     { title: "Portails", image: "/images/portails.jpg", link: "/portails" },
